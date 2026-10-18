@@ -13,6 +13,7 @@
   ],
   "defenses": [
     "edr",
-    "dlp"
+    "dlp",
+    "device-control"
   ]
 }

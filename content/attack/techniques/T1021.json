@@ -18,7 +18,9 @@
     "siem",
     "pam",
     "mfa",
-    "deception"
+    "deception",
+    "itdr",
+    "device-control"
   ],
   "subs": {
     "001": "Віддалений робочий стіл (RDP)",

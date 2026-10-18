@@ -13,7 +13,8 @@
   ],
   "defenses": [
     "edr",
-    "dlp"
+    "dlp",
+    "device-control"
   ],
   "subs": {
     "001": "Через Bluetooth"

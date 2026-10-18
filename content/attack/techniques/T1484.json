@@ -16,7 +16,8 @@
   "defenses": [
     "siem",
     "pam",
-    "ueba"
+    "ueba",
+    "itdr"
   ],
   "subs": {
     "001": "Зміна групових політик",

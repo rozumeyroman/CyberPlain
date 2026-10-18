@@ -251,8 +251,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 ## Портфель рішень
 
-Поки на сайті лише пакети Rapid7 Command Platform (рішення автора, жовтень 2026). Класи продукту —
-за таблицями порівняння пакетів на сайті Rapid7 (у `url` продукту), нічого понад них:
+На сайті пакети Rapid7 Command Platform і SentinelOne Singularity (рішення автора, жовтень 2026).
+Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
 |---|---|
@@ -262,6 +262,15 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Incident Command Essential | SIEM, UEBA, SOAR, CAASM, EASM, Threat Intelligence |
 | Incident Command Advanced | + Deception |
 | Incident Command Ultimate | + EDR, NDR, IDS, DFIR (Velociraptor) |
+| SentinelOne Singularity Complete | EDR (EPP + XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
+| SentinelOne Singularity Commercial | + ITDR |
+| SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
+
+SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`, `device-control`, `itdr`
+заведено під ці пакети. CWPP — не CNAPP (без CSPM/IaC). ITDR у пакеті — виявлення й реагування;
+пастки Singularity Identity (Identity Deception) і ISPM у таблиці пакетів не названі — `deception` не
+ставимо. Network Discovery (Enterprise) — інвентаризація мережі агентами, не CAASM: лише в тексті.
+Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіси/AI, не класи; add-on не рахуємо.
 
 Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `pam`, `dlp`, `ddos`.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим

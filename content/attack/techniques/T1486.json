@@ -19,6 +19,7 @@
     "siem",
     "soar",
     "dfir",
-    "deception"
+    "deception",
+    "cwpp"
   ]
 }

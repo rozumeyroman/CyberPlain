@@ -15,6 +15,7 @@
   ],
   "defenses": [
     "edr",
-    "awareness"
+    "awareness",
+    "device-control"
   ]
 }

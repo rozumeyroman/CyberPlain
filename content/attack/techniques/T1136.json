@@ -15,7 +15,8 @@
   "defenses": [
     "siem",
     "ueba",
-    "caasm"
+    "caasm",
+    "itdr"
   ],
   "subs": {
     "001": "Локальний обліковий запис",

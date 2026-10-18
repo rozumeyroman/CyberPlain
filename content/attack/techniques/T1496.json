@@ -14,7 +14,8 @@
   "defenses": [
     "cnapp",
     "edr",
-    "siem"
+    "siem",
+    "cwpp"
   ],
   "subs": {
     "001": "Захоплення обчислень",

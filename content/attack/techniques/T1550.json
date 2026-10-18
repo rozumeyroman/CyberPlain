@@ -17,7 +17,8 @@
     "siem",
     "edr",
     "pam",
-    "deception"
+    "deception",
+    "itdr"
   ],
   "subs": {
     "001": "Токен застосунку",

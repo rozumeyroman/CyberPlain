@@ -16,7 +16,8 @@
     "siem",
     "ueba",
     "deception",
-    "edr"
+    "edr",
+    "itdr"
   ],
   "subs": {
     "001": "Золотий квиток",

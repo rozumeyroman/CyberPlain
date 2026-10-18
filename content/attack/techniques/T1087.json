@@ -16,7 +16,8 @@
     "siem",
     "deception",
     "ueba",
-    "edr"
+    "edr",
+    "itdr"
   ],
   "subs": {
     "001": "Локальні облікові записи",

@@ -15,7 +15,8 @@
     "siem",
     "edr",
     "deception",
-    "ueba"
+    "ueba",
+    "itdr"
   ],
   "subs": {
     "001": "Локальні групи",

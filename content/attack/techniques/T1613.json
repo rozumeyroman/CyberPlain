@@ -12,6 +12,7 @@
     "Хто має доступ до API кластера?"
   ],
   "defenses": [
-    "cnapp"
+    "cnapp",
+    "cwpp"
   ]
 }

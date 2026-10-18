@@ -13,7 +13,8 @@
   ],
   "defenses": [
     "dlp",
-    "edr"
+    "edr",
+    "device-control"
   ],
   "subs": {
     "001": "Через USB"
