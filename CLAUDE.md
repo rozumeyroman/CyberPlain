@@ -143,6 +143,8 @@ questions[], defenses[] (посилання на solutions.json)`. Якщо те
 Як налаштовано (безкоштовний план, дашборд Cloudflare, зона `alestalab.top`):
 - **Власний домен** `cyberplain.alestalab.top`; `workers_dev` і `preview_urls` вимкнені
   у `wrangler.jsonc`, бо на `*.workers.dev` WAF не діє.
+- **WAF custom rule «Geography-based rule [Template]»** (перше, діє на всю зону) → **Block**:
+  континенти AS, SA, AF, Tor (`T1`), країни RU, BY. Блокує й пошукових ботів та прев'ю з цих регіонів.
 - **WAF custom rule** → **Managed Challenge**, вираз:
   ```
   (http.host eq "cyberplain.alestalab.top"
@@ -161,14 +163,17 @@ questions[], defenses[] (посилання на solutions.json)`. Якщо те
 - **AI bot policies:** Search — Allow, Agent — Block, Training — Block.
 - **Precursor** увімкнено: може відкликати `cf_clearance` у підозрілих сесій.
 - **Bot Fight Mode не вмикаємо:** на Free його не можна обійти правилами WAF.
-- **`public/robots.txt`**: дозволені пошукові (Googlebot, Bingbot, DuckDuckBot) і AI-пошук
-  (OAI-SearchBot, PerplexityBot, Claude-SearchBot); `Disallow: /` для решти, окремо для
-  токенів навчання `Google-Extended` і `Applebot-Extended`. robots.txt — лише прохання.
+- **robots.txt — керований Cloudflare** (`is_robots_txt_managed`, Bot Preference Sync).
+  Генерується з AI bot policies: `Content-Signal: search=yes,ai-train=no,use=reference`,
+  `User-agent: *` → `Allow: /`, `Disallow: /` для AI-навчання й AI-агентів. Вміст напряму не
+  редагується; власного `public/robots.txt` немає (Cloudflare не дописав би його, а
+  `Allow: /` у керованому блоці все одно переважає). Sitemap подаємо в Search Console /
+  Bing Webmaster Tools. robots.txt — лише прохання.
 - **Turnstile-віджет** (JS) — тільки на формах і динамічних запитах у v1 (повідомлення
   про помилку, AI-помічник), токен перевіряє Worker через `siteverify`. Сторінки
   контенту лишаються з 0 KB власного JS: сторінку перевірки віддає сам Cloudflare.
 - Відомий наслідок: верифіковані SEO-краулери (Ahrefs, Semrush) теж проходять без
-  перевірки — їх стримує лише robots.txt.
+  перевірки, і керований robots.txt їх не забороняє.
 - Налаштування WAF і ботів — у дашборді, не в репозиторії. Змінив там — онови цей розділ.
 
 ## Авторство і ліцензії (обов'язково)
