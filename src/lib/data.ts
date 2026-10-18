@@ -212,3 +212,9 @@ let cache: ReturnType<typeof build> | undefined;
 export const loadData = () => (cache ??= build());
 
 export const num = (n: number) => String(n).padStart(2, '0');
+
+// Відмінок після числа: plural(n, 'рішення', 'рішення', 'рішень') → «1 рішення», «3 рішення», «11 рішень».
+export const plural = (n: number, one: string, few: string, many: string) => {
+  const d = n % 10, h = n % 100;
+  return `${n} ${d === 1 && h !== 11 ? one : d >= 2 && d <= 4 && (h < 12 || h > 14) ? few : many}`;
+};

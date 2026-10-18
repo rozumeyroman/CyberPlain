@@ -3,7 +3,8 @@ import AttackSource from './AttackSource.astro';
 import D3Groups from './D3Groups.astro';
 import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
-import { loadData, url, num, type Technique } from '../lib/data';
+import Fold from './Fold.astro';
+import { loadData, url, num, type Technique, plural } from '../lib/data';
 
 interface Props { technique: Technique }
 const { technique: t } = Astro.props;
@@ -53,8 +54,7 @@ const d3 = d.d3fendForAttack(t);
     </section>
   )}
 
-  <section class="sec" aria-labelledby="sol">
-    <h2 class="sec-title" id="sol">Чим захиститись</h2>
+  <Fold id="sol" title="Чим захиститись" count={defenses.length ? plural(defenses.length, 'рішення', 'рішення', 'рішень') : undefined}>
     {defenses.length === 0
       ? <p class="soon-box">Рішення для цієї техніки готуються.</p>
       : (
@@ -71,7 +71,7 @@ const d3 = d.d3fendForAttack(t);
           </tbody>
         </table>
       )}
-  </section>
+  </Fold>
 
   <section class="sec" aria-labelledby="d3">
     <h2 class="sec-title" id="d3">Захисні заходи D3FEND{d3.length > 0 && <span class="mono">{d3.length} технік</span>}</h2>

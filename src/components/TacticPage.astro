@@ -2,7 +2,8 @@
 import AttackSource from './AttackSource.astro';
 import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
-import { loadData, url, num, type Tactic } from '../lib/data';
+import Fold from './Fold.astro';
+import { loadData, url, num, type Tactic, plural } from '../lib/data';
 
 interface Props { tactic: Tactic }
 const { tactic: t } = Astro.props;
@@ -11,6 +12,7 @@ const i = d.tactics.findIndex((x) => x.id === t.id);
 const prev = d.tactics[i - 1], next = d.tactics[i + 1];
 const techniques = d.techniquesOf(t.id);
 const solutions = d.solutionsFor(t);
+const TOP = 6;
 ---
 <section class="wrap page">
   <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
@@ -22,26 +24,31 @@ const solutions = d.solutionsFor(t);
   <p class="lead-text">{t.data.short}</p>
   {t.data.analogy && <div class="note-box"><span class="mono attack">Аналогія</span>{t.data.analogy}</div>}
 
-  <section class="sec" aria-labelledby="sol">
-    <h2 class="sec-title" id="sol">Чим захиститись на цьому етапі</h2>
+  <Fold id="sol" title="Чим захиститись на цьому етапі" count={solutions.length ? plural(solutions.length, 'рішення', 'рішення', 'рішень') : undefined}>
     {solutions.length === 0
       ? <p class="soon-box">Рішення для цього етапу готуються.</p>
-      : (
-        <table class="tbl">
-          <thead><tr><th>Рішення</th><th>Що робить</th><th>Техніки</th><th>D3FEND</th></tr></thead>
-          <tbody>
-            {solutions.map((s) => (
-              <tr>
-                <td><SolutionLinks cls={s.cls} products={s.products} /></td>
-                <td data-label="Що робить" class:list={{ empty: !(s.note ?? s.cls.data.simple) }}>{s.note ?? s.cls.data.simple ?? '—'}</td>
-                <td data-label="Техніки" class="cover inline">{s.techniques.length} з {techniques.length}</td>
-                <td data-label="D3FEND" class="inline"><D3fendTags cls={s.cls} /></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-  </section>
+      : [solutions.slice(0, TOP), solutions.slice(TOP)].filter((part) => part.length > 0).map((part, k) => {
+        const table = (
+          <table class="tbl stage">
+            <colgroup><col class="c1" /><col /><col class="c3" /><col class="c4" /></colgroup>
+            {k === 0 && <thead><tr><th>Рішення</th><th>Що робить</th><th>Техніки</th><th>D3FEND</th></tr></thead>}
+            <tbody>
+              {part.map((s) => (
+                <tr>
+                  <td><SolutionLinks cls={s.cls} products={s.products} /></td>
+                  <td data-label="Що робить" class:list={{ empty: !(s.note ?? s.cls.data.simple) }}>{s.note ?? s.cls.data.simple ?? '—'}</td>
+                  <td data-label="Техніки" class="cover inline">{s.techniques.length} з {techniques.length}</td>
+                  <td data-label="D3FEND" class="inline"><D3fendTags cls={s.cls} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+        // Перші TOP — найкорисніші на етапі; решта згорнута, колонки однакові завдяки table-layout: fixed.
+        return k === 0 ? table : <details class="rest"><summary class="mono">Показати ще {plural(part.length, 'рішення', 'рішення', 'рішень')}</summary>{table}</details>;
+      })
+      }
+  </Fold>
 
   <section class="sec" aria-labelledby="tech">
     <h2 class="sec-title" id="tech">Техніки етапу{techniques.length > 0 && <span class="mono">{techniques.length}</span>}</h2>
@@ -84,6 +91,15 @@ const solutions = d.solutionsFor(t);
 <section class="wrap bottom"><AttackSource href={url.mitre(t.id)} /></section>
 
 <style>
+  .stage { table-layout: fixed; }
+  .stage .c1 { width: 24%; } .stage .c3 { width: 96px; } .stage .c4 { width: 130px; }
+  .rest > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-top: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); font-size: 11px; color: var(--defense); }
+  .rest > summary::-webkit-details-marker { display: none; }
+  .rest > summary:hover { border-color: var(--defense); }
+  .rest > summary::after { content: none; }
+  .rest[open] > summary { display: none; }
+  .rest .tbl { border-top: 0; }
+  @media (max-width: 760px) { .stage .c1, .stage .c3, .stage .c4 { width: auto; } }
   .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
   .num { font-size: 44px; font-weight: 600; letter-spacing: -0.03em; color: var(--attack); }
   .meta { font-size: 12px; color: var(--muted-2); }

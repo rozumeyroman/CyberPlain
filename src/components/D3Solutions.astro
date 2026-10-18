@@ -1,7 +1,7 @@
 ---
 // Таблиця «Які рішення це роблять» для тактики й техніки D3FEND: лише класи, зіставлені з ними (d3fend[] класу).
 import SolutionLinks from './SolutionLinks.astro';
-import { url, type SolutionClass, type Product, type D3Technique } from '../lib/data';
+import { url, plural, type SolutionClass, type Product, type D3Technique } from '../lib/data';
 
 interface Props {
   rows: { cls: SolutionClass; products: Product[]; techniques: D3Technique[]; whole: boolean }[];
@@ -21,8 +21,13 @@ const { rows, empty } = Astro.props;
             <td data-label="Що робить" class:list={{ empty: !s.cls.data.simple }}>{s.cls.data.simple ?? '—'}</td>
             <td data-label="Техніки D3FEND">
               {s.whole && <span class="mono whole">Тактика загалом</span>}
-              {s.techniques.length > 0 && (
+              {s.techniques.length > 0 && s.techniques.length <= 3 && (
                 <span class="ids">{s.techniques.map((t) => <a href={url.d3fendTechnique(t.id)} title={t.ua ?? t.en}>{t.id}</a>)}</span>
+              )}
+              {s.techniques.length > 3 && (
+                <details class="more"><summary class="mono">{plural(s.techniques.length, 'техніка', 'техніки', 'технік')}</summary>
+                  <span class="ids">{s.techniques.map((t) => <a href={url.d3fendTechnique(t.id)} title={t.ua ?? t.en}>{t.id}</a>)}</span>
+                </details>
               )}
             </td>
           </tr>

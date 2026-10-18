@@ -1,0 +1,9 @@
+---
+// Секція, що згортається заголовком (без JS). Відкрита за замовчуванням.
+interface Props { id: string; title: string; count?: string; open?: boolean }
+const { id, title, count, open = true } = Astro.props;
+---
+<details class="sec fold" open={open}>
+  <summary><h2 class="sec-title" id={id}>{title}{count && <span class="mono">{count}</span>}</h2></summary>
+  <slot />
+</details>

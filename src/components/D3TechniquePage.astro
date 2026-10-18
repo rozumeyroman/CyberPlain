@@ -2,7 +2,8 @@
 import AttackGroups from './AttackGroups.astro';
 import D3fendSource from './D3fendSource.astro';
 import D3Solutions from './D3Solutions.astro';
-import { loadData, url, num, type D3Technique } from '../lib/data';
+import Fold from './Fold.astro';
+import { loadData, url, num, type D3Technique, plural } from '../lib/data';
 
 interface Props { technique: D3Technique }
 const { technique: t } = Astro.props;
@@ -36,10 +37,9 @@ const attack = [...new Set(subtree(t).flatMap((x) => x.attack))];
     )}
   </div>
 
-  <section class="sec" aria-labelledby="sol">
-    <h2 class="sec-title" id="sol">Які рішення це роблять</h2>
+  <Fold id="sol" title="Які рішення це роблять" count={solutions.length ? plural(solutions.length, 'рішення', 'рішення', 'рішень') : undefined}>
     <D3Solutions rows={solutions} empty={`Рішення для цієї ${t.depth === 0 ? 'категорії' : 'техніки'} ще не зіставлені.`} />
-  </section>
+  </Fold>
 
   <section class="sec" aria-labelledby="att">
     <h2 class="sec-title" id="att">Від яких технік атаки захищає · ATT&amp;CK{attack.length > 0 && <span class="mono">{attack.length} технік</span>}</h2>

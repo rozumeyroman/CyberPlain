@@ -99,3 +99,17 @@ a.chip:hover { border-color: var(--defense); color: var(--text); }
   .tbl td.empty { display: none; }
   .tbl td[data-label]::before { content: attr(data-label); display: block; font: 400 10px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 2px; }
 }
+
+/* Згортання без JS: секція (Fold.astro) і «ще» в рядку таблиці */
+.fold > summary { list-style: none; cursor: pointer; position: relative; padding-right: 36px; }
+.fold > summary::-webkit-details-marker, .more > summary::-webkit-details-marker { display: none; }
+.fold > summary::after { content: '−'; position: absolute; right: 4px; top: 4px; font: 400 22px var(--font-mono); color: var(--muted); }
+.fold:not([open]) > summary::after { content: '+'; }
+.fold:not([open]) > summary .sec-title { margin-bottom: 0; }
+.fold > summary:hover .sec-title { color: var(--defense-hover); }
+.more { margin-top: 6px; }
+.more > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 11px; color: var(--defense); }
+.more > summary::after { content: '+'; font-size: 14px; }
+.more[open] > summary::after { content: '−'; }
+.more > summary:hover { color: var(--defense-hover); }
+.more .chips { margin-top: 4px; }

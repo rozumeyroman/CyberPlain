@@ -1,11 +1,14 @@
 ---
-// Клас рішень і його продукти — усі посиланнями в розділ «Рішення».
-import { url, type SolutionClass, type Product } from '../lib/data';
+// Клас рішень і його продукти — усі посиланнями в розділ «Рішення». Продукти згорнуті, щоб рядок таблиці лишався коротким.
+import { url, plural, type SolutionClass, type Product } from '../lib/data';
 
 interface Props { cls: SolutionClass; products: Product[] }
 const { cls, products } = Astro.props;
 ---
 <a href={url.solution(cls.id)} class="name">{cls.data.ua}</a>
 {products.length > 0 && (
-  <div class="chips">{products.map((p) => <a href={url.solution(p.id)} class="chip">{p.data.name}</a>)}</div>
+  <details class="more">
+    <summary class="mono">{plural(products.length, 'продукт', 'продукти', 'продуктів')}</summary>
+    <div class="chips">{products.map((p) => <a href={url.solution(p.id)} class="chip">{p.data.name}</a>)}</div>
+  </details>
 )}

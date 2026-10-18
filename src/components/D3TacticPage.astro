@@ -1,7 +1,8 @@
 ---
 import D3fendSource from './D3fendSource.astro';
 import D3Solutions from './D3Solutions.astro';
-import { loadData, url, num, type D3Tactic, type D3Technique } from '../lib/data';
+import Fold from './Fold.astro';
+import { loadData, url, num, type D3Tactic, type D3Technique, plural } from '../lib/data';
 
 interface Props { tactic: D3Tactic }
 const { tactic: t } = Astro.props;
@@ -21,10 +22,9 @@ const flat = (x: D3Technique): D3Technique[] => x.children.flatMap((c) => [c, ..
   {t.short ? <p class="lead-text">{t.short}</p> : <p class="soon-box">Пояснення готується.</p>}
   {t.analogy && <div class="note-box"><span class="mono defense">Аналогія</span>{t.analogy}</div>}
 
-  <section class="sec" aria-labelledby="sol">
-    <h2 class="sec-title" id="sol">Які рішення це роблять</h2>
+  <Fold id="sol" title="Які рішення це роблять" count={solutions.length ? plural(solutions.length, 'рішення', 'рішення', 'рішень') : undefined}>
     <D3Solutions rows={solutions} empty="Рішення для цієї тактики ще не зіставлені." />
-  </section>
+  </Fold>
 
   <section class="sec" aria-labelledby="cats">
     <h2 class="sec-title" id="cats">Категорії й техніки<span class="mono">{t.categories.length} · {t.all.length}</span></h2>
