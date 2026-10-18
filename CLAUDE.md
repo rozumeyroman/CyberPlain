@@ -60,8 +60,8 @@ src/
   components/             # Term.astro, TechniqueCard.astro, Translator.astro, ...
   pages/index.astro                       # Home
   pages/mitre/index.astro                 # ланцюжок 15 тактик
-  pages/mitre/[tactic]/index.astro        # сторінка тактики
-  pages/mitre/[tactic]/[technique].astro  # сторінка техніки
+  pages/mitre/[tactic]/index.astro        # сторінка тактики: /mitre/TA0001/
+  pages/mitre/[tactic]/[technique].astro  # сторінка техніки: /mitre/TA0001/T1566/
   pages/d3fend/index.astro
   pages/licenses.astro                    # повні тексти ліцензій
   styles/tokens.css, base.css
@@ -70,6 +70,9 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 ```
 
 Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/<tab>/`.
+
+Адреси сторінок — за ID MITRE, не за slug: `/mitre/TA0001/`, `/mitre/TA0001/T1566/`,
+підтехніка — `/mitre/TA0001/T1566.001/`. ID стабільні, а назви MITRE може змінити.
 
 ## Модель контенту
 
