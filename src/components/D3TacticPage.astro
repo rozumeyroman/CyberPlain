@@ -1,0 +1,92 @@
+---
+import D3fendSource from './D3fendSource.astro';
+import D3Solutions from './D3Solutions.astro';
+import { loadData, url, num, type D3Tactic, type D3Technique } from '../lib/data';
+
+interface Props { tactic: D3Tactic }
+const { tactic: t } = Astro.props;
+const d = await loadData();
+const prev = d.d3fendTactics[t.order - 2], next = d.d3fendTactics[t.order];
+const solutions = d.d3fendSolutionsOfTactic(t);
+// Різновиди категорії списком, з відступом за глибиною.
+const flat = (x: D3Technique): D3Technique[] => x.children.flatMap((c) => [c, ...flat(c)]);
+---
+<section class="wrap page">
+  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
+    <a href="/d3fend/">D3FEND</a><span aria-hidden="true">/</span><span aria-current="page">{num(t.order)} {t.ua ?? t.en}</span>
+  </nav>
+
+  <div class="head"><span class="num">{num(t.order)}</span><span class="mono meta">D3FEND · {t.en}</span></div>
+  <h1>{t.ua ?? t.en}</h1>
+  {t.short ? <p class="lead-text">{t.short}</p> : <p class="soon-box">Пояснення готується.</p>}
+  {t.analogy && <div class="note-box"><span class="mono defense">Аналогія</span>{t.analogy}</div>}
+
+  <section class="sec" aria-labelledby="sol">
+    <h2 class="sec-title" id="sol">Які рішення це роблять</h2>
+    <D3Solutions rows={solutions} empty="Рішення для цієї тактики ще не зіставлені." />
+  </section>
+
+  <section class="sec" aria-labelledby="cats">
+    <h2 class="sec-title" id="cats">Категорії й техніки<span class="mono">{t.categories.length} · {t.all.length}</span></h2>
+    <div class="cats">
+      {t.categories.map((c) => (
+        <article class="cat">
+          <h3><a href={url.d3fendTechnique(c.id)}><span class="ua">{c.ua ?? c.en}</span><span class="mono cid">{c.id}{c.ua && ` · ${c.en}`}</span></a></h3>
+          {c.simple ? <p>{c.simple}</p> : <p class="soon">Пояснення готується.</p>}
+          {c.children.length > 0 && (
+            <ul>
+              {flat(c).map((x) => (
+                <li style={`--depth:${x.depth - 1}`}>
+                  <a href={url.d3fendTechnique(x.id)}><span class="mono xid">{x.id}</span><span>{x.ua ?? x.en}</span></a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <nav aria-label="Сусідні тактики" class="pager">
+    {prev
+      ? <a href={url.d3fendTactic(prev.id)} class="card"><span class="mono dir">← Попередня</span><span class="pname">{num(prev.order)} {prev.ua ?? prev.en}</span></a>
+      : <div class="card off"><span class="mono dir">← Попередня</span><span>Це перша тактика</span></div>}
+    {next
+      ? <a href={url.d3fendTactic(next.id)} class="card right"><span class="mono dir">Наступна →</span><span class="pname">{num(next.order)} {next.ua ?? next.en}</span></a>
+      : <div class="card right off"><span class="mono dir">Наступна →</span><span>Це остання тактика</span></div>}
+  </nav>
+</section>
+
+<section class="wrap bottom"><D3fendSource href={url.d3fendOrig(t)} /></section>
+
+<style>
+  .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .num { font-size: 44px; font-weight: 600; letter-spacing: -0.03em; color: var(--defense); }
+  .meta { font-size: 12px; color: var(--muted-2); }
+  h1 { margin: 0 0 16px; font-size: clamp(36px, 8vw, 48px); line-height: 1.05; }
+  .defense { color: var(--defense); }
+
+  .cats { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+  .cat { border: 1px solid var(--line); padding: 18px 18px 10px; }
+  h3 { margin: 0 0 8px; }
+  h3 a { display: flex; flex-direction: column; gap: 4px; color: var(--text); text-decoration: none; }
+  h3 a:hover .ua { color: var(--defense-hover); }
+  h3 .ua { font-size: 19px; transition: color .15s; }
+  .cid { font-size: 11px; font-weight: 400; color: var(--muted-2); letter-spacing: .06em; }
+  .cat p { margin: 0 0 12px; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  .cat .soon { color: var(--muted); }
+  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+  li a { display: flex; gap: 12px; align-items: baseline; min-height: 44px; padding: 10px 0 10px calc(var(--depth) * 20px); color: var(--text-2); text-decoration: none; font-size: 15px; line-height: 1.35; }
+  li a:hover { color: var(--text); }
+  .xid { font-size: 11px; color: var(--defense); min-width: 84px; flex: none; }
+
+  .pager { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: 56px; }
+  .card { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line); color: var(--text); text-decoration: none; font-size: 15px; transition: border-color .15s; }
+  a.card:hover { border-color: var(--defense); color: var(--text); }
+  .card.right { text-align: right; }
+  .card.off { color: var(--line-hover); }
+  .dir { font-size: 11px; color: var(--muted-2); }
+  .off .dir { color: inherit; }
+  .pname { font-weight: 600; }
+  .bottom { padding-top: 40px; padding-bottom: 72px; }
+</style>

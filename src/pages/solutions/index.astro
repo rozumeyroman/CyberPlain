@@ -1,5 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
+import D3fendTags from '../../components/D3fendTags.astro';
 import SolutionLinks from '../../components/SolutionLinks.astro';
 import { loadData } from '../../lib/data';
 
@@ -25,7 +26,7 @@ const rows = d.classes
                 <td><SolutionLinks cls={r.cls} products={r.products} /></td>
                 <td data-label="Що робить" class:list={{ empty: !r.cls.data.simple }}>{r.cls.data.simple ?? '—'}</td>
                 <td data-label="Від технік" class="inline">{r.count}</td>
-                <td data-label="D3FEND" class="d3 inline">{r.cls.data.d3fend.join(' · ')}</td>
+                <td data-label="D3FEND" class="inline"><D3fendTags cls={r.cls} /></td>
               </tr>
             ))}
           </tbody>

@@ -2,7 +2,8 @@
   "ua": "Захист пошти",
   "en": "Email Security",
   "d3fend": [
-    "Detect",
-    "Isolate"
+    "D3-MA",
+    "D3-UA",
+    "D3-EF"
   ]
 }

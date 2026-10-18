@@ -1,0 +1,74 @@
+---
+import D3fendSource from './D3fendSource.astro';
+import D3Solutions from './D3Solutions.astro';
+import { loadData, url, num, type D3Technique } from '../lib/data';
+
+interface Props { technique: D3Technique }
+const { technique: t } = Astro.props;
+const d = await loadData();
+const ancestors: D3Technique[] = [];
+for (let p = t.parent; p; p = p.parent) ancestors.unshift(p);
+const solutions = d.d3fendSolutionsOfTechnique(t);
+const kind = t.depth === 0 ? 'Категорія' : 'Техніка';
+---
+<section class="wrap page">
+  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
+    <a href="/d3fend/">D3FEND</a><span aria-hidden="true">/</span>
+    <a href={url.d3fendTactic(t.tactic.id)}>{num(t.tactic.order)} {t.tactic.ua ?? t.tactic.en}</a><span aria-hidden="true">/</span>
+    {ancestors.map((a) => <><a href={url.d3fendTechnique(a.id)}>{a.id}</a><span aria-hidden="true">/</span></>)}
+    <span aria-current="page">{t.id}</span>
+  </nav>
+
+  <div class="head"><span class="id-defense big">{t.id}</span><span class="mono meta">{kind} · {t.en}</span></div>
+  <h1>{t.ua ?? t.en}</h1>
+  {t.simple
+    ? <p class="lead-text">{t.simple}</p>
+    : <p class="soon-box">Пояснення простими словами готується. Поки можна прочитати оригінальне визначення нижче.</p>}
+
+  <div class="grid">
+    {t.analogy && <div class="note-box"><span class="mono defense">Аналогія</span>{t.analogy}</div>}
+    {t.definition && (
+      <div class="note-box"><span class="mono muted">Визначення MITRE D3FEND</span><p lang="en">{t.definition}</p></div>
+    )}
+  </div>
+
+  <section class="sec" aria-labelledby="sol">
+    <h2 class="sec-title" id="sol">Які рішення це роблять</h2>
+    <D3Solutions rows={solutions} empty={`Рішення для цієї ${t.depth === 0 ? 'категорії' : 'техніки'} ще не зіставлені.`} />
+  </section>
+
+  {t.children.length > 0 && (
+    <section class="sec" aria-labelledby="ch">
+      <h2 class="sec-title" id="ch">{t.depth === 0 ? 'Техніки' : 'Різновиди'}<span class="mono">{t.children.length}</span></h2>
+      <ul class="list">{t.children.map((c) => (
+        <li><a href={url.d3fendTechnique(c.id)}><span class="mono xid">{c.id}</span><span>{c.ua ?? c.en}{c.children.length > 0 && <span class="sub"> · ще {c.children.length}</span>}</span></a></li>
+      ))}</ul>
+    </section>
+  )}
+
+  <section class="sec" aria-labelledby="ta">
+    <h2 class="sec-title" id="ta">Тактика захисту</h2>
+    <div class="chips"><a href={url.d3fendTactic(t.tactic.id)} class="chip">{num(t.tactic.order)} {t.tactic.ua ?? t.tactic.en} · {t.tactic.en}</a></div>
+  </section>
+</section>
+
+<section class="wrap bottom"><D3fendSource href={url.d3fendOrig(t)} label={`${t.id} на d3fend.mitre.org ↗`} /></section>
+
+<style>
+  .head { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .id-defense { font-family: var(--font-mono); color: var(--defense); }
+  .big { font-size: 20px; }
+  .meta { font-size: 12px; color: var(--muted-2); }
+  h1 { margin: 0 0 16px; font-size: clamp(32px, 7vw, 44px); line-height: 1.1; }
+  .defense { color: var(--defense); }
+  .muted { color: var(--muted-2); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; max-width: 980px; }
+  .grid .note-box { max-width: none; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  .note-box p { margin: 0; }
+  .list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 0 24px; }
+  .list a { display: flex; gap: 12px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; border-bottom: 1px solid var(--line); }
+  .list a:hover { color: var(--text); }
+  .xid { font-size: 11px; color: var(--defense); min-width: 84px; flex: none; }
+  .sub { color: var(--muted-2); font-size: 13px; }
+  .bottom { padding-top: 40px; padding-bottom: 72px; }
+</style>

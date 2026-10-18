@@ -2,7 +2,8 @@
   "ua": "Управління вразливостями",
   "en": "Vulnerability Management",
   "d3fend": [
-    "Model",
-    "Harden"
+    "D3-AVE",
+    "D3-NVA",
+    "D3-SU"
   ]
 }

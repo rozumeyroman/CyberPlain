@@ -1,0 +1,17 @@
+---
+import { site } from '../../site.config';
+import { source } from '../../content/d3fend/intro.json';
+import { d3fendSource } from '../lib/data';
+
+const { href = source.url, label = 'Оригінал на d3fend.mitre.org ↗' } = Astro.props;
+const date = d3fendSource.releaseDate.split('-').reverse().join('.');
+---
+<div class="src">
+  <span>Джерело: {source.name.replace('D3FEND', 'D3FEND™')}, версія {d3fendSource.version} від {date}. Українські назви й пояснення — авторська адаптація {site.name}.</span>
+  <a href={href} class="mono">{label}</a>
+</div>
+
+<style>
+  .src { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; align-items: center; padding: 18px 20px; border: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  a { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+</style>

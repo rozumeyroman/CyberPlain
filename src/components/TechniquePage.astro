@@ -1,5 +1,6 @@
 ---
 import AttackSource from './AttackSource.astro';
+import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
 import { loadData, url, num, type Technique } from '../lib/data';
 
@@ -46,7 +47,7 @@ const defenses = d.classesOf(t);
               <tr>
                 <td><SolutionLinks cls={c} products={d.productsOf(c.id)} /></td>
                 <td data-label="Що це" class:list={{ empty: !c.data.simple }}>{c.data.simple ?? '—'}</td>
-                <td data-label="D3FEND" class="d3 inline">{c.data.d3fend.join(' · ')}</td>
+                <td data-label="D3FEND" class="inline"><D3fendTags cls={c} /></td>
               </tr>
             ))}
           </tbody>

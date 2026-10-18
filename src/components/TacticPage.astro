@@ -1,5 +1,6 @@
 ---
 import AttackSource from './AttackSource.astro';
+import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
 import { loadData, url, num, type Tactic } from '../lib/data';
 
@@ -34,7 +35,7 @@ const solutions = d.solutionsFor(t);
                 <td><SolutionLinks cls={s.cls} products={s.products} /></td>
                 <td data-label="Що робить" class:list={{ empty: !(s.note ?? s.cls.data.simple) }}>{s.note ?? s.cls.data.simple ?? '—'}</td>
                 <td data-label="Техніки" class="cover inline">{s.techniques.length} з {techniques.length}</td>
-                <td data-label="D3FEND" class="d3 inline">{s.cls.data.d3fend.join(' · ')}</td>
+                <td data-label="D3FEND" class="inline"><D3fendTags cls={s.cls} /></td>
               </tr>
             ))}
           </tbody>

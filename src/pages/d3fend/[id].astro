@@ -1,0 +1,23 @@
+---
+// /d3fend/harden/ — тактика, /d3fend/D3-MFA/ — категорія або техніка. ID не перетинаються (перевіряє loadData).
+import Base from '../../layouts/Base.astro';
+import D3TacticPage from '../../components/D3TacticPage.astro';
+import D3TechniquePage from '../../components/D3TechniquePage.astro';
+import { loadData, type D3Tactic, type D3Technique } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const { d3fendTactics, d3byId } = await loadData();
+  return [
+    ...d3fendTactics.map((tactic) => ({ params: { id: tactic.id }, props: { tactic } })),
+    ...[...d3byId.values()].map((technique) => ({ params: { id: technique.id }, props: { technique } })),
+  ];
+}
+
+const { tactic, technique } = Astro.props as { tactic?: D3Tactic; technique?: D3Technique };
+const e = tactic ?? technique!;
+const title = `${e.ua ?? e.en} (${tactic ? `D3FEND ${tactic.en}` : technique!.id})`;
+const description = tactic ? tactic.short : technique!.simple ?? technique!.definition;
+---
+<Base title={title} description={description}>
+  {tactic ? <D3TacticPage tactic={tactic} /> : <D3TechniquePage technique={technique!} />}
+</Base>

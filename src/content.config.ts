@@ -6,8 +6,6 @@ import { z } from 'astro/zod';
 const fromDir = (base: string) =>
   glob({ pattern: '*.json', base, generateId: ({ entry }) => entry.replace(/\.json$/, '') });
 
-const d3fendTactic = z.enum(['Model', 'Harden', 'Detect', 'Isolate', 'Deceive', 'Evict', 'Restore']);
-
 const tactics = defineCollection({
   loader: fromDir('./content/attack/tactics'),
   schema: z.object({
@@ -43,7 +41,8 @@ const classes = defineCollection({
     ua: z.string(),
     en: z.string().optional(),
     simple: z.string().optional(),
-    d3fend: z.array(d3fendTactic).default([]),
+    // D3FEND: ID технік (D3-MFA) або назви тактик (Harden), якщо точної техніки немає. Перевіряє loadData().
+    d3fend: z.array(z.string()).default([]),
   }),
 });
 
@@ -57,4 +56,24 @@ const products = defineCollection({
   }),
 });
 
-export const collections = { tactics, techniques, classes, products };
+// D3FEND: сирі ID, назви, визначення й ієрархія — з data/mitre/d3fend.json; тут лише наш шар пояснень.
+// ID тактики — англійська назва малими літерами (model), техніки — ID D3FEND (D3-MFA).
+const d3fendTactics = defineCollection({
+  loader: fromDir('./content/d3fend/tactics'),
+  schema: z.object({
+    ua: z.string(),
+    short: z.string(),
+    analogy: z.string().optional(),
+  }),
+});
+
+const d3fendTechniques = defineCollection({
+  loader: fromDir('./content/d3fend/techniques'),
+  schema: z.object({
+    ua: z.string().optional(),
+    simple: z.string().optional(),
+    analogy: z.string().optional(),
+  }),
+});
+
+export const collections = { tactics, techniques, classes, products, d3fendTactics, d3fendTechniques };

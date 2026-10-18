@@ -2,7 +2,7 @@
   "ua": "NGFW / IPS",
   "en": "Next-Generation Firewall",
   "d3fend": [
-    "Isolate",
-    "Detect"
+    "D3-NTSA",
+    "D3-NTF"
   ]
 }

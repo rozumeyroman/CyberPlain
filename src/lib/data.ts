@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import d3fendRaw from '../../data/mitre/d3fend.json';
 
 export type Tactic = CollectionEntry<'tactics'>;
 export type Technique = CollectionEntry<'techniques'>;
@@ -14,7 +15,38 @@ export const url = {
     id.startsWith('TA')
       ? `https://attack.mitre.org/tactics/${id}/`
       : `https://attack.mitre.org/techniques/${id.replace('.', '/')}/`,
+  d3fendTactic: (id: string) => `/d3fend/${id}/`,
+  d3fendTechnique: (id: string) => `/d3fend/${id}/`,
+  d3fendOrig: (x: D3Tactic | D3Technique) => `https://d3fend.mitre.org/${'categories' in x ? 'tactic' : 'technique'}/d3f:${x.iri}/`,
 };
+
+// D3FEND: сирий запис імпорту + наш текст із content/d3fend/ (якщо є).
+interface D3Raw { id: string; iri: string; en: string; definition: string; children: D3Raw[] }
+export interface D3Tactic {
+  id: string; // model
+  iri: string;
+  en: string;
+  order: number;
+  ua?: string;
+  short?: string;
+  analogy?: string;
+  categories: D3Technique[]; // верхній рівень технік тактики
+  all: D3Technique[]; // усі техніки тактики, в порядку дерева
+}
+export interface D3Technique {
+  id: string; // D3-MFA
+  iri: string;
+  en: string;
+  definition: string;
+  ua?: string;
+  simple?: string;
+  analogy?: string;
+  tactic: D3Tactic;
+  parent?: D3Technique;
+  children: D3Technique[];
+  depth: number; // 0 — категорія
+}
+export const d3fendSource = { version: d3fendRaw.version, releaseDate: d3fendRaw.releaseDate };
 
 export interface StageSolution {
   cls: SolutionClass;
@@ -32,8 +64,9 @@ function assertUniqueIds(label: string, ...groups: { id: string }[][]) {
 }
 
 async function build() {
-  const [tacticsRaw, techniques, classes, products] = await Promise.all([
+  const [tacticsRaw, techniques, classes, products, d3Tactics, d3Texts] = await Promise.all([
     getCollection('tactics'), getCollection('techniques'), getCollection('classes'), getCollection('products'),
+    getCollection('d3fendTactics'), getCollection('d3fendTechniques'),
   ]);
   const tactics = tacticsRaw.sort((a, b) => a.data.order - b.data.order);
   // Тактики й техніки ділять /mitre/<id>/, класи й продукти — /solutions/<id>/.
@@ -71,7 +104,66 @@ async function build() {
       .sort((a, b) => b.techniques.length - a.techniques.length || a.cls.data.ua.localeCompare(b.cls.data.ua));
   };
 
-  return { tactics, techniques, classes, products, classById, productsOf, techniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic };
+  // ── D3FEND ──
+  const d3TacticText = new Map(d3Tactics.map((e) => [e.id, e.data]));
+  const d3Text = new Map(d3Texts.map((e) => [e.id, e.data]));
+  const d3byId = new Map<string, D3Technique>();
+  const d3fendTactics: D3Tactic[] = d3fendRaw.tactics.map((raw, i) => {
+    const tactic: D3Tactic = { id: raw.en.toLowerCase(), iri: raw.iri, en: raw.en, order: i + 1, ...d3TacticText.get(raw.en.toLowerCase()), categories: [], all: [] };
+    const make = (r: D3Raw, depth: number, parent?: D3Technique): D3Technique => {
+      const t: D3Technique = { id: r.id, iri: r.iri, en: r.en, definition: r.definition, ...d3Text.get(r.id), tactic, parent, depth, children: [] };
+      d3byId.set(t.id, t);
+      tactic.all.push(t);
+      t.children = r.children.map((c) => make(c, depth + 1, t));
+      return t;
+    };
+    tactic.categories = (raw.techniques as D3Raw[]).map((r) => make(r, 0));
+    return tactic;
+  });
+  for (const id of d3TacticText.keys()) {
+    if (!d3fendTactics.some((t) => t.id === id)) throw new Error(`content/d3fend/tactics/${id}.json: тактики D3FEND «${id}» немає в імпорті`);
+  }
+  for (const id of d3Text.keys()) {
+    if (!d3byId.has(id)) throw new Error(`content/d3fend/techniques/${id}.json: техніки «${id}» немає в імпорті D3FEND`);
+  }
+  // /d3fend/<id>/ спільна для тактик і технік.
+  assertUniqueIds('d3fend', d3fendTactics, [...d3byId.values()]);
+
+  // Клас → D3FEND: d3fend[] містить ID технік або англійські назви тактик.
+  const d3TacticByEn = new Map(d3fendTactics.map((t) => [t.en, t]));
+  const d3ofClass = new Map(classes.map((cls) => {
+    const techs: D3Technique[] = [], whole: D3Tactic[] = [];
+    for (const ref of cls.data.d3fend) {
+      const t = d3byId.get(ref), ta = d3TacticByEn.get(ref);
+      if (t) techs.push(t);
+      else if (ta) whole.push(ta);
+      else throw new Error(`solutions/classes/${cls.id}.json → d3fend: «${ref}» — це не ID техніки й не тактика D3FEND`);
+    }
+    return [cls.id, { techniques: techs, wholeTactics: whole }];
+  }));
+  const d3fendOf = (cls: SolutionClass) => d3ofClass.get(cls.id)!;
+  // Тактики класу в порядку D3FEND: явно вказані + тактики його технік.
+  const d3fendTacticsOf = (cls: SolutionClass) => {
+    const { techniques: ts, wholeTactics } = d3fendOf(cls);
+    return d3fendTactics.filter((ta) => wholeTactics.includes(ta) || ts.some((t) => t.tactic === ta));
+  };
+  const d3subtree = (t: D3Technique): D3Technique[] => [t, ...t.children.flatMap(d3subtree)];
+  // Рішення техніки D3FEND = класи, зіставлені з нею або з її різновидами.
+  const solutionsForD3 = (scope: D3Technique[], tactic?: D3Tactic) =>
+    classes
+      .map((cls) => {
+        const { techniques: ts, wholeTactics } = d3fendOf(cls);
+        return { cls, products: productsOf(cls.id), techniques: ts.filter((t) => scope.includes(t)), whole: !!tactic && wholeTactics.includes(tactic) };
+      })
+      .filter((s) => s.techniques.length > 0 || s.whole)
+      .sort((a, b) => b.techniques.length - a.techniques.length || a.cls.data.ua.localeCompare(b.cls.data.ua));
+  const d3fendSolutionsOfTechnique = (t: D3Technique) => solutionsForD3(d3subtree(t));
+  const d3fendSolutionsOfTactic = (ta: D3Tactic) => solutionsForD3(ta.all, ta);
+
+  return {
+    tactics, techniques, classes, products, classById, productsOf, techniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic,
+    d3fendTactics, d3byId, d3fendOf, d3fendTacticsOf, d3fendSolutionsOfTechnique, d3fendSolutionsOfTactic,
+  };
 }
 
 let cache: ReturnType<typeof build> | undefined;

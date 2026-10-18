@@ -1,0 +1,2016 @@
+{
+  "source": "https://d3fend.mitre.org/api/matrix.json",
+  "version": "1.6.0",
+  "releaseDate": "2026-08-31",
+  "tactics": [
+    {
+      "en": "Model",
+      "iri": "Model",
+      "techniques": [
+        {
+          "id": "D3-SYSM",
+          "iri": "SystemMapping",
+          "en": "System Mapping",
+          "definition": "System mapping encompasses the techniques to identify the organization's systems, how they are configured and decomposed into subsystems and components, how they are dependent on one another, and where they are physically located.",
+          "children": [
+            {
+              "id": "D3-SYSVA",
+              "iri": "SystemVulnerabilityAssessment",
+              "en": "System Vulnerability Assessment",
+              "definition": "System vulnerability assessment relates all the vulnerabilities of a system's components in the context of their configuration and internal dependencies and can also include assessing risk emerging from the system's design as a whole, not just the sum of individual component vulnerabilities.",
+              "children": []
+            },
+            {
+              "id": "D3-SVCDM",
+              "iri": "ServiceDependencyMapping",
+              "en": "Service Dependency Mapping",
+              "definition": "Service dependency mapping determines the services on which each given service relies.",
+              "children": []
+            },
+            {
+              "id": "D3-DEM",
+              "iri": "DataExchangeMapping",
+              "en": "Data Exchange Mapping",
+              "definition": "Data exchange mapping identifies and models the organization's intended design for the flows of the data types, formats, and volumes between systems at the application layer.",
+              "children": []
+            },
+            {
+              "id": "D3-SYSDM",
+              "iri": "SystemDependencyMapping",
+              "en": "System Dependency Mapping",
+              "definition": "System dependency mapping identifies and models the dependencies of system components on each other to carry out their function.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-OAM",
+          "iri": "OperationalActivityMapping",
+          "en": "Operational Activity Mapping",
+          "definition": "Operational activity mapping identifies activities of the organization and the organization's suborganizations, groups, roles, and individuals that carry out the activities and then establishes the dependencies of the activities on the systems and people that perform those activities.",
+          "children": [
+            {
+              "id": "D3-ODM",
+              "iri": "OperationalDependencyMapping",
+              "en": "Operational Dependency Mapping",
+              "definition": "Operational dependency mapping identifies and models the dependencies of the organization's activities on each other and on the organization's performers (people, systems, and services.)  This may include modeling the higher- and lower-level activities of an organization forming a hierarchy, or layering, of the dependencies in an organization's activities.",
+              "children": []
+            },
+            {
+              "id": "D3-OM",
+              "iri": "OrganizationMapping",
+              "en": "Organization Mapping",
+              "definition": "Organization mapping identifies and models the people, roles, and groups with an organization and the relations between them.",
+              "children": []
+            },
+            {
+              "id": "D3-AM",
+              "iri": "AccessModeling",
+              "en": "Access Modeling",
+              "definition": "Access modeling captures and records the access permissions granted to identities (e.g., administrators, users, groups, systems) and optionally includes details on how these identities are stored, managed, and shared across systems.",
+              "children": []
+            },
+            {
+              "id": "D3-ORA",
+              "iri": "OperationalRiskAssessment",
+              "en": "Operational Risk Assessment",
+              "definition": "Operational risk assessment identifies and models the vulnerabilities of, and risks to, an organization's activities individually and as a whole.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-NM",
+          "iri": "NetworkMapping",
+          "en": "Network Mapping",
+          "definition": "Network mapping encompasses the techniques to identify and model the physical layer, network layer, and data exchange layers of the organization's network and their physical location, and determine allowed pathways through that network.",
+          "children": [
+            {
+              "id": "D3-NTPM",
+              "iri": "NetworkTrafficPolicyMapping",
+              "en": "Network Traffic Policy Mapping",
+              "definition": "Network traffic policy mapping identifies and models the allowed pathways of data at the network, transport, and/or application levels.",
+              "children": []
+            },
+            {
+              "id": "D3-PLM",
+              "iri": "PhysicalLinkMapping",
+              "en": "Physical Link Mapping",
+              "definition": "Physical link mapping identifies and models the link connectivity of the network devices within a physical network.",
+              "children": [
+                {
+                  "id": "D3-DPLM",
+                  "iri": "DirectPhysicalLinkMapping",
+                  "en": "Direct Physical Link Mapping",
+                  "definition": "Direct physical link mapping creates a physical link map by direct observation and recording of the physical network links.",
+                  "children": []
+                },
+                {
+                  "id": "D3-APLM",
+                  "iri": "ActivePhysicalLinkMapping",
+                  "en": "Active Physical Link Mapping",
+                  "definition": "Active physical link mapping sends and receives network traffic as a means to map the physical layer.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-NVA",
+              "iri": "NetworkVulnerabilityAssessment",
+              "en": "Network Vulnerability Assessment",
+              "definition": "Network vulnerability assessment relates all the vulnerabilities of a network's components in the context of their configuration and interdependencies and can also include assessing risk emerging from the network's design as a whole, not just the sum of individual network node or network segment vulnerabilities.",
+              "children": []
+            },
+            {
+              "id": "D3-LLM",
+              "iri": "LogicalLinkMapping",
+              "en": "Logical Link Mapping",
+              "definition": "Logical link mapping creates a model of existing or previous node-to-node connections using network-layer data or metadata.",
+              "children": [
+                {
+                  "id": "D3-PLLM",
+                  "iri": "PassiveLogicalLinkMapping",
+                  "en": "Passive Logical Link Mapping",
+                  "definition": "Passive logical link mapping only listens to network traffic as a means to map the whole data link layer, where the links represent logical data flows rather than physical connections.",
+                  "children": []
+                },
+                {
+                  "id": "D3-ALLM",
+                  "iri": "ActiveLogicalLinkMapping",
+                  "en": "Active Logical Link Mapping",
+                  "definition": "Active logical link mapping sends and receives network traffic as a means to map the whole data link layer, where the links represent logical data flows rather than physical connection",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-AI",
+          "iri": "AssetInventory",
+          "en": "Asset Inventory",
+          "definition": "Asset inventorying identifies and records the organization's assets and enriches each inventory item with knowledge about their vulnerabilities.",
+          "children": [
+            {
+              "id": "D3-HCI",
+              "iri": "HardwareComponentInventory",
+              "en": "Hardware Component Inventory",
+              "definition": "Hardware component inventorying identifies and records the hardware items in the organization's architecture.",
+              "children": []
+            },
+            {
+              "id": "D3-CI",
+              "iri": "ConfigurationInventory",
+              "en": "Configuration Inventory",
+              "definition": "Configuration inventory identifies and records the configuration of software and hardware and their components throughout the organization.",
+              "children": []
+            },
+            {
+              "id": "D3-SWI",
+              "iri": "SoftwareInventory",
+              "en": "Software Inventory",
+              "definition": "Software inventorying identifies and records the software items in the organization's architecture.",
+              "children": []
+            },
+            {
+              "id": "D3-AVE",
+              "iri": "AssetVulnerabilityEnumeration",
+              "en": "Asset Vulnerability Enumeration",
+              "definition": "Asset vulnerability enumeration enriches inventory items with knowledge identifying their vulnerabilities.",
+              "children": [
+                {
+                  "id": "D3-CIA",
+                  "iri": "ContainerImageAnalysis",
+                  "en": "Container Image Analysis",
+                  "definition": "Analyzing a Container Image with respect to a set of policies.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-DI",
+              "iri": "DataInventory",
+              "en": "Data Inventory",
+              "definition": "Data inventorying identifies and records the schemas, formats, volumes, and locations of data stored and used on the organization's architecture.",
+              "children": []
+            },
+            {
+              "id": "D3-NNI",
+              "iri": "NetworkNodeInventory",
+              "en": "Network Node Inventory",
+              "definition": "Network node inventorying identifies and records all the network nodes (hosts, routers, switches, firewalls, etc.) in the organization's architecture.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Harden",
+      "iri": "Harden",
+      "techniques": [
+        {
+          "id": "D3-SCH",
+          "iri": "SourceCodeHardening",
+          "en": "Source Code Hardening",
+          "definition": "Hardening source code with the intention of making it more difficult to exploit and less error prone.",
+          "children": [
+            {
+              "id": "D3-VTV",
+              "iri": "VariableTypeValidation",
+              "en": "Variable Type Validation",
+              "definition": "Ensuring that a variable has the correct type.",
+              "children": []
+            },
+            {
+              "id": "D3-CS",
+              "iri": "CredentialScrubbing",
+              "en": "Credential Scrubbing",
+              "definition": "The systematic removal of hard-coded credentials from source code to prevent accidental exposure and unauthorized access.",
+              "children": []
+            },
+            {
+              "id": "D3-VI",
+              "iri": "VariableInitialization",
+              "en": "Variable Initialization",
+              "definition": "Setting variables to a known value before use.",
+              "children": []
+            },
+            {
+              "id": "D3-RN",
+              "iri": "ReferenceNullification",
+              "en": "Reference Nullification",
+              "definition": "Invalidating all pointers that reference a specific memory block, ensuring that the block cannot be accessed or modified after deallocation.",
+              "children": []
+            },
+            {
+              "id": "D3-DLV",
+              "iri": "DomainLogicValidation",
+              "en": "Domain Logic Validation",
+              "definition": "Validation of variable state in the context of the domain application.",
+              "children": [
+                {
+                  "id": "D3-OLV",
+                  "iri": "OperationalLogicValidation",
+                  "en": "Operational Logic Validation",
+                  "definition": "Validation of variable state in the context of the control logic of the operational application.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-PV",
+              "iri": "PointerValidation",
+              "en": "Pointer Validation",
+              "definition": "Ensuring that a pointer variable has the required properties for use.",
+              "children": [
+                {
+                  "id": "D3-MBSV",
+                  "iri": "MemoryBlockStartValidation",
+                  "en": "Memory Block Start Validation",
+                  "definition": "Ensuring that a pointer accurately references the beginning of a designated memory block.",
+                  "children": []
+                },
+                {
+                  "id": "D3-NPC",
+                  "iri": "NullPointerChecking",
+                  "en": "Null Pointer Checking",
+                  "definition": "Checking if a pointer is NULL.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-TL",
+              "iri": "TrustedLibrary",
+              "en": "Trusted Library",
+              "definition": "A trusted library is a collection of pre-verified and secure code modules or components that are used within software applications to perform specific functions. These libraries are considered reliable and have been vetted for security vulnerabilities, ensuring they do not introduce risks into the application.",
+              "children": []
+            },
+            {
+              "id": "D3-IRV",
+              "iri": "IntegerRangeValidation",
+              "en": "Integer Range Validation",
+              "definition": "Ensuring that an integer is within a valid range.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-PH",
+          "iri": "PlatformHardening",
+          "en": "Platform Hardening",
+          "definition": "Hardening components of a Platform with the intention of making them more difficult to exploit.\n\nPlatforms includes components such as:\n* BIOS UEFI Subsystems\n* Hardware security devices such as Trusted Platform Modules\n* Boot process logic or code\n* Kernel software components",
+          "children": [
+            {
+              "id": "D3-HBWP",
+              "iri": "Hardware-basedWriteProtection",
+              "en": "Hardware-based Write Protection",
+              "definition": "Physical methods of preventing data from being written to computer storage.",
+              "children": []
+            },
+            {
+              "id": "D3-PEH",
+              "iri": "PhysicalEnclosureHardening",
+              "en": "Physical Enclosure Hardening",
+              "definition": "Physical changes to a computer enclosure which reduce the ability for agents or the environment to affect the contained computer system.",
+              "children": []
+            },
+            {
+              "id": "D3-DLIC",
+              "iri": "DriverLoadIntegrityChecking",
+              "en": "Driver Load Integrity Checking",
+              "definition": "Ensuring the integrity of drivers loaded during initialization of the operating system.",
+              "children": []
+            },
+            {
+              "id": "D3-SCP",
+              "iri": "SystemConfigurationPermissions",
+              "en": "System Configuration Permissions",
+              "definition": "Restricting system configuration modifications to a specific user or group of users.",
+              "children": []
+            },
+            {
+              "id": "D3-FE",
+              "iri": "FileEncryption",
+              "en": "File Encryption",
+              "definition": "Encrypting a file using a cryptographic key.",
+              "children": []
+            },
+            {
+              "id": "D3-SU",
+              "iri": "SoftwareUpdate",
+              "en": "Software Update",
+              "definition": "Replacing old software on a computer system component.",
+              "children": []
+            },
+            {
+              "id": "D3-RH",
+              "iri": "RadiationHardening",
+              "en": "Radiation Hardening",
+              "definition": "Radiation hardening is the process of making electronic components and circuits resistant to damage or malfunction caused by high levels of ionizing radiation.",
+              "children": [
+                {
+                  "id": "D3-EMH",
+                  "iri": "ElectromagneticRadiationHardening",
+                  "en": "Electromagnetic Radiation Hardening",
+                  "definition": "The application of physical and material-level design measures to electronic systems, components, or facilities to reduce their susceptibility to damage or disruption from electromagnetic threats.",
+                  "children": [
+                    {
+                      "id": "D3-RFS",
+                      "iri": "RFShielding",
+                      "en": "RF Shielding",
+                      "definition": "Adding physical barriers to a platform to prevent undesired radio interference.",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "D3-TBI",
+              "iri": "TPMBootIntegrity",
+              "en": "TPM Boot Integrity",
+              "definition": "Assuring the integrity of a platform by demonstrating that the boot process starts from a trusted combination of hardware and software and continues until the operating system has fully booted and applications are running.  Sometimes called Static Root of Trust Measurement (STRM).",
+              "children": []
+            },
+            {
+              "id": "D3-DENCR",
+              "iri": "DiskEncryption",
+              "en": "Disk Encryption",
+              "definition": "Encrypting a hard disk partition to prevent cleartext access to a file system.",
+              "children": []
+            },
+            {
+              "id": "D3-BA",
+              "iri": "BootloaderAuthentication",
+              "en": "Bootloader Authentication",
+              "definition": "Cryptographically authenticating the bootloader software before system boot.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-AA",
+          "iri": "AgentAuthentication",
+          "en": "Agent Authentication",
+          "definition": "Agent authentication is the process of verifying the identities of agents to ensure they are authorized and trustworthy participants within a system.",
+          "children": [
+            {
+              "id": "D3-CBAN",
+              "iri": "Certificate-basedAuthentication",
+              "en": "Certificate-based Authentication",
+              "definition": "Requiring a digital certificate in order to authenticate a user.",
+              "children": []
+            },
+            {
+              "id": "D3-BAN",
+              "iri": "BiometricAuthentication",
+              "en": "Biometric Authentication",
+              "definition": "Using biological measures in order to authenticate a user.",
+              "children": []
+            },
+            {
+              "id": "D3-TBA",
+              "iri": "Token-basedAuthentication",
+              "en": "Token-based Authentication",
+              "definition": "Token-based authentication is an authentication protocol where users verify their identity in exchange for a unique access token. Users can then access the website, application, or resource for the life of the token without having to re-enter their credentials.",
+              "children": []
+            },
+            {
+              "id": "D3-MFA",
+              "iri": "Multi-factorAuthentication",
+              "en": "Multi-factor Authentication",
+              "definition": "Requiring proof of two or more pieces of evidence in order to authenticate a user.",
+              "children": []
+            },
+            {
+              "id": "D3-PWA",
+              "iri": "PasswordAuthentication",
+              "en": "Password Authentication",
+              "definition": "Password authentication is a security mechanism used to verify the identity of a user or entity attempting to access a system or resource by requiring the input of a secret string of characters, known as a password, that is associated with the user or entity.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-CH",
+          "iri": "CredentialHardening",
+          "en": "Credential Hardening",
+          "definition": "Credential Hardening techniques modify system or network properties in order to protect system or network/domain credentials.",
+          "children": [
+            {
+              "id": "D3-SPP",
+              "iri": "StrongPasswordPolicy",
+              "en": "Strong Password Policy",
+              "definition": "Modifying system configuration to increase password strength.",
+              "children": [
+                {
+                  "id": "D3-CDP",
+                  "iri": "ChangeDefaultPassword",
+                  "en": "Change Default Password",
+                  "definition": "Changing the default password means replacing the factory-set credentials with a strong, unique password before the device is deployed, preventing unauthorized access.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-CRO",
+              "iri": "CredentialRotation",
+              "en": "Credential Rotation",
+              "definition": "Credential rotation is a security procedure in which authentication credentials, such as passwords, API keys, or certificates, are regularly changed or replaced to minimize the risk of unauthorized access.",
+              "children": [
+                {
+                  "id": "D3-CERO",
+                  "iri": "CertificateRotation",
+                  "en": "Certificate Rotation",
+                  "definition": "Certificate rotation involves replacing digital certificates and their private keys to maintain cryptographic integrity and trust, mitigating key compromise risks and ensuring continuous secure communications.",
+                  "children": []
+                },
+                {
+                  "id": "D3-PR",
+                  "iri": "PasswordRotation",
+                  "en": "Password Rotation",
+                  "definition": "Password rotation is a security policy that mandates the periodic change of user account passwords to mitigate the risk of unauthorized access due to compromised credentials.",
+                  "children": [
+                    {
+                      "id": "D3-OTP",
+                      "iri": "One-timePassword",
+                      "en": "One-time Password",
+                      "definition": "A one-time password is valid for only one user authentication.",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "D3-TB",
+              "iri": "TokenBinding",
+              "en": "Token Binding",
+              "definition": "Token binding is a security mechanism used to enhance the protection of tokens, such as cookies or OAuth tokens, by binding them to a specific connection.",
+              "children": []
+            },
+            {
+              "id": "D3-CP",
+              "iri": "CertificatePinning",
+              "en": "Certificate Pinning",
+              "definition": "Persisting either a server's X.509 certificate or their public key and comparing that to server's presented identity to allow for greater client confidence in the remote server's identity for SSL connections.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-AH",
+          "iri": "ApplicationHardening",
+          "en": "Application Hardening",
+          "definition": "Application Hardening makes an executable application more resilient to a class of exploits which either introduce new code or execute unwanted existing code. These techniques may be applied at compile-time or on an application binary.",
+          "children": [
+            {
+              "id": "D3-CFI",
+              "iri": "ControlFlowIntegrity",
+              "en": "Control Flow Integrity",
+              "definition": "Enforcing legal control flow transfers during application process execution.",
+              "children": []
+            },
+            {
+              "id": "D3-SFCV",
+              "iri": "StackFrameCanaryValidation",
+              "en": "Stack Frame Canary Validation",
+              "definition": "Comparing a value stored in a stack frame with a known good value in order to prevent or detect a memory segment overwrite.",
+              "children": []
+            },
+            {
+              "id": "D3-DCE",
+              "iri": "DeadCodeElimination",
+              "en": "Dead Code Elimination",
+              "definition": "Removing unreachable or \"dead code\" from compiled source code.",
+              "children": []
+            },
+            {
+              "id": "D3-ACH",
+              "iri": "ApplicationConfigurationHardening",
+              "en": "Application Configuration Hardening",
+              "definition": "Modifying an application's configuration to reduce its attack surface.",
+              "children": [
+                {
+                  "id": "D3-DRA",
+                  "iri": "DisableRemoteAccess",
+                  "en": "Disable Remote Access",
+                  "definition": "Limiting access to a computing device which is not required through or from a non-organization-controlled network.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-PSEP",
+              "iri": "ProcessSegmentExecutionPrevention",
+              "en": "Process Segment Execution Prevention",
+              "definition": "Preventing execution of any address in a memory region other than the code segment.",
+              "children": []
+            },
+            {
+              "id": "D3-EHPV",
+              "iri": "ExceptionHandlerPointerValidation",
+              "en": "Exception Handler Pointer Validation",
+              "definition": "Validates that a referenced exception handler pointer is a valid exception handler.",
+              "children": []
+            },
+            {
+              "id": "D3-SAOR",
+              "iri": "SegmentAddressOffsetRandomization",
+              "en": "Segment Address Offset Randomization",
+              "definition": "Randomizing the base (start) address of one or more segments of memory during the initialization of a process.",
+              "children": []
+            },
+            {
+              "id": "D3-PAN",
+              "iri": "PointerAuthentication",
+              "en": "Pointer Authentication",
+              "definition": "Comparing the cryptographic hash or derivative of a pointer's value to an expected value.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-MH",
+          "iri": "MessageHardening",
+          "en": "Message Hardening",
+          "definition": "The application of security controls to user-to-user and system-to-system communications so messages remain confidential, unaltered, and verifiable while resisting injection, replay, and tampering.",
+          "children": [
+            {
+              "id": "D3-MENCR",
+              "iri": "MessageEncryption",
+              "en": "Message Encryption",
+              "definition": "Encrypting a message body using a cryptographic key.",
+              "children": []
+            },
+            {
+              "id": "D3-TAAN",
+              "iri": "TransferAgentAuthentication",
+              "en": "Transfer Agent Authentication",
+              "definition": "Validating that server components of a messaging infrastructure are authorized to send a particular message.",
+              "children": []
+            },
+            {
+              "id": "D3-MAN",
+              "iri": "MessageAuthentication",
+              "en": "Message Authentication",
+              "definition": "Authenticating the sender of a message and ensuring message integrity.",
+              "children": [
+                {
+                  "id": "D3-BMA",
+                  "iri": "BusMessageAuthentication",
+                  "en": "Bus Message Authentication",
+                  "definition": "Applies cryptographic primitives to individual bus frames to verify the sender's identity and ensure the integrity of the data payload.",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Detect",
+      "iri": "Detect",
+      "techniques": [
+        {
+          "id": "D3-UBA",
+          "iri": "UserBehaviorAnalysis",
+          "en": "User Behavior Analysis",
+          "definition": "User behavior analytics (\"UBA\") as defined by Gartner, is a cybersecurity process about detection of insider threats, targeted attacks, and financial fraud. UBA solutions look at patterns of human behavior, and then apply algorithms and statistical analysis to detect meaningful anomalies from those patterns-anomalies that indicate potential threats.' Instead of tracking devices or security events, UBA tracks a system's users. Big data platforms are increasing UBA functionality by allowing them to analyze petabytes worth of data to detect insider threats and advanced persistent threats.",
+          "children": [
+            {
+              "id": "D3-SDA",
+              "iri": "SessionDurationAnalysis",
+              "en": "Session Duration Analysis",
+              "definition": "Analyzing the duration of user sessions in order to detect unauthorized  activity.",
+              "children": []
+            },
+            {
+              "id": "D3-ANET",
+              "iri": "AuthenticationEventThresholding",
+              "en": "Authentication Event Thresholding",
+              "definition": "Collecting authentication events, creating a baseline user profile, and determining whether authentication events are consistent with the baseline profile.",
+              "children": []
+            },
+            {
+              "id": "D3-CCSA",
+              "iri": "CredentialCompromiseScopeAnalysis",
+              "en": "Credential Compromise Scope Analysis",
+              "definition": "Determining which credentials may have been compromised by analyzing the user logon history of a particular system.",
+              "children": []
+            },
+            {
+              "id": "D3-AZET",
+              "iri": "AuthorizationEventThresholding",
+              "en": "Authorization Event Thresholding",
+              "definition": "Collecting authorization events, creating a baseline user profile, and determining whether authorization events are consistent with the baseline profile.",
+              "children": []
+            },
+            {
+              "id": "D3-UGLPA",
+              "iri": "UserGeolocationLogonPatternAnalysis",
+              "en": "User Geolocation Logon Pattern Analysis",
+              "definition": "Monitoring geolocation data of user logon attempts and comparing it to a baseline user behavior profile to identify anomalies in logon location.",
+              "children": []
+            },
+            {
+              "id": "D3-DAM",
+              "iri": "DomainAccountMonitoring",
+              "en": "Domain Account Monitoring",
+              "definition": "Monitoring the existence of or changes to Domain User Accounts.",
+              "children": []
+            },
+            {
+              "id": "D3-JFAPA",
+              "iri": "JobFunctionAccessPatternAnalysis",
+              "en": "Job Function Access Pattern Analysis",
+              "definition": "Detecting anomalies in user access patterns by comparing user access activity to behavioral profiles that categorize users by role such as job title, function, department.",
+              "children": []
+            },
+            {
+              "id": "D3-RAPA",
+              "iri": "ResourceAccessPatternAnalysis",
+              "en": "Resource Access Pattern Analysis",
+              "definition": "Analyzing the resources accessed by a user to identify unauthorized activity.",
+              "children": []
+            },
+            {
+              "id": "D3-WSAA",
+              "iri": "WebSessionActivityAnalysis",
+              "en": "Web Session Activity Analysis",
+              "definition": "Monitoring changes in user web session behavior by comparing current web session activity to a baseline behavior profile or a catalog of predetermined malicious behavior.",
+              "children": []
+            },
+            {
+              "id": "D3-UDTA",
+              "iri": "UserDataTransferAnalysis",
+              "en": "User Data Transfer Analysis",
+              "definition": "Analyzing the amount of data transferred by a user.",
+              "children": []
+            },
+            {
+              "id": "D3-LAM",
+              "iri": "LocalAccountMonitoring",
+              "en": "Local Account Monitoring",
+              "definition": "Analyzing local user accounts to detect unauthorized activity.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-FA",
+          "iri": "FileAnalysis",
+          "en": "File Analysis",
+          "definition": "File Analysis is an analytic process to determine a file's status. For example: virus, trojan, benign, malicious, trusted, unauthorized, sensitive, etc.",
+          "children": [
+            {
+              "id": "D3-FCOA",
+              "iri": "FileContentAnalysis",
+              "en": "File Content Analysis",
+              "definition": "Employing a pattern matching algorithm to statically analyze the content of files.",
+              "children": [
+                {
+                  "id": "D3-FCR",
+                  "iri": "FileContentRules",
+                  "en": "File Content Rules",
+                  "definition": "Employing a pattern matching rule language to analyze the content of files.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-DA",
+              "iri": "DynamicAnalysis",
+              "en": "Dynamic Analysis",
+              "definition": "Executing or opening a file in a synthetic \"sandbox\" environment to determine if the file is a malicious program or if the file exploits another program such as a document reader.",
+              "children": []
+            },
+            {
+              "id": "D3-EFA",
+              "iri": "EmulatedFileAnalysis",
+              "en": "Emulated File Analysis",
+              "definition": "Emulating instructions in a file looking for specific patterns.",
+              "children": []
+            },
+            {
+              "id": "D3-FH",
+              "iri": "FileHashing",
+              "en": "File Hashing",
+              "definition": "Employing file hash comparisons to detect known malware.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-ID",
+          "iri": "IdentifierAnalysis",
+          "en": "Identifier Analysis",
+          "definition": "Analyzing identifier artifacts such as IP address, domain names, or URL(I)s.",
+          "children": [
+            {
+              "id": "D3-UA",
+              "iri": "URLAnalysis",
+              "en": "URL Analysis",
+              "definition": "Determining if a URL is benign or malicious by analyzing the URL or its components.",
+              "children": []
+            },
+            {
+              "id": "D3-IRA",
+              "iri": "IdentifierReputationAnalysis",
+              "en": "Identifier Reputation Analysis",
+              "definition": "Analyzing the reputation of an identifier.",
+              "children": [
+                {
+                  "id": "D3-FHRA",
+                  "iri": "FileHashReputationAnalysis",
+                  "en": "File Hash Reputation Analysis",
+                  "definition": "Analyzing the reputation of a file hash.",
+                  "children": []
+                },
+                {
+                  "id": "D3-IPRA",
+                  "iri": "IPReputationAnalysis",
+                  "en": "IP Reputation Analysis",
+                  "definition": "Analyzing the reputation of an IP address.",
+                  "children": []
+                },
+                {
+                  "id": "D3-DNRA",
+                  "iri": "DomainNameReputationAnalysis",
+                  "en": "Domain Name Reputation Analysis",
+                  "definition": "Analyzing the reputation of a domain name.",
+                  "children": []
+                },
+                {
+                  "id": "D3-URA",
+                  "iri": "URLReputationAnalysis",
+                  "en": "URL Reputation Analysis",
+                  "definition": "Analyzing the reputation of a URL.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-HD",
+              "iri": "HomoglyphDetection",
+              "en": "Homoglyph Detection",
+              "definition": "Comparing strings using a variety of techniques to determine if a deceptive or malicious string is being presented to a user.",
+              "children": []
+            },
+            {
+              "id": "D3-IAA",
+              "iri": "IdentifierActivityAnalysis",
+              "en": "Identifier Activity Analysis",
+              "definition": "Taking known malicious identifiers and determining if they are present in a system.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-PA",
+          "iri": "ProcessAnalysis",
+          "en": "Process Analysis",
+          "definition": "Process Analysis consists of observing a running application process and analyzing it to watch for certain behaviors or conditions which may indicate adversary activity. Analysis can occur inside of the process or through a third-party monitoring application. Examples include monitoring system and privileged calls, monitoring process initiation chains, and memory boundary allocations.",
+          "children": [
+            {
+              "id": "D3-PSMD",
+              "iri": "ProcessSelf-ModificationDetection",
+              "en": "Process Self-Modification Detection",
+              "definition": "Detects processes that modify, change, or replace their own code at runtime.",
+              "children": []
+            },
+            {
+              "id": "D3-DQSA",
+              "iri": "DatabaseQueryStringAnalysis",
+              "en": "Database Query String Analysis",
+              "definition": "Analyzing database queries to detect [SQL Injection](https://capec.mitre.org/data/definitions/66.html).",
+              "children": []
+            },
+            {
+              "id": "D3-SEA",
+              "iri": "ScriptExecutionAnalysis",
+              "en": "Script Execution Analysis",
+              "definition": "Analyzing the execution of a script to detect unauthorized user activity.",
+              "children": []
+            },
+            {
+              "id": "D3-SSC",
+              "iri": "ShadowStackComparisons",
+              "en": "Shadow Stack Comparisons",
+              "definition": "Comparing a call stack in system memory with a shadow call stack maintained by the processor to determine unauthorized shellcode activity.",
+              "children": []
+            },
+            {
+              "id": "D3-FAPA",
+              "iri": "FileAccessPatternAnalysis",
+              "en": "File Access Pattern Analysis",
+              "definition": "Analyzing the files accessed by a process to identify unauthorized activity.",
+              "children": []
+            },
+            {
+              "id": "D3-IBCA",
+              "iri": "IndirectBranchCallAnalysis",
+              "en": "Indirect Branch Call Analysis",
+              "definition": "Analyzing vendor specific branch call recording in order to detect ROP style attacks.",
+              "children": []
+            },
+            {
+              "id": "D3-SCA",
+              "iri": "SystemCallAnalysis",
+              "en": "System Call Analysis",
+              "definition": "Analyzing system calls to determine whether a process is exhibiting unauthorized behavior.",
+              "children": [
+                {
+                  "id": "D3-FCA",
+                  "iri": "FileCreationAnalysis",
+                  "en": "File Creation Analysis",
+                  "definition": "Analyzing the properties of file create system call invocations.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-PCSV",
+              "iri": "ProcessCodeSegmentVerification",
+              "en": "Process Code Segment Verification",
+              "definition": "Comparing the \"text\" or \"code\" memory segments to a source of truth.",
+              "children": []
+            },
+            {
+              "id": "D3-PSA",
+              "iri": "ProcessSpawnAnalysis",
+              "en": "Process Spawn Analysis",
+              "definition": "Analyzing spawn arguments or attributes of a process to detect processes that are unauthorized.",
+              "children": [
+                {
+                  "id": "D3-PLA",
+                  "iri": "ProcessLineageAnalysis",
+                  "en": "Process Lineage Analysis",
+                  "definition": "Identification of suspicious processes executing on an end-point device by examining the ancestry and siblings of a process, and the associated metadata of each node on the tree, such as process execution, duration, and order relative to siblings and ancestors.",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-MA",
+          "iri": "MessageAnalysis",
+          "en": "Message Analysis",
+          "definition": "Analyzing email or instant message content to detect unauthorized activity.",
+          "children": [
+            {
+              "id": "D3-SMRA",
+              "iri": "SenderMTAReputationAnalysis",
+              "en": "Sender MTA Reputation Analysis",
+              "definition": "Characterizing the reputation of mail transfer agents (MTA) to determine the security risk in emails.",
+              "children": []
+            },
+            {
+              "id": "D3-SRA",
+              "iri": "SenderReputationAnalysis",
+              "en": "Sender Reputation Analysis",
+              "definition": "Ascertaining sender reputation based on information associated with a message (e.g. email/instant messaging).",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-PM",
+          "iri": "PlatformMonitoring",
+          "en": "Platform Monitoring",
+          "definition": "Monitoring platform components such as operating systems software, hardware devices, or firmware.",
+          "children": [
+            {
+              "id": "D3-FEMC",
+              "iri": "FirmwareEmbeddedMonitoringCode",
+              "en": "Firmware Embedded Monitoring Code",
+              "definition": "Monitoring code is injected into firmware for integrity monitoring of firmware and firmware data.",
+              "children": []
+            },
+            {
+              "id": "D3-OMM",
+              "iri": "OperatingModeMonitoring",
+              "en": "Operating Mode Monitoring",
+              "definition": "Detects operating modes such as Program, Run, Remote, or Stop.",
+              "children": []
+            },
+            {
+              "id": "D3-OPM",
+              "iri": "OperationalProcessMonitoring",
+              "en": "Operational Process Monitoring",
+              "definition": "Monitoring physical parameters and operator actions related to an operational environment.",
+              "children": []
+            },
+            {
+              "id": "D3-APM",
+              "iri": "ApplicationPerformanceMonitoring",
+              "en": "Application Performance Monitoring",
+              "definition": "Monitoring the count and duration of the application or program cycle.",
+              "children": [
+                {
+                  "id": "D3-AEM",
+                  "iri": "ApplicationExceptionMonitoring",
+                  "en": "Application Exception Monitoring",
+                  "definition": "Monitoring the failures of system counters and timers.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-FIM",
+              "iri": "FileIntegrityMonitoring",
+              "en": "File Integrity Monitoring",
+              "definition": "Detecting any suspicious changes to files in a computer system.",
+              "children": []
+            },
+            {
+              "id": "D3-PUM",
+              "iri": "PlatformUptimeMonitoring",
+              "en": "Platform Uptime Monitoring",
+              "definition": "Monitor the amount of time since the last power cycle or restart.",
+              "children": []
+            },
+            {
+              "id": "D3-FV",
+              "iri": "FirmwareVerification",
+              "en": "Firmware Verification",
+              "definition": "Cryptographically verifying firmware integrity.",
+              "children": [
+                {
+                  "id": "D3-PFV",
+                  "iri": "PeripheralFirmwareVerification",
+                  "en": "Peripheral Firmware Verification",
+                  "definition": "Cryptographically verifying peripheral firmware integrity.",
+                  "children": []
+                },
+                {
+                  "id": "D3-SFV",
+                  "iri": "SystemFirmwareVerification",
+                  "en": "System Firmware Verification",
+                  "definition": "Cryptographically verifying installed system firmware integrity.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-FBA",
+              "iri": "FirmwareBehaviorAnalysis",
+              "en": "Firmware Behavior Analysis",
+              "definition": "Analyzing the behavior of embedded code in firmware and looking for anomalous behavior and suspicious activity.",
+              "children": []
+            },
+            {
+              "id": "D3-OSM",
+              "iri": "OperatingSystemMonitoring",
+              "en": "Operating System Monitoring",
+              "definition": "The operating system software, for D3FEND's purposes, includes the kernel and its process management functions, hardware drivers, initialization or boot logic. It also includes and other key system daemons and their configuration. The monitoring or analysis of these components for unauthorized activity constitute **Operating System Monitoring**.",
+              "children": [
+                {
+                  "id": "D3-SDM",
+                  "iri": "SystemDaemonMonitoring",
+                  "en": "System Daemon Monitoring",
+                  "definition": "Tracking changes to the state or configuration of critical system level processes.",
+                  "children": []
+                },
+                {
+                  "id": "D3-USICA",
+                  "iri": "UserSessionInitConfigAnalysis",
+                  "en": "User Session Init Config Analysis",
+                  "definition": "Analyzing modifications to user session config files such as .bashrc or .bash_profile.",
+                  "children": []
+                },
+                {
+                  "id": "D3-IDA",
+                  "iri": "InputDeviceAnalysis",
+                  "en": "Input Device Analysis",
+                  "definition": "Operating system level mechanisms to prevent abusive input device exploitation.",
+                  "children": []
+                },
+                {
+                  "id": "D3-SJA",
+                  "iri": "ScheduledJobAnalysis",
+                  "en": "Scheduled Job Analysis",
+                  "definition": "Analysis of source files, processes, destination files, or destination servers associated with a scheduled job to detect unauthorized use of job scheduling.",
+                  "children": []
+                },
+                {
+                  "id": "D3-EHB",
+                  "iri": "EndpointHealthBeacon",
+                  "en": "Endpoint Health Beacon",
+                  "definition": "Monitoring the security status of an endpoint by sending periodic messages with health status, where absence of a response may indicate that the endpoint has been compromised.",
+                  "children": []
+                },
+                {
+                  "id": "D3-SFA",
+                  "iri": "SystemFileAnalysis",
+                  "en": "System File Analysis",
+                  "definition": "Monitoring system files such as authentication databases, configuration files, system logs, and system executables for modification or tampering.",
+                  "children": [
+                    {
+                      "id": "D3-SBV",
+                      "iri": "ServiceBinaryVerification",
+                      "en": "Service Binary Verification",
+                      "definition": "Analyzing changes in service binary files by comparing to a source of truth.",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "D3-MBT",
+                  "iri": "MemoryBoundaryTracking",
+                  "en": "Memory Boundary Tracking",
+                  "definition": "Analyzing a call stack for return addresses which point to unexpected  memory locations.",
+                  "children": []
+                },
+                {
+                  "id": "D3-SICA",
+                  "iri": "SystemInitConfigAnalysis",
+                  "en": "System Init Config Analysis",
+                  "definition": "Analysis of any system process startup configuration.",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-PHAM",
+          "iri": "PhysicalAccessMonitoring",
+          "en": "Physical Access Monitoring",
+          "definition": "Monitoring the physical access of a specified environment through detection, recording, reviewing, and logging of who/what enters and exists areas.",
+          "children": [
+            {
+              "id": "D3-MSM",
+              "iri": "MotionSensorMonitoring",
+              "en": "Motion Sensor Monitoring",
+              "definition": "Monitoring events from motion detectors (e.g., passive IR, microwave, dual-technology) to detect presence or movement within protected areas.",
+              "children": []
+            },
+            {
+              "id": "D3-PSM",
+              "iri": "ProximitySensorMonitoring",
+              "en": "Proximity Sensor Monitoring",
+              "definition": "Monitoring events from proximity sensors that indicate a credential or tagged asset is within the sensor’s read range or a defined zone. Common enabling technologies include RFID, Bluetooth Low Energy (BLE), and Ultra-Wideband (UWB).",
+              "children": []
+            },
+            {
+              "id": "D3-VS",
+              "iri": "VideoSurveillance",
+              "en": "Video Surveillance",
+              "definition": "Monitoring of physical areas via camera video feeds to deter, detect, and investigate unauthorized access and related security events.",
+              "children": []
+            },
+            {
+              "id": "D3-ELM",
+              "iri": "ElectronicLockMonitoring",
+              "en": "Electronic Lock Monitoring",
+              "definition": "Monitoring electronic lock and door hardware states and access events (e.g., locked/unlocked, access granted/denied, door forced/held, tamper) to detect and respond to unauthorized entry.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-NTA",
+          "iri": "NetworkTrafficAnalysis",
+          "en": "Network Traffic Analysis",
+          "definition": "Analyzing intercepted or summarized computer network traffic to detect unauthorized activity.",
+          "children": [
+            {
+              "id": "D3-NTCD",
+              "iri": "NetworkTrafficCommunityDeviation",
+              "en": "Network Traffic Community Deviation",
+              "definition": "Establishing baseline communities of network hosts and identifying statistically divergent inter-community communication.",
+              "children": []
+            },
+            {
+              "id": "D3-ISVA",
+              "iri": "InboundSessionVolumeAnalysis",
+              "en": "Inbound Session Volume Analysis",
+              "definition": "Analyzing inbound network session or connection attempt volume.",
+              "children": []
+            },
+            {
+              "id": "D3-FC",
+              "iri": "FileCarving",
+              "en": "File Carving",
+              "definition": "Identifying and extracting files from network application protocols through the use of network stream reassembly software.",
+              "children": []
+            },
+            {
+              "id": "D3-ANAA",
+              "iri": "AdministrativeNetworkActivityAnalysis",
+              "en": "Administrative Network Activity Analysis",
+              "definition": "Detection of unauthorized use of administrative network protocols by analyzing network activity against a baseline.",
+              "children": []
+            },
+            {
+              "id": "D3-NTSA",
+              "iri": "NetworkTrafficSignatureAnalysis",
+              "en": "Network Traffic Signature Analysis",
+              "definition": "Analyzing network traffic and compares it to known signatures",
+              "children": []
+            },
+            {
+              "id": "D3-BSE",
+              "iri": "ByteSequenceEmulation",
+              "en": "Byte Sequence Emulation",
+              "definition": "Analyzing sequences of bytes and determining if they likely represent malicious shellcode.",
+              "children": []
+            },
+            {
+              "id": "D3-CAA",
+              "iri": "ConnectionAttemptAnalysis",
+              "en": "Connection Attempt Analysis",
+              "definition": "Analyzing failed connections in a network to detect unauthorized activity.",
+              "children": []
+            },
+            {
+              "id": "D3-DNSTA",
+              "iri": "DNSTrafficAnalysis",
+              "en": "DNS Traffic Analysis",
+              "definition": "Analysis of domain name metadata, including name and DNS records, to determine whether the domain is likely to resolve to an undesirable host.",
+              "children": []
+            },
+            {
+              "id": "D3-RTA",
+              "iri": "RPCTrafficAnalysis",
+              "en": "RPC Traffic Analysis",
+              "definition": "Monitoring the activity of remote procedure calls in communication traffic to establish standard protocol operations and potential attacker activities.",
+              "children": []
+            },
+            {
+              "id": "D3-RPA",
+              "iri": "RelayPatternAnalysis",
+              "en": "Relay Pattern Analysis",
+              "definition": "The detection of an internal host relaying traffic between the internal network and the external network.",
+              "children": []
+            },
+            {
+              "id": "D3-CA",
+              "iri": "CertificateAnalysis",
+              "en": "Certificate Analysis",
+              "definition": "Analyzing Public Key Infrastructure certificates to detect if they have been misconfigured or spoofed using both network traffic, certificate fields and third-party logs.",
+              "children": [
+                {
+                  "id": "D3-PCA",
+                  "iri": "PassiveCertificateAnalysis",
+                  "en": "Passive Certificate Analysis",
+                  "definition": "Collecting host certificates from network traffic or other passive sources like a certificate transparency log and analyzing them for unauthorized activity.",
+                  "children": []
+                },
+                {
+                  "id": "D3-ACA",
+                  "iri": "ActiveCertificateAnalysis",
+                  "en": "Active Certificate Analysis",
+                  "definition": "Actively collecting PKI certificates by connecting to the server and downloading its server certificates for analysis.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-APCA",
+              "iri": "ApplicationProtocolCommandAnalysis",
+              "en": "Application Protocol Command Analysis",
+              "definition": "Analyzing application protocol level remote commands to detect unauthorized activity.",
+              "children": [
+                {
+                  "id": "D3-RFUM",
+                  "iri": "RemoteFirmwareUpdateMonitoring",
+                  "en": "Remote Firmware Update Monitoring",
+                  "definition": "Monitoring of remote firmware update commands to identify unauthorized software installations.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-PHDURA",
+              "iri": "PerHostDownload-UploadRatioAnalysis",
+              "en": "Per Host Download-Upload Ratio Analysis",
+              "definition": "Detecting anomalies that indicate malicious activity by comparing the amount of data downloaded versus data uploaded by a host.",
+              "children": []
+            },
+            {
+              "id": "D3-CSPP",
+              "iri": "Client-serverPayloadProfiling",
+              "en": "Client-server Payload Profiling",
+              "definition": "Comparing client-server request and response payloads to a baseline profile to identify outliers.",
+              "children": []
+            },
+            {
+              "id": "D3-PMAD",
+              "iri": "ProtocolMetadataAnomalyDetection",
+              "en": "Protocol Metadata Anomaly Detection",
+              "definition": "Collecting network communication protocol metadata and identifying statistical outliers.",
+              "children": []
+            },
+            {
+              "id": "D3-RTSD",
+              "iri": "RemoteTerminalSessionDetection",
+              "en": "Remote Terminal Session Detection",
+              "definition": "Detection of an unauthorized remote live terminal console session by examining network traffic to a network host.",
+              "children": []
+            },
+            {
+              "id": "D3-IPCTA",
+              "iri": "IPCTrafficAnalysis",
+              "en": "IPC Traffic Analysis",
+              "definition": "Analyzing standard inter process communication (IPC) protocols to detect deviations from normal protocol activity.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Isolate",
+      "iri": "Isolate",
+      "techniques": [
+        {
+          "id": "D3-EI",
+          "iri": "ExecutionIsolation",
+          "en": "Execution Isolation",
+          "definition": "Execution Isolation techniques prevent application processes from accessing non-essential system resources, such as memory, devices, or files.",
+          "children": [
+            {
+              "id": "D3-EDL",
+              "iri": "ExecutableDenylisting",
+              "en": "Executable Denylisting",
+              "definition": "Blocking the execution of files on a host in accordance with defined application policy rules.",
+              "children": []
+            },
+            {
+              "id": "D3-KBPI",
+              "iri": "Kernel-basedProcessIsolation",
+              "en": "Kernel-based Process Isolation",
+              "definition": "Using kernel-level capabilities to isolate processes.",
+              "children": []
+            },
+            {
+              "id": "D3-ABPI",
+              "iri": "Application-basedProcessIsolation",
+              "en": "Application-based Process Isolation",
+              "definition": "Application code which prevents its own subroutines from accessing intra-process / internal memory space.",
+              "children": []
+            },
+            {
+              "id": "D3-HBPI",
+              "iri": "Hardware-basedProcessIsolation",
+              "en": "Hardware-based Process Isolation",
+              "definition": "Preventing one process from writing to the memory space of another process through hardware based address manager implementations.",
+              "children": []
+            },
+            {
+              "id": "D3-EAL",
+              "iri": "ExecutableAllowlisting",
+              "en": "Executable Allowlisting",
+              "definition": "Using a digital signature to authenticate a file before opening.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-AMED",
+          "iri": "AccessMediation",
+          "en": "Access Mediation",
+          "definition": "Access mediation is the process of granting or denying specific requests to: 1) obtain and use information and related information processing services; and 2) enter specific physical facilities (e.g., Federal buildings, military establishments, border crossing entrances). Access mediation decisions should enforce least privilege by granting access for scoped durations to prevent privilege creep and, where applicable, implement just-in-time (JIT) access. Denial decisions may prevent initial access or terminate access that has already been granted, ensuring continuous enforcement of security policies.",
+          "children": [
+            {
+              "id": "D3-SCF",
+              "iri": "SystemCallFiltering",
+              "en": "System Call Filtering",
+              "definition": "Controlling access to local computer system resources with kernel-level capabilities.",
+              "children": [
+                {
+                  "id": "D3-LFAM",
+                  "iri": "LocalFileAccessMediation",
+                  "en": "Local File Access Mediation",
+                  "definition": "Local file access mediation is the process of an operating system granting or denying a specific access request to a local file.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-OPR",
+              "iri": "OperatingModeRestriction",
+              "en": "Operating Mode Restriction",
+              "definition": "Restricting unauthorized changes to the operating mode prevents devices from switching into inappropriate or vulnerable states during normal use.",
+              "children": []
+            },
+            {
+              "id": "D3-CTS",
+              "iri": "CredentialTransmissionScoping",
+              "en": "Credential Transmission Scoping",
+              "definition": "Limiting the transmission of a credential to a scoped set of relying parties.",
+              "children": []
+            },
+            {
+              "id": "D3-NAM",
+              "iri": "NetworkAccessMediation",
+              "en": "Network Access Mediation",
+              "definition": "Network access mediation is the control method for authorizing access to a system by a user (or a process acting on behalf of a user) communicating through a network, including a local area network, a wide area network, and the Internet.",
+              "children": [
+                {
+                  "id": "D3-RAM",
+                  "iri": "RoutingAccessMediation",
+                  "en": "Routing Access Mediation",
+                  "definition": "Routing access mediation is a network security approach that manages and controls access at the network layer using VPNs, tunneling protocols, firewall rules, and traffic inspection to ensure secure and efficient data routing.",
+                  "children": []
+                },
+                {
+                  "id": "D3-LAMED",
+                  "iri": "LANAccessMediation",
+                  "en": "LAN Access Mediation",
+                  "definition": "LAN access mediation encompasses the application of strict access control policies, systematic verification of devices, and authentication mechanisms to govern connectivity to a Local Area Network.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-OVAR",
+              "iri": "OTVariableAccessRestriction",
+              "en": "OT Variable Access Restriction",
+              "definition": "Assign read/write access controls on designated registers or data tags to prevent unauthorized writes.",
+              "children": []
+            },
+            {
+              "id": "D3-PAM",
+              "iri": "PhysicalAccessMediation",
+              "en": "Physical Access Mediation",
+              "definition": "Physical access mediation is the process of granting or denying specific requests to enter specific physical facilities (e.g., Federal buildings, military establishments, border crossing entrances.)",
+              "children": [
+                {
+                  "id": "D3-EPL",
+                  "iri": "PhysicalLocking",
+                  "en": "Physical Locking",
+                  "definition": "Employ a mechanical locking device for securing moveable portions of physical barriers (e.g., doors, gates, drawers) in a secured position.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-IOPR",
+              "iri": "IOPortRestriction",
+              "en": "IO Port Restriction",
+              "definition": "Limiting access to computer input/output (IO) ports to restrict unauthorized devices.",
+              "children": []
+            },
+            {
+              "id": "D3-NRAM",
+              "iri": "NetworkResourceAccessMediation",
+              "en": "Network Resource Access Mediation",
+              "definition": "Control of access to organizational systems and services by users or processes over a network.",
+              "children": [
+                {
+                  "id": "D3-WSAM",
+                  "iri": "WebSessionAccessMediation",
+                  "en": "Web Session Access Mediation",
+                  "definition": "Web session access mediation secures user sessions in web applications by employing robust authentication and integrity validation, along with adaptive threat mitigation techniques, to ensure that access to web resources is authorized and protected from session-related attacks.",
+                  "children": [
+                    {
+                      "id": "D3-EBWSAM",
+                      "iri": "Endpoint-basedWebServerAccessMediation",
+                      "en": "Endpoint-based Web Server Access Mediation",
+                      "definition": "Endpoint-based web server access mediation regulates web server access directly from user endpoints by implementing mechanisms such as client-side certificates and endpoint security software to authenticate devices and ensure compliant access.",
+                      "children": []
+                    },
+                    {
+                      "id": "D3-PBWSAM",
+                      "iri": "Proxy-basedWebServerAccessMediation",
+                      "en": "Proxy-based Web Server Access Mediation",
+                      "definition": "Proxy-based web server access mediation focuses on the regulation of web server access through intermediary proxy servers.",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "D3-RFAM",
+                  "iri": "RemoteFileAccessMediation",
+                  "en": "Remote File Access Mediation",
+                  "definition": "Remote file access mediation is the process of managing and securing access to file systems over a network to ensure that only authorized users or processes can interact with remote files.",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-CF",
+          "iri": "ContentFiltering",
+          "en": "Content Filtering",
+          "definition": "Content Filtering techniques aid in the process of analyzing an input file for malicious or erroneous content and outputting a sanitized version.",
+          "children": [
+            {
+              "id": "D3-CQ",
+              "iri": "ContentQuarantine",
+              "en": "Content Quarantine",
+              "definition": "Transfer content that does not comply with policy to a quarantine zone.",
+              "children": []
+            },
+            {
+              "id": "D3-CM",
+              "iri": "ContentModification",
+              "en": "Content Modification",
+              "definition": "Modify content that does not comply with policy.",
+              "children": [
+                {
+                  "id": "D3-CNE",
+                  "iri": "ContentExcision",
+                  "en": "Content Excision",
+                  "definition": "Removing specific, potentially malicious, parts of content",
+                  "children": []
+                },
+                {
+                  "id": "D3-CNR",
+                  "iri": "ContentRebuild",
+                  "en": "Content Rebuild",
+                  "definition": "Rebuild the file according to the spec so any unreferenced components or objects are removed.",
+                  "children": []
+                },
+                {
+                  "id": "D3-CNS",
+                  "iri": "ContentSubstitution",
+                  "en": "Content Substitution",
+                  "definition": "Modifies specific digital content information by replacing it with something else.",
+                  "children": []
+                },
+                {
+                  "id": "D3-CFC",
+                  "iri": "ContentFormatConversion",
+                  "en": "Content Format Conversion",
+                  "definition": "Content format conversion is mechanical transformation from one format to another which may be normalization or specifically flattening.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-CV",
+              "iri": "ContentValidation",
+              "en": "Content Validation",
+              "definition": "Verify and validate contents complies with policy",
+              "children": [
+                {
+                  "id": "D3-FFV",
+                  "iri": "FileFormatVerification",
+                  "en": "File Format Verification",
+                  "definition": "Verifying that a file conforms to its expected format specifications",
+                  "children": [
+                    {
+                      "id": "D3-FISV",
+                      "iri": "FileInternalStructureVerification",
+                      "en": "File Internal Structure Verification",
+                      "definition": "The process of checking specific static values within a file, such as file signatures or magic numbers, to ensure they match the expected values defined by the file format specification.",
+                      "children": []
+                    },
+                    {
+                      "id": "D3-FCDC",
+                      "iri": "FileContentDecompressionChecking",
+                      "en": "File Content Decompression Checking",
+                      "definition": "Checking if compressed or encoded data sections can be successfully decompressed or decoded. Can follow with further analysis with semantic knowledge",
+                      "children": []
+                    },
+                    {
+                      "id": "D3-FMCV",
+                      "iri": "FileMetadataConsistencyValidation",
+                      "en": "File Metadata Consistency Validation",
+                      "definition": "The process of validating the consistency between a file's metadata and its actual content, ensuring that elements like declared lengths, pointers, and checksums accurately describe the file's content.",
+                      "children": []
+                    },
+                    {
+                      "id": "D3-FMVV",
+                      "iri": "FileMetadataValueVerification",
+                      "en": "File Metadata Value Verification",
+                      "definition": "The process of checking specific static values within a file, such as file signatures or magic numbers, to ensure they match the expected values defined by the file format specification.",
+                      "children": [
+                        {
+                          "id": "D3-FMBV",
+                          "iri": "FileMagicByteVerification",
+                          "en": "File Magic Byte Verification",
+                          "definition": "Utilizing the magic number to verify the file",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-NI",
+          "iri": "NetworkIsolation",
+          "en": "Network Isolation",
+          "definition": "Network Isolation techniques prevent network hosts from accessing non-essential system network resources.",
+          "children": [
+            {
+              "id": "D3-DNSAL",
+              "iri": "DNSAllowlisting",
+              "en": "DNS Allowlisting",
+              "definition": "Permitting only approved domains and their subdomains to be resolved.",
+              "children": []
+            },
+            {
+              "id": "D3-DNSDL",
+              "iri": "DNSDenylisting",
+              "en": "DNS Denylisting",
+              "definition": "Blocking DNS Network Traffic based on criteria such as IP address, domain name, or DNS query type.",
+              "children": [
+                {
+                  "id": "D3-RRID",
+                  "iri": "ReverseResolutionIPDenylisting",
+                  "en": "Reverse Resolution IP Denylisting",
+                  "definition": "Blocking a reverse lookup based on the query's IP address value.",
+                  "children": []
+                },
+                {
+                  "id": "D3-FRDDL",
+                  "iri": "ForwardResolutionDomainDenylisting",
+                  "en": "Forward Resolution Domain Denylisting",
+                  "definition": "Blocking a lookup based on the query's domain name value.",
+                  "children": [
+                    {
+                      "id": "D3-HDDL",
+                      "iri": "HierarchicalDomainDenylisting",
+                      "en": "Hierarchical Domain Denylisting",
+                      "definition": "Blocking the resolution of any subdomain of a specified domain name.",
+                      "children": []
+                    },
+                    {
+                      "id": "D3-HDL",
+                      "iri": "HomoglyphDenylisting",
+                      "en": "Homoglyph Denylisting",
+                      "definition": "Blocking DNS queries that are deceptively similar to legitimate domain names.",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "D3-FRIDL",
+                  "iri": "ForwardResolutionIPDenylisting",
+                  "en": "Forward Resolution IP Denylisting",
+                  "definition": "Blocking a DNS lookup's answer's IP address value.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-BDI",
+              "iri": "BroadcastDomainIsolation",
+              "en": "Broadcast Domain Isolation",
+              "definition": "Broadcast isolation restricts the number of computers a host can contact on their LAN.",
+              "children": []
+            },
+            {
+              "id": "D3-NTF",
+              "iri": "NetworkTrafficFiltering",
+              "en": "Network Traffic Filtering",
+              "definition": "Restricting network traffic originating from any location.",
+              "children": [
+                {
+                  "id": "D3-OTF",
+                  "iri": "OutboundTrafficFiltering",
+                  "en": "Outbound Traffic Filtering",
+                  "definition": "Restricting network traffic originating from a private host or enclave destined towards untrusted networks.",
+                  "children": []
+                },
+                {
+                  "id": "D3-ITF",
+                  "iri": "InboundTrafficFiltering",
+                  "en": "Inbound Traffic Filtering",
+                  "definition": "Restricting network traffic originating from untrusted networks destined towards a private host or enclave.",
+                  "children": [
+                    {
+                      "id": "D3-EF",
+                      "iri": "EmailFiltering",
+                      "en": "Email Filtering",
+                      "definition": "Filtering incoming email traffic based on specific criteria.",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "D3-DNL",
+              "iri": "DirectionalNetworkLink",
+              "en": "Directional Network Link",
+              "definition": "Enforce one-way network communication by preventing two-way communication.",
+              "children": []
+            },
+            {
+              "id": "D3-ET",
+              "iri": "EncryptedTunnels",
+              "en": "Encrypted Tunnels",
+              "definition": "Encrypted encapsulation of routable network traffic.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-APA",
+          "iri": "AccessPolicyAdministration",
+          "en": "Access Policy Administration",
+          "definition": "Access policy administration is the systematic process of defining, implementing, and managing access control policies that dictate user permissions to resources.",
+          "children": [
+            {
+              "id": "D3-UGPH",
+              "iri": "UserGroupPermissions",
+              "en": "User Group Permissions",
+              "definition": "Access control where access is determined based on attributes associated with users and the objects being accessed.",
+              "children": []
+            },
+            {
+              "id": "D3-UAP",
+              "iri": "UserAccountPermissions",
+              "en": "User Account Permissions",
+              "definition": "Restricting a user account's access to resources.",
+              "children": []
+            },
+            {
+              "id": "D3-LFP",
+              "iri": "LocalFilePermissions",
+              "en": "Local File Permissions",
+              "definition": "Local file permissions is the systematic process of defining, implementing, and managing access control policies that dictate user permissions for accessing files on a local system through the configuration of operating system functionality.",
+              "children": []
+            },
+            {
+              "id": "D3-DTP",
+              "iri": "DomainTrustPolicy",
+              "en": "Domain Trust Policy",
+              "definition": "Restricting inter-domain trust by modifying domain configuration.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Deceive",
+      "iri": "Deceive",
+      "techniques": [
+        {
+          "id": "D3-DO",
+          "iri": "DecoyObject",
+          "en": "Decoy Object",
+          "definition": "A Decoy Object is created and deployed for the purposes of deceiving attackers.",
+          "children": [
+            {
+              "id": "D3-DPR",
+              "iri": "DecoyPublicRelease",
+              "en": "Decoy Public Release",
+              "definition": "Issuing publicly released media to deceive adversaries.",
+              "children": []
+            },
+            {
+              "id": "D3-DNR",
+              "iri": "DecoyNetworkResource",
+              "en": "Decoy Network Resource",
+              "definition": "Deploying a network resource for the purposes of deceiving an adversary.",
+              "children": []
+            },
+            {
+              "id": "D3-DF",
+              "iri": "DecoyFile",
+              "en": "Decoy File",
+              "definition": "A file created for the purposes of deceiving an adversary.",
+              "children": []
+            },
+            {
+              "id": "D3-DST",
+              "iri": "DecoySessionToken",
+              "en": "Decoy Session Token",
+              "definition": "An authentication token created for the purposes of deceiving an adversary.",
+              "children": []
+            },
+            {
+              "id": "D3-DUC",
+              "iri": "DecoyUserCredential",
+              "en": "Decoy User Credential",
+              "definition": "A Credential created for the purpose of deceiving an adversary.",
+              "children": []
+            },
+            {
+              "id": "D3-DP",
+              "iri": "DecoyPersona",
+              "en": "Decoy Persona",
+              "definition": "Establishing a fake online identity to misdirect, deceive, and or interact with adversaries.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-DE",
+          "iri": "DecoyEnvironment",
+          "en": "Decoy Environment",
+          "definition": "A Decoy Environment comprises hosts and networks for the purposes of deceiving an attacker.",
+          "children": [
+            {
+              "id": "D3-SHN",
+              "iri": "StandaloneHoneynet",
+              "en": "Standalone Honeynet",
+              "definition": "An environment created for the purpose of attracting attackers and eliciting their behaviors that is not connected to any production enterprise systems.",
+              "children": []
+            },
+            {
+              "id": "D3-IHN",
+              "iri": "IntegratedHoneynet",
+              "en": "Integrated Honeynet",
+              "definition": "The practice of setting decoys in a production environment to entice interaction from attackers.",
+              "children": []
+            },
+            {
+              "id": "D3-CHN",
+              "iri": "ConnectedHoneynet",
+              "en": "Connected Honeynet",
+              "definition": "A decoy service, system, or environment, that is connected to the enterprise network, and simulates or emulates certain functionality to the network, without exposing full access to a production system.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Evict",
+      "iri": "Evict",
+      "techniques": [
+        {
+          "id": "D3-OE",
+          "iri": "ObjectEviction",
+          "en": "Object Eviction",
+          "definition": "Terminate or remove an object from a host machine. This is the broadest class for object eviction.",
+          "children": [
+            {
+              "id": "D3-FEV",
+              "iri": "FileEviction",
+              "en": "File Eviction",
+              "definition": "File eviction techniques delete files from system storage.",
+              "children": [
+                {
+                  "id": "D3-ER",
+                  "iri": "EmailRemoval",
+                  "en": "Email Removal",
+                  "definition": "The email removal technique deletes email files from system storage.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-RKD",
+              "iri": "RegistryKeyDeletion",
+              "en": "Registry Key Deletion",
+              "definition": "Delete a registry key.",
+              "children": []
+            },
+            {
+              "id": "D3-DRT",
+              "iri": "DomainRegistrationTakedown",
+              "en": "Domain Registration Takedown",
+              "definition": "The process of performing a takedown of the attacker's domain registration infrastructure.",
+              "children": []
+            },
+            {
+              "id": "D3-DNSCE",
+              "iri": "DNSCacheEviction",
+              "en": "DNS Cache Eviction",
+              "definition": "Flushing DNS to clear any IP addresses or other DNS records from the cache.",
+              "children": []
+            },
+            {
+              "id": "D3-DKF",
+              "iri": "DiskFormatting",
+              "en": "Disk Formatting",
+              "definition": "Disk Formatting is the process of preparing a data storage device, such as a hard drive, solid-state drive, or USB flash drive, for initial use.",
+              "children": [
+                {
+                  "id": "D3-DKP",
+                  "iri": "DiskPartitioning",
+                  "en": "Disk Partitioning",
+                  "definition": "Disk Partitioning is the process of dividing a disk into multiple distinct sections, known as partitions.",
+                  "children": []
+                },
+                {
+                  "id": "D3-DKE",
+                  "iri": "DiskErasure",
+                  "en": "Disk Erasure",
+                  "definition": "Disk Erasure is the process of securely deleting all data on a disk to ensure that it cannot be recovered by any means.",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-CE",
+          "iri": "CredentialEviction",
+          "en": "Credential Eviction",
+          "definition": "Credential Eviction techniques disable or remove compromised credentials from a computer network.",
+          "children": [
+            {
+              "id": "D3-ANCI",
+              "iri": "AuthenticationCacheInvalidation",
+              "en": "Authentication Cache Invalidation",
+              "definition": "Removing tokens or credentials from an authentication cache to prevent further user associated account accesses.",
+              "children": []
+            },
+            {
+              "id": "D3-AL",
+              "iri": "AccountLocking",
+              "en": "Account Locking",
+              "definition": "The process of temporarily disabling user accounts on a system or domain.",
+              "children": []
+            },
+            {
+              "id": "D3-CR",
+              "iri": "CredentialRevocation",
+              "en": "Credential Revocation",
+              "definition": "Deleting a set of credentials permanently to prevent them from being used to authenticate.",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "D3-PE",
+          "iri": "ProcessEviction",
+          "en": "Process Eviction",
+          "definition": "Process eviction techniques terminate or remove running process.",
+          "children": [
+            {
+              "id": "D3-PT",
+              "iri": "ProcessTermination",
+              "en": "Process Termination",
+              "definition": "Terminating a running application process on a computer system.",
+              "children": []
+            },
+            {
+              "id": "D3-HS",
+              "iri": "HostShutdown",
+              "en": "Host Shutdown",
+              "definition": "Initiating a host's shutdown sequence to terminate all running processes.",
+              "children": [
+                {
+                  "id": "D3-HR",
+                  "iri": "HostReboot",
+                  "en": "Host Reboot",
+                  "definition": "Initiating a host's reboot sequence to terminate all running processes.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-PS",
+              "iri": "ProcessSuspension",
+              "en": "Process Suspension",
+              "definition": "Suspending a running process on a computer system.",
+              "children": []
+            },
+            {
+              "id": "D3-ST",
+              "iri": "SessionTermination",
+              "en": "Session Termination",
+              "definition": "Forcefully end all active sessions associated with compromised accounts or devices.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "en": "Restore",
+      "iri": "Restore",
+      "techniques": [
+        {
+          "id": "D3-RO",
+          "iri": "RestoreObject",
+          "en": "Restore Object",
+          "definition": "Restoring an object for an entity to access. This is the broadest class for object restoral.",
+          "children": [
+            {
+              "id": "D3-RD",
+              "iri": "RestoreDatabase",
+              "en": "Restore Database",
+              "definition": "Restoring the data in a database.",
+              "children": []
+            },
+            {
+              "id": "D3-RC",
+              "iri": "RestoreConfiguration",
+              "en": "Restore Configuration",
+              "definition": "Restoring an software configuration.",
+              "children": []
+            },
+            {
+              "id": "D3-RS",
+              "iri": "RestoreSoftware",
+              "en": "Restore Software",
+              "definition": "Restoring software to a host.",
+              "children": []
+            },
+            {
+              "id": "D3-RDI",
+              "iri": "RestoreDiskImage",
+              "en": "Restore Disk Image",
+              "definition": "Restoring a previously captured disk image a hard drive.",
+              "children": []
+            },
+            {
+              "id": "D3-RF",
+              "iri": "RestoreFile",
+              "en": "Restore File",
+              "definition": "Restoring a file for an entity to access.",
+              "children": [
+                {
+                  "id": "D3-RE",
+                  "iri": "RestoreEmail",
+                  "en": "Restore Email",
+                  "definition": "Restoring an email for an entity to access.",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "D3-RA",
+          "iri": "RestoreAccess",
+          "en": "Restore Access",
+          "definition": "Restoring an entity's access to resources.",
+          "children": [
+            {
+              "id": "D3-RUAA",
+              "iri": "RestoreUserAccountAccess",
+              "en": "Restore User Account Access",
+              "definition": "Restoring a user account's access to resources.",
+              "children": [
+                {
+                  "id": "D3-ULA",
+                  "iri": "UnlockAccount",
+                  "en": "Unlock Account",
+                  "definition": "Restoring a user account's access to resources by unlocking a locked User Account.",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "D3-RNA",
+              "iri": "RestoreNetworkAccess",
+              "en": "Restore Network Access",
+              "definition": "Restoring a entity's access to a computer network.",
+              "children": []
+            },
+            {
+              "id": "D3-RIC",
+              "iri": "ReissueCredential",
+              "en": "Reissue Credential",
+              "definition": "Issue a new credential to a user which supersedes their old credential.",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

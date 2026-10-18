@@ -52,9 +52,13 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   attack/tactics/TA0043.json      # етап: order, en, ua, short, analogy, solutionNotes{класID: текст}
   attack/techniques/T1595.json    # техніка: en, ua, tactics[], pain, simple, goal, analogy,
                                   #   quote, questions[], defenses[] (ID класів рішень)
-  solutions/classes/vm.json       # клас рішень: ua, en, simple, d3fend[]
+  solutions/classes/vm.json       # клас рішень: ua, en, simple, d3fend[] (ID технік D3FEND або назви тактик)
+  d3fend/intro.json               # тексти сторінки /d3fend і дані джерела
+  d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
+  d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (усі поля необов'язкові)
   solutions/products/rapid7-insightvm.json  # продукт: name, vendor, classes[], simple
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
+  d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api/matrix.json)
 src/
   content.config.ts       # схеми колекцій і посилання між ними (reference)
   lib/data.ts             # loadData(): зв'язки, обчислення, перевірки; url.* — усі адреси сторінок
@@ -65,7 +69,9 @@ src/
   pages/mitre/[id].astro             # /mitre/TA0043/ — етап, /mitre/T1595/ — техніка
   pages/solutions/index.astro        # таблиця класів рішень
   pages/solutions/[id].astro         # /solutions/vm/ — клас, /solutions/rapid7-insightvm/ — продукт
-  pages/d3fend/index.astro  pages/licenses.astro
+  pages/d3fend/index.astro           # 7 тактик D3FEND з категоріями
+  pages/d3fend/[id].astro            # /d3fend/harden/ — тактика, /d3fend/D3-AA/ — категорія чи техніка
+  pages/licenses.astro
   styles/tokens.css, base.css
 design/                   # референсні макети (не код сайту, див. нижче)
 LICENSE  LICENSE-CONTENT  NOTICE.md
@@ -91,6 +97,14 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 - таблиця «Чим захиститись на цьому етапі» = усі класи з `defenses[]` технік етапу,
   відсортовані за кількістю технік; текст «що робить» — `solutionNotes` етапу або `simple` класу;
 - сторінка рішення показує техніки, які на нього посилаються (продукт — через свої класи).
+
+**D3FEND.** Тактика → категорія (верхній рівень, напр. D3-AA Agent Authentication) → техніки
+(можуть мати різновиди, D3-MFA). ID, англ. назви, визначення й ієрархія — з `data/mitre/d3fend.json`;
+наш текст — у `content/d3fend/`, файл техніки створюємо лише коли є що написати (інакше сторінка
+показує «готується» й оригінальне визначення). Зв'язок із рішеннями — **лише** `d3fend[]` класу:
+ID техніки (`D3-MFA`) або назва тактики (`Harden`), якщо точної техніки немає. Тактики класу
+обчислюються. Сторінка техніки показує класи, зіставлені з нею або її різновидами; тактика — з
+будь-якою своєю технікою або з тактикою загалом. Українські назви категорій — робочі, автор може змінити.
 
 Неіснуючий ID у посиланні — помилка збирання (Astro `reference()` + перевірки в `loadData()`).
 Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043, класи й
