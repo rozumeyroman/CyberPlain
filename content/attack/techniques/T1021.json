@@ -21,7 +21,8 @@
     "deception",
     "itdr",
     "device-control",
-    "nhi"
+    "nhi",
+    "jit"
   ],
   "subs": {
     "001": "Віддалений робочий стіл (RDP)",

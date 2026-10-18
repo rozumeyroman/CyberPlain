@@ -278,7 +278,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
 | Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
-| Silverfort Enterprise | класи як в Advanced; Access Intelligence і PAS — лише в тексті |
+| Silverfort Enterprise | + JIT (Privileged Access Security); Access Intelligence — лише в тексті |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -296,8 +296,8 @@ Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіс
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
-& Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`
-(рішення автора), лише в тексті.
+& Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`,
+а клас `jit` (рішення автора).
 
 SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна редакція окремим продуктом (`socradar-<модуль>-<редакція>`):
 

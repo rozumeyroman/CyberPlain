@@ -20,7 +20,8 @@
     "deception",
     "itdr",
     "ispm",
-    "nhi"
+    "nhi",
+    "jit"
   ],
   "subs": {
     "001": "Токен застосунку",
