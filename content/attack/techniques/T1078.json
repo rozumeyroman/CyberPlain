@@ -23,7 +23,10 @@
     "caasm",
     "soar",
     "itdr",
-    "dark-web"
+    "dark-web",
+    "ispm",
+    "nhi",
+    "identity-segmentation"
   ],
   "subs": {
     "001": "Облікові записи за замовчуванням",

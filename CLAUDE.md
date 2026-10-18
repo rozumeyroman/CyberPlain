@@ -259,8 +259,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 ## Портфель рішень
 
-На сайті пакети Rapid7 Command Platform, SentinelOne Singularity і модулі SOCRadar XTI (рішення автора,
-жовтень 2026).
+На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Silverfort і модулі SOCRadar XTI (рішення
+автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -275,6 +275,10 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | SentinelOne Singularity Complete | EDR (EPP + XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
 | SentinelOne Singularity Commercial | + ITDR |
 | SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
+| Silverfort Core | ISPM, MFA |
+| Silverfort Plus | + NHI (сервісні облікові записи) |
+| Silverfort Advanced | + сегментація доступу (Authentication Firewall), ITDR |
+| Silverfort Enterprise | + PAM (Privileged Access Security) |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -289,6 +293,10 @@ SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`,
 пастки Singularity Identity (Identity Deception) і ISPM у таблиці пакетів не названі — `deception` не
 ставимо. Network Discovery (Enterprise) — інвентаризація мережі агентами, не CAASM: лише в тексті.
 Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіси/AI, не класи; add-on не рахуємо.
+
+Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi`, `identity-segmentation` заведено під
+нього; `itdr` доповнено D3-ST (завершення сесії). AI Agent Security — разом із NHI, лише в тексті; Identity Graph
+& Inventory і Access Intelligence — не CAASM, лише в тексті. PAS — `pam` без сейфа паролів (JIT і «огородження»).
 
 SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна редакція окремим продуктом (`socradar-<модуль>-<редакція>`):
 

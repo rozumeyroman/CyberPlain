@@ -18,7 +18,10 @@
     "edr",
     "pam",
     "deception",
-    "itdr"
+    "itdr",
+    "ispm",
+    "nhi",
+    "identity-segmentation"
   ],
   "subs": {
     "001": "Токен застосунку",

@@ -20,7 +20,9 @@
     "mfa",
     "deception",
     "itdr",
-    "device-control"
+    "device-control",
+    "nhi",
+    "identity-segmentation"
   ],
   "subs": {
     "001": "Віддалений робочий стіл (RDP)",
