@@ -253,7 +253,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
 рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них
-посилаються техніки ATT&CK. Нові продукти — лише за першоджерелом вендора;
+посилаються техніки ATT&CK. Опис продукту (`simple`) — самодостатній: без «усе з X плюс», щоб сейлу не треба було
+відкривати інші сторінки. Нові продукти — лише за першоджерелом вендора;
 де продукту немає — `[уточнити в портфелі]`.
 
 ## Як працювати
