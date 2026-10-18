@@ -135,30 +135,41 @@ questions[], defenses[] (посилання на solutions.json)`. Якщо те
 
 ## Захист від ботів і капча (вимога автора)
 
-Кожна сторінка сайту — за перевіркою Cloudflare (капча). Із роботів дозволені **лише
-пошукові боти** (Google, Bing тощо). AI-боти, краулери, скрейпери й усе інше — заборонено.
+Кожна сторінка сайту — за перевіркою Cloudflare (капча). Без перевірки пускаємо лише
+пошукові боти (Google, Bing тощо), **AI-пошук** (ChatGPT Search, Perplexity, Claude — щоб
+сайт знаходили й там) і боти прев'ю посилань. AI-навчання, AI-агенти, скрейпери й решта —
+заборонені.
 
-Як це робимо на безкоштовному плані:
-- Сайт працює на **власному домені із зоною в Cloudflare** — на `*.workers.dev` WAF
-  не діє, тож workers.dev-маршрут вимикаємо (`workers_dev: false` у `wrangler.jsonc`).
-- **WAF custom rule** (на Free їх 5) на весь хост: якщо
-  `not (cf.verified_bot_category eq "Search Engine Crawler")` → **Managed Challenge**.
-  Так перевірку проходить кожна людина, а без неї — лише верифіковані пошукові боти.
-  Людина розв'язує її раз, далі діє cookie `cf_clearance` (час — Challenge Passage).
-- **Security → Bots → Block AI bots: «on all pages»** — додатково блокує AI-краулерів.
-- **Bot Fight Mode не вмикаємо:** на Free його не можна обійти правилами WAF, тож він
-  не дасть налаштувати винятки; правило вище вже закриває цю задачу.
-- **`public/robots.txt`**: `Allow` лише пошуковим ботам (Googlebot, Bingbot, DuckDuckBot
-  тощо), `Disallow: /` для `User-agent: *`, окремо `Disallow: /` для AI-токенів
-  (`Google-Extended`, `Applebot-Extended`, `GPTBot`, `ClaudeBot`, `CCBot` тощо).
-  robots.txt — лише прохання; блокує правило WAF.
+Як налаштовано (безкоштовний план, дашборд Cloudflare, зона `alestalab.top`):
+- **Власний домен** `cyberplain.alestalab.top`; `workers_dev` і `preview_urls` вимкнені
+  у `wrangler.jsonc`, бо на `*.workers.dev` WAF не діє.
+- **WAF custom rule** → **Managed Challenge**, вираз:
+  ```
+  (http.host eq "cyberplain.alestalab.top"
+   and not cf.client.bot
+   and not (
+     (http.user_agent contains "TelegramBot" and ip.src.asnum in {62041 59930 62014 211157 44907})
+     or (http.user_agent contains "facebookexternalhit" and ip.src.asnum in {32934})
+     or (http.user_agent contains "WhatsApp" and ip.src.asnum in {32934})
+     or (http.user_agent contains "LinkedInBot" and ip.src.asnum in {14413 8075})
+   ))
+  ```
+  `cf.client.bot` пропускає всіх верифікованих Cloudflare ботів; прев'ю — за UA **і** ASN,
+  щоб UA не можна було підробити. ASN прев'ю з пам'яті — якщо прев'ю не працює, дивись
+  ASN у Security → Events. Людина проходить перевірку раз, далі діє `cf_clearance`
+  (Challenge Passage).
+- **AI bot policies:** Search — Allow, Agent — Block, Training — Block.
+- **Precursor** увімкнено: може відкликати `cf_clearance` у підозрілих сесій.
+- **Bot Fight Mode не вмикаємо:** на Free його не можна обійти правилами WAF.
+- **`public/robots.txt`**: дозволені пошукові (Googlebot, Bingbot, DuckDuckBot) і AI-пошук
+  (OAI-SearchBot, PerplexityBot, Claude-SearchBot); `Disallow: /` для решти, окремо для
+  токенів навчання `Google-Extended` і `Applebot-Extended`. robots.txt — лише прохання.
 - **Turnstile-віджет** (JS) — тільки на формах і динамічних запитах у v1 (повідомлення
   про помилку, AI-помічник), токен перевіряє Worker через `siteverify`. Сторінки
   контенту лишаються з 0 KB власного JS: сторінку перевірки віддає сам Cloudflare.
-- Наслідок, про який знає автор: прев'ю посилань у месенджерах і соцмережах
-  (Telegram, Facebook, LinkedIn) теж будуть заблоковані — це не пошукові боти.
-- Налаштування WAF і бот-блокування робиться в дашборді Cloudflare, не в репозиторії —
-  після змін перевір, що назви полів і опції досі доступні на Free.
+- Відомий наслідок: верифіковані SEO-краулери (Ahrefs, Semrush) теж проходять без
+  перевірки — їх стримує лише robots.txt.
+- Налаштування WAF і ботів — у дашборді, не в репозиторії. Змінив там — онови цей розділ.
 
 ## Авторство і ліцензії (обов'язково)
 
