@@ -1,5 +1,6 @@
 ---
 import AttackSource from './AttackSource.astro';
+import D3Groups from './D3Groups.astro';
 import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
 import { loadData, url, num, type Technique } from '../lib/data';
@@ -11,6 +12,7 @@ const tactics = d.tacticsOf(t);
 const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
 const defenses = d.classesOf(t);
 const subs = d.subtechniquesOf(t);
+const d3 = d.d3fendForAttack(t);
 ---
 <section class="wrap page">
   <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
@@ -71,6 +73,18 @@ const subs = d.subtechniquesOf(t);
       )}
   </section>
 
+  <section class="sec" aria-labelledby="d3">
+    <h2 class="sec-title" id="d3">Захисні заходи D3FEND{d3.length > 0 && <span class="mono">{d3.length} технік</span>}</h2>
+    {d3.length === 0
+      ? <p class="soon-box">MITRE D3FEND поки не зіставляє цю техніку з захисними заходами.</p>
+      : <>
+          <p class="note">Офіційне зіставлення MITRE D3FEND — через дані й об’єкти, з якими працює атака. Воно ширше за практичний список рішень вище.</p>
+          {d3.length > 12
+            ? <details class="more-d3"><summary class="mono">Показати всі {d3.length} технік D3FEND</summary><D3Groups techniques={d3} /></details>
+            : <D3Groups techniques={d3} />}
+        </>}
+  </section>
+
   <section class="sec" aria-labelledby="st">
     <h2 class="sec-title" id="st">{tactics.length > 1 ? 'Етапи атаки, де трапляється' : 'Етап атаки'}</h2>
     <div class="chips">{tactics.map((ta) => <a href={url.tactic(ta.id)} class="chip">{num(order(ta.id))} {ta.data.ua} · {ta.id}</a>)}</div>
@@ -98,5 +112,10 @@ const subs = d.subtechniquesOf(t);
   .sname { display: flex; flex-direction: column; flex: 1; font-size: 15px; line-height: 1.35; }
   .sen { font-size: 12px; color: var(--muted-2); }
   .ext { font-size: 11px; color: var(--defense); }
+  .more-d3 summary { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-bottom: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); font-size: 11px; color: var(--defense); cursor: pointer; list-style: none; }
+  .more-d3 summary::-webkit-details-marker { display: none; }
+  .more-d3 summary:hover { border-color: var(--defense); }
+  .more-d3[open] summary { display: none; }
+  .note { margin: 0 0 16px; max-width: 760px; font-size: 14px; line-height: 1.55; color: var(--muted); }
   .bottom { padding-top: 40px; padding-bottom: 72px; }
 </style>

@@ -3,6 +3,7 @@
   "en": "Web Application Firewall",
   "simple": "Стоїть перед сайтом і відсікає атаки на вебзастосунки та автоматичне сканування.",
   "d3fend": [
-    "D3-PBWSAM"
+    "D3-PBWSAM",
+    "D3-WSAA"
   ]
 }

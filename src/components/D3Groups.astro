@@ -1,0 +1,34 @@
+---
+// Техніки D3FEND, згруповані за тактиками D3FEND, з категорією кожної. whole — тактики «загалом» (без техніки).
+import { loadData, url, num, type D3Tactic, type D3Technique } from '../lib/data';
+
+interface Props { techniques: D3Technique[]; whole?: D3Tactic[] }
+const { techniques, whole = [] } = Astro.props;
+const d = await loadData();
+const groups = d.d3fendTactics
+  .map((tactic) => ({ tactic, whole: whole.includes(tactic), techniques: tactic.all.filter((t) => techniques.includes(t)) }))
+  .filter((g) => g.whole || g.techniques.length > 0);
+const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent; return c; };
+---
+{groups.map((g) => (
+  <div class="group">
+    <a href={url.d3fendTactic(g.tactic.id)} class="mono gtitle">{num(g.tactic.order)} {g.tactic.ua ?? g.tactic.en} · {g.tactic.en}</a>
+    <ul>
+      {g.whole && <li><a href={url.d3fendTactic(g.tactic.id)}><span class="d3id">—</span><span>Тактика загалом<span class="cat">Без прив’язки до конкретної техніки</span></span></a></li>}
+      {g.techniques.map((t) => {
+        const c = category(t);
+        return <li><a href={url.d3fendTechnique(t.id)}><span class="d3id">{t.id}</span><span>{t.ua ?? t.en}{c !== t && <span class="cat">{c.ua ?? c.en}</span>}</span></a></li>;
+      })}
+    </ul>
+  </div>
+))}
+
+<style>
+  .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
+  .gtitle { font-size: 11px; color: var(--defense); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 24px; }
+  li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; line-height: 1.35; }
+  li a:hover { color: var(--text); }
+  .d3id { font-family: var(--font-mono); font-size: 12px; color: var(--defense); min-width: 72px; flex: none; }
+  .cat { display: block; font-size: 13px; color: var(--muted-2); margin-top: 2px; }
+</style>

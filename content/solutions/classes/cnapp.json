@@ -5,7 +5,9 @@
   "d3fend": [
     "D3-CI",
     "D3-CIA",
+    "D3-AVE",
     "D3-AM",
+    "D3-UAP",
     "Detect"
   ]
 }

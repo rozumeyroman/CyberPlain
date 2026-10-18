@@ -1,4 +1,5 @@
 ---
+import AttackGroups from './AttackGroups.astro';
 import D3fendSource from './D3fendSource.astro';
 import D3Solutions from './D3Solutions.astro';
 import { loadData, url, num, type D3Technique } from '../lib/data';
@@ -10,6 +11,9 @@ const ancestors: D3Technique[] = [];
 for (let p = t.parent; p; p = p.parent) ancestors.unshift(p);
 const solutions = d.d3fendSolutionsOfTechnique(t);
 const kind = t.depth === 0 ? 'Категорія' : 'Техніка';
+// Від чого захищає: власні зв'язки D3FEND з ATT&CK + зв'язки всіх різновидів.
+const subtree = (x: D3Technique): D3Technique[] => [x, ...x.children.flatMap(subtree)];
+const attack = [...new Set(subtree(t).flatMap((x) => x.attack))];
 ---
 <section class="wrap page">
   <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
@@ -35,6 +39,16 @@ const kind = t.depth === 0 ? 'Категорія' : 'Техніка';
   <section class="sec" aria-labelledby="sol">
     <h2 class="sec-title" id="sol">Які рішення це роблять</h2>
     <D3Solutions rows={solutions} empty={`Рішення для цієї ${t.depth === 0 ? 'категорії' : 'техніки'} ще не зіставлені.`} />
+  </section>
+
+  <section class="sec" aria-labelledby="att">
+    <h2 class="sec-title" id="att">Від яких технік атаки захищає · ATT&amp;CK{attack.length > 0 && <span class="mono">{attack.length} технік</span>}</h2>
+    {attack.length === 0
+      ? <p class="soon-box">MITRE D3FEND поки не зіставляє цей захід з техніками ATT&amp;CK.</p>
+      : <>
+          <p class="note">За офіційним зіставленням MITRE D3FEND{t.children.length > 0 && ', разом із різновидами'}.</p>
+          <AttackGroups techniques={attack} />
+        </>}
   </section>
 
   {t.children.length > 0 && (
@@ -70,5 +84,6 @@ const kind = t.depth === 0 ? 'Категорія' : 'Техніка';
   .list a:hover { color: var(--text); }
   .xid { font-size: 11px; color: var(--defense); min-width: 84px; flex: none; }
   .sub { color: var(--muted-2); font-size: 13px; }
+  .note { margin: 0 0 16px; max-width: 760px; font-size: 14px; line-height: 1.55; color: var(--muted); }
   .bottom { padding-top: 40px; padding-bottom: 72px; }
 </style>

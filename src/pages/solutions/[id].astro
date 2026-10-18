@@ -1,8 +1,10 @@
 ---
 // /solutions/<id>/ — клас рішень (vm) або продукт (rapid7-insightvm). ID не перетинаються (перевіряє loadData).
 import Base from '../../layouts/Base.astro';
+import AttackGroups from '../../components/AttackGroups.astro';
+import D3Groups from '../../components/D3Groups.astro';
 import D3fendTags from '../../components/D3fendTags.astro';
-import { loadData, url, num, type SolutionClass, type Product, type D3Technique } from '../../lib/data';
+import { loadData, url, type SolutionClass, type Product } from '../../lib/data';
 
 export async function getStaticPaths() {
   const { classes, products } = await loadData();
@@ -17,18 +19,13 @@ const d = await loadData();
 const own = product ? product.data.classes.map((r) => d.classById.get(r.id)!) : [];
 // Техніки продукту — ті, від яких захищають його класи; самі зв'язки лежать лише в defenses[] технік.
 const techIds = new Set((cls ? [cls] : own).flatMap((c) => d.techniquesDefendedBy(c.id).map((t) => t.id)));
-const groups = d.byTactic(d.techniques.filter((t) => techIds.has(t.id)));
-const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
+const attack = d.techniques.filter((t) => techIds.has(t.id));
 const title = cls ? cls.data.ua : product!.data.name;
 const simple = cls ? cls.data.simple : product!.data.simple;
 // D3FEND: техніки й «тактики загалом» з d3fend[] класу (продукту — усіх його класів), по тактиках D3FEND.
 const mine = (cls ? [cls] : own).map((c) => d.d3fendOf(c));
 const d3techs = [...new Set(mine.flatMap((m) => m.techniques))];
-const d3whole = new Set(mine.flatMap((m) => m.wholeTactics));
-const d3groups = d.d3fendTactics
-  .map((tactic) => ({ tactic, whole: d3whole.has(tactic), techniques: tactic.all.filter((t) => d3techs.includes(t)) }))
-  .filter((g) => g.whole || g.techniques.length > 0);
-const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent; return c; };
+const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
 ---
 <Base title={title} description={simple}>
   <section class="wrap page">
@@ -60,36 +57,16 @@ const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent;
 
     <section class="sec" aria-labelledby="tt">
       <h2 class="sec-title" id="tt">Від яких технік атаки захищає · ATT&amp;CK{techIds.size > 0 && <span class="mono">{techIds.size} технік</span>}</h2>
-      {groups.length === 0
+      {attack.length === 0
         ? <p class="soon-box">Зв'язки з техніками атак ще не додані.</p>
-        : groups.map((g) => (
-          <div class="group">
-            <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.ua} · {g.tactic.id}</a>
-            <ul>{g.techniques.map((t) => (
-              <li><a href={url.technique(t.id)}><span class="id-attack">{t.id}</span> {t.data.ua}</a></li>
-            ))}</ul>
-          </div>
-        ))}
+        : <AttackGroups techniques={attack} />}
     </section>
 
     <section class="sec" aria-labelledby="dd">
       <h2 class="sec-title" id="dd">Які захисні заходи виконує · D3FEND{d3techs.length > 0 && <span class="mono">{d3techs.length} технік</span>}</h2>
-      {d3groups.length === 0
+      {d3techs.length === 0 && d3whole.length === 0
         ? <p class="soon-box">Зв'язки з D3FEND ще не додані.</p>
-        : d3groups.map((g) => (
-          <div class="group">
-            <a href={url.d3fendTactic(g.tactic.id)} class="mono gtitle d3t">{num(g.tactic.order)} {g.tactic.ua ?? g.tactic.en} · {g.tactic.en}</a>
-            <ul>
-              {g.whole && <li><a href={url.d3fendTactic(g.tactic.id)}><span class="d3id">—</span><span>Тактика загалом<span class="cat">Без прив'язки до конкретної техніки</span></span></a></li>}
-              {g.techniques.map((t) => {
-                const c = category(t);
-                return (
-                  <li><a href={url.d3fendTechnique(t.id)}><span class="d3id">{t.id}</span><span>{t.ua ?? t.en}{c !== t && <span class="cat">Категорія: {c.ua ?? c.en}</span>}</span></a></li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
+        : <D3Groups techniques={d3techs} whole={d3whole} />}
     </section>
   </section>
 </Base>
@@ -100,15 +77,6 @@ const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent;
   .en { margin: 0 0 20px; font-size: 14px; color: var(--muted-2); }
   .facts { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
   .facts > div { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .d3id { font-family: var(--font-mono); font-size: 12px; color: var(--defense); min-width: 72px; flex: none; }
-  .d3t { color: var(--defense); }
-  .cat { display: block; font-size: 13px; color: var(--muted-2); margin-top: 2px; }
   .src { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .k { font-size: 11px; color: var(--muted-2); min-width: 72px; }
-  .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
-  .gtitle { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 24px; }
-  li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; }
-  li a:hover { color: var(--text); }
-  .id-attack { font-size: 12px; min-width: 52px; }
 </style>

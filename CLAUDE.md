@@ -56,11 +56,12 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   solutions/classes/vm.json       # клас рішень: ua, en, simple, d3fend[] (ID технік D3FEND або назви тактик)
   d3fend/intro.json               # тексти сторінки /d3fend і дані джерела
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
-  d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (усі поля необов'язкові)
+  d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (описані всі 271)
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
   attack.json             # npm run import:attack (scripts/import-attack.mjs ← STIX mitre-attack/attack-stix-data)
-  d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api/matrix.json)
+  d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api: matrix.json
+                          #   + technique/d3f:<IRI>.json → attack[]: прямі зв'язки з ATT&CK Enterprise)
 src/
   content.config.ts       # схеми колекцій і посилання між ними (reference)
   lib/data.ts             # loadData(): зв'язки, обчислення, перевірки; url.* — усі адреси сторінок
@@ -105,11 +106,17 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 
 **D3FEND.** Тактика → категорія (верхній рівень, напр. D3-AA Agent Authentication) → техніки
 (можуть мати різновиди, D3-MFA). ID, англ. назви, визначення й ієрархія — з `data/mitre/d3fend.json`;
-наш текст — у `content/d3fend/`, файл техніки створюємо лише коли є що написати (інакше сторінка
-показує «готується» й оригінальне визначення). Зв'язок із рішеннями — **лише** `d3fend[]` класу:
-ID техніки (`D3-MFA`) або назва тактики (`Harden`), якщо точної техніки немає. Тактики класу
-обчислюються. Сторінка техніки показує класи, зіставлені з нею або її різновидами; тактика — з
-будь-якою своєю технікою або з тактикою загалом. Українські назви категорій — робочі, автор може змінити.
+наш текст — у `content/d3fend/` (описані всі тактики, категорії й техніки; укр. назви робочі).
+Зв'язок із рішеннями — **лише** `d3fend[]` класу: ID конкретних технік (`D3-MFA`), а назва тактики
+(`Harden`) — лише якщо точної техніки немає. Мапимо явно, без успадкування: категорія в `d3fend[]`
+не означає всіх її різновидів. Тактики класу обчислюються. Сторінка техніки показує класи,
+зіставлені з нею або її різновидами; тактика — з будь-якою своєю технікою або з тактикою загалом.
+
+**D3FEND ↔ ATT&CK** — офіційне зіставлення MITRE (`attack[]` в імпорті; підтехніки зводимо до
+техніки, застарілі ID відкидаємо). Сторінка техніки D3FEND — «Від яких технік атаки захищає»
+(разом із різновидами), сторінка техніки ATT&CK — «Захисні заходи D3FEND». Це зіставлення через
+цифрові артефакти й дуже широке (бекап «захищає» від пошуку власника системи), тому в `defenses[]`
+його автоматично не переносимо: `defenses[]` — практичний редакторський список рішень.
 
 Неіснуючий ID у посиланні — помилка збирання (Astro `reference()` + перевірки в `loadData()`).
 Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043 перенесені з

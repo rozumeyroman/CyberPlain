@@ -12,12 +12,16 @@
           "iri": "SystemMapping",
           "en": "System Mapping",
           "definition": "System mapping encompasses the techniques to identify the organization's systems, how they are configured and decomposed into subsystems and components, how they are dependent on one another, and where they are physically located.",
+          "attack": [],
           "children": [
             {
               "id": "D3-SYSVA",
               "iri": "SystemVulnerabilityAssessment",
               "en": "System Vulnerability Assessment",
               "definition": "System vulnerability assessment relates all the vulnerabilities of a system's components in the context of their configuration and internal dependencies and can also include assessing risk emerging from the system's design as a whole, not just the sum of individual component vulnerabilities.",
+              "attack": [
+                "T1562.010"
+              ],
               "children": []
             },
             {
@@ -25,6 +29,7 @@
               "iri": "ServiceDependencyMapping",
               "en": "Service Dependency Mapping",
               "definition": "Service dependency mapping determines the services on which each given service relies.",
+              "attack": [],
               "children": []
             },
             {
@@ -32,6 +37,7 @@
               "iri": "DataExchangeMapping",
               "en": "Data Exchange Mapping",
               "definition": "Data exchange mapping identifies and models the organization's intended design for the flows of the data types, formats, and volumes between systems at the application layer.",
+              "attack": [],
               "children": []
             },
             {
@@ -39,6 +45,7 @@
               "iri": "SystemDependencyMapping",
               "en": "System Dependency Mapping",
               "definition": "System dependency mapping identifies and models the dependencies of system components on each other to carry out their function.",
+              "attack": [],
               "children": []
             }
           ]
@@ -48,12 +55,14 @@
           "iri": "OperationalActivityMapping",
           "en": "Operational Activity Mapping",
           "definition": "Operational activity mapping identifies activities of the organization and the organization's suborganizations, groups, roles, and individuals that carry out the activities and then establishes the dependencies of the activities on the systems and people that perform those activities.",
+          "attack": [],
           "children": [
             {
               "id": "D3-ODM",
               "iri": "OperationalDependencyMapping",
               "en": "Operational Dependency Mapping",
               "definition": "Operational dependency mapping identifies and models the dependencies of the organization's activities on each other and on the organization's performers (people, systems, and services.)  This may include modeling the higher- and lower-level activities of an organization forming a hierarchy, or layering, of the dependencies in an organization's activities.",
+              "attack": [],
               "children": []
             },
             {
@@ -61,6 +70,7 @@
               "iri": "OrganizationMapping",
               "en": "Organization Mapping",
               "definition": "Organization mapping identifies and models the people, roles, and groups with an organization and the relations between them.",
+              "attack": [],
               "children": []
             },
             {
@@ -68,6 +78,32 @@
               "iri": "AccessModeling",
               "en": "Access Modeling",
               "definition": "Access modeling captures and records the access permissions granted to identities (e.g., administrators, users, groups, systems) and optionally includes details on how these identities are stored, managed, and shared across systems.",
+              "attack": [
+                "T1078",
+                "T1078.001",
+                "T1078.002",
+                "T1078.003",
+                "T1078.004",
+                "T1087.001",
+                "T1087.002",
+                "T1087.004",
+                "T1098",
+                "T1098.002",
+                "T1098.003",
+                "T1134.005",
+                "T1136",
+                "T1136.001",
+                "T1136.002",
+                "T1136.003",
+                "T1222",
+                "T1484",
+                "T1531",
+                "T1548.001",
+                "T1548.005",
+                "T1552.006",
+                "T1556.009",
+                "T1615"
+              ],
               "children": []
             },
             {
@@ -75,6 +111,7 @@
               "iri": "OperationalRiskAssessment",
               "en": "Operational Risk Assessment",
               "definition": "Operational risk assessment identifies and models the vulnerabilities of, and risks to, an organization's activities individually and as a whole.",
+              "attack": [],
               "children": []
             }
           ]
@@ -84,12 +121,23 @@
           "iri": "NetworkMapping",
           "en": "Network Mapping",
           "definition": "Network mapping encompasses the techniques to identify and model the physical layer, network layer, and data exchange layers of the organization's network and their physical location, and determine allowed pathways through that network.",
+          "attack": [],
           "children": [
             {
               "id": "D3-NTPM",
               "iri": "NetworkTrafficPolicyMapping",
               "en": "Network Traffic Policy Mapping",
               "definition": "Network traffic policy mapping identifies and models the allowed pathways of data at the network, transport, and/or application levels.",
+              "attack": [
+                "T1134.005",
+                "T1222",
+                "T1484",
+                "T1548.001",
+                "T1548.005",
+                "T1552.006",
+                "T1556.009",
+                "T1615"
+              ],
               "children": []
             },
             {
@@ -97,12 +145,22 @@
               "iri": "PhysicalLinkMapping",
               "en": "Physical Link Mapping",
               "definition": "Physical link mapping identifies and models the link connectivity of the network devices within a physical network.",
+              "attack": [
+                "T1114.002",
+                "T1505.002",
+                "T1505.003",
+                "T1562.013",
+                "T1578.002",
+                "T1578.003",
+                "T1578.004"
+              ],
               "children": [
                 {
                   "id": "D3-DPLM",
                   "iri": "DirectPhysicalLinkMapping",
                   "en": "Direct Physical Link Mapping",
                   "definition": "Direct physical link mapping creates a physical link map by direct observation and recording of the physical network links.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -110,6 +168,7 @@
                   "iri": "ActivePhysicalLinkMapping",
                   "en": "Active Physical Link Mapping",
                   "definition": "Active physical link mapping sends and receives network traffic as a means to map the physical layer.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -119,6 +178,7 @@
               "iri": "NetworkVulnerabilityAssessment",
               "en": "Network Vulnerability Assessment",
               "definition": "Network vulnerability assessment relates all the vulnerabilities of a network's components in the context of their configuration and interdependencies and can also include assessing risk emerging from the network's design as a whole, not just the sum of individual network node or network segment vulnerabilities.",
+              "attack": [],
               "children": []
             },
             {
@@ -126,12 +186,22 @@
               "iri": "LogicalLinkMapping",
               "en": "Logical Link Mapping",
               "definition": "Logical link mapping creates a model of existing or previous node-to-node connections using network-layer data or metadata.",
+              "attack": [
+                "T1114.002",
+                "T1505.002",
+                "T1505.003",
+                "T1562.013",
+                "T1578.002",
+                "T1578.003",
+                "T1578.004"
+              ],
               "children": [
                 {
                   "id": "D3-PLLM",
                   "iri": "PassiveLogicalLinkMapping",
                   "en": "Passive Logical Link Mapping",
                   "definition": "Passive logical link mapping only listens to network traffic as a means to map the whole data link layer, where the links represent logical data flows rather than physical connections.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -139,6 +209,7 @@
                   "iri": "ActiveLogicalLinkMapping",
                   "en": "Active Logical Link Mapping",
                   "definition": "Active logical link mapping sends and receives network traffic as a means to map the whole data link layer, where the links represent logical data flows rather than physical connection",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -150,12 +221,26 @@
           "iri": "AssetInventory",
           "en": "Asset Inventory",
           "definition": "Asset inventorying identifies and records the organization's assets and enriches each inventory item with knowledge about their vulnerabilities.",
+          "attack": [],
           "children": [
             {
               "id": "D3-HCI",
               "iri": "HardwareComponentInventory",
               "en": "Hardware Component Inventory",
               "definition": "Hardware component inventorying identifies and records the hardware items in the organization's architecture.",
+              "attack": [
+                "T1025",
+                "T1052.001",
+                "T1056.001",
+                "T1091",
+                "T1092",
+                "T1111",
+                "T1123",
+                "T1125",
+                "T1195.003",
+                "T1200",
+                "T1619"
+              ],
               "children": []
             },
             {
@@ -163,6 +248,61 @@
               "iri": "ConfigurationInventory",
               "en": "Configuration Inventory",
               "definition": "Configuration inventory identifies and records the configuration of software and hardware and their components throughout the organization.",
+              "attack": [
+                "T1037.004",
+                "T1037.005",
+                "T1114.003",
+                "T1134.005",
+                "T1137.001",
+                "T1137.002",
+                "T1137.004",
+                "T1137.005",
+                "T1218.002",
+                "T1222",
+                "T1484",
+                "T1490",
+                "T1518.001",
+                "T1526",
+                "T1538",
+                "T1546.001",
+                "T1546.002",
+                "T1546.007",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.011",
+                "T1546.014",
+                "T1547.001",
+                "T1547.002",
+                "T1547.003",
+                "T1547.004",
+                "T1547.005",
+                "T1547.010",
+                "T1548.001",
+                "T1548.002",
+                "T1548.005",
+                "T1552.005",
+                "T1552.006",
+                "T1553.003",
+                "T1556.002",
+                "T1556.009",
+                "T1562.002",
+                "T1562.003",
+                "T1562.004",
+                "T1562.007",
+                "T1562.008",
+                "T1562.009",
+                "T1564.008",
+                "T1574.011",
+                "T1574.012",
+                "T1578.002",
+                "T1578.003",
+                "T1578.004",
+                "T1578.005",
+                "T1614",
+                "T1615",
+                "T1666"
+              ],
               "children": []
             },
             {
@@ -170,6 +310,34 @@
               "iri": "SoftwareInventory",
               "en": "Software Inventory",
               "definition": "Software inventorying identifies and records the software items in the organization's architecture.",
+              "attack": [
+                "T1014",
+                "T1056.003",
+                "T1072",
+                "T1127.001",
+                "T1137.006",
+                "T1176",
+                "T1195.001",
+                "T1195.002",
+                "T1212",
+                "T1218.014",
+                "T1489",
+                "T1490",
+                "T1497.003",
+                "T1505.001",
+                "T1505.004",
+                "T1542.001",
+                "T1542.002",
+                "T1542.003",
+                "T1542.004",
+                "T1546.011",
+                "T1547.008",
+                "T1554",
+                "T1564.006",
+                "T1574.005",
+                "T1574.010",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -177,12 +345,43 @@
               "iri": "AssetVulnerabilityEnumeration",
               "en": "Asset Vulnerability Enumeration",
               "definition": "Asset vulnerability enumeration enriches inventory items with knowledge identifying their vulnerabilities.",
+              "attack": [
+                "T1014",
+                "T1056.003",
+                "T1072",
+                "T1127.001",
+                "T1137.006",
+                "T1176",
+                "T1195.001",
+                "T1195.002",
+                "T1212",
+                "T1218.014",
+                "T1489",
+                "T1490",
+                "T1497.003",
+                "T1505.001",
+                "T1505.004",
+                "T1542.001",
+                "T1542.002",
+                "T1542.003",
+                "T1542.004",
+                "T1546.011",
+                "T1547.008",
+                "T1554",
+                "T1564.006",
+                "T1574.005",
+                "T1574.010",
+                "T1649"
+              ],
               "children": [
                 {
                   "id": "D3-CIA",
                   "iri": "ContainerImageAnalysis",
                   "en": "Container Image Analysis",
                   "definition": "Analyzing a Container Image with respect to a set of policies.",
+                  "attack": [
+                    "T1525"
+                  ],
                   "children": []
                 }
               ]
@@ -192,6 +391,37 @@
               "iri": "DataInventory",
               "en": "Data Inventory",
               "definition": "Data inventorying identifies and records the schemas, formats, volumes, and locations of data stored and used on the organization's architecture.",
+              "attack": [
+                "T1003.002",
+                "T1003.004",
+                "T1003.008",
+                "T1012",
+                "T1033",
+                "T1112",
+                "T1114.001",
+                "T1137.003",
+                "T1137.006",
+                "T1207",
+                "T1213.003",
+                "T1218.005",
+                "T1218.014",
+                "T1534",
+                "T1543.003",
+                "T1546.012",
+                "T1546.015",
+                "T1548.004",
+                "T1552.002",
+                "T1555",
+                "T1555.001",
+                "T1555.002",
+                "T1555.003",
+                "T1564.003",
+                "T1564.005",
+                "T1564.007",
+                "T1566.001",
+                "T1566.002",
+                "T1614.001"
+              ],
               "children": []
             },
             {
@@ -199,6 +429,15 @@
               "iri": "NetworkNodeInventory",
               "en": "Network Node Inventory",
               "definition": "Network node inventorying identifies and records all the network nodes (hosts, routers, switches, firewalls, etc.) in the organization's architecture.",
+              "attack": [
+                "T1114.002",
+                "T1505.002",
+                "T1505.003",
+                "T1562.013",
+                "T1578.002",
+                "T1578.003",
+                "T1578.004"
+              ],
               "children": []
             }
           ]
@@ -214,12 +453,14 @@
           "iri": "SourceCodeHardening",
           "en": "Source Code Hardening",
           "definition": "Hardening source code with the intention of making it more difficult to exploit and less error prone.",
+          "attack": [],
           "children": [
             {
               "id": "D3-VTV",
               "iri": "VariableTypeValidation",
               "en": "Variable Type Validation",
               "definition": "Ensuring that a variable has the correct type.",
+              "attack": [],
               "children": []
             },
             {
@@ -227,6 +468,9 @@
               "iri": "CredentialScrubbing",
               "en": "Credential Scrubbing",
               "definition": "The systematic removal of hard-coded credentials from source code to prevent accidental exposure and unauthorized access.",
+              "attack": [
+                "T1505.001"
+              ],
               "children": []
             },
             {
@@ -234,6 +478,9 @@
               "iri": "VariableInitialization",
               "en": "Variable Initialization",
               "definition": "Setting variables to a known value before use.",
+              "attack": [
+                "T1505.001"
+              ],
               "children": []
             },
             {
@@ -241,6 +488,7 @@
               "iri": "ReferenceNullification",
               "en": "Reference Nullification",
               "definition": "Invalidating all pointers that reference a specific memory block, ensuring that the block cannot be accessed or modified after deallocation.",
+              "attack": [],
               "children": []
             },
             {
@@ -248,12 +496,16 @@
               "iri": "DomainLogicValidation",
               "en": "Domain Logic Validation",
               "definition": "Validation of variable state in the context of the domain application.",
+              "attack": [
+                "T1505.001"
+              ],
               "children": [
                 {
                   "id": "D3-OLV",
                   "iri": "OperationalLogicValidation",
                   "en": "Operational Logic Validation",
                   "definition": "Validation of variable state in the context of the control logic of the operational application.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -263,12 +515,14 @@
               "iri": "PointerValidation",
               "en": "Pointer Validation",
               "definition": "Ensuring that a pointer variable has the required properties for use.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-MBSV",
                   "iri": "MemoryBlockStartValidation",
                   "en": "Memory Block Start Validation",
                   "definition": "Ensuring that a pointer accurately references the beginning of a designated memory block.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -276,6 +530,7 @@
                   "iri": "NullPointerChecking",
                   "en": "Null Pointer Checking",
                   "definition": "Checking if a pointer is NULL.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -285,6 +540,9 @@
               "iri": "TrustedLibrary",
               "en": "Trusted Library",
               "definition": "A trusted library is a collection of pre-verified and secure code modules or components that are used within software applications to perform specific functions. These libraries are considered reliable and have been vetted for security vulnerabilities, ensuring they do not introduce risks into the application.",
+              "attack": [
+                "T1505.001"
+              ],
               "children": []
             },
             {
@@ -292,6 +550,7 @@
               "iri": "IntegerRangeValidation",
               "en": "Integer Range Validation",
               "definition": "Ensuring that an integer is within a valid range.",
+              "attack": [],
               "children": []
             }
           ]
@@ -301,12 +560,16 @@
           "iri": "PlatformHardening",
           "en": "Platform Hardening",
           "definition": "Hardening components of a Platform with the intention of making them more difficult to exploit.\n\nPlatforms includes components such as:\n* BIOS UEFI Subsystems\n* Hardware security devices such as Trusted Platform Modules\n* Boot process logic or code\n* Kernel software components",
+          "attack": [],
           "children": [
             {
               "id": "D3-HBWP",
               "iri": "Hardware-basedWriteProtection",
               "en": "Hardware-based Write Protection",
               "definition": "Physical methods of preventing data from being written to computer storage.",
+              "attack": [
+                "T1619"
+              ],
               "children": []
             },
             {
@@ -314,6 +577,7 @@
               "iri": "PhysicalEnclosureHardening",
               "en": "Physical Enclosure Hardening",
               "definition": "Physical changes to a computer enclosure which reduce the ability for agents or the environment to affect the contained computer system.",
+              "attack": [],
               "children": []
             },
             {
@@ -321,6 +585,7 @@
               "iri": "DriverLoadIntegrityChecking",
               "en": "Driver Load Integrity Checking",
               "definition": "Ensuring the integrity of drivers loaded during initialization of the operating system.",
+              "attack": [],
               "children": []
             },
             {
@@ -328,6 +593,21 @@
               "iri": "SystemConfigurationPermissions",
               "en": "System Configuration Permissions",
               "definition": "Restricting system configuration modifications to a specific user or group of users.",
+              "attack": [
+                "T1012",
+                "T1112",
+                "T1137.006",
+                "T1207",
+                "T1218.014",
+                "T1543.003",
+                "T1546.012",
+                "T1546.015",
+                "T1548.004",
+                "T1552.002",
+                "T1564.003",
+                "T1564.005",
+                "T1614.001"
+              ],
               "children": []
             },
             {
@@ -335,6 +615,107 @@
               "iri": "FileEncryption",
               "en": "File Encryption",
               "definition": "Encrypting a file using a cryptographic key.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -342,6 +723,34 @@
               "iri": "SoftwareUpdate",
               "en": "Software Update",
               "definition": "Replacing old software on a computer system component.",
+              "attack": [
+                "T1014",
+                "T1056.003",
+                "T1072",
+                "T1127.001",
+                "T1137.006",
+                "T1176",
+                "T1195.001",
+                "T1195.002",
+                "T1212",
+                "T1218.014",
+                "T1489",
+                "T1490",
+                "T1497.003",
+                "T1505.001",
+                "T1505.004",
+                "T1542.001",
+                "T1542.002",
+                "T1542.003",
+                "T1542.004",
+                "T1546.011",
+                "T1547.008",
+                "T1554",
+                "T1564.006",
+                "T1574.005",
+                "T1574.010",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -349,18 +758,33 @@
               "iri": "RadiationHardening",
               "en": "Radiation Hardening",
               "definition": "Radiation hardening is the process of making electronic components and circuits resistant to damage or malfunction caused by high levels of ionizing radiation.",
+              "attack": [
+                "T1025",
+                "T1052.001",
+                "T1056.001",
+                "T1091",
+                "T1092",
+                "T1111",
+                "T1123",
+                "T1125",
+                "T1195.003",
+                "T1200",
+                "T1619"
+              ],
               "children": [
                 {
                   "id": "D3-EMH",
                   "iri": "ElectromagneticRadiationHardening",
                   "en": "Electromagnetic Radiation Hardening",
                   "definition": "The application of physical and material-level design measures to electronic systems, components, or facilities to reduce their susceptibility to damage or disruption from electromagnetic threats.",
+                  "attack": [],
                   "children": [
                     {
                       "id": "D3-RFS",
                       "iri": "RFShielding",
                       "en": "RF Shielding",
                       "definition": "Adding physical barriers to a platform to prevent undesired radio interference.",
+                      "attack": [],
                       "children": []
                     }
                   ]
@@ -372,6 +796,7 @@
               "iri": "TPMBootIntegrity",
               "en": "TPM Boot Integrity",
               "definition": "Assuring the integrity of a platform by demonstrating that the boot process starts from a trusted combination of hardware and software and continues until the operating system has fully booted and applications are running.  Sometimes called Static Root of Trust Measurement (STRM).",
+              "attack": [],
               "children": []
             },
             {
@@ -379,6 +804,10 @@
               "iri": "DiskEncryption",
               "en": "Disk Encryption",
               "definition": "Encrypting a hard disk partition to prevent cleartext access to a file system.",
+              "attack": [
+                "T1564.005",
+                "T1619"
+              ],
               "children": []
             },
             {
@@ -386,6 +815,9 @@
               "iri": "BootloaderAuthentication",
               "en": "Bootloader Authentication",
               "definition": "Cryptographically authenticating the bootloader software before system boot.",
+              "attack": [
+                "T1542.003"
+              ],
               "children": []
             }
           ]
@@ -395,12 +827,34 @@
           "iri": "AgentAuthentication",
           "en": "Agent Authentication",
           "definition": "Agent authentication is the process of verifying the identities of agents to ensure they are authorized and trustworthy participants within a system.",
+          "attack": [
+            "T1078",
+            "T1078.001",
+            "T1078.002",
+            "T1078.003",
+            "T1078.004",
+            "T1087.001",
+            "T1087.002",
+            "T1087.004",
+            "T1098",
+            "T1098.002",
+            "T1098.003",
+            "T1136",
+            "T1136.001",
+            "T1136.002",
+            "T1136.003",
+            "T1531",
+            "T1548.005"
+          ],
           "children": [
             {
               "id": "D3-CBAN",
               "iri": "Certificate-basedAuthentication",
               "en": "Certificate-based Authentication",
               "definition": "Requiring a digital certificate in order to authenticate a user.",
+              "attack": [
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -408,6 +862,7 @@
               "iri": "BiometricAuthentication",
               "en": "Biometric Authentication",
               "definition": "Using biological measures in order to authenticate a user.",
+              "attack": [],
               "children": []
             },
             {
@@ -415,6 +870,15 @@
               "iri": "Token-basedAuthentication",
               "en": "Token-based Authentication",
               "definition": "Token-based authentication is an authentication protocol where users verify their identity in exchange for a unique access token. Users can then access the website, application, or resource for the life of the token without having to re-enter their credentials.",
+              "attack": [
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1528",
+                "T1550.001",
+                "T1558",
+                "T1558.001"
+              ],
               "children": []
             },
             {
@@ -422,6 +886,28 @@
               "iri": "Multi-factorAuthentication",
               "en": "Multi-factor Authentication",
               "definition": "Requiring proof of two or more pieces of evidence in order to authenticate a user.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             },
             {
@@ -429,6 +915,11 @@
               "iri": "PasswordAuthentication",
               "en": "Password Authentication",
               "definition": "Password authentication is a security mechanism used to verify the identity of a user or entity attempting to access a system or resource by requiring the input of a secret string of characters, known as a password, that is associated with the user or entity.",
+              "attack": [
+                "T1110.001",
+                "T1110.002",
+                "T1110.003"
+              ],
               "children": []
             }
           ]
@@ -438,18 +929,67 @@
           "iri": "CredentialHardening",
           "en": "Credential Hardening",
           "definition": "Credential Hardening techniques modify system or network properties in order to protect system or network/domain credentials.",
+          "attack": [
+            "T1003.003",
+            "T1003.005",
+            "T1003.008",
+            "T1098.001",
+            "T1110.001",
+            "T1110.002",
+            "T1110.003",
+            "T1134.001",
+            "T1134.002",
+            "T1134.003",
+            "T1142",
+            "T1528",
+            "T1539",
+            "T1550.001",
+            "T1550.004",
+            "T1552",
+            "T1558",
+            "T1558.001",
+            "T1606",
+            "T1606.001"
+          ],
           "children": [
             {
               "id": "D3-SPP",
               "iri": "StrongPasswordPolicy",
               "en": "Strong Password Policy",
               "definition": "Modifying system configuration to increase password strength.",
+              "attack": [
+                "T1110.001",
+                "T1110.002",
+                "T1110.003"
+              ],
               "children": [
                 {
                   "id": "D3-CDP",
                   "iri": "ChangeDefaultPassword",
                   "en": "Change Default Password",
                   "definition": "Changing the default password means replacing the factory-set credentials with a strong, unique password before the device is deployed, preventing unauthorized access.",
+                  "attack": [
+                    "T1078",
+                    "T1078.001",
+                    "T1078.002",
+                    "T1078.003",
+                    "T1078.004",
+                    "T1087.001",
+                    "T1087.002",
+                    "T1087.004",
+                    "T1098",
+                    "T1098.002",
+                    "T1098.003",
+                    "T1110.001",
+                    "T1110.002",
+                    "T1110.003",
+                    "T1136",
+                    "T1136.001",
+                    "T1136.002",
+                    "T1136.003",
+                    "T1531",
+                    "T1548.005"
+                  ],
                   "children": []
                 }
               ]
@@ -459,12 +999,37 @@
               "iri": "CredentialRotation",
               "en": "Credential Rotation",
               "definition": "Credential rotation is a security procedure in which authentication credentials, such as passwords, API keys, or certificates, are regularly changed or replaced to minimize the risk of unauthorized access.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": [
                 {
                   "id": "D3-CERO",
                   "iri": "CertificateRotation",
                   "en": "Certificate Rotation",
                   "definition": "Certificate rotation involves replacing digital certificates and their private keys to maintain cryptographic integrity and trust, mitigating key compromise risks and ensuring continuous secure communications.",
+                  "attack": [
+                    "T1649"
+                  ],
                   "children": []
                 },
                 {
@@ -472,12 +1037,22 @@
                   "iri": "PasswordRotation",
                   "en": "Password Rotation",
                   "definition": "Password rotation is a security policy that mandates the periodic change of user account passwords to mitigate the risk of unauthorized access due to compromised credentials.",
+                  "attack": [
+                    "T1110.001",
+                    "T1110.002",
+                    "T1110.003"
+                  ],
                   "children": [
                     {
                       "id": "D3-OTP",
                       "iri": "One-timePassword",
                       "en": "One-time Password",
                       "definition": "A one-time password is valid for only one user authentication.",
+                      "attack": [
+                        "T1110.001",
+                        "T1110.002",
+                        "T1110.003"
+                      ],
                       "children": []
                     }
                   ]
@@ -489,6 +1064,15 @@
               "iri": "TokenBinding",
               "en": "Token Binding",
               "definition": "Token binding is a security mechanism used to enhance the protection of tokens, such as cookies or OAuth tokens, by binding them to a specific connection.",
+              "attack": [
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1528",
+                "T1550.001",
+                "T1558",
+                "T1558.001"
+              ],
               "children": []
             },
             {
@@ -496,6 +1080,9 @@
               "iri": "CertificatePinning",
               "en": "Certificate Pinning",
               "definition": "Persisting either a server's X.509 certificate or their public key and comparing that to server's presented identity to allow for greater client confidence in the remote server's identity for SSL connections.",
+              "attack": [
+                "T1649"
+              ],
               "children": []
             }
           ]
@@ -505,12 +1092,14 @@
           "iri": "ApplicationHardening",
           "en": "Application Hardening",
           "definition": "Application Hardening makes an executable application more resilient to a class of exploits which either introduce new code or execute unwanted existing code. These techniques may be applied at compile-time or on an application binary.",
+          "attack": [],
           "children": [
             {
               "id": "D3-CFI",
               "iri": "ControlFlowIntegrity",
               "en": "Control Flow Integrity",
               "definition": "Enforcing legal control flow transfers during application process execution.",
+              "attack": [],
               "children": []
             },
             {
@@ -518,6 +1107,13 @@
               "iri": "StackFrameCanaryValidation",
               "en": "Stack Frame Canary Validation",
               "definition": "Comparing a value stored in a stack frame with a known good value in order to prevent or detect a memory segment overwrite.",
+              "attack": [
+                "T1068",
+                "T1203",
+                "T1210",
+                "T1211",
+                "T1212"
+              ],
               "children": []
             },
             {
@@ -525,6 +1121,7 @@
               "iri": "DeadCodeElimination",
               "en": "Dead Code Elimination",
               "definition": "Removing unreachable or \"dead code\" from compiled source code.",
+              "attack": [],
               "children": []
             },
             {
@@ -532,12 +1129,24 @@
               "iri": "ApplicationConfigurationHardening",
               "en": "Application Configuration Hardening",
               "definition": "Modifying an application's configuration to reduce its attack surface.",
+              "attack": [
+                "T1114.003",
+                "T1562.002",
+                "T1562.003",
+                "T1564.008"
+              ],
               "children": [
                 {
                   "id": "D3-DRA",
                   "iri": "DisableRemoteAccess",
                   "en": "Disable Remote Access",
                   "definition": "Limiting access to a computing device which is not required through or from a non-organization-controlled network.",
+                  "attack": [
+                    "T1114.003",
+                    "T1562.002",
+                    "T1562.003",
+                    "T1564.008"
+                  ],
                   "children": []
                 }
               ]
@@ -547,6 +1156,20 @@
               "iri": "ProcessSegmentExecutionPrevention",
               "en": "Process Segment Execution Prevention",
               "definition": "Preventing execution of any address in a memory region other than the code segment.",
+              "attack": [
+                "T1033",
+                "T1055.012",
+                "T1056.004",
+                "T1068",
+                "T1189",
+                "T1190",
+                "T1203",
+                "T1210",
+                "T1211",
+                "T1212",
+                "T1218.013",
+                "T1620"
+              ],
               "children": []
             },
             {
@@ -554,6 +1177,7 @@
               "iri": "ExceptionHandlerPointerValidation",
               "en": "Exception Handler Pointer Validation",
               "definition": "Validates that a referenced exception handler pointer is a valid exception handler.",
+              "attack": [],
               "children": []
             },
             {
@@ -561,6 +1185,20 @@
               "iri": "SegmentAddressOffsetRandomization",
               "en": "Segment Address Offset Randomization",
               "definition": "Randomizing the base (start) address of one or more segments of memory during the initialization of a process.",
+              "attack": [
+                "T1033",
+                "T1055.012",
+                "T1056.004",
+                "T1068",
+                "T1189",
+                "T1190",
+                "T1203",
+                "T1210",
+                "T1211",
+                "T1212",
+                "T1218.013",
+                "T1620"
+              ],
               "children": []
             },
             {
@@ -568,6 +1206,7 @@
               "iri": "PointerAuthentication",
               "en": "Pointer Authentication",
               "definition": "Comparing the cryptographic hash or derivative of a pointer's value to an expected value.",
+              "attack": [],
               "children": []
             }
           ]
@@ -577,12 +1216,14 @@
           "iri": "MessageHardening",
           "en": "Message Hardening",
           "definition": "The application of security controls to user-to-user and system-to-system communications so messages remain confidential, unaltered, and verifiable while resisting injection, replay, and tampering.",
+          "attack": [],
           "children": [
             {
               "id": "D3-MENCR",
               "iri": "MessageEncryption",
               "en": "Message Encryption",
               "definition": "Encrypting a message body using a cryptographic key.",
+              "attack": [],
               "children": []
             },
             {
@@ -590,6 +1231,7 @@
               "iri": "TransferAgentAuthentication",
               "en": "Transfer Agent Authentication",
               "definition": "Validating that server components of a messaging infrastructure are authorized to send a particular message.",
+              "attack": [],
               "children": []
             },
             {
@@ -597,12 +1239,14 @@
               "iri": "MessageAuthentication",
               "en": "Message Authentication",
               "definition": "Authenticating the sender of a message and ensuring message integrity.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-BMA",
                   "iri": "BusMessageAuthentication",
                   "en": "Bus Message Authentication",
                   "definition": "Applies cryptographic primitives to individual bus frames to verify the sender's identity and ensure the integrity of the data payload.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -620,12 +1264,14 @@
           "iri": "UserBehaviorAnalysis",
           "en": "User Behavior Analysis",
           "definition": "User behavior analytics (\"UBA\") as defined by Gartner, is a cybersecurity process about detection of insider threats, targeted attacks, and financial fraud. UBA solutions look at patterns of human behavior, and then apply algorithms and statistical analysis to detect meaningful anomalies from those patterns-anomalies that indicate potential threats.' Instead of tracking devices or security events, UBA tracks a system's users. Big data platforms are increasing UBA functionality by allowing them to analyze petabytes worth of data to detect insider threats and advanced persistent threats.",
+          "attack": [],
           "children": [
             {
               "id": "D3-SDA",
               "iri": "SessionDurationAnalysis",
               "en": "Session Duration Analysis",
               "definition": "Analyzing the duration of user sessions in order to detect unauthorized  activity.",
+              "attack": [],
               "children": []
             },
             {
@@ -633,6 +1279,7 @@
               "iri": "AuthenticationEventThresholding",
               "en": "Authentication Event Thresholding",
               "definition": "Collecting authentication events, creating a baseline user profile, and determining whether authentication events are consistent with the baseline profile.",
+              "attack": [],
               "children": []
             },
             {
@@ -640,6 +1287,28 @@
               "iri": "CredentialCompromiseScopeAnalysis",
               "en": "Credential Compromise Scope Analysis",
               "definition": "Determining which credentials may have been compromised by analyzing the user logon history of a particular system.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             },
             {
@@ -647,6 +1316,7 @@
               "iri": "AuthorizationEventThresholding",
               "en": "Authorization Event Thresholding",
               "definition": "Collecting authorization events, creating a baseline user profile, and determining whether authorization events are consistent with the baseline profile.",
+              "attack": [],
               "children": []
             },
             {
@@ -654,6 +1324,80 @@
               "iri": "UserGeolocationLogonPatternAnalysis",
               "en": "User Geolocation Logon Pattern Analysis",
               "definition": "Monitoring geolocation data of user logon attempts and comparing it to a baseline user behavior profile to identify anomalies in logon location.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -661,6 +1405,13 @@
               "iri": "DomainAccountMonitoring",
               "en": "Domain Account Monitoring",
               "definition": "Monitoring the existence of or changes to Domain User Accounts.",
+              "attack": [
+                "T1078.002",
+                "T1087.002",
+                "T1098.002",
+                "T1098.003",
+                "T1136.002"
+              ],
               "children": []
             },
             {
@@ -668,6 +1419,7 @@
               "iri": "JobFunctionAccessPatternAnalysis",
               "en": "Job Function Access Pattern Analysis",
               "definition": "Detecting anomalies in user access patterns by comparing user access activity to behavioral profiles that categorize users by role such as job title, function, department.",
+              "attack": [],
               "children": []
             },
             {
@@ -675,6 +1427,7 @@
               "iri": "ResourceAccessPatternAnalysis",
               "en": "Resource Access Pattern Analysis",
               "definition": "Analyzing the resources accessed by a user to identify unauthorized activity.",
+              "attack": [],
               "children": []
             },
             {
@@ -682,6 +1435,7 @@
               "iri": "WebSessionActivityAnalysis",
               "en": "Web Session Activity Analysis",
               "definition": "Monitoring changes in user web session behavior by comparing current web session activity to a baseline behavior profile or a catalog of predetermined malicious behavior.",
+              "attack": [],
               "children": []
             },
             {
@@ -689,6 +1443,7 @@
               "iri": "UserDataTransferAnalysis",
               "en": "User Data Transfer Analysis",
               "definition": "Analyzing the amount of data transferred by a user.",
+              "attack": [],
               "children": []
             },
             {
@@ -696,6 +1451,11 @@
               "iri": "LocalAccountMonitoring",
               "en": "Local Account Monitoring",
               "definition": "Analyzing local user accounts to detect unauthorized activity.",
+              "attack": [
+                "T1078.003",
+                "T1087.001",
+                "T1136.001"
+              ],
               "children": []
             }
           ]
@@ -705,18 +1465,121 @@
           "iri": "FileAnalysis",
           "en": "File Analysis",
           "definition": "File Analysis is an analytic process to determine a file's status. For example: virus, trojan, benign, malicious, trusted, unauthorized, sensitive, etc.",
+          "attack": [
+            "T1003.007",
+            "T1003.008",
+            "T1005",
+            "T1014",
+            "T1016",
+            "T1018",
+            "T1027.001",
+            "T1027.002",
+            "T1027.004",
+            "T1033",
+            "T1036.001",
+            "T1036.003",
+            "T1036.005",
+            "T1036.006",
+            "T1037.001",
+            "T1037.002",
+            "T1037.003",
+            "T1037.004",
+            "T1041",
+            "T1048.002",
+            "T1053.004",
+            "T1055.001",
+            "T1055.002",
+            "T1055.003",
+            "T1055.009",
+            "T1055.014",
+            "T1059",
+            "T1070.002",
+            "T1070.004",
+            "T1071",
+            "T1071.001",
+            "T1072",
+            "T1074.001",
+            "T1083",
+            "T1114.001",
+            "T1119",
+            "T1127.001",
+            "T1137.001",
+            "T1137.003",
+            "T1140",
+            "T1187",
+            "T1204.002",
+            "T1218.005",
+            "T1218.011",
+            "T1220",
+            "T1486",
+            "T1505.003",
+            "T1534",
+            "T1543.001",
+            "T1543.002",
+            "T1543.004",
+            "T1546.002",
+            "T1546.004",
+            "T1546.005",
+            "T1546.006",
+            "T1546.008",
+            "T1546.009",
+            "T1546.010",
+            "T1546.013",
+            "T1546.014",
+            "T1546.015",
+            "T1547.001",
+            "T1547.006",
+            "T1547.007",
+            "T1547.008",
+            "T1547.009",
+            "T1547.011",
+            "T1548.002",
+            "T1548.003",
+            "T1552.001",
+            "T1552.003",
+            "T1555",
+            "T1555.003",
+            "T1556.002",
+            "T1556.003",
+            "T1560",
+            "T1560.001",
+            "T1560.002",
+            "T1560.003",
+            "T1562.003",
+            "T1564.002",
+            "T1564.003",
+            "T1564.006",
+            "T1564.007",
+            "T1565.001",
+            "T1565.003",
+            "T1566.001",
+            "T1566.002",
+            "T1566.003",
+            "T1573.002",
+            "T1574.001",
+            "T1574.002",
+            "T1574.004",
+            "T1574.006",
+            "T1574.007",
+            "T1574.008",
+            "T1574.009",
+            "T1574.012",
+            "T1649"
+          ],
           "children": [
             {
               "id": "D3-FCOA",
               "iri": "FileContentAnalysis",
               "en": "File Content Analysis",
               "definition": "Employing a pattern matching algorithm to statically analyze the content of files.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-FCR",
                   "iri": "FileContentRules",
                   "en": "File Content Rules",
                   "definition": "Employing a pattern matching rule language to analyze the content of files.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -726,6 +1589,46 @@
               "iri": "DynamicAnalysis",
               "en": "Dynamic Analysis",
               "definition": "Executing or opening a file in a synthetic \"sandbox\" environment to determine if the file is a malicious program or if the file exploits another program such as a document reader.",
+              "attack": [
+                "T1016",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1036.001",
+                "T1036.003",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1055.003",
+                "T1059",
+                "T1114.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1204.002",
+                "T1218.005",
+                "T1220",
+                "T1505.003",
+                "T1534",
+                "T1546.002",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.013",
+                "T1546.015",
+                "T1547.001",
+                "T1547.009",
+                "T1548.002",
+                "T1562.003",
+                "T1564.007",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009"
+              ],
               "children": []
             },
             {
@@ -733,6 +1636,46 @@
               "iri": "EmulatedFileAnalysis",
               "en": "Emulated File Analysis",
               "definition": "Emulating instructions in a file looking for specific patterns.",
+              "attack": [
+                "T1016",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1036.001",
+                "T1036.003",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1055.003",
+                "T1059",
+                "T1114.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1204.002",
+                "T1218.005",
+                "T1220",
+                "T1505.003",
+                "T1534",
+                "T1546.002",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.013",
+                "T1546.015",
+                "T1547.001",
+                "T1547.009",
+                "T1548.002",
+                "T1562.003",
+                "T1564.007",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009"
+              ],
               "children": []
             },
             {
@@ -740,6 +1683,7 @@
               "iri": "FileHashing",
               "en": "File Hashing",
               "definition": "Employing file hash comparisons to detect known malware.",
+              "attack": [],
               "children": []
             }
           ]
@@ -749,12 +1693,19 @@
           "iri": "IdentifierAnalysis",
           "en": "Identifier Analysis",
           "definition": "Analyzing identifier artifacts such as IP address, domain names, or URL(I)s.",
+          "attack": [],
           "children": [
             {
               "id": "D3-UA",
               "iri": "URLAnalysis",
               "en": "URL Analysis",
               "definition": "Determining if a URL is benign or malicious by analyzing the URL or its components.",
+              "attack": [
+                "T1189",
+                "T1204.001",
+                "T1566.002",
+                "T1566.003"
+              ],
               "children": []
             },
             {
@@ -762,12 +1713,14 @@
               "iri": "IdentifierReputationAnalysis",
               "en": "Identifier Reputation Analysis",
               "definition": "Analyzing the reputation of an identifier.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-FHRA",
                   "iri": "FileHashReputationAnalysis",
                   "en": "File Hash Reputation Analysis",
                   "definition": "Analyzing the reputation of a file hash.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -775,6 +1728,7 @@
                   "iri": "IPReputationAnalysis",
                   "en": "IP Reputation Analysis",
                   "definition": "Analyzing the reputation of an IP address.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -782,6 +1736,7 @@
                   "iri": "DomainNameReputationAnalysis",
                   "en": "Domain Name Reputation Analysis",
                   "definition": "Analyzing the reputation of a domain name.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -789,6 +1744,12 @@
                   "iri": "URLReputationAnalysis",
                   "en": "URL Reputation Analysis",
                   "definition": "Analyzing the reputation of a URL.",
+                  "attack": [
+                    "T1189",
+                    "T1204.001",
+                    "T1566.002",
+                    "T1566.003"
+                  ],
                   "children": []
                 }
               ]
@@ -798,6 +1759,15 @@
               "iri": "HomoglyphDetection",
               "en": "Homoglyph Detection",
               "definition": "Comparing strings using a variety of techniques to determine if a deceptive or malicious string is being presented to a user.",
+              "attack": [
+                "T1114.001",
+                "T1189",
+                "T1204.001",
+                "T1534",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003"
+              ],
               "children": []
             },
             {
@@ -805,6 +1775,12 @@
               "iri": "IdentifierActivityAnalysis",
               "en": "Identifier Activity Analysis",
               "definition": "Taking known malicious identifiers and determining if they are present in a system.",
+              "attack": [
+                "T1189",
+                "T1204.001",
+                "T1566.002",
+                "T1566.003"
+              ],
               "children": []
             }
           ]
@@ -814,12 +1790,29 @@
           "iri": "ProcessAnalysis",
           "en": "Process Analysis",
           "definition": "Process Analysis consists of observing a running application process and analyzing it to watch for certain behaviors or conditions which may indicate adversary activity. Analysis can occur inside of the process or through a third-party monitoring application. Examples include monitoring system and privileged calls, monitoring process initiation chains, and memory boundary allocations.",
+          "attack": [],
           "children": [
             {
               "id": "D3-PSMD",
               "iri": "ProcessSelf-ModificationDetection",
               "en": "Process Self-Modification Detection",
               "definition": "Detects processes that modify, change, or replace their own code at runtime.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1033",
+                "T1053",
+                "T1053.005",
+                "T1212",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": []
             },
             {
@@ -827,6 +1820,9 @@
               "iri": "DatabaseQueryStringAnalysis",
               "en": "Database Query String Analysis",
               "definition": "Analyzing database queries to detect [SQL Injection](https://capec.mitre.org/data/definitions/66.html).",
+              "attack": [
+                "T1190"
+              ],
               "children": []
             },
             {
@@ -834,6 +1830,7 @@
               "iri": "ScriptExecutionAnalysis",
               "en": "Script Execution Analysis",
               "definition": "Analyzing the execution of a script to detect unauthorized user activity.",
+              "attack": [],
               "children": []
             },
             {
@@ -841,6 +1838,13 @@
               "iri": "ShadowStackComparisons",
               "en": "Shadow Stack Comparisons",
               "definition": "Comparing a call stack in system memory with a shadow call stack maintained by the processor to determine unauthorized shellcode activity.",
+              "attack": [
+                "T1068",
+                "T1203",
+                "T1210",
+                "T1211",
+                "T1212"
+              ],
               "children": []
             },
             {
@@ -848,6 +1852,7 @@
               "iri": "FileAccessPatternAnalysis",
               "en": "File Access Pattern Analysis",
               "definition": "Analyzing the files accessed by a process to identify unauthorized activity.",
+              "attack": [],
               "children": []
             },
             {
@@ -855,6 +1860,7 @@
               "iri": "IndirectBranchCallAnalysis",
               "en": "Indirect Branch Call Analysis",
               "definition": "Analyzing vendor specific branch call recording in order to detect ROP style attacks.",
+              "attack": [],
               "children": []
             },
             {
@@ -862,12 +1868,58 @@
               "iri": "SystemCallAnalysis",
               "en": "System Call Analysis",
               "definition": "Analyzing system calls to determine whether a process is exhibiting unauthorized behavior.",
+              "attack": [
+                "T1007",
+                "T1010",
+                "T1012",
+                "T1016",
+                "T1018",
+                "T1033",
+                "T1036.005",
+                "T1047",
+                "T1049",
+                "T1053",
+                "T1055.001",
+                "T1055.003",
+                "T1055.004",
+                "T1055.005",
+                "T1055.008",
+                "T1055.013",
+                "T1055.014",
+                "T1057",
+                "T1074.001",
+                "T1082",
+                "T1106",
+                "T1113",
+                "T1124",
+                "T1134.004",
+                "T1140",
+                "T1218.001",
+                "T1218.002",
+                "T1218.003",
+                "T1218.005",
+                "T1218.011",
+                "T1218.013",
+                "T1220",
+                "T1497.003",
+                "T1505.001",
+                "T1518.001",
+                "T1546.009",
+                "T1546.010",
+                "T1548.002",
+                "T1548.004",
+                "T1555.003"
+              ],
               "children": [
                 {
                   "id": "D3-FCA",
                   "iri": "FileCreationAnalysis",
                   "en": "File Creation Analysis",
                   "definition": "Analyzing the properties of file create system call invocations.",
+                  "attack": [
+                    "T1074.001",
+                    "T1218.001"
+                  ],
                   "children": []
                 }
               ]
@@ -877,6 +1929,15 @@
               "iri": "ProcessCodeSegmentVerification",
               "en": "Process Code Segment Verification",
               "definition": "Comparing the \"text\" or \"code\" memory segments to a source of truth.",
+              "attack": [
+                "T1055.012",
+                "T1056.004",
+                "T1068",
+                "T1203",
+                "T1210",
+                "T1211",
+                "T1212"
+              ],
               "children": []
             },
             {
@@ -884,12 +1945,66 @@
               "iri": "ProcessSpawnAnalysis",
               "en": "Process Spawn Analysis",
               "definition": "Analyzing spawn arguments or attributes of a process to detect processes that are unauthorized.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1007",
+                "T1010",
+                "T1016",
+                "T1018",
+                "T1033",
+                "T1047",
+                "T1053",
+                "T1053.005",
+                "T1055.004",
+                "T1055.013",
+                "T1057",
+                "T1082",
+                "T1124",
+                "T1134.004",
+                "T1140",
+                "T1212",
+                "T1218.001",
+                "T1218.002",
+                "T1218.003",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1505.001",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1546.009",
+                "T1546.010",
+                "T1548.002",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": [
                 {
                   "id": "D3-PLA",
                   "iri": "ProcessLineageAnalysis",
                   "en": "Process Lineage Analysis",
                   "definition": "Identification of suspicious processes executing on an end-point device by examining the ancestry and siblings of a process, and the associated metadata of each node on the tree, such as process execution, duration, and order relative to siblings and ancestors.",
+                  "attack": [
+                    "T1003.001",
+                    "T1003.002",
+                    "T1003.004",
+                    "T1033",
+                    "T1053",
+                    "T1053.005",
+                    "T1212",
+                    "T1505.002",
+                    "T1505.003",
+                    "T1546.007",
+                    "T1550",
+                    "T1556",
+                    "T1562.001",
+                    "T1621"
+                  ],
                   "children": []
                 }
               ]
@@ -901,12 +2016,19 @@
           "iri": "MessageAnalysis",
           "en": "Message Analysis",
           "definition": "Analyzing email or instant message content to detect unauthorized activity.",
+          "attack": [],
           "children": [
             {
               "id": "D3-SMRA",
               "iri": "SenderMTAReputationAnalysis",
               "en": "Sender MTA Reputation Analysis",
               "definition": "Characterizing the reputation of mail transfer agents (MTA) to determine the security risk in emails.",
+              "attack": [
+                "T1114.001",
+                "T1534",
+                "T1566.001",
+                "T1566.002"
+              ],
               "children": []
             },
             {
@@ -914,6 +2036,12 @@
               "iri": "SenderReputationAnalysis",
               "en": "Sender Reputation Analysis",
               "definition": "Ascertaining sender reputation based on information associated with a message (e.g. email/instant messaging).",
+              "attack": [
+                "T1114.001",
+                "T1534",
+                "T1566.001",
+                "T1566.002"
+              ],
               "children": []
             }
           ]
@@ -923,12 +2051,19 @@
           "iri": "PlatformMonitoring",
           "en": "Platform Monitoring",
           "definition": "Monitoring platform components such as operating systems software, hardware devices, or firmware.",
+          "attack": [],
           "children": [
             {
               "id": "D3-FEMC",
               "iri": "FirmwareEmbeddedMonitoringCode",
               "en": "Firmware Embedded Monitoring Code",
               "definition": "Monitoring code is injected into firmware for integrity monitoring of firmware and firmware data.",
+              "attack": [
+                "T1014",
+                "T1542.001",
+                "T1542.002",
+                "T1542.004"
+              ],
               "children": []
             },
             {
@@ -936,6 +2071,7 @@
               "iri": "OperatingModeMonitoring",
               "en": "Operating Mode Monitoring",
               "definition": "Detects operating modes such as Program, Run, Remote, or Stop.",
+              "attack": [],
               "children": []
             },
             {
@@ -943,6 +2079,21 @@
               "iri": "OperationalProcessMonitoring",
               "en": "Operational Process Monitoring",
               "definition": "Monitoring physical parameters and operator actions related to an operational environment.",
+              "attack": [
+                "T1003.006",
+                "T1070.001",
+                "T1070.003",
+                "T1110.001",
+                "T1110.003",
+                "T1110.004",
+                "T1134.002",
+                "T1134.003",
+                "T1140",
+                "T1187",
+                "T1546.003",
+                "T1546.005",
+                "T1548.003"
+              ],
               "children": []
             },
             {
@@ -950,12 +2101,29 @@
               "iri": "ApplicationPerformanceMonitoring",
               "en": "Application Performance Monitoring",
               "definition": "Monitoring the count and duration of the application or program cycle.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-AEM",
                   "iri": "ApplicationExceptionMonitoring",
                   "en": "Application Exception Monitoring",
                   "definition": "Monitoring the failures of system counters and timers.",
+                  "attack": [
+                    "T1003.005",
+                    "T1003.006",
+                    "T1070.001",
+                    "T1070.003",
+                    "T1110.001",
+                    "T1110.003",
+                    "T1110.004",
+                    "T1134.002",
+                    "T1134.003",
+                    "T1140",
+                    "T1187",
+                    "T1546.003",
+                    "T1546.005",
+                    "T1548.003"
+                  ],
                   "children": []
                 }
               ]
@@ -965,6 +2133,107 @@
               "iri": "FileIntegrityMonitoring",
               "en": "File Integrity Monitoring",
               "definition": "Detecting any suspicious changes to files in a computer system.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -972,6 +2241,7 @@
               "iri": "PlatformUptimeMonitoring",
               "en": "Platform Uptime Monitoring",
               "definition": "Monitor the amount of time since the last power cycle or restart.",
+              "attack": [],
               "children": []
             },
             {
@@ -979,12 +2249,19 @@
               "iri": "FirmwareVerification",
               "en": "Firmware Verification",
               "definition": "Cryptographically verifying firmware integrity.",
+              "attack": [
+                "T1014",
+                "T1542.001",
+                "T1542.002",
+                "T1542.004"
+              ],
               "children": [
                 {
                   "id": "D3-PFV",
                   "iri": "PeripheralFirmwareVerification",
                   "en": "Peripheral Firmware Verification",
                   "definition": "Cryptographically verifying peripheral firmware integrity.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -992,6 +2269,10 @@
                   "iri": "SystemFirmwareVerification",
                   "en": "System Firmware Verification",
                   "definition": "Cryptographically verifying installed system firmware integrity.",
+                  "attack": [
+                    "T1542.001",
+                    "T1542.004"
+                  ],
                   "children": []
                 }
               ]
@@ -1001,6 +2282,12 @@
               "iri": "FirmwareBehaviorAnalysis",
               "en": "Firmware Behavior Analysis",
               "definition": "Analyzing the behavior of embedded code in firmware and looking for anomalous behavior and suspicious activity.",
+              "attack": [
+                "T1014",
+                "T1542.001",
+                "T1542.002",
+                "T1542.004"
+              ],
               "children": []
             },
             {
@@ -1008,12 +2295,18 @@
               "iri": "OperatingSystemMonitoring",
               "en": "Operating System Monitoring",
               "definition": "The operating system software, for D3FEND's purposes, includes the kernel and its process management functions, hardware drivers, initialization or boot logic. It also includes and other key system daemons and their configuration. The monitoring or analysis of these components for unauthorized activity constitute **Operating System Monitoring**.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-SDM",
                   "iri": "SystemDaemonMonitoring",
                   "en": "System Daemon Monitoring",
                   "definition": "Tracking changes to the state or configuration of critical system level processes.",
+                  "attack": [
+                    "T1053",
+                    "T1053.005",
+                    "T1562.001"
+                  ],
                   "children": []
                 },
                 {
@@ -1021,6 +2314,10 @@
                   "iri": "UserSessionInitConfigAnalysis",
                   "en": "User Session Init Config Analysis",
                   "definition": "Analyzing modifications to user session config files such as .bashrc or .bash_profile.",
+                  "attack": [
+                    "T1546.004",
+                    "T1564.002"
+                  ],
                   "children": []
                 },
                 {
@@ -1028,6 +2325,11 @@
                   "iri": "InputDeviceAnalysis",
                   "en": "Input Device Analysis",
                   "definition": "Operating system level mechanisms to prevent abusive input device exploitation.",
+                  "attack": [
+                    "T1056.001",
+                    "T1123",
+                    "T1125"
+                  ],
                   "children": []
                 },
                 {
@@ -1035,6 +2337,10 @@
                   "iri": "ScheduledJobAnalysis",
                   "en": "Scheduled Job Analysis",
                   "definition": "Analysis of source files, processes, destination files, or destination servers associated with a scheduled job to detect unauthorized use of job scheduling.",
+                  "attack": [
+                    "T1036.004",
+                    "T1053"
+                  ],
                   "children": []
                 },
                 {
@@ -1042,6 +2348,15 @@
                   "iri": "EndpointHealthBeacon",
                   "en": "Endpoint Health Beacon",
                   "definition": "Monitoring the security status of an endpoint by sending periodic messages with health status, where absence of a response may indicate that the endpoint has been compromised.",
+                  "attack": [
+                    "T1114.002",
+                    "T1505.002",
+                    "T1505.003",
+                    "T1562.013",
+                    "T1578.002",
+                    "T1578.003",
+                    "T1578.004"
+                  ],
                   "children": []
                 },
                 {
@@ -1049,12 +2364,33 @@
                   "iri": "SystemFileAnalysis",
                   "en": "System File Analysis",
                   "definition": "Monitoring system files such as authentication databases, configuration files, system logs, and system executables for modification or tampering.",
+                  "attack": [
+                    "T1003.007",
+                    "T1018",
+                    "T1036.003",
+                    "T1055.009",
+                    "T1070.002",
+                    "T1543.002",
+                    "T1548.003",
+                    "T1556.003",
+                    "T1574.006"
+                  ],
                   "children": [
                     {
                       "id": "D3-SBV",
                       "iri": "ServiceBinaryVerification",
                       "en": "Service Binary Verification",
                       "definition": "Analyzing changes in service binary files by comparing to a source of truth.",
+                      "attack": [
+                        "T1056.003",
+                        "T1072",
+                        "T1212",
+                        "T1489",
+                        "T1564.006",
+                        "T1574.005",
+                        "T1574.010",
+                        "T1649"
+                      ],
                       "children": []
                     }
                   ]
@@ -1064,6 +2400,15 @@
                   "iri": "MemoryBoundaryTracking",
                   "en": "Memory Boundary Tracking",
                   "definition": "Analyzing a call stack for return addresses which point to unexpected  memory locations.",
+                  "attack": [
+                    "T1055.012",
+                    "T1056.004",
+                    "T1068",
+                    "T1203",
+                    "T1210",
+                    "T1211",
+                    "T1212"
+                  ],
                   "children": []
                 },
                 {
@@ -1071,6 +2416,13 @@
                   "iri": "SystemInitConfigAnalysis",
                   "en": "System Init Config Analysis",
                   "definition": "Analysis of any system process startup configuration.",
+                  "attack": [
+                    "T1037.004",
+                    "T1037.005",
+                    "T1547.001",
+                    "T1562.009",
+                    "T1574.011"
+                  ],
                   "children": []
                 }
               ]
@@ -1082,12 +2434,14 @@
           "iri": "PhysicalAccessMonitoring",
           "en": "Physical Access Monitoring",
           "definition": "Monitoring the physical access of a specified environment through detection, recording, reviewing, and logging of who/what enters and exists areas.",
+          "attack": [],
           "children": [
             {
               "id": "D3-MSM",
               "iri": "MotionSensorMonitoring",
               "en": "Motion Sensor Monitoring",
               "definition": "Monitoring events from motion detectors (e.g., passive IR, microwave, dual-technology) to detect presence or movement within protected areas.",
+              "attack": [],
               "children": []
             },
             {
@@ -1095,6 +2449,7 @@
               "iri": "ProximitySensorMonitoring",
               "en": "Proximity Sensor Monitoring",
               "definition": "Monitoring events from proximity sensors that indicate a credential or tagged asset is within the sensor’s read range or a defined zone. Common enabling technologies include RFID, Bluetooth Low Energy (BLE), and Ultra-Wideband (UWB).",
+              "attack": [],
               "children": []
             },
             {
@@ -1102,6 +2457,9 @@
               "iri": "VideoSurveillance",
               "en": "Video Surveillance",
               "definition": "Monitoring of physical areas via camera video feeds to deter, detect, and investigate unauthorized access and related security events.",
+              "attack": [
+                "T1125"
+              ],
               "children": []
             },
             {
@@ -1109,6 +2467,7 @@
               "iri": "ElectronicLockMonitoring",
               "en": "Electronic Lock Monitoring",
               "definition": "Monitoring electronic lock and door hardware states and access events (e.g., locked/unlocked, access granted/denied, door forced/held, tamper) to detect and respond to unauthorized entry.",
+              "attack": [],
               "children": []
             }
           ]
@@ -1118,12 +2477,87 @@
           "iri": "NetworkTrafficAnalysis",
           "en": "Network Traffic Analysis",
           "definition": "Analyzing intercepted or summarized computer network traffic to detect unauthorized activity.",
+          "attack": [],
           "children": [
             {
               "id": "D3-NTCD",
               "iri": "NetworkTrafficCommunityDeviation",
               "en": "Network Traffic Community Deviation",
               "definition": "Establishing baseline communities of network hosts and identifying statistically divergent inter-community communication.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1131,6 +2565,14 @@
               "iri": "InboundSessionVolumeAnalysis",
               "en": "Inbound Session Volume Analysis",
               "definition": "Analyzing inbound network session or connection attempt volume.",
+              "attack": [
+                "T1190",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1566.001",
+                "T1566.002"
+              ],
               "children": []
             },
             {
@@ -1138,6 +2580,10 @@
               "iri": "FileCarving",
               "en": "File Carving",
               "definition": "Identifying and extracting files from network application protocols through the use of network stream reassembly software.",
+              "attack": [
+                "T1071.002",
+                "T1570"
+              ],
               "children": []
             },
             {
@@ -1145,6 +2591,16 @@
               "iri": "AdministrativeNetworkActivityAnalysis",
               "en": "Administrative Network Activity Analysis",
               "definition": "Detection of unauthorized use of administrative network protocols by analyzing network activity against a baseline.",
+              "attack": [
+                "T1003.006",
+                "T1047",
+                "T1098.001",
+                "T1110.003",
+                "T1110.004",
+                "T1207",
+                "T1546.003",
+                "T1546.008"
+              ],
               "children": []
             },
             {
@@ -1152,6 +2608,80 @@
               "iri": "NetworkTrafficSignatureAnalysis",
               "en": "Network Traffic Signature Analysis",
               "definition": "Analyzing network traffic and compares it to known signatures",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1159,6 +2689,7 @@
               "iri": "ByteSequenceEmulation",
               "en": "Byte Sequence Emulation",
               "definition": "Analyzing sequences of bytes and determining if they likely represent malicious shellcode.",
+              "attack": [],
               "children": []
             },
             {
@@ -1166,6 +2697,23 @@
               "iri": "ConnectionAttemptAnalysis",
               "en": "Connection Attempt Analysis",
               "definition": "Analyzing failed connections in a network to detect unauthorized activity.",
+              "attack": [
+                "T1003.006",
+                "T1021",
+                "T1047",
+                "T1090.001",
+                "T1098.001",
+                "T1110.003",
+                "T1110.004",
+                "T1197",
+                "T1199",
+                "T1207",
+                "T1210",
+                "T1546.003",
+                "T1546.008",
+                "T1557.001",
+                "T1570"
+              ],
               "children": []
             },
             {
@@ -1173,6 +2721,11 @@
               "iri": "DNSTrafficAnalysis",
               "en": "DNS Traffic Analysis",
               "definition": "Analysis of domain name metadata, including name and DNS records, to determine whether the domain is likely to resolve to an undesirable host.",
+              "attack": [
+                "T1040",
+                "T1071.004",
+                "T1568"
+              ],
               "children": []
             },
             {
@@ -1180,6 +2733,9 @@
               "iri": "RPCTrafficAnalysis",
               "en": "RPC Traffic Analysis",
               "definition": "Monitoring the activity of remote procedure calls in communication traffic to establish standard protocol operations and potential attacker activities.",
+              "attack": [
+                "T1558.003"
+              ],
               "children": []
             },
             {
@@ -1187,6 +2743,38 @@
               "iri": "RelayPatternAnalysis",
               "en": "Relay Pattern Analysis",
               "definition": "The detection of an internal host relaying traffic between the internal network and the external network.",
+              "attack": [
+                "T1001",
+                "T1008",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1132",
+                "T1197",
+                "T1204.001",
+                "T1219",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1194,12 +2782,21 @@
               "iri": "CertificateAnalysis",
               "en": "Certificate Analysis",
               "definition": "Analyzing Public Key Infrastructure certificates to detect if they have been misconfigured or spoofed using both network traffic, certificate fields and third-party logs.",
+              "attack": [
+                "T1041",
+                "T1048.002",
+                "T1071",
+                "T1071.001",
+                "T1573.002",
+                "T1649"
+              ],
               "children": [
                 {
                   "id": "D3-PCA",
                   "iri": "PassiveCertificateAnalysis",
                   "en": "Passive Certificate Analysis",
                   "definition": "Collecting host certificates from network traffic or other passive sources like a certificate transparency log and analyzing them for unauthorized activity.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -1207,6 +2804,7 @@
                   "iri": "ActiveCertificateAnalysis",
                   "en": "Active Certificate Analysis",
                   "definition": "Actively collecting PKI certificates by connecting to the server and downloading its server certificates for analysis.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1216,12 +2814,87 @@
               "iri": "ApplicationProtocolCommandAnalysis",
               "en": "Application Protocol Command Analysis",
               "definition": "Analyzing application protocol level remote commands to detect unauthorized activity.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": [
                 {
                   "id": "D3-RFUM",
                   "iri": "RemoteFirmwareUpdateMonitoring",
                   "en": "Remote Firmware Update Monitoring",
                   "definition": "Monitoring of remote firmware update commands to identify unauthorized software installations.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1231,6 +2904,80 @@
               "iri": "PerHostDownload-UploadRatioAnalysis",
               "en": "Per Host Download-Upload Ratio Analysis",
               "definition": "Detecting anomalies that indicate malicious activity by comparing the amount of data downloaded versus data uploaded by a host.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1238,6 +2985,80 @@
               "iri": "Client-serverPayloadProfiling",
               "en": "Client-server Payload Profiling",
               "definition": "Comparing client-server request and response payloads to a baseline profile to identify outliers.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1245,6 +3066,80 @@
               "iri": "ProtocolMetadataAnomalyDetection",
               "en": "Protocol Metadata Anomaly Detection",
               "definition": "Collecting network communication protocol metadata and identifying statistical outliers.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1252,6 +3147,80 @@
               "iri": "RemoteTerminalSessionDetection",
               "en": "Remote Terminal Session Detection",
               "definition": "Detection of an unauthorized remote live terminal console session by examining network traffic to a network host.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": []
             },
             {
@@ -1259,6 +3228,9 @@
               "iri": "IPCTrafficAnalysis",
               "en": "IPC Traffic Analysis",
               "definition": "Analyzing standard inter process communication (IPC) protocols to detect deviations from normal protocol activity.",
+              "attack": [
+                "T1197"
+              ],
               "children": []
             }
           ]
@@ -1274,12 +3246,66 @@
           "iri": "ExecutionIsolation",
           "en": "Execution Isolation",
           "definition": "Execution Isolation techniques prevent application processes from accessing non-essential system resources, such as memory, devices, or files.",
+          "attack": [],
           "children": [
             {
               "id": "D3-EDL",
               "iri": "ExecutableDenylisting",
               "en": "Executable Denylisting",
               "definition": "Blocking the execution of files on a host in accordance with defined application policy rules.",
+              "attack": [
+                "T1007",
+                "T1010",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1047",
+                "T1053",
+                "T1055.003",
+                "T1055.004",
+                "T1055.013",
+                "T1057",
+                "T1059",
+                "T1082",
+                "T1124",
+                "T1134.004",
+                "T1137.001",
+                "T1140",
+                "T1204.002",
+                "T1218.001",
+                "T1218.002",
+                "T1218.003",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1505.001",
+                "T1505.003",
+                "T1546.002",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.015",
+                "T1547.001",
+                "T1547.009",
+                "T1548.002",
+                "T1562.003",
+                "T1565.003",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009"
+              ],
               "children": []
             },
             {
@@ -1287,6 +3313,22 @@
               "iri": "Kernel-basedProcessIsolation",
               "en": "Kernel-based Process Isolation",
               "definition": "Using kernel-level capabilities to isolate processes.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1033",
+                "T1053",
+                "T1053.005",
+                "T1212",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": []
             },
             {
@@ -1294,6 +3336,23 @@
               "iri": "Application-basedProcessIsolation",
               "en": "Application-based Process Isolation",
               "definition": "Application code which prevents its own subroutines from accessing intra-process / internal memory space.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1033",
+                "T1053",
+                "T1053.005",
+                "T1212",
+                "T1505.001",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": []
             },
             {
@@ -1301,6 +3360,44 @@
               "iri": "Hardware-basedProcessIsolation",
               "en": "Hardware-based Process Isolation",
               "definition": "Preventing one process from writing to the memory space of another process through hardware based address manager implementations.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1007",
+                "T1010",
+                "T1016",
+                "T1018",
+                "T1033",
+                "T1047",
+                "T1053",
+                "T1053.005",
+                "T1055.004",
+                "T1055.013",
+                "T1057",
+                "T1082",
+                "T1124",
+                "T1134.004",
+                "T1140",
+                "T1212",
+                "T1218.001",
+                "T1218.002",
+                "T1218.003",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1505.001",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1546.009",
+                "T1546.010",
+                "T1548.002",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": []
             },
             {
@@ -1308,6 +3405,59 @@
               "iri": "ExecutableAllowlisting",
               "en": "Executable Allowlisting",
               "definition": "Using a digital signature to authenticate a file before opening.",
+              "attack": [
+                "T1007",
+                "T1010",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1047",
+                "T1053",
+                "T1055.003",
+                "T1055.004",
+                "T1055.013",
+                "T1057",
+                "T1059",
+                "T1082",
+                "T1124",
+                "T1134.004",
+                "T1137.001",
+                "T1140",
+                "T1204.002",
+                "T1218.001",
+                "T1218.002",
+                "T1218.003",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1505.001",
+                "T1505.003",
+                "T1546.002",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.015",
+                "T1547.001",
+                "T1547.009",
+                "T1548.002",
+                "T1562.003",
+                "T1565.003",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009"
+              ],
               "children": []
             }
           ]
@@ -1317,18 +3467,74 @@
           "iri": "AccessMediation",
           "en": "Access Mediation",
           "definition": "Access mediation is the process of granting or denying specific requests to: 1) obtain and use information and related information processing services; and 2) enter specific physical facilities (e.g., Federal buildings, military establishments, border crossing entrances). Access mediation decisions should enforce least privilege by granting access for scoped durations to prevent privilege creep and, where applicable, implement just-in-time (JIT) access. Denial decisions may prevent initial access or terminate access that has already been granted, ensuring continuous enforcement of security policies.",
+          "attack": [],
           "children": [
             {
               "id": "D3-SCF",
               "iri": "SystemCallFiltering",
               "en": "System Call Filtering",
               "definition": "Controlling access to local computer system resources with kernel-level capabilities.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1007",
+                "T1010",
+                "T1012",
+                "T1016",
+                "T1018",
+                "T1033",
+                "T1036.005",
+                "T1047",
+                "T1049",
+                "T1053",
+                "T1053.005",
+                "T1055.001",
+                "T1055.003",
+                "T1055.004",
+                "T1055.005",
+                "T1055.008",
+                "T1055.013",
+                "T1055.014",
+                "T1057",
+                "T1074.001",
+                "T1082",
+                "T1106",
+                "T1113",
+                "T1124",
+                "T1134.004",
+                "T1140",
+                "T1212",
+                "T1218.001",
+                "T1218.002",
+                "T1218.003",
+                "T1218.005",
+                "T1218.011",
+                "T1218.013",
+                "T1220",
+                "T1497.003",
+                "T1505.001",
+                "T1505.002",
+                "T1505.003",
+                "T1518.001",
+                "T1546.007",
+                "T1546.009",
+                "T1546.010",
+                "T1548.002",
+                "T1548.004",
+                "T1550",
+                "T1555.003",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": [
                 {
                   "id": "D3-LFAM",
                   "iri": "LocalFileAccessMediation",
                   "en": "Local File Access Mediation",
                   "definition": "Local file access mediation is the process of an operating system granting or denying a specific access request to a local file.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1338,6 +3544,7 @@
               "iri": "OperatingModeRestriction",
               "en": "Operating Mode Restriction",
               "definition": "Restricting unauthorized changes to the operating mode prevents devices from switching into inappropriate or vulnerable states during normal use.",
+              "attack": [],
               "children": []
             },
             {
@@ -1345,6 +3552,28 @@
               "iri": "CredentialTransmissionScoping",
               "en": "Credential Transmission Scoping",
               "definition": "Limiting the transmission of a credential to a scoped set of relying parties.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             },
             {
@@ -1352,12 +3581,14 @@
               "iri": "NetworkAccessMediation",
               "en": "Network Access Mediation",
               "definition": "Network access mediation is the control method for authorizing access to a system by a user (or a process acting on behalf of a user) communicating through a network, including a local area network, a wide area network, and the Internet.",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-RAM",
                   "iri": "RoutingAccessMediation",
                   "en": "Routing Access Mediation",
                   "definition": "Routing access mediation is a network security approach that manages and controls access at the network layer using VPNs, tunneling protocols, firewall rules, and traffic inspection to ensure secure and efficient data routing.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -1365,6 +3596,7 @@
                   "iri": "LANAccessMediation",
                   "en": "LAN Access Mediation",
                   "definition": "LAN access mediation encompasses the application of strict access control policies, systematic verification of devices, and authentication mechanisms to govern connectivity to a Local Area Network.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1374,6 +3606,7 @@
               "iri": "OTVariableAccessRestriction",
               "en": "OT Variable Access Restriction",
               "definition": "Assign read/write access controls on designated registers or data tags to prevent unauthorized writes.",
+              "attack": [],
               "children": []
             },
             {
@@ -1381,12 +3614,14 @@
               "iri": "PhysicalAccessMediation",
               "en": "Physical Access Mediation",
               "definition": "Physical access mediation is the process of granting or denying specific requests to enter specific physical facilities (e.g., Federal buildings, military establishments, border crossing entrances.)",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-EPL",
                   "iri": "PhysicalLocking",
                   "en": "Physical Locking",
                   "definition": "Employ a mechanical locking device for securing moveable portions of physical barriers (e.g., doors, gates, drawers) in a secured position.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1396,6 +3631,15 @@
               "iri": "IOPortRestriction",
               "en": "IO Port Restriction",
               "definition": "Limiting access to computer input/output (IO) ports to restrict unauthorized devices.",
+              "attack": [
+                "T1025",
+                "T1052.001",
+                "T1056.001",
+                "T1091",
+                "T1092",
+                "T1123",
+                "T1125"
+              ],
               "children": []
             },
             {
@@ -1403,18 +3647,39 @@
               "iri": "NetworkResourceAccessMediation",
               "en": "Network Resource Access Mediation",
               "definition": "Control of access to organizational systems and services by users or processes over a network.",
+              "attack": [
+                "T1037.003",
+                "T1039",
+                "T1070.005",
+                "T1074.002",
+                "T1080",
+                "T1213.001",
+                "T1213.002",
+                "T1491.002"
+              ],
               "children": [
                 {
                   "id": "D3-WSAM",
                   "iri": "WebSessionAccessMediation",
                   "en": "Web Session Access Mediation",
                   "definition": "Web session access mediation secures user sessions in web applications by employing robust authentication and integrity validation, along with adaptive threat mitigation techniques, to ensure that access to web resources is authorized and protected from session-related attacks.",
+                  "attack": [
+                    "T1003.001",
+                    "T1003.002",
+                    "T1033",
+                    "T1212",
+                    "T1505.002",
+                    "T1550",
+                    "T1556",
+                    "T1621"
+                  ],
                   "children": [
                     {
                       "id": "D3-EBWSAM",
                       "iri": "Endpoint-basedWebServerAccessMediation",
                       "en": "Endpoint-based Web Server Access Mediation",
                       "definition": "Endpoint-based web server access mediation regulates web server access directly from user endpoints by implementing mechanisms such as client-side certificates and endpoint security software to authenticate devices and ensure compliant access.",
+                      "attack": [],
                       "children": []
                     },
                     {
@@ -1422,6 +3687,7 @@
                       "iri": "Proxy-basedWebServerAccessMediation",
                       "en": "Proxy-based Web Server Access Mediation",
                       "definition": "Proxy-based web server access mediation focuses on the regulation of web server access through intermediary proxy servers.",
+                      "attack": [],
                       "children": []
                     }
                   ]
@@ -1431,6 +3697,107 @@
                   "iri": "RemoteFileAccessMediation",
                   "en": "Remote File Access Mediation",
                   "definition": "Remote file access mediation is the process of managing and securing access to file systems over a network to ensure that only authorized users or processes can interact with remote files.",
+                  "attack": [
+                    "T1003.007",
+                    "T1003.008",
+                    "T1005",
+                    "T1014",
+                    "T1016",
+                    "T1018",
+                    "T1027.001",
+                    "T1027.002",
+                    "T1027.004",
+                    "T1033",
+                    "T1036.001",
+                    "T1036.003",
+                    "T1036.005",
+                    "T1036.006",
+                    "T1037.001",
+                    "T1037.002",
+                    "T1037.003",
+                    "T1037.004",
+                    "T1041",
+                    "T1048.002",
+                    "T1053.004",
+                    "T1055.001",
+                    "T1055.002",
+                    "T1055.003",
+                    "T1055.009",
+                    "T1055.014",
+                    "T1059",
+                    "T1070.002",
+                    "T1070.004",
+                    "T1071",
+                    "T1071.001",
+                    "T1072",
+                    "T1074.001",
+                    "T1083",
+                    "T1114.001",
+                    "T1119",
+                    "T1127.001",
+                    "T1137.001",
+                    "T1137.003",
+                    "T1140",
+                    "T1187",
+                    "T1204.002",
+                    "T1218.005",
+                    "T1218.011",
+                    "T1220",
+                    "T1486",
+                    "T1505.003",
+                    "T1534",
+                    "T1543.001",
+                    "T1543.002",
+                    "T1543.004",
+                    "T1546.002",
+                    "T1546.004",
+                    "T1546.005",
+                    "T1546.006",
+                    "T1546.008",
+                    "T1546.009",
+                    "T1546.010",
+                    "T1546.013",
+                    "T1546.014",
+                    "T1546.015",
+                    "T1547.001",
+                    "T1547.006",
+                    "T1547.007",
+                    "T1547.008",
+                    "T1547.009",
+                    "T1547.011",
+                    "T1548.002",
+                    "T1548.003",
+                    "T1552.001",
+                    "T1552.003",
+                    "T1555",
+                    "T1555.003",
+                    "T1556.002",
+                    "T1556.003",
+                    "T1560",
+                    "T1560.001",
+                    "T1560.002",
+                    "T1560.003",
+                    "T1562.003",
+                    "T1564.002",
+                    "T1564.003",
+                    "T1564.006",
+                    "T1564.007",
+                    "T1565.001",
+                    "T1565.003",
+                    "T1566.001",
+                    "T1566.002",
+                    "T1566.003",
+                    "T1573.002",
+                    "T1574.001",
+                    "T1574.002",
+                    "T1574.004",
+                    "T1574.006",
+                    "T1574.007",
+                    "T1574.008",
+                    "T1574.009",
+                    "T1574.012",
+                    "T1649"
+                  ],
                   "children": []
                 }
               ]
@@ -1442,12 +3809,227 @@
           "iri": "ContentFiltering",
           "en": "Content Filtering",
           "definition": "Content Filtering techniques aid in the process of analyzing an input file for malicious or erroneous content and outputting a sanitized version.",
+          "attack": [
+            "T1003.007",
+            "T1003.008",
+            "T1005",
+            "T1014",
+            "T1016",
+            "T1018",
+            "T1027.001",
+            "T1027.002",
+            "T1027.004",
+            "T1033",
+            "T1036.001",
+            "T1036.003",
+            "T1036.005",
+            "T1036.006",
+            "T1037.001",
+            "T1037.002",
+            "T1037.003",
+            "T1037.004",
+            "T1041",
+            "T1048.002",
+            "T1053.004",
+            "T1055.001",
+            "T1055.002",
+            "T1055.003",
+            "T1055.009",
+            "T1055.014",
+            "T1059",
+            "T1070.002",
+            "T1070.004",
+            "T1071",
+            "T1071.001",
+            "T1072",
+            "T1074.001",
+            "T1083",
+            "T1114.001",
+            "T1119",
+            "T1127.001",
+            "T1137.001",
+            "T1137.003",
+            "T1140",
+            "T1187",
+            "T1204.002",
+            "T1218.005",
+            "T1218.011",
+            "T1220",
+            "T1486",
+            "T1505.003",
+            "T1534",
+            "T1543.001",
+            "T1543.002",
+            "T1543.004",
+            "T1546.002",
+            "T1546.004",
+            "T1546.005",
+            "T1546.006",
+            "T1546.008",
+            "T1546.009",
+            "T1546.010",
+            "T1546.013",
+            "T1546.014",
+            "T1546.015",
+            "T1547.001",
+            "T1547.006",
+            "T1547.007",
+            "T1547.008",
+            "T1547.009",
+            "T1547.011",
+            "T1548.002",
+            "T1548.003",
+            "T1552.001",
+            "T1552.003",
+            "T1555",
+            "T1555.003",
+            "T1556.002",
+            "T1556.003",
+            "T1560",
+            "T1560.001",
+            "T1560.002",
+            "T1560.003",
+            "T1562.003",
+            "T1564.002",
+            "T1564.003",
+            "T1564.006",
+            "T1564.007",
+            "T1565.001",
+            "T1565.003",
+            "T1566.001",
+            "T1566.002",
+            "T1566.003",
+            "T1573.002",
+            "T1574.001",
+            "T1574.002",
+            "T1574.004",
+            "T1574.006",
+            "T1574.007",
+            "T1574.008",
+            "T1574.009",
+            "T1574.012",
+            "T1649"
+          ],
           "children": [
             {
               "id": "D3-CQ",
               "iri": "ContentQuarantine",
               "en": "Content Quarantine",
               "definition": "Transfer content that does not comply with policy to a quarantine zone.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.002",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1518.001",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.001",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.007",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.002",
+                "T1547.003",
+                "T1547.004",
+                "T1547.005",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.010",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1553.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1562.009",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.011",
+                "T1574.012",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -1455,12 +4037,114 @@
               "iri": "ContentModification",
               "en": "Content Modification",
               "definition": "Modify content that does not comply with policy.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": [
                 {
                   "id": "D3-CNE",
                   "iri": "ContentExcision",
                   "en": "Content Excision",
                   "definition": "Removing specific, potentially malicious, parts of content",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -1468,6 +4152,7 @@
                   "iri": "ContentRebuild",
                   "en": "Content Rebuild",
                   "definition": "Rebuild the file according to the spec so any unreferenced components or objects are removed.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -1475,6 +4160,7 @@
                   "iri": "ContentSubstitution",
                   "en": "Content Substitution",
                   "definition": "Modifies specific digital content information by replacing it with something else.",
+                  "attack": [],
                   "children": []
                 },
                 {
@@ -1482,6 +4168,7 @@
                   "iri": "ContentFormatConversion",
                   "en": "Content Format Conversion",
                   "definition": "Content format conversion is mechanical transformation from one format to another which may be normalization or specifically flattening.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1491,18 +4178,23 @@
               "iri": "ContentValidation",
               "en": "Content Validation",
               "definition": "Verify and validate contents complies with policy",
+              "attack": [],
               "children": [
                 {
                   "id": "D3-FFV",
                   "iri": "FileFormatVerification",
                   "en": "File Format Verification",
                   "definition": "Verifying that a file conforms to its expected format specifications",
+                  "attack": [
+                    "T1564.009"
+                  ],
                   "children": [
                     {
                       "id": "D3-FISV",
                       "iri": "FileInternalStructureVerification",
                       "en": "File Internal Structure Verification",
                       "definition": "The process of checking specific static values within a file, such as file signatures or magic numbers, to ensure they match the expected values defined by the file format specification.",
+                      "attack": [],
                       "children": []
                     },
                     {
@@ -1510,6 +4202,7 @@
                       "iri": "FileContentDecompressionChecking",
                       "en": "File Content Decompression Checking",
                       "definition": "Checking if compressed or encoded data sections can be successfully decompressed or decoded. Can follow with further analysis with semantic knowledge",
+                      "attack": [],
                       "children": []
                     },
                     {
@@ -1517,6 +4210,7 @@
                       "iri": "FileMetadataConsistencyValidation",
                       "en": "File Metadata Consistency Validation",
                       "definition": "The process of validating the consistency between a file's metadata and its actual content, ensuring that elements like declared lengths, pointers, and checksums accurately describe the file's content.",
+                      "attack": [],
                       "children": []
                     },
                     {
@@ -1524,12 +4218,14 @@
                       "iri": "FileMetadataValueVerification",
                       "en": "File Metadata Value Verification",
                       "definition": "The process of checking specific static values within a file, such as file signatures or magic numbers, to ensure they match the expected values defined by the file format specification.",
+                      "attack": [],
                       "children": [
                         {
                           "id": "D3-FMBV",
                           "iri": "FileMagicByteVerification",
                           "en": "File Magic Byte Verification",
                           "definition": "Utilizing the magic number to verify the file",
+                          "attack": [],
                           "children": []
                         }
                       ]
@@ -1545,12 +4241,17 @@
           "iri": "NetworkIsolation",
           "en": "Network Isolation",
           "definition": "Network Isolation techniques prevent network hosts from accessing non-essential system network resources.",
+          "attack": [],
           "children": [
             {
               "id": "D3-DNSAL",
               "iri": "DNSAllowlisting",
               "en": "DNS Allowlisting",
               "definition": "Permitting only approved domains and their subdomains to be resolved.",
+              "attack": [
+                "T1071.004",
+                "T1568"
+              ],
               "children": []
             },
             {
@@ -1558,12 +4259,20 @@
               "iri": "DNSDenylisting",
               "en": "DNS Denylisting",
               "definition": "Blocking DNS Network Traffic based on criteria such as IP address, domain name, or DNS query type.",
+              "attack": [
+                "T1071.004",
+                "T1568"
+              ],
               "children": [
                 {
                   "id": "D3-RRID",
                   "iri": "ReverseResolutionIPDenylisting",
                   "en": "Reverse Resolution IP Denylisting",
                   "definition": "Blocking a reverse lookup based on the query's IP address value.",
+                  "attack": [
+                    "T1071.004",
+                    "T1568"
+                  ],
                   "children": []
                 },
                 {
@@ -1571,12 +4280,17 @@
                   "iri": "ForwardResolutionDomainDenylisting",
                   "en": "Forward Resolution Domain Denylisting",
                   "definition": "Blocking a lookup based on the query's domain name value.",
+                  "attack": [
+                    "T1071.004",
+                    "T1568"
+                  ],
                   "children": [
                     {
                       "id": "D3-HDDL",
                       "iri": "HierarchicalDomainDenylisting",
                       "en": "Hierarchical Domain Denylisting",
                       "definition": "Blocking the resolution of any subdomain of a specified domain name.",
+                      "attack": [],
                       "children": []
                     },
                     {
@@ -1584,6 +4298,7 @@
                       "iri": "HomoglyphDenylisting",
                       "en": "Homoglyph Denylisting",
                       "definition": "Blocking DNS queries that are deceptively similar to legitimate domain names.",
+                      "attack": [],
                       "children": []
                     }
                   ]
@@ -1593,6 +4308,7 @@
                   "iri": "ForwardResolutionIPDenylisting",
                   "en": "Forward Resolution IP Denylisting",
                   "definition": "Blocking a DNS lookup's answer's IP address value.",
+                  "attack": [],
                   "children": []
                 }
               ]
@@ -1602,6 +4318,7 @@
               "iri": "BroadcastDomainIsolation",
               "en": "Broadcast Domain Isolation",
               "definition": "Broadcast isolation restricts the number of computers a host can contact on their LAN.",
+              "attack": [],
               "children": []
             },
             {
@@ -1609,12 +4326,118 @@
               "iri": "NetworkTrafficFiltering",
               "en": "Network Traffic Filtering",
               "definition": "Restricting network traffic originating from any location.",
+              "attack": [
+                "T1001",
+                "T1003.006",
+                "T1008",
+                "T1011",
+                "T1018",
+                "T1020",
+                "T1021",
+                "T1021.001",
+                "T1021.004",
+                "T1029",
+                "T1030",
+                "T1041",
+                "T1047",
+                "T1048",
+                "T1048.001",
+                "T1048.002",
+                "T1048.003",
+                "T1071",
+                "T1071.001",
+                "T1071.002",
+                "T1071.003",
+                "T1071.004",
+                "T1090.001",
+                "T1090.002",
+                "T1090.003",
+                "T1090.004",
+                "T1095",
+                "T1098.001",
+                "T1102",
+                "T1104",
+                "T1105",
+                "T1110.003",
+                "T1110.004",
+                "T1132",
+                "T1185",
+                "T1189",
+                "T1190",
+                "T1197",
+                "T1199",
+                "T1204.001",
+                "T1205",
+                "T1205.001",
+                "T1207",
+                "T1210",
+                "T1218.003",
+                "T1219",
+                "T1498.001",
+                "T1498.002",
+                "T1499.002",
+                "T1542.005",
+                "T1546.003",
+                "T1546.008",
+                "T1550.001",
+                "T1550.004",
+                "T1557",
+                "T1557.001",
+                "T1557.003",
+                "T1558.003",
+                "T1563",
+                "T1565.002",
+                "T1566.001",
+                "T1566.002",
+                "T1567",
+                "T1567.001",
+                "T1567.002",
+                "T1568",
+                "T1570",
+                "T1571",
+                "T1572",
+                "T1573",
+                "T1573.001",
+                "T1573.002"
+              ],
               "children": [
                 {
                   "id": "D3-OTF",
                   "iri": "OutboundTrafficFiltering",
                   "en": "Outbound Traffic Filtering",
                   "definition": "Restricting network traffic originating from a private host or enclave destined towards untrusted networks.",
+                  "attack": [
+                    "T1001",
+                    "T1008",
+                    "T1048.001",
+                    "T1048.002",
+                    "T1048.003",
+                    "T1071",
+                    "T1071.001",
+                    "T1071.002",
+                    "T1071.003",
+                    "T1071.004",
+                    "T1090.002",
+                    "T1090.003",
+                    "T1090.004",
+                    "T1095",
+                    "T1102",
+                    "T1104",
+                    "T1105",
+                    "T1132",
+                    "T1197",
+                    "T1204.001",
+                    "T1219",
+                    "T1567",
+                    "T1567.001",
+                    "T1567.002",
+                    "T1568",
+                    "T1571",
+                    "T1572",
+                    "T1573",
+                    "T1573.001",
+                    "T1573.002"
+                  ],
                   "children": []
                 },
                 {
@@ -1622,12 +4445,26 @@
                   "iri": "InboundTrafficFiltering",
                   "en": "Inbound Traffic Filtering",
                   "definition": "Restricting network traffic originating from untrusted networks destined towards a private host or enclave.",
+                  "attack": [
+                    "T1190",
+                    "T1498.001",
+                    "T1498.002",
+                    "T1499.002",
+                    "T1566.001",
+                    "T1566.002"
+                  ],
                   "children": [
                     {
                       "id": "D3-EF",
                       "iri": "EmailFiltering",
                       "en": "Email Filtering",
                       "definition": "Filtering incoming email traffic based on specific criteria.",
+                      "attack": [
+                        "T1114.001",
+                        "T1534",
+                        "T1566.001",
+                        "T1566.002"
+                      ],
                       "children": []
                     }
                   ]
@@ -1639,6 +4476,7 @@
               "iri": "DirectionalNetworkLink",
               "en": "Directional Network Link",
               "definition": "Enforce one-way network communication by preventing two-way communication.",
+              "attack": [],
               "children": []
             },
             {
@@ -1646,6 +4484,7 @@
               "iri": "EncryptedTunnels",
               "en": "Encrypted Tunnels",
               "definition": "Encrypted encapsulation of routable network traffic.",
+              "attack": [],
               "children": []
             }
           ]
@@ -1655,12 +4494,14 @@
           "iri": "AccessPolicyAdministration",
           "en": "Access Policy Administration",
           "definition": "Access policy administration is the systematic process of defining, implementing, and managing access control policies that dictate user permissions to resources.",
+          "attack": [],
           "children": [
             {
               "id": "D3-UGPH",
               "iri": "UserGroupPermissions",
               "en": "User Group Permissions",
               "definition": "Access control where access is determined based on attributes associated with users and the objects being accessed.",
+              "attack": [],
               "children": []
             },
             {
@@ -1668,6 +4509,25 @@
               "iri": "UserAccountPermissions",
               "en": "User Account Permissions",
               "definition": "Restricting a user account's access to resources.",
+              "attack": [
+                "T1078",
+                "T1078.001",
+                "T1078.002",
+                "T1078.003",
+                "T1078.004",
+                "T1087.001",
+                "T1087.002",
+                "T1087.004",
+                "T1098",
+                "T1098.002",
+                "T1098.003",
+                "T1136",
+                "T1136.001",
+                "T1136.002",
+                "T1136.003",
+                "T1531",
+                "T1548.005"
+              ],
               "children": []
             },
             {
@@ -1675,6 +4535,108 @@
               "iri": "LocalFilePermissions",
               "en": "Local File Permissions",
               "definition": "Local file permissions is the systematic process of defining, implementing, and managing access control policies that dictate user permissions for accessing files on a local system through the configuration of operating system functionality.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1037.005",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -1682,6 +4644,9 @@
               "iri": "DomainTrustPolicy",
               "en": "Domain Trust Policy",
               "definition": "Restricting inter-domain trust by modifying domain configuration.",
+              "attack": [
+                "T1033"
+              ],
               "children": []
             }
           ]
@@ -1697,12 +4662,14 @@
           "iri": "DecoyObject",
           "en": "Decoy Object",
           "definition": "A Decoy Object is created and deployed for the purposes of deceiving attackers.",
+          "attack": [],
           "children": [
             {
               "id": "D3-DPR",
               "iri": "DecoyPublicRelease",
               "en": "Decoy Public Release",
               "definition": "Issuing publicly released media to deceive adversaries.",
+              "attack": [],
               "children": []
             },
             {
@@ -1710,6 +4677,16 @@
               "iri": "DecoyNetworkResource",
               "en": "Decoy Network Resource",
               "definition": "Deploying a network resource for the purposes of deceiving an adversary.",
+              "attack": [
+                "T1037.003",
+                "T1039",
+                "T1070.005",
+                "T1074.002",
+                "T1080",
+                "T1213.001",
+                "T1213.002",
+                "T1491.002"
+              ],
               "children": []
             },
             {
@@ -1717,6 +4694,107 @@
               "iri": "DecoyFile",
               "en": "Decoy File",
               "definition": "A file created for the purposes of deceiving an adversary.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -1724,6 +4802,7 @@
               "iri": "DecoySessionToken",
               "en": "Decoy Session Token",
               "definition": "An authentication token created for the purposes of deceiving an adversary.",
+              "attack": [],
               "children": []
             },
             {
@@ -1731,6 +4810,28 @@
               "iri": "DecoyUserCredential",
               "en": "Decoy User Credential",
               "definition": "A Credential created for the purpose of deceiving an adversary.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             },
             {
@@ -1738,6 +4839,7 @@
               "iri": "DecoyPersona",
               "en": "Decoy Persona",
               "definition": "Establishing a fake online identity to misdirect, deceive, and or interact with adversaries.",
+              "attack": [],
               "children": []
             }
           ]
@@ -1747,12 +4849,16 @@
           "iri": "DecoyEnvironment",
           "en": "Decoy Environment",
           "definition": "A Decoy Environment comprises hosts and networks for the purposes of deceiving an attacker.",
+          "attack": [
+            "T1082"
+          ],
           "children": [
             {
               "id": "D3-SHN",
               "iri": "StandaloneHoneynet",
               "en": "Standalone Honeynet",
               "definition": "An environment created for the purpose of attracting attackers and eliciting their behaviors that is not connected to any production enterprise systems.",
+              "attack": [],
               "children": []
             },
             {
@@ -1760,6 +4866,7 @@
               "iri": "IntegratedHoneynet",
               "en": "Integrated Honeynet",
               "definition": "The practice of setting decoys in a production environment to entice interaction from attackers.",
+              "attack": [],
               "children": []
             },
             {
@@ -1767,6 +4874,7 @@
               "iri": "ConnectedHoneynet",
               "en": "Connected Honeynet",
               "definition": "A decoy service, system, or environment, that is connected to the enterprise network, and simulates or emulates certain functionality to the network, without exposing full access to a production system.",
+              "attack": [],
               "children": []
             }
           ]
@@ -1782,18 +4890,128 @@
           "iri": "ObjectEviction",
           "en": "Object Eviction",
           "definition": "Terminate or remove an object from a host machine. This is the broadest class for object eviction.",
+          "attack": [],
           "children": [
             {
               "id": "D3-FEV",
               "iri": "FileEviction",
               "en": "File Eviction",
               "definition": "File eviction techniques delete files from system storage.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": [
                 {
                   "id": "D3-ER",
                   "iri": "EmailRemoval",
                   "en": "Email Removal",
                   "definition": "The email removal technique deletes email files from system storage.",
+                  "attack": [
+                    "T1114.001",
+                    "T1114.002",
+                    "T1505.002",
+                    "T1534",
+                    "T1566.001",
+                    "T1566.002"
+                  ],
                   "children": []
                 }
               ]
@@ -1803,6 +5021,9 @@
               "iri": "RegistryKeyDeletion",
               "en": "Registry Key Deletion",
               "definition": "Delete a registry key.",
+              "attack": [
+                "T1562.003"
+              ],
               "children": []
             },
             {
@@ -1810,6 +5031,7 @@
               "iri": "DomainRegistrationTakedown",
               "en": "Domain Registration Takedown",
               "definition": "The process of performing a takedown of the attacker's domain registration infrastructure.",
+              "attack": [],
               "children": []
             },
             {
@@ -1817,6 +5039,7 @@
               "iri": "DNSCacheEviction",
               "en": "DNS Cache Eviction",
               "definition": "Flushing DNS to clear any IP addresses or other DNS records from the cache.",
+              "attack": [],
               "children": []
             },
             {
@@ -1824,12 +5047,19 @@
               "iri": "DiskFormatting",
               "en": "Disk Formatting",
               "definition": "Disk Formatting is the process of preparing a data storage device, such as a hard drive, solid-state drive, or USB flash drive, for initial use.",
+              "attack": [
+                "T1619"
+              ],
               "children": [
                 {
                   "id": "D3-DKP",
                   "iri": "DiskPartitioning",
                   "en": "Disk Partitioning",
                   "definition": "Disk Partitioning is the process of dividing a disk into multiple distinct sections, known as partitions.",
+                  "attack": [
+                    "T1561.001",
+                    "T1561.002"
+                  ],
                   "children": []
                 },
                 {
@@ -1837,6 +5067,9 @@
                   "iri": "DiskErasure",
                   "en": "Disk Erasure",
                   "definition": "Disk Erasure is the process of securely deleting all data on a disk to ensure that it cannot be recovered by any means.",
+                  "attack": [
+                    "T1619"
+                  ],
                   "children": []
                 }
               ]
@@ -1848,12 +5081,35 @@
           "iri": "CredentialEviction",
           "en": "Credential Eviction",
           "definition": "Credential Eviction techniques disable or remove compromised credentials from a computer network.",
+          "attack": [],
           "children": [
             {
               "id": "D3-ANCI",
               "iri": "AuthenticationCacheInvalidation",
               "en": "Authentication Cache Invalidation",
               "definition": "Removing tokens or credentials from an authentication cache to prevent further user associated account accesses.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             },
             {
@@ -1861,6 +5117,25 @@
               "iri": "AccountLocking",
               "en": "Account Locking",
               "definition": "The process of temporarily disabling user accounts on a system or domain.",
+              "attack": [
+                "T1078",
+                "T1078.001",
+                "T1078.002",
+                "T1078.003",
+                "T1078.004",
+                "T1087.001",
+                "T1087.002",
+                "T1087.004",
+                "T1098",
+                "T1098.002",
+                "T1098.003",
+                "T1136",
+                "T1136.001",
+                "T1136.002",
+                "T1136.003",
+                "T1531",
+                "T1548.005"
+              ],
               "children": []
             },
             {
@@ -1868,6 +5143,28 @@
               "iri": "CredentialRevocation",
               "en": "Credential Revocation",
               "definition": "Deleting a set of credentials permanently to prevent them from being used to authenticate.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             }
           ]
@@ -1877,12 +5174,29 @@
           "iri": "ProcessEviction",
           "en": "Process Eviction",
           "definition": "Process eviction techniques terminate or remove running process.",
+          "attack": [],
           "children": [
             {
               "id": "D3-PT",
               "iri": "ProcessTermination",
               "en": "Process Termination",
               "definition": "Terminating a running application process on a computer system.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1033",
+                "T1053",
+                "T1053.005",
+                "T1212",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": []
             },
             {
@@ -1890,12 +5204,44 @@
               "iri": "HostShutdown",
               "en": "Host Shutdown",
               "definition": "Initiating a host's shutdown sequence to terminate all running processes.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1033",
+                "T1053",
+                "T1053.005",
+                "T1212",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": [
                 {
                   "id": "D3-HR",
                   "iri": "HostReboot",
                   "en": "Host Reboot",
                   "definition": "Initiating a host's reboot sequence to terminate all running processes.",
+                  "attack": [
+                    "T1003.001",
+                    "T1003.002",
+                    "T1003.004",
+                    "T1033",
+                    "T1053",
+                    "T1053.005",
+                    "T1212",
+                    "T1505.002",
+                    "T1505.003",
+                    "T1546.007",
+                    "T1550",
+                    "T1556",
+                    "T1562.001",
+                    "T1621"
+                  ],
                   "children": []
                 }
               ]
@@ -1905,6 +5251,22 @@
               "iri": "ProcessSuspension",
               "en": "Process Suspension",
               "definition": "Suspending a running process on a computer system.",
+              "attack": [
+                "T1003.001",
+                "T1003.002",
+                "T1003.004",
+                "T1033",
+                "T1053",
+                "T1053.005",
+                "T1212",
+                "T1505.002",
+                "T1505.003",
+                "T1546.007",
+                "T1550",
+                "T1556",
+                "T1562.001",
+                "T1621"
+              ],
               "children": []
             },
             {
@@ -1912,6 +5274,16 @@
               "iri": "SessionTermination",
               "en": "Session Termination",
               "definition": "Forcefully end all active sessions associated with compromised accounts or devices.",
+              "attack": [
+                "T1021.001",
+                "T1021.004",
+                "T1133",
+                "T1134.003",
+                "T1199",
+                "T1563",
+                "T1563.001",
+                "T1563.002"
+              ],
               "children": []
             }
           ]
@@ -1927,12 +5299,37 @@
           "iri": "RestoreObject",
           "en": "Restore Object",
           "definition": "Restoring an object for an entity to access. This is the broadest class for object restoral.",
+          "attack": [],
           "children": [
             {
               "id": "D3-RD",
               "iri": "RestoreDatabase",
               "en": "Restore Database",
               "definition": "Restoring the data in a database.",
+              "attack": [
+                "T1003.002",
+                "T1003.004",
+                "T1003.008",
+                "T1012",
+                "T1033",
+                "T1112",
+                "T1137.006",
+                "T1207",
+                "T1213.003",
+                "T1218.014",
+                "T1543.003",
+                "T1546.012",
+                "T1546.015",
+                "T1548.004",
+                "T1552.002",
+                "T1555",
+                "T1555.001",
+                "T1555.002",
+                "T1555.003",
+                "T1564.003",
+                "T1564.005",
+                "T1614.001"
+              ],
               "children": []
             },
             {
@@ -1940,6 +5337,61 @@
               "iri": "RestoreConfiguration",
               "en": "Restore Configuration",
               "definition": "Restoring an software configuration.",
+              "attack": [
+                "T1037.004",
+                "T1037.005",
+                "T1114.003",
+                "T1134.005",
+                "T1137.001",
+                "T1137.002",
+                "T1137.004",
+                "T1137.005",
+                "T1218.002",
+                "T1222",
+                "T1484",
+                "T1490",
+                "T1518.001",
+                "T1526",
+                "T1538",
+                "T1546.001",
+                "T1546.002",
+                "T1546.007",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.011",
+                "T1546.014",
+                "T1547.001",
+                "T1547.002",
+                "T1547.003",
+                "T1547.004",
+                "T1547.005",
+                "T1547.010",
+                "T1548.001",
+                "T1548.002",
+                "T1548.005",
+                "T1552.005",
+                "T1552.006",
+                "T1553.003",
+                "T1556.002",
+                "T1556.009",
+                "T1562.002",
+                "T1562.003",
+                "T1562.004",
+                "T1562.007",
+                "T1562.008",
+                "T1562.009",
+                "T1564.008",
+                "T1574.011",
+                "T1574.012",
+                "T1578.002",
+                "T1578.003",
+                "T1578.004",
+                "T1578.005",
+                "T1614",
+                "T1615",
+                "T1666"
+              ],
               "children": []
             },
             {
@@ -1947,6 +5399,34 @@
               "iri": "RestoreSoftware",
               "en": "Restore Software",
               "definition": "Restoring software to a host.",
+              "attack": [
+                "T1014",
+                "T1056.003",
+                "T1072",
+                "T1127.001",
+                "T1137.006",
+                "T1176",
+                "T1195.001",
+                "T1195.002",
+                "T1212",
+                "T1218.014",
+                "T1489",
+                "T1490",
+                "T1497.003",
+                "T1505.001",
+                "T1505.004",
+                "T1542.001",
+                "T1542.002",
+                "T1542.003",
+                "T1542.004",
+                "T1546.011",
+                "T1547.008",
+                "T1554",
+                "T1564.006",
+                "T1574.005",
+                "T1574.010",
+                "T1649"
+              ],
               "children": []
             },
             {
@@ -1954,6 +5434,7 @@
               "iri": "RestoreDiskImage",
               "en": "Restore Disk Image",
               "definition": "Restoring a previously captured disk image a hard drive.",
+              "attack": [],
               "children": []
             },
             {
@@ -1961,12 +5442,119 @@
               "iri": "RestoreFile",
               "en": "Restore File",
               "definition": "Restoring a file for an entity to access.",
+              "attack": [
+                "T1003.007",
+                "T1003.008",
+                "T1005",
+                "T1014",
+                "T1016",
+                "T1018",
+                "T1027.001",
+                "T1027.002",
+                "T1027.004",
+                "T1033",
+                "T1036.001",
+                "T1036.003",
+                "T1036.005",
+                "T1036.006",
+                "T1037.001",
+                "T1037.002",
+                "T1037.003",
+                "T1037.004",
+                "T1041",
+                "T1048.002",
+                "T1053.004",
+                "T1055.001",
+                "T1055.002",
+                "T1055.003",
+                "T1055.009",
+                "T1055.014",
+                "T1059",
+                "T1070.002",
+                "T1070.004",
+                "T1071",
+                "T1071.001",
+                "T1072",
+                "T1074.001",
+                "T1083",
+                "T1114.001",
+                "T1119",
+                "T1127.001",
+                "T1137.001",
+                "T1137.003",
+                "T1140",
+                "T1187",
+                "T1204.002",
+                "T1218.005",
+                "T1218.011",
+                "T1220",
+                "T1486",
+                "T1505.003",
+                "T1534",
+                "T1543.001",
+                "T1543.002",
+                "T1543.004",
+                "T1546.002",
+                "T1546.004",
+                "T1546.005",
+                "T1546.006",
+                "T1546.008",
+                "T1546.009",
+                "T1546.010",
+                "T1546.013",
+                "T1546.014",
+                "T1546.015",
+                "T1547.001",
+                "T1547.006",
+                "T1547.007",
+                "T1547.008",
+                "T1547.009",
+                "T1547.011",
+                "T1548.002",
+                "T1548.003",
+                "T1552.001",
+                "T1552.003",
+                "T1555",
+                "T1555.003",
+                "T1556.002",
+                "T1556.003",
+                "T1560",
+                "T1560.001",
+                "T1560.002",
+                "T1560.003",
+                "T1562.003",
+                "T1564.002",
+                "T1564.003",
+                "T1564.006",
+                "T1564.007",
+                "T1565.001",
+                "T1565.003",
+                "T1566.001",
+                "T1566.002",
+                "T1566.003",
+                "T1573.002",
+                "T1574.001",
+                "T1574.002",
+                "T1574.004",
+                "T1574.006",
+                "T1574.007",
+                "T1574.008",
+                "T1574.009",
+                "T1574.012",
+                "T1649"
+              ],
               "children": [
                 {
                   "id": "D3-RE",
                   "iri": "RestoreEmail",
                   "en": "Restore Email",
                   "definition": "Restoring an email for an entity to access.",
+                  "attack": [
+                    "T1114.001",
+                    "T1534",
+                    "T1566.001",
+                    "T1566.002"
+                  ],
                   "children": []
                 }
               ]
@@ -1978,18 +5566,57 @@
           "iri": "RestoreAccess",
           "en": "Restore Access",
           "definition": "Restoring an entity's access to resources.",
+          "attack": [],
           "children": [
             {
               "id": "D3-RUAA",
               "iri": "RestoreUserAccountAccess",
               "en": "Restore User Account Access",
               "definition": "Restoring a user account's access to resources.",
+              "attack": [
+                "T1078",
+                "T1078.001",
+                "T1078.002",
+                "T1078.003",
+                "T1078.004",
+                "T1087.001",
+                "T1087.002",
+                "T1087.004",
+                "T1098",
+                "T1098.002",
+                "T1098.003",
+                "T1136",
+                "T1136.001",
+                "T1136.002",
+                "T1136.003",
+                "T1531",
+                "T1548.005"
+              ],
               "children": [
                 {
                   "id": "D3-ULA",
                   "iri": "UnlockAccount",
                   "en": "Unlock Account",
                   "definition": "Restoring a user account's access to resources by unlocking a locked User Account.",
+                  "attack": [
+                    "T1078",
+                    "T1078.001",
+                    "T1078.002",
+                    "T1078.003",
+                    "T1078.004",
+                    "T1087.001",
+                    "T1087.002",
+                    "T1087.004",
+                    "T1098",
+                    "T1098.002",
+                    "T1098.003",
+                    "T1136",
+                    "T1136.001",
+                    "T1136.002",
+                    "T1136.003",
+                    "T1531",
+                    "T1548.005"
+                  ],
                   "children": []
                 }
               ]
@@ -1999,6 +5626,14 @@
               "iri": "RestoreNetworkAccess",
               "en": "Restore Network Access",
               "definition": "Restoring a entity's access to a computer network.",
+              "attack": [
+                "T1114.002",
+                "T1505.002",
+                "T1505.003",
+                "T1578.002",
+                "T1578.003",
+                "T1578.004"
+              ],
               "children": []
             },
             {
@@ -2006,6 +5641,28 @@
               "iri": "ReissueCredential",
               "en": "Reissue Credential",
               "definition": "Issue a new credential to a user which supersedes their old credential.",
+              "attack": [
+                "T1003.003",
+                "T1003.005",
+                "T1003.008",
+                "T1098.001",
+                "T1110.001",
+                "T1110.002",
+                "T1110.003",
+                "T1134.001",
+                "T1134.002",
+                "T1134.003",
+                "T1142",
+                "T1528",
+                "T1539",
+                "T1550.001",
+                "T1550.004",
+                "T1552",
+                "T1558",
+                "T1558.001",
+                "T1606",
+                "T1606.001"
+              ],
               "children": []
             }
           ]

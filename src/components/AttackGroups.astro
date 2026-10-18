@@ -1,0 +1,26 @@
+---
+// Техніки ATT&CK, згруповані за етапами атаки (техніка з кількома етапами — в кожному).
+import { loadData, url, num, type Technique } from '../lib/data';
+
+interface Props { techniques: Technique[] }
+const d = await loadData();
+const groups = d.byTactic(Astro.props.techniques);
+const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
+---
+{groups.map((g) => (
+  <div class="group">
+    <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.ua} · {g.tactic.id}</a>
+    <ul>{g.techniques.map((t) => (
+      <li><a href={url.technique(t.id)}><span class="id-attack">{t.id}</span> {t.data.ua}</a></li>
+    ))}</ul>
+  </div>
+))}
+
+<style>
+  .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
+  .gtitle { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 24px; }
+  li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; line-height: 1.35; }
+  li a:hover { color: var(--text); }
+  .id-attack { font-size: 12px; min-width: 52px; flex: none; }
+</style>

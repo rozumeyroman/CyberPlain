@@ -3,7 +3,10 @@
   "en": "Next-Generation Firewall",
   "simple": "Фільтрує трафік між мережами й інтернетом і блокує відомі атаки.",
   "d3fend": [
+    "D3-ITF",
+    "D3-OTF",
     "D3-NTSA",
-    "D3-NTF"
+    "D3-BDI",
+    "D3-ET"
   ]
 }

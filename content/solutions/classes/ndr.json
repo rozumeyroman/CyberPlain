@@ -3,6 +3,15 @@
   "en": "Network Detection and Response",
   "simple": "Аналізує трафік усередині мережі й помічає підозрілі з’єднання та поведінку, навіть там, де немає агентів.",
   "d3fend": [
-    "D3-NTA"
+    "D3-NTCD",
+    "D3-ANAA",
+    "D3-CAA",
+    "D3-DNSTA",
+    "D3-RTA",
+    "D3-PCA",
+    "D3-PHDURA",
+    "D3-CSPP",
+    "D3-PMAD",
+    "D3-RTSD"
   ]
 }
