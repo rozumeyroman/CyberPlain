@@ -283,11 +283,11 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 | Advanced Dark Web Monitoring | Essential, Business, Ultimate | `dark-web` |
 | Cyber Threat Intelligence | Essential, Ultimate | `ti` |
 | Attack Surface Management | Essential, Business, Ultimate | `easm` |
-| Brand Protection | Essential, Business (+ `dark-web`), Ultimate | `brand-protection` |
+| Brand Protection | Essential; Business і Ultimate (+ `dark-web`) | `brand-protection` |
 | Supply Chain Intelligence | одна ліцензія (`socradar-sci`) | `tprm` |
 
-«Flexible» у таблиці SOCRadar = за окремим погодженням, як add-on: класом не рахуємо (тому в BP Ultimate
-немає `dark-web`), лише в тексті. Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
+«Flexible» у таблиці SOCRadar = функція входить у редакцію, а її обсяг (домени, IP, інтеграції тощо)
+ліцензується гнучко: рахуємо як включену (тому BP Ultimate має `dark-web`). Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
 Відстеження постачальників у CTI — не `tprm`. Класи `dark-web`, `brand-protection`, `tprm` заведено під SOCRadar.
 
 Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `pam`, `dlp`, `ddos`.
