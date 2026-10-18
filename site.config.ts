@@ -5,7 +5,7 @@ const repo = 'https://github.com/rozumeyroman/CyberPlain';
 export const site = {
   name,
   tagline: 'кібербезпека простими словами',
-  domain: '', // ще не обрано; разом із ним оновити wrangler.jsonc
+  domain: 'cyberplain.alestalab.top', // разом із ним оновити routes у wrangler.jsonc
   repo,
   author: { name: 'Роман Розумей', url: 'https://github.com/rozumeyroman' },
 

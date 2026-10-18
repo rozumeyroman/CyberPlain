@@ -2,9 +2,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cyberplain",
   "compatibility_date": "2026-10-01",
-  // Поки немає власного домену. Потім обидва — false (див. CLAUDE.md).
+  // Поки ввімкнено; щоб WAF не можна було обійти, обидва — false (див. CLAUDE.md).
   "workers_dev": true,
   "preview_urls": true,
+  "routes": [{ "pattern": "cyberplain.alestalab.top", "custom_domain": true }],
   "assets": {
     "directory": "./dist"
   }
