@@ -52,7 +52,7 @@ content/
     tactics.json          # 15 тактик: id, en, ua, order, short (просте пояснення)
     techniques/TA0043.json# техніки тактики + наші пояснення (див. нижче)
   d3fend/tactics.json     # 7 тактик D3FEND з поясненнями
-  solutions.json          # класи рішень → D3FEND-тактики → продукти (чернетка)
+  solutions.json          # рішення: id, ua, en, simple, d3fend[], products[] (поки порожній)
   glossary.json           # терміни для підказок
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
 scripts/import-attack.mjs # STIX 2.1 з github.com/mitre-attack/attack-stix-data
@@ -64,6 +64,8 @@ src/
   pages/mitre/[tactic]/index.astro        # сторінка тактики: /mitre/TA0001/
   pages/mitre/[tactic]/[technique].astro  # сторінка техніки: /mitre/TA0001/T1566/
   pages/d3fend/index.astro
+  pages/solutions/index.astro             # вкладка «Рішення»: список рішень
+  pages/solutions/[solution].astro        # сторінка рішення: /solutions/edr/
   pages/licenses.astro                    # повні тексти ліцензій
   styles/tokens.css, base.css
 design/                   # референсні макети (не код сайту, див. нижче)
@@ -82,6 +84,12 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 `id, ua, en, pain (bool, «часта біль»), simple, analogy, quote (як каже клієнт),
 questions[], defenses[] (посилання на solutions.json)`. Якщо техніка є в MITRE, але
 пояснення ще немає — сторінка показує дані MITRE з позначкою «пояснення готується».
+
+**Крос-посилання техніки ↔ рішення.** Зв'язок зберігаємо в одному місці — у полі
+`defenses[]` техніки (масив `id` з `solutions.json`). Сторінка техніки посилається на
+`/solutions/<id>/`; сторінка рішення список технік *обчислює* під час збирання (усі
+техніки, у чиїх `defenses[]` є її `id`) і посилається на `/mitre/<tactic>/<technique>/`.
+У `solutions.json` технік не дублюємо. Невідомий `id` у `defenses[]` — помилка збирання.
 
 ## Дизайн
 

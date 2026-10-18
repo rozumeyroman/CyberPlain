@@ -15,6 +15,7 @@ export const site = {
     { label: 'Home', href: '/' },
     { label: 'MITRE ATT&CK', href: '/mitre/' },
     { label: 'D3FEND', href: '/d3fend/' },
+    { label: 'Рішення', href: '/solutions/' },
   ],
 
   // Стають CSS-змінними --<ключ> у Base.astro.
