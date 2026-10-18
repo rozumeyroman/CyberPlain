@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>CyberPlain — кібербезпека простими словами</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1C1C1C}
+a{color:#84B765}a:hover{color:#A3CF87}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;text-transform:uppercase;letter-spacing:.08em}
+.dots{background-color:#1C1C1C;background-image:radial-gradient(520px 420px at 82% 28%,rgba(132,183,101,.22),transparent 70%),radial-gradient(480px 380px at 58% 92%,rgba(126,74,210,.24),transparent 70%),radial-gradient(#333333 1px,transparent 1px);background-size:auto,auto,16px 16px}
+.cell{position:relative}
+.cell::before,.cell::after{content:'+';position:absolute;font:400 13px/1 'JetBrains Mono',monospace;color:#555555}
+.cell::before{top:-7px;left:-4px}.cell::after{bottom:-7px;right:-4px}
+.tab{transition:color .15s,border-color .15s}
+.tab:hover{color:#FFFFFF !important}
+.btn{transition:background .15s,border-color .15s,color .15s}
+.btn-p:hover{background:#A3CF87 !important}
+.btn-s:hover{border-color:#ABABAB !important;color:#FFFFFF !important}
+.lift{transition:border-color .15s,background .15s}
+.lift:hover{border-color:#555555 !important;background:#242424 !important}
+.lift:hover .go{color:#A3CF87 !important}
+a:focus-visible,label:focus-visible{outline:2px solid #84B765;outline-offset:3px}
+.tr input{position:absolute;opacity:0;pointer-events:none}
+.tr .chips label{cursor:pointer;border:1px solid #424242;color:#ABABAB;transition:color .15s,border-color .15s}
+.tr .chips label:hover{color:#FFFFFF}
+.tr .chips label[for=t0]{border-color:#84B765;color:#FFFFFF}
+.tr input:checked ~ .chips label[for=t0]{border-color:#424242;color:#ABABAB}
+#t0:checked ~ .chips label[for=t0],#t1:checked ~ .chips label[for=t1],#t2:checked ~ .chips label[for=t2],#t3:checked ~ .chips label[for=t3]{border-color:#84B765;color:#FFFFFF}
+#t0:focus-visible ~ .chips label[for=t0],#t1:focus-visible ~ .chips label[for=t1],#t2:focus-visible ~ .chips label[for=t2],#t3:focus-visible ~ .chips label[for=t3]{outline:2px solid #84B765;outline-offset:2px}
+.tr .pn{display:none}
+.tr .p0{display:block}
+.tr input:checked ~ .panels .p0{display:none}
+#t0:checked ~ .panels .p0,#t1:checked ~ .panels .p1,#t2:checked ~ .panels .p2,#t3:checked ~ .panels .p3{display:block}
+.foot a{color:#ABABAB}.foot a:hover{color:#FFFFFF}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#1C1C1C;color:#FFFFFF;font-family:Onest, system-ui, sans-serif">
+
+<header style="border-bottom:1px solid #333333;position:sticky;top:0;z-index:10;background:#1C1C1C">
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:32px;flex-wrap:wrap">
+<a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#FFFFFF;padding:16px 0">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#84B765" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="3" y="3" width="18" height="18"></rect><path d="M8 12h8M8 8h8M8 16h5"></path></svg>
+<span style="font-weight:600;font-size:18px;letter-spacing:-0.01em">{{brand}}</span>
+</a>
+<nav aria-label="Розділи сайту" style="display:flex;gap:4px;overflow-x:auto;flex:1 1 300px;align-self:stretch">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<a href="#" class="tab mono" style="{{t.style}}">{{t.label}}</a>
+</sc-for>
+</nav>
+</div>
+</header>
+
+<section class="dots" style="border-bottom:1px solid #333333">
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr))">
+<div style="padding:88px 48px 72px 0;background:transparent;border-right:1px solid #333333">
+<div class="mono" style="font-size:12px;color:#84B765;margin-bottom:28px">// Кібербезпека без перекладача</div>
+<h1 style="margin:0 0 28px;font-size:64px;line-height:1;letter-spacing:-0.035em;font-weight:600">Складні загрози.<br><span style="color:#8C8C8C">Прості слова.</span></h1>
+<p style="margin:0 0 16px;font-size:19px;line-height:1.55;color:#DADADA;max-width:520px">{{brand}} перекладає мову кібербезпеки на людську: як діють зловмисники, чим це загрожує бізнесу і які інструменти зупиняють атаку.</p>
+<p style="margin:0 0 36px;font-size:16px;line-height:1.6;color:#ABABAB;max-width:520px">Для тих, хто щодня працює з людьми, а не з логами фаєрвола. Сотні технік атак не тримають у голові навіть фахівці — вони теж користуються довідниками. Тепер такий є і у вас.</p>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<a href="#" class="btn btn-p" style="font-weight:600;font-size:15px;padding:14px 22px;background:#84B765;color:#1C1C1C;text-decoration:none;min-height:48px;box-sizing:border-box;display:flex;align-items:center;border-radius:4px">Як діє зловмисник →</a>
+<a href="#" class="btn btn-s" style="font-weight:500;font-size:15px;padding:14px 22px;border:1px solid #424242;color:#DADADA;text-decoration:none;min-height:48px;box-sizing:border-box;display:flex;align-items:center;border-radius:4px">Як від цього захиститись</a>
+</div>
+</div>
+
+<div style="padding:72px 0 72px 48px;display:flex;align-items:center">
+<div class="tr cell" style="width:100%;border:1px solid #333333;background:#242424">
+<input type="radio" name="term" id="t0">
+<input type="radio" name="term" id="t1">
+<input type="radio" name="term" id="t2">
+<input type="radio" name="term" id="t3">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #333333">
+<span class="mono" style="font-size:11px;color:#ABABAB">Переклад · EN → UA</span>
+<span style="display:flex;gap:6px" aria-hidden="true"><span style="width:8px;height:8px;background:#424242"></span><span style="width:8px;height:8px;background:#424242"></span><span style="width:8px;height:8px;background:#84B765"></span></span>
+</div>
+<div class="chips" role="radiogroup" aria-label="Приклади термінів" style="display:flex;gap:8px;flex-wrap:wrap;padding:16px">
+<label for="t0" class="mono" style="font-size:11px;padding:8px 10px;border-radius:2px">Lateral Movement</label>
+<label for="t1" class="mono" style="font-size:11px;padding:8px 10px;border-radius:2px">Phishing</label>
+<label for="t2" class="mono" style="font-size:11px;padding:8px 10px;border-radius:2px">Ransomware</label>
+<label for="t3" class="mono" style="font-size:11px;padding:8px 10px;border-radius:2px">MFA</label>
+</div>
+<div class="panels" style="border-top:1px solid #333333">
+
+<div class="pn p0">
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Термін</span><span style="font-size:18px;font-weight:600;padding:12px 16px">Lateral Movement</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Джерело</span><span class="mono" style="font-size:12px;color:#B99CF2;padding:14px 16px">ATT&amp;CK · TA0008</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Просто</span><span style="font-size:17px;line-height:1.55;padding:12px 16px 18px;color:#FFFFFF">Зловмисник уже всередині й переходить з одного комп’ютера на інші — як злодій, що з передпокою пішов по всіх кімнатах.</span></div>
+<div style="padding:12px 16px;border-top:1px solid #333333"><a href="https://attack.mitre.org/tactics/TA0008/" class="mono" style="font-size:11px;text-decoration:none">Оригінал на attack.mitre.org ↗</a></div>
+</div>
+
+<div class="pn p1">
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Термін</span><span style="font-size:18px;font-weight:600;padding:12px 16px">Phishing</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Джерело</span><span class="mono" style="font-size:12px;color:#B99CF2;padding:14px 16px">ATT&amp;CK · T1566</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Просто</span><span style="font-size:17px;line-height:1.55;padding:12px 16px 18px;color:#FFFFFF">Підроблений лист чи повідомлення, щоб людина сама відчинила двері: перейшла за посиланням, ввела пароль або запустила файл.</span></div>
+<div style="padding:12px 16px;border-top:1px solid #333333"><a href="https://attack.mitre.org/techniques/T1566/" class="mono" style="font-size:11px;text-decoration:none">Оригінал на attack.mitre.org ↗</a></div>
+</div>
+
+<div class="pn p2">
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Термін</span><span style="font-size:18px;font-weight:600;padding:12px 16px">Ransomware</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Джерело</span><span class="mono" style="font-size:12px;color:#B99CF2;padding:14px 16px">ATT&amp;CK · T1486</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Просто</span><span style="font-size:17px;line-height:1.55;padding:12px 16px 18px;color:#FFFFFF">Програма шифрує файли компанії й вимагає викуп за ключ. Злодій нічого не виносить — він міняє замки й продає вам нові ключі.</span></div>
+<div style="padding:12px 16px;border-top:1px solid #333333"><a href="https://attack.mitre.org/techniques/T1486/" class="mono" style="font-size:11px;text-decoration:none">Оригінал на attack.mitre.org ↗</a></div>
+</div>
+
+<div class="pn p3">
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Термін</span><span style="font-size:18px;font-weight:600;padding:12px 16px">Multi-factor Authentication</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr;border-bottom:1px solid #333333"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Джерело</span><span class="mono" style="font-size:12px;color:#84B765;padding:14px 16px">D3FEND · Harden</span></div>
+<div style="display:grid;grid-template-columns:120px 1fr"><span class="mono" style="font-size:11px;color:#8C8C8C;padding:14px 16px;border-right:1px solid #333333">Просто</span><span style="font-size:17px;line-height:1.55;padding:12px 16px 18px;color:#FFFFFF">Другий замок на дверях: навіть знаючи пароль, зловмисник не зайде без коду з телефону власника.</span></div>
+<div style="padding:12px 16px;border-top:1px solid #333333"><a href="https://d3fend.mitre.org/technique/d3f:Multi-factorAuthentication/" class="mono" style="font-size:11px;text-decoration:none">Оригінал на d3fend.mitre.org ↗</a></div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="border-bottom:1px solid #333333">
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr))">
+<div style="padding:28px 24px 28px 0;border-right:1px solid #333333"><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em;color:#B99CF2">15</div><div class="mono" style="font-size:11px;color:#ABABAB;margin-top:6px">Етапів атаки · ATT&amp;CK</div></div>
+<div style="padding:28px 24px;border-right:1px solid #333333"><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em;color:#84B765">7</div><div class="mono" style="font-size:11px;color:#ABABAB;margin-top:6px">Тактик захисту · D3FEND</div></div>
+<div style="padding:28px 24px;border-right:1px solid #333333"><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em">2</div><div class="mono" style="font-size:11px;color:#ABABAB;margin-top:6px">Відкриті бази знань MITRE</div></div>
+<div style="padding:28px 24px"><div style="font-size:40px;font-weight:600;letter-spacing:-0.03em">0 ₴</div><div class="mono" style="font-size:11px;color:#ABABAB;margin-top:6px">Безкоштовно для всіх</div></div>
+</div>
+</section>
+
+<section style="border-bottom:1px solid #333333">
+<div style="max-width:1200px;margin:0 auto;padding:88px 24px 0">
+<div class="mono" style="font-size:12px;color:#ABABAB;margin-bottom:16px">// Як це працює</div>
+<h2 style="margin:0 0 48px;font-size:40px;letter-spacing:-0.03em;font-weight:600;max-width:640px">Три кроки від терміна до рішення</h2>
+</div>
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));border-top:1px solid #333333">
+<div style="padding:32px 32px 48px 0;border-right:1px solid #333333">
+<div class="mono" style="font-size:12px;color:#B99CF2;margin-bottom:40px">01 / Атака</div>
+<div style="font-size:22px;font-weight:600;margin-bottom:12px">Зрозумійте атаку</div>
+<p style="margin:0;font-size:16px;line-height:1.6;color:#ABABAB">15 етапів — від розвідки до удару. Що робить зловмисник на кожному кроці, з життєвими аналогіями.</p>
+</div>
+<div style="padding:32px 32px 48px;border-right:1px solid #333333">
+<div class="mono" style="font-size:12px;color:#84B765;margin-bottom:40px">02 / Захист</div>
+<div style="font-size:22px;font-weight:600;margin-bottom:12px">Зрозумійте захист</div>
+<p style="margin:0;font-size:16px;line-height:1.6;color:#ABABAB">Які заходи зупиняють кожну техніку: укріпити, виявити, ізолювати, відновити — і якими класами рішень це робиться.</p>
+</div>
+<div style="padding:32px 0 48px 32px">
+<div class="mono" style="font-size:12px;color:#FFFFFF;margin-bottom:40px">03 / Розмова</div>
+<div style="font-size:22px;font-weight:600;margin-bottom:12px">Підтримайте розмову</div>
+<p style="margin:0;font-size:16px;line-height:1.6;color:#ABABAB">Готові питання до клієнта і чесні формулювання: що рішення робить, а чого обіцяти не варто.</p>
+</div>
+</div>
+</section>
+
+<section style="border-bottom:1px solid #333333">
+<div style="max-width:1200px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr))">
+<a href="#" class="lift" style="display:flex;flex-direction:column;gap:16px;padding:56px 40px 48px 0;border-right:1px solid #333333;text-decoration:none;color:#FFFFFF;border-top:0;border-bottom:0;border-left:0">
+<span class="mono" style="font-size:12px;color:#B99CF2">[ Атака ]</span>
+<span style="font-size:34px;font-weight:600;letter-spacing:-0.03em">MITRE ATT&amp;CK®</span>
+<span style="font-size:16px;line-height:1.6;color:#ABABAB;max-width:460px">Відкрита база знань про реальні дії зловмисників. Пройдемо її етап за етапом і пояснимо кожну техніку простими словами.</span>
+<span class="mono" style="font-size:11px;color:#8C8C8C;line-height:1.9">Розвідка → Початковий доступ → … → Викрадення даних → Удар</span>
+<span class="mono go" style="font-size:12px;color:#84B765;margin-top:8px">Відкрити розділ →</span>
+</a>
+<a href="#" class="lift" style="display:flex;flex-direction:column;gap:16px;padding:56px 0 48px 40px;text-decoration:none;color:#FFFFFF;border:0">
+<span class="mono" style="font-size:12px;color:#84B765">[ Захист ]</span>
+<span style="font-size:34px;font-weight:600;letter-spacing:-0.03em">MITRE D3FEND™</span>
+<span style="font-size:16px;line-height:1.6;color:#ABABAB;max-width:460px">Відкритий каталог захисних заходів. Показує, що саме зупиняє кожну техніку атаки, — і навіщо потрібне те чи інше рішення.</span>
+<span class="mono" style="font-size:11px;color:#8C8C8C;line-height:1.9">Model · Harden · Detect · Isolate · Deceive · Evict · Restore</span>
+<span class="mono go" style="font-size:12px;color:#84B765;margin-top:8px">Відкрити розділ →</span>
+</a>
+</div>
+</section>
+
+<section style="border-bottom:1px solid #333333">
+<div style="max-width:1200px;margin:0 auto;padding:88px 24px 88px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px">
+<div>
+<div class="mono" style="font-size:12px;color:#ABABAB;margin-bottom:16px">// Джерела</div>
+<h2 style="margin:0 0 16px;font-size:40px;letter-spacing:-0.03em;font-weight:600">Нічого не вигадуємо</h2>
+<p style="margin:0;font-size:16px;line-height:1.6;color:#ABABAB;max-width:440px">В основі — відкриті бази знань MITRE, якими користуються фахівці з безпеки в усьому світі. Біля кожного терміна є ідентифікатор і посилання на оригінал.</p>
+</div>
+<div style="border:1px solid #333333;align-self:start" class="cell">
+<div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid #333333;background:#242424">
+<span class="mono" style="font-size:11px;color:#8C8C8C;padding:12px 16px">Шар</span>
+<span class="mono" style="font-size:11px;color:#8C8C8C;padding:12px 16px;border-left:1px solid #333333">Автор</span>
+<span class="mono" style="font-size:11px;color:#8C8C8C;padding:12px 16px;border-left:1px solid #333333">Оновлення</span>
+</div>
+<div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid #333333;font-size:15px">
+<span style="padding:14px 16px">Техніки атак</span>
+<span style="padding:14px 16px;border-left:1px solid #333333;color:#DADADA"><a href="https://attack.mitre.org">MITRE ATT&amp;CK®</a></span>
+<span style="padding:14px 16px;border-left:1px solid #333333;color:#ABABAB">з кожним релізом</span>
+</div>
+<div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid #333333;font-size:15px">
+<span style="padding:14px 16px">Захисні заходи</span>
+<span style="padding:14px 16px;border-left:1px solid #333333;color:#DADADA"><a href="https://d3fend.mitre.org">MITRE D3FEND™</a></span>
+<span style="padding:14px 16px;border-left:1px solid #333333;color:#ABABAB">з кожним релізом</span>
+</div>
+<div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;font-size:15px">
+<span style="padding:14px 16px">Пояснення простими словами</span>
+<span style="padding:14px 16px;border-left:1px solid #333333;color:#DADADA">{{brand}}</span>
+<span style="padding:14px 16px;border-left:1px solid #333333;color:#ABABAB">постійно</span>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="foot">
+<div style="max-width:1200px;margin:0 auto;padding:40px 24px 48px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center">
+<span style="display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#84B765" stroke-width="1.75" stroke-linecap="square" aria-hidden="true"><rect x="3" y="3" width="18" height="18"></rect><path d="M8 12h8M8 8h8M8 16h5"></path></svg>{{brand}}
+</span>
+<nav aria-label="Службові посилання" class="mono" style="display:flex;gap:24px;flex-wrap:wrap;font-size:11px">
+<a href="#" style="text-decoration:none">Ліцензії та авторство</a>
+<a href="#" style="text-decoration:none">Про проєкт</a>
+<a href="#" style="text-decoration:none">Повідомити про помилку</a>
+</nav>
+</div>
+<div style="display:flex;flex-direction:column;gap:8px;font-size:13px;line-height:1.6;color:#8C8C8C;max-width:920px;border-top:1px solid #333333;padding-top:24px">
+<p style="margin:0">{{brand}} — незалежний некомерційний проєкт. Він не пов’язаний із The MITRE Corporation і не схвалений нею. Пояснення простими словами — авторська адаптація; оригінальні визначення доступні за посиланнями біля кожного терміна.</p>
+<p style="margin:0">Матеріали MITRE ATT&amp;CK®: © 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation. <a href="https://attack.mitre.org/resources/legal-and-branding/terms-of-use/">Умови використання ATT&amp;CK</a>.</p>
+<p style="margin:0">Матеріали MITRE D3FEND™: © 2025 The MITRE Corporation. Approved for Public Release; Distribution Unlimited #20-2338 and #23-1207. <a href="https://d3fend.mitre.org/tou">Умови використання D3FEND</a>.</p>
+<p style="margin:0">MITRE ATT&amp;CK® і ATT&amp;CK® — зареєстровані торговельні марки, а MITRE D3FEND™ — торговельна марка The MITRE Corporation. Назви продуктів і компаній — торговельні марки їхніх власників. Шрифти Onest і JetBrains Mono — SIL Open Font License 1.1.</p>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"brand":{"editor":"text","default":"CyberPlain","section":"Бренд"},"$preview":{"width":1440,"height":2600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var TABS = [
+      { id: 'home', label: 'Home' },
+      { id: 'attack', label: 'MITRE ATT&CK' },
+      { id: 'd3fend', label: 'D3FEND' }
+    ];
+    var active = 'home';
+    return {
+      brand: this.props.brand ?? 'CyberPlain',
+      tabs: TABS.map(function (t) {
+        var on = t.id === active;
+        return { label: t.label, style: 'display:flex;align-items:center;padding:0 14px;min-height:58px;box-sizing:border-box;white-space:nowrap;text-decoration:none;font-size:12px;border-bottom:1px solid ' + (on ? '#84B765;color:#FFFFFF' : 'transparent;color:#ABABAB') };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

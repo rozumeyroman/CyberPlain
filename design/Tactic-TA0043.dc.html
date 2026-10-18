@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<title>CyberPlain — Розвідка (TA0043)</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#1C1C1C}
+a{color:#84B765}a:hover{color:#A3CF87}
+.term{position:relative;border-bottom:1.5px dotted #84B765;cursor:help;outline:none}
+.term .tip{position:absolute;left:50%;bottom:calc(100% + 10px);transform:translateX(-50%);width:260px;padding:12px 14px;border-radius:6px;background:#2B2B2B;border:1px solid #474747;color:#E4E4E4;font-size:14px;line-height:1.45;font-weight:400;box-shadow:0 8px 24px rgba(17,24,39,.18);opacity:0;visibility:hidden;transition:opacity .15s;z-index:30;pointer-events:none}
+.term .tip b{display:block;margin-bottom:4px;color:#fff;font-weight:600}
+.term:hover .tip,.term:focus .tip{opacity:1;visibility:visible}
+.pills{scrollbar-width:thin}
+.card{transition:border-color .15s,box-shadow .15s,transform .15s}
+.card:hover{border-color:#84B765 !important;box-shadow:0 6px 20px rgba(132,183,101,.14);transform:translateY(-2px)}
+.card:focus-visible,.btn:focus-visible,.pill:focus-visible{outline:3px solid #84B765;outline-offset:2px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);overflow-y:auto}
+@media (max-width:640px){.drawer{top:auto;height:88vh;border-radius:20px 20px 0 0}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#1C1C1C;font-family:Onest, system-ui, sans-serif;color:#FFFFFF">
+
+<header style="background:#242424;border-bottom:1px solid #333333">
+<div style="max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px">
+<a href="#" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#FFFFFF">
+<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#84B765" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg>
+<span style="font-weight:700;font-size:19px;letter-spacing:-0.01em">{{brand}}</span>
+</a>
+<nav aria-label="Основна навігація" style="display:flex;gap:6px;flex-wrap:wrap">
+<a href="Home.dc.html" style="padding:8px 12px;border-radius:10px;color:#DADADA;font-weight:500;font-size:15px;text-decoration:none">Home</a>
+<a href="#" style="padding:8px 12px;border-radius:10px;background:rgba(132,183,101,.14);color:#84B765;font-weight:600;font-size:15px;text-decoration:none">MITRE ATT&amp;CK</a>
+<a href="#" style="padding:8px 12px;border-radius:10px;color:#DADADA;font-weight:500;font-size:15px;text-decoration:none">D3FEND</a>
+</nav>
+<div style="flex:1 1 260px;display:flex;justify-content:flex-end">
+<label style="display:flex;align-items:center;gap:8px;width:100%;max-width:380px;padding:10px 14px;border:1px solid #333333;border-radius:6px;background:#242424">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A9A9A" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path></svg>
+<input type="search" aria-label="Пошук" placeholder="Пошук: фішинг, MFA, T1566…" style="border:0;background:transparent;outline:none;font:inherit;font-size:15px;width:100%;color:#FFFFFF">
+</label>
+</div>
+</div>
+</header>
+
+<section style="max-width:1200px;margin:0 auto;padding:24px 24px 0">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+<span style="font-size:14px;color:#ABABAB;font-weight:500">Ланцюжок атаки за <span class="term" tabindex="0">MITRE ATT&amp;CK<span class="tip"><b>MITRE ATT&amp;CK</b>Публічна «енциклопедія» дій хакерів: 15 етапів атаки (тактики) і сотні способів (техніки) з реальних інцидентів.</span></span> v20</span>
+<span style="font-size:14px;color:#ABABAB">Етап 1 з 15</span>
+</div>
+<div class="pills" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:8px">
+<sc-for list="{{tactics}}" as="t" hint-placeholder-count="15">
+<a href="#" class="pill" style="{{t.style}}">
+<span style="{{t.numStyle}}">{{t.n}}</span>
+<span>{{t.ua}}</span>
+</a>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:32px 24px 8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:24px;align-items:start">
+<div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+<span style="font-family:'JetBrains Mono', monospace;font-size:13px;padding:4px 8px;border-radius:8px;background:rgba(185,156,242,.14);color:#B99CF2">TA0043</span>
+<span style="font-size:14px;color:#ABABAB">Reconnaissance</span>
+</div>
+<h1 style="margin:0 0 16px;font-size:52px;line-height:1.05;letter-spacing:-0.025em;font-weight:700">Розвідка</h1>
+<p style="margin:0 0 20px;font-size:21px;line-height:1.5;color:#F2F2F2;max-width:620px">Зловмисник вивчає компанію ззовні, ще до атаки: хто там працює, які сервіси відкриті в інтернеті та де є <span class="term" tabindex="0">вразливості<span class="tip"><b>Вразливість</b>Помилка в програмі чи налаштуваннях, через яку можна зайти без дозволу. Як незачинене вікно.</span></span>.</p>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<span style="padding:8px 12px;border-radius:4px;background:#242424;border:1px solid #333333;font-size:14px;font-weight:500">12 технік</span>
+<span style="padding:8px 12px;border-radius:4px;background:#242424;border:1px solid #333333;font-size:14px;font-weight:500">Відбувається поза мережею замовника</span>
+<span style="padding:8px 12px;border-radius:4px;background:#242424;border:1px solid #333333;font-size:14px;font-weight:500">Перший сигнал майбутньої атаки</span>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="background:#242424;border:1px solid #333333;border-radius:6px;padding:22px">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B99CF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"></path><path d="M5 10v10h14V10"></path><circle cx="12" cy="14" r="2"></circle></svg>
+<span style="font-weight:600;font-size:16px">Аналогія</span>
+</div>
+<p style="margin:0;font-size:16px;line-height:1.55;color:#DADADA">Злодій кілька днів спостерігає за будинком: коли господарі йдуть, де камери, яке вікно не зачиняють. Сам будинок ще ніхто не чіпав.</p>
+</div>
+<div style="background:#242424;border:1px solid #333333;border-radius:6px;padding:22px">
+<div style="font-weight:600;font-size:16px;margin-bottom:12px">Як це звучить у замовника</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="padding:10px 14px;border-radius:6px;background:#2B2B2B;font-size:15px;line-height:1.45">«Нас постійно сканують, у логах фаєрвола тисячі спроб»</div>
+<div style="padding:10px 14px;border-radius:6px;background:#2B2B2B;font-size:15px;line-height:1.45">«Співробітникам пишуть і просять підтвердити дані»</div>
+<div style="padding:10px 14px;border-radius:6px;background:#2B2B2B;font-size:15px;line-height:1.45">«Наші email-и знайшли в злитій базі»</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:40px 24px 8px">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+<div>
+<h2 style="margin:0 0 6px;font-size:30px;letter-spacing:-0.02em">Техніки розвідки</h2>
+<p style="margin:0;font-size:16px;color:#ABABAB">Натисніть на техніку, щоб побачити пояснення, питання до замовника і рішення.</p>
+</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+<div role="group" aria-label="Фільтр технік" style="display:flex;gap:6px">
+<button class="btn" type="button" onClick="{{showAll}}" style="{{allStyle}}">Усі · 12</button>
+<button class="btn" type="button" onClick="{{showPain}}" style="{{painStyle}}">Часта біль · {{painCount}}</button>
+</div>
+<div role="group" aria-label="Рівень пояснення" style="display:flex;padding:4px;border-radius:6px;background:#2B2B2B">
+<button class="btn" type="button" onClick="{{setSimple}}" style="{{simpleStyle}}">Просто</button>
+<button class="btn" type="button" onClick="{{setTech}}" style="{{techStyle}}">Технічно</button>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:16px">
+<sc-for list="{{visible}}" as="it" hint-placeholder-count="12">
+<button type="button" class="card" onClick="{{it.open}}" style="text-align:left;font:inherit;color:inherit;background:#242424;border:1px solid #333333;border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:10px;cursor:pointer;min-height:220px">
+<span style="display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%">
+<span style="font-family:'JetBrains Mono', monospace;font-size:13px;color:#ABABAB">{{it.id}}</span>
+<sc-if value="{{it.pain}}" hint-placeholder-val="{{false}}">
+<span style="font-size:12px;font-weight:600;padding:4px 8px;border-radius:4px;background:rgba(185,156,242,.14);color:#B99CF2">Часта біль</span>
+</sc-if>
+</span>
+<span style="font-size:19px;font-weight:600;line-height:1.25">{{it.ua}}</span>
+<span style="font-size:14px;color:#9A9A9A;margin-top:-4px">{{it.en}}</span>
+<span style="font-size:15px;line-height:1.5;color:#DADADA;flex:1">{{it.desc}}</span>
+<span style="font-size:14px;font-weight:600;color:#84B765">Детальніше →</span>
+</button>
+</sc-for>
+</div>
+</section>
+
+<section style="max-width:1200px;margin:0 auto;padding:40px 24px 8px">
+<div style="background:#242424;border:1px solid #333333;border-radius:6px;padding:32px">
+<div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#84B765" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"></path></svg>
+<span style="font-size:14px;font-weight:600;color:#84B765;text-transform:uppercase;letter-spacing:.06em">Для розмови з замовником</span>
+</div>
+<h2 style="margin:0 0 24px;font-size:30px;letter-spacing:-0.02em">Якщо замовник каже про це</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px;margin-bottom:32px">
+<div>
+<div style="font-weight:600;font-size:17px;margin-bottom:12px">Чесна відповідь</div>
+<p style="margin:0 0 16px;font-size:16px;line-height:1.55;color:#DADADA">Заборонити розвідку неможливо: вона йде в інтернеті, поза мережею компанії. Але можна зробити три речі:</p>
+<ol style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:12px">
+<li style="display:flex;gap:12px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:4px;background:rgba(132,183,101,.14);color:#84B765;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">1</span><span style="font-size:16px;line-height:1.5"><b style="font-weight:600">Показувати менше.</b> Прибрати зайві відкриті сервіси та публічні дані.</span></li>
+<li style="display:flex;gap:12px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:4px;background:rgba(132,183,101,.14);color:#84B765;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">2</span><span style="font-size:16px;line-height:1.5"><b style="font-weight:600">Знайти свої дірки першими.</b> Регулярно сканувати себе очима зловмисника.</span></li>
+<li style="display:flex;gap:12px;align-items:flex-start"><span style="flex:none;width:28px;height:28px;border-radius:4px;background:rgba(132,183,101,.14);color:#84B765;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px">3</span><span style="font-size:16px;line-height:1.5"><b style="font-weight:600">Помітити перехід до атаки.</b> Фішинговий лист чи вхід зі злитим паролем — уже наступний етап.</span></li>
+</ol>
+</div>
+<div>
+<div style="font-weight:600;font-size:17px;margin-bottom:12px">Що запитати замовника</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<label style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid #333333;border-radius:6px;font-size:15px;line-height:1.45;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;margin:2px 0 0;accent-color:#84B765">Чи знаєте ви всі свої сервіси, доступні з інтернету?</label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid #333333;border-radius:6px;font-size:15px;line-height:1.45;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;margin:2px 0 0;accent-color:#84B765">Як часто ви скануєте себе на вразливості, і хто виправляє знайдене?</label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid #333333;border-radius:6px;font-size:15px;line-height:1.45;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;margin:2px 0 0;accent-color:#84B765">Чи є <span class="term" tabindex="0">MFA<span class="tip"><b>MFA</b>Вхід із другим підтвердженням, наприклад кодом на телефоні. Один пароль уже не відкриває двері.</span></span> на пошті, VPN і віддаленому доступі?</label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border:1px solid #333333;border-radius:6px;font-size:15px;line-height:1.45;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;margin:2px 0 0;accent-color:#84B765">Чи фільтрується пошта від <span class="term" tabindex="0">фішингу<span class="tip"><b>Фішинг</b>Підроблений лист чи дзвінок, щоб виманити пароль, дані або змусити відкрити файл.</span></span> і чи навчали людей його розпізнавати?</label>
+</div>
+</div>
+</div>
+
+<div style="font-weight:600;font-size:17px;margin-bottom:4px">Що можна запропонувати</div>
+<p style="margin:0 0 16px;font-size:15px;color:#ABABAB">Захисні заходи за <span class="term" tabindex="0">D3FEND<span class="tip"><b>MITRE D3FEND</b>Каталог захисних заходів від MITRE: що саме робити, щоб зупинити кожну техніку атаки.</span></span> і продукти з портфеля Алести.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px;margin-bottom:28px">
+<sc-for list="{{solutions}}" as="s" hint-placeholder-count="5">
+<div style="border:1px solid #333333;border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:10px;background:#212121">
+<div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start">
+<span style="font-weight:600;font-size:16px;line-height:1.3">{{s.cls}}</span>
+<span style="flex:none;font-size:12px;font-weight:600;padding:4px 8px;border-radius:8px;background:rgba(132,183,101,.14);color:#84B765">{{s.d3}}</span>
+</div>
+<span style="font-size:15px;line-height:1.45;color:#DADADA">{{s.what}}</span>
+<div style="display:flex;gap:6px;flex-wrap:wrap">
+<sc-for list="{{s.products}}" as="p" hint-placeholder-count="2">
+<span style="font-size:13px;font-weight:500;padding:5px 10px;border-radius:4px;background:#242424;border:1px solid #424242">{{p}}</span>
+</sc-for>
+</div>
+</div>
+</sc-for>
+</div>
+
+<div style="display:flex;gap:16px;flex-wrap:wrap;align-items:stretch">
+<div style="flex:1 1 380px;padding:16px 18px;border-radius:6px;background:rgba(185,156,242,.10);display:flex;gap:12px;align-items:flex-start">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B99CF2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 8v5"></path><path d="M12 16.5v.5"></path></svg>
+<span style="font-size:15px;line-height:1.5;color:#DCCBFA"><b style="font-weight:600">Чого не обіцяти:</b> що сканування зникнуть або компанію «перестануть розвідувати». Ми зменшуємо видимість і ловимо наступні кроки.</span>
+</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+<button class="btn" type="button" style="font:inherit;font-weight:600;font-size:15px;padding:13px 18px;border-radius:6px;border:0;background:#84B765;color:#1C1C1C;cursor:pointer;min-height:48px">Створити картку виявлення</button>
+<button class="btn" type="button" style="font:inherit;font-weight:600;font-size:15px;padding:13px 18px;border-radius:6px;border:1px solid #424242;background:#242424;color:#FFFFFF;cursor:pointer;min-height:48px">Передати архітектору</button>
+</div>
+</div>
+</div>
+</section>
+
+<nav aria-label="Сусідні тактики" style="max-width:1200px;margin:0 auto;padding:32px 24px 56px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+<span style="font-size:15px;color:#8C8C8C;padding:14px 0">Це перший етап атаки</span>
+<a href="#" style="display:flex;flex-direction:column;align-items:flex-end;gap:2px;padding:14px 20px;border-radius:6px;background:#242424;border:1px solid #333333;text-decoration:none;color:#FFFFFF">
+<span style="font-size:13px;color:#ABABAB">Далі · етап 2 · TA0042</span>
+<span style="font-size:17px;font-weight:600">Підготовка ресурсів →</span>
+</a>
+</nav>
+
+<sc-if value="{{hasCur}}" hint-placeholder-val="{{false}}">
+<div style="position:fixed;inset:0;z-index:40">
+<button type="button" aria-label="Закрити" onClick="{{close}}" style="position:absolute;inset:0;border:0;background:rgba(0,0,0,.6);cursor:pointer"></button>
+<aside class="drawer" aria-label="Деталі техніки" style="background:#242424;box-shadow:-12px 0 40px rgba(17,24,39,.18);padding:28px">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px">
+<span style="font-family:'JetBrains Mono', monospace;font-size:13px;padding:4px 8px;border-radius:8px;background:rgba(185,156,242,.14);color:#B99CF2">{{cur.id}}</span>
+<button type="button" aria-label="Закрити панель" onClick="{{close}}" style="width:44px;height:44px;border-radius:6px;border:1px solid #333333;background:#242424;cursor:pointer;display:flex;align-items:center;justify-content:center">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+<h3 style="margin:0 0 4px;font-size:28px;line-height:1.15;letter-spacing:-0.02em">{{cur.ua}}</h3>
+<div style="font-size:15px;color:#9A9A9A;margin-bottom:22px">{{cur.en}}</div>
+
+<div style="font-size:13px;font-weight:600;color:#ABABAB;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Простими словами</div>
+<p style="margin:0 0 18px;font-size:17px;line-height:1.55">{{cur.simple}}</p>
+
+<div style="padding:14px 16px;border-radius:6px;background:rgba(185,156,242,.10);margin-bottom:18px">
+<div style="font-size:13px;font-weight:600;color:#B99CF2;margin-bottom:4px">Аналогія</div>
+<div style="font-size:15px;line-height:1.5;color:#E8DDFB">{{cur.analogy}}</div>
+</div>
+
+<div style="font-size:13px;font-weight:600;color:#ABABAB;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Як почути від замовника</div>
+<div style="padding:10px 14px;border-radius:6px;background:#2B2B2B;font-size:15px;line-height:1.45;margin-bottom:18px">«{{cur.quote}}»</div>
+
+<div style="font-size:13px;font-weight:600;color:#ABABAB;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Що запитати</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-bottom:18px">
+<sc-for list="{{cur.questions}}" as="q" hint-placeholder-count="2">
+<label style="display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.45;cursor:pointer"><input type="checkbox" style="width:18px;height:18px;margin:2px 0 0;accent-color:#84B765">{{q}}</label>
+</sc-for>
+</div>
+
+<div style="font-size:13px;font-weight:600;color:#ABABAB;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Як захищаємось</div>
+<div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">
+<sc-for list="{{cur.defenses}}" as="d" hint-placeholder-count="2">
+<div style="border:1px solid #333333;border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px">
+<span style="display:flex;justify-content:space-between;gap:8px"><span style="font-weight:600;font-size:15px">{{d.cls}}</span><span style="font-size:12px;font-weight:600;color:#84B765">{{d.d3}}</span></span>
+<span style="font-size:14px;color:#ABABAB">{{d.products}}</span>
+</div>
+</sc-for>
+</div>
+
+<div style="font-size:13px;font-weight:600;color:#ABABAB;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Технічно: підтехніки</div>
+<div style="display:flex;flex-direction:column;gap:4px;margin-bottom:18px">
+<sc-for list="{{cur.subs}}" as="sb" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;font-size:14px;line-height:1.5"><span style="font-family:'JetBrains Mono', monospace;color:#9A9A9A;flex:none">{{sb.id}}</span><span>{{sb.name}}</span></div>
+</sc-for>
+<sc-if value="{{cur.noSubs}}" hint-placeholder-val="{{false}}"><span style="font-size:14px;color:#9A9A9A">Підтехнік немає.</span></sc-if>
+</div>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap;padding-top:6px">
+<button class="btn" type="button" style="font:inherit;font-weight:600;font-size:15px;padding:12px 16px;border-radius:6px;border:0;background:#84B765;color:#1C1C1C;cursor:pointer;min-height:44px">Додати в картку виявлення</button>
+<a href="{{cur.url}}" style="font-weight:600;font-size:15px;padding:12px 16px;border-radius:6px;border:1px solid #424242;text-decoration:none;color:#FFFFFF;min-height:44px;box-sizing:border-box;display:flex;align-items:center">Відкрити на MITRE ↗</a>
+</div>
+</aside>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"brand":{"editor":"text","default":"CyberPlain","section":"Бренд"},"$preview":{"width":1440,"height":2560}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { open: null, mode: 'simple', filter: 'all' };
+  }
+  renderVals() {
+    var self = this;
+    var VM = { cls: 'Управління вразливостями', products: 'Rapid7 InsightVM', d3: 'Model · Harden' };
+    var FW = { cls: 'NGFW / IPS', products: 'Fortinet FortiGate', d3: 'Isolate · Detect' };
+    var WAF = { cls: 'Захист вебзастосунків (WAF)', products: 'Fortinet FortiWeb', d3: 'Isolate' };
+    var MAIL = { cls: 'Захист пошти', products: 'Fortinet FortiMail, Trend Micro', d3: 'Detect · Isolate' };
+    var MFA = { cls: 'MFA і захист облікових записів', products: 'Silverfort, Fortinet FortiAuthenticator', d3: 'Harden' };
+    var SIEM = { cls: 'SIEM / моніторинг', products: 'Rapid7 InsightIDR, Splunk', d3: 'Detect' };
+    var TI = { cls: 'Кіберрозвідка (Threat Intelligence)', products: '[уточнити в портфелі]', d3: 'Detect' };
+    var AWR = { cls: 'Навчання персоналу', products: '[уточнити в портфелі]', d3: 'Harden' };
+    function subs(prefix, names) { return names.map(function (n, i) { return { id: prefix + '.00' + (i + 1), name: n }; }); }
+    var techs = [
+      { id: 'T1595', ua: 'Активне сканування', en: 'Active Scanning', pain: true,
+        simple: 'Зловмисник «простукує» адреси компанії в інтернеті, шукаючи відкриті двері та вразливі сервіси.',
+        analogy: 'Хтось обходить будинок і смикає ручки всіх дверей і вікон.',
+        quote: 'У логах фаєрвола тисячі спроб підключення',
+        questions: ['Чи знаєте ви всі сервіси, відкриті в інтернет?', 'Як швидко закриваєте знайдені вразливості?'],
+        defenses: [VM, FW, WAF], subs: subs('T1595', ['Scanning IP Blocks', 'Vulnerability Scanning', 'Wordlist Scanning']) },
+      { id: 'T1592', ua: 'Збір даних про комп’ютери', en: 'Gather Victim Host Information', pain: false,
+        simple: 'Дізнається, які пристрої, програми та версії стоять у компанії, щоб підібрати під них атаку.',
+        analogy: 'Підглядає, яка марка замка на дверях, щоб купити відмичку саме до нього.',
+        quote: 'Хтось цікавиться, яке ПЗ ми використовуємо',
+        questions: ['Чи є актуальний перелік вашого ПЗ і версій?', 'Чи оновлюєте застаріле ПЗ на межі мережі?'],
+        defenses: [VM, WAF], subs: subs('T1592', ['Hardware', 'Software', 'Firmware', 'Client Configurations']) },
+      { id: 'T1589', ua: 'Збір даних про людей і облікові записи', en: 'Gather Victim Identity Information', pain: true,
+        simple: 'Збирає імена, email-и й навіть злиті паролі співробітників — це ключі для наступних кроків.',
+        analogy: 'Шукає, хто з мешканців ховає ключ під килимком.',
+        quote: 'Наші email-и знайшли в злитій базі',
+        questions: ['Чи є MFA на пошті та VPN?', 'Чи стежите ви за витоками паролів співробітників?'],
+        defenses: [MFA, TI, MAIL], subs: subs('T1589', ['Credentials', 'Email Addresses', 'Employee Names']) },
+      { id: 'T1590', ua: 'Збір даних про мережу', en: 'Gather Victim Network Information', pain: false,
+        simple: 'Вивчає домени, IP-адреси, DNS і які засоби захисту стоять на вході — фактично креслить план мережі.',
+        analogy: 'Малює план будинку: де вхід, де підвал, де сигналізація.',
+        quote: 'Не впевнені, що знаємо всі свої домени та адреси',
+        questions: ['Хто веде облік ваших доменів і зовнішніх IP?', 'Чи є старі піддомени, якими ніхто не користується?'],
+        defenses: [VM, FW], subs: subs('T1590', ['Domain Properties', 'DNS', 'Network Trust Dependencies', 'Network Topology', 'IP Addresses', 'Network Security Appliances']) },
+      { id: 'T1591', ua: 'Збір даних про організацію', en: 'Gather Victim Org Information', pain: false,
+        simple: 'З’ясовує структуру, партнерів, офіси та ролі людей, щоб правдоподібно ошукати когось від імені «своїх».',
+        analogy: 'Дізнається імена сусідів і листоноші, щоб видати себе за знайомого.',
+        quote: 'Нам дзвонили від імені нашого постачальника',
+        questions: ['Чи перевіряєте зміну реквізитів партнерів телефоном?', 'Що про структуру компанії видно публічно?'],
+        defenses: [AWR, MAIL], subs: subs('T1591', ['Determine Physical Locations', 'Business Relationships', 'Identify Business Tempo', 'Identify Roles']) },
+      { id: 'T1598', ua: 'Фішинг для збору інформації', en: 'Phishing for Information', pain: true,
+        simple: 'Надсилає листи, повідомлення або дзвонить, щоб виманити пароль чи внутрішні дані.',
+        analogy: 'Дзвонить у двері під виглядом газовика й просить показати, де лічильник.',
+        quote: 'Співробітникам пишуть і просять підтвердити дані',
+        questions: ['Чи фільтрується вхідна пошта від фішингу?', 'Чи проводили для людей навчання або тестові розсилки?'],
+        defenses: [MAIL, MFA, AWR], subs: subs('T1598', ['Spearphishing Service', 'Spearphishing Attachment', 'Spearphishing Link', 'Spearphishing Voice']) },
+      { id: 'T1682', ua: 'Запити до публічних AI-сервісів', en: 'Query Public AI Services', pain: false,
+        simple: 'Питає чат-ботів і AI-пошук про компанію, щоб швидко зібрати та узагальнити все, що про неї відомо.',
+        analogy: 'Наймає помічника, який за хвилину перечитує всі газети про будинок.',
+        quote: 'Що про нас може «знати» ChatGPT?',
+        questions: ['Хто контролює, що компанія публікує про себе?', 'Чи потрапляють у відкритий доступ внутрішні документи?'],
+        defenses: [AWR], subs: [] },
+      { id: 'T1597', ua: 'Пошук у закритих джерелах', en: 'Search Closed Sources', pain: false,
+        simple: 'Купує або шукає дані про компанію на закритих форумах, у даркнеті чи в торговців даними.',
+        analogy: 'Купує у знайомого злодія план будинку, який той уже складав.',
+        quote: 'Чи не продають наші дані десь у даркнеті?',
+        questions: ['Чи моніторите згадки про компанію в даркнеті?', 'Що робите, коли знаходите витік?'],
+        defenses: [TI, MFA], subs: subs('T1597', ['Threat Intel Vendors', 'Purchase Technical Data']) },
+      { id: 'T1596', ua: 'Пошук у відкритих технічних базах', en: 'Search Open Technical Databases', pain: true,
+        simple: 'Дивиться відкриті бази: WHOIS, сертифікати, DNS-історію, результати чужих сканувань інтернету.',
+        analogy: 'Читає публічний кадастр і старі оголошення про продаж будинку.',
+        quote: 'Наш старий сервер видно в Shodan',
+        questions: ['Чи перевіряли, що про вас показують Shodan і подібні сервіси?', 'Чи є забуті тестові сервіси з доступом ззовні?'],
+        defenses: [VM, FW], subs: subs('T1596', ['DNS/Passive DNS', 'WHOIS', 'Digital Certificates', 'CDNs', 'Scan Databases']) },
+      { id: 'T1593', ua: 'Пошук на відкритих сайтах', en: 'Search Open Websites/Domains', pain: false,
+        simple: 'Шукає в соцмережах, пошуковиках і на GitHub — там часто випадково лежать паролі, ключі й схеми.',
+        analogy: 'Гортає соцмережі мешканців: фото з відпустки означає, що вдома нікого.',
+        quote: 'Розробник виклав код із паролем на GitHub',
+        questions: ['Чи перевіряєте публічні репозиторії на секрети?', 'Чи є правила для співробітників щодо соцмереж?'],
+        defenses: [AWR, TI], subs: subs('T1593', ['Social Media', 'Search Engines', 'Code Repositories']) },
+      { id: 'T1681', ua: 'Пошук у звітах вендорів безпеки', en: 'Search Threat Vendor Data', pain: false,
+        simple: 'Читає звіти компаній з кібербезпеки, щоб дізнатися, що про нього вже знають, і змінити тактику.',
+        analogy: 'Злодій читає поліцейські зведення, щоб не повторювати помилок.',
+        quote: 'Нас цікавить, які атаки зараз ідуть на нашу галузь',
+        questions: ['Чи отримуєте ви галузеві звіти про загрози?', 'Хто аналізує, чи стосуються вони вас?'],
+        defenses: [TI, SIEM], subs: [] },
+      { id: 'T1594', ua: 'Вивчення сайтів самої компанії', en: 'Search Victim-Owned Websites', pain: false,
+        simple: 'Читає сайт компанії: контакти, вакансії з переліком технологій, імена керівників.',
+        analogy: 'Читає табличку на дверях і оголошення на під’їзді.',
+        quote: 'У вакансіях ми пишемо, які системи використовуємо',
+        questions: ['Що з сайту може допомогти зловмиснику?', 'Чи захищений сайт від автоматичного збору даних?'],
+        defenses: [WAF, AWR], subs: [] }
+    ];
+    var tacticNames = ['Розвідка', 'Підготовка ресурсів', 'Початковий доступ', 'Виконання', 'Закріплення', 'Підвищення привілеїв', 'Приховування', 'Виведення захисту з ладу', 'Крадіжка облікових даних', 'Дослідження мережі', 'Переміщення мережею', 'Збір даних', 'Керування (C2)', 'Викрадення даних', 'Удар'];
+    var tactics = tacticNames.map(function (n, i) {
+      var on = i === 0;
+      return { n: i + 1, ua: n,
+        style: 'flex:none;display:flex;align-items:center;gap:8px;padding:8px 14px 8px 8px;border-radius:4px;text-decoration:none;font-size:14px;font-weight:' + (on ? '600' : '500') + ';white-space:nowrap;min-height:44px;box-sizing:border-box;' + (on ? 'background:#84B765;color:#1C1C1C;border:1px solid #84B765' : 'background:#242424;color:#DADADA;border:1px solid #333333'),
+        numStyle: 'width:28px;height:28px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;' + (on ? 'background:rgba(0,0,0,.18);color:#1C1C1C' : 'background:#2B2B2B;color:#ABABAB') };
+    });
+    var mode = this.state.mode, filter = this.state.filter;
+    var visible = techs.filter(function (t) { return filter === 'all' || t.pain; }).map(function (t) {
+      var techDesc = t.subs.length ? t.subs.map(function (s) { return s.name; }).join(' · ') : 'Без підтехнік';
+      return Object.assign({}, t, { desc: mode === 'simple' ? t.simple : techDesc, open: function () { self.setState({ open: t.id }); } });
+    });
+    var cur = null;
+    techs.forEach(function (t) { if (t.id === self.state.open) cur = t; });
+    var curOut = cur ? Object.assign({}, cur, { noSubs: cur.subs.length === 0, url: 'https://attack.mitre.org/techniques/' + cur.id + '/' }) : { questions: [], defenses: [], subs: [] };
+    var segOn = 'font:inherit;font-size:14px;font-weight:600;padding:9px 14px;border-radius:9px;border:0;background:#3E3E3E;color:#F5F5F5;cursor:pointer;min-height:40px';
+    var segOff = 'font:inherit;font-size:14px;font-weight:500;padding:9px 14px;border-radius:9px;border:0;background:transparent;color:#ABABAB;cursor:pointer;min-height:40px';
+    var chipOn = 'font:inherit;font-size:14px;font-weight:600;padding:10px 14px;border-radius:4px;border:1px solid #FFFFFF;background:#FFFFFF;color:#1C1C1C;cursor:pointer;min-height:44px';
+    var chipOff = 'font:inherit;font-size:14px;font-weight:500;padding:10px 14px;border-radius:4px;border:1px solid #424242;background:#242424;color:#DADADA;cursor:pointer;min-height:44px';
+    return {
+      brand: this.props.brand ?? 'CyberPlain',
+      tactics: tactics,
+      visible: visible,
+      painCount: techs.filter(function (t) { return t.pain; }).length,
+      solutions: [
+        { cls: 'Управління вразливостями', what: 'Бачите себе очима зловмисника і закриваєте дірки першими.', d3: 'Model · Harden', products: ['Rapid7 InsightVM'] },
+        { cls: 'Захист пошти', what: 'Ловить фішингові листи, що виманюють паролі та дані.', d3: 'Detect · Isolate', products: ['FortiMail', 'Trend Micro'] },
+        { cls: 'MFA і захист облікових записів', what: 'Злитий пароль сам по собі вже не відкриває двері.', d3: 'Harden', products: ['Silverfort', 'FortiAuthenticator'] },
+        { cls: 'NGFW та WAF', what: 'Відсікають сканування й атаки на сайт і сервіси.', d3: 'Isolate · Detect', products: ['FortiGate', 'FortiWeb'] },
+        { cls: 'SIEM / моніторинг', what: 'Помічає момент, коли розвідка переходить в атаку.', d3: 'Detect', products: ['Rapid7 InsightIDR', 'Splunk'] }
+      ],
+      hasCur: !!cur,
+      cur: curOut,
+      close: function () { self.setState({ open: null }); },
+      setSimple: function () { self.setState({ mode: 'simple' }); },
+      setTech: function () { self.setState({ mode: 'tech' }); },
+      showAll: function () { self.setState({ filter: 'all' }); },
+      showPain: function () { self.setState({ filter: 'pain' }); },
+      simpleStyle: mode === 'simple' ? segOn : segOff,
+      techStyle: mode === 'tech' ? segOn : segOff,
+      allStyle: filter === 'all' ? chipOn : chipOff,
+      painStyle: filter === 'pain' ? chipOn : chipOff
+    };
+  }
+}
+</script>
+</body>
+</html>
