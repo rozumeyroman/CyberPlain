@@ -1,0 +1,78 @@
+---
+import AttackSource from './AttackSource.astro';
+import SolutionLinks from './SolutionLinks.astro';
+import { loadData, url, num, type Technique } from '../lib/data';
+
+interface Props { technique: Technique }
+const { technique: t } = Astro.props;
+const d = await loadData();
+const tactics = d.tacticsOf(t);
+const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
+const defenses = d.classesOf(t);
+---
+<section class="wrap page">
+  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
+    <a href="/mitre/">MITRE ATT&amp;CK</a><span aria-hidden="true">/</span>
+    <a href={url.tactic(tactics[0].id)}>{num(order(tactics[0].id))} {tactics[0].data.ua}</a><span aria-hidden="true">/</span>
+    <span aria-current="page">{t.id}</span>
+  </nav>
+
+  <div class="head"><span class="id-attack big">{t.id}</span><span class="mono meta">{t.data.en}</span>{t.data.pain && <span class="badge-pain">Часта біль</span>}</div>
+  <h1>{t.data.ua}</h1>
+  <p class="lead-text">{t.data.simple}</p>
+
+  <div class="grid">
+    {t.data.goal && <div class="note-box"><span class="mono attack">Чого домагається зловмисник</span>{t.data.goal}</div>}
+    {t.data.analogy && <div class="note-box"><span class="mono attack">Аналогія</span>{t.data.analogy}</div>}
+    {t.data.quote && <div class="note-box"><span class="mono muted">Як це звучить у замовника</span>«{t.data.quote}»</div>}
+  </div>
+
+  {t.data.questions.length > 0 && (
+    <section class="sec" aria-labelledby="q">
+      <h2 class="sec-title" id="q">Що запитати замовника</h2>
+      <div class="qs">{t.data.questions.map((q) => <label class="q"><input type="checkbox"> <span>{q}</span></label>)}</div>
+    </section>
+  )}
+
+  <section class="sec" aria-labelledby="sol">
+    <h2 class="sec-title" id="sol">Чим захиститись</h2>
+    {defenses.length === 0
+      ? <p class="soon-box">Рішення для цієї техніки готуються.</p>
+      : (
+        <table class="tbl">
+          <thead><tr><th>Рішення</th><th>Що це</th><th>D3FEND</th></tr></thead>
+          <tbody>
+            {defenses.map((c) => (
+              <tr>
+                <td><SolutionLinks cls={c} products={d.productsOf(c.id)} /></td>
+                <td data-label="Що це" class:list={{ empty: !c.data.simple }}>{c.data.simple ?? '—'}</td>
+                <td data-label="D3FEND" class="d3 inline">{c.data.d3fend.join(' · ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+  </section>
+
+  <section class="sec" aria-labelledby="st">
+    <h2 class="sec-title" id="st">{tactics.length > 1 ? 'Етапи атаки, де трапляється' : 'Етап атаки'}</h2>
+    <div class="chips">{tactics.map((ta) => <a href={url.tactic(ta.id)} class="chip">{num(order(ta.id))} {ta.data.ua} · {ta.id}</a>)}</div>
+  </section>
+</section>
+
+<section class="wrap bottom"><AttackSource href={url.mitre(t.id)} label={`${t.id} на attack.mitre.org ↗`} /></section>
+
+<style>
+  .head { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .big { font-size: 20px; }
+  .meta { font-size: 12px; color: var(--muted-2); }
+  h1 { margin: 0 0 16px; font-size: clamp(32px, 7vw, 44px); line-height: 1.1; }
+  .attack { color: var(--attack); }
+  .muted { color: var(--muted-2); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; max-width: 980px; }
+  .grid .note-box { max-width: none; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  .qs { display: flex; flex-direction: column; gap: 8px; max-width: 760px; }
+  .q { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); font-size: 15px; line-height: 1.45; cursor: pointer; }
+  .q input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--defense); flex: none; }
+  .bottom { padding-top: 40px; padding-bottom: 72px; }
+</style>

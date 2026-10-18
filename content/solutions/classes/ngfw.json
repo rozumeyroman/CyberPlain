@@ -1,0 +1,8 @@
+{
+  "ua": "NGFW / IPS",
+  "en": "Next-Generation Firewall",
+  "d3fend": [
+    "Isolate",
+    "Detect"
+  ]
+}

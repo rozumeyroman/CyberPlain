@@ -1,0 +1,124 @@
+---
+import AttackSource from './AttackSource.astro';
+import SolutionLinks from './SolutionLinks.astro';
+import { loadData, url, num, type Tactic } from '../lib/data';
+
+interface Props { tactic: Tactic }
+const { tactic: t } = Astro.props;
+const d = await loadData();
+const i = d.tactics.findIndex((x) => x.id === t.id);
+const prev = d.tactics[i - 1], next = d.tactics[i + 1];
+const techniques = d.techniquesOf(t.id);
+const solutions = d.solutionsFor(t);
+---
+<section class="wrap page">
+  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
+    <a href="/mitre/">MITRE ATT&amp;CK</a><span aria-hidden="true">/</span><span aria-current="page">{num(i + 1)} {t.data.ua}</span>
+  </nav>
+
+  <div class="head"><span class="num">{num(i + 1)}</span><span class="mono meta">{t.id} · {t.data.en}</span></div>
+  <h1>{t.data.ua}</h1>
+  <p class="lead-text">{t.data.short}</p>
+  {t.data.analogy && <div class="note-box"><span class="mono attack">Аналогія</span>{t.data.analogy}</div>}
+
+  <section class="sec" aria-labelledby="sol">
+    <h2 class="sec-title" id="sol">Чим захиститись на цьому етапі</h2>
+    {solutions.length === 0
+      ? <p class="soon-box">Рішення для цього етапу готуються.</p>
+      : (
+        <table class="tbl">
+          <thead><tr><th>Рішення</th><th>Що робить</th><th>Техніки</th><th>D3FEND</th></tr></thead>
+          <tbody>
+            {solutions.map((s) => (
+              <tr>
+                <td><SolutionLinks cls={s.cls} products={s.products} /></td>
+                <td data-label="Що робить" class:list={{ empty: !(s.note ?? s.cls.data.simple) }}>{s.note ?? s.cls.data.simple ?? '—'}</td>
+                <td data-label="Техніки" class="cover inline">{s.techniques.length} з {techniques.length}</td>
+                <td data-label="D3FEND" class="d3 inline">{s.cls.data.d3fend.join(' · ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+  </section>
+
+  <section class="sec" aria-labelledby="tech">
+    <h2 class="sec-title" id="tech">Техніки етапу{techniques.length > 0 && <span class="mono">{techniques.length}</span>}</h2>
+    {techniques.length === 0
+      ? <div class="soon-box">Пояснення технік цієї тактики готуються. Поки можна переглянути оригінальний опис.<br><a href={url.mitre(t.id)} class="mono">Техніки на attack.mitre.org ↗</a></div>
+      : (
+        <div class="techs">
+          {techniques.map((x) => (
+            <details class="tech">
+              <summary>
+                <span class="id-attack">{x.id}</span>
+                <span class="tname"><span class="ua">{x.data.ua}</span><span class="en">{x.data.en}</span></span>
+                {x.data.pain && <span class="badge-pain">Часта біль</span>}
+              </summary>
+              <div class="tbody">
+                <p>{x.data.simple}</p>
+                {x.data.analogy && <p class="muted"><b>Аналогія.</b> {x.data.analogy}</p>}
+                {x.data.quote && <p class="quote">«{x.data.quote}»</p>}
+                {x.data.defenses.length > 0 && (
+                  <div class="chips">{d.classesOf(x).map((c) => <a href={url.solution(c.id)} class="chip">{c.data.ua}</a>)}</div>
+                )}
+                <a href={url.technique(x.id)} class="mono more">Детальніше →</a>
+              </div>
+            </details>
+          ))}
+        </div>
+      )}
+  </section>
+
+  <nav aria-label="Сусідні етапи" class="pager">
+    {prev
+      ? <a href={url.tactic(prev.id)} class="card"><span class="mono dir">← Попередній</span><span class="pname">{num(i)} {prev.data.ua}</span></a>
+      : <div class="card off"><span class="mono dir">← Попередній</span><span>Це перший етап</span></div>}
+    {next
+      ? <a href={url.tactic(next.id)} class="card right"><span class="mono dir">Наступний →</span><span class="pname">{num(i + 2)} {next.data.ua}</span></a>
+      : <div class="card right off"><span class="mono dir">Наступний →</span><span>Це останній етап</span></div>}
+  </nav>
+</section>
+
+<section class="wrap bottom"><AttackSource href={url.mitre(t.id)} /></section>
+
+<style>
+  .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .num { font-size: 44px; font-weight: 600; letter-spacing: -0.03em; color: var(--attack); }
+  .meta { font-size: 12px; color: var(--muted-2); }
+  h1 { margin: 0 0 16px; font-size: clamp(36px, 8vw, 48px); line-height: 1.05; }
+  .attack { color: var(--attack); }
+  .cover { white-space: nowrap; }
+
+  .techs { border-top: 1px solid var(--line); }
+  .tech { border-bottom: 1px solid var(--line); }
+  summary {
+    display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; min-height: 56px; padding: 12px 36px 12px 0;
+    cursor: pointer; list-style: none; position: relative;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font: 400 20px var(--font-mono); color: var(--muted); }
+  .tech[open] summary::after { content: '−'; }
+  summary:hover .ua { color: var(--defense-hover); }
+  summary .id-attack { font-size: 13px; min-width: 64px; }
+  .tname { display: flex; flex-direction: column; flex: 1 1 220px; }
+  .ua { font-size: 17px; font-weight: 600; line-height: 1.3; transition: color .15s; }
+  .en { font-size: 12px; color: var(--muted-2); }
+  .tbody { padding: 0 0 20px 80px; display: flex; flex-direction: column; gap: 12px; max-width: 840px; }
+  .tbody p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-2); }
+  .tbody .muted { color: var(--muted); }
+  .tbody b { color: var(--text); font-weight: 600; }
+  .quote { padding: 10px 14px; background: var(--surface); border-left: 2px solid var(--attack); }
+  .more { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start; }
+  @media (max-width: 640px) { .tbody { padding-left: 0; } }
+
+  .pager { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: 56px; }
+  .card { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line); color: var(--text); text-decoration: none; font-size: 15px; transition: border-color .15s; }
+  a.card:hover { border-color: var(--defense); color: var(--text); }
+  .card.right { text-align: right; }
+  .card.off { color: var(--line-hover); }
+  .dir { font-size: 11px; color: var(--muted-2); }
+  .off .dir { color: inherit; }
+  .pname { font-weight: 600; }
+  .bottom { padding-top: 40px; padding-bottom: 72px; }
+</style>

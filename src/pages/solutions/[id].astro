@@ -1,0 +1,80 @@
+---
+// /solutions/<id>/ — клас рішень (vm) або продукт (rapid7-insightvm). ID не перетинаються (перевіряє loadData).
+import Base from '../../layouts/Base.astro';
+import { loadData, url, num, type SolutionClass, type Product } from '../../lib/data';
+
+export async function getStaticPaths() {
+  const { classes, products } = await loadData();
+  return [
+    ...classes.map((cls) => ({ params: { id: cls.id }, props: { cls } })),
+    ...products.map((product) => ({ params: { id: product.id }, props: { product } })),
+  ];
+}
+
+const { cls, product } = Astro.props as { cls?: SolutionClass; product?: Product };
+const d = await loadData();
+const own = product ? product.data.classes.map((r) => d.classById.get(r.id)!) : [];
+// Техніки продукту — ті, від яких захищають його класи; самі зв'язки лежать лише в defenses[] технік.
+const techIds = new Set((cls ? [cls] : own).flatMap((c) => d.techniquesDefendedBy(c.id).map((t) => t.id)));
+const groups = d.byTactic(d.techniques.filter((t) => techIds.has(t.id)));
+const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
+const title = cls ? cls.data.ua : product!.data.name;
+const simple = cls ? cls.data.simple : product!.data.simple;
+---
+<Base title={title} description={simple}>
+  <section class="wrap page">
+    <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
+      <a href="/solutions/">Рішення</a><span aria-hidden="true">/</span>
+      {product && <><a href={url.solution(own[0].id)}>{own[0].data.ua}</a><span aria-hidden="true">/</span></>}
+      <span aria-current="page">{title}</span>
+    </nav>
+
+    <div class="mono tag">{cls ? '[ Клас рішень ]' : `[ Продукт · ${product!.data.vendor} ]`}</div>
+    <h1>{title}</h1>
+    {cls?.data.en && <p class="en">{cls.data.en}</p>}
+    {simple ? <p class="lead-text">{simple}</p> : <p class="soon-box">Пояснення готується.</p>}
+
+    <div class="facts">
+      {cls && cls.data.d3fend.length > 0 && <div><span class="mono k">D3FEND</span><span class="d3">{cls.data.d3fend.join(' · ')}</span></div>}
+      {product && <div><span class="mono k">Клас</span><span class="chips">{own.map((c) => <a href={url.solution(c.id)} class="chip">{c.data.ua}</a>)}</span></div>}
+    </div>
+
+    {cls && (
+      <section class="sec" aria-labelledby="pr">
+        <h2 class="sec-title" id="pr">Продукти</h2>
+        {d.productsOf(cls.id).length === 0
+          ? <p class="soon-box">Продукти цього класу ще не додані.</p>
+          : <div class="chips">{d.productsOf(cls.id).map((p) => <a href={url.solution(p.id)} class="chip">{p.data.name}</a>)}</div>}
+      </section>
+    )}
+
+    <section class="sec" aria-labelledby="tt">
+      <h2 class="sec-title" id="tt">Від чого захищає{techIds.size > 0 && <span class="mono">{techIds.size} технік</span>}</h2>
+      {groups.length === 0
+        ? <p class="soon-box">Зв'язки з техніками атак ще не додані.</p>
+        : groups.map((g) => (
+          <div class="group">
+            <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.ua} · {g.tactic.id}</a>
+            <ul>{g.techniques.map((t) => (
+              <li><a href={url.technique(t.id)}><span class="id-attack">{t.id}</span> {t.data.ua}</a></li>
+            ))}</ul>
+          </div>
+        ))}
+    </section>
+  </section>
+</Base>
+
+<style>
+  .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
+  h1 { margin: 0 0 8px; font-size: clamp(32px, 7vw, 48px); line-height: 1.1; }
+  .en { margin: 0 0 20px; font-size: 14px; color: var(--muted-2); }
+  .facts { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .facts > div { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .k { font-size: 11px; color: var(--muted-2); min-width: 72px; }
+  .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
+  .gtitle { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 24px; }
+  li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; }
+  li a:hover { color: var(--text); }
+  .id-attack { font-size: 12px; min-width: 52px; }
+</style>

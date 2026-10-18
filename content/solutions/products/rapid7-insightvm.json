@@ -1,0 +1,7 @@
+{
+  "name": "Rapid7 InsightVM",
+  "vendor": "Rapid7",
+  "classes": [
+    "vm"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "Fortinet FortiMail",
+  "vendor": "Fortinet",
+  "classes": [
+    "email"
+  ]
+}

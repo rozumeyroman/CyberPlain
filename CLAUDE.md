@@ -46,27 +46,26 @@ MITRE ATT&CK® (як діє зловмисник) і MITRE D3FEND™ (як за�
 
 ```
 site.config.ts            # назва, слоган, домен, вкладки, кольори, тексти авторства
-wrangler.jsonc
-content/
-  attack/
-    tactics.json          # 15 тактик: id, en, ua, order, short (просте пояснення)
-    techniques/TA0043.json# техніки тактики + наші пояснення (див. нижче)
-  d3fend/tactics.json     # 7 тактик D3FEND з поясненнями
-  solutions.json          # рішення: id, ua, en, simple, d3fend[], products[] (поки порожній)
-  glossary.json           # терміни для підказок
+wrangler.jsonc  worker/index.js
+content/                  # наш контент (CC BY 4.0); 1 запис = 1 JSON, ім'я файлу = ID
+  attack/intro.json       # тексти сторінки /mitre і дані джерела (версія ATT&CK)
+  attack/tactics/TA0043.json      # етап: order, en, ua, short, analogy, solutionNotes{класID: текст}
+  attack/techniques/T1595.json    # техніка: en, ua, tactics[], pain, simple, goal, analogy,
+                                  #   quote, questions[], defenses[] (ID класів рішень)
+  solutions/classes/vm.json       # клас рішень: ua, en, simple, d3fend[]
+  solutions/products/rapid7-insightvm.json  # продукт: name, vendor, classes[], simple
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
-scripts/import-attack.mjs # STIX 2.1 з github.com/mitre-attack/attack-stix-data
 src/
+  content.config.ts       # схеми колекцій і посилання між ними (reference)
+  lib/data.ts             # loadData(): зв'язки, обчислення, перевірки; url.* — усі адреси сторінок
   layouts/Base.astro      # шапка з вкладками з site.config, футер з авторством
-  components/             # Term.astro, TechniqueCard.astro, Translator.astro, ...
-  pages/index.astro                       # Home
-  pages/mitre/index.astro                 # ланцюжок 15 тактик
-  pages/mitre/[tactic]/index.astro        # сторінка тактики: /mitre/TA0001/
-  pages/mitre/[tactic]/[technique].astro  # сторінка техніки: /mitre/TA0001/T1566/
-  pages/d3fend/index.astro
-  pages/solutions/index.astro             # вкладка «Рішення»: список рішень
-  pages/solutions/[solution].astro        # сторінка рішення: /solutions/edr/
-  pages/licenses.astro                    # повні тексти ліцензій
+  components/             # TacticPage, TechniquePage, SolutionLinks, Translator, ...
+  pages/index.astro                  # Home
+  pages/mitre/index.astro            # змійка 15 етапів
+  pages/mitre/[id].astro             # /mitre/TA0043/ — етап, /mitre/T1595/ — техніка
+  pages/solutions/index.astro        # таблиця класів рішень
+  pages/solutions/[id].astro         # /solutions/vm/ — клас, /solutions/rapid7-insightvm/ — продукт
+  pages/d3fend/index.astro  pages/licenses.astro
   styles/tokens.css, base.css
 design/                   # референсні макети (не код сайту, див. нижче)
 LICENSE  LICENSE-CONTENT  NOTICE.md
@@ -74,22 +73,28 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 
 Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/<tab>/`.
 
-Адреси сторінок — за ID MITRE, не за slug: `/mitre/TA0001/`, `/mitre/TA0001/T1566/`,
-підтехніка — `/mitre/TA0001/T1566.001/`. ID стабільні, а назви MITRE може змінити.
+Адреси — за ID, не за slug: етап `/mitre/TA0001/`, техніка `/mitre/T1566/`, підтехніка
+`/mitre/T1566.001/`. Техніка має одну сторінку, навіть якщо входить у кілька етапів (у MITRE
+так буває) — без дублікатів для Google. Рішення: `/solutions/<id>/`. Адреси будуються лише
+через `url.*` з `src/lib/data.ts`. ID етапів і технік, класів і продуктів не повинні
+збігатися — `loadData()` зупинить збірку.
 
 ## Модель контенту
 
-Сирі поля MITRE (назва, опис, підтехніки, URL) — з імпорту в `data/mitre/`.
-Наш шар пояснень — у `content/`, ключується ID MITRE. Поля техніки:
-`id, ua, en, pain (bool, «часта біль»), simple, analogy, quote (як каже клієнт),
-questions[], defenses[] (посилання на solutions.json)`. Якщо техніка є в MITRE, але
-пояснення ще немає — сторінка показує дані MITRE з позначкою «пояснення готується».
+Сирі поля MITRE (назва, опис, підтехніки, URL) — з імпорту в `data/mitre/` (ще не зроблено).
+Наш шар пояснень — у `content/`, ключується ID MITRE.
 
-**Крос-посилання техніки ↔ рішення.** Зв'язок зберігаємо в одному місці — у полі
-`defenses[]` техніки (масив `id` з `solutions.json`). Сторінка техніки посилається на
-`/solutions/<id>/`; сторінка рішення список технік *обчислює* під час збирання (усі
-техніки, у чиїх `defenses[]` є її `id`) і посилається на `/mitre/<tactic>/<technique>/`.
-У `solutions.json` технік не дублюємо. Невідомий `id` у `defenses[]` — помилка збирання.
+**Зв'язки зберігаємо з одного боку, решту обчислюємо під час збирання:**
+- техніка → етапи: `tactics[]`; список технік етапу обчислюється;
+- техніка → класи рішень: `defenses[]` — **єдине місце** зв'язку з рішеннями;
+- продукт → класи: `classes[]`; продукти класу обчислюються;
+- таблиця «Чим захиститись на цьому етапі» = усі класи з `defenses[]` технік етапу,
+  відсортовані за кількістю технік; текст «що робить» — `solutionNotes` етапу або `simple` класу;
+- сторінка рішення показує техніки, які на нього посилаються (продукт — через свої класи).
+
+Неіснуючий ID у посиланні — помилка збирання (Astro `reference()` + перевірки в `loadData()`).
+Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043, класи й
+продукти перенесені з макета `design/Tactic-TA0043.dc.html` — чернетка, потребує перевірки автором.
 
 ## Дизайн
 
@@ -230,4 +235,6 @@ Recovery). Де продукту немає — `[уточнити в портф
 - Порядок роботи над контентом: тактики по черзі від TA0043 до TA0040.
 - Перед великими змінами — короткий план. Автор працює сам: коміть і пуш одразу в `main` (`main` = прод), без окремих гілок і PR.
 - Не вигадуй факти про MITRE чи продукти: бери з імпорту/першоджерел або питай автора.
+- Автор може помилятися в термінах (напр. тактика/техніка) — уточнюй і поправляй, а не
+  виконуй буквально.
 - Після кожного етапу: `npm run build` без помилок, перевір сторінку на 375px і 1440px.

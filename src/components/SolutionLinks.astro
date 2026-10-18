@@ -1,0 +1,11 @@
+---
+// Клас рішень і його продукти — усі посиланнями в розділ «Рішення».
+import { url, type SolutionClass, type Product } from '../lib/data';
+
+interface Props { cls: SolutionClass; products: Product[] }
+const { cls, products } = Astro.props;
+---
+<a href={url.solution(cls.id)} class="name">{cls.data.ua}</a>
+{products.length > 0 && (
+  <div class="chips">{products.map((p) => <a href={url.solution(p.id)} class="chip">{p.data.name}</a>)}</div>
+)}

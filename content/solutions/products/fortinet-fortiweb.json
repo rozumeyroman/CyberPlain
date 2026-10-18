@@ -1,0 +1,7 @@
+{
+  "name": "Fortinet FortiWeb",
+  "vendor": "Fortinet",
+  "classes": [
+    "waf"
+  ]
+}

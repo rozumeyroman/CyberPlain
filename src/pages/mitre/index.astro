@@ -1,14 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import AttackSource from '../../components/AttackSource.astro';
-import { intro, tactics } from '../../../content/attack/tactics.json';
+import { intro } from '../../../content/attack/intro.json';
+import { loadData, url, num } from '../../lib/data';
 
+const { tactics } = await loadData();
 const COLS = 5;
 // Змійка: парні ряди зліва направо, непарні — справа наліво.
 const cards = tactics.map((t, i) => {
   const row = Math.floor(i / COLS), pos = i % COLS, ltr = row % 2 === 0;
   const dir = i === tactics.length - 1 ? '' : pos === COLS - 1 ? 'down' : ltr ? 'right' : 'left';
-  return { ...t, num: String(i + 1).padStart(2, '0'), r: row + 1, c: ltr ? pos + 1 : COLS - pos, dir };
+  return { id: t.id, ...t.data, num: num(i + 1), r: row + 1, c: ltr ? pos + 1 : COLS - pos, dir };
 });
 
 const cut = intro.title.indexOf(',');
@@ -55,7 +57,7 @@ const capCut = intro.caveat.indexOf('. ') + 1;
     <ol class="snake">
       {cards.map((t) => (
         <li class:list={['tc', t.dir && `go-${t.dir}`]} style={`--r:${t.r};--c:${t.c}`}>
-          <a href={`/mitre/${t.id}/`}>
+          <a href={url.tactic(t.id)}>
             <span class="tc-top"><span class="num">{t.num}</span><span class="mono id">{t.id}</span></span>
             <span class="names"><span class="ua">{t.ua}</span><span class="en">{t.en}</span></span>
             <span class="short">{t.short}</span>

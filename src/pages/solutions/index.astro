@@ -1,19 +1,41 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SolutionLinks from '../../components/SolutionLinks.astro';
+import { loadData } from '../../lib/data';
+
+const d = await loadData();
+const rows = d.classes
+  .map((cls) => ({ cls, products: d.productsOf(cls.id), count: d.techniquesDefendedBy(cls.id).length }))
+  .sort((a, b) => a.cls.data.ua.localeCompare(b.cls.data.ua));
 ---
 <Base title="Рішення">
-  <section class="wrap stub">
+  <section class="wrap page">
     <div class="mono tag">[ Рішення ]</div>
     <h1>Рішення</h1>
-    <p>Класи рішень кібербезпеки простими словами: що кожне робить, від яких технік атаки захищає і які продукти його реалізують.</p>
-    <p class="mono soon">Розділ готується</p>
+    <p class="lead-text">Класи рішень кібербезпеки простими словами: що кожне робить, від яких технік атаки захищає і які продукти його реалізують.</p>
+
+    {rows.length === 0
+      ? <p class="soon-box">Розділ готується.</p>
+      : (
+        <table class="tbl">
+          <thead><tr><th>Клас і продукти</th><th>Що робить</th><th>Від технік</th><th>D3FEND</th></tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <td><SolutionLinks cls={r.cls} products={r.products} /></td>
+                <td data-label="Що робить" class:list={{ empty: !r.cls.data.simple }}>{r.cls.data.simple ?? '—'}</td>
+                <td data-label="Від технік" class="inline">{r.count}</td>
+                <td data-label="D3FEND" class="d3 inline">{r.cls.data.d3fend.join(' · ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
   </section>
 </Base>
 
 <style>
-  .stub { padding-top: 88px; padding-bottom: 88px; }
-  .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
+  .page { padding-bottom: 72px; }
+  .tag { font-size: 12px; color: var(--defense); margin: 48px 0 16px; }
   h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
-  p { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 0 24px; }
-  .soon { font-size: 12px; color: var(--text-2); }
 </style>

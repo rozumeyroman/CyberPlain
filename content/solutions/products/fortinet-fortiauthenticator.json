@@ -1,0 +1,7 @@
+{
+  "name": "Fortinet FortiAuthenticator",
+  "vendor": "Fortinet",
+  "classes": [
+    "mfa"
+  ]
+}
