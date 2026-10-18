@@ -18,7 +18,9 @@
     "edr",
     "mfa",
     "soar",
-    "brand-protection"
+    "brand-protection",
+    "siem",
+    "ti"
   ],
   "subs": {
     "001": "Лист із вкладенням",

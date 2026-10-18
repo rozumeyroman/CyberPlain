@@ -15,7 +15,8 @@
   "defenses": [
     "awareness",
     "edr",
-    "email"
+    "email",
+    "siem"
   ],
   "subs": {
     "001": "Шкідливе посилання",

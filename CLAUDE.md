@@ -268,9 +268,18 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Incident Command Essential | SIEM, UEBA, SOAR, CAASM, EASM, Threat Intelligence |
 | Incident Command Advanced | + Deception |
 | Incident Command Ultimate | + EDR, NDR, IDS, DFIR (Velociraptor) |
+| Threat Command | моніторинг даркнету, захист бренду, кіберрозвідка (редакцій на сайті немає) |
 | SentinelOne Singularity Complete | EDR (EPP + XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
 | SentinelOne Singularity Commercial | + ITDR |
 | SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
+
+Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
+й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
+
+InsightIDR (у всіх Incident Command) — готові виявлення з даташиту Pre-Built Detections: ABA/UBA-правила й
+телеметрія агента Rapid7 (рядок «Rapid7 Agent» у таблиці пакетів) — це клас `siem`/`ueba`, не `edr` (без
+реагування на хості). Пастки з даташиту рахуємо лише з Advanced (так у таблиці пакетів). «Account Leak»
+(витік облікових даних у відкритий доступ) — не `dark-web`, лише в тексті.
 
 SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`, `device-control`, `itdr`
 заведено під ці пакети. CWPP — не CNAPP (без CSPM/IaC). ITDR у пакеті — виявлення й реагування;

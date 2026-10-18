@@ -14,6 +14,7 @@
   ],
   "defenses": [
     "vm",
-    "edr"
+    "edr",
+    "siem"
   ]
 }

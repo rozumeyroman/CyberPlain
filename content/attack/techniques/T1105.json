@@ -15,6 +15,7 @@
     "edr",
     "ndr",
     "ngfw",
-    "ti"
+    "ti",
+    "siem"
   ]
 }

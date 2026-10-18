@@ -18,6 +18,7 @@
     "easm",
     "vm",
     "ngfw",
-    "siem"
+    "siem",
+    "ueba"
   ]
 }

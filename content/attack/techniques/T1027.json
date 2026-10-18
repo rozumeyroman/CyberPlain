@@ -14,7 +14,8 @@
   ],
   "defenses": [
     "edr",
-    "email"
+    "email",
+    "siem"
   ],
   "subs": {
     "001": "Роздування файлу",
