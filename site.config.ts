@@ -5,6 +5,8 @@ const repo = 'https://github.com/rozumeyroman/CyberPlain';
 export const site = {
   name,
   tagline: 'кібербезпека простими словами',
+  description: `${name} пояснює MITRE ATT&CK® і D3FEND™ простими словами: як діють зловмисники, чим це загрожує бізнесу і які рішення зупиняють атаку.`,
+  ogImage: '/og.png', // 1200×630; при зміні назви чи кольорів — перегенерувати
   domain: 'cyberplain.alestalab.top', // разом із ним оновити routes у wrangler.jsonc
   repo,
   author: { name: 'Роман Розумей', url: 'https://github.com/rozumeyroman' },
