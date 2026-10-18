@@ -12,6 +12,7 @@ export const url = {
   tactic: (id: string) => `/mitre/${id}/`,
   technique: (id: string) => `/mitre/${id}/`,
   solution: (id: string) => `/solutions/${id}/`,
+  vendor: (id: string) => `/vendors/#${id}`,
   mitre: (id: string) =>
     id.startsWith('TA')
       ? `https://attack.mitre.org/tactics/${id}/`
@@ -193,7 +194,15 @@ async function build() {
   const d3all = [...d3byId.values()];
   const d3fendForAttack = (t: Technique) => d3all.filter((x) => x.attack.includes(t));
 
+  // Вендори обчислюються з product.vendor; ID — назва малими літерами з дефісами (rapid7, sentinelone).
+  const vendorId = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const vendors = [...new Set(products.map((p) => p.data.vendor))]
+    .map((name) => ({ id: vendorId(name), name, products: products.filter((p) => p.data.vendor === name).sort((a, b) => a.data.name.localeCompare(b.data.name)) }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  assertUniqueIds('vendors', vendors);
+
   return {
+    vendors, vendorId,
     tactics, techniques, classes, products, classById, productsOf, techniquesOf, subtechniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic,
     d3fendTactics, d3byId, d3fendOf, d3fendTacticsOf, d3fendSolutionsOfTechnique, d3fendSolutionsOfTactic, d3fendForAttack,
   };

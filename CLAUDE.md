@@ -72,6 +72,7 @@ src/
   pages/mitre/[id].astro             # /mitre/TA0043/ — етап, /mitre/T1595/ — техніка
   pages/solutions/index.astro        # таблиця класів рішень
   pages/solutions/[id].astro         # /solutions/vm/ — клас, /solutions/rapid7-insightvm/ — продукт
+  pages/vendors/index.astro          # вендори (з product.vendor) → розгортання до їхніх продуктів
   pages/d3fend/index.astro           # 7 тактик D3FEND з категоріями
   pages/d3fend/[id].astro            # /d3fend/harden/ — тактика, /d3fend/D3-AA/ — категорія чи техніка
   pages/licenses.astro
@@ -100,6 +101,8 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 - техніка → етапи: `tactics[]`; список технік етапу обчислюється;
 - техніка → класи рішень: `defenses[]` — **єдине місце** зв'язку з рішеннями;
 - продукт → класи: `classes[]`; продукти класу обчислюються;
+- вендори — не окремі файли: обчислюються з поля `vendor` продуктів (ID — назва малими з
+  дефісами, `/vendors/#rapid7`). Назву вендора пиши однаково в усіх продуктах;
 - таблиця «Чим захиститись на цьому етапі» = усі класи з `defenses[]` технік етапу,
   відсортовані за кількістю технік; текст «що робить» — `solutionNotes` етапу або `simple` класу;
 - сторінка рішення показує техніки, які на нього посилаються (продукт — через свої класи).

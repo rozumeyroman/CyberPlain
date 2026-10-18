@@ -35,7 +35,7 @@ const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
       <span aria-current="page">{title}</span>
     </nav>
 
-    <div class="mono tag">{cls ? '[ Клас рішень ]' : `[ Продукт · ${product!.data.vendor} ]`}</div>
+    <div class="mono tag">{cls ? '[ Клас рішень ]' : <>[ Продукт · <a href={url.vendor(d.vendorId(product!.data.vendor))}>{product!.data.vendor}</a> ]</>}</div>
     <h1>{title}</h1>
     {cls?.data.en && <p class="en">{cls.data.en}</p>}
     {simple ? <p class="lead-text">{simple}</p> : <p class="soon-box">Пояснення готується.</p>}
