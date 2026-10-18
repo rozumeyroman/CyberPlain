@@ -9,6 +9,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "import:attack": "node scripts/import-attack.mjs",
     "import:d3fend": "node scripts/import-d3fend.mjs"
   },
   "dependencies": {

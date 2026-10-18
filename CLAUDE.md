@@ -48,16 +48,18 @@ MITRE ATT&CK® (як діє зловмисник) і MITRE D3FEND™ (як за�
 site.config.ts            # назва, слоган, домен, вкладки, кольори, тексти авторства
 wrangler.jsonc  worker/index.js
 content/                  # наш контент (CC BY 4.0); 1 запис = 1 JSON, ім'я файлу = ID
-  attack/intro.json       # тексти сторінки /mitre і дані джерела (версія ATT&CK)
+  attack/intro.json       # тексти сторінки /mitre і дані джерела (версія — з імпорту)
   attack/tactics/TA0043.json      # етап: order, en, ua, short, analogy, solutionNotes{класID: текст}
   attack/techniques/T1595.json    # техніка: en, ua, tactics[], pain, simple, goal, analogy,
-                                  #   quote, questions[], defenses[] (ID класів рішень)
+                                  #   quote, questions[], defenses[] (ID класів рішень),
+                                  #   subs{"001": укр. назва підтехніки}
   solutions/classes/vm.json       # клас рішень: ua, en, simple, d3fend[] (ID технік D3FEND або назви тактик)
   d3fend/intro.json               # тексти сторінки /d3fend і дані джерела
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (усі поля необов'язкові)
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
+  attack.json             # npm run import:attack (scripts/import-attack.mjs ← STIX mitre-attack/attack-stix-data)
   d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api/matrix.json)
 src/
   content.config.ts       # схеми колекцій і посилання між ними (reference)
@@ -87,8 +89,11 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 
 ## Модель контенту
 
-Сирі поля MITRE (назва, опис, підтехніки, URL) — з імпорту в `data/mitre/` (ще не зроблено).
-Наш шар пояснень — у `content/`, ключується ID MITRE.
+Сирі поля MITRE (ID, англ. назви, тактики техніки, підтехніки) — з імпорту в `data/mitre/attack.json`
+(ATT&CK Enterprise 20.0). Наш шар пояснень — у `content/`, ключується ID MITRE. `loadData()` зупиняє
+збірку, якщо `en`, `order` етапу чи `tactics[]` техніки розходяться з імпортом; після нового імпорту
+техніки без опису виводяться попередженням. Описані всі 227 технік; підтехніки окремих сторінок не
+мають — на сторінці техніки список «Різновиди» (укр. назва з `subs` + посилання на attack.mitre.org).
 
 **Зв'язки зберігаємо з одного боку, решту обчислюємо під час збирання:**
 - техніка → етапи: `tactics[]`; список технік етапу обчислюється;
@@ -108,7 +113,8 @@ ID техніки (`D3-MFA`) або назва тактики (`Harden`), якщ
 
 Неіснуючий ID у посиланні — помилка збирання (Astro `reference()` + перевірки в `loadData()`).
 Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043 перенесені з
-макета `design/Tactic-TA0043.dc.html` — чернетка, потребує перевірки автором.
+макета `design/Tactic-TA0043.dc.html`, решта етапів написана за описами MITRE — чернетка, потребує
+перевірки автором (укр. назви технік робочі).
 
 ## Дизайн
 
@@ -250,6 +256,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Incident Command Advanced | + Deception |
 | Incident Command Ultimate | + EDR, NDR, IDS, DFIR (Velociraptor) |
 
+Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `pam`, `dlp`, `ddos`.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
 рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них

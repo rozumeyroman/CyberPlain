@@ -10,6 +10,7 @@ const d = await loadData();
 const tactics = d.tacticsOf(t);
 const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
 const defenses = d.classesOf(t);
+const subs = d.subtechniquesOf(t);
 ---
 <section class="wrap page">
   <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
@@ -27,6 +28,21 @@ const defenses = d.classesOf(t);
     {t.data.analogy && <div class="note-box"><span class="mono attack">Аналогія</span>{t.data.analogy}</div>}
     {t.data.quote && <div class="note-box"><span class="mono muted">Як це звучить у замовника</span>«{t.data.quote}»</div>}
   </div>
+
+  {subs.length > 0 && (
+    <section class="sec" aria-labelledby="subs">
+      <h2 class="sec-title" id="subs">Різновиди<span class="mono">{subs.length} підтехнік</span></h2>
+      <ul class="subs">
+        {subs.map((s) => (
+          <li><a href={url.mitre(s.id)} class="sub">
+            <span class="id-attack">{s.id}</span>
+            <span class="sname"><span class="sua">{s.ua ?? s.en}</span>{s.ua && <span class="sen">{s.en}</span>}</span>
+            <span class="mono ext" aria-label="на attack.mitre.org">↗</span>
+          </a></li>
+        ))}
+      </ul>
+    </section>
+  )}
 
   {t.data.questions.length > 0 && (
     <section class="sec" aria-labelledby="q">
@@ -75,5 +91,12 @@ const defenses = d.classesOf(t);
   .qs { display: flex; flex-direction: column; gap: 8px; max-width: 760px; }
   .q { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); font-size: 15px; line-height: 1.45; cursor: pointer; }
   .q input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--defense); flex: none; }
+  .subs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 8px; max-width: 980px; }
+  .sub { display: flex; gap: 12px; align-items: baseline; min-height: 44px; height: 100%; padding: 10px 14px; border: 1px solid var(--line); color: var(--text); text-decoration: none; transition: border-color .15s; }
+  .sub:hover { border-color: var(--defense); color: var(--text); }
+  .sub .id-attack { font-size: 12px; flex: none; }
+  .sname { display: flex; flex-direction: column; flex: 1; font-size: 15px; line-height: 1.35; }
+  .sen { font-size: 12px; color: var(--muted-2); }
+  .ext { font-size: 11px; color: var(--defense); }
   .bottom { padding-top: 40px; padding-bottom: 72px; }
 </style>

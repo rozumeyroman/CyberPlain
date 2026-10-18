@@ -1,7 +1,6 @@
 {
   "source": {
     "name": "MITRE ATT&CK Enterprise",
-    "version": "20",
     "url": "https://attack.mitre.org/tactics/enterprise/",
     "note": "Українські назви, short і analogy — авторська адаптація CyberPlain (CC BY 4.0). ID, англійські назви і порядок — MITRE ATT&CK."
   },

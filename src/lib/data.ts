@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import attackRaw from '../../data/mitre/attack.json';
 import d3fendRaw from '../../data/mitre/d3fend.json';
 
 export type Tactic = CollectionEntry<'tactics'>;
@@ -46,6 +47,9 @@ export interface D3Technique {
   children: D3Technique[];
   depth: number; // 0 — категорія
 }
+export const attackSource = { version: attackRaw.version, modified: attackRaw.modified };
+export interface Subtechnique { id: string; en: string; ua?: string }
+
 export const d3fendSource = { version: d3fendRaw.version, releaseDate: d3fendRaw.releaseDate };
 
 export interface StageSolution {
@@ -72,6 +76,28 @@ async function build() {
   // Тактики й техніки ділять /mitre/<id>/, класи й продукти — /solutions/<id>/.
   assertUniqueIds('mitre', tactics, techniques);
   assertUniqueIds('solutions', classes, products);
+
+  // ── ATT&CK: наш шар має збігатися з імпортом (ID, англ. назви, порядок етапів, тактики техніки) ──
+  const rawTech = new Map(attackRaw.techniques.map((t) => [t.id, t]));
+  attackRaw.tactics.forEach((raw, i) => {
+    const t = tactics.find((x) => x.id === raw.id);
+    if (!t) throw new Error(`content/attack/tactics/${raw.id}.json: немає тексту для тактики ${raw.id} ${raw.en} з імпорту ATT&CK`);
+    if (t.data.en !== raw.en || t.data.order !== i + 1) throw new Error(`${raw.id}.json: має бути en «${raw.en}», order ${i + 1} — як в імпорті ATT&CK`);
+  });
+  if (tactics.length !== attackRaw.tactics.length) throw new Error('content/attack/tactics: є тактики, яких немає в імпорті ATT&CK');
+  for (const t of techniques) {
+    const raw = rawTech.get(t.id);
+    if (!raw) throw new Error(`content/attack/techniques/${t.id}.json: техніки немає в імпорті ATT&CK ${attackRaw.version}`);
+    const ours = t.data.tactics.map((r) => r.id).sort().join(), theirs = [...raw.tactics].sort().join();
+    if (t.data.en !== raw.en || ours !== theirs) throw new Error(`${t.id}.json: має бути en «${raw.en}», tactics [${theirs}] — як в імпорті ATT&CK`);
+    for (const key of Object.keys(t.data.subs)) {
+      if (!raw.subtechniques.some((s) => s.id === `${t.id}.${key}`)) throw new Error(`${t.id}.json → subs: підтехніки ${t.id}.${key} немає в імпорті`);
+    }
+  }
+  const pending = attackRaw.techniques.filter((t) => !techniques.some((x) => x.id === t.id));
+  if (pending.length) console.warn(`ATT&CK: без опису ${pending.length} технік — ${pending.map((t) => t.id).join(' ')}`);
+  const subtechniquesOf = (t: Technique): Subtechnique[] =>
+    rawTech.get(t.id)!.subtechniques.map((s) => ({ ...s, ua: t.data.subs[s.id.split('.')[1]] }));
 
   const classById = new Map(classes.map((c) => [c.id, c]));
   const byName = (a: Technique, b: Technique) => a.id.localeCompare(b.id);
@@ -161,7 +187,7 @@ async function build() {
   const d3fendSolutionsOfTactic = (ta: D3Tactic) => solutionsForD3(ta.all, ta);
 
   return {
-    tactics, techniques, classes, products, classById, productsOf, techniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic,
+    tactics, techniques, classes, products, classById, productsOf, techniquesOf, subtechniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic,
     d3fendTactics, d3byId, d3fendOf, d3fendTacticsOf, d3fendSolutionsOfTechnique, d3fendSolutionsOfTactic,
   };
 }

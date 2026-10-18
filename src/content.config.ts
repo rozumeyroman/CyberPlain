@@ -32,6 +32,8 @@ const techniques = defineCollection({
     quote: z.string().optional(),
     questions: z.array(z.string()).default([]),
     defenses: z.array(reference('classes')).default([]), // єдине місце зв'язку техніка → рішення
+    // Українські назви підтехнік: { "001": "Лист із вкладенням" }. ID і англ. назви — з data/mitre/attack.json.
+    subs: z.record(z.string(), z.string()).default({}),
   }),
 });
 
