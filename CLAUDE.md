@@ -56,7 +56,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   d3fend/intro.json               # тексти сторінки /d3fend і дані джерела
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (усі поля необов'язкові)
-  solutions/products/rapid7-insightvm.json  # продукт: name, vendor, classes[], simple
+  solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
   d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api/matrix.json)
 src/
@@ -107,8 +107,8 @@ ID техніки (`D3-MFA`) або назва тактики (`Harden`), якщ
 будь-якою своєю технікою або з тактикою загалом. Українські назви категорій — робочі, автор може змінити.
 
 Неіснуючий ID у посиланні — помилка збирання (Astro `reference()` + перевірки в `loadData()`).
-Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043, класи й
-продукти перенесені з макета `design/Tactic-TA0043.dc.html` — чернетка, потребує перевірки автором.
+Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043 перенесені з
+макета `design/Tactic-TA0043.dc.html` — чернетка, потребує перевірки автором.
 
 ## Дизайн
 
@@ -236,13 +236,25 @@ TA0040 Impact — Удар.
 
 D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
-## Портфель рішень (чернетка, потребує перевірки автором)
+## Портфель рішень
 
-EDR/XDR (CrowdStrike Falcon, Trellix, Trend Micro, Rapid7 InsightIDR) · SIEM (Splunk,
-Rapid7 InsightIDR) · управління вразливостями (Rapid7 InsightVM) · NGFW/WAF/пошта/MFA
-(Fortinet: FortiGate, FortiWeb, FortiMail, FortiAuthenticator) · захист ідентичностей
-(Silverfort) · OT (Nozomi Networks) · бекап і кібервідновлення (Dell PowerProtect Cyber
-Recovery). Де продукту немає — `[уточнити в портфелі]`, нічого не вигадувати.
+Поки на сайті лише пакети Rapid7 Command Platform (рішення автора, жовтень 2026). Класи продукту —
+за таблицями порівняння пакетів на сайті Rapid7 (у `url` продукту), нічого понад них:
+
+| Продукт | Класи |
+|---|---|
+| Surface Command | CAASM, EASM, SOAR |
+| Exposure Command Essentials | + управління вразливостями |
+| Exposure Command Ultimate | + CNAPP (хмара, контейнери, IaC, права доступу), DAST |
+| Incident Command Essential | SIEM, UEBA, SOAR, CAASM, EASM, Threat Intelligence |
+| Incident Command Advanced | + Deception |
+| Incident Command Ultimate | + EDR, NDR, IDS, DFIR (Velociraptor) |
+
+ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
+класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
+рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них
+посилаються техніки ATT&CK. Нові продукти — лише за першоджерелом вендора;
+де продукту немає — `[уточнити в портфелі]`.
 
 ## Як працювати
 

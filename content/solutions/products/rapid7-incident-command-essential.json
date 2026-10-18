@@ -1,0 +1,14 @@
+{
+  "name": "Rapid7 Incident Command Essential",
+  "vendor": "Rapid7",
+  "url": "https://www.rapid7.com/products/siem/packages/",
+  "classes": [
+    "siem",
+    "ueba",
+    "soar",
+    "caasm",
+    "easm",
+    "ti"
+  ],
+  "simple": "Хмарний SIEM з аналізом поведінки користувачів, бібліотекою правил виявлення (колишня Attacker Behavior Analytics), автоматизацією реагування, інвентаризацією активів і вбудованою кіберрозвідкою. Ransomware Prevention — за доплату."
+}

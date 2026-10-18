@@ -1,0 +1,19 @@
+{
+  "name": "Rapid7 Incident Command Ultimate",
+  "vendor": "Rapid7",
+  "url": "https://www.rapid7.com/products/siem/packages/",
+  "classes": [
+    "siem",
+    "ueba",
+    "soar",
+    "caasm",
+    "easm",
+    "ti",
+    "deception",
+    "edr",
+    "ndr",
+    "ids",
+    "dfir"
+  ],
+  "simple": "Усе з Advanced плюс EDR, аналіз мережевого трафіку (NDR), виявлення вторгнень (IDS), розслідування з Velociraptor і Ransomware Prevention у комплекті."
+}

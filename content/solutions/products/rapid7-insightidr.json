@@ -1,7 +1,0 @@
-{
-  "name": "Rapid7 InsightIDR",
-  "vendor": "Rapid7",
-  "classes": [
-    "siem"
-  ]
-}

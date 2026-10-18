@@ -1,7 +1,0 @@
-{
-  "name": "Splunk",
-  "vendor": "Splunk",
-  "classes": [
-    "siem"
-  ]
-}

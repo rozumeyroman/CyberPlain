@@ -1,0 +1,14 @@
+{
+  "name": "Rapid7 Exposure Command Ultimate",
+  "vendor": "Rapid7",
+  "url": "https://www.rapid7.com/products/command/pricing/",
+  "classes": [
+    "vm",
+    "cnapp",
+    "dast",
+    "caasm",
+    "easm",
+    "soar"
+  ],
+  "simple": "Усе з Essentials плюс захист хмари й контейнерів, аналіз шляхів атаки, перевірка прав доступу, сканування інфраструктури як коду і тестування вебзастосунків та API."
+}

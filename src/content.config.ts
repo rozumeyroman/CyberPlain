@@ -53,6 +53,7 @@ const products = defineCollection({
     vendor: z.string(),
     classes: z.array(reference('classes')).min(1),
     simple: z.string().optional(),
+    url: z.string().url().optional(), // першоджерело: сторінка продукту чи пакетів у вендора
   }),
 });
 

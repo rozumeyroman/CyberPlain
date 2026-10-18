@@ -1,0 +1,11 @@
+{
+  "ua": "Захист хмари (CNAPP)",
+  "en": "Cloud-Native Application Protection Platform",
+  "simple": "Показує всі ресурси в AWS, Azure, GCP і Kubernetes, перевіряє налаштування й права доступу, шукає вразливості в контейнерах і помічає загрози в хмарі.",
+  "d3fend": [
+    "D3-CI",
+    "D3-CIA",
+    "D3-AM",
+    "Detect"
+  ]
+}

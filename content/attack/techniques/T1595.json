@@ -15,6 +15,9 @@
   "defenses": [
     "vm",
     "ngfw",
-    "waf"
+    "waf",
+    "easm",
+    "ids",
+    "ndr"
   ]
 }

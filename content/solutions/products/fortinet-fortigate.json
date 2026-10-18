@@ -1,7 +1,0 @@
-{
-  "name": "Fortinet FortiGate",
-  "vendor": "Fortinet",
-  "classes": [
-    "ngfw"
-  ]
-}

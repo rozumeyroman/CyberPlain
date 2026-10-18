@@ -43,7 +43,8 @@ const d3techs = cls ? d.d3fendOf(cls).techniques : [];
           <a href={url.d3fendTechnique(t.id)} class="chip"><span class="d3id">{t.id}</span>{t.ua ?? t.en}</a>
         ))}</span></div>
       )}
-      {product && <div><span class="mono k">Клас</span><span class="chips">{own.map((c) => <a href={url.solution(c.id)} class="chip">{c.data.ua}</a>)}</span></div>}
+      {product?.data.url && <div><span class="mono k">Джерело</span><a href={product.data.url} class="mono src">{new URL(product.data.url).hostname} ↗</a></div>}
+      {product && <div><span class="mono k">Класи</span><span class="chips">{own.map((c) => <a href={url.solution(c.id)} class="chip">{c.data.ua}</a>)}</span></div>}
     </div>
 
     {cls && (
@@ -78,6 +79,7 @@ const d3techs = cls ? d.d3fendOf(cls).techniques : [];
   .facts { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
   .facts > div { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .d3id { font-family: var(--font-mono); font-size: 11px; color: var(--defense); margin-right: 8px; }
+  .src { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .k { font-size: 11px; color: var(--muted-2); min-width: 72px; }
   .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
   .gtitle { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }

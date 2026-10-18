@@ -14,6 +14,7 @@
   ],
   "defenses": [
     "vm",
-    "ngfw"
+    "ngfw",
+    "easm"
   ]
 }

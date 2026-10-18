@@ -1,0 +1,15 @@
+{
+  "name": "Rapid7 Incident Command Advanced",
+  "vendor": "Rapid7",
+  "url": "https://www.rapid7.com/products/siem/packages/",
+  "classes": [
+    "siem",
+    "ueba",
+    "soar",
+    "caasm",
+    "easm",
+    "ti",
+    "deception"
+  ],
+  "simple": "Усе з Essential плюс пастки (honeypot, фальшиві файли, користувачі й паролі), AI-розбір тривог і розслідувань та розширена кіберрозвідка Intelligence Hub. Ransomware Prevention — за доплату."
+}

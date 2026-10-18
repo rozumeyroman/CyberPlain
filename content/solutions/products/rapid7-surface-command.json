@@ -1,0 +1,11 @@
+{
+  "name": "Rapid7 Surface Command",
+  "vendor": "Rapid7",
+  "url": "https://www.rapid7.com/products/command/pricing/",
+  "classes": [
+    "caasm",
+    "easm",
+    "soar"
+  ],
+  "simple": "Показує всю поверхню атаки — і зсередини, і ззовні: єдиний список активів, їхні зв’язки, «радіус ураження» та вбудовану автоматизацію."
+}
