@@ -21,8 +21,7 @@
     "deception",
     "itdr",
     "device-control",
-    "nhi",
-    "identity-segmentation"
+    "nhi"
   ],
   "subs": {
     "001": "Віддалений робочий стіл (RDP)",

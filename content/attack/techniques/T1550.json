@@ -20,8 +20,7 @@
     "deception",
     "itdr",
     "ispm",
-    "nhi",
-    "identity-segmentation"
+    "nhi"
   ],
   "subs": {
     "001": "Токен застосунку",

@@ -277,8 +277,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
-| Silverfort Advanced | + сегментація доступу (Authentication Firewall), ITDR |
-| Silverfort Enterprise | + PAM (Privileged Access Security) |
+| Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
+| Silverfort Enterprise | класи як в Advanced; Access Intelligence і PAS — лише в тексті |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -294,9 +294,10 @@ SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`,
 ставимо. Network Discovery (Enterprise) — інвентаризація мережі агентами, не CAASM: лише в тексті.
 Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіси/AI, не класи; add-on не рахуємо.
 
-Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi`, `identity-segmentation` заведено під
-нього; `itdr` доповнено D3-ST (завершення сесії). AI Agent Security — разом із NHI, лише в тексті; Identity Graph
-& Inventory і Access Intelligence — не CAASM, лише в тексті. PAS — `pam` без сейфа паролів (JIT і «огородження»).
+Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
+Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
+& Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`
+(рішення автора), лише в тексті.
 
 SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна редакція окремим продуктом (`socradar-<модуль>-<редакція>`):
 
