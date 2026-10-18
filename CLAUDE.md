@@ -76,6 +76,8 @@ src/
   pages/d3fend/index.astro           # 7 тактик D3FEND з категоріями
   pages/d3fend/[id].astro            # /d3fend/harden/ — тактика, /d3fend/D3-AA/ — категорія чи техніка
   pages/licenses.astro
+  pages/favicon.svg.ts               # іконка з кольорів site.config; public/favicon.ico і
+                                     #   apple-touch-icon.png — її растрові копії (перегенерувати при зміні)
   styles/tokens.css, base.css
 design/                   # референсні макети (не код сайту, див. нижче)
 LICENSE  LICENSE-CONTENT  NOTICE.md
