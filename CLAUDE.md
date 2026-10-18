@@ -33,7 +33,8 @@ MITRE ATT&CK® (як діє зловмисник) і MITRE D3FEND™ (як за�
 - **Astro** зі статичною збіркою (`output: 'static'`, без React/Vue-інтеграцій) —
   генерує чистий HTML+CSS з контенту в репозиторії.
 - **Cloudflare Workers + Static Assets**: `wrangler.jsonc` з `assets.directory = ./dist`.
-  Worker-скрипт додаємо лише коли з'явиться динаміка (пошук, AI-помічник у v1).
+  `worker/index.js` поки лише прокидає запити сторінок у статику, щоб вони були в Workers
+  Logs (Observability); `/_astro/*` минає скрипт. Динаміку (пошук, AI у v1) додаємо туди ж.
 - **D1** — не потрібна для MVP (контент статичний). Вводимо у v1 для карток виявлення
   та AI. Міграції — `migrations/`, застосовуються в команді деплою.
 - **Деплой з GitHub через Workers Builds** (як в інших проєктах автора):

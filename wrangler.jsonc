@@ -2,11 +2,19 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "cyberplain",
   "compatibility_date": "2026-10-01",
+  "main": "worker/index.js",
   // Вимкнено, щоб WAF-правило домену не можна було обійти через *.workers.dev (див. CLAUDE.md).
   "workers_dev": false,
   "preview_urls": false,
   "routes": [{ "pattern": "cyberplain.alestalab.top", "custom_domain": true }],
   "assets": {
-    "directory": "./dist"
+    "directory": "./dist",
+    "binding": "ASSETS",
+    // Скрипт (і лог) лише для сторінок; CSS з /_astro/ віддається напряму і не з'їдає ліміт запитів.
+    "run_worker_first": ["/*", "!/_astro/*"]
+  },
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
   }
 }
