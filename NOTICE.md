@@ -1,4 +1,4 @@
-# NOTICE
+# Ліцензії та авторство
 
 CyberPlain — незалежний некомерційний проєкт. Він не пов'язаний із The MITRE Corporation
 і не схвалений нею. Пояснення простими словами — авторська адаптація; оригінальні
@@ -8,9 +8,9 @@ CyberPlain — незалежний некомерційний проєкт. В�
 
 | Що | Ліцензія | Файл |
 |---|---|---|
-| Код сайту | MIT | [LICENSE](LICENSE) |
-| Наші тексти й пояснення в `content/` | CC BY 4.0 | [LICENSE-CONTENT](LICENSE-CONTENT) |
-| Матеріали MITRE ATT&CK® і MITRE D3FEND™ | умови MITRE (нижче) | цей файл |
+| Код сайту | MIT | [LICENSE](https://github.com/rozumeyroman/CyberPlain/blob/main/LICENSE) |
+| Наші тексти й пояснення в `content/` | CC BY 4.0 | [LICENSE-CONTENT](https://github.com/rozumeyroman/CyberPlain/blob/main/LICENSE-CONTENT) |
+| Матеріали MITRE ATT&CK® і MITRE D3FEND™ | умови MITRE (нижче) | нижче |
 
 ## MITRE ATT&CK®
 

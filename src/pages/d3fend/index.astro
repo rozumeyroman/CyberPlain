@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="MITRE D3FEND™">
+  <section class="wrap stub">
+    <div class="mono tag">[ Захист ]</div>
+    <h1>MITRE D3FEND™</h1>
+    <p>Захисні заходи: що саме зупиняє кожну техніку атаки і якими класами рішень це робиться.</p>
+    <p class="mono soon">Розділ готується</p>
+    <a href="https://d3fend.mitre.org" class="mono">Оригінал на d3fend.mitre.org ↗</a>
+  </section>
+</Base>
+
+<style>
+  .stub { padding-top: 88px; padding-bottom: 88px; }
+  .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  p { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 0 24px; }
+  .soon { font-size: 12px; color: var(--text-2); }
+  a { font-size: 12px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+</style>

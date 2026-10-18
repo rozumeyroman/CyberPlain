@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+<Base title="MITRE ATT&CK®">
+  <section class="wrap stub">
+    <div class="mono tag">[ Атака ]</div>
+    <h1>MITRE ATT&CK®</h1>
+    <p>15 етапів атаки — від розвідки до удару — з поясненнями простими словами.</p>
+    <p class="mono soon">Розділ готується</p>
+    <a href="https://attack.mitre.org" class="mono">Оригінал на attack.mitre.org ↗</a>
+  </section>
+</Base>
+
+<style>
+  .stub { padding-top: 88px; padding-bottom: 88px; }
+  .tag { font-size: 12px; color: var(--attack); margin-bottom: 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  p { font-size: 17px; color: var(--muted); max-width: 560px; margin: 0 0 24px; }
+  .soon { font-size: 12px; color: var(--text-2); }
+  a { font-size: 12px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+</style>
