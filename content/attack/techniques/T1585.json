@@ -15,7 +15,8 @@
   "defenses": [
     "awareness",
     "email",
-    "ti"
+    "ti",
+    "brand-protection"
   ],
   "subs": {
     "001": "Акаунти в соцмережах",

@@ -18,7 +18,8 @@
     "ueba",
     "waf",
     "soar",
-    "itdr"
+    "itdr",
+    "dark-web"
   ],
   "subs": {
     "001": "Вгадування пароля",

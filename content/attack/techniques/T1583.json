@@ -15,7 +15,8 @@
   "defenses": [
     "ti",
     "ngfw",
-    "email"
+    "email",
+    "brand-protection"
   ],
   "subs": {
     "001": "Домени",

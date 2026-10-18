@@ -15,7 +15,8 @@
   "defenses": [
     "email",
     "mfa",
-    "awareness"
+    "awareness",
+    "dark-web"
   ],
   "subs": {
     "001": "Акаунти в соцмережах",

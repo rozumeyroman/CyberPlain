@@ -15,6 +15,7 @@
   "defenses": [
     "ti",
     "mfa",
-    "ueba"
+    "ueba",
+    "dark-web"
   ]
 }

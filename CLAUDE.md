@@ -254,7 +254,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 ## Портфель рішень
 
-На сайті пакети Rapid7 Command Platform і SentinelOne Singularity (рішення автора, жовтень 2026).
+На сайті пакети Rapid7 Command Platform, SentinelOne Singularity і модулі SOCRadar XTI (рішення автора,
+жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -274,6 +275,20 @@ SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`,
 пастки Singularity Identity (Identity Deception) і ISPM у таблиці пакетів не названі — `deception` не
 ставимо. Network Discovery (Enterprise) — інвентаризація мережі агентами, не CAASM: лише в тексті.
 Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіси/AI, не класи; add-on не рахуємо.
+
+SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна редакція окремим продуктом (`socradar-<модуль>-<редакція>`):
+
+| Модуль | Редакції | Класи |
+|---|---|---|
+| Advanced Dark Web Monitoring | Essential, Business, Ultimate | `dark-web` |
+| Cyber Threat Intelligence | Essential, Ultimate | `ti` |
+| Attack Surface Management | Essential, Business, Ultimate | `easm` |
+| Brand Protection | Essential, Business (+ `dark-web`), Ultimate | `brand-protection` |
+| Supply Chain Intelligence | одна ліцензія (`socradar-sci`) | `tprm` |
+
+«Flexible» у таблиці SOCRadar = за окремим погодженням, як add-on: класом не рахуємо (тому в BP Ultimate
+немає `dark-web`), лише в тексті. Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
+Відстеження постачальників у CTI — не `tprm`. Класи `dark-web`, `brand-protection`, `tprm` заведено під SOCRadar.
 
 Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `pam`, `dlp`, `ddos`.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим

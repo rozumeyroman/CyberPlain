@@ -15,7 +15,8 @@
   "defenses": [
     "email",
     "mfa",
-    "awareness"
+    "awareness",
+    "brand-protection"
   ],
   "subs": {
     "001": "Через сервіси й месенджери",

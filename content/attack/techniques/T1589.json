@@ -15,7 +15,8 @@
   "defenses": [
     "mfa",
     "ti",
-    "email"
+    "email",
+    "dark-web"
   ],
   "subs": {
     "001": "Облікові дані",
