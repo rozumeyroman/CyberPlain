@@ -1,0 +1,74 @@
+---
+import Base from '../../../layouts/Base.astro';
+import AttackSource from '../../../components/AttackSource.astro';
+import { tactics } from '../../../../content/attack/tactics.json';
+
+export function getStaticPaths() {
+  return tactics.map((t, i) => ({
+    params: { tactic: t.id },
+    props: { t, i, prev: tactics[i - 1], next: tactics[i + 1] },
+  }));
+}
+
+const { t, i, prev, next } = Astro.props;
+const num = (n: number) => String(n).padStart(2, '0');
+const mitreUrl = `https://attack.mitre.org/tactics/${t.id}/`;
+---
+<Base title={`${t.ua} (${t.id})`} description={t.short}>
+  <section class="wrap page">
+    <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
+      <a href="/mitre/">MITRE ATT&amp;CK</a> <span aria-hidden="true">/</span> <span aria-current="page">{num(i + 1)} {t.ua}</span>
+    </nav>
+
+    <div class="head"><span class="num">{num(i + 1)}</span><span class="mono meta">{t.id} · {t.en}</span></div>
+    <h1>{t.ua}</h1>
+    <p class="short">{t.short}</p>
+
+    <div class="soon">
+      <span class="mono tag">Скоро</span>
+      <span class="soon-title">Пояснення технік готуються</span>
+      <span class="soon-text">Тут з’являться техніки цієї тактики простими словами: аналогії, питання до клієнта і рішення. Поки можна переглянути оригінальний опис.</span>
+      <a href={mitreUrl} class="mono">Техніки на attack.mitre.org ↗</a>
+    </div>
+
+    <nav aria-label="Сусідні тактики" class="pager">
+      {prev
+        ? <a href={`/mitre/${prev.id}/`} class="card"><span class="mono dir">← Попередня</span><span class="name">{num(i)} {prev.ua}</span></a>
+        : <div class="card off"><span class="mono dir">← Попередня</span><span>Це перший етап</span></div>}
+      {next
+        ? <a href={`/mitre/${next.id}/`} class="card right"><span class="mono dir">Наступна →</span><span class="name">{num(i + 2)} {next.ua}</span></a>
+        : <div class="card right off"><span class="mono dir">Наступна →</span><span>Це останній етап</span></div>}
+    </nav>
+  </section>
+
+  <section class="wrap bottom"><AttackSource href={mitreUrl} /></section>
+</Base>
+
+<style>
+  .page { padding-top: 40px; padding-bottom: 24px; }
+  .crumbs { font-size: 11px; color: var(--muted-2); margin-bottom: 40px; }
+  .crumbs a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .num { font-size: 44px; font-weight: 600; letter-spacing: -0.03em; color: var(--attack); }
+  .meta { font-size: 12px; color: var(--muted-2); }
+  h1 { margin: 0 0 16px; font-size: clamp(36px, 8vw, 48px); line-height: 1.05; }
+  .short { margin: 0 0 40px; font-size: 19px; line-height: 1.55; color: var(--text-2); max-width: 640px; }
+
+  .soon { border: 1px dashed var(--line-strong); padding: 32px; display: flex; flex-direction: column; gap: 12px; max-width: 760px; }
+  .tag { font-size: 11px; color: var(--defense); }
+  .soon-title { font-size: 20px; font-weight: 600; }
+  .soon-text { font-size: 15px; line-height: 1.6; color: var(--muted); }
+  .soon a { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  @media (max-width: 640px) { .soon { padding: 20px; } }
+
+  .pager { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: 56px; }
+  .card { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line); color: var(--text); text-decoration: none; font-size: 15px; transition: border-color .15s; }
+  a.card:hover { border-color: var(--defense); color: var(--text); }
+  .card.right { text-align: right; }
+  .card.off { color: var(--line-hover); }
+  .dir { font-size: 11px; color: var(--muted-2); }
+  .off .dir { color: inherit; }
+  .name { font-weight: 600; }
+
+  .bottom { padding-top: 40px; padding-bottom: 72px; }
+</style>

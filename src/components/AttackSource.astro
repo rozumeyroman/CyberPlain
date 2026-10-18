@@ -1,0 +1,15 @@
+---
+import { site } from '../../site.config';
+import { source } from '../../content/attack/tactics.json';
+
+const { href = source.url, label = 'Оригінал на attack.mitre.org ↗' } = Astro.props;
+---
+<div class="src">
+  <span>Джерело: {source.name.replace('ATT&CK', 'ATT&CK®')}, версія {source.version}. Назви тактик українською й пояснення — авторська адаптація {site.name}.</span>
+  <a href={href} class="mono">{label}</a>
+</div>
+
+<style>
+  .src { display: flex; justify-content: space-between; gap: 8px 16px; flex-wrap: wrap; align-items: center; padding: 18px 20px; border: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  a { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+</style>
