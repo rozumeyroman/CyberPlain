@@ -167,7 +167,7 @@ const sources = [
 
   .kb { grid-template-columns: 1fr; }
   .kb-card {
-    display: flex; flex-direction: column; gap: 16px; padding: 48px 0 40px;
+    display: flex; flex-direction: column; gap: 16px; padding: 48px 20px 40px;
     color: var(--text); text-decoration: none; transition: background .15s;
   }
   .kb-card:hover { color: var(--text); background: var(--surface); }
@@ -180,7 +180,6 @@ const sources = [
   @media (min-width: 900px) {
     .kb { grid-template-columns: 1fr 1fr; }
     .kb-card { padding: 56px 40px 48px; }
-    .kb-card:first-child { padding-left: 0; }
   }
 
   .src-grid { padding-top: 72px; padding-bottom: 72px; display: grid; gap: 40px; }
