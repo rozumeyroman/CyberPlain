@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cyberplain",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist"
+  }
+  // Коли буде власний домен: "routes" з custom_domain і "workers_dev": false (див. CLAUDE.md).
+}

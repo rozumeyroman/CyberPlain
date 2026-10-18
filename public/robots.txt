@@ -1,0 +1,8 @@
+# Дозволені лише пошукові боти. Блокує правило WAF Cloudflare, це лише прохання.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: *
+Disallow: /
