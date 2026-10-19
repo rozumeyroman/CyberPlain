@@ -13,6 +13,7 @@
   ],
   "defenses": [
     "vm",
-    "siem"
+    "siem",
+    "clm"
   ]
 }

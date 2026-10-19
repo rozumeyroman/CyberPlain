@@ -14,7 +14,8 @@
   ],
   "defenses": [
     "edr",
-    "pam"
+    "pam",
+    "epm"
   ],
   "subs": {
     "001": "Setuid і Setgid",

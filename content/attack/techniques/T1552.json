@@ -16,7 +16,9 @@
     "vm",
     "cnapp",
     "deception",
-    "edr"
+    "edr",
+    "secrets",
+    "password-manager"
   ],
   "subs": {
     "001": "Паролі у файлах",

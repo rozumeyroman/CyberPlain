@@ -19,7 +19,8 @@
     "waf",
     "soar",
     "itdr",
-    "dark-web"
+    "dark-web",
+    "password-manager"
   ],
   "subs": {
     "001": "Вгадування пароля",

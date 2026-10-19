@@ -18,7 +18,8 @@
     "deception",
     "pam",
     "soar",
-    "itdr"
+    "itdr",
+    "epm"
   ],
   "subs": {
     "001": "Пам’ять LSASS",

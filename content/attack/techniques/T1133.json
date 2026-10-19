@@ -19,6 +19,7 @@
     "vm",
     "ngfw",
     "siem",
-    "ueba"
+    "ueba",
+    "pam"
   ]
 }

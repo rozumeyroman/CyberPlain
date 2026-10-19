@@ -14,7 +14,8 @@
   ],
   "defenses": [
     "edr",
-    "siem"
+    "siem",
+    "epm"
   ],
   "subs": {
     "001": "Launch Agent",

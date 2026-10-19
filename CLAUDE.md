@@ -265,8 +265,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 ## Портфель рішень
 
-На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Silverfort і модулі SOCRadar XTI (рішення
-автора, жовтень 2026).
+На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Silverfort, модулі SOCRadar XTI і продукти
+Segura (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -305,6 +305,13 @@ Firewall (сегментація доступу) — частина `itdr` (рі
 & Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`,
 а клас `jit` (рішення автора).
 
+Segura (https://segura.security/products/): редакцій немає — одна ліцензія «все включено», тому продукт =
+модуль; класи — за сторінками модулів. PAM Core і Domum Remote Access — `pam` + `jit`; Cloud IAM — `pam`;
+DevOps Secret Manager — `secrets`; Certificate Manager — `clm`; EPM — `epm`; Cloud Entitlements — `ciem`; MySafe —
+`password-manager` (класи `secrets`, `clm`, `epm`, `ciem`, `password-manager` заведено під Segura). Segura Appliance —
+апаратна платформа для PAM, не продукт безпеки, не додаємо. «ITDR» Segura — це сторінка рішення з комбінації модулів
+(PAM, UEBA, CIEM, інтеграції з SIEM/SOAR), не окремий продукт: `itdr` не ставимо.
+
 SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна редакція окремим продуктом (`socradar-<модуль>-<редакція>`):
 
 | Модуль | Редакції | Класи |
@@ -319,7 +326,7 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 ліцензується гнучко: рахуємо як включену (тому BP Ultimate має `dark-web`). Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
 Відстеження постачальників у CTI — не `tprm`. Класи `dark-web`, `brand-protection`, `tprm` заведено під SOCRadar.
 
-Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `pam`, `dlp`, `ddos`.
+Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `dlp`, `ddos`.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
 рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них

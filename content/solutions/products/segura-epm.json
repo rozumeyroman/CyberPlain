@@ -1,0 +1,9 @@
+{
+  "name": "Segura Endpoint Privilege Manager",
+  "vendor": "Segura",
+  "url": "https://segura.security/products/endpoint-privilege-manager/",
+  "classes": [
+    "epm"
+  ],
+  "simple": "Прибирає постійні права локального адміністратора на комп’ютерах Windows і Linux: дозволені програми й адміністративні дії отримують підвищені права за правилами й тимчасово, команди sudo в Linux контролюються за детальними політиками. Записує сесії Windows і дії sudo для аудиту; інтегрується з Active Directory і SIEM. Ліцензія Segura — «все включено», без окремих редакцій; хмара, локально чи гібридно."
+}

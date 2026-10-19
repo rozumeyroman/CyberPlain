@@ -15,7 +15,8 @@
   "defenses": [
     "edr",
     "siem",
-    "caasm"
+    "caasm",
+    "epm"
   ],
   "subs": {
     "001": "Вимкнення журналу подій Windows",
