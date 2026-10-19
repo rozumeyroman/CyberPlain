@@ -284,6 +284,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Harmony Endpoint Advanced | EDR, контроль пристроїв і мережевий екран, DFIR, кіберрозвідка, захист браузера, пісочниця/CDR |
 | Harmony Endpoint Complete | + шифрування дисків і флешок |
 | Harmony Endpoint Elite | + управління вразливостями, DLP, SOAR (Playblocks) |
+| Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
+| Harmony Email … Complete Protect | + DLP |
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
 | Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
@@ -309,6 +311,11 @@ Complete, Elite; Data Protection і Basic (Prevent) не продаються �
 «Threat Cloud» + «IOC Management» (розділ Threat Intelligence таблиці) — `ti`; Firewall + Port Protection — `device-control`;
 Posture Management — `vm`; Endpoint XDR — `edr` уже є, Infinity Playblocks — `soar`. Remote Access VPN, Application Control,
 Endpoint Compliance — лише в тексті. Posture Management, DLP і XDR в Advanced/Complete — add-on, класом не рахуємо.
+
+Harmony Email & Collaboration (https://www.checkpoint.com/harmony/email-security/plans-and-packages/): 4 продукти —
+обсяг Email Only (M365, Gmail) або Email & Collaboration (+ Teams, файлові сховища, Slack) × Advanced / Complete Protect.
+«Account takeover prevention (anomalies)» — `ueba`; Sandboxing + CDR — `sandbox`; Shadow IT — лише в тексті. Add-on
+(Archiving, IRaaS, DMARC, AI Phishing Training, Leaked Credentials, SSPM, Browse) класом не рахуємо.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
