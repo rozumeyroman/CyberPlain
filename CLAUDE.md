@@ -210,7 +210,11 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   щоб UA не можна було підробити. ASN прев'ю з пам'яті — якщо прев'ю не працює, дивись
   ASN у Security → Events. Людина проходить перевірку раз, далі діє `cf_clearance`
   (Challenge Passage).
-- **AI bot policies:** Search — Allow, Agent — Block, Training — Block.
+- **AI bot policies:** Search — Allow, Agent — Block, Training — **Disallow** (не Block!).
+  З 15.09.2026 Training = Block блокує й змішаних ботів (пошук + навчання), зокрема **Googlebot**
+  (правило «Block AI training crawlers», 403 на sitemap у Search Console). Disallow лишає
+  `ai-train=no` і `Disallow` для GPTBot, ClaudeBot, CCBot, Google-Extended тощо в robots.txt
+  і блокує чистих ботів навчання, але пропускає змішаних.
 - **Precursor** увімкнено: може відкликати `cf_clearance` у підозрілих сесій.
 - **Bot Fight Mode не вмикаємо:** на Free його не можна обійти правилами WAF.
 - **robots.txt — керований Cloudflare** (`is_robots_txt_managed`, Bot Preference Sync).
