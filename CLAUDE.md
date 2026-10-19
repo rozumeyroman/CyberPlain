@@ -266,7 +266,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -334,6 +334,10 @@ Quantum Spark (https://www.checkpoint.com/downloads/products/quantum-spark-2500-
 Є в усіх Quantum Spark і Harmony Endpoint (Remote Access VPN). Не плутати з `vpnless` (доступ без VPN). T1133 класу
 `vpn` не ставимо — сам VPN-шлюз часто і є точкою входу.
 
+Dell PowerProtect Cyber Recovery (сторінка продукту на dell.com; огляд Alesta — лише як вторинне джерело): редакцій
+немає, один продукт — `backup` + `cyber-recovery` (клас заведено під нього: ізольоване незмінне сховище з перевіркою
+цілісності). Cyber Detect (CyberSense) — частина рішення на сторінці Dell → D3-FCOA і T1565 у класі `cyber-recovery`.
+
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
 & Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`,
@@ -362,7 +366,7 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 ліцензується гнучко: рахуємо як включену (тому BP Ultimate має `dark-web`). Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
 Відстеження постачальників у CTI — не `tprm`. Класи `dark-web`, `brand-protection`, `tprm` заведено під SOCRadar.
 
-Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання).
+Усі класи, додані для повноти карти ATT&CK (`backup`, `pam`, `dlp`, `ddos`), уже мають продукти.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
 рахуємо класом). Класи без продуктів (навчання) лишаються, бо на них

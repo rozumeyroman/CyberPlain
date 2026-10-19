@@ -15,6 +15,7 @@
   "defenses": [
     "edr",
     "backup",
-    "siem"
+    "siem",
+    "cyber-recovery"
   ]
 }

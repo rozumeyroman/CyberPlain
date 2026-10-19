@@ -13,7 +13,8 @@
   ],
   "defenses": [
     "edr",
-    "backup"
+    "backup",
+    "cyber-recovery"
   ],
   "subs": {
     "001": "Стирання вмісту диска",

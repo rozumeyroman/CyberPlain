@@ -15,7 +15,8 @@
   "defenses": [
     "backup",
     "edr",
-    "cnapp"
+    "cnapp",
+    "cyber-recovery"
   ],
   "subs": {
     "001": "Видалення через правила життєвого циклу"

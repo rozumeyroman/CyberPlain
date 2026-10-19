@@ -14,7 +14,8 @@
   "defenses": [
     "siem",
     "ueba",
-    "edr"
+    "edr",
+    "cyber-recovery"
   ],
   "subs": {
     "001": "Змінення збережених даних",
