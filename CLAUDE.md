@@ -305,12 +305,13 @@ Firewall (сегментація доступу) — частина `itdr` (рі
 & Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`,
 а клас `jit` (рішення автора).
 
-Segura (https://segura.security/products/): редакцій немає — одна ліцензія «все включено», тому продукт =
-модуль; класи — за сторінками модулів. PAM Core і Domum Remote Access — `pam` + `jit`; Cloud IAM — `pam`;
-DevOps Secret Manager — `secrets`; Certificate Manager — `clm`; EPM — `epm`; Cloud Entitlements — `ciem`; MySafe —
-`password-manager` (класи `secrets`, `clm`, `epm`, `ciem`, `password-manager` заведено під Segura). Segura Appliance —
-апаратна платформа для PAM, не продукт безпеки, не додаємо. «ITDR» Segura — це сторінка рішення з комбінації модулів
-(PAM, UEBA, CIEM, інтеграції з SIEM/SOAR), не окремий продукт: `itdr` не ставимо.
+Segura (https://segura.security/products/): основний продукт — PAM Core (одна ліцензія «все включено», без редакцій;
+MySafe, менеджер паролів, входить до нього) — `pam` + `jit` + `password-manager`. Решта — окремі продукти, що
+докуповуються до PAM Core; класи за сторінками модулів: Domum Remote Access — `pam` + `jit`; Cloud IAM — `pam`;
+DevOps Secret Manager — `secrets`; Certificate Manager — `clm`; EPM — `epm`; Cloud Entitlements — `ciem` (класи
+`secrets`, `clm`, `epm`, `ciem`, `password-manager` заведено під Segura). Segura Appliance — апаратна платформа для
+PAM, не додаємо. «ITDR» Segura — сторінка рішення з комбінації модулів (PAM, UEBA, CIEM, інтеграції з SIEM/SOAR),
+не окремий продукт: `itdr` не ставимо.
 
 SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна редакція окремим продуктом (`socradar-<модуль>-<редакція>`):
 
