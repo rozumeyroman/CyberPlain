@@ -287,6 +287,9 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
 | Harmony Email … Complete Protect | + DLP |
 | CloudGuard WAF | WAF, захист від DDoS |
+| Quantum Spark NGFW | NGFW/IPS |
+| Quantum Spark NGTP | + кіберрозвідка (Anti-Bot, URL Filtering, антивірус за ThreatCloud) |
+| Quantum Spark SNBT | + пісочниця, захист від фішингу (Zero Phishing) |
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
 | Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
@@ -322,6 +325,11 @@ CloudGuard WAF (https://www.checkpoint.com/cloudguard/waf/): редакцій н
 (окремо, у складі CloudGuard Workloads або PAYG), тому один продукт. DDoS Protection — функція WAF-as-a-Service, рахуємо
 `ddos`. GenAI-захист (ін’єкції в промпти) і API Discovery — у межах `waf`; `waf` доповнено D3-APCA.
 
+Quantum Spark (https://www.checkpoint.com/downloads/products/quantum-spark-2500-datasheet.pdf): лінійка, не окремі моделі
+(рішення автора); продукт = рівень підписки NGFW / NGTP / SNBT (таблиця Subscription Services). Anti-Bot, URL Filtering,
+антивірус — блокування за репутацією ThreatCloud → `ti`; антиспам на шлюзі — не `email`, лише в тексті; Zero Phishing
+на шлюзі — `browser-protection` (опис класу розширено: «у браузері або на шлюзі»). VPN, IoT, SD-WAN — лише в тексті.
+
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
 & Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`,
@@ -353,7 +361,7 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання).
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
-рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них
+рахуємо класом). Класи без продуктів (навчання) лишаються, бо на них
 посилаються техніки ATT&CK. Опис продукту (`simple`) — самодостатній: без «усе з X плюс», щоб сейлу не треба було
 відкривати інші сторінки. Нові продукти — лише за першоджерелом вендора;
 де продукту немає — `[уточнити в портфелі]`.
