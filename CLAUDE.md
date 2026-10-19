@@ -192,7 +192,9 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 - **Власний домен** `cyberplain.alestalab.top`; `workers_dev` і `preview_urls` вимкнені
   у `wrangler.jsonc`, бо на `*.workers.dev` WAF не діє.
 - **WAF custom rule «Geography-based rule [Template]»** (перше, діє на всю зону) → **Block**:
-  континенти AS, SA, AF, Tor (`T1`), країни RU, BY. Блокує й пошукових ботів та прев'ю з цих регіонів.
+  (континенти AS, SA, AF, Tor (`T1`), країни RU, BY) `and not cf.client.bot`. Виняток для
+  верифікованих ботів обов'язковий: Googlebot часто приходить з IP, які геобаза відносить до
+  Азії (TW), і без винятку Search Console не міг отримати sitemap.
 - **WAF custom rule** → **Managed Challenge**, вираз:
   ```
   (http.host eq "cyberplain.alestalab.top"
