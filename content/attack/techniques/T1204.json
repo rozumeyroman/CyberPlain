@@ -16,7 +16,9 @@
     "awareness",
     "edr",
     "email",
-    "siem"
+    "siem",
+    "browser-protection",
+    "sandbox"
   ],
   "subs": {
     "001": "Шкідливе посилання",

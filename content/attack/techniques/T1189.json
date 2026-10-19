@@ -16,6 +16,7 @@
     "edr",
     "ngfw",
     "vm",
-    "ti"
+    "ti",
+    "browser-protection"
   ]
 }

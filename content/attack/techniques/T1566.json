@@ -20,7 +20,9 @@
     "soar",
     "brand-protection",
     "siem",
-    "ti"
+    "ti",
+    "browser-protection",
+    "sandbox"
   ],
   "subs": {
     "001": "Лист із вкладенням",

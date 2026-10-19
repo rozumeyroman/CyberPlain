@@ -265,8 +265,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 ## Портфель рішень
 
-На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Silverfort, модулі SOCRadar XTI і продукти
-Segura (рішення автора, жовтень 2026).
+На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
+модулі SOCRadar XTI і продукти Segura (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -281,6 +281,9 @@ Segura (рішення автора, жовтень 2026).
 | SentinelOne Singularity Complete | EDR (EPP + XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
 | SentinelOne Singularity Commercial | + ITDR |
 | SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
+| Harmony Endpoint Advanced | EDR, контроль пристроїв і мережевий екран, DFIR, кіберрозвідка, захист браузера, пісочниця/CDR |
+| Harmony Endpoint Complete | + шифрування дисків і флешок |
+| Harmony Endpoint Elite | + управління вразливостями, DLP, SOAR (Playblocks) |
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
 | Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
@@ -299,6 +302,13 @@ SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`,
 пастки Singularity Identity (Identity Deception) і ISPM у таблиці пакетів не названі — `deception` не
 ставимо. Network Discovery (Enterprise) — інвентаризація мережі агентами, не CAASM: лише в тексті.
 Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіси/AI, не класи; add-on не рахуємо.
+
+Harmony Endpoint (https://sc1.checkpoint.com/uc/pdf/Har_EP_Pricing_Packages.pdf): лише чинні редакції Advanced,
+Complete, Elite; Data Protection і Basic (Prevent) не продаються — не додаємо (рішення автора). Класи `browser-protection`,
+`sandbox`, `encryption` заведено під Harmony. «Forensic collection» — `dfir` (як Forensic Data Collection у SentinelOne);
+«Threat Cloud» + «IOC Management» (розділ Threat Intelligence таблиці) — `ti`; Firewall + Port Protection — `device-control`;
+Posture Management — `vm`; Endpoint XDR — `edr` уже є, Infinity Playblocks — `soar`. Remote Access VPN, Application Control,
+Endpoint Compliance — лише в тексті. Posture Management, DLP і XDR в Advanced/Complete — add-on, класом не рахуємо.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
@@ -328,7 +338,7 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 ліцензується гнучко: рахуємо як включену (тому BP Ultimate має `dark-web`). Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
 Відстеження постачальників у CTI — не `tprm`. Класи `dark-web`, `brand-protection`, `tprm` заведено під SOCRadar.
 
-Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `dlp`, `ddos`.
+Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `ddos`.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
 рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них

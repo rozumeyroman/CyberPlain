@@ -14,7 +14,8 @@
   "defenses": [
     "dlp",
     "edr",
-    "device-control"
+    "device-control",
+    "encryption"
   ],
   "subs": {
     "001": "Через USB"
