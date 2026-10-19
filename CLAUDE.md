@@ -307,9 +307,10 @@ Firewall (сегментація доступу) — частина `itdr` (рі
 
 Segura (https://segura.security/products/): основний продукт — PAM Core (одна ліцензія «все включено», без редакцій;
 MySafe, менеджер паролів, входить до нього) — `pam` + `jit` + `password-manager`. Решта — окремі продукти, що
-докуповуються до PAM Core; класи за сторінками модулів: Domum Remote Access — `pam` + `jit`; Cloud IAM — `pam`;
+докуповуються до PAM Core; класи за сторінками модулів: Domum Remote Access — `pam` + `vpnless` (віддалений доступ без VPN; JIT
+прибрано — рішення автора); Cloud IAM — `pam`;
 DevOps Secret Manager — `secrets`; Certificate Manager — `clm`; EPM — `epm`; Cloud Entitlements — `ciem` (класи
-`secrets`, `clm`, `epm`, `ciem`, `password-manager` заведено під Segura). Segura Appliance — апаратна платформа для
+`secrets`, `clm`, `epm`, `ciem`, `password-manager`, `vpnless` заведено під Segura). Segura Appliance — апаратна платформа для
 PAM, не додаємо. «ITDR» Segura — сторінка рішення з комбінації модулів (PAM, UEBA, CIEM, інтеграції з SIEM/SOAR),
 не окремий продукт: `itdr` не ставимо.
 
