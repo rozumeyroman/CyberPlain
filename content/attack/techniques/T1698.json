@@ -15,6 +15,7 @@
   "defenses": [
     "dast",
     "siem",
-    "awareness"
+    "awareness",
+    "waf"
   ]
 }

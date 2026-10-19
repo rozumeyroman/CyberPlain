@@ -286,6 +286,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Harmony Endpoint Elite | + управління вразливостями, DLP, SOAR (Playblocks) |
 | Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
 | Harmony Email … Complete Protect | + DLP |
+| CloudGuard WAF | WAF, захист від DDoS |
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
 | Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
@@ -317,6 +318,10 @@ Harmony Email & Collaboration (https://www.checkpoint.com/harmony/email-security
 «Account takeover prevention (anomalies)» — `ueba`; Sandboxing + CDR — `sandbox`; Shadow IT — лише в тексті. Add-on
 (Archiving, IRaaS, DMARC, AI Phishing Training, Leaked Credentials, SSPM, Browse) класом не рахуємо.
 
+CloudGuard WAF (https://www.checkpoint.com/cloudguard/waf/): редакцій немає — ліцензія за обсягом запитів
+(окремо, у складі CloudGuard Workloads або PAYG), тому один продукт. DDoS Protection — функція WAF-as-a-Service, рахуємо
+`ddos`. GenAI-захист (ін’єкції в промпти) і API Discovery — у межах `waf`; `waf` доповнено D3-APCA.
+
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
 & Inventory і Access Intelligence — не CAASM, лише в тексті. PAS (JIT і «огородження» без сейфа паролів) — не `pam`,
@@ -345,7 +350,7 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 ліцензується гнучко: рахуємо як включену (тому BP Ultimate має `dark-web`). Активне сканування вразливостей в ASM Ultimate — зовнішнє, не `vm`.
 Відстеження постачальників у CTI — не `tprm`. Класи `dark-web`, `brand-protection`, `tprm` заведено під SOCRadar.
 
-Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання), `ddos`.
+Класи без продуктів, додані для повноти карти ATT&CK: `backup` (резервне копіювання).
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
 рахуємо класом). Класи без продуктів (пошта, MFA, NGFW, WAF, навчання) лишаються, бо на них
