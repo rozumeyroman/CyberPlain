@@ -17,7 +17,8 @@
     "ndr",
     "ids",
     "edr",
-    "deception"
+    "deception",
+    "vpn"
   ],
   "subs": {
     "001": "Отруєння розпізнавання імен і SMB relay",

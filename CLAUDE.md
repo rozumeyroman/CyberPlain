@@ -281,13 +281,13 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | SentinelOne Singularity Complete | EDR (EPP + XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
 | SentinelOne Singularity Commercial | + ITDR |
 | SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
-| Harmony Endpoint Advanced | EDR, контроль пристроїв і мережевий екран, DFIR, кіберрозвідка, захист браузера, пісочниця/CDR |
+| Harmony Endpoint Advanced | VPN, EDR, контроль пристроїв і мережевий екран, DFIR, кіберрозвідка, захист браузера, пісочниця/CDR |
 | Harmony Endpoint Complete | + шифрування дисків і флешок |
 | Harmony Endpoint Elite | + управління вразливостями, DLP, SOAR (Playblocks) |
 | Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
 | Harmony Email … Complete Protect | + DLP |
 | CloudGuard WAF | WAF, захист від DDoS |
-| Quantum Spark NGFW | NGFW/IPS |
+| Quantum Spark NGFW | NGFW/IPS, VPN |
 | Quantum Spark NGTP | + кіберрозвідка (Anti-Bot, URL Filtering, антивірус за ThreatCloud) |
 | Quantum Spark SNBT | + пісочниця, захист від фішингу (Zero Phishing) |
 | Silverfort Core | ISPM, MFA |
@@ -313,8 +313,8 @@ Harmony Endpoint (https://sc1.checkpoint.com/uc/pdf/Har_EP_Pricing_Packages.pdf)
 Complete, Elite; Data Protection і Basic (Prevent) не продаються — не додаємо (рішення автора). Класи `browser-protection`,
 `sandbox`, `encryption` заведено під Harmony. «Forensic collection» — `dfir` (як Forensic Data Collection у SentinelOne);
 «Threat Cloud» + «IOC Management» (розділ Threat Intelligence таблиці) — `ti`; Firewall + Port Protection — `device-control`;
-Posture Management — `vm`; Endpoint XDR — `edr` уже є, Infinity Playblocks — `soar`. Remote Access VPN, Application Control,
-Endpoint Compliance — лише в тексті. Posture Management, DLP і XDR в Advanced/Complete — add-on, класом не рахуємо.
+Posture Management — `vm`; Endpoint XDR — `edr` уже є, Infinity Playblocks — `soar`. Application Control, Endpoint Compliance —
+лише в тексті. Posture Management, DLP і XDR в Advanced/Complete — add-on, класом не рахуємо.
 
 Harmony Email & Collaboration (https://www.checkpoint.com/harmony/email-security/plans-and-packages/): 4 продукти —
 обсяг Email Only (M365, Gmail) або Email & Collaboration (+ Teams, файлові сховища, Slack) × Advanced / Complete Protect.
@@ -328,7 +328,11 @@ CloudGuard WAF (https://www.checkpoint.com/cloudguard/waf/): редакцій н
 Quantum Spark (https://www.checkpoint.com/downloads/products/quantum-spark-2500-datasheet.pdf): лінійка, не окремі моделі
 (рішення автора); продукт = рівень підписки NGFW / NGTP / SNBT (таблиця Subscription Services). Anti-Bot, URL Filtering,
 антивірус — блокування за репутацією ThreatCloud → `ti`; антиспам на шлюзі — не `email`, лише в тексті; Zero Phishing
-на шлюзі — `browser-protection` (опис класу розширено: «у браузері або на шлюзі»). VPN, IoT, SD-WAN — лише в тексті.
+на шлюзі — `browser-protection` (опис класу розширено: «у браузері або на шлюзі»). IoT, SD-WAN — лише в тексті.
+
+Клас `vpn` (рішення автора): зашифрований тунель для віддалених працівників і між офісами; D3-ET перенесено з `ngfw`.
+Є в усіх Quantum Spark і Harmony Endpoint (Remote Access VPN). Не плутати з `vpnless` (доступ без VPN). T1133 класу
+`vpn` не ставимо — сам VPN-шлюз часто і є точкою входу.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
