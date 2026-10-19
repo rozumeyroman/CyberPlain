@@ -58,6 +58,8 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (описані всі 271)
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
+scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
+                          #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
   attack.json             # npm run import:attack (scripts/import-attack.mjs ← STIX mitre-attack/attack-stix-data)
   d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api: matrix.json
@@ -286,6 +288,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Harmony Endpoint Elite | + управління вразливостями, DLP, SOAR (Playblocks) |
 | Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
 | Harmony Email … Complete Protect | + DLP |
+| Harmony Email Security Awareness Training | навчання персоналу (add-on, окремий продукт) |
 | CloudGuard WAF | WAF, захист від DDoS |
 | Quantum Spark NGFW | NGFW/IPS, VPN |
 | Quantum Spark NGTP | + кіберрозвідка (Anti-Bot, URL Filtering, антивірус за ThreatCloud) |
@@ -319,7 +322,8 @@ Posture Management — `vm`; Endpoint XDR — `edr` уже є, Infinity Playbloc
 Harmony Email & Collaboration (https://www.checkpoint.com/harmony/email-security/plans-and-packages/): 4 продукти —
 обсяг Email Only (M365, Gmail) або Email & Collaboration (+ Teams, файлові сховища, Slack) × Advanced / Complete Protect.
 «Account takeover prevention (anomalies)» — `ueba`; Sandboxing + CDR — `sandbox`; Shadow IT — лише в тексті. Add-on
-(Archiving, IRaaS, DMARC, AI Phishing Training, Leaked Credentials, SSPM, Browse) класом не рахуємо.
+(Archiving, IRaaS, DMARC, Leaked Credentials, SSPM, Browse) класом не рахуємо; Security Awareness Training (AI Phishing
+Training) — окремий продукт `checkpoint-harmony-email-sat` з класом `awareness` (рішення автора).
 
 CloudGuard WAF (https://www.checkpoint.com/cloudguard/waf/): редакцій немає — ліцензія за обсягом запитів
 (окремо, у складі CloudGuard Workloads або PAYG), тому один продукт. DDoS Protection — функція WAF-as-a-Service, рахуємо
@@ -369,7 +373,7 @@ SOCRadar (https://socradar.io/pricing/) — 5 модулів, кожна ред�
 Усі класи, додані для повноти карти ATT&CK (`backup`, `pam`, `dlp`, `ddos`), уже мають продукти.
 ABA (Attacker Behavior Analytics) — стара назва Detection Rule Library в SIEM Rapid7, окремим
 класом не заводимо. Ransomware Prevention — у Ultimate, в Essential/Advanced за доплату (add-on не
-рахуємо класом). Класи без продуктів (навчання) лишаються, бо на них
+рахуємо класом). Класи без продуктів лишаються, якщо на них
 посилаються техніки ATT&CK. Опис продукту (`simple`) — самодостатній: без «усе з X плюс», щоб сейлу не треба було
 відкривати інші сторінки. Нові продукти — лише за першоджерелом вендора;
 де продукту немає — `[уточнити в портфелі]`.
