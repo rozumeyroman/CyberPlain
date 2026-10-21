@@ -1,0 +1,3 @@
+{
+  "simple": "Certificate lifecycle management: automatically discovers SSL/TLS and other digital certificates on servers, websites, in directories and key stores, keeps a single inventory of them, warns well before expiration, and renews and publishes them automatically through public and private certificate authorities. Reports for audits. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+}

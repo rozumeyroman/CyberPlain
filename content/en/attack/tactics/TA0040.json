@@ -1,0 +1,12 @@
+{
+  "short": "Reaches the goal: encrypts, destroys or alters data, stops operations.",
+  "analogy": "Doesn’t steal — changes the locks and demands a ransom for the new keys, or just smashes everything.",
+  "solutionNotes": {
+    "edr": "Stops encryption on the first few files and rolls back the changes.",
+    "backup": "Brings data back without paying a ransom — as long as the copies are out of the attacker’s reach.",
+    "siem": "Spots preparation for the strike: deleted backups, stopped services.",
+    "soar": "Automatically isolates infected computers so the encryption doesn’t spread.",
+    "ddos": "Keeps the website available during a DDoS attack.",
+    "dfir": "Helps understand the scale and recover safely."
+  }
+}

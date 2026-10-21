@@ -1,0 +1,8 @@
+{
+  "simple": "Browses the browser’s bookmarks and history to find internal sites, services and interesting resources.",
+  "analogy": "Flips through the owner’s address book.",
+  "quote": "The attacker knew the address of our internal CRM",
+  "questions": [
+    "Does your protection watch for programs that read browser data?"
+  ]
+}

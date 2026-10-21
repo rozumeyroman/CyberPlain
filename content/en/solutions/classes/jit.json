@@ -1,0 +1,3 @@
+{
+  "simple": "Removes standing administrator rights: privileged access is granted only when needed, to a specific system and for a limited time, and then taken away automatically — so even a stolen administrator account opens nothing most of the time."
+}

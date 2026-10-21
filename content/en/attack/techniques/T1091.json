@@ -1,0 +1,9 @@
+{
+  "simple": "Infects flash drives and external disks so the malware moves to other computers, even ones cut off from the internet.",
+  "analogy": "Drops a “lost” flash drive by the office entrance — someone will definitely pick it up.",
+  "quote": "Someone brought in a flash drive from home",
+  "questions": [
+    "Can anyone at your company plug in any flash drive?",
+    "Does your protection scan files from removable media?"
+  ]
+}

@@ -1,12 +1,13 @@
 ---
 import { site } from '../../site.config';
-import { source } from '../../content/attack/intro.json';
-import { attackSource } from '../lib/data';
+import { pageCtx, introOf, attackSource } from '../lib/data';
 
-const { href = source.url, label = 'Оригінал на attack.mitre.org ↗' } = Astro.props;
+const { lang, t } = await pageCtx(Astro.url);
+const { source } = introOf('attack', lang);
+const { href = source.url, label = t.source.attackOrig } = Astro.props;
 ---
 <div class="src">
-  <span>Джерело: {source.name.replace('ATT&CK', 'ATT&CK®')}, версія {attackSource.version}. Назви тактик українською й пояснення — авторська адаптація {site.name}.</span>
+  <span>{t.source.attack(source.name.replace('ATT&CK', 'ATT&CK®'), attackSource.version, site.name)}</span>
   <a href={href} class="mono">{label}</a>
 </div>
 

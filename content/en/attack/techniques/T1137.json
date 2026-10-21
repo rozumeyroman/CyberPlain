@@ -1,0 +1,9 @@
+{
+  "simple": "Hides malicious code in Outlook and Office templates, add-ins, rules or forms — it runs every time the person opens the application.",
+  "analogy": "Sews a bug into the notebook the owner opens every morning.",
+  "quote": "The virus started up every time Outlook was opened",
+  "questions": [
+    "Is installing Office add-ins restricted?",
+    "Are macros from the internet blocked?"
+  ]
+}

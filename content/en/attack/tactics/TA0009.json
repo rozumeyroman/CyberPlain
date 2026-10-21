@@ -1,0 +1,11 @@
+{
+  "short": "Gathers valuable information in one place before stealing it.",
+  "analogy": "Puts everything valuable into one bag.",
+  "solutionNotes": {
+    "dlp": "Knows where valuable data lives and notices when it’s being gathered in bulk.",
+    "edr": "Spots programs that capture the screen, read the clipboard or pack archives.",
+    "ueba": "Notices when a person suddenly downloads far more than usual.",
+    "email": "Spots mail forwarding rules that send messages outside.",
+    "soar": "Automatically deletes suspicious forwarding rules."
+  }
+}

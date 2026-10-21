@@ -1,0 +1,9 @@
+{
+  "simple": "Wedges itself between the computer and the network — through ARP or DHCP spoofing, LLMNR, or a fake Wi-Fi access point — and intercepts traffic and passwords.",
+  "analogy": "Steps between you and the person you’re talking to and relays the conversation, eavesdropping.",
+  "quote": "The Responder tool collected password hashes on the network",
+  "questions": [
+    "Are LLMNR and NBT-NS turned off on the network?",
+    "Would you notice a suspicious Wi-Fi access point?"
+  ]
+}

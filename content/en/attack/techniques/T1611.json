@@ -1,0 +1,9 @@
+{
+  "simple": "Breaks out of a container onto the host system, where other containers also run — and takes control of them.",
+  "analogy": "Crawls from a hotel room into the vents and ends up in every room on the floor.",
+  "quote": "They hacked one container — and got the whole node",
+  "questions": [
+    "Are containers run with privileged rights?",
+    "Are cluster nodes scanned for vulnerabilities?"
+  ]
+}

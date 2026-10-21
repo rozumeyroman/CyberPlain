@@ -1,0 +1,9 @@
+{
+  "simple": "Embeds itself deep in the system and hides its files, processes and connections from the user and from security tools.",
+  "analogy": "An invisible man you can’t see in the mirror or on the cameras.",
+  "quote": "The system showed everything was clean, but traffic kept flowing",
+  "questions": [
+    "Are Secure Boot and driver control turned on?",
+    "Can you check the system from the outside?"
+  ]
+}

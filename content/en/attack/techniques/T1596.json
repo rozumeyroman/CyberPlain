@@ -1,0 +1,9 @@
+{
+  "simple": "Looks at open databases: WHOIS, certificates, DNS history, results of other people’s internet scans.",
+  "analogy": "Reads the public land registry and old listings from when the house was for sale.",
+  "quote": "Our old server shows up in Shodan",
+  "questions": [
+    "Have you checked what Shodan and similar services show about you?",
+    "Are there forgotten test services reachable from outside?"
+  ]
+}

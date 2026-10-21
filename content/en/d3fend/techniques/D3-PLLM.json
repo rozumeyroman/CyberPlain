@@ -1,0 +1,3 @@
+{
+  "simple": "Builds a map of connections just by listening to traffic, without sending anything into the network."
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Deletes or locks accounts or changes passwords — so employees and administrators can’t log in and respond.",
+  "analogy": "Changes the locks while the owners are at work.",
+  "quote": "Administrators couldn’t log in — the passwords had been changed",
+  "questions": [
+    "Do you have an emergency account to regain access?"
+  ]
+}

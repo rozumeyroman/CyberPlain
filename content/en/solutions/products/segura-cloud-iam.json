@@ -1,0 +1,3 @@
+{
+  "simple": "Access control for cloud resources: creates and deletes cloud users and access keys through approved processes, hardens administrative access to virtual machines, immediately changes the default passwords of new systems, replaces credentials hardcoded in applications with ones that are changed regularly, and ties every privileged action to a specific person. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Finds out which user it is running as and who uses the computer at all.",
+  "analogy": "Reads the name on the mailbox.",
+  "quote": "The program ran whoami right after the infection",
+  "questions": [
+    "Does your protection watch for typical commands after an infection?"
+  ]
+}

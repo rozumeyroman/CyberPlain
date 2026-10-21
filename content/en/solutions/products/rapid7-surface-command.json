@@ -1,0 +1,3 @@
+{
+  "simple": "Shows the company’s whole attack surface — both from the inside and from the internet. Pulls data from various systems into a single list of devices, applications, accounts and security tools, finds resources visible from the outside, and maps the connections between assets and the “blast radius” if one of them is breached. Includes risk scoring based on real-world threats, a remediation center and automation (SOAR)."
+}

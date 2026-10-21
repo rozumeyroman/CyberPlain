@@ -1,0 +1,10 @@
+{
+  "simple": "Encrypts files on every reachable computer and server and demands a ransom for the key — often also threatening to publish stolen data.",
+  "analogy": "Puts locks on all the cabinets and demands money for the keys.",
+  "quote": "All the files have a .locked extension and there’s a ransom note",
+  "questions": [
+    "Do you have offline copies that ransomware can’t encrypt?",
+    "Have you tested restoring from backups?",
+    "Do you have a plan for what to do if files get encrypted?"
+  ]
+}

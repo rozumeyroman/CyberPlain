@@ -1,0 +1,9 @@
+{
+  "simple": "Hides files, accounts, windows or mail rules so neither users nor administrators notice them.",
+  "analogy": "Puts in a cabinet with a secret compartment.",
+  "quote": "Emails from the bank were automatically disappearing into a hidden folder",
+  "questions": [
+    "Do you monitor email forwarding and hiding rules?",
+    "Would you notice a hidden user?"
+  ]
+}

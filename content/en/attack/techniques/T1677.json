@@ -1,0 +1,9 @@
+{
+  "simple": "Embeds malicious code in the automated software build process so it ends up in the finished product or steals secrets.",
+  "analogy": "Slips something into the dough at the bread factory — and the poison ends up in every loaf.",
+  "quote": "Someone ran code in our build through a pull request",
+  "questions": [
+    "Who can change the build scripts?",
+    "Where are the passwords and keys for CI/CD stored?"
+  ]
+}

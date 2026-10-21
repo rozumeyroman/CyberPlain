@@ -1,0 +1,9 @@
+{
+  "simple": "Runs malicious code through trusted developer utilities (MSBuild, ClickOnce) that Windows and security tools consider safe.",
+  "analogy": "Smuggles contraband in an official supplier’s van.",
+  "quote": "The malicious code was launched by a Microsoft system program",
+  "questions": [
+    "Does the accounting department’s computers need developer tools?",
+    "Do you monitor what system utilities launch?"
+  ]
+}

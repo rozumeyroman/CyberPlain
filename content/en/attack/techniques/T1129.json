@@ -1,0 +1,8 @@
+{
+  "simple": "Makes the system load a malicious library (module) together with a legitimate program.",
+  "analogy": "Slips a fake page into a manual that everyone reads without suspicion.",
+  "quote": "The program was legitimate, but it acted like a virus",
+  "questions": [
+    "Does your protection track which libraries programs load?"
+  ]
+}

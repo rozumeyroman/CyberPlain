@@ -1,0 +1,9 @@
+{
+  "simple": "Creates a scheduled task that launches its program at the right time — after a reboot, every night, under the system’s name.",
+  "analogy": "Sets a timer that opens the door for it every night.",
+  "quote": "We removed the virus, and the next day it came back",
+  "questions": [
+    "Would you notice a new scheduled task on a server?",
+    "Who checks autostart entries after an incident?"
+  ]
+}

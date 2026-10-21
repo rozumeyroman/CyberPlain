@@ -1,0 +1,51 @@
+{
+  "source": {
+    "name": "MITRE ATT&CK Enterprise",
+    "url": "https://attack.mitre.org/tactics/enterprise/",
+    "note": "The plain-language texts (short, analogy and the Ukrainian names) are CyberPlain’s adaptation (CC BY 4.0). IDs, English names and order come from MITRE ATT&CK."
+  },
+  "intro": {
+    "title": "A map of how an attacker operates.",
+    "lead": "MITRE ATT&CK is an open knowledge base of real cyberattacks. It is maintained by the nonprofit MITRE, and filled in by incident-response specialists from all over the world.",
+    "body": "The knowledge base describes not viruses or products but behavior: what an attacker does, step by step. That’s why it’s used by those who attack in training exercises, by those who defend, and by the makers of security tools.",
+    "terms": [
+      {
+        "term": "Matrix",
+        "title": "The table of the whole knowledge base.",
+        "text": "The columns are the stages of an attack; each column lists the ways that stage is carried out."
+      },
+      {
+        "term": "Tactic",
+        "title": "Why.",
+        "text": "The attacker’s goal at a given stage: get inside, gain a foothold, steal data."
+      },
+      {
+        "term": "Technique",
+        "title": "How.",
+        "text": "A specific way to reach that goal. A single tactic usually has dozens."
+      },
+      {
+        "term": "Sub-technique",
+        "title": "How exactly.",
+        "text": "An even more specific variant of a technique."
+      }
+    ],
+    "example": [
+      {
+        "label": "Initial Access",
+        "id": "TA0001"
+      },
+      {
+        "label": "Phishing",
+        "id": "T1566"
+      },
+      {
+        "label": "Spearphishing Attachment",
+        "id": "T1566.001"
+      }
+    ],
+    "sectionTitle": "Stages of an attack",
+    "sectionLead": "Read it in a zigzag — the way a typical attack unfolds. Click a stage to see its techniques.",
+    "caveat": "This is a map, not a route. A real attack may skip stages, repeat them or go in a different order."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Plants its own library or program where a legitimate program will look for it — so the program runs malicious code instead of the one it needs.",
+  "analogy": "Swaps the sign on the door — and guests walk in to the attacker instead of the host.",
+  "quote": "The malicious library was sitting right next to the legitimate program",
+  "questions": [
+    "Do you watch for swapped files in program folders?",
+    "Are folder permission mistakes fixed promptly?"
+  ]
+}

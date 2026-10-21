@@ -1,0 +1,18 @@
+{
+  "short": "The first step inside: a phishing email, a stolen password, a vulnerable service.",
+  "analogy": "Walks in through an unlocked window, or talks someone into opening the door.",
+  "solutionNotes": {
+    "edr": "Stops a malicious file or process the moment it first runs.",
+    "mfa": "A stolen VPN or email password no longer opens the door by itself.",
+    "vm": "Closes vulnerabilities on the perimeter before an attacker finds them.",
+    "siem": "Pulls logins and email and perimeter alerts into one picture of the first step of an attack.",
+    "ngfw": "Blocks attacks on exposed services and malicious websites.",
+    "caasm": "Shows forgotten servers, accounts and devices — the typical “unlocked windows.”",
+    "easm": "Shows what of yours is exposed to the internet — that’s exactly where attackers strike first.",
+    "email": "Catches phishing emails before anyone opens them.",
+    "awareness": "Employees won’t open a suspicious email and will report it.",
+    "waf": "Blocks attacks on websites and web applications.",
+    "dast": "Finds vulnerabilities in your own websites before someone exploits them.",
+    "soar": "Automatically handles phishing reports and deletes the same emails from every mailbox."
+  }
+}

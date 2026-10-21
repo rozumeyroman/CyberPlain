@@ -3,70 +3,71 @@ import AttackGroups from './AttackGroups.astro';
 import D3fendSource from './D3fendSource.astro';
 import D3Solutions from './D3Solutions.astro';
 import Fold from './Fold.astro';
-import { loadData, url, num, type D3Technique, plural } from '../lib/data';
+import { pageCtx, num, type D3Technique } from '../lib/data';
 
 interface Props { technique: D3Technique }
 const { technique: t } = Astro.props;
-const d = await loadData();
+const { lang, t: ui, url, d, pl } = await pageCtx(Astro.url);
+const x = ui.d3;
 const ancestors: D3Technique[] = [];
 for (let p = t.parent; p; p = p.parent) ancestors.unshift(p);
 const solutions = d.d3fendSolutionsOfTechnique(t);
-const kind = t.depth === 0 ? 'Категорія' : 'Техніка';
+const kind = t.depth === 0 ? x.category : x.technique;
 // Від чого захищає: власні зв'язки D3FEND з ATT&CK + зв'язки всіх різновидів.
-const subtree = (x: D3Technique): D3Technique[] => [x, ...x.children.flatMap(subtree)];
-const attack = [...new Set(subtree(t).flatMap((x) => x.attack))];
+const subtree = (y: D3Technique): D3Technique[] => [y, ...y.children.flatMap(subtree)];
+const attack = [...new Set(subtree(t).flatMap((y) => y.attack))];
 ---
 <section class="wrap page">
-  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
-    <a href="/d3fend/">D3FEND</a><span aria-hidden="true">/</span>
-    <a href={url.d3fendTactic(t.tactic.id)}>{num(t.tactic.order)} {t.tactic.ua ?? t.tactic.en}</a><span aria-hidden="true">/</span>
+  <nav aria-label={ui.crumbs} class="mono crumbs">
+    <a href={url.page('/d3fend/')}>D3FEND</a><span aria-hidden="true">/</span>
+    <a href={url.d3fendTactic(t.tactic.id)}>{num(t.tactic.order)} {t.tactic.title}</a><span aria-hidden="true">/</span>
     {ancestors.map((a) => <><a href={url.d3fendTechnique(a.id)}>{a.id}</a><span aria-hidden="true">/</span></>)}
     <span aria-current="page">{t.id}</span>
   </nav>
 
-  <div class="head"><span class="id-defense big">{t.id}</span><span class="mono meta">{kind} · {t.en}</span></div>
-  <h1>{t.ua ?? t.en}</h1>
+  <div class="head"><span class="id-defense big">{t.id}</span><span class="mono meta">{kind}{lang === 'uk' && ` · ${t.en}`}</span></div>
+  <h1>{t.title}</h1>
   {t.simple
     ? <p class="lead-text">{t.simple}</p>
-    : <p class="soon-box">Пояснення простими словами готується. Поки можна прочитати оригінальне визначення нижче.</p>}
+    : <p class="soon-box">{x.softSoon}</p>}
 
   <div class="grid">
-    {t.analogy && <div class="note-box"><span class="mono defense">Аналогія</span>{t.analogy}</div>}
+    {t.analogy && <div class="note-box"><span class="mono defense">{ui.analogy}</span>{t.analogy}</div>}
     {t.definition && (
-      <div class="note-box"><span class="mono muted">Визначення MITRE D3FEND</span><p lang="en">{t.definition}</p></div>
+      <div class="note-box"><span class="mono muted">{x.definition}</span><p lang="en">{t.definition}</p></div>
     )}
   </div>
 
-  <Fold id="sol" title="Які рішення це роблять" count={solutions.length ? plural(solutions.length, 'рішення', 'рішення', 'рішень') : undefined}>
-    <D3Solutions rows={solutions} empty={`Рішення для цієї ${t.depth === 0 ? 'категорії' : 'техніки'} ще не зіставлені.`} />
+  <Fold id="sol" title={x.sols} count={solutions.length ? pl(solutions.length, ui.n.solutions) : undefined}>
+    <D3Solutions rows={solutions} empty={t.depth === 0 ? x.noSolsCategory : x.noSolsTechnique} />
   </Fold>
 
   <section class="sec" aria-labelledby="att">
-    <h2 class="sec-title" id="att">Від яких технік атаки захищає · ATT&amp;CK{attack.length > 0 && <span class="mono">{attack.length} технік</span>}</h2>
+    <h2 class="sec-title" id="att">{x.protects}{attack.length > 0 && <span class="mono">{pl(attack.length, ui.n.techniques)}</span>}</h2>
     {attack.length === 0
-      ? <p class="soon-box">MITRE D3FEND поки не зіставляє цей захід з техніками ATT&amp;CK.</p>
+      ? <p class="soon-box">{x.noAttack}</p>
       : <>
-          <p class="note">За офіційним зіставленням MITRE D3FEND{t.children.length > 0 && ', разом із різновидами'}.</p>
+          <p class="note">{x.official}{t.children.length > 0 && x.withVariants}.</p>
           <AttackGroups techniques={attack} />
         </>}
   </section>
 
   {t.children.length > 0 && (
     <section class="sec" aria-labelledby="ch">
-      <h2 class="sec-title" id="ch">{t.depth === 0 ? 'Техніки' : 'Різновиди'}<span class="mono">{t.children.length}</span></h2>
+      <h2 class="sec-title" id="ch">{t.depth === 0 ? x.children : x.variants}<span class="mono">{t.children.length}</span></h2>
       <ul class="list">{t.children.map((c) => (
-        <li><a href={url.d3fendTechnique(c.id)}><span class="mono xid">{c.id}</span><span>{c.ua ?? c.en}{c.children.length > 0 && <span class="sub"> · ще {c.children.length}</span>}</span></a></li>
+        <li><a href={url.d3fendTechnique(c.id)}><span class="mono xid">{c.id}</span><span>{c.title}{c.children.length > 0 && <span class="sub">{x.moreChildren(c.children.length)}</span>}</span></a></li>
       ))}</ul>
     </section>
   )}
 
   <section class="sec" aria-labelledby="ta">
-    <h2 class="sec-title" id="ta">Тактика захисту</h2>
-    <div class="chips"><a href={url.d3fendTactic(t.tactic.id)} class="chip">{num(t.tactic.order)} {t.tactic.ua ?? t.tactic.en} · {t.tactic.en}</a></div>
+    <h2 class="sec-title" id="ta">{x.tactic}</h2>
+    <div class="chips"><a href={url.d3fendTactic(t.tactic.id)} class="chip">{num(t.tactic.order)} {t.tactic.title}{lang === 'uk' && ` · ${t.tactic.en}`}</a></div>
   </section>
 </section>
 
-<section class="wrap bottom"><D3fendSource href={url.d3fendOrig(t)} label={`${t.id} на d3fend.mitre.org ↗`} /></section>
+<section class="wrap bottom"><D3fendSource href={url.d3fendOrig(t)} label={ui.source.d3fendId(t.id)} /></section>
 
 <style>
   .head { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }

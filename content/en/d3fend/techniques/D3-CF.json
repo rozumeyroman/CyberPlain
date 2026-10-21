@@ -1,0 +1,3 @@
+{
+  "simple": "Check incoming files and let through only a safe version: quarantine, cutting out dangerous parts, rebuilding the file."
+}

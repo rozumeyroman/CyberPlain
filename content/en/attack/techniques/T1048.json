@@ -1,0 +1,8 @@
+{
+  "simple": "Moves data out over a different protocol than the control channel: FTP, DNS, email, its own encryption.",
+  "analogy": "Mails the loot away while walking off on foot.",
+  "quote": "The data was being taken out over FTP to an unknown server",
+  "questions": [
+    "Is outgoing traffic limited to only the protocols you need?"
+  ]
+}

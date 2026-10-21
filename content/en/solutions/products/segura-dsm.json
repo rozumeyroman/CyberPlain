@@ -1,0 +1,3 @@
+{
+  "simple": "A centralized vault of passwords, tokens, keys and certificates for applications and DevOps pipelines (GitLab CI/CD, GitHub Actions, Jenkins, Azure DevOps, Kubernetes). Finds secrets hardcoded in code, scripts and configurations and replaces them with requests to the vault; issues dynamic secrets unique to each client; automatically changes credentials and SSH keys; access is role-based, with a log of all actions. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+}

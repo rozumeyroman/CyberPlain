@@ -1,0 +1,8 @@
+{
+  "simple": "Uses Microsoft-signed scripts to run its own code under the name of a trusted file.",
+  "analogy": "Passes an order on letterhead with the boss’s stamp.",
+  "quote": "The code was launched by a script with a Microsoft signature",
+  "questions": [
+    "Is script execution restricted for regular users?"
+  ]
+}

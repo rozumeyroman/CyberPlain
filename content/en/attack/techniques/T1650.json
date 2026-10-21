@@ -1,0 +1,9 @@
+{
+  "simple": "Buys ready-made access to company networks from brokers — a hacked VPN, an administrator password, or an infected computer.",
+  "analogy": "A thief buys a copy of your office key from another thief.",
+  "quote": "Our VPN access was being sold on a forum",
+  "questions": [
+    "Would you find out if employee passwords show up in leaks?",
+    "Would you notice a sign-in that uses stolen but valid credentials?"
+  ]
+}

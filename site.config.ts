@@ -4,19 +4,24 @@ const repo = 'https://github.com/rozumeyroman/CyberPlain';
 
 export const site = {
   name,
-  tagline: 'кібербезпека простими словами',
-  description: `${name} пояснює MITRE ATT&CK® і D3FEND™ простими словами: як діють зловмисники, чим це загрожує бізнесу і які рішення зупиняють атаку.`,
+  // Тексти, що залежать від мови, — об'єктами { uk, en }.
+  tagline: { uk: 'кібербезпека простими словами', en: 'cybersecurity in plain language' },
+  description: {
+    uk: `${name} пояснює MITRE ATT&CK® і D3FEND™ простими словами: як діють зловмисники, чим це загрожує бізнесу і які рішення зупиняють атаку.`,
+    en: `${name} explains MITRE ATT&CK® and D3FEND™ in plain language: how attackers operate, what it means for the business and which solutions stop an attack.`,
+  },
   ogImage: '/og.png', // 1200×630; при зміні назви чи кольорів — перегенерувати
   domain: 'cyberplain.alestalab.top', // разом із ним оновити routes у wrangler.jsonc
   repo,
-  author: { name: 'Роман Розумей', url: 'https://github.com/rozumeyroman' },
+  author: { name: { uk: 'Роман Розумей', en: 'Roman Rozumey' }, url: 'https://github.com/rozumeyroman' },
 
+  // href — без мовного префікса: його додає url.page() з src/lib/data.ts.
   tabs: [
-    { label: 'Home', href: '/' },
-    { label: 'MITRE ATT&CK', href: '/mitre/' },
-    { label: 'D3FEND', href: '/d3fend/' },
-    { label: 'Рішення', href: '/solutions/' },
-    { label: 'Вендори', href: '/vendors/' },
+    { label: { uk: 'Home', en: 'Home' }, href: '/' },
+    { label: { uk: 'MITRE ATT&CK', en: 'MITRE ATT&CK' }, href: '/mitre/' },
+    { label: { uk: 'D3FEND', en: 'D3FEND' }, href: '/d3fend/' },
+    { label: { uk: 'Рішення', en: 'Solutions' }, href: '/solutions/' },
+    { label: { uk: 'Вендори', en: 'Vendors' }, href: '/vendors/' },
   ],
 
   // Стають CSS-змінними --<ключ> у Base.astro.
@@ -37,17 +42,26 @@ export const site = {
   },
 
   footer: {
+    // Внутрішні href (з «/») локалізуються через url.page(); зовнішні лишаються як є.
     links: [
-      { label: 'Ліцензії та авторство', href: '/licenses/' },
-      { label: 'Про проєкт', href: repo },
-      { label: 'Повідомити про помилку', href: `${repo}/issues` },
+      { label: { uk: 'Ліцензії та авторство', en: 'Licenses and credits' }, href: '/licenses/' },
+      { label: { uk: 'Про проєкт', en: 'About the project' }, href: repo },
+      { label: { uk: 'Повідомити про помилку', en: 'Report a problem' }, href: `${repo}/issues` },
     ],
     // HTML: статичний текст із цього файлу, не ввід користувача.
-    notes: [
-      `${name} — незалежний некомерційний проєкт. Він не пов’язаний із The MITRE Corporation і не схвалений нею. Пояснення простими словами — авторська адаптація; оригінальні визначення доступні за посиланнями біля кожного терміна.`,
-      'Матеріали MITRE ATT&amp;CK®: © 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation. <a href="https://attack.mitre.org/resources/legal-and-branding/terms-of-use/">Умови використання ATT&amp;CK</a>.',
-      'Матеріали MITRE D3FEND™: © 2025 The MITRE Corporation. Approved for Public Release; Distribution Unlimited #20-2338 and #23-1207. <a href="https://d3fend.mitre.org/tou">Умови використання D3FEND</a>.',
-      'MITRE ATT&amp;CK® і ATT&amp;CK® — зареєстровані торговельні марки, а MITRE D3FEND™ — торговельна марка The MITRE Corporation. Назви продуктів і компаній — торговельні марки їхніх власників. Шрифти Onest і JetBrains Mono — SIL Open Font License 1.1.',
-    ],
+    notes: {
+      uk: [
+        `${name} — незалежний некомерційний проєкт. Він не пов’язаний із The MITRE Corporation і не схвалений нею. Пояснення простими словами — авторська адаптація; оригінальні визначення доступні за посиланнями біля кожного терміна.`,
+        'Матеріали MITRE ATT&amp;CK®: © 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation. <a href="https://attack.mitre.org/resources/legal-and-branding/terms-of-use/">Умови використання ATT&amp;CK</a>.',
+        'Матеріали MITRE D3FEND™: © 2025 The MITRE Corporation. Approved for Public Release; Distribution Unlimited #20-2338 and #23-1207. <a href="https://d3fend.mitre.org/tou">Умови використання D3FEND</a>.',
+        'MITRE ATT&amp;CK® і ATT&amp;CK® — зареєстровані торговельні марки, а MITRE D3FEND™ — торговельна марка The MITRE Corporation. Назви продуктів і компаній — торговельні марки їхніх власників. Шрифти Onest і JetBrains Mono — SIL Open Font License 1.1.',
+      ],
+      en: [
+        `${name} is an independent, non-commercial project. It is not affiliated with The MITRE Corporation and is not endorsed by it. The plain-language explanations are an original adaptation; the original definitions are available through the links next to each term.`,
+        'MITRE ATT&amp;CK® materials: © 2026 The MITRE Corporation. This work is reproduced and distributed with the permission of The MITRE Corporation. <a href="https://attack.mitre.org/resources/legal-and-branding/terms-of-use/">ATT&amp;CK Terms of Use</a>.',
+        'MITRE D3FEND™ materials: © 2025 The MITRE Corporation. Approved for Public Release; Distribution Unlimited #20-2338 and #23-1207. <a href="https://d3fend.mitre.org/tou">D3FEND Terms of Use</a>.',
+        'MITRE ATT&amp;CK® and ATT&amp;CK® are registered trademarks, and MITRE D3FEND™ is a trademark, of The MITRE Corporation. Product and company names are trademarks of their respective owners. The Onest and JetBrains Mono fonts are licensed under the SIL Open Font License 1.1.',
+      ],
+    },
   },
 };

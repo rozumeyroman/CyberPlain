@@ -1,0 +1,9 @@
+{
+  "simple": "Signs malicious programs with stolen certificates, installs its own root certificate or removes the “downloaded from the internet” mark.",
+  "analogy": "Forges a seal that everyone trusts.",
+  "quote": "The program had a valid digital signature",
+  "questions": [
+    "Would you notice a new root certificate being installed?",
+    "Does your protection rely only on a program’s signature?"
+  ]
+}

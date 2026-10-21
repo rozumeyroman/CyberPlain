@@ -1,0 +1,9 @@
+{
+  "simple": "Sends emails and messages or makes calls to coax out a password or internal data.",
+  "analogy": "Rings the doorbell posing as a gas technician and asks to see where the meter is.",
+  "quote": "Employees are getting messages asking them to confirm their details",
+  "questions": [
+    "Is incoming email filtered for phishing?",
+    "Have you run training or test phishing campaigns for your people?"
+  ]
+}

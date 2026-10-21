@@ -1,0 +1,3 @@
+{
+  "simple": "Checks whether compressed or encoded parts of a file unpack properly, which is how hidden content is found."
+}

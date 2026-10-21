@@ -1,26 +1,14 @@
 ---
 // Перекладач термінів без JS: radio + label + :checked ~.
+import { pageCtx } from '../lib/data';
+const { t } = await pageCtx(Astro.url);
+const tr = t.translator;
+// Терміни й посилання однакові для всіх мов; пояснення простими словами — у src/lib/i18n.ts.
 const terms = [
-  {
-    term: 'Lateral Movement', chip: 'Lateral Movement', source: 'ATT&CK · TA0008', kind: 'attack',
-    simple: 'Зловмисник уже всередині й переходить з одного комп’ютера на інші — як злодій, що з передпокою пішов по всіх кімнатах.',
-    url: 'https://attack.mitre.org/tactics/TA0008/', site: 'attack.mitre.org',
-  },
-  {
-    term: 'Phishing', chip: 'Phishing', source: 'ATT&CK · T1566', kind: 'attack',
-    simple: 'Підроблений лист чи повідомлення, щоб людина сама відчинила двері: перейшла за посиланням, ввела пароль або запустила файл.',
-    url: 'https://attack.mitre.org/techniques/T1566/', site: 'attack.mitre.org',
-  },
-  {
-    term: 'Ransomware', chip: 'Ransomware', source: 'ATT&CK · T1486', kind: 'attack',
-    simple: 'Програма шифрує файли компанії й вимагає викуп за ключ. Злодій нічого не виносить — він міняє замки й продає вам нові ключі.',
-    url: 'https://attack.mitre.org/techniques/T1486/', site: 'attack.mitre.org',
-  },
-  {
-    term: 'Multi-factor Authentication', chip: 'MFA', source: 'D3FEND · Harden', kind: 'defense',
-    simple: 'Другий замок на дверях: навіть знаючи пароль, зловмисник не зайде без коду з телефону власника.',
-    url: 'https://d3fend.mitre.org/technique/d3f:Multi-factorAuthentication/', site: 'd3fend.mitre.org',
-  },
+  { term: 'Lateral Movement', chip: 'Lateral Movement', source: 'ATT&CK · TA0008', kind: 'attack', url: 'https://attack.mitre.org/tactics/TA0008/', site: 'attack.mitre.org' },
+  { term: 'Phishing', chip: 'Phishing', source: 'ATT&CK · T1566', kind: 'attack', url: 'https://attack.mitre.org/techniques/T1566/', site: 'attack.mitre.org' },
+  { term: 'Ransomware', chip: 'Ransomware', source: 'ATT&CK · T1486', kind: 'attack', url: 'https://attack.mitre.org/techniques/T1486/', site: 'attack.mitre.org' },
+  { term: 'Multi-factor Authentication', chip: 'MFA', source: 'D3FEND · Harden', kind: 'defense', url: 'https://d3fend.mitre.org/technique/d3f:Multi-factorAuthentication/', site: 'd3fend.mitre.org' },
 ];
 
 // Одне правило на термін: підсвітити його чип і показати його панель.
@@ -33,19 +21,19 @@ const css = terms.map((_, i) =>
 <div class="tr cell">
   {terms.map((_, i) => <input type="radio" name="term" id={`t${i}`} checked={i === 0} />)}
   <div class="bar">
-    <span class="mono label">Переклад · EN → UA</span>
+    <span class="mono label">{tr.label}</span>
     <span class="dots" aria-hidden="true"><i></i><i></i><i class="on"></i></span>
   </div>
   <div class="chips">
-    {terms.map((t, i) => <label for={`t${i}`} class="mono">{t.chip}</label>)}
+    {terms.map((x, i) => <label for={`t${i}`} class="mono">{x.chip}</label>)}
   </div>
   <div class="panels">
-    {terms.map((t, i) => (
+    {terms.map((x, i) => (
       <div class={`pn p${i}`}>
-        <div class="row"><span class="mono k">Термін</span><span class="v term">{t.term}</span></div>
-        <div class="row"><span class="mono k">Джерело</span><span class:list={['v', 'mono', 'src', t.kind]}>{t.source}</span></div>
-        <div class="row last"><span class="mono k">Просто</span><span class="v simple">{t.simple}</span></div>
-        <div class="orig"><a href={t.url} class="mono">Оригінал на {t.site} ↗</a></div>
+        <div class="row"><span class="mono k">{tr.term}</span><span class="v term">{x.term}</span></div>
+        <div class="row"><span class="mono k">{tr.source}</span><span class:list={['v', 'mono', 'src', x.kind]}>{x.source}</span></div>
+        <div class="row last"><span class="mono k">{tr.plain}</span><span class="v simple">{tr.simple[i]}</span></div>
+        <div class="orig"><a href={x.url} class="mono">{tr.orig(x.site)}</a></div>
       </div>
     ))}
   </div>

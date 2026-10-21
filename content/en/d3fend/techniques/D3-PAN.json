@@ -1,0 +1,3 @@
+{
+  "simple": "Memory pointers are signed, and the processor rejects a forged pointer."
+}

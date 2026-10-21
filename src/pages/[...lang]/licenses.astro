@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import mit from '../../../LICENSE?raw';
+import ccby from '../../../LICENSE-CONTENT?raw';
+import { pageCtx } from '../../lib/data';
+import { langParams } from '../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+// NOTICE.md — українська, NOTICE.en.md — англійська (без нього беремо українську з попередженням).
+const notices = import.meta.glob<{ Content: any }>(['/NOTICE.md', '/NOTICE.en.md'], { eager: true });
+const { lang, t } = await pageCtx(Astro.url);
+const en = notices['/NOTICE.en.md'];
+if (lang === 'en' && !en) console.warn('EN: немає NOTICE.en.md — беремо NOTICE.md');
+const Notice = (lang === 'en' && en ? en : notices['/NOTICE.md']).Content;
+---
+<Base title={t.licenses.title}>
+  <article class="wrap prose">
+    <Notice />
+    <h2 id="mit">{t.licenses.mit}</h2>
+    <pre>{mit}</pre>
+    <h2 id="cc-by">{t.licenses.ccby}</h2>
+    <pre>{ccby}</pre>
+  </article>
+</Base>
+
+<style>
+  .prose { padding-top: 56px; padding-bottom: 72px; max-width: 880px; margin-left: auto; margin-right: auto; font-size: 16px; line-height: 1.65; color: var(--text-2); }
+  .prose :global(h1) { font-size: clamp(32px, 7vw, 48px); color: var(--text); margin: 0 0 24px; }
+  .prose :global(h2) { font-size: 24px; color: var(--text); margin: 48px 0 16px; padding-top: 24px; border-top: 1px solid var(--line); }
+  .prose :global(a) { overflow-wrap: anywhere; }
+  .prose :global(blockquote) { margin: 16px 0; padding: 4px 20px; border-left: 2px solid var(--line-strong); background: var(--surface); color: var(--muted); font-size: 14px; }
+  .prose :global(table) { border-collapse: collapse; width: 100%; font-size: 14px; display: block; overflow-x: auto; }
+  .prose :global(th), .prose :global(td) { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+  .prose :global(th) { background: var(--surface); color: var(--muted-2); font-weight: 400; }
+  .prose :global(code) { font-family: var(--font-mono); font-size: .9em; }
+  pre { white-space: pre-wrap; overflow-wrap: anywhere; font: 13px/1.6 var(--font-mono); color: var(--muted); background: var(--surface); border: 1px solid var(--line); padding: 16px; }
+</style>

@@ -1,0 +1,8 @@
+{
+  "simple": "Uses low-level protocols (ICMP, raw TCP/UDP) for communication, which usually get less attention.",
+  "analogy": "Taps messages through the heating pipe.",
+  "quote": "The data was being sent inside “pings”",
+  "questions": [
+    "Is outgoing traffic limited to only the protocols you need?"
+  ]
+}

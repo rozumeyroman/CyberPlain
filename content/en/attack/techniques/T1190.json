@@ -1,0 +1,9 @@
+{
+  "simple": "Exploits a vulnerability in a website, mail server, VPN or another application exposed to the internet to get inside.",
+  "analogy": "Finds a hole in the fence that the owner didn’t know about.",
+  "quote": "A critical vulnerability came out and we didn’t get to patch it in time",
+  "questions": [
+    "Do you know everything that is exposed to the internet?",
+    "How many days pass between a critical update being released and it being installed?"
+  ]
+}

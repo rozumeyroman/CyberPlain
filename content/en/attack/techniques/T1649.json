@@ -1,0 +1,8 @@
+{
+  "simple": "Steals or illegitimately issues sign-in certificates by exploiting vulnerable certificate authority (AD CS) settings.",
+  "analogy": "Gets a genuine passport in someone else’s name from the passport office.",
+  "quote": "A mistake in a certificate template got someone administrator rights",
+  "questions": [
+    "Have you checked your AD CS template settings?"
+  ]
+}

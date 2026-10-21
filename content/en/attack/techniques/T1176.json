@@ -1,0 +1,9 @@
+{
+  "simple": "Installs a malicious extension in a browser or development environment — it sees pages, passwords and code.",
+  "analogy": "Gives the homeowner a “handy” wallet with a hidden microphone.",
+  "quote": "A browser extension was stealing passwords",
+  "questions": [
+    "Can employees install any browser extension?",
+    "Do you have a list of approved extensions?"
+  ]
+}

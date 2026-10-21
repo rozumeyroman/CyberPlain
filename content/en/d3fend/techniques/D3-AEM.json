@@ -1,0 +1,3 @@
+{
+  "simple": "Watches for failures in an application’s counters and timers, because they can give away an attack."
+}

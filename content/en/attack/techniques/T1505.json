@@ -1,0 +1,9 @@
+{
+  "simple": "Installs a malicious module on a server — most often a web shell on a website — and uses it to get in whenever it wants.",
+  "analogy": "Builds a hidden gate into the fence.",
+  "quote": "We found a file on the website that someone was using to control the server",
+  "questions": [
+    "Do you monitor new files on web servers?",
+    "Are your websites checked for vulnerabilities?"
+  ]
+}

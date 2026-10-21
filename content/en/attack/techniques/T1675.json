@@ -1,0 +1,9 @@
+{
+  "simple": "Uses the VMware ESXi hypervisor to run commands inside the virtual machines running on it.",
+  "analogy": "Holds the key to the electrical room and controls every apartment in the building.",
+  "quote": "They hacked ESXi — and got access to all the virtual servers",
+  "questions": [
+    "Are your hypervisors up to date?",
+    "Do ESXi logs go into monitoring?"
+  ]
+}

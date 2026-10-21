@@ -1,0 +1,8 @@
+{
+  "simple": "Collects a list of open application windows to understand what the person is working on and what is valuable.",
+  "analogy": "Looks in the windows to see who is busy with what.",
+  "quote": "The malware knew the online banking app was open",
+  "questions": [
+    "Does your protection watch for programs that gather information about other programs?"
+  ]
+}

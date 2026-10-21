@@ -1,0 +1,8 @@
+{
+  "simple": "Reads the Windows registry to learn about system settings, installed programs and security tools.",
+  "analogy": "Flips through the residents’ directory to find out who lives where.",
+  "quote": "Before the attack, the program was checking the registry",
+  "questions": [
+    "Would your protection notice unusual registry reads alongside other suspicious activity?"
+  ]
+}

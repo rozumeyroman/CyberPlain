@@ -1,0 +1,8 @@
+{
+  "simple": "Once on the victim’s computer, unpacks or decrypts its hidden code in order to run it.",
+  "analogy": "Assembles the weapon from parts it carried in one at a time.",
+  "quote": "Separately the files were harmless, but together they made a virus",
+  "questions": [
+    "Does your protection watch what happens after a file is opened, not just the file itself?"
+  ]
+}

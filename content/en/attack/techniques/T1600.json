@@ -1,0 +1,8 @@
+{
+  "simple": "Changes the settings of network devices so encryption becomes weak and traffic can be read.",
+  "analogy": "Swaps a safe’s lock for a cheap padlock.",
+  "quote": "The VPN tunnel turned out to have encryption turned off",
+  "questions": [
+    "Do you check network device settings against standards?"
+  ]
+}

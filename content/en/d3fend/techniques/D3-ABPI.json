@@ -1,0 +1,3 @@
+{
+  "simple": "The application splits itself into parts so that one part can’t reach into another’s memory (like browser tabs)."
+}

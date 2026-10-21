@@ -1,0 +1,11 @@
+{
+  "short": "Turns off or breaks security tools and logs so defenders see nothing.",
+  "analogy": "Switches off the cameras and the alarm.",
+  "solutionNotes": {
+    "siem": "Notices that logs stopped arriving or that security settings changed.",
+    "edr": "Protects itself from being switched off and alerts on attempts to tamper with protection.",
+    "vm": "Checks settings and firmware for compliance with standards.",
+    "caasm": "Shows computers where the protection agent has disappeared or isn’t working.",
+    "cnapp": "Spots changes to firewalls, logs and the structure of cloud accounts."
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "A program loads at new memory addresses each time, so the attacker doesn’t know where to aim."
+}

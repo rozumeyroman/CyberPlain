@@ -1,0 +1,9 @@
+{
+  "simple": "Counts on a person to open a file, click a link or paste a command themselves — and then the malicious code runs.",
+  "analogy": "Talks the homeowner into opening the door themselves for a “gas technician.”",
+  "quote": "An employee copied and ran a command from a “browser check” themselves",
+  "questions": [
+    "Are employees trained not to run unfamiliar files and commands?",
+    "Will your protection stop the launch if a person makes a mistake?"
+  ]
+}

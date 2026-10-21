@@ -1,0 +1,8 @@
+{
+  "simple": "Sends data through the same channel it uses to receive commands from its server.",
+  "analogy": "Carries things out through the same back door it came in by.",
+  "quote": "Gigabytes went from the server to an unknown address",
+  "questions": [
+    "Would you notice unusually large outgoing traffic from a server?"
+  ]
+}

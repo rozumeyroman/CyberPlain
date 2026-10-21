@@ -1,0 +1,9 @@
+{
+  "simple": "Poses as a colleague, manager, bank, or tech support and talks a person into granting access, approving a change, or revealing data.",
+  "analogy": "A fraudster in a “gas technician” uniform talks his way into your apartment.",
+  "quote": "Someone called tech support posing as an “employee” and asked to reset MFA",
+  "questions": [
+    "How does tech support verify the identity of someone asking for a password reset?",
+    "Is your domain protected against sender spoofing (SPF, DKIM, DMARC)?"
+  ]
+}

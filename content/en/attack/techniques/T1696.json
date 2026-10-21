@@ -1,0 +1,8 @@
+{
+  "simple": "Bypasses CAPTCHAs and other “are you a robot” checks — through solving services, AI, or by skipping the verification pages.",
+  "analogy": "Hires people to pass the face control for it.",
+  "quote": "The CAPTCHA is there, but bots are still guessing passwords",
+  "questions": [
+    "What protects your sign-in forms besides a CAPTCHA?"
+  ]
+}

@@ -1,0 +1,46 @@
+---
+import Base from '../../../layouts/Base.astro';
+import D3fendTags from '../../../components/D3fendTags.astro';
+import SolutionLinks from '../../../components/SolutionLinks.astro';
+import { pageCtx } from '../../../lib/data';
+import { langParams } from '../../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+const { t, d } = await pageCtx(Astro.url);
+const x = t.solutions;
+const rows = d.classes
+  .map((cls) => ({ cls, products: d.productsOf(cls.id), count: d.techniquesDefendedBy(cls.id).length }))
+  .sort((a, b) => a.cls.data.title.localeCompare(b.cls.data.title));
+---
+<Base title={x.title}>
+  <section class="wrap page">
+    <div class="mono tag">{x.tag}</div>
+    <h1>{x.title}</h1>
+    <p class="lead-text">{x.lead}</p>
+
+    {rows.length === 0
+      ? <p class="soon-box">{x.soon}</p>
+      : (
+        <table class="tbl">
+          <thead><tr><th>{x.thClass}</th><th>{t.what}</th><th>{x.thFrom}</th><th>D3FEND</th></tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr>
+                <td><SolutionLinks cls={r.cls} products={r.products} /></td>
+                <td data-label={t.what} class:list={{ empty: !r.cls.data.simple }}>{r.cls.data.simple ?? t.dash}</td>
+                <td data-label={x.thFrom} class="inline">{r.count}</td>
+                <td data-label="D3FEND" class="inline"><D3fendTags cls={r.cls} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .tag { font-size: 12px; color: var(--defense); margin: 48px 0 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+</style>

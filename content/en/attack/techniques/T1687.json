@@ -1,0 +1,8 @@
+{
+  "simple": "Exploits a vulnerability in the security tools themselves to switch them off or get around them.",
+  "analogy": "Breaks the alarm system through its own design flaw.",
+  "quote": "They attacked the firewall itself",
+  "questions": [
+    "Are your security tools updated as carefully as your other systems?"
+  ]
+}

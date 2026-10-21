@@ -1,0 +1,9 @@
+{
+  "simple": "Steals the active session cookie from the browser — and gets into the service as the user, bypassing the password and MFA.",
+  "analogy": "Takes a visitor’s wristband — and walks past the entrance check.",
+  "quote": "They got into the account without a password and without MFA",
+  "questions": [
+    "Would you notice simultaneous sessions from two different countries?",
+    "Are your computers protected from infostealer programs?"
+  ]
+}

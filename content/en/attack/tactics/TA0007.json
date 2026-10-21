@@ -1,0 +1,12 @@
+{
+  "short": "Studies the network from the inside: where the servers are, where the valuable data is, who the administrator is.",
+  "analogy": "Walks around the house and draws a floor plan.",
+  "solutionNotes": {
+    "edr": "Spots typical reconnaissance commands after an infection.",
+    "siem": "Correlates mass requests to AD and servers coming from one account.",
+    "deception": "Fake servers, folders and users — real employees never touch them.",
+    "ueba": "Notices when an account suddenly browses things it never touched before.",
+    "ndr": "Sees network scanning from the inside.",
+    "cnapp": "Spots mass requests to the cloud API."
+  }
+}

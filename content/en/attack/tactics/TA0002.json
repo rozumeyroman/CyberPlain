@@ -1,0 +1,11 @@
+{
+  "short": "Runs its own code or commands on the victim’s computer.",
+  "analogy": "Once inside, takes out its tools and switches them on.",
+  "solutionNotes": {
+    "edr": "Sees which program launched what, and stops the malicious process.",
+    "siem": "Records and correlates commands and program launches from all systems.",
+    "cnapp": "Spots suspicious commands and foreign containers in the cloud and Kubernetes.",
+    "vm": "Closes vulnerabilities in programs that are used to run malicious code.",
+    "dast": "Tests your own web applications and AI services for injection."
+  }
+}

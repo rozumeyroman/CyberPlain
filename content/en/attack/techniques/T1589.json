@@ -1,0 +1,9 @@
+{
+  "simple": "Collects employees’ names, emails, and even leaked passwords — these are the keys for the next steps.",
+  "analogy": "Checks which residents hide a key under the doormat.",
+  "quote": "Our emails turned up in a leaked database",
+  "questions": [
+    "Is MFA enabled on email and VPN?",
+    "Do you monitor for leaks of employee passwords?"
+  ]
+}

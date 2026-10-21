@@ -1,0 +1,8 @@
+{
+  "simple": "Collects valuable files straight from the disk of a compromised computer: documents, databases, configurations.",
+  "analogy": "Empties out the drawers in the office.",
+  "quote": "They copied all the documents from the director’s laptop",
+  "questions": [
+    "Do you know which computers hold your most valuable data?"
+  ]
+}

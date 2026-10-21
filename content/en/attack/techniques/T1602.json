@@ -1,0 +1,9 @@
+{
+  "simple": "Pulls the settings of network devices (via SNMP or directly), which can contain passwords and the network layout.",
+  "analogy": "Steals the wiring diagram of the house.",
+  "quote": "Someone pulled the router configuration through SNMP with the password “public”",
+  "questions": [
+    "Have the default SNMP passwords been changed?",
+    "Is management of network devices reachable only from a separate network?"
+  ]
+}

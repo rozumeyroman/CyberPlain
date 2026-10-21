@@ -1,0 +1,3 @@
+{
+  "simple": "Blocks a DNS request if the domain is on the denylist."
+}

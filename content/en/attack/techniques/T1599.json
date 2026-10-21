@@ -1,0 +1,9 @@
+{
+  "simple": "Breaks into a router or firewall at the boundary between networks and changes its rules to pass between segments that should have been separate.",
+  "analogy": "Climbs over the fence between yards, because the guard is posted only at the gate.",
+  "quote": "Traffic got into an isolated network segment",
+  "questions": [
+    "Who has access to firewall settings?",
+    "Are changes to their rules logged?"
+  ]
+}

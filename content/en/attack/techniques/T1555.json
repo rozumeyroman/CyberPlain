@@ -1,0 +1,9 @@
+{
+  "simple": "Pulls out passwords saved in browsers, password managers, system stores and cloud vaults.",
+  "analogy": "Opens the drawer where the owner keeps a notebook with all the codes.",
+  "quote": "An infostealer took all the passwords from the browser",
+  "questions": [
+    "Is it allowed to save work passwords in the browser?",
+    "Would your protection notice a program reading password stores?"
+  ]
+}

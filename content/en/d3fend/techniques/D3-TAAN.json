@@ -1,0 +1,3 @@
+{
+  "simple": "Checks that a mail server is allowed to send email on behalf of a domain (such as SPF, DKIM)."
+}

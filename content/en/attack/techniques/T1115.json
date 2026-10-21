@@ -1,0 +1,8 @@
+{
+  "simple": "Reads what was copied to the clipboard — passwords, account numbers — and can swap it out, for example a wallet address.",
+  "analogy": "Peeks at the note you’re holding in your hand.",
+  "quote": "We copied one account number, and a different one got pasted",
+  "questions": [
+    "Does your protection watch for programs that constantly read the clipboard?"
+  ]
+}

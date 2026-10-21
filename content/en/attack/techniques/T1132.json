@@ -1,0 +1,8 @@
+{
+  "simple": "Encodes data in the control channel (for example, Base64) so traffic inspection tools won’t recognize it.",
+  "analogy": "Writes notes in Morse code.",
+  "quote": "The requests to the website contained long strings that made no sense",
+  "questions": [
+    "Do you analyze traffic for anomalies?"
+  ]
+}

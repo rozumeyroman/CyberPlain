@@ -1,0 +1,8 @@
+{
+  "simple": "Runs malicious code through trusted Windows system programs (rundll32, mshta, msiexec and others) that security tools trust.",
+  "analogy": "Smuggles contraband in an ambulance.",
+  "quote": "The attack was carried out by a standard Windows program",
+  "questions": [
+    "Would your protection notice a system utility downloading something from the internet?"
+  ]
+}

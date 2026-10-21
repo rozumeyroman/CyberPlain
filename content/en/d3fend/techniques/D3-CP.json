@@ -1,0 +1,3 @@
+{
+  "simple": "An application remembers its server’s certificate and doesn’t trust a forged one, even if it looks “right.”"
+}

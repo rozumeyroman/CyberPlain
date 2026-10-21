@@ -3,41 +3,42 @@ import AttackSource from './AttackSource.astro';
 import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
 import Fold from './Fold.astro';
-import { loadData, url, num, type Tactic, plural } from '../lib/data';
+import { pageCtx, num, type Tactic } from '../lib/data';
 
 interface Props { tactic: Tactic }
 const { tactic: t } = Astro.props;
-const d = await loadData();
-const i = d.tactics.findIndex((x) => x.id === t.id);
+const { lang, t: ui, url, d, pl } = await pageCtx(Astro.url);
+const x = ui.tactic;
+const i = d.tactics.findIndex((y) => y.id === t.id);
 const prev = d.tactics[i - 1], next = d.tactics[i + 1];
 const techniques = d.techniquesOf(t.id);
 const solutions = d.solutionsFor(t);
 const TOP = 6;
 ---
 <section class="wrap page">
-  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
-    <a href="/mitre/">MITRE ATT&amp;CK</a><span aria-hidden="true">/</span><span aria-current="page">{num(i + 1)} {t.data.ua}</span>
+  <nav aria-label={ui.crumbs} class="mono crumbs">
+    <a href={url.page('/mitre/')}>MITRE ATT&amp;CK</a><span aria-hidden="true">/</span><span aria-current="page">{num(i + 1)} {t.data.title}</span>
   </nav>
 
-  <div class="head"><span class="num">{num(i + 1)}</span><span class="mono meta">{t.id} · {t.data.en}</span></div>
-  <h1>{t.data.ua}</h1>
-  <p class="lead-text">{t.data.short}</p>
-  {t.data.analogy && <div class="note-box"><span class="mono attack">Аналогія</span>{t.data.analogy}</div>}
+  <div class="head"><span class="num">{num(i + 1)}</span><span class="mono meta">{t.id}{lang === 'uk' && ` · ${t.data.en}`}</span></div>
+  <h1>{t.data.title}</h1>
+  {t.data.short ? <p class="lead-text">{t.data.short}</p> : <p class="soon-box">{ui.soon}</p>}
+  {t.data.analogy && <div class="note-box"><span class="mono attack">{ui.analogy}</span>{t.data.analogy}</div>}
 
-  <Fold id="sol" title="Чим захиститись на цьому етапі" count={solutions.length ? plural(solutions.length, 'рішення', 'рішення', 'рішень') : undefined}>
+  <Fold id="sol" title={x.sols} count={solutions.length ? pl(solutions.length, ui.n.solutions) : undefined}>
     {solutions.length === 0
-      ? <p class="soon-box">Рішення для цього етапу готуються.</p>
+      ? <p class="soon-box">{x.noSols}</p>
       : [solutions.slice(0, TOP), solutions.slice(TOP)].filter((part) => part.length > 0).map((part, k) => {
         const table = (
           <table class="tbl stage">
             <colgroup><col class="c1" /><col /><col class="c3" /><col class="c4" /></colgroup>
-            {k === 0 && <thead><tr><th>Рішення</th><th>Що робить</th><th>Техніки</th><th>D3FEND</th></tr></thead>}
+            {k === 0 && <thead><tr><th>{ui.solution}</th><th>{ui.what}</th><th>{x.thTech}</th><th>D3FEND</th></tr></thead>}
             <tbody>
               {part.map((s) => (
                 <tr>
                   <td><SolutionLinks cls={s.cls} products={s.products} /></td>
-                  <td data-label="Що робить" class:list={{ empty: !(s.note ?? s.cls.data.simple) }}>{s.note ?? s.cls.data.simple ?? '—'}</td>
-                  <td data-label="Техніки" class="cover inline">{s.techniques.length} з {techniques.length}</td>
+                  <td data-label={ui.what} class:list={{ empty: !(s.note ?? s.cls.data.simple) }}>{s.note ?? s.cls.data.simple ?? ui.dash}</td>
+                  <td data-label={x.thTech} class="cover inline">{x.of(s.techniques.length, techniques.length)}</td>
                   <td data-label="D3FEND" class="inline"><D3fendTags cls={s.cls} /></td>
                 </tr>
               ))}
@@ -45,32 +46,32 @@ const TOP = 6;
           </table>
         );
         // Перші TOP — найкорисніші на етапі; решта згорнута, колонки однакові завдяки table-layout: fixed.
-        return k === 0 ? table : <details class="rest"><summary class="mono">Показати ще {plural(part.length, 'рішення', 'рішення', 'рішень')}</summary>{table}</details>;
+        return k === 0 ? table : <details class="rest"><summary class="mono">{x.more(pl(part.length, ui.n.solutions))}</summary>{table}</details>;
       })
       }
   </Fold>
 
   <section class="sec" aria-labelledby="tech">
-    <h2 class="sec-title" id="tech">Техніки етапу{techniques.length > 0 && <span class="mono">{techniques.length}</span>}</h2>
+    <h2 class="sec-title" id="tech">{x.techs}{techniques.length > 0 && <span class="mono">{techniques.length}</span>}</h2>
     {techniques.length === 0
-      ? <div class="soon-box">Пояснення технік цієї тактики готуються. Поки можна переглянути оригінальний опис.<br><a href={url.mitre(t.id)} class="mono">Техніки на attack.mitre.org ↗</a></div>
+      ? <div class="soon-box">{x.noTechs}<br><a href={url.mitre(t.id)} class="mono">{x.techsOrig}</a></div>
       : (
         <div class="techs">
-          {techniques.map((x) => (
+          {techniques.map((y) => (
             <details class="tech">
               <summary>
-                <span class="id-attack">{x.id}</span>
-                <span class="tname"><span class="ua">{x.data.ua}</span><span class="en">{x.data.en}</span></span>
-                {x.data.pain && <span class="badge-pain">Часта біль</span>}
+                <span class="id-attack">{y.id}</span>
+                <span class="tname"><span class="ua">{y.data.title}</span>{lang === 'uk' && <span class="en">{y.data.en}</span>}</span>
+                {y.data.pain && <span class="badge-pain">{ui.pain}</span>}
               </summary>
               <div class="tbody">
-                <p>{x.data.simple}</p>
-                {x.data.analogy && <p class="muted"><b>Аналогія.</b> {x.data.analogy}</p>}
-                {x.data.quote && <p class="quote">«{x.data.quote}»</p>}
-                {x.data.defenses.length > 0 && (
-                  <div class="chips">{d.classesOf(x).map((c) => <a href={url.solution(c.id)} class="chip">{c.data.ua}</a>)}</div>
+                {y.data.simple ? <p>{y.data.simple}</p> : <p class="muted">{ui.soon}</p>}
+                {y.data.analogy && <p class="muted"><b>{ui.analogy}.</b> {y.data.analogy}</p>}
+                {y.data.quote && <p class="quote">{ui.quote(y.data.quote)}</p>}
+                {y.data.defenses.length > 0 && (
+                  <div class="chips">{d.classesOf(y).map((c) => <a href={url.solution(c.id)} class="chip">{c.data.title}</a>)}</div>
                 )}
-                <a href={url.technique(x.id)} class="mono more">Детальніше →</a>
+                <a href={url.technique(y.id)} class="mono more">{x.details}</a>
               </div>
             </details>
           ))}
@@ -78,13 +79,13 @@ const TOP = 6;
       )}
   </section>
 
-  <nav aria-label="Сусідні етапи" class="pager">
+  <nav aria-label={x.pagerAria} class="pager">
     {prev
-      ? <a href={url.tactic(prev.id)} class="card"><span class="mono dir">← Попередній</span><span class="pname">{num(i)} {prev.data.ua}</span></a>
-      : <div class="card off"><span class="mono dir">← Попередній</span><span>Це перший етап</span></div>}
+      ? <a href={url.tactic(prev.id)} class="card"><span class="mono dir">{x.prev}</span><span class="pname">{num(i)} {prev.data.title}</span></a>
+      : <div class="card off"><span class="mono dir">{x.prev}</span><span>{x.first}</span></div>}
     {next
-      ? <a href={url.tactic(next.id)} class="card right"><span class="mono dir">Наступний →</span><span class="pname">{num(i + 2)} {next.data.ua}</span></a>
-      : <div class="card right off"><span class="mono dir">Наступний →</span><span>Це останній етап</span></div>}
+      ? <a href={url.tactic(next.id)} class="card right"><span class="mono dir">{x.next}</span><span class="pname">{num(i + 2)} {next.data.title}</span></a>
+      : <div class="card right off"><span class="mono dir">{x.next}</span><span>{x.last}</span></div>}
   </nav>
 </section>
 

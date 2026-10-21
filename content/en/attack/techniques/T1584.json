@@ -1,0 +1,9 @@
+{
+  "simple": "Breaks into other people’s websites, servers, domains, or routers and attacks from them — so the trail leads to innocent owners.",
+  "analogy": "A thief hides tools in the neighbor’s shed so suspicion falls on the neighbor.",
+  "quote": "The attack came from a well-known company’s server, and we weren’t even blocking it",
+  "questions": [
+    "Do you get data on compromised addresses and domains?",
+    "Do you inspect traffic even to “trusted” sites?"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Finds out which other domains Active Directory trusts — paths to neighboring networks and branch offices.",
+  "analogy": "Finds out which neighbors share a key with the owner.",
+  "quote": "Through the domain trust they reached the parent company’s network",
+  "questions": [
+    "Have you reviewed the trust relationships between domains?"
+  ]
+}

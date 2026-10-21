@@ -1,0 +1,11 @@
+{
+  "short": "Keeps a hidden line to infected computers and sends them commands.",
+  "analogy": "Has a radio link to an accomplice waiting outside.",
+  "solutionNotes": {
+    "ndr": "Spots “beacons,” tunnels and communication with the attacker’s server.",
+    "ngfw": "Blocks connections to known malicious addresses and unnecessary protocols.",
+    "ti": "Supplies fresh addresses and domains of command servers.",
+    "ids": "Recognizes known signatures of command channels.",
+    "edr": "Sees which program on a computer is connecting outward."
+  }
+}

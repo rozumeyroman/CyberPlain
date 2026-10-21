@@ -1,0 +1,9 @@
+{
+  "simple": "Calls low-level operating system functions directly, bypassing the usual programs that may be under watch.",
+  "analogy": "Opens the lock not with a key but by turning the mechanism directly from the inside.",
+  "quote": "There were no suspicious commands in the logs",
+  "questions": [
+    "Can your protection see program behavior at the system level?",
+    "Is the EDR agent on every computer?"
+  ]
+}

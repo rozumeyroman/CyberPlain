@@ -1,0 +1,9 @@
+{
+  "simple": "Adds malicious code to an internal virtual machine or container image — and every new server is born already infected.",
+  "analogy": "Swaps the blueprints — and every new house has a hidden door.",
+  "quote": "New servers started reaching out to the internet right after they were created",
+  "questions": [
+    "Who can change images in the container registry?",
+    "Are images scanned before they run?"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Plants malicious files or code in shared folders and documents — colleagues open them and get infected themselves.",
+  "analogy": "Poisons the shared coffee machine in the office.",
+  "quote": "Dozens of people opened an infected file on the shared drive",
+  "questions": [
+    "Are files on shared drives scanned?"
+  ]
+}

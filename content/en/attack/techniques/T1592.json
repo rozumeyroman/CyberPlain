@@ -1,0 +1,9 @@
+{
+  "simple": "Learns which devices, programs, and versions the company runs so it can pick an attack to match.",
+  "analogy": "Peeks at the brand of lock on the door to buy the right lockpick.",
+  "quote": "Someone is asking which software we use",
+  "questions": [
+    "Do you have an up-to-date list of your software and versions?",
+    "Do you update outdated software at the network edge?"
+  ]
+}

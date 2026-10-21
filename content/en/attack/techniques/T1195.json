@@ -1,0 +1,9 @@
+{
+  "simple": "Breaks into a software or hardware supplier and, along with an update or a library, reaches all of that supplier’s customers.",
+  "analogy": "Poisons the food at the supplier’s warehouse — the restaurant will serve it, suspecting nothing.",
+  "quote": "We got infected through an update from our vendor",
+  "questions": [
+    "Do you know which third-party software and libraries you use?",
+    "Would you notice if a legitimate program started behaving strangely?"
+  ]
+}

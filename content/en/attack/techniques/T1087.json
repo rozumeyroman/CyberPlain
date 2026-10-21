@@ -1,0 +1,9 @@
+{
+  "simple": "Collects lists of users — local, domain, email, cloud — to pick targets.",
+  "analogy": "Copies down all the names from the employee board.",
+  "quote": "All users were exported from Active Directory",
+  "questions": [
+    "Are there decoy accounts in your domain?",
+    "Would you notice mass queries to the user directory?"
+  ]
+}

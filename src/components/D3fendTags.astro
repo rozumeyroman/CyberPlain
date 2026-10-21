@@ -1,9 +1,9 @@
 ---
 // Тактики D3FEND класу рішень — посиланнями на розділ D3FEND.
-import { loadData, url, type SolutionClass } from '../lib/data';
+import { pageCtx, type SolutionClass } from '../lib/data';
 
 interface Props { cls: SolutionClass }
-const d = await loadData();
+const { d, url } = await pageCtx(Astro.url);
 const tactics = d.d3fendTacticsOf(Astro.props.cls);
 ---
 <span class="d3">{tactics.map((t, i) => <>{i > 0 && ' · '}<a href={url.d3fendTactic(t.id)}>{t.en}</a></>)}</span>

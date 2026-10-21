@@ -1,0 +1,3 @@
+{
+  "simple": "Protects computers, servers and cloud workloads with one agent. AI right on the device blocks malware and ransomware, spots suspicious behavior and stops the attack on its own: ends the process, cuts the computer off from the network, restores encrypted files with one click (rollback). Protects servers, virtual machines, containers and Kubernetes (CWPP); controls the connection of USB drives and other devices and the host firewall; has a remote console (Remote Shell) for investigation and shows devices on the network that don’t have an agent yet. The Purple AI assistant answers questions in plain language and builds an attack timeline. Event history is kept for 14 days. Threat hunting by SentinelOne experts and the agentic AI SOC analyst cost extra."
+}

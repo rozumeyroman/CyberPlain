@@ -1,0 +1,3 @@
+{
+  "simple": "Checks container images for vulnerabilities and policy compliance before they run."
+}

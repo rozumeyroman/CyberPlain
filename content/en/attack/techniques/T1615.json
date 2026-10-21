@@ -1,0 +1,8 @@
+{
+  "simple": "Studies the domain’s group policies to understand the security rules and find ways around them.",
+  "analogy": "Reads the building’s bylaws looking for loopholes.",
+  "quote": "Someone exported all the domain’s group policies",
+  "questions": [
+    "Would you notice bulk requests for group policies?"
+  ]
+}

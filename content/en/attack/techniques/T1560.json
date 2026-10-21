@@ -1,0 +1,8 @@
+{
+  "simple": "Packs collected files into archives, often password-protected — to move them out faster and without tripping checks.",
+  "analogy": "Packs the loot into locked suitcases.",
+  "quote": "Someone ran 7-Zip with a password on the server",
+  "questions": [
+    "Would you notice password-protected archives being created on servers?"
+  ]
+}

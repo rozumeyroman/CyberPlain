@@ -1,0 +1,9 @@
+{
+  "simple": "Buys or rents domains, servers, cloud services, and sometimes ads, and later attacks the company from them.",
+  "analogy": "A thief rents a garage and a van near the house they plan to rob.",
+  "quote": "Someone registered a domain that looks like ours",
+  "questions": [
+    "Do you monitor registrations of domains that look like your brand?",
+    "Do you block connections to newly created and known malicious domains?"
+  ]
+}

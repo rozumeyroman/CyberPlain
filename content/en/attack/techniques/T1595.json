@@ -1,0 +1,9 @@
+{
+  "simple": "The attacker “knocks on” the company’s internet addresses, looking for open doors and vulnerable services.",
+  "analogy": "Someone walks around the house, trying the handles of every door and window.",
+  "quote": "Our firewall logs show thousands of connection attempts",
+  "questions": [
+    "Do you know every service exposed to the internet?",
+    "How quickly do you close the vulnerabilities you find?"
+  ]
+}

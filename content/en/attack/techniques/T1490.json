@@ -1,0 +1,9 @@
+{
+  "simple": "Deletes shadow copies, backups and restore points so the victim can’t get data back without paying the ransom.",
+  "analogy": "Burns the spare keys before locking the door.",
+  "quote": "The backups turned out to be deleted too",
+  "questions": [
+    "Are your backups protected from deletion, even by an administrator?",
+    "Would you notice shadow copies being deleted?"
+  ]
+}

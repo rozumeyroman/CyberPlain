@@ -1,0 +1,8 @@
+{
+  "simple": "Replaces or adds malicious code to a legitimate program on the computer — it works as before, but with a hidden “filling.”",
+  "analogy": "Swaps the owner’s keys for exact copies with a tracking beacon.",
+  "quote": "A familiar program started connecting to an unknown server",
+  "questions": [
+    "Do you check the integrity of programs on servers?"
+  ]
+}

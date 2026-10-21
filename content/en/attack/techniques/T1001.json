@@ -1,0 +1,8 @@
+{
+  "simple": "Hides commands and data inside network traffic: adds junk, tucks them into images, mimics legitimate protocols.",
+  "analogy": "Writes letters in a secret code between the lines of an ordinary newspaper.",
+  "quote": "The traffic looked like ordinary images",
+  "questions": [
+    "Do you analyze traffic for anomalies, not just known signatures?"
+  ]
+}

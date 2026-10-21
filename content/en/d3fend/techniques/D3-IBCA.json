@@ -1,0 +1,3 @@
+{
+  "simple": "Uses the processor’s records of jumps in code to detect attacks that assemble a malicious program from pieces of legitimate ones (ROP)."
+}

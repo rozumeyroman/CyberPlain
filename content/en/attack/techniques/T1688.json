@@ -1,0 +1,8 @@
+{
+  "simple": "Reboots Windows into Safe Mode, where antivirus and EDR don’t start — and operates unhindered.",
+  "analogy": "Cuts the power in the building — and the cameras go off with it.",
+  "quote": "The computer rebooted into Safe Mode and started encrypting files",
+  "questions": [
+    "Would your protection notice a forced boot into Safe Mode?"
+  ]
+}

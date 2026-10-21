@@ -1,0 +1,8 @@
+{
+  "simple": "Lists virtual machines, disks, databases, and networks in the cloud to find what’s valuable.",
+  "analogy": "Draws up a floor plan of every room in the warehouse.",
+  "quote": "Someone browsed all our Azure resources through the API",
+  "questions": [
+    "Do you watch for bulk requests to the cloud API?"
+  ]
+}

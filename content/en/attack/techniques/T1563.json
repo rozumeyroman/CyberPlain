@@ -1,0 +1,8 @@
+{
+  "simple": "Takes over another user’s already open RDP or SSH session — without their password.",
+  "analogy": "Sits down at a colleague’s desk while they’re away and the computer isn’t locked.",
+  "quote": "Someone connected to the administrator’s session",
+  "questions": [
+    "Are inactive sessions on servers closed?"
+  ]
+}

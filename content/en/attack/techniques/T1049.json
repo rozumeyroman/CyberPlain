@@ -1,0 +1,8 @@
+{
+  "simple": "Looks at which computers the machine is already connected to, in order to find ways to go further.",
+  "analogy": "Checks whose houses the homeowner visits.",
+  "quote": "netstat was run on the server",
+  "questions": [
+    "Do you monitor reconnaissance commands on servers?"
+  ]
+}

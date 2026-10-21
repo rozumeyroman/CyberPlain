@@ -1,0 +1,9 @@
+{
+  "simple": "Steals money: swaps payment details in correspondence (BEC), demands ransom, drains funds from accounts.",
+  "analogy": "A fraudster posing as a supplier asks you to pay into a “new account”.",
+  "quote": "We paid the supplier, and the money went to someone else’s account",
+  "questions": [
+    "Do you confirm changes to payment details with a call to a known number?",
+    "Do large payments require two people’s signatures?"
+  ]
+}

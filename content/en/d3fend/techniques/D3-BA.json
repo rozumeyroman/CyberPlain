@@ -1,0 +1,3 @@
+{
+  "simple": "Before starting, the system cryptographically verifies that the bootloader is genuine, which stops it from being swapped for a malicious one."
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "Collects sign-in events, learns each user’s normal behavior, and raises an alert on deviations: dozens of failed attempts, a sign-in at an unusual time."
+}

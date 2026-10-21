@@ -2,42 +2,43 @@
 import D3fendSource from './D3fendSource.astro';
 import D3Solutions from './D3Solutions.astro';
 import Fold from './Fold.astro';
-import { loadData, url, num, type D3Tactic, type D3Technique, plural } from '../lib/data';
+import { pageCtx, num, type D3Tactic, type D3Technique } from '../lib/data';
 
 interface Props { tactic: D3Tactic }
 const { tactic: t } = Astro.props;
-const d = await loadData();
+const { lang, t: ui, url, d, pl } = await pageCtx(Astro.url);
+const x = ui.d3;
 const prev = d.d3fendTactics[t.order - 2], next = d.d3fendTactics[t.order];
 const solutions = d.d3fendSolutionsOfTactic(t);
 // Різновиди категорії списком, з відступом за глибиною.
-const flat = (x: D3Technique): D3Technique[] => x.children.flatMap((c) => [c, ...flat(c)]);
+const flat = (y: D3Technique): D3Technique[] => y.children.flatMap((c) => [c, ...flat(c)]);
 ---
 <section class="wrap page">
-  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
-    <a href="/d3fend/">D3FEND</a><span aria-hidden="true">/</span><span aria-current="page">{num(t.order)} {t.ua ?? t.en}</span>
+  <nav aria-label={ui.crumbs} class="mono crumbs">
+    <a href={url.page('/d3fend/')}>D3FEND</a><span aria-hidden="true">/</span><span aria-current="page">{num(t.order)} {t.title}</span>
   </nav>
 
-  <div class="head"><span class="num">{num(t.order)}</span><span class="mono meta">D3FEND · {t.en}</span></div>
-  <h1>{t.ua ?? t.en}</h1>
-  {t.short ? <p class="lead-text">{t.short}</p> : <p class="soon-box">Пояснення готується.</p>}
-  {t.analogy && <div class="note-box"><span class="mono defense">Аналогія</span>{t.analogy}</div>}
+  <div class="head"><span class="num">{num(t.order)}</span><span class="mono meta">D3FEND{lang === 'uk' && ` · ${t.en}`}</span></div>
+  <h1>{t.title}</h1>
+  {t.short ? <p class="lead-text">{t.short}</p> : <p class="soon-box">{ui.soon}</p>}
+  {t.analogy && <div class="note-box"><span class="mono defense">{ui.analogy}</span>{t.analogy}</div>}
 
-  <Fold id="sol" title="Які рішення це роблять" count={solutions.length ? plural(solutions.length, 'рішення', 'рішення', 'рішень') : undefined}>
-    <D3Solutions rows={solutions} empty="Рішення для цієї тактики ще не зіставлені." />
+  <Fold id="sol" title={x.sols} count={solutions.length ? pl(solutions.length, ui.n.solutions) : undefined}>
+    <D3Solutions rows={solutions} empty={x.noSolsTactic} />
   </Fold>
 
   <section class="sec" aria-labelledby="cats">
-    <h2 class="sec-title" id="cats">Категорії й техніки<span class="mono">{t.categories.length} · {t.all.length}</span></h2>
+    <h2 class="sec-title" id="cats">{x.catsAndTechs}<span class="mono">{t.categories.length} · {t.all.length}</span></h2>
     <div class="cats">
       {t.categories.map((c) => (
         <article class="cat">
-          <h3><a href={url.d3fendTechnique(c.id)}><span class="ua">{c.ua ?? c.en}</span><span class="mono cid">{c.id}{c.ua && ` · ${c.en}`}</span></a></h3>
-          {c.simple ? <p>{c.simple}</p> : <p class="soon">Пояснення готується.</p>}
+          <h3><a href={url.d3fendTechnique(c.id)}><span class="ua">{c.title}</span><span class="mono cid">{c.id}{lang === 'uk' && c.ua && ` · ${c.en}`}</span></a></h3>
+          {c.simple ? <p>{c.simple}</p> : <p class="soon">{ui.soon}</p>}
           {c.children.length > 0 && (
             <ul>
-              {flat(c).map((x) => (
-                <li style={`--depth:${x.depth - 1}`}>
-                  <a href={url.d3fendTechnique(x.id)}><span class="mono xid">{x.id}</span><span>{x.ua ?? x.en}</span></a>
+              {flat(c).map((y) => (
+                <li style={`--depth:${y.depth - 1}`}>
+                  <a href={url.d3fendTechnique(y.id)}><span class="mono xid">{y.id}</span><span>{y.title}</span></a>
                 </li>
               ))}
             </ul>
@@ -47,13 +48,13 @@ const flat = (x: D3Technique): D3Technique[] => x.children.flatMap((c) => [c, ..
     </div>
   </section>
 
-  <nav aria-label="Сусідні тактики" class="pager">
+  <nav aria-label={x.pagerAria} class="pager">
     {prev
-      ? <a href={url.d3fendTactic(prev.id)} class="card"><span class="mono dir">← Попередня</span><span class="pname">{num(prev.order)} {prev.ua ?? prev.en}</span></a>
-      : <div class="card off"><span class="mono dir">← Попередня</span><span>Це перша тактика</span></div>}
+      ? <a href={url.d3fendTactic(prev.id)} class="card"><span class="mono dir">{x.prev}</span><span class="pname">{num(prev.order)} {prev.title}</span></a>
+      : <div class="card off"><span class="mono dir">{x.prev}</span><span>{x.first}</span></div>}
     {next
-      ? <a href={url.d3fendTactic(next.id)} class="card right"><span class="mono dir">Наступна →</span><span class="pname">{num(next.order)} {next.ua ?? next.en}</span></a>
-      : <div class="card right off"><span class="mono dir">Наступна →</span><span>Це остання тактика</span></div>}
+      ? <a href={url.d3fendTactic(next.id)} class="card right"><span class="mono dir">{x.next}</span><span class="pname">{num(next.order)} {next.title}</span></a>
+      : <div class="card right off"><span class="mono dir">{x.next}</span><span>{x.last}</span></div>}
   </nav>
 </section>
 

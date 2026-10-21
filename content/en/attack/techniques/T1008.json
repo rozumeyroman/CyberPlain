@@ -1,0 +1,8 @@
+{
+  "simple": "Keeps backup communication channels: if the main control server gets blocked, it switches to another one.",
+  "analogy": "The thief has several phones — if you take one away, he calls from another.",
+  "quote": "We blocked the address, but the connection came back through another one",
+  "questions": [
+    "Do you block the attacker’s infrastructure as a whole, not one address at a time?"
+  ]
+}

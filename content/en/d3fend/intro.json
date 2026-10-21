@@ -1,0 +1,46 @@
+{
+  "source": {
+    "name": "MITRE D3FEND",
+    "url": "https://d3fend.mitre.org/",
+    "note": "The plain-language texts (short, simple, analogy and the Ukrainian names) are CyberPlain’s adaptation (CC BY 4.0). IDs, English names, definitions and hierarchy come from MITRE D3FEND (data/mitre/d3fend.json)."
+  },
+  "intro": {
+    "title": "A map of how to defend.",
+    "lead": "MITRE D3FEND is an open catalog of defensive measures. It is maintained by the nonprofit MITRE, the same organization behind ATT&CK.",
+    "body": "The catalog describes not products but defensive actions: what exactly you need to do so an attack fails or gets noticed. The same measure can appear in different products, and one product usually performs several measures.",
+    "terms": [
+      {
+        "term": "Tactic",
+        "title": "Why.",
+        "text": "The goal of defense: know your systems, harden them, spot an attack, contain it, deceive, evict, recover."
+      },
+      {
+        "term": "Category",
+        "title": "With what.",
+        "text": "A group of similar measures within a tactic, for example “Agent Authentication” or “Network Traffic Analysis.”"
+      },
+      {
+        "term": "Technique",
+        "title": "How exactly.",
+        "text": "A specific defensive measure with its own ID. Techniques can have even more specific variants."
+      }
+    ],
+    "example": [
+      {
+        "label": "Harden",
+        "id": "Harden"
+      },
+      {
+        "label": "Agent Authentication",
+        "id": "D3-AA"
+      },
+      {
+        "label": "Multi-factor Authentication",
+        "id": "D3-MFA"
+      }
+    ],
+    "sectionTitle": "Defense tactics",
+    "sectionLead": "Seven tactics — from “know what you’re protecting” to “put everything back the way it was.” Click a tactic to see its categories and techniques.",
+    "caveat": "This is a catalog, not a checklist. No company does everything, and no product covers everything: what matters is which measures protect against your own risks."
+  }
+}

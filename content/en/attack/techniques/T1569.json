@@ -1,0 +1,8 @@
+{
+  "simple": "Runs its program as a system service — so it works with high privileges and in the background.",
+  "analogy": "Moves into the building posing as boiler-room maintenance.",
+  "quote": "A new service with a strange name appeared on the server",
+  "questions": [
+    "Would you notice a new service being created on a server?"
+  ]
+}

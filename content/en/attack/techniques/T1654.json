@@ -1,0 +1,8 @@
+{
+  "simple": "Reads event logs to find accounts and network addresses and to understand what defenders can see.",
+  "analogy": "Reads the duty guard’s logbook.",
+  "quote": "The attacker knew we had noticed the first attempt",
+  "questions": [
+    "Who has access to event logs on servers?"
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "Looks for weak spots in Active Directory and cloud user directories: hidden administrators, outdated and abandoned accounts, excessive permissions, insecure settings and outdated sign-in protocols (for example, NTLMv1) — and suggests what to fix first."
+}

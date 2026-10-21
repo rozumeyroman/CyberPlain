@@ -1,0 +1,17 @@
+{
+  "short": "Gathers information about the company from outside: people, services, weak spots.",
+  "analogy": "A thief watches a house for several days: when the owners leave, where the cameras are, which window is left unlocked.",
+  "solutionNotes": {
+    "vm": "You see yourself through the attacker’s eyes and close the holes first.",
+    "email": "Catches phishing emails that coax out passwords and data.",
+    "mfa": "A leaked password no longer opens the door by itself.",
+    "ngfw": "Block scanning and attacks on the website and services.",
+    "waf": "Block scanning and attacks on the website and services.",
+    "siem": "Notices the moment reconnaissance turns into an attack.",
+    "easm": "Shows what the internet can see about you — the same thing an attacker sees during reconnaissance.",
+    "ids": "Spots network scanning and attempts to probe services.",
+    "ndr": "Spots scanning and unusual connections in network traffic.",
+    "ti": "Tells you who is scouting your industry right now, and how.",
+    "awareness": "People give away less to strangers and on social media."
+  }
+}

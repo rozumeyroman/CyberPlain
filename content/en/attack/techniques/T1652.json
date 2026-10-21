@@ -1,0 +1,8 @@
+{
+  "simple": "Lists device drivers to find security tools or vulnerable drivers to use in an attack.",
+  "analogy": "Studies the wiring to find where to switch off the alarm.",
+  "quote": "The program was looking for antivirus drivers",
+  "questions": [
+    "Does your protection watch for driver enumeration?"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Routes traffic through intermediate servers to hide where its control server actually is.",
+  "analogy": "Passes letters along through a chain of go-betweens.",
+  "quote": "The traffic went through a popular CDN — you can’t block that",
+  "questions": [
+    "Do you see connections to anonymizers and proxies?"
+  ]
+}

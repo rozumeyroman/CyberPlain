@@ -1,0 +1,8 @@
+{
+  "simple": "Exploits a vulnerability in a login system or an application to obtain credentials without a password.",
+  "analogy": "Knows a trick to open the safe with the keys without the code.",
+  "quote": "They got domain administrator rights through a vulnerability",
+  "questions": [
+    "How quickly are domain controllers and authentication servers updated?"
+  ]
+}

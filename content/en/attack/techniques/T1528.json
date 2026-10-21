@@ -1,0 +1,8 @@
+{
+  "simple": "Steals application access tokens (OAuth and the like) to act as the user in cloud services without a password.",
+  "analogy": "Steals the hotel wristband that opens the room door.",
+  "quote": "A person granted access to an “app,” and it was reading their email",
+  "questions": [
+    "Who can grant applications access to company data?"
+  ]
+}

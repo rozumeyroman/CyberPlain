@@ -1,0 +1,3 @@
+{
+  "simple": "Deletes saved tokens and passwords from the cache so an attacker can’t keep using them."
+}

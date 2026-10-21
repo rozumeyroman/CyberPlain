@@ -1,0 +1,8 @@
+{
+  "simple": "Encrypts communication with its own server so nobody can read the commands.",
+  "analogy": "Talks to an accomplice in code.",
+  "quote": "The traffic is encrypted — we can’t see what’s inside",
+  "questions": [
+    "Do you analyze the metadata of encrypted traffic (where to, how often, how much)?"
+  ]
+}

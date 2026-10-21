@@ -1,0 +1,182 @@
+---
+import Base from '../../layouts/Base.astro';
+import Translator from '../../components/Translator.astro';
+import { site } from '../../../site.config';
+import { pageCtx } from '../../lib/data';
+import { langParams } from '../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+const { t, url } = await pageCtx(Astro.url);
+const h = t.home;
+// Назва сайту — у третьому рядку таблиці джерел.
+const sources = h.sources.map((r) => ({ ...r, by: r.by || site.name }));
+---
+<Base>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="mono kicker">{h.kicker}</div>
+        <h1>{h.h1a}<br><span class="dim">{h.h1b}</span></h1>
+        <p class="lead">{h.lead(site.name)}</p>
+        <p class="sub">{h.sub}</p>
+        <div class="ctas">
+          <a href={url.page('/mitre/')} class="btn btn-p">{h.ctaAttack}</a>
+          <a href={url.page('/d3fend/')} class="btn btn-s">{h.ctaDefense}</a>
+        </div>
+      </div>
+      <div class="hero-tr"><Translator /></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="grid-lines stats">
+        {h.stats.map((s) => (
+          <div class="stat"><div class:list={['num', s.kind]}>{s.n}</div><div class="mono cap">{s.label}</div></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap head">
+      <div class="mono kicker muted">{h.howKicker}</div>
+      <h2>{h.howTitle}</h2>
+    </div>
+    <div class="wrap">
+      <div class="grid-lines steps">
+        {h.steps.map((s) => (
+          <div class="step">
+            <div class:list={['mono', 'tag', s.kind]}>{s.tag}</div>
+            <div class="step-title">{s.title}</div>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="grid-lines kb">
+        {h.sections.map((s) => (
+          <a href={url.page(s.href)} class="kb-card">
+            <span class:list={['mono', 'tag', s.kind]}>{s.tag}</span>
+            <span class="kb-title">{s.title}</span>
+            <span class="kb-text">{s.text}</span>
+            <span class="mono chain">{s.chain}</span>
+            <span class="mono go">{h.open}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap src-grid">
+      <div>
+        <div class="mono kicker muted">{h.srcKicker}</div>
+        <h2>{h.srcTitle}</h2>
+        <p class="sub">{h.srcText}</p>
+      </div>
+      <table class="cell src-table">
+        <thead><tr><th class="mono">{h.thLayer}</th><th class="mono">{h.thBy}</th><th class="mono">{h.thWhen}</th></tr></thead>
+        <tbody>
+          {sources.map((r) => (
+            <tr>
+              <td>{r.layer}</td>
+              <td class="by">{r.href ? <a href={r.href}>{r.by}</a> : r.by}</td>
+              <td class="when">{r.when}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Base>
+
+
+<style>
+  .attack { color: var(--attack); }
+  .defense { color: var(--defense); }
+  .muted { color: var(--muted); }
+  .kicker { font-size: 12px; color: var(--defense); margin-bottom: 28px; }
+  .kicker.muted { color: var(--muted); margin-bottom: 16px; }
+  .band { border-bottom: 1px solid var(--line); }
+
+  .hero {
+    border-bottom: 1px solid var(--line);
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(520px 420px at 82% 28%, color-mix(in srgb, var(--defense) 22%, transparent), transparent 70%),
+      radial-gradient(480px 380px at 58% 92%, color-mix(in srgb, var(--attack-glow) 24%, transparent), transparent 70%),
+      radial-gradient(var(--line) 1px, transparent 1px);
+    background-size: auto, auto, 16px 16px;
+  }
+  .hero-grid { display: grid; }
+  .hero-text { padding: 56px 0 40px; }
+  .hero-tr { padding: 0 0 56px; display: flex; align-items: center; }
+  h1 { margin: 0 0 28px; font-size: clamp(36px, 10vw, 64px); line-height: 1; letter-spacing: -0.035em; }
+  .dim { color: var(--muted-2); }
+  .lead { margin: 0 0 16px; font-size: 19px; line-height: 1.55; color: var(--text-2); max-width: 520px; }
+  .sub { margin: 0 0 36px; font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 520px; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  @media (min-width: 1008px) {
+    .hero-grid { grid-template-columns: 1fr 1fr; }
+    .hero-text { padding: 88px 48px 72px 0; border-right: 1px solid var(--line); }
+    .hero-tr { padding: 72px 0 72px 48px; }
+  }
+
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .stat { padding: 24px 16px; }
+  .num { font-size: 40px; font-weight: 600; letter-spacing: -0.03em; }
+  .cap { font-size: 11px; color: var(--muted); margin-top: 6px; }
+  @media (min-width: 900px) {
+    .stats { grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: 28px 24px; }
+  }
+
+  h2 { margin: 0 0 16px; font-size: clamp(30px, 6vw, 40px); max-width: 640px; }
+  .head { padding-top: 72px; }
+  .head h2 { margin-bottom: 48px; }
+  .steps { grid-template-columns: 1fr; border-top: 1px solid var(--line); }
+  .step { padding: 32px 24px 40px 0; }
+  .tag { font-size: 12px; margin-bottom: 40px; }
+  .step-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; }
+  .step p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); }
+  @media (min-width: 900px) {
+    .steps { grid-template-columns: repeat(3, 1fr); }
+    .step { padding: 32px 32px 48px; }
+    .step:first-child { padding-left: 0; }
+  }
+
+  .kb { grid-template-columns: 1fr; }
+  .kb-card {
+    display: flex; flex-direction: column; gap: 16px; padding: 48px 20px 40px;
+    color: var(--text); text-decoration: none; transition: background .15s;
+  }
+  .kb-card:hover { color: var(--text); background: var(--surface); }
+  .kb-card:hover .go { color: var(--defense-hover); }
+  .kb-card .tag { margin: 0; }
+  .kb-title { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; }
+  .kb-text { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 460px; }
+  .chain { font-size: 11px; color: var(--muted-2); line-height: 1.9; }
+  .go { font-size: 12px; color: var(--defense); margin-top: 8px; }
+  @media (min-width: 900px) {
+    .kb { grid-template-columns: 1fr 1fr; }
+    .kb-card { padding: 56px 40px 48px; }
+  }
+
+  .src-grid { padding-top: 72px; padding-bottom: 72px; display: grid; gap: 40px; }
+  @media (min-width: 900px) { .src-grid { grid-template-columns: 1fr 1fr; gap: 48px; padding-top: 88px; padding-bottom: 88px; } }
+  .src-table { border: 1px solid var(--line); border-collapse: collapse; align-self: start; width: 100%; font-size: 15px; }
+  .src-table th { background: var(--surface); font-size: 11px; color: var(--muted-2); font-weight: 400; text-align: left; }
+  .src-table th, .src-table td { padding: 12px 16px; border: 1px solid var(--line); vertical-align: top; }
+  .src-table .by { color: var(--text-2); }
+  .src-table .when { color: var(--muted); }
+  @media (max-width: 640px) {
+    .src-table { font-size: 14px; }
+    .src-table th, .src-table td { padding: 10px; }
+  }
+</style>

@@ -1,0 +1,3 @@
+{
+  "simple": "Analyzes DNS requests and records to spot connections to malicious domains or a hidden communication channel."
+}

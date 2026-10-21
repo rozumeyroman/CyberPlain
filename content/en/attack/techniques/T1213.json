@@ -1,0 +1,9 @@
+{
+  "simple": "Collects information from the company’s Confluence, SharePoint, CRM, code repositories, databases and messengers.",
+  "analogy": "Flips through the corporate library cover to cover.",
+  "quote": "Someone exported the entire customer database from the CRM",
+  "questions": [
+    "Would you notice a mass export from the CRM or SharePoint?",
+    "Do people have access only to the sections they need?"
+  ]
+}

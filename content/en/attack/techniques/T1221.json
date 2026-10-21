@@ -1,0 +1,8 @@
+{
+  "simple": "Builds an Office document that pulls in a malicious template from the internet when opened — the file itself looks clean.",
+  "analogy": "The letter itself is harmless, but it sends you to “read the attachment” at the thief’s address.",
+  "quote": "We checked the document and it was clean, but we got infected anyway",
+  "questions": [
+    "Do you block Office from downloading templates from the internet?"
+  ]
+}

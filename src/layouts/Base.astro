@@ -1,20 +1,28 @@
 ---
 import { site } from '../../site.config';
 import Logo from '../components/Logo.astro';
+import { urlFor } from '../lib/data';
+import { langOf, langs, switchPath, ui } from '../lib/i18n';
 import '../styles/tokens.css';
 import '../styles/base.css';
 
-const { title, description = site.description } = Astro.props;
-const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline}`;
+const lang = langOf(Astro.url);
+const t = ui[lang];
+const url = urlFor(lang);
+const { title, description = site.description[lang] } = Astro.props;
+const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline[lang]}`;
 const colorVars = `:root{${Object.entries(site.colors).map(([k, v]) => `--${k}:${v}`).join(';')}}`;
 
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
 const ogImage = new URL(site.ogImage, Astro.site).href;
-const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWith(href));
+const isActive = (href: string) => (href === '/' ? path === url.page('/') : path.startsWith(url.page(href)));
+// Та сама сторінка іншою мовою — абсолютні адреси для hreflang; x-default — англійська.
+const alt = (l: (typeof langs)[number]) => new URL(switchPath(path, l), Astro.site).href;
+const localHref = (href: string) => (href.startsWith('/') ? url.page(href) : href);
 ---
 <!doctype html>
-<html lang="uk">
+<html lang={t.htmlLang}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,9 +30,12 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   <meta name="description" content={description}>
   <meta name="theme-color" content={site.colors.bg}>
   <link rel="canonical" href={canonical}>
+  {langs.map((l) => <link rel="alternate" hreflang={l} href={alt(l)} />)}
+  <link rel="alternate" hreflang="x-default" href={alt('en')}>
   <meta property="og:type" content="website">
   <meta property="og:site_name" content={site.name}>
-  <meta property="og:locale" content="uk_UA">
+  <meta property="og:locale" content={t.ogLocale}>
+  {langs.filter((l) => l !== lang).map((l) => <meta property="og:locale:alternate" content={ui[l].ogLocale} />)}
   <meta property="og:title" content={fullTitle}>
   <meta property="og:description" content={description}>
   <meta property="og:url" content={canonical}>
@@ -44,10 +55,15 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
 <body>
   <header class="header">
     <div class="wrap header-in">
-      <a href="/" class="brand"><Logo /><span>{site.name}</span></a>
-      <nav aria-label="Розділи сайту" class="tabs">
-        {site.tabs.map((t) => (
-          <a href={t.href} class:list={['tab', 'mono', { on: isActive(t.href) }]} aria-current={isActive(t.href) ? 'page' : undefined}>{t.label}</a>
+      <a href={url.page('/')} class="brand"><Logo /><span>{site.name}</span></a>
+      <nav aria-label={t.sections} class="tabs">
+        {site.tabs.map((tab) => (
+          <a href={url.page(tab.href)} class:list={['tab', 'mono', { on: isActive(tab.href) }]} aria-current={isActive(tab.href) ? 'page' : undefined}>{tab.label[lang]}</a>
+        ))}
+      </nav>
+      <nav aria-label={t.switcher} class="langs">
+        {langs.map((l) => (
+          <a href={switchPath(path, l)} hreflang={l} lang={l} class:list={['tab', 'mono', { on: l === lang }]} aria-current={l === lang ? 'true' : undefined}>{l === 'uk' ? 'UA' : 'EN'}</a>
         ))}
       </nav>
     </div>
@@ -59,13 +75,13 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
     <div class="wrap foot-in">
       <div class="foot-top">
         <span class="brand"><Logo size={18} />{site.name}</span>
-        <nav aria-label="Службові посилання" class="mono foot-links">
-          {site.footer.links.map((l) => <a href={l.href}>{l.label}</a>)}
+        <nav aria-label={t.footerNav} class="mono foot-links">
+          {site.footer.links.map((l) => <a href={localHref(l.href)}>{l.label[lang]}</a>)}
         </nav>
       </div>
       <div class="notes">
-        {site.footer.notes.map((n) => <p set:html={n} />)}
-        <p>Автор: <a href={site.author.url}>{site.author.name}</a>.</p>
+        {site.footer.notes[lang].map((n) => <p set:html={n} />)}
+        <p>{t.author}: <a href={site.author.url}>{site.author.name[lang]}</a>.</p>
       </div>
     </div>
   </footer>
@@ -78,6 +94,8 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 600; font-size: 18px; letter-spacing: -0.01em; }
   .header .brand { padding: 16px 0; }
   .tabs { display: flex; gap: 4px; overflow-x: auto; flex: 1 1 300px; align-self: stretch; }
+  .langs { display: flex; gap: 4px; align-self: stretch; }
+  .langs .tab { min-width: 44px; justify-content: center; }
   .tab {
     display: flex; align-items: center; padding: 0 14px; min-height: 58px; white-space: nowrap;
     font-size: 12px; color: var(--muted); text-decoration: none;
@@ -86,7 +104,10 @@ const isActive = (href: string) => (href === '/' ? path === '/' : path.startsWit
   .tab:hover, .tab.on { color: var(--text); }
   .tab.on { border-bottom-color: var(--defense); }
   @media (max-width: 640px) {
-    .tabs { flex-basis: 100%; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
+    /* Мова — у верхньому рядку поруч із логотипом, вкладки переносяться на другий */
+    .brand { order: 1; }
+    .langs { order: 2; margin-left: auto; margin-right: -14px; }
+    .tabs { order: 3; flex-basis: 100%; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
     .tab { min-height: 48px; }
   }
 

@@ -1,0 +1,3 @@
+{
+  "simple": "The system checks that an error handler is genuine, so an attack can’t swap in its own code."
+}

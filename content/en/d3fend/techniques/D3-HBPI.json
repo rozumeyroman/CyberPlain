@@ -1,0 +1,3 @@
+{
+  "simple": "The processor doesn’t let one program write into another’s memory: the protection is built into the hardware itself."
+}

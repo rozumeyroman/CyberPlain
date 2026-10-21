@@ -1,0 +1,8 @@
+{
+  "simple": "Ties its program to system events — a login, opening a file, launching another program — and it fires on its own.",
+  "analogy": "Sets a trap that goes off when the owner flips on the light.",
+  "quote": "The virus ran whenever a certain type of file was opened",
+  "questions": [
+    "Does your protection watch for changes to autorun mechanisms?"
+  ]
+}

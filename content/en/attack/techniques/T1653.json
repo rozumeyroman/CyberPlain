@@ -1,0 +1,8 @@
+{
+  "simple": "Changes power settings so an infected computer doesn’t go to sleep or shut down — and the attacker doesn’t lose the connection.",
+  "analogy": "Props the door open so it doesn’t close.",
+  "quote": "The computer stopped going to sleep",
+  "questions": [
+    "Are power settings managed centrally?"
+  ]
+}

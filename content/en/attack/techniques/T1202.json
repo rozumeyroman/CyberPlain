@@ -1,0 +1,8 @@
+{
+  "simple": "Runs commands through other system utilities to get around restrictions on the command line.",
+  "analogy": "Passes the order through intermediaries so as not to show up personally.",
+  "quote": "We blocked cmd, but commands were still being executed",
+  "questions": [
+    "Do you monitor process launch chains?"
+  ]
+}

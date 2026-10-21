@@ -1,0 +1,9 @@
+{
+  "simple": "Reads cybersecurity companies’ reports to learn what is already known about it and change its tactics.",
+  "analogy": "A thief reads police bulletins so as not to repeat past mistakes.",
+  "quote": "We’re interested in which attacks are currently hitting our industry",
+  "questions": [
+    "Do you get industry threat reports?",
+    "Who analyzes whether they apply to you?"
+  ]
+}

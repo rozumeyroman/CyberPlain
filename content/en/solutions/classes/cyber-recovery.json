@@ -1,0 +1,3 @@
+{
+  "simple": "Keeps copies of your most important data in a separate “bunker” cut off from the working network, with its own accounts and management; the copies can’t be changed or deleted, and analytics verify their integrity — so even if an attacker has taken over the network and the backup system, a guaranteed clean copy is available for recovery."
+}

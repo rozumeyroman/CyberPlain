@@ -1,0 +1,8 @@
+{
+  "simple": "Lists a computer’s disks and volumes — often before encryption or direct disk access.",
+  "analogy": "Counts the safes in the room.",
+  "quote": "The ransomware went through all the disks, including network ones",
+  "questions": [
+    "Would your protection notice behavior typical of ransomware?"
+  ]
+}

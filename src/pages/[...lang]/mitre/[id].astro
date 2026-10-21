@@ -1,0 +1,27 @@
+---
+// /mitre/TA0043/ — етап (тактика), /mitre/T1595/ — техніка (і під /en/). ID не перетинаються (перевіряє loadData).
+import Base from '../../../layouts/Base.astro';
+import TacticPage from '../../../components/TacticPage.astro';
+import TechniquePage from '../../../components/TechniquePage.astro';
+import { loadData } from '../../../lib/data';
+import { langs, routeLang } from '../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const l of langs) {
+    const { tactics, techniques } = await loadData(l);
+    const lang = routeLang(l);
+    paths.push(
+      ...tactics.map((tactic) => ({ params: { lang, id: tactic.id }, props: { tactic } })),
+      ...techniques.map((technique) => ({ params: { lang, id: technique.id }, props: { technique } })),
+    );
+  }
+  return paths;
+}
+
+const { tactic, technique } = Astro.props;
+const e = tactic ?? technique!;
+---
+<Base title={`${e.data.title} (${e.id})`} description={tactic ? tactic.data.short : technique!.data.simple}>
+  {tactic ? <TacticPage tactic={tactic} /> : <TechniquePage technique={technique!} />}
+</Base>

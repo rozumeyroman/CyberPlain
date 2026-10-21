@@ -1,0 +1,9 @@
+{
+  "simple": "Writes requests to an AI application designed to get around its restrictions and make it reveal data or do something forbidden.",
+  "analogy": "Sweet-talks the guard until he opens the door.",
+  "quote": "The chatbot on the website told people things it shouldn’t have",
+  "questions": [
+    "Have your AI applications been tested for restriction bypass?",
+    "What data does the chatbot see?"
+  ]
+}

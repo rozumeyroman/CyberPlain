@@ -1,0 +1,8 @@
+{
+  "simple": "Looks at which services are running on a computer to find security tools or vulnerable services.",
+  "analogy": "Peeks at the building’s spec sheet to find out what alarm system it has.",
+  "quote": "Someone listed the services on several servers in a row",
+  "questions": [
+    "Would you notice a series of reconnaissance commands from a single account?"
+  ]
+}

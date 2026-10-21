@@ -1,0 +1,8 @@
+{
+  "simple": "Stops services — databases, mail, backups — to paralyze operations or free up files for encryption.",
+  "analogy": "Flips the main breaker in the electrical panel.",
+  "quote": "All the databases stopped right before the encryption",
+  "questions": [
+    "Would you notice a mass shutdown of services on servers?"
+  ]
+}

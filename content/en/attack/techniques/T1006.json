@@ -1,0 +1,8 @@
+{
+  "simple": "Reads the disk directly, bypassing the file system, to get at locked files without leaving the usual traces.",
+  "analogy": "Takes the wall apart instead of opening the door.",
+  "quote": "The password database file got copied even though it was locked",
+  "questions": [
+    "Does your protection notice direct access to the disk?"
+  ]
+}

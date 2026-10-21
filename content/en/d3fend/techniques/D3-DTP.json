@@ -1,0 +1,3 @@
+{
+  "simple": "Limits trust between Active Directory domains, so a breach of one doesn’t open access to the others."
+}

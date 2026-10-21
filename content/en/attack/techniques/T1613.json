@@ -1,0 +1,8 @@
+{
+  "simple": "Lists the containers, images, and resources of a Kubernetes cluster to find weak spots.",
+  "analogy": "Walks around every container in the port and writes down what’s inside.",
+  "quote": "Someone browsed all the pods in the cluster",
+  "questions": [
+    "Who has access to the cluster API?"
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "Account protection built right into the sign-in process (Active Directory, cloud directories, other authentication systems) — without agents or changes to applications, in on-premises, cloud and hybrid environments. Builds a single inventory and graph of all accounts — human and machine — and their permissions. Finds weak spots: hidden administrators, outdated and abandoned accounts, insecure settings, outdated protocols (ISPM). Extends multi-factor authentication (MFA) to things that usually don’t support it: legacy and custom applications, the command line, OT equipment, local Windows sign-ins. The set of modules may differ for on-premises, cloud or hybrid environments."
+}

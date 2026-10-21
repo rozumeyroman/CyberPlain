@@ -1,0 +1,9 @@
+{
+  "simple": "Pulls passwords and their hashes out of the system’s memory and files — such as the LSASS process or the domain controller database.",
+  "analogy": "Finds the box with all the spare keys in the house.",
+  "quote": "We found Mimikatz on a server",
+  "questions": [
+    "Is the LSASS process protected from being read?",
+    "Would your protection notice an attempt to dump passwords?"
+  ]
+}

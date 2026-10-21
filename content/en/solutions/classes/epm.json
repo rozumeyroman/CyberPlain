@@ -1,0 +1,3 @@
+{
+  "simple": "Takes away users’ permanent local administrator rights: the programs and actions that need elevated rights get them by rule and only for as long as they run, and everything done with administrator rights is logged — so malware launched under a user’s name doesn’t get full control of the computer."
+}

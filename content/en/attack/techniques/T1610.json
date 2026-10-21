@@ -1,0 +1,9 @@
+{
+  "simple": "Launches its own container with malicious tools in your environment.",
+  "analogy": "Parks its own trailer in your yard — and nobody asks whose it is.",
+  "quote": "A container showed up in the cluster that nobody created",
+  "questions": [
+    "Does the cluster allow images from any source to run?",
+    "Would you notice an unfamiliar container?"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Infects a website that employees visit — and the browser picks up malicious code just by viewing the page.",
+  "analogy": "Poisons the water cooler that everyone in the office drinks from.",
+  "quote": "I just opened a website and the computer got infected",
+  "questions": [
+    "Are browsers and plugins updated on time?",
+    "Is access to dangerous websites filtered?"
+  ]
+}

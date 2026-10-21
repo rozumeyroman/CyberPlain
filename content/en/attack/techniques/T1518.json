@@ -1,0 +1,8 @@
+{
+  "simple": "Lists installed programs, especially security and backup tools — to get around them or destroy them.",
+  "analogy": "Checks what locks and safes the house has.",
+  "quote": "They went looking for the backup software before the encryption",
+  "questions": [
+    "Is your backup system protected with separate credentials?"
+  ]
+}

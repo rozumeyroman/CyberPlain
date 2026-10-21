@@ -1,0 +1,9 @@
+{
+  "simple": "Runs its code in the company’s cloud serverless functions (AWS Lambda, Azure Functions).",
+  "analogy": "Slips its own job into the queue of the factory’s assembly line.",
+  "quote": "Our cloud bill went up, and we didn’t create any new functions",
+  "questions": [
+    "Who can create cloud functions?",
+    "Can you see changes in the cloud in real time?"
+  ]
+}

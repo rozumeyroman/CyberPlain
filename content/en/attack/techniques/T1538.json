@@ -1,0 +1,9 @@
+{
+  "simple": "Logs into the cloud web console with stolen credentials and simply looks around at resources, settings and services.",
+  "analogy": "Got access to the security control panel and is looking over all the cameras.",
+  "quote": "Someone logged into the AWS console from an unfamiliar address",
+  "questions": [
+    "Is login to the cloud console protected with MFA?",
+    "Can you see who logs in there, and from where?"
+  ]
+}

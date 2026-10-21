@@ -1,0 +1,8 @@
+{
+  "simple": "Looks for shared folders on the network to find data and places where it can plant malicious files.",
+  "analogy": "Looks for unlocked storage rooms in the stairwell.",
+  "quote": "Someone went through all the network folders in a few minutes",
+  "questions": [
+    "Do you know all your shared folders and who has access to them?"
+  ]
+}

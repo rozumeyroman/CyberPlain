@@ -1,0 +1,9 @@
+{
+  "simple": "Deletes files, command history and emails, and changes file dates — so an investigation can’t reconstruct the attack.",
+  "analogy": "Wipes the fingerprints and takes the cigarette butts along.",
+  "quote": "The logs on the server turned out to be empty",
+  "questions": [
+    "Are logs stored outside the servers, where they can’t be deleted?",
+    "Could you investigate an incident if the local traces disappear?"
+  ]
+}

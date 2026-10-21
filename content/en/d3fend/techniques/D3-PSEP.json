@@ -1,0 +1,3 @@
+{
+  "simple": "The processor doesn’t execute code from areas of memory meant for data, so malicious code planted there won’t run."
+}

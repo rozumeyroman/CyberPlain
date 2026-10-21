@@ -1,0 +1,8 @@
+{
+  "simple": "Checks which devices are connected to the computer: flash drives, printers, cameras, smart cards.",
+  "analogy": "Looks around the room to see which appliances are plugged in.",
+  "quote": "The malware was looking for connected flash drives",
+  "questions": [
+    "Does your protection watch program behavior on every computer?"
+  ]
+}

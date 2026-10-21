@@ -1,0 +1,3 @@
+{
+  "simple": "Detects an internal computer that forwards traffic between the internal network and the internet, a sign of an attacker’s proxy."
+}

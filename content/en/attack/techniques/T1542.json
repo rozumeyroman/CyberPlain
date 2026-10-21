@@ -1,0 +1,9 @@
+{
+  "simple": "Modifies firmware or the bootloader so malicious code starts before the operating system and survives a reinstall.",
+  "analogy": "Hides the key in the foundation — renovating the apartment won’t help.",
+  "quote": "We reinstalled Windows, but the infection stayed",
+  "questions": [
+    "Is firmware on computers and network equipment kept updated?",
+    "Is Secure Boot turned on?"
+  ]
+}

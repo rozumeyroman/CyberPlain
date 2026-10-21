@@ -1,0 +1,9 @@
+{
+  "simple": "Installs legitimate remote access programs — AnyDesk, TeamViewer and the like — and controls the computer like “tech support.”",
+  "analogy": "Gets the gate remote from the owner by posing as a repairman.",
+  "quote": "We found AnyDesk on the server and nobody installed it",
+  "questions": [
+    "Which remote access programs are allowed in the company?",
+    "Would you notice a new one being installed?"
+  ]
+}

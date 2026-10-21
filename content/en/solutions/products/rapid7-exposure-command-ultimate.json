@@ -1,0 +1,3 @@
+{
+  "simple": "Brings cloud, application and infrastructure risks together in one place. Finds vulnerabilities in the network, on computers, in cloud resources and in containers; checks AWS, Azure, GCP and Kubernetes configurations against CIS and compliance standards; analyzes access permissions and attack paths; scans infrastructure as code; spots threats in the cloud and automatically fixes violations; tests web applications, APIs and AI applications (DAST). Also shows the whole attack surface, has a risk dashboard for executives and includes automation (SOAR)."
+}

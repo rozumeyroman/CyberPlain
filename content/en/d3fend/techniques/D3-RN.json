@@ -1,0 +1,3 @@
+{
+  "simple": "After memory is freed, the program cancels all pointers to it, so it can’t be reused."
+}

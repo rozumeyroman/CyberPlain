@@ -1,0 +1,9 @@
+{
+  "simple": "Interferes with the login mechanism — the domain controller, MFA, conditional access policies — so it accepts the attacker’s “master password” or collects other people’s passwords.",
+  "analogy": "Reworks the lock so that the attacker’s key fits it too.",
+  "quote": "Someone turned off MFA for several accounts",
+  "questions": [
+    "Do you monitor changes to login and MFA settings?",
+    "Who is allowed to change them?"
+  ]
+}

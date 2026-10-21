@@ -1,0 +1,9 @@
+{
+  "simple": "Connects to the company’s open or poorly protected Wi-Fi from nearby — a car or the office next door.",
+  "analogy": "Walks in through a gate that’s visible from the street and doesn’t lock.",
+  "quote": "The Wi-Fi password is posted on the wall in the meeting room",
+  "questions": [
+    "Is guest Wi-Fi separated from the work network?",
+    "How is sign-in to the work Wi-Fi protected?"
+  ]
+}

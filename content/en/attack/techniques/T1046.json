@@ -1,0 +1,9 @@
+{
+  "simple": "Scans the network from the inside to find open ports and services it can use to move further.",
+  "analogy": "Tries the handle of every door in the hallway.",
+  "quote": "Someone was scanning ports from the accounting computer",
+  "questions": [
+    "Would you notice port scanning inside the network?",
+    "Do you have decoys on the network that pretend to be interesting services?"
+  ]
+}

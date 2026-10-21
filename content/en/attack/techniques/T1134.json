@@ -1,0 +1,8 @@
+{
+  "simple": "Steals or forges another user’s “pass” (token) in Windows and acts in that user’s name.",
+  "analogy": "Takes a badge off a jacket on the coat rack and walks through the turnstile.",
+  "quote": "The actions were performed as an administrator who was on vacation",
+  "questions": [
+    "Would your protection notice a process launched with someone else’s token?"
+  ]
+}

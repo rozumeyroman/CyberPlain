@@ -1,0 +1,8 @@
+{
+  "simple": "Wraps one protocol inside another — for example, remote desktop inside DNS or HTTPS — to slip past filters.",
+  "analogy": "Hides a parcel inside another parcel.",
+  "quote": "A suspiciously large amount of traffic went through DNS",
+  "questions": [
+    "Can you see tunnels inside DNS and HTTPS?"
+  ]
+}

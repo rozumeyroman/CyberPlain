@@ -1,0 +1,8 @@
+{
+  "simple": "Copies its programs from one compromised computer to others inside the network.",
+  "analogy": "Passes tools through the window from room to room.",
+  "quote": "The same program appeared on ten servers",
+  "questions": [
+    "Would you notice executable files being copied between servers?"
+  ]
+}

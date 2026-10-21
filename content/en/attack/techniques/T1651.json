@@ -1,0 +1,9 @@
+{
+  "simple": "Uses the cloud console to run commands on virtual machines — the same way administrators do.",
+  "analogy": "Got hold of the house’s control panel and switches on whatever it likes.",
+  "quote": "The commands on our servers came from the cloud console",
+  "questions": [
+    "Who has the right to run commands on cloud machines?",
+    "Are these actions recorded in logs?"
+  ]
+}

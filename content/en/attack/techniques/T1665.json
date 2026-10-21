@@ -1,0 +1,8 @@
+{
+  "simple": "Hides its servers from scanners and researchers: filters their traffic, disguises domains, shows a harmless placeholder.",
+  "analogy": "The hideout looks like an ordinary bakery until you say the password.",
+  "quote": "We checked the site — it shows an empty page",
+  "questions": [
+    "Do you get fresh threat intelligence about threat groups’ infrastructure?"
+  ]
+}

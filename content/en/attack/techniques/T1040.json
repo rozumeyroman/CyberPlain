@@ -1,0 +1,8 @@
+{
+  "simple": "Listens to network traffic to catch passwords and data sent without encryption.",
+  "analogy": "Eavesdrops on conversations through a thin wall.",
+  "quote": "Passwords for the old system were sent in plain text",
+  "questions": [
+    "Are there still unencrypted protocols on your network?"
+  ]
+}

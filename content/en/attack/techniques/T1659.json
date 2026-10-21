@@ -1,0 +1,9 @@
+{
+  "simple": "Wedges into an unprotected channel between a user and a website and slips in malicious content instead of the real thing.",
+  "analogy": "The mail carrier swaps your letter for their own along the way.",
+  "quote": "The program updated from the official site, but we got a virus",
+  "questions": [
+    "Do all your services work only over encrypted connections?",
+    "Do you analyze traffic for suspicious downloads?"
+  ]
+}

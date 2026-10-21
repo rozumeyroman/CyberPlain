@@ -1,0 +1,3 @@
+{
+  "simple": "Shows all resources in AWS, Azure, GCP and Kubernetes, checks configurations and access permissions, looks for vulnerabilities in containers and spots threats in the cloud."
+}

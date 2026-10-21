@@ -1,0 +1,3 @@
+{
+  "simple": "Catches fakes where letters are swapped for lookalikes: “rnicrosoft” instead of “microsoft,” or a Cyrillic letter in place of a Latin one."
+}

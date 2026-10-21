@@ -1,0 +1,9 @@
+{
+  "simple": "Takes over the system for centrally installing software or managing computers — and pushes malware to all machines at once.",
+  "analogy": "Bribes the dispatcher who hands out keys to every room in the hotel.",
+  "quote": "Ransomware spread to all the computers within an hour through the update system",
+  "questions": [
+    "Who has access to the computer management console?",
+    "Is logging in to it protected with a second factor?"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Creates resources in cloud regions the company doesn’t use and nobody monitors.",
+  "analogy": "Hides things in a remote warehouse that security never checks.",
+  "quote": "Servers showed up in Asia, even though we only operate in Europe",
+  "questions": [
+    "Are cloud regions you don’t use disabled?",
+    "Can you see resources in all regions?"
+  ]
+}

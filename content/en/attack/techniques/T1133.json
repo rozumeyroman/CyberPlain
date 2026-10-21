@@ -1,0 +1,9 @@
+{
+  "simple": "Gets in through a VPN, remote desktop or other services exposed to the internet — with a stolen password or through a vulnerability.",
+  "analogy": "Uses a staff entrance that was left unlocked or whose key was stolen.",
+  "quote": "They got in through RDP exposed to the internet",
+  "questions": [
+    "Which remote access services are exposed to the internet?",
+    "Is the VPN protected with a second factor, and is it up to date?"
+  ]
+}

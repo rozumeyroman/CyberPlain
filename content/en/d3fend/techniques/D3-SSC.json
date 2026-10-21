@@ -1,0 +1,3 @@
+{
+  "simple": "The processor keeps a copy of the call stack and compares it with the main one to spot planted malicious code."
+}

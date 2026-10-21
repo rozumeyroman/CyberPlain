@@ -1,0 +1,3 @@
+{
+  "simple": "Removing passwords and keys hard-coded into source code, so they don’t reach outsiders along with the code."
+}

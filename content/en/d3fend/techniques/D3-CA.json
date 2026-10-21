@@ -1,0 +1,3 @@
+{
+  "simple": "Checks certificates for configuration errors and forgeries, using traffic, certificate fields, and public logs."
+}

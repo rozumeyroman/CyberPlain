@@ -1,0 +1,8 @@
+{
+  "simple": "Finds out who belongs to the administrator and other privileged groups — to know whose account to steal.",
+  "analogy": "Finds out who has the keys to the safe.",
+  "quote": "Someone exported the list of domain admins",
+  "questions": [
+    "Would you notice mass queries to Active Directory?"
+  ]
+}

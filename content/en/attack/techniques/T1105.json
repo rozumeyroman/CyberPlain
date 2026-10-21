@@ -1,0 +1,8 @@
+{
+  "simple": "Downloads extra programs and tools from the internet onto a computer that is already compromised.",
+  "analogy": "After breaking into the house, calls an accomplice with tools.",
+  "quote": "A few more programs were downloaded through PowerShell",
+  "questions": [
+    "Would you notice executable files being downloaded by system utilities?"
+  ]
+}

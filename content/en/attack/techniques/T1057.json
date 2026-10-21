@@ -1,0 +1,8 @@
+{
+  "simple": "Looks through the running programs — hunting for antivirus, EDR or processes of interest.",
+  "analogy": "Checks whether the guard is home.",
+  "quote": "The program was looking for antivirus processes",
+  "questions": [
+    "Would your protection notice a check of the process list alongside other suspicious actions?"
+  ]
+}

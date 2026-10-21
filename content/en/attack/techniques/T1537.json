@@ -1,0 +1,8 @@
+{
+  "simple": "Copies data or disk snapshots to its own cloud account with the same provider — it looks like an ordinary internal operation.",
+  "analogy": "Moves things from your storage unit to its own, right next door.",
+  "quote": "A database snapshot was shared with someone else’s AWS account",
+  "questions": [
+    "Would you notice a resource being shared with an unknown account?"
+  ]
+}

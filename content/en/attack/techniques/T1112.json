@@ -1,0 +1,8 @@
+{
+  "simple": "Changes Windows settings in the registry to gain persistence, hide or turn off protective features.",
+  "analogy": "Quietly rewrites the alarm settings on its control panel.",
+  "quote": "After the attack, some of the security settings turned out to be off",
+  "questions": [
+    "Do you monitor changes to critical registry keys?"
+  ]
+}

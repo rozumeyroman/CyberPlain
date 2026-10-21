@@ -1,0 +1,3 @@
+{
+  "simple": "Blocks a DNS response if it leads to a denylisted IP address."
+}

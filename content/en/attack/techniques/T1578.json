@@ -1,0 +1,8 @@
+{
+  "simple": "Creates, deletes, or rolls back virtual machines and snapshots in the cloud to get around restrictions and cover its tracks.",
+  "analogy": "Builds a temporary extension, does whatever it wants there, and tears it down by morning.",
+  "quote": "Someone took a snapshot of a server disk and spun up a copy of it",
+  "questions": [
+    "Do you get alerts when snapshots or new machines are created?"
+  ]
+}

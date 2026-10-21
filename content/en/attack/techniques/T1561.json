@@ -1,0 +1,8 @@
+{
+  "simple": "Erases the contents or structure of disks — systems won’t boot and data is lost.",
+  "analogy": "Sets fire to the whole building, not just the archive.",
+  "quote": "The computers won’t boot — “disk not found”",
+  "questions": [
+    "How quickly could you rebuild hundreds of computers from scratch?"
+  ]
+}

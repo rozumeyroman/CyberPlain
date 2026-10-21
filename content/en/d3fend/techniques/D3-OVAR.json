@@ -1,0 +1,3 @@
+{
+  "simple": "Sets read and write permissions for an industrial controller’s registers, so no one can change critical values."
+}

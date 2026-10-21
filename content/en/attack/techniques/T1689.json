@@ -1,0 +1,8 @@
+{
+  "simple": "Forces the system to run in an old, less protected mode — an outdated protocol or a version without newer protective features.",
+  "analogy": "Asks to swap the new lock for the old one “because it’s more familiar”.",
+  "quote": "The attacker used an old version of PowerShell with no logging",
+  "questions": [
+    "Are outdated protocols and software versions turned off?"
+  ]
+}

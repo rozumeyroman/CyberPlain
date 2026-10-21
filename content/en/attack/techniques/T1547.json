@@ -1,0 +1,9 @@
+{
+  "simple": "Adds its program to autostart — registry keys, the Startup folder, drivers — so it starts after every reboot.",
+  "analogy": "Hides in the house so that it wakes up with the residents every morning.",
+  "quote": "After the reboot, the virus was right back",
+  "questions": [
+    "Would your protection notice new autostart entries?",
+    "Who checks autostart after an incident?"
+  ]
+}

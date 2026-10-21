@@ -1,0 +1,8 @@
+{
+  "simple": "Ransomware deliberately leaves system files alone so the computer keeps working and the victim can read the demand and pay.",
+  "analogy": "A thief leaves you your phone so you can call and pay the ransom.",
+  "quote": "The computer works, but all the documents are encrypted",
+  "questions": [
+    "Do you have an action plan for the case of encryption?"
+  ]
+}

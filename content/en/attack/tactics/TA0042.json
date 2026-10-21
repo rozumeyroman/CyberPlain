@@ -1,0 +1,13 @@
+{
+  "short": "Prepares its tools: lookalike domains, servers, stolen access, malware.",
+  "analogy": "Buys lock picks, forges a uniform and rents a getaway car.",
+  "solutionNotes": {
+    "ti": "Knows the groups’ domains, servers and tools before the attack — they can be blocked in advance.",
+    "email": "Blocks emails from new suspicious domains and spoofed addresses.",
+    "awareness": "Employees learn to recognize fake “recruiters,” “partners” and faked voices.",
+    "ngfw": "Blocks connections to known malicious infrastructure.",
+    "mfa": "A bought or stolen password doesn’t open access without the second factor.",
+    "edr": "Catches a new tool by its behavior, even if it isn’t in any database yet.",
+    "ueba": "Spots a login made with bought access — it differs from the person’s usual behavior."
+  }
+}

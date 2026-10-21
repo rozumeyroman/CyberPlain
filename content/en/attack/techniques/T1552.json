@@ -1,0 +1,9 @@
+{
+  "simple": "Looks for passwords and keys lying in the open: in files, scripts, the registry, command history, chats, cloud metadata.",
+  "analogy": "Finds the key under the doormat by the door.",
+  "quote": "The database password was in a script on the file server",
+  "questions": [
+    "Do you search for passwords stored in plain text?",
+    "Do you have a secrets manager for service passwords?"
+  ]
+}

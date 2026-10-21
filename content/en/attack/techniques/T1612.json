@@ -1,0 +1,8 @@
+{
+  "simple": "Builds a container image right on the server from safe-looking pieces, bypassing the image registry’s checks.",
+  "analogy": "Assembles a van from spare parts right in your garage.",
+  "quote": "The image isn’t in the registry, but the container is running",
+  "questions": [
+    "Who has access to the Docker API on your servers?"
+  ]
+}

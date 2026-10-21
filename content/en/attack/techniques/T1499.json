@@ -1,0 +1,8 @@
+{
+  "simple": "Overloads or breaks the server or application itself — exhausts its resources or uses a bug that makes it crash.",
+  "analogy": "Buries the register under small coins until the cashier gives up.",
+  "quote": "The site is up, but the login page doesn’t respond",
+  "questions": [
+    "Is your website protected from being overloaded with requests?"
+  ]
+}

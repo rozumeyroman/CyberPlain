@@ -79,4 +79,20 @@ const d3fendTechniques = defineCollection({
   }),
 });
 
-export const collections = { tactics, techniques, classes, products, d3fendTactics, d3fendTechniques };
+// Англійський шар: content/en/<той самий шлях>/<той самий ID>.json лише з перекладеними полями.
+// Ключі, яких немає в дозволеному списку, — помилка схеми (strict); зв'язок із джерелом перевіряє loadData().
+const overlay = (dir: string, shape: z.ZodRawShape) =>
+  defineCollection({ loader: fromDir(`./content/en/${dir}`), schema: z.object(shape).partial().strict() });
+
+const str = z.string();
+const enTactics = overlay('attack/tactics', { short: str, analogy: str, solutionNotes: z.record(z.string(), z.string()) });
+const enTechniques = overlay('attack/techniques', { simple: str, goal: str, analogy: str, quote: str, questions: z.array(z.string()) });
+const enClasses = overlay('solutions/classes', { simple: str });
+const enProducts = overlay('solutions/products', { simple: str });
+const enD3fendTactics = overlay('d3fend/tactics', { short: str, analogy: str });
+const enD3fendTechniques = overlay('d3fend/techniques', { simple: str, analogy: str });
+
+export const collections = {
+  tactics, techniques, classes, products, d3fendTactics, d3fendTechniques,
+  enTactics, enTechniques, enClasses, enProducts, enD3fendTactics, enD3fendTechniques,
+};

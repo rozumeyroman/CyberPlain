@@ -1,0 +1,9 @@
+{
+  "simple": "Browses files and folders on the computer and network drives, looking for valuable documents and passwords.",
+  "analogy": "Rummages through the cabinets and drawers.",
+  "quote": "Someone was opening folders in bulk on the file server",
+  "questions": [
+    "Do your file servers have decoy files?",
+    "Would you notice mass reading of folders?"
+  ]
+}

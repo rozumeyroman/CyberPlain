@@ -1,13 +1,16 @@
 ---
 import { site } from '../../site.config';
-import { source } from '../../content/d3fend/intro.json';
-import { d3fendSource } from '../lib/data';
+import { pageCtx, introOf, d3fendSource } from '../lib/data';
 
-const { href = source.url, label = 'Оригінал на d3fend.mitre.org ↗' } = Astro.props;
-const date = d3fendSource.releaseDate.split('-').reverse().join('.');
+const { lang, t } = await pageCtx(Astro.url);
+const { source } = introOf('d3fend', lang);
+const { href = source.url, label = t.source.d3fendOrig } = Astro.props;
+const date = lang === 'en'
+  ? new Date(d3fendSource.releaseDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' })
+  : d3fendSource.releaseDate.split('-').reverse().join('.');
 ---
 <div class="src">
-  <span>Джерело: {source.name.replace('D3FEND', 'D3FEND™')}, версія {d3fendSource.version} від {date}. Українські назви й пояснення — авторська адаптація {site.name}.</span>
+  <span>{t.source.d3fend(source.name.replace('D3FEND', 'D3FEND™'), d3fendSource.version, date, site.name)}</span>
   <a href={href} class="mono">{label}</a>
 </div>
 

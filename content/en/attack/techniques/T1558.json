@@ -1,0 +1,9 @@
+{
+  "simple": "Steals or forges Kerberos tickets — the “passes” in a Windows domain — up to a “golden ticket” with access to everything.",
+  "analogy": "Prints itself an “access everywhere” pass on a genuine form.",
+  "quote": "Kerberoasting gave them the password of a service account",
+  "questions": [
+    "Do service accounts have long, complex passwords?",
+    "Would you notice abnormal Kerberos ticket requests?"
+  ]
+}

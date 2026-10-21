@@ -1,0 +1,8 @@
+{
+  "simple": "Modifies or rolls back the firmware of a router or switch to embed its own functions or bring back old vulnerabilities.",
+  "analogy": "Re-keys the lock on the building’s front door.",
+  "quote": "The firmware version on the router turned out to be old, even though we had updated it",
+  "questions": [
+    "Do you control firmware versions on network equipment?"
+  ]
+}

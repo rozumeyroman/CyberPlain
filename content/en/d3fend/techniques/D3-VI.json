@@ -1,0 +1,3 @@
+{
+  "simple": "A program gives variables a known value before using them, so they don’t end up holding random or foreign data."
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Checks whether it is being examined in a debugger, and then changes its behavior or quits.",
+  "analogy": "A suspect goes silent the moment they see the investigator.",
+  "quote": "The program just closed itself during analysis",
+  "questions": [
+    "Do you have specialists or a service for analyzing malware?"
+  ]
+}

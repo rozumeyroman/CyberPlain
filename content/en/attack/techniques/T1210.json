@@ -1,0 +1,9 @@
+{
+  "simple": "Exploits vulnerabilities in services inside the network (SMB, RDP, databases) to move on to other computers.",
+  "analogy": "Inside the house, the doors are locked worse than the front door.",
+  "quote": "A worm spread through an old SMB vulnerability",
+  "questions": [
+    "Do you scan internal systems for vulnerabilities, not just the perimeter?",
+    "Is your network split into segments?"
+  ]
+}

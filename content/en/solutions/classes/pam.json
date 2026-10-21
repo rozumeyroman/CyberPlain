@@ -1,0 +1,3 @@
+{
+  "simple": "Keeps administrator passwords in a vault, grants access only for the duration of a task and records what was done with administrator rights."
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Studies domains, IP addresses, DNS, and which defenses guard the entrance — in effect, draws a map of the network.",
+  "analogy": "Draws the floor plan of a house: where the entrance is, where the basement is, where the alarm is.",
+  "quote": "We’re not sure we know all our domains and addresses",
+  "questions": [
+    "Who keeps track of your domains and external IPs?",
+    "Are there old subdomains that nobody uses?"
+  ]
+}

@@ -4,43 +4,44 @@ import D3Groups from './D3Groups.astro';
 import D3fendTags from './D3fendTags.astro';
 import SolutionLinks from './SolutionLinks.astro';
 import Fold from './Fold.astro';
-import { loadData, url, num, type Technique, plural } from '../lib/data';
+import { pageCtx, num, type Technique } from '../lib/data';
 
 interface Props { technique: Technique }
 const { technique: t } = Astro.props;
-const d = await loadData();
+const { lang, t: ui, url, d, pl } = await pageCtx(Astro.url);
+const x = ui.technique;
 const tactics = d.tacticsOf(t);
-const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
+const order = (id: string) => d.tactics.findIndex((y) => y.id === id) + 1;
 const defenses = d.classesOf(t);
 const subs = d.subtechniquesOf(t);
 const d3 = d.d3fendForAttack(t);
 ---
 <section class="wrap page">
-  <nav aria-label="Навігаційний ланцюжок" class="mono crumbs">
-    <a href="/mitre/">MITRE ATT&amp;CK</a><span aria-hidden="true">/</span>
-    <a href={url.tactic(tactics[0].id)}>{num(order(tactics[0].id))} {tactics[0].data.ua}</a><span aria-hidden="true">/</span>
+  <nav aria-label={ui.crumbs} class="mono crumbs">
+    <a href={url.page('/mitre/')}>MITRE ATT&amp;CK</a><span aria-hidden="true">/</span>
+    <a href={url.tactic(tactics[0].id)}>{num(order(tactics[0].id))} {tactics[0].data.title}</a><span aria-hidden="true">/</span>
     <span aria-current="page">{t.id}</span>
   </nav>
 
-  <div class="head"><span class="id-attack big">{t.id}</span><span class="mono meta">{t.data.en}</span>{t.data.pain && <span class="badge-pain">Часта біль</span>}</div>
-  <h1>{t.data.ua}</h1>
-  <p class="lead-text">{t.data.simple}</p>
+  <div class="head"><span class="id-attack big">{t.id}</span>{lang === 'uk' && <span class="mono meta">{t.data.en}</span>}{t.data.pain && <span class="badge-pain">{ui.pain}</span>}</div>
+  <h1>{t.data.title}</h1>
+  {t.data.simple ? <p class="lead-text">{t.data.simple}</p> : <p class="soon-box">{ui.soon}</p>}
 
   <div class="grid">
-    {t.data.goal && <div class="note-box"><span class="mono attack">Чого домагається зловмисник</span>{t.data.goal}</div>}
-    {t.data.analogy && <div class="note-box"><span class="mono attack">Аналогія</span>{t.data.analogy}</div>}
-    {t.data.quote && <div class="note-box"><span class="mono muted">Як це звучить у замовника</span>«{t.data.quote}»</div>}
+    {t.data.goal && <div class="note-box"><span class="mono attack">{x.goal}</span>{t.data.goal}</div>}
+    {t.data.analogy && <div class="note-box"><span class="mono attack">{ui.analogy}</span>{t.data.analogy}</div>}
+    {t.data.quote && <div class="note-box"><span class="mono muted">{x.quote}</span>{ui.quote(t.data.quote)}</div>}
   </div>
 
   {subs.length > 0 && (
     <section class="sec" aria-labelledby="subs">
-      <h2 class="sec-title" id="subs">Різновиди<span class="mono">{subs.length} підтехнік</span></h2>
+      <h2 class="sec-title" id="subs">{x.subs}<span class="mono">{pl(subs.length, ui.n.subtechniques)}</span></h2>
       <ul class="subs">
         {subs.map((s) => (
           <li><a href={url.mitre(s.id)} class="sub">
             <span class="id-attack">{s.id}</span>
-            <span class="sname"><span class="sua">{s.ua ?? s.en}</span>{s.ua && <span class="sen">{s.en}</span>}</span>
-            <span class="mono ext" aria-label="на attack.mitre.org">↗</span>
+            <span class="sname"><span class="sua">{s.title}</span>{lang === 'uk' && s.ua && <span class="sen">{s.en}</span>}</span>
+            <span class="mono ext" aria-label={x.extAria}>↗</span>
           </a></li>
         ))}
       </ul>
@@ -49,22 +50,22 @@ const d3 = d.d3fendForAttack(t);
 
   {t.data.questions.length > 0 && (
     <section class="sec" aria-labelledby="q">
-      <h2 class="sec-title" id="q">Що запитати замовника</h2>
+      <h2 class="sec-title" id="q">{x.ask}</h2>
       <div class="qs">{t.data.questions.map((q) => <label class="q"><input type="checkbox"> <span>{q}</span></label>)}</div>
     </section>
   )}
 
-  <Fold id="sol" title="Чим захиститись" count={defenses.length ? plural(defenses.length, 'рішення', 'рішення', 'рішень') : undefined}>
+  <Fold id="sol" title={x.sols} count={defenses.length ? pl(defenses.length, ui.n.solutions) : undefined}>
     {defenses.length === 0
-      ? <p class="soon-box">Рішення для цієї техніки готуються.</p>
+      ? <p class="soon-box">{x.noSols}</p>
       : (
         <table class="tbl">
-          <thead><tr><th>Рішення</th><th>Що це</th><th>D3FEND</th></tr></thead>
+          <thead><tr><th>{ui.solution}</th><th>{x.thWhat}</th><th>D3FEND</th></tr></thead>
           <tbody>
             {defenses.map((c) => (
               <tr>
                 <td><SolutionLinks cls={c} products={d.productsOf(c.id)} /></td>
-                <td data-label="Що це" class:list={{ empty: !c.data.simple }}>{c.data.simple ?? '—'}</td>
+                <td data-label={x.thWhat} class:list={{ empty: !c.data.simple }}>{c.data.simple ?? ui.dash}</td>
                 <td data-label="D3FEND" class="inline"><D3fendTags cls={c} /></td>
               </tr>
             ))}
@@ -74,24 +75,24 @@ const d3 = d.d3fendForAttack(t);
   </Fold>
 
   <section class="sec" aria-labelledby="d3">
-    <h2 class="sec-title" id="d3">Захисні заходи D3FEND{d3.length > 0 && <span class="mono">{d3.length} технік</span>}</h2>
+    <h2 class="sec-title" id="d3">{x.d3}{d3.length > 0 && <span class="mono">{pl(d3.length, ui.n.techniques)}</span>}</h2>
     {d3.length === 0
-      ? <p class="soon-box">MITRE D3FEND поки не зіставляє цю техніку з захисними заходами.</p>
+      ? <p class="soon-box">{x.noD3}</p>
       : <>
-          <p class="note">Офіційне зіставлення MITRE D3FEND — через дані й об’єкти, з якими працює атака. Воно ширше за практичний список рішень вище.</p>
+          <p class="note">{x.d3note}</p>
           {d3.length > 12
-            ? <details class="more-d3"><summary class="mono">Показати всі {d3.length} технік D3FEND</summary><D3Groups techniques={d3} /></details>
+            ? <details class="more-d3"><summary class="mono">{x.showD3(pl(d3.length, ui.n.techniques))}</summary><D3Groups techniques={d3} /></details>
             : <D3Groups techniques={d3} />}
         </>}
   </section>
 
   <section class="sec" aria-labelledby="st">
-    <h2 class="sec-title" id="st">{tactics.length > 1 ? 'Етапи атаки, де трапляється' : 'Етап атаки'}</h2>
-    <div class="chips">{tactics.map((ta) => <a href={url.tactic(ta.id)} class="chip">{num(order(ta.id))} {ta.data.ua} · {ta.id}</a>)}</div>
+    <h2 class="sec-title" id="st">{tactics.length > 1 ? x.stages : x.stage}</h2>
+    <div class="chips">{tactics.map((ta) => <a href={url.tactic(ta.id)} class="chip">{num(order(ta.id))} {ta.data.title} · {ta.id}</a>)}</div>
   </section>
 </section>
 
-<section class="wrap bottom"><AttackSource href={url.mitre(t.id)} label={`${t.id} на attack.mitre.org ↗`} /></section>
+<section class="wrap bottom"><AttackSource href={url.mitre(t.id)} label={ui.source.attackId(t.id)} /></section>
 
 <style>
   .head { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }

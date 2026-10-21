@@ -1,0 +1,8 @@
+{
+  "simple": "Sends phishing to colleagues from an already compromised corporate mailbox — people trust such an email the most.",
+  "analogy": "The request to “open up” comes in your neighbor’s voice.",
+  "quote": "The phishing email came from one of our own employees",
+  "questions": [
+    "Is internal email checked, not just incoming email?"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Changes access permissions on files and folders to reach protected data or modify system files.",
+  "analogy": "Rewrites the list of who is allowed into the archive.",
+  "quote": "Permissions on a system folder changed to “full access for everyone”",
+  "questions": [
+    "Would you notice a mass permission change on a file server?"
+  ]
+}

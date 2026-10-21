@@ -1,0 +1,3 @@
+{
+  "simple": "A check value is placed in memory; if an attack overwrites it, the program notices and stops."
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "A password valid for one sign-in only: intercepting it and using it a second time won’t work."
+}

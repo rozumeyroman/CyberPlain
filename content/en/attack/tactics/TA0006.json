@@ -1,0 +1,13 @@
+{
+  "short": "Steals logins and passwords to act in the name of real people.",
+  "analogy": "Takes a bunch of keys off the security desk board.",
+  "solutionNotes": {
+    "edr": "Blocks dumping of passwords from memory and password-stealing programs.",
+    "siem": "Spots password guessing and unusual requests to domain controllers.",
+    "mfa": "Even a stolen password doesn’t let anyone in without the second factor.",
+    "ueba": "Spots a login from an unusual place, device or time.",
+    "deception": "Fake bait passwords: trying to use one gives the attacker away.",
+    "pam": "Administrator passwords are kept in a vault and changed regularly.",
+    "soar": "Automatically blocks the account and resets sessions at signs of theft."
+  }
+}

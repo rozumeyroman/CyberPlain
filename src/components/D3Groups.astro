@@ -1,10 +1,10 @@
 ---
 // Техніки D3FEND, згруповані за тактиками D3FEND, з категорією кожної. whole — тактики «загалом» (без техніки).
-import { loadData, url, num, type D3Tactic, type D3Technique } from '../lib/data';
+import { pageCtx, num, type D3Tactic, type D3Technique } from '../lib/data';
 
 interface Props { techniques: D3Technique[]; whole?: D3Tactic[] }
 const { techniques, whole = [] } = Astro.props;
-const d = await loadData();
+const { lang, t: ui, url, d } = await pageCtx(Astro.url);
 const groups = d.d3fendTactics
   .map((tactic) => ({ tactic, whole: whole.includes(tactic), techniques: tactic.all.filter((t) => techniques.includes(t)) }))
   .filter((g) => g.whole || g.techniques.length > 0);
@@ -12,12 +12,12 @@ const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent;
 ---
 {groups.map((g) => (
   <div class="group">
-    <a href={url.d3fendTactic(g.tactic.id)} class="mono gtitle">{num(g.tactic.order)} {g.tactic.ua ?? g.tactic.en} · {g.tactic.en}</a>
+    <a href={url.d3fendTactic(g.tactic.id)} class="mono gtitle">{num(g.tactic.order)} {g.tactic.title}{lang === 'uk' && ` · ${g.tactic.en}`}</a>
     <ul>
-      {g.whole && <li><a href={url.d3fendTactic(g.tactic.id)}><span class="d3id">—</span><span>Тактика загалом<span class="cat">Без прив’язки до конкретної техніки</span></span></a></li>}
+      {g.whole && <li><a href={url.d3fendTactic(g.tactic.id)}><span class="d3id">—</span><span>{ui.d3.whole}<span class="cat">{ui.d3.wholeNote}</span></span></a></li>}
       {g.techniques.map((t) => {
         const c = category(t);
-        return <li><a href={url.d3fendTechnique(t.id)}><span class="d3id">{t.id}</span><span>{t.ua ?? t.en}{c !== t && <span class="cat">{c.ua ?? c.en}</span>}</span></a></li>;
+        return <li><a href={url.d3fendTechnique(t.id)}><span class="d3id">{t.id}</span><span>{t.title}{c !== t && <span class="cat">{c.title}</span>}</span></a></li>;
       })}
     </ul>
   </div>

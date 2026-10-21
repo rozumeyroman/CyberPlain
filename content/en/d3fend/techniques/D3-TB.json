@@ -1,0 +1,3 @@
+{
+  "simple": "A sign-in token is bound to a specific connection, so a stolen cookie won’t work on someone else’s computer."
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Embeds its code in the memory of a legitimate program — and acts in its name and with its privileges.",
+  "analogy": "Hides in the back of a truck that security waves through without looking.",
+  "quote": "The malicious activity showed up as svchost.exe doing its job",
+  "questions": [
+    "Can your protection see what happens in process memory?"
+  ]
+}

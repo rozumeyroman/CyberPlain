@@ -1,0 +1,3 @@
+{
+  "simple": "Allows connections only to approved domains; everything else is blocked."
+}

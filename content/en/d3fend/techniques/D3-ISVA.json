@@ -1,0 +1,3 @@
+{
+  "simple": "Tracks the number of incoming connections to spot, for example, a DDoS attack or password guessing."
+}

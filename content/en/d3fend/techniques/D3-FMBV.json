@@ -1,0 +1,3 @@
+{
+  "simple": "Checks the first bytes of a file, which define its true type: a “picture” that is really a program won’t pass."
+}

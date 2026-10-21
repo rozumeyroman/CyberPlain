@@ -1,0 +1,8 @@
+{
+  "simple": "Turns off a firewall or adds its own rules to it to open a path into the network or out of it.",
+  "analogy": "Takes the lock off the gate.",
+  "quote": "A rule showed up in the firewall that nobody created",
+  "questions": [
+    "Do you monitor changes to firewall rules?"
+  ]
+}

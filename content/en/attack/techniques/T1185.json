@@ -1,0 +1,8 @@
+{
+  "simple": "Gets into the victim’s browser and acts inside their open sessions — for example, in online banking.",
+  "analogy": "Takes advantage of the cashier stepping away from an open register.",
+  "quote": "The payment went out from the accountant’s session while she was connected to the bank",
+  "questions": [
+    "Are payments confirmed on a separate device?"
+  ]
+}

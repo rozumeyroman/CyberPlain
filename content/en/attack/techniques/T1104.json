@@ -1,0 +1,8 @@
+{
+  "simple": "Uses several stages of communication: the first server only checks out the victim and hands over the address of the next one.",
+  "analogy": "The route to the hiding place goes through several notes left in different spots.",
+  "quote": "We blocked the first server, but the second one was already working",
+  "questions": [
+    "Do you analyze the full chain of connections after an alert?"
+  ]
+}

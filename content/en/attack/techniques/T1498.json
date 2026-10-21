@@ -1,0 +1,8 @@
+{
+  "simple": "Floods the company’s network links with a huge stream of traffic so services become unavailable.",
+  "analogy": "A crowd blocks the store entrance — customers can’t get in.",
+  "quote": "Our website went down under a DDoS",
+  "questions": [
+    "Do you have DDoS protection from your provider or a CDN?"
+  ]
+}

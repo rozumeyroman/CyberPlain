@@ -1,0 +1,3 @@
+{
+  "simple": "Watches Active Directory and cloud user directories, spots stolen passwords and Kerberos tickets, privilege escalation and lateral movement under someone else’s name — and can immediately block a sign-in or an account, end a session or force a password change. Some solutions also restrict where each account may sign in, so an attacker can’t hop from computer to computer."
+}

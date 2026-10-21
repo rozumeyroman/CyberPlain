@@ -1,0 +1,8 @@
+{
+  "simple": "Splits data into small pieces so that no single transfer exceeds the alarm thresholds.",
+  "analogy": "Carries out a whole truckload of bricks one brick at a time.",
+  "quote": "There was not a single big transfer, yet the data leaked",
+  "questions": [
+    "Do you analyze the total volume of outgoing traffic over a period?"
+  ]
+}

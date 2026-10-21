@@ -1,0 +1,9 @@
+{
+  "simple": "Reads and exports emails — from the computer, from the mail server, or through a forwarding rule to an outside address.",
+  "analogy": "Reads other people’s letters before they go into the mailbox.",
+  "quote": "We found a forwarding rule to Gmail in the director’s mailbox",
+  "questions": [
+    "Would you notice a new rule forwarding mail to the outside?",
+    "Is logging in to email protected with a second factor?"
+  ]
+}

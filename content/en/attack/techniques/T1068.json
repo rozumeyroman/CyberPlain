@@ -1,0 +1,9 @@
+{
+  "simple": "Exploits a bug in the system or a driver to go from an ordinary user to an administrator.",
+  "analogy": "Knows that the director’s office door opens if you pull the handle up.",
+  "quote": "An ordinary account got system-level rights",
+  "questions": [
+    "How quickly do you install security updates on workstations and servers?",
+    "Do you block known vulnerable drivers?"
+  ]
+}

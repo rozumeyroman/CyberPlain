@@ -1,0 +1,9 @@
+{
+  "simple": "Changes an account’s rights or settings: adds itself to administrators, adds SSH keys, mail forwarding, new sign-in devices.",
+  "analogy": "Makes itself a copy of the key and signs up in the residents’ directory.",
+  "quote": "An ordinary user was suddenly added to domain admins",
+  "questions": [
+    "Do you get alerts when someone lands in privileged groups?",
+    "Who can grant administrator rights?"
+  ]
+}

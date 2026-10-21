@@ -1,0 +1,29 @@
+---
+// /d3fend/harden/ — тактика, /d3fend/D3-MFA/ — категорія або техніка (і під /en/). ID не перетинаються (перевіряє loadData).
+import Base from '../../../layouts/Base.astro';
+import D3TacticPage from '../../../components/D3TacticPage.astro';
+import D3TechniquePage from '../../../components/D3TechniquePage.astro';
+import { loadData, type D3Tactic, type D3Technique } from '../../../lib/data';
+import { langOf, langs, routeLang, ui } from '../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const l of langs) {
+    const { d3fendTactics, d3byId } = await loadData(l);
+    const lang = routeLang(l);
+    paths.push(
+      ...d3fendTactics.map((tactic) => ({ params: { lang, id: tactic.id }, props: { tactic } })),
+      ...[...d3byId.values()].map((technique) => ({ params: { lang, id: technique.id }, props: { technique } })),
+    );
+  }
+  return paths;
+}
+
+const { tactic, technique } = Astro.props as { tactic?: D3Tactic; technique?: D3Technique };
+const e = tactic ?? technique!;
+const title = tactic ? ui[langOf(Astro.url)].d3.tacticTitle(e.title, tactic.en) : `${e.title} (${technique!.id})`;
+const description = tactic ? tactic.short : technique!.simple ?? technique!.definition;
+---
+<Base title={title} description={description}>
+  {tactic ? <D3TacticPage tactic={tactic} /> : <D3TechniquePage technique={technique!} />}
+</Base>

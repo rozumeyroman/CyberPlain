@@ -1,0 +1,8 @@
+{
+  "simple": "After a break-in, “closes the door behind itself” — fixes the vulnerability or shuts down services so other attackers can’t get into the same system.",
+  "analogy": "A thief changes the lock on someone else’s house so other thieves can’t get in.",
+  "quote": "Someone installed an update on the hacked server themselves",
+  "questions": [
+    "Would you notice unplanned changes on servers?"
+  ]
+}

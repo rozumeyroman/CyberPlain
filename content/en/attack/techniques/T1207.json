@@ -1,0 +1,8 @@
+{
+  "simple": "Registers its own “domain controller” on the network and quietly makes changes to Active Directory through replication.",
+  "analogy": "Plants its own “employee” at the passport office who issues documents.",
+  "quote": "Changes appeared in AD, but they’re not in the domain controllers’ logs",
+  "questions": [
+    "Do you monitor replication between domain controllers?"
+  ]
+}

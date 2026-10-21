@@ -1,0 +1,3 @@
+{
+  "simple": "Gives employees and contractors access only to specific approved systems through a secure gateway — without a VPN that opens up the whole network, and without RDP or SSH ports exposed to the internet, which attackers most often get in through."
+}

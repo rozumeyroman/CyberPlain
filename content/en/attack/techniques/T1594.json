@@ -1,0 +1,9 @@
+{
+  "simple": "Reads the company website: contacts, job postings listing technologies, names of executives.",
+  "analogy": "Reads the sign on the door and the notices in the building entrance.",
+  "quote": "Our job postings say which systems we use",
+  "questions": [
+    "What on the website could help an attacker?",
+    "Is the website protected against automated data scraping?"
+  ]
+}

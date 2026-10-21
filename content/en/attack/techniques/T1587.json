@@ -1,0 +1,9 @@
+{
+  "simple": "Writes its own malware and exploits, or creates certificates, for a specific attack.",
+  "analogy": "A thief files a lockpick to fit one particular lock.",
+  "quote": "The antivirus found nothing — the program was written specifically for us",
+  "questions": [
+    "Do you rely only on signature-based antivirus?",
+    "Do you notice suspicious program behavior, not just known files?"
+  ]
+}

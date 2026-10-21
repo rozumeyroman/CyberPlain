@@ -1,0 +1,9 @@
+{
+  "simple": "Runs commands and programs through WMI — a built-in Windows administration mechanism, including on remote computers.",
+  "analogy": "Runs the house through the “smart home” system that the homeowner installed himself.",
+  "quote": "The malicious commands were run using standard Windows tools",
+  "questions": [
+    "Do you monitor commands launched through WMI?",
+    "Who on the network is allowed to administer computers remotely?"
+  ]
+}

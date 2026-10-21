@@ -1,0 +1,13 @@
+{
+  "short": "Makes sure it doesn’t lose access after a reboot or a password change.",
+  "analogy": "Makes a spare key so it can come back anytime.",
+  "solutionNotes": {
+    "edr": "Spots new services, tasks and autostart entries and removes them.",
+    "siem": "Alerts on new accounts and changes to permissions and sign-in settings.",
+    "ueba": "Notices when an account suddenly gets new permissions or access.",
+    "dfir": "Finds every “backdoor” left after an incident so the attacker can’t return.",
+    "pam": "Limits who can create accounts and hand out permissions.",
+    "caasm": "Shows accounts and devices nobody knew about.",
+    "cnapp": "Spots changes to roles, keys and images in the cloud."
+  }
+}

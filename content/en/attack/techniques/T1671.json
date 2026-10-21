@@ -1,0 +1,9 @@
+{
+  "simple": "Adds or hijacks an OAuth app in Microsoft 365 or another SaaS — and keeps access to email and files even after a password change.",
+  "analogy": "Gets a permanent pass “from a contractor” that isn’t revoked when the locks are changed.",
+  "quote": "We changed the password, but the attacker still has access to the mailbox",
+  "questions": [
+    "Who can authorize apps to access corporate data?",
+    "Do you review the list of connected apps?"
+  ]
+}

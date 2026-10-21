@@ -1,0 +1,3 @@
+{
+  "simple": "Monitors the mode of an industrial controller (programming, running, stopped): an unexpected change can mean an attack."
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "Monitors remote procedure calls (RPC) on the network to spot attacker actions disguised as service traffic."
+}

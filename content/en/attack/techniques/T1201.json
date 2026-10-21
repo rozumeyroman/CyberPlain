@@ -1,0 +1,8 @@
+{
+  "simple": "Learns the password rules — length, complexity, lockout after failed attempts — so it can guess passwords without locking accounts.",
+  "analogy": "Finds out after how many wrong tries the ATM swallows the card.",
+  "quote": "The guessing was paced exactly so that accounts wouldn’t get locked",
+  "questions": [
+    "Is your password policy strong enough?"
+  ]
+}

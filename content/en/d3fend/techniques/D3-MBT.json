@@ -1,0 +1,3 @@
+{
+  "simple": "Analyzes the call stack to find return addresses that lead to unexpected places in memory."
+}

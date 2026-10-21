@@ -1,0 +1,3 @@
+{
+  "simple": "Analyzes database queries to detect SQL injection: attempts to slip a malicious command in through a form field."
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Logs in to systems with a real username and password of an employee, contractor or service — and looks like an ordinary user.",
+  "analogy": "The thief opens the door with a key the homeowner lost — the alarm stays silent.",
+  "quote": "They logged in with a former employee’s account",
+  "questions": [
+    "Do you disable accounts of departed employees right away?",
+    "Would you notice an ordinary user logging in at 3 a.m. from another country?"
+  ]
+}

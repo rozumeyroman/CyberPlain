@@ -1,0 +1,9 @@
+{
+  "simple": "Turns off or breaks antivirus, EDR, event logs, and cloud logs so defenders stop seeing what’s happening.",
+  "analogy": "Switches off the cameras and alarm before the robbery.",
+  "quote": "The antivirus on the server turned out to be switched off",
+  "questions": [
+    "Will you get an alert if the EDR agent stops responding?",
+    "Would you notice that logs from a server stopped arriving?"
+  ]
+}

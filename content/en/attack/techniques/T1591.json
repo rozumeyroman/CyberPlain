@@ -1,0 +1,9 @@
+{
+  "simple": "Finds out the structure, partners, offices, and people’s roles so it can convincingly trick someone while posing as “one of us”.",
+  "analogy": "Learns the neighbors’ and the mail carrier’s names to pass as an acquaintance.",
+  "quote": "We got a call on behalf of our supplier",
+  "questions": [
+    "Do you verify changes to partners’ payment details by phone?",
+    "What can the public see about your company’s structure?"
+  ]
+}

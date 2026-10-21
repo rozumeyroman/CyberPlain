@@ -1,0 +1,66 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { pageCtx } from '../../../lib/data';
+import { langParams } from '../../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+const { t, url, d, pl } = await pageCtx(Astro.url);
+const x = t.vendors;
+---
+<Base title={x.title} description={x.description}>
+  <section class="wrap page">
+    <div class="mono tag">{x.tag}</div>
+    <h1>{x.title}</h1>
+    <p class="lead-text">{x.lead}</p>
+
+    {d.vendors.length === 0
+      ? <p class="soon-box">{x.soon}</p>
+      : (
+        <div class="list">
+          {d.vendors.map((v) => (
+            <details class="item">
+              <summary>
+                <span class="vname">{v.name}</span>
+                <span class="mono count">{pl(v.products.length, t.n.products)}</span>
+              </summary>
+              {/* id тут, а не на <details>: перехід за /vendors/#id розгортає блок у сучасних браузерах */}
+              <div class="body" id={v.id}>
+                <table class="tbl">
+                  <thead><tr><th>{x.thProduct}</th><th>{x.thClasses}</th></tr></thead>
+                  <tbody>
+                    {v.products.map((p) => (
+                      <tr>
+                        <td><a href={url.solution(p.id)} class="name">{p.data.title}</a></td>
+                        <td><div class="chips">{p.data.classes.map((r) => d.classById.get(r.id)!).map((c) => <a href={url.solution(c.id)} class="chip">{c.data.title}</a>)}</div></td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          ))}
+        </div>
+      )}
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .tag { font-size: 12px; color: var(--defense); margin: 48px 0 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  .list { border-top: 1px solid var(--line); }
+  .item { border-bottom: 1px solid var(--line); }
+  summary {
+    display: flex; align-items: center; gap: 8px 16px; flex-wrap: wrap; min-height: 64px; padding: 12px 36px 12px 0;
+    cursor: pointer; list-style: none; position: relative;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: '+'; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); font: 400 20px var(--font-mono); color: var(--muted); }
+  .item[open] summary::after { content: '−'; }
+  .vname { font-size: 22px; font-weight: 600; flex: 1 1 auto; transition: color .15s; }
+  summary:hover .vname { color: var(--defense-hover); }
+  .count { font-size: 11px; color: var(--muted-2); }
+  .body { padding: 0 0 24px; }
+  .tbl td .chips { margin-top: 0; }
+</style>

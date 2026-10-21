@@ -1,0 +1,8 @@
+{
+  "simple": "Quietly changes data — in databases, in transferred files or in program memory — to influence decisions or steal money.",
+  "analogy": "Rewrites the numbers in the accounting ledger.",
+  "quote": "The payment details on the invoice changed along the way",
+  "questions": [
+    "Do you check the integrity of critical data?"
+  ]
+}

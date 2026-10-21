@@ -10,6 +10,8 @@ export default defineConfig({
   output: 'static',
   integrations: [
     sitemap({
+      // xhtml:link alternates для кожної сторінки: uk — у корені, en — під /en/
+      i18n: { defaultLocale: 'uk', locales: { uk: 'uk-UA', en: 'en-US' } },
       serialize(item) {
         const date = lastmod.get(new URL(item.url).pathname);
         if (date) item.lastmod = date;

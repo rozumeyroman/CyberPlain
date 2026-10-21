@@ -1,0 +1,9 @@
+{
+  "simple": "Talks to its server over ordinary protocols — HTTPS, DNS, email — to blend in with legitimate traffic.",
+  "analogy": "Passes orders on ordinary postcards.",
+  "quote": "The computer was contacting an unfamiliar website every minute",
+  "questions": [
+    "Do you see regular “beacon” connections going out?",
+    "Do you analyze DNS queries?"
+  ]
+}

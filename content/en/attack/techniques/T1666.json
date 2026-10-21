@@ -1,0 +1,9 @@
+{
+  "simple": "Changes the structure of accounts and subscriptions in the cloud — for example, takes an account out from under the organization’s policies.",
+  "analogy": "Moves an apartment to another building with no security.",
+  "quote": "A cloud account slipped out from under our organization",
+  "questions": [
+    "Who can change the structure of cloud accounts?",
+    "Can you see such changes in monitoring?"
+  ]
+}

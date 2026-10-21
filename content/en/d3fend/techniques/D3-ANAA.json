@@ -1,0 +1,3 @@
+{
+  "simple": "Spots unusual use of administrative protocols (RDP, SSH, WinRM) compared with normal behavior."
+}

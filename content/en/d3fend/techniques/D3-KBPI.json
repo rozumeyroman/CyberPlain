@@ -1,0 +1,3 @@
+{
+  "simple": "The operating system isolates processes from each other, so a compromised program can’t reach the rest of the system."
+}

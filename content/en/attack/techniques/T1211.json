@@ -1,0 +1,8 @@
+{
+  "simple": "Exploits a vulnerability in a system or a security tool to get around its checks and stay unnoticed.",
+  "analogy": "Knows the camera’s blind spot and walks right through it.",
+  "quote": "The attack slipped past our protection because of a bug in the protection itself",
+  "questions": [
+    "Are the security tools themselves kept up to date?"
+  ]
+}

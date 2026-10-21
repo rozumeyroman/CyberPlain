@@ -1,0 +1,9 @@
+{
+  "simple": "Changes group policies or domain trust relationships — and in one step pushes its own settings to all computers.",
+  "analogy": "Rewrites the house rules on the bulletin board — and every resident follows them.",
+  "quote": "Ransomware was pushed to every machine through a group policy",
+  "questions": [
+    "Who can change group policies?",
+    "Do you get alerts when they change?"
+  ]
+}

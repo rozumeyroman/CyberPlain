@@ -1,0 +1,8 @@
+{
+  "simple": "With secret keys in hand, creates valid cookies or SAML tokens itself and signs in to cloud services as any user.",
+  "analogy": "Stole the stamp — and now prints the passes itself.",
+  "quote": "Someone signed in to Microsoft 365 without a single password attempt",
+  "questions": [
+    "How well protected are your token-issuing servers (ADFS, IdP)?"
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "Shows which other services each service depends on, so you understand what will go down along with it."
+}

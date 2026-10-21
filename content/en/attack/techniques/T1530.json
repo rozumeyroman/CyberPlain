@@ -1,0 +1,9 @@
+{
+  "simple": "Takes files from cloud storage (S3, Azure Blob, Google Cloud Storage) — often ones accidentally left open to everyone.",
+  "analogy": "Walks into a warehouse that someone forgot to lock.",
+  "quote": "Our bucket with backups was public",
+  "questions": [
+    "Do you check which cloud storage is publicly open?",
+    "Would you notice a mass download from storage?"
+  ]
+}

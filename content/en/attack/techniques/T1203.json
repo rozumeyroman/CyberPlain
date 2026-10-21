@@ -1,0 +1,9 @@
+{
+  "simple": "Exploits a vulnerability in a browser, Office, a PDF viewer or another program — just opening a file or a page is enough.",
+  "analogy": "Knows that a certain brand of lock has a secret flaw and opens it with a pin.",
+  "quote": "They opened an ordinary PDF — and that was it",
+  "questions": [
+    "How quickly are Office, browsers and PDF viewers updated?",
+    "Can you see which computers have outdated versions?"
+  ]
+}

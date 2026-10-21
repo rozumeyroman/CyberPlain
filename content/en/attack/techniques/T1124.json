@@ -1,0 +1,8 @@
+{
+  "simple": "Finds out the system’s time and time zone — to run actions on a schedule or work out where the target is located.",
+  "analogy": "Looks at the clock so as to act when everyone has gone home.",
+  "quote": "The attack started exactly at midnight Kyiv time",
+  "questions": [
+    "Does your monitoring work at night and on weekends?"
+  ]
+}

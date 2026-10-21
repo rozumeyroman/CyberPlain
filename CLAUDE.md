@@ -85,7 +85,17 @@ design/                   # референсні макети (не код са�
 LICENSE  LICENSE-CONTENT  NOTICE.md
 ```
 
-Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/<tab>/`.
+Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/[...lang]/<tab>/`.
+
+**Мови.** Українська — у корені (`/mitre/T1595/`), англійська — під `/en/` (`/en/mitre/T1595/`); сторінки лежать
+в `src/pages/[...lang]/`, кожна з `getStaticPaths` на обидві мови (`langParams`/`routeLang` з `src/lib/i18n.ts`).
+Тексти інтерфейсу — лише в `src/lib/i18n.ts` (`ui.uk`/`ui.en`, `plural`), назва/слоган/вкладки/футер — у
+`site.config.ts` (`{ uk, en }`). Адреси — `url.*` з `pageCtx()`/`urlFor(lang)` у `data.ts`. Англійські тексти —
+оверлей `content/en/<той самий шлях>/<той самий ID>.json` лише з перекладеними полями (`short`, `simple`, `goal`,
+`analogy`, `quote`, `questions`, `solutionNotes`); інтро — повна копія `content/en/{attack,d3fend}/intro.json`,
+ліцензії — `NOTICE.en.md`. Англійські назви — з MITRE (`en`), не з оверлеїв. `loadData(lang)` зупиняє збірку, якщо
+оверлей без оригіналу, з ключем, якого немає в оригіналі, або з іншою довжиною `questions`/ключами `solutionNotes`;
+відсутній переклад — поле порожнє («готується») і одне попередження зі статистикою.
 
 Адреси — за ID, не за slug: етап `/mitre/TA0001/`, техніка `/mitre/T1566/`, підтехніка
 `/mitre/T1566.001/`. Техніка має одну сторінку, навіть якщо входить у кілька етапів (у MITRE

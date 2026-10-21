@@ -1,0 +1,9 @@
+{
+  "simple": "Tries passwords over and over: guesses them, tries one popular password across thousands of accounts, plugs in passwords from other people’s leaks.",
+  "analogy": "Tries every key on a huge ring, one after another.",
+  "quote": "Thousands of failed login attempts every day",
+  "questions": [
+    "Are all external logins protected with a second factor?",
+    "Would you notice a single login attempt across hundreds of accounts?"
+  ]
+}

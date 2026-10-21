@@ -1,0 +1,9 @@
+{
+  "simple": "Sends an email or message with a malicious attachment or link so that the person opens the door themselves.",
+  "analogy": "Slips a “notice from the landlord” under the door asking you to call right away.",
+  "quote": "The accountant opened an invoice from an email",
+  "questions": [
+    "Is incoming email checked for malicious attachments and links?",
+    "Can employees recognize phishing and do they know where to report it?"
+  ]
+}

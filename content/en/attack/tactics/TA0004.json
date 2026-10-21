@@ -1,0 +1,12 @@
+{
+  "short": "Gets administrator rights so it can do more.",
+  "analogy": "Finds the key to the director’s office and the safe.",
+  "solutionNotes": {
+    "edr": "Spots UAC bypass, token theft and injection into processes.",
+    "siem": "Alerts when someone joins privileged groups or changes policies.",
+    "pam": "Administrator rights are granted only for the length of a task — there’s almost nothing to steal.",
+    "vm": "Closes vulnerabilities that let an ordinary user become an administrator.",
+    "ueba": "Spots accounts that suddenly act like administrators.",
+    "cnapp": "Looks for excessive permissions and unsafe container settings."
+  }
+}

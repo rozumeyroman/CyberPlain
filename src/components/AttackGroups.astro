@@ -1,17 +1,17 @@
 ---
 // Техніки ATT&CK, згруповані за етапами атаки (техніка з кількома етапами — в кожному).
-import { loadData, url, num, type Technique } from '../lib/data';
+import { pageCtx, num, type Technique } from '../lib/data';
 
 interface Props { techniques: Technique[] }
-const d = await loadData();
+const { d, url } = await pageCtx(Astro.url);
 const groups = d.byTactic(Astro.props.techniques);
 const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
 ---
 {groups.map((g) => (
   <div class="group">
-    <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.ua} · {g.tactic.id}</a>
+    <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.title} · {g.tactic.id}</a>
     <ul>{g.techniques.map((t) => (
-      <li><a href={url.technique(t.id)}><span class="id-attack">{t.id}</span> {t.data.ua}</a></li>
+      <li><a href={url.technique(t.id)}><span class="id-attack">{t.id}</span> {t.data.title}</a></li>
     ))}</ul>
   </div>
 ))}

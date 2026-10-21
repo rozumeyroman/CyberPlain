@@ -1,0 +1,3 @@
+{
+  "simple": "Assesses the vulnerabilities of a system as a whole: not just a list of holes in each component, but how they combine, taking into account settings and dependencies."
+}

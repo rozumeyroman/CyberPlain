@@ -1,0 +1,3 @@
+{
+  "simple": "Finds vulnerabilities across the whole infrastructure and helps close them. Scans the network and computers with agents, checks configurations against policies, sets priorities based on real-world threats and asset importance, and manages remediation with deadlines and reports. Also shows the whole attack surface — a single list of assets, resources visible from the internet, and the connections between them — and includes automation (SOAR)."
+}

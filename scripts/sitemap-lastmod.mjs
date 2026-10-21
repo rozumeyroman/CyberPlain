@@ -1,5 +1,6 @@
 // lastmod для sitemap: дата останнього коміту файлів, з яких збирається сторінка
 // (власний JSON + пов'язані: техніки етапу, класи продукту тощо). Без git — без lastmod.
+// Англійська сторінка /en/x/ має ті самі файли + їхні переклади з content/en/ (і NOTICE.en.md для /en/licenses/).
 import { execFileSync } from 'node:child_process';
 import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
@@ -8,7 +9,7 @@ function gitDates() {
   const dates = new Map(); // файл → найновіша дата коміту
   let out;
   try {
-    out = execFileSync('git', ['log', '--format=@%cI', '--name-only', '--', 'content', 'data/mitre', 'NOTICE.md', 'src/pages/licenses.astro'], {
+    out = execFileSync('git', ['log', '--format=@%cI', '--name-only', '--', 'content', 'content/en', 'data/mitre', 'NOTICE.md', 'NOTICE.en.md', ':(literal)src/pages/[...lang]/licenses.astro'], {
       encoding: 'utf8',
       maxBuffer: 64 * 1024 * 1024,
     });
@@ -46,9 +47,12 @@ export function buildLastmod() {
   const d3Data = 'data/mitre/d3fend.json';
 
   const map = new Map(); // шлях сторінки → дата
-  const set = (path, list) => {
+  const overlay = (f) => f.replace(/^content\//, 'content/en/'); // content/attack/… → content/en/attack/…
+  const set = (path, list, enExtra = []) => {
     const v = d(list);
     if (v) map.set(path, v);
+    const en = d([...list, ...list.filter((f) => f.startsWith('content/')).map(overlay), ...enExtra]);
+    if (en) map.set(`/en${path}`, en);
   };
 
   for (const t of tactics)
@@ -73,6 +77,6 @@ export function buildLastmod() {
   set('/solutions/', [...files(classes), ...files(products), ...files(techniques)]);
   set('/vendors/', files(products));
   set('/', [...files(tactics), ...files(classes)]);
-  set('/licenses/', ['NOTICE.md', 'src/pages/licenses.astro']);
+  set('/licenses/', ['NOTICE.md', 'src/pages/[...lang]/licenses.astro'], ['NOTICE.en.md']);
   return map;
 }

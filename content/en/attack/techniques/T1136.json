@@ -1,0 +1,9 @@
+{
+  "simple": "Creates a new account — local, domain or cloud — so it has its own way in even after passwords are changed.",
+  "analogy": "Adds itself to the residents’ list and gets its own key.",
+  "quote": "A user called “support” appeared in the domain that nobody had created",
+  "questions": [
+    "Would you notice a new account created outside the normal process?",
+    "Who reviews the list of administrators?"
+  ]
+}

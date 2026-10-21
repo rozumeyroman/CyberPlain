@@ -1,0 +1,3 @@
+{
+  "simple": "Checks a file’s content for known malicious patterns without running it."
+}

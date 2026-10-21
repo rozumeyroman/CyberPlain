@@ -1,0 +1,8 @@
+{
+  "simple": "Uses the Windows background file-transfer service (BITS) to quietly download and run its own programs.",
+  "analogy": "Orders a package in your name through a delivery service you trust.",
+  "quote": "Windows itself downloaded the file",
+  "questions": [
+    "Do you monitor unusual downloads made by system services?"
+  ]
+}

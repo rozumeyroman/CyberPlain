@@ -1,0 +1,8 @@
+{
+  "simple": "Lists which cloud services the company uses — to find out what to attack next.",
+  "analogy": "Studies the signs on every office in a business center.",
+  "quote": "Someone browsed all our cloud services from a stolen account",
+  "questions": [
+    "Would you notice unusual account activity in the cloud?"
+  ]
+}

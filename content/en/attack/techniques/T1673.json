@@ -1,0 +1,9 @@
+{
+  "simple": "Lists the virtual machines on a hypervisor — often so it can later shut them all down and encrypt them.",
+  "analogy": "Writes down every apartment in the building before turning off the lights.",
+  "quote": "Before the encryption, someone was browsing the list of machines on ESXi",
+  "questions": [
+    "Who has access to vCenter and ESXi?",
+    "Do their logs go into monitoring?"
+  ]
+}

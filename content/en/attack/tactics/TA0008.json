@@ -1,0 +1,12 @@
+{
+  "short": "Moves from one computer to others, closer to what’s valuable.",
+  "analogy": "From the hallway, goes through every room.",
+  "solutionNotes": {
+    "ueba": "Spots unusual connections: an accountant doesn’t log in to a domain controller.",
+    "ndr": "Sees movement between computers in network traffic.",
+    "siem": "Builds the chain of logins from machine to machine.",
+    "pam": "Isolates administrative access so a stolen password can’t be used to walk everywhere.",
+    "edr": "Spots remote command execution and tool transfers.",
+    "deception": "Traps in the network go off as soon as the attacker goes “deeper.”"
+  }
+}

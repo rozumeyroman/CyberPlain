@@ -1,0 +1,9 @@
+{
+  "simple": "Having obtained a password, sends MFA requests again and again until a tired person taps “Approve”.",
+  "analogy": "Keeps ringing the doorbell until the owner opens up just to make it stop.",
+  "quote": "An employee got 30 approval requests in the middle of the night",
+  "questions": [
+    "Does your MFA require entering a code from the screen, not just tapping “Yes”?",
+    "Would you notice a series of denied MFA requests?"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Collects files from shared network folders and file servers.",
+  "analogy": "Pulls folders out of the shared archive.",
+  "quote": "Gigabytes were copied from the file server overnight",
+  "questions": [
+    "Would you notice mass copying from the file server?",
+    "Does everyone have access only to the folders they need?"
+  ]
+}

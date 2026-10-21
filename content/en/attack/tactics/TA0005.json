@@ -1,0 +1,11 @@
+{
+  "short": "Disguises its actions as ordinary work so nobody notices.",
+  "analogy": "Puts on a janitor’s uniform — nobody pays attention to a janitor.",
+  "solutionNotes": {
+    "edr": "Recognizes disguises by behavior: what a program does, not what it’s called.",
+    "siem": "Keeps logs separately — wiping traces on the server is no longer enough.",
+    "email": "Opens up archives, documents and attachments where malicious code is hidden.",
+    "dfir": "Reconstructs the picture of the attack even after the traces were wiped.",
+    "cnapp": "Sees resources in every cloud region, even unused ones."
+  }
+}

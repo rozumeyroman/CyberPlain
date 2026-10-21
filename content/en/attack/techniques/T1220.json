@@ -1,0 +1,8 @@
+{
+  "simple": "Hides code in XSL files and runs it through the system’s XML processing tools.",
+  "analogy": "Writes instructions in invisible ink inside an ordinary document.",
+  "quote": "The malicious code was inside a stylesheet file",
+  "questions": [
+    "Does your protection watch for unusual launches of system utilities?"
+  ]
+}

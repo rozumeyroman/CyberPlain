@@ -1,0 +1,8 @@
+{
+  "simple": "Finds out IP addresses, routes, DNS servers and whether there is internet access — to understand where it has landed.",
+  "analogy": "Studies the evacuation plan on the wall to get oriented in the building.",
+  "quote": "ipconfig and route were run on the computer",
+  "questions": [
+    "Can you see who runs network commands on ordinary computers?"
+  ]
+}

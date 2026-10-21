@@ -1,0 +1,3 @@
+{
+  "simple": "Access to a web server goes through an intermediate server (proxy, WAF) that filters out unwanted requests."
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Buys, steals, or downloads ready-made malware, tools, exploits, certificates — and even access to AI models.",
+  "analogy": "A thief buys a ready-made set of lockpicks on the black market.",
+  "quote": "They used a well-known pentest tool that anyone can download for free",
+  "questions": [
+    "How quickly do you close vulnerabilities that already have public exploits?",
+    "Does your protection recognize popular hacking tools?"
+  ]
+}

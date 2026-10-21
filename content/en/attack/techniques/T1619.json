@@ -1,0 +1,8 @@
+{
+  "simple": "Lists files in cloud storage (S3, Blob) to find valuable data to steal.",
+  "analogy": "Looks inside every box in the warehouse.",
+  "quote": "Someone browsed the contents of all our buckets",
+  "questions": [
+    "Is your cloud storage protected from public access?"
+  ]
+}

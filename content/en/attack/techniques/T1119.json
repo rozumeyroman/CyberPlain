@@ -1,0 +1,8 @@
+{
+  "simple": "Uses scripts to automatically search for and collect files of certain types or containing certain words.",
+  "analogy": "Sends in a robot vacuum that picks up everything valuable.",
+  "quote": "They found every file with the word “contract” in minutes",
+  "questions": [
+    "Would you notice a single process reading files in bulk?"
+  ]
+}

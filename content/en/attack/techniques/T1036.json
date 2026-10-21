@@ -1,0 +1,8 @@
+{
+  "simple": "Passes off its files, processes and accounts as legitimate ones: similar names, familiar folders, fake extensions.",
+  "analogy": "Puts on a security guard’s uniform and walks the hallways with no questions asked.",
+  "quote": "The file was named svchost.exe, but it was in the wrong folder",
+  "questions": [
+    "Would your protection notice a system program launched from an unusual location?"
+  ]
+}

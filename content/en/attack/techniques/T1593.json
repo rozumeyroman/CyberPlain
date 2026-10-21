@@ -1,0 +1,9 @@
+{
+  "simple": "Searches social networks, search engines, and GitHub — passwords, keys, and diagrams often end up there by accident.",
+  "analogy": "Scrolls through residents’ social media: a vacation photo means nobody is home.",
+  "quote": "A developer posted code with a password on GitHub",
+  "questions": [
+    "Do you scan public repositories for secrets?",
+    "Do you have social media rules for employees?"
+  ]
+}

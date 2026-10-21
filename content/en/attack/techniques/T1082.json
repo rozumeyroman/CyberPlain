@@ -1,0 +1,8 @@
+{
+  "simple": "Collects information about the operating system, its version, hardware and updates — to choose what to run next.",
+  "analogy": "Looks over the door to figure out what kind of lock it has.",
+  "quote": "The first command after the infection was systeminfo",
+  "questions": [
+    "Does your protection watch for the typical sequence of actions after an infection?"
+  ]
+}

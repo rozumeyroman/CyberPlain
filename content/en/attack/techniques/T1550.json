@@ -1,0 +1,9 @@
+{
+  "simple": "Signs into other systems not with a password, but with a stolen hash, Kerberos ticket, token or cookie.",
+  "analogy": "Doesn’t know the code, but has a mold of the key.",
+  "quote": "Pass-the-hash — and the attacker is on all the servers",
+  "questions": [
+    "Are different local administrator passwords used (LAPS)?",
+    "Would you notice an unusual administrator login?"
+  ]
+}

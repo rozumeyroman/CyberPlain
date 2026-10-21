@@ -1,0 +1,8 @@
+{
+  "simple": "Intercepts one-time codes or MFA tokens — through malware, a fake page or a SIM card reissue.",
+  "analogy": "Gets not only the key but the alarm code too.",
+  "quote": "The account was hacked even with MFA",
+  "questions": [
+    "Which MFA methods do you use — SMS or phishing-resistant keys?"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Bypasses mechanisms that ask permission for administrator actions (UAC, sudo) and quietly gains higher privileges.",
+  "analogy": "Walks past the guard while he’s distracted by his phone.",
+  "quote": "The UAC confirmation window never appeared",
+  "questions": [
+    "Do users work with local administrator rights?",
+    "Do you monitor for UAC bypass?"
+  ]
+}

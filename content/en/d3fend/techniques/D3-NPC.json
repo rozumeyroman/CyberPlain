@@ -1,0 +1,3 @@
+{
+  "simple": "A program checks that a memory pointer isn’t empty, which prevents crashes that attackers take advantage of."
+}

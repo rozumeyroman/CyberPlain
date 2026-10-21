@@ -1,0 +1,8 @@
+{
+  "simple": "Tricks the victim’s computer into automatically “introducing itself” to the attacker’s server — and captures the password hash.",
+  "analogy": "Sets up a fake security checkpoint where everyone shows their badge on their own.",
+  "quote": "The document reached out to someone else’s server when we opened it",
+  "questions": [
+    "Do you block outbound SMB connections to the internet?"
+  ]
+}

@@ -1,0 +1,3 @@
+{
+  "simple": "Connects to a server on its own, downloads its certificate, and checks it."
+}

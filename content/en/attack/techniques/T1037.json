@@ -1,0 +1,8 @@
+{
+  "simple": "Adds its own commands to scripts that run automatically when a user logs in or the system starts.",
+  "analogy": "Adds its own item to the homeowner’s morning routine.",
+  "quote": "A malicious script ran every time someone logged in",
+  "questions": [
+    "Who can change logon scripts in the domain?"
+  ]
+}

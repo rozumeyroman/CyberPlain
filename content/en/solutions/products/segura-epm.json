@@ -1,0 +1,3 @@
+{
+  "simple": "Removes standing local administrator rights on Windows and Linux computers: allowed programs and administrative actions receive elevated rights by rule and temporarily, and sudo commands on Linux are controlled by detailed policies. Records Windows sessions and sudo actions for audit; integrates with Active Directory and SIEM. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "Passes commands and data through flash drives — to control computers that are cut off from the internet.",
+  "analogy": "Passes notes via a courier who walks between buildings.",
+  "quote": "The isolated network got infected through a flash drive",
+  "questions": [
+    "Do you control flash drives in isolated networks?"
+  ]
+}

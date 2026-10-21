@@ -1,0 +1,3 @@
+{
+  "simple": "Restricts traffic from the internal network to the internet, so malware can’t contact its “master” and upload data."
+}

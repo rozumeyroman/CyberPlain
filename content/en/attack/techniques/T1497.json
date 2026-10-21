@@ -1,0 +1,8 @@
+{
+  "simple": "Checks whether it is running in an analyst’s sandbox or virtual machine — and if so, pretends to be harmless.",
+  "analogy": "A thief notices a camera in the room and behaves like an ordinary guest.",
+  "quote": "The sandbox said the file was safe",
+  "questions": [
+    "Do you rely only on your email sandbox?"
+  ]
+}

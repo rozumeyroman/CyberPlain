@@ -1,0 +1,8 @@
+{
+  "simple": "Uses the mechanisms programs use to talk to each other (COM, DDE) to make a legitimate program run its code.",
+  "analogy": "Passes a note through the secretary — and it gets carried out because it came “from one of us.”",
+  "quote": "A Word document ran a command without any macros",
+  "questions": [
+    "Are legacy mechanisms like DDE turned off in Office?"
+  ]
+}

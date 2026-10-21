@@ -1,0 +1,9 @@
+{
+  "simple": "Runs commands inside containers through their administration tools (Docker, Kubernetes).",
+  "analogy": "Gets hold of a remote that controls every room at once.",
+  "quote": "Someone ran commands in our containers",
+  "questions": [
+    "Who has access to the Kubernetes and Docker APIs?",
+    "Do you monitor commands run inside containers?"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "simple": "Uses prompt injection to make corporate AI assistants send data out through their own permitted tools.",
+  "analogy": "Talks a trusted courier into taking the documents to the wrong place.",
+  "quote": "The AI assistant sent a document to an external address on its own",
+  "questions": [
+    "What actions can your AI agent take without human confirmation?",
+    "Are its actions logged?"
+  ]
+}

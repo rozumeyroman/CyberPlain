@@ -1,0 +1,8 @@
+{
+  "simple": "Turns off recording of command history in the terminal so no trace is left of what it did.",
+  "analogy": "Wears shoe covers so as not to leave footprints.",
+  "quote": "The command history on the server is empty",
+  "questions": [
+    "Are commands on servers recorded centrally, not just locally?"
+  ]
+}

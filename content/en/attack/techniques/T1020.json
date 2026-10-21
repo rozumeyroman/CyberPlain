@@ -1,0 +1,8 @@
+{
+  "simple": "Scripts send the collected data out on their own, as soon as it appears.",
+  "analogy": "A conveyor belt carries the goods out of the warehouse by itself.",
+  "quote": "New files from the folder were immediately sent somewhere",
+  "questions": [
+    "Would you notice regular data transfers to an unknown address?"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "short": "Carries the gathered data out of the company.",
+  "analogy": "Carries the bag out of the house.",
+  "solutionNotes": {
+    "dlp": "Doesn’t let confidential data be quietly sent outside.",
+    "ndr": "Spots unusually large or regular data transfers.",
+    "ngfw": "Limits where and over which protocols data can be sent.",
+    "cnapp": "Spots cloud resources that were shared with a foreign account."
+  }
+}

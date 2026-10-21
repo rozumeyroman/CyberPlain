@@ -1,0 +1,8 @@
+{
+  "simple": "Constantly changes the addresses and domains of its command server — generates them with an algorithm or quickly rotates IPs.",
+  "analogy": "Moves to a new apartment every night.",
+  "quote": "A computer was contacting hundreds of strange domains",
+  "questions": [
+    "Do you analyze DNS requests for signs of generated domains?"
+  ]
+}

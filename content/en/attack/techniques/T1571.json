@@ -1,0 +1,8 @@
+{
+  "simple": "Uses unusual ports to communicate, to get around filters set up for standard ones.",
+  "analogy": "Comes in not through the main entrance, but through the loading dock.",
+  "quote": "HTTPS on port 8443 to an unknown server",
+  "questions": [
+    "Is outbound traffic allowed on any port?"
+  ]
+}

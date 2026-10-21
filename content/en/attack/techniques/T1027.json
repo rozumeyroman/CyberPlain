@@ -1,0 +1,9 @@
+{
+  "simple": "Encrypts, packs, encodes or splits up its code so antivirus and analysts won’t recognize the malware.",
+  "analogy": "Hides the lock pick in a cookie jar.",
+  "quote": "The attachment was in a password-protected archive — email security didn’t check it",
+  "questions": [
+    "What does your email security do with password-protected archives?",
+    "Does your protection assess behavior, not just what a file looks like?"
+  ]
+}

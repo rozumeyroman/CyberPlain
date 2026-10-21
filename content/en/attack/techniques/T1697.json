@@ -1,0 +1,8 @@
+{
+  "simple": "Steals special app passwords for old applications and devices that sign in without MFA — and so bypasses the second factor.",
+  "analogy": "Uses a back entrance where no guard stands.",
+  "quote": "They signed in through a mail client that doesn’t support MFA",
+  "questions": [
+    "Do you allow app passwords and legacy sign-in protocols?"
+  ]
+}

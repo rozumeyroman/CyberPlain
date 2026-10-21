@@ -1,0 +1,9 @@
+{
+  "simple": "Runs commands and scripts through PowerShell, cmd, bash, Python and other interpreters already present on the system.",
+  "analogy": "Uses the tools from the homeowner’s own tool shed — brings nothing suspicious.",
+  "quote": "The attack went through PowerShell",
+  "questions": [
+    "Is PowerShell restricted for ordinary users?",
+    "Are the commands run on servers logged?"
+  ]
+}

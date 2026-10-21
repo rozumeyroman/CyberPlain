@@ -1,0 +1,3 @@
+{
+  "simple": "Checks that a file’s service information (lengths, checksums) matches its content."
+}

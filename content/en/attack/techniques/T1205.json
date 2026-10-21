@@ -1,0 +1,8 @@
+{
+  "simple": "Hides a “back door” that opens only on a secret signal — a particular sequence of network packets.",
+  "analogy": "A door that opens only to a secret knock.",
+  "quote": "The port showed up as open for only a few seconds",
+  "questions": [
+    "Do you analyze traffic for unusual connection sequences?"
+  ]
+}

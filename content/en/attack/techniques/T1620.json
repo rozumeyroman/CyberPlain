@@ -1,0 +1,8 @@
+{
+  "simple": "Loads malicious code straight into memory without writing files to disk — leaving nothing for antivirus to scan.",
+  "analogy": "A thief with no belongings — nothing in the pockets, and yet already inside the house.",
+  "quote": "They found nothing on the disk",
+  "questions": [
+    "Does your protection analyze memory, not just files?"
+  ]
+}

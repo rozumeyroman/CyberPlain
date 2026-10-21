@@ -1,0 +1,8 @@
+{
+  "simple": "Overwrites device firmware so they stop booting — sometimes the only fix is replacing the hardware.",
+  "analogy": "Breaks the foundation, not the furniture.",
+  "quote": "The servers stopped turning on after the attack",
+  "questions": [
+    "Is firmware kept updated and protected from tampering?"
+  ]
+}

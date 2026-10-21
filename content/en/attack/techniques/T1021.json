@@ -1,0 +1,9 @@
+{
+  "simple": "Logs in to other computers through RDP, SSH, admin shares, WinRM and cloud consoles — using stolen passwords.",
+  "analogy": "Walks from office to office with a ring of stolen keys.",
+  "quote": "Someone connected to servers over RDP from the accountant’s computer",
+  "questions": [
+    "Is it limited who can connect remotely, and to what?",
+    "Would you notice unusual connection paths?"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "simple": "The program runs only on its “own” target — in a specific domain, country or computer — and stays silent in analysts’ sandboxes.",
+  "analogy": "A bomb that goes off only in one particular apartment.",
+  "quote": "In the sandbox the file did nothing",
+  "questions": [
+    "Is your sandbox backed up by protection on the computers themselves?"
+  ]
+}
