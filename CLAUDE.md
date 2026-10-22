@@ -278,7 +278,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, Barracuda WAF (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -310,6 +310,13 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Barracuda Web Application Firewall | WAF, DAST (Vulnerability Remediation Service) |
 | Barracuda WAF-as-a-Service Advanced | WAF, захист від DDoS, DAST |
 | Barracuda WAF-as-a-Service Premium | + доступ без VPN (CloudGen Access) |
+| F5 Distributed Cloud Services Essentials / Enterprise | WAF, захист від DDoS, DAST, EASM (класи однакові) |
+| F5 WAF for BIG-IP | WAF |
+| Imperva Cloud WAF, Imperva WAF Gateway | WAF |
+| FortiWeb Standard | WAF, DAST (вбудований сканер) |
+| FortiWeb Advanced / Enterprise | + пісочниця (FortiWeb Cloud Sandbox) |
+| FortiAppSec Cloud WAF Standard | WAF, захист від DDoS |
+| FortiAppSec Cloud WAF Advanced / Enterprise | + DAST, пісочниця |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -364,6 +371,26 @@ Unmetered DDoS (L3–7) — `ddos` в обох планах. Premium: ZTNA (лі
 Protection (поведінка входу у вебзастосунок) — не `ueba`, лише в тексті (рішення автора). Data Leak Prevention (маскування карток у
 відповідях сайту) — не `dlp`; IP Reputation / Active Threat Intelligence — не `ti`; Client-Side Protection (CSP/SRI), CDN,
 DNS Security, AAA (SAML, OIDC, JWT, MFA через RADIUS) — лише в тексті. `waf` доповнено D3-ITF і D3-CSPP.
+
+F5 (https://www.f5.com/products/waf): родина «F5 WAF» — WAF for BIG-IP (ex-Advanced WAF; апарат/VM/хмара), WAF for Distributed Cloud
+(SaaS), WAF for NGINX (ex-NGINX App Protect; не додано). Distributed Cloud — 2 продукти за пакетами Essentials / Enterprise
+(https://www.f5.com/products/get-f5/compare): «External attack surface management» — `easm`, DAST — `dast`, L3–4 і L7 DDoS — `ddos`.
+Add-on (Advanced Bot Protection, Routed DDoS, API discovery в Essentials) не рахуємо. Enterprise: malware detection — не `sandbox`,
+Malicious User Detection — не `ueba`, Sensitive Data Masking — не `dlp`, Client-side protection — лише в тексті. BIG-IP: імпорт
+результатів DAST — не `dast`; Behavioral DoS — у межах `waf`; IP Intelligence / Threat Campaigns — підписки, не `ti`.
+
+Imperva (https://www.imperva.com/products/web-application-firewall-waf/): актуальні назви — Cloud WAF (SaaS), WAF Gateway (апарат/VM;
+ex-SecureSphere), Elastic WAF (Kubernetes; не додано). Продаються в планах FlexProtect Pro / Plus / Premier (https://www.imperva.com/products/pricing/),
+які змішують захист застосунків і даних, — тому продукти за WAF, а не за планами. DDoS Protection for Websites — add-on (у Premier
+включено), Advanced Bot Protection, Client-Side Protection, RASP — лише Premier: `ddos` не ставимо, решта — лише в тексті.
+
+Fortinet: FortiWeb Cloud перейменовано на **FortiAppSec Cloud** (з 1.12.2024; WAF + ABP + GSLB + Threat Analytics). Продукти за
+ордеринг-гайдами: FortiWeb (апарат/VM, https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiweb.pdf) — бандли
+Standard / Advanced / Enterprise; FortiAppSec Cloud WAF (https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortiappsec.pdf) —
+плани Standard / Advanced / Enterprise. Built-in Vulnerability Scanner FortiWeb і «DAST Scanning» FortiAppSec (з Advanced) — `dast`;
+FortiWeb Cloud Sandbox / Sandboxing for File Uploads (з Advanced) — `sandbox`; L3–4 і L7 DDoS FortiAppSec (усі плани) — `ddos`
+(у FortiWeb — лише DoS застосунку, у межах `waf`). DLP FortiWeb Enterprise — у вебвідповідях, не `dlp` (як Barracuda); IP reputation — не `ti`;
+Credential Stuffing Defense, ABP, Client-Side Security, Threat Analytics, SOCaaS — лише в тексті.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
