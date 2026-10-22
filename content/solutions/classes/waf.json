@@ -5,6 +5,8 @@
   "d3fend": [
     "D3-PBWSAM",
     "D3-WSAA",
-    "D3-APCA"
+    "D3-APCA",
+    "D3-ITF",
+    "D3-CSPP"
   ]
 }

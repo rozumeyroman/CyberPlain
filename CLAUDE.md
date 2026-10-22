@@ -278,7 +278,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, Barracuda WAF (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -307,6 +307,9 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Silverfort Plus | + NHI (сервісні облікові записи) |
 | Silverfort Advanced | + ITDR (разом з Authentication Firewall) |
 | Silverfort Enterprise | + JIT (Privileged Access Security); Access Intelligence — лише в тексті |
+| Barracuda Web Application Firewall | WAF, DAST (Vulnerability Remediation Service) |
+| Barracuda WAF-as-a-Service Advanced | WAF, захист від DDoS, DAST |
+| Barracuda WAF-as-a-Service Premium | + UEBA (Privileged Account Protection), доступ без VPN (CloudGen Access) |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -351,6 +354,16 @@ Quantum Spark (https://www.checkpoint.com/downloads/products/quantum-spark-2500-
 Dell PowerProtect Cyber Recovery (сторінка продукту на dell.com; огляд Alesta — лише як вторинне джерело): редакцій
 немає, один продукт — `backup` + `cyber-recovery` (клас заведено під нього: ізольоване незмінне сховище з перевіркою
 цілісності). Cyber Detect (CyberSense) — частина рішення на сторінці Dell → D3-FCOA і T1565 у класі `cyber-recovery`.
+
+Barracuda WAF (даташит https://assets.barracuda.com/assets/docs/dms/Barracuda_Web_Application_Firewall_DS_US_1-8_pdf.pdf):
+апаратний/віртуальний пристрій — один продукт, моделі (360–1060) лише в тексті. Add-on (Advanced Bot Protection, Active DDoS
+Prevention, Advanced Threat Protection) класом не рахуємо, тому без `ddos` (DDoS застосунку — у межах `waf`) і без `ueba`.
+WAF-as-a-Service (https://www.barracuda.com/products/application-protection/waf-as-a-service/plans) — 2 продукти за планами
+Advanced / Premium. Vulnerability Remediation Service (є в усіх; сканує сайти й закриває знайдене правилами WAF) — `dast`.
+Unmetered DDoS (L3–7) — `ddos` в обох планах. Premium: Privileged Account Protection (поведінка входу, захоплення акаунта) —
+`ueba` (як ATO в Harmony Email); ZTNA (ліцензії CloudGen Access) — `vpnless`. Data Leak Prevention (маскування карток у
+відповідях сайту) — не `dlp`; IP Reputation / Active Threat Intelligence — не `ti`; Client-Side Protection (CSP/SRI), CDN,
+DNS Security, AAA (SAML, OIDC, JWT, MFA через RADIUS) — лише в тексті. `waf` доповнено D3-ITF і D3-CSPP.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
