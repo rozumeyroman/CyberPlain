@@ -309,7 +309,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Silverfort Enterprise | + JIT (Privileged Access Security); Access Intelligence — лише в тексті |
 | Barracuda Web Application Firewall | WAF, DAST (Vulnerability Remediation Service) |
 | Barracuda WAF-as-a-Service Advanced | WAF, захист від DDoS, DAST |
-| Barracuda WAF-as-a-Service Premium | + UEBA (Privileged Account Protection), доступ без VPN (CloudGen Access) |
+| Barracuda WAF-as-a-Service Premium | + доступ без VPN (CloudGen Access) |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -360,8 +360,8 @@ Barracuda WAF (даташит https://assets.barracuda.com/assets/docs/dms/Barra
 Prevention, Advanced Threat Protection) класом не рахуємо, тому без `ddos` (DDoS застосунку — у межах `waf`) і без `ueba`.
 WAF-as-a-Service (https://www.barracuda.com/products/application-protection/waf-as-a-service/plans) — 2 продукти за планами
 Advanced / Premium. Vulnerability Remediation Service (є в усіх; сканує сайти й закриває знайдене правилами WAF) — `dast`.
-Unmetered DDoS (L3–7) — `ddos` в обох планах. Premium: Privileged Account Protection (поведінка входу, захоплення акаунта) —
-`ueba` (як ATO в Harmony Email); ZTNA (ліцензії CloudGen Access) — `vpnless`. Data Leak Prevention (маскування карток у
+Unmetered DDoS (L3–7) — `ddos` в обох планах. Premium: ZTNA (ліцензії CloudGen Access) — `vpnless`; Privileged Account
+Protection (поведінка входу у вебзастосунок) — не `ueba`, лише в тексті (рішення автора). Data Leak Prevention (маскування карток у
 відповідях сайту) — не `dlp`; IP Reputation / Active Threat Intelligence — не `ti`; Client-Side Protection (CSP/SRI), CDN,
 DNS Security, AAA (SAML, OIDC, JWT, MFA через RADIUS) — лише в тексті. `waf` доповнено D3-ITF і D3-CSPP.
 
