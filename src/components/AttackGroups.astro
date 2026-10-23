@@ -1,17 +1,33 @@
 ---
-// Техніки ATT&CK, згруповані за етапами атаки (техніка з кількома етапами — в кожному).
+// Техніки ATT&CK, згруповані за етапами атаки. Техніка з кількома етапами — один раз, у першому з них;
+// решта етапів — номерами поруч («також 05 · 06»).
 import { pageCtx, num, type Technique } from '../lib/data';
 
 interface Props { techniques: Technique[] }
-const { d, url } = await pageCtx(Astro.url);
-const groups = d.byTactic(Astro.props.techniques);
+const { d, url, t: ui } = await pageCtx(Astro.url);
 const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
+const all = d.byTactic(Astro.props.techniques);
+const stagesOf = new Map<string, typeof all[number]['tactic'][]>();
+for (const g of all) for (const t of g.techniques) stagesOf.set(t.id, [...(stagesOf.get(t.id) ?? []), g.tactic]);
+const seen = new Set<string>();
+const groups = all
+  .map((g) => ({ ...g, techniques: g.techniques.filter((t) => !seen.has(t.id) && !!seen.add(t.id)) }))
+  .filter((g) => g.techniques.length > 0);
+const also = (id: string) => stagesOf.get(id)!.slice(1);
 ---
 {groups.map((g) => (
   <div class="group">
     <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.title} · {g.tactic.id}</a>
     <ul>{g.techniques.map((t) => (
-      <li><a href={url.technique(t.id)}><span class="id-attack">{t.id}</span> {t.data.title}</a></li>
+      <li><a href={url.technique(t.id)}>
+        <span class="id-attack">{t.id}</span>
+        <span>{t.data.title}{also(t.id).length > 0 && (
+          <span class="mono also" title={`${ui.alsoInAria}: ${also(t.id).map((x) => `${num(order(x.id))} ${x.data.title}`).join(', ')}`}>
+            <span class="sr-only">{ui.alsoInAria}: {also(t.id).map((x) => x.data.title).join(', ')}</span>
+            <span aria-hidden="true">{ui.alsoIn} {also(t.id).map((x) => num(order(x.id))).join(' · ')}</span>
+          </span>
+        )}</span>
+      </a></li>
     ))}</ul>
   </div>
 ))}
@@ -23,4 +39,5 @@ const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
   li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; line-height: 1.35; }
   li a:hover { color: var(--text); }
   .id-attack { font-size: 12px; min-width: 52px; flex: none; }
+  .also { display: block; margin-top: 2px; font-size: 11px; color: var(--muted-2); }
 </style>

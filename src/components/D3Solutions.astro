@@ -26,7 +26,7 @@ const { t, url, pl } = await pageCtx(Astro.url);
                 <span class="ids">{s.techniques.map((x) => <a href={url.d3fendTechnique(x.id)} title={x.title}>{x.id}</a>)}</span>
               )}
               {s.techniques.length > 3 && (
-                <details class="more"><summary class="mono">{pl(s.techniques.length, t.n.techniques)}</summary>
+                <details class="more"><summary class="act">{pl(s.techniques.length, t.n.techniques)}</summary>
                   <span class="ids">{s.techniques.map((x) => <a href={url.d3fendTechnique(x.id)} title={x.title}>{x.id}</a>)}</span>
                 </details>
               )}

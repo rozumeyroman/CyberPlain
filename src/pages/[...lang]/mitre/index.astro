@@ -65,7 +65,7 @@ const capCut = intro.caveat.indexOf('. ') + 1;
             <span class="tc-top"><span class="num">{c.num}</span><span class="mono id">{c.id}</span></span>
             <span class="names"><span class="ua">{c.title}</span>{lang === 'uk' && <span class="en">{c.en}</span>}</span>
             <span class="short">{c.short}</span>
-            <span class="mono go">{t.mitre.go}</span>
+            <span class="act go">{t.mitre.go}</span>
           </a>
         </li>
       ))}
@@ -141,7 +141,6 @@ const capCut = intro.caveat.indexOf('. ') + 1;
   .ua { font-size: 17px; font-weight: 600; line-height: 1.25; }
   .en { font-size: 12px; color: var(--muted-2); }
   .short { font-size: 14px; line-height: 1.5; color: var(--text-2); flex: 1; }
-  .go { font-size: 11px; color: var(--defense); }
 
   .tc::after { position: absolute; font: 500 16px/1 var(--font-mono); color: var(--defense); pointer-events: none; }
   .go-right::after, .go-left::after, .go-down::after { content: '↓'; left: 50%; bottom: -36px; height: 36px; line-height: 36px; transform: translateX(-50%); }

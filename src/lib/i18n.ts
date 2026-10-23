@@ -22,6 +22,12 @@ export const plural = (lang: Lang, n: number, forms: readonly string[]) => {
   return `${n} ${d === 1 && h !== 11 ? forms[0] : d >= 2 && d <= 4 && (h < 12 || h > 14) ? forms[1] : forms[2]}`;
 };
 
+// Лише слово з plural(), без числа: для підписів, де число стоїть окремо.
+const word = (lang: Lang, n: number, forms: readonly string[]) => plural(lang, n, forms).replace(/^\d+ /, '');
+
+// Кількості для статистики на головній (рахує сторінка з даних).
+export type Counts = { tactics: number; techniques: number; d3Tactics: number; classes: number; products: number };
+
 const uk = {
   htmlLang: 'uk',
   ogLocale: 'uk_UA',
@@ -38,6 +44,8 @@ const uk = {
   what: 'Що робить',
   solution: 'Рішення',
   techniques: 'Техніки',
+  alsoIn: 'також',
+  alsoInAria: 'також на етапах',
   dash: '—',
   n: {
     solutions: ['рішення', 'рішення', 'рішень'],
@@ -52,6 +60,7 @@ const uk = {
     attackOrig: 'Оригінал на attack.mitre.org ↗',
     d3fendOrig: 'Оригінал на d3fend.mitre.org ↗',
     attackId: (id: string) => `${id} на attack.mitre.org ↗`,
+    short: 'Оригінал ↗',
     d3fendId: (id: string) => `${id} на d3fend.mitre.org ↗`,
   },
   tactic: {
@@ -76,6 +85,7 @@ const uk = {
     subs: 'Різновиди',
     extAria: 'на attack.mitre.org',
     ask: 'Що запитати замовника',
+    askHint: 'Позначайте питання під час розмови — позначки не зберігаються.',
     sols: 'Чим захиститись',
     noSols: 'Рішення для цієї техніки готуються.',
     thWhat: 'Що це',
@@ -162,11 +172,12 @@ const uk = {
     sub: 'Для тих, хто щодня працює з людьми, а не з логами фаєрвола. Сотні технік атак не тримають у голові навіть фахівці — вони теж користуються довідниками. Тепер такий є і у вас.',
     ctaAttack: 'Як діє зловмисник →',
     ctaDefense: 'Як від цього захиститись',
-    stats: [
-      { n: '15', label: 'Етапів атаки · ATT&CK', kind: 'attack' },
-      { n: '7', label: 'Тактик захисту · D3FEND', kind: 'defense' },
-      { n: '2', label: 'Відкриті бази знань MITRE' },
-      { n: '0 ₴', label: 'Безкоштовно для всіх' },
+    // Числа рахуються з даних під час збірки; підпис узгоджено з числом.
+    stats: (c: Counts) => [
+      { n: c.tactics, label: `${word('uk', c.tactics, ['етап', 'етапи', 'етапів'])} атаки · ATT&CK`, kind: 'attack' },
+      { n: c.techniques, label: `${word('uk', c.techniques, ['техніка', 'техніки', 'технік'])} простими словами`, kind: 'attack' },
+      { n: c.d3Tactics, label: `${word('uk', c.d3Tactics, ['тактика', 'тактики', 'тактик'])} захисту · D3FEND`, kind: 'defense' },
+      { n: c.classes, label: `${word('uk', c.classes, ['клас рішень', 'класи рішень', 'класів рішень'])} · ${plural('uk', c.products, ['продукт', 'продукти', 'продуктів'])}`, kind: 'defense' },
     ],
     howKicker: '// Як це працює',
     howTitle: 'Три кроки від терміна до рішення',
@@ -223,6 +234,8 @@ const en: typeof uk = {
   what: 'What it does',
   solution: 'Solution',
   techniques: 'Techniques',
+  alsoIn: 'also',
+  alsoInAria: 'also in stages',
   dash: '—',
   n: {
     solutions: ['solution', 'solutions'],
@@ -237,6 +250,7 @@ const en: typeof uk = {
     attackOrig: 'Original on attack.mitre.org ↗',
     d3fendOrig: 'Original on d3fend.mitre.org ↗',
     attackId: (id) => `${id} on attack.mitre.org ↗`,
+    short: 'Original ↗',
     d3fendId: (id) => `${id} on d3fend.mitre.org ↗`,
   },
   tactic: {
@@ -261,6 +275,7 @@ const en: typeof uk = {
     subs: 'Variants',
     extAria: 'on attack.mitre.org',
     ask: 'What to ask the customer',
+    askHint: 'Tick the questions off during the call; ticks are not saved.',
     sols: 'How to defend',
     noSols: 'Solutions for this technique are coming soon.',
     thWhat: 'What it is',
@@ -347,11 +362,11 @@ const en: typeof uk = {
     sub: 'For people who work with customers all day, not with firewall logs. Even specialists cannot keep hundreds of attack techniques in their heads; they use reference guides too. Now you have one.',
     ctaAttack: 'How an attacker works →',
     ctaDefense: 'How to defend against it',
-    stats: [
-      { n: '15', label: 'Attack stages · ATT&CK', kind: 'attack' },
-      { n: '7', label: 'Defense tactics · D3FEND', kind: 'defense' },
-      { n: '2', label: 'Open MITRE knowledge bases' },
-      { n: '$0', label: 'Free for everyone' },
+    stats: (c) => [
+      { n: c.tactics, label: `Attack ${word('en', c.tactics, ['stage', 'stages'])} · ATT&CK`, kind: 'attack' },
+      { n: c.techniques, label: `${word('en', c.techniques, ['technique', 'techniques'])} in plain language`, kind: 'attack' },
+      { n: c.d3Tactics, label: `Defense ${word('en', c.d3Tactics, ['tactic', 'tactics'])} · D3FEND`, kind: 'defense' },
+      { n: c.classes, label: `Solution ${word('en', c.classes, ['class', 'classes'])} · ${plural('en', c.products, ['product', 'products'])}`, kind: 'defense' },
     ],
     howKicker: '// How it works',
     howTitle: 'Three steps from jargon to solution',

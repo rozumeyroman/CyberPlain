@@ -33,7 +33,7 @@ const css = terms.map((_, i) =>
         <div class="row"><span class="mono k">{tr.term}</span><span class="v term">{x.term}</span></div>
         <div class="row"><span class="mono k">{tr.source}</span><span class:list={['v', 'mono', 'src', x.kind]}>{x.source}</span></div>
         <div class="row last"><span class="mono k">{tr.plain}</span><span class="v simple">{tr.simple[i]}</span></div>
-        <div class="orig"><a href={x.url} class="mono">{tr.orig(x.site)}</a></div>
+        <div class="orig"><a href={x.url} class="act">{tr.orig(x.site)}</a></div>
       </div>
     ))}
   </div>
@@ -67,7 +67,7 @@ const css = terms.map((_, i) =>
   .src.defense { color: var(--defense); }
   .simple { font-size: 17px; line-height: 1.55; padding-bottom: 18px; }
   .orig { padding: 12px 16px; border-top: 1px solid var(--line); }
-  .orig a { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .orig a { display: inline-flex; align-items: center; min-height: 44px; }
   @media (max-width: 640px) {
     .row { grid-template-columns: 92px 1fr; }
     .k { padding: 14px 12px; }

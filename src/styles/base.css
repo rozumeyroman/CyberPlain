@@ -59,6 +59,11 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
 .btn-s { border: 1px solid var(--line-strong); color: var(--text-2); font-weight: 500; }
 .btn-s:hover { border-color: var(--muted); color: var(--text); }
 
+/* Посилання-дія («3 продукти», «Детальніше», «Оригінал ↗»): текстовим шрифтом, а не дрібним mono-підписом,
+   щоб головні переходи були помітні. Mono UPPERCASE лишається для підписів, ID і навігації. */
+.act { font-family: var(--font); font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--defense); text-decoration: none; }
+.act:hover { color: var(--defense-hover); }
+
 .sr-only {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
@@ -75,7 +80,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
 .note-box { border: 1px solid var(--line); background: var(--surface); padding: 16px 18px; max-width: 760px; }
 .note-box .mono { display: block; font-size: 11px; margin-bottom: 6px; }
 .soon-box { border: 1px dashed var(--line-strong); padding: 24px; max-width: 760px; color: var(--muted); font-size: 15px; line-height: 1.6; }
-.soon-box a { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+.soon-box a { text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
 .id-attack { font-family: var(--font-mono); color: var(--attack); }
 .badge-pain { font-size: 12px; font-weight: 600; padding: 3px 8px; border-radius: var(--radius); background: color-mix(in srgb, var(--attack) 14%, transparent); color: var(--attack); white-space: nowrap; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -101,15 +106,22 @@ a.chip:hover { border-color: var(--defense); color: var(--text); }
 }
 
 /* Згортання без JS: секція (Fold.astro) і «ще» в рядку таблиці */
-.fold > summary { list-style: none; cursor: pointer; position: relative; padding-right: 36px; }
+.fold > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .fold > summary::-webkit-details-marker, .more > summary::-webkit-details-marker { display: none; }
-.fold > summary::after { content: '−'; position: absolute; right: 4px; top: 4px; font: 400 22px var(--font-mono); color: var(--muted); }
-.fold:not([open]) > summary::after { content: '+'; }
-.fold:not([open]) > summary .sec-title { margin-bottom: 0; }
+.fold > summary .sec-title { margin-bottom: 0; }
+/* Шеврон одразу після заголовка: ▾ відкрито, ▸ згорнуто */
+.fold > summary::after {
+  content: ''; flex: none; width: 9px; height: 9px; margin-top: -4px;
+  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg); transition: transform .15s, border-color .15s;
+}
+.fold:not([open]) > summary { margin-bottom: 0; }
+.fold:not([open]) > summary::after { transform: rotate(-45deg); margin-top: 0; }
 .fold > summary:hover .sec-title { color: var(--defense-hover); }
+.fold > summary:hover::after { border-color: var(--defense-hover); }
 .more { margin-top: 6px; }
-.more > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; font-size: 11px; color: var(--defense); }
-.more > summary::after { content: '+'; font-size: 14px; }
+.more > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; }
+.more > summary::after { content: '+'; font-size: 15px; }
 .more[open] > summary::after { content: '−'; }
 .more > summary:hover { color: var(--defense-hover); }
 .more .chips { margin-top: 4px; }

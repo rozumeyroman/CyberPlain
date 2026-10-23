@@ -7,10 +7,14 @@ import { langParams } from '../../lib/i18n';
 
 export const getStaticPaths = langParams;
 
-const { t, url } = await pageCtx(Astro.url);
+const { t, url, d } = await pageCtx(Astro.url);
 const h = t.home;
 // Назва сайту — у третьому рядку таблиці джерел.
 const sources = h.sources.map((r) => ({ ...r, by: r.by || site.name }));
+const stats = h.stats({
+  tactics: d.tactics.length, techniques: d.techniques.length, d3Tactics: d.d3fendTactics.length,
+  classes: d.classes.length, products: d.products.length,
+});
 ---
 <Base>
   <section class="hero">
@@ -32,7 +36,7 @@ const sources = h.sources.map((r) => ({ ...r, by: r.by || site.name }));
   <section class="band">
     <div class="wrap">
       <div class="grid-lines stats">
-        {h.stats.map((s) => (
+        {stats.map((s) => (
           <div class="stat"><div class:list={['num', s.kind]}>{s.n}</div><div class="mono cap">{s.label}</div></div>
         ))}
       </div>
@@ -66,7 +70,7 @@ const sources = h.sources.map((r) => ({ ...r, by: r.by || site.name }));
             <span class="kb-title">{s.title}</span>
             <span class="kb-text">{s.text}</span>
             <span class="mono chain">{s.chain}</span>
-            <span class="mono go">{h.open}</span>
+            <span class="act go">{h.open}</span>
           </a>
         ))}
       </div>
@@ -162,7 +166,7 @@ const sources = h.sources.map((r) => ({ ...r, by: r.by || site.name }));
   .kb-title { font-size: 34px; font-weight: 600; letter-spacing: -0.03em; }
   .kb-text { font-size: 16px; line-height: 1.6; color: var(--muted); max-width: 460px; }
   .chain { font-size: 11px; color: var(--muted-2); line-height: 1.9; }
-  .go { font-size: 12px; color: var(--defense); margin-top: 8px; }
+  .go { margin-top: 8px; }
   @media (min-width: 900px) {
     .kb { grid-template-columns: 1fr 1fr; }
     .kb-card { padding: 56px 40px 48px; }

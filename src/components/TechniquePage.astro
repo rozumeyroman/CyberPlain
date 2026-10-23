@@ -23,7 +23,7 @@ const d3 = d.d3fendForAttack(t);
     <span aria-current="page">{t.id}</span>
   </nav>
 
-  <div class="head"><span class="id-attack big">{t.id}</span>{lang === 'uk' && <span class="mono meta">{t.data.en}</span>}{t.data.pain && <span class="badge-pain">{ui.pain}</span>}</div>
+  <div class="head"><span class="id-attack big">{t.id}</span>{lang === 'uk' && <span class="mono meta">{t.data.en}</span>}{t.data.pain && <span class="badge-pain">{ui.pain}</span>}<a href={url.mitre(t.id)} class="act orig" aria-label={ui.source.attackId(t.id)}>{ui.source.short}</a></div>
   <h1>{t.data.title}</h1>
   {t.data.simple ? <p class="lead-text">{t.data.simple}</p> : <p class="soon-box">{ui.soon}</p>}
 
@@ -51,6 +51,7 @@ const d3 = d.d3fendForAttack(t);
   {t.data.questions.length > 0 && (
     <section class="sec" aria-labelledby="q">
       <h2 class="sec-title" id="q">{x.ask}</h2>
+      <p class="note">{x.askHint}</p>
       <div class="qs">{t.data.questions.map((q) => <label class="q"><input type="checkbox"> <span>{q}</span></label>)}</div>
     </section>
   )}
@@ -81,7 +82,7 @@ const d3 = d.d3fendForAttack(t);
       : <>
           <p class="note">{x.d3note}</p>
           {d3.length > 12
-            ? <details class="more-d3"><summary class="mono">{x.showD3(pl(d3.length, ui.n.techniques))}</summary><D3Groups techniques={d3} /></details>
+            ? <details class="more-d3"><summary class="act">{x.showD3(pl(d3.length, ui.n.techniques))}</summary><D3Groups techniques={d3} /></details>
             : <D3Groups techniques={d3} />}
         </>}
   </section>
@@ -96,14 +97,18 @@ const d3 = d.d3fendForAttack(t);
 
 <style>
   .head { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  /* Одна колонка 980px для всіх блоків, а не 700 для тексту й 1200 для таблиці */
+  .page > :global(:not(.lead-text)), .bottom > :global(*) { max-width: 980px; }
+  .page .soon-box { max-width: none; }
   .big { font-size: 20px; }
+  .orig { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; }
   .meta { font-size: 12px; color: var(--muted-2); }
   h1 { margin: 0 0 16px; font-size: clamp(32px, 7vw, 44px); line-height: 1.1; }
   .attack { color: var(--attack); }
   .muted { color: var(--muted-2); }
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; max-width: 980px; }
   .grid .note-box { max-width: none; font-size: 15px; line-height: 1.55; color: var(--text-2); }
-  .qs { display: flex; flex-direction: column; gap: 8px; max-width: 760px; }
+  .qs { display: flex; flex-direction: column; gap: 8px; }
   .q { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--line); font-size: 15px; line-height: 1.45; cursor: pointer; }
   .q input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--defense); flex: none; }
   .subs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 8px; max-width: 980px; }
@@ -113,7 +118,7 @@ const d3 = d.d3fendForAttack(t);
   .sname { display: flex; flex-direction: column; flex: 1; font-size: 15px; line-height: 1.35; }
   .sen { font-size: 12px; color: var(--muted-2); }
   .ext { font-size: 11px; color: var(--defense); }
-  .more-d3 summary { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-bottom: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); font-size: 11px; color: var(--defense); cursor: pointer; list-style: none; }
+  .more-d3 summary { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-bottom: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); cursor: pointer; list-style: none; }
   .more-d3 summary::-webkit-details-marker { display: none; }
   .more-d3 summary:hover { border-color: var(--defense); }
   .more-d3[open] summary { display: none; }

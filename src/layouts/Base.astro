@@ -107,18 +107,27 @@ const localHref = (href: string) => (href.startsWith('/') ? url.page(href) : hre
     /* Мова — у верхньому рядку поруч із логотипом, вкладки переносяться на другий */
     .brand { order: 1; }
     .langs { order: 2; margin-left: auto; margin-right: -14px; }
-    .tabs { order: 3; flex-basis: 100%; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
+    .tabs {
+      order: 3; flex-basis: 100%; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter);
+      /* Правий край затемнено: обрізана вкладка показує, що рядок прокручується */
+      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
+      mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    /* Запас у кінці, щоб остання вкладка після прокрутки виходила з-під затемнення */
+    .tabs::after { content: ''; flex: 0 0 32px; }
     .tab { min-height: 48px; }
   }
 
   .foot { border-top: 1px solid var(--line); }
-  .foot-in { padding-top: 40px; padding-bottom: 48px; display: flex; flex-direction: column; gap: 24px; }
+  .foot-in { padding-top: 32px; padding-bottom: 40px; display: flex; flex-direction: column; gap: 16px; }
   .foot-top { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
   .foot .brand { font-size: 16px; }
   .foot-links { display: flex; gap: 8px 24px; flex-wrap: wrap; font-size: 11px; }
   .foot-links a { color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
   .foot-links a:hover { color: var(--text); }
-  .notes { display: flex; flex-direction: column; gap: 8px; max-width: 920px; border-top: 1px solid var(--line); padding-top: 24px; font-size: 13px; line-height: 1.6; color: var(--muted-2); }
+  .notes { display: flex; flex-direction: column; gap: 6px; max-width: 920px; border-top: 1px solid var(--line); padding-top: 16px; font-size: 12px; line-height: 1.55; color: var(--muted-2); }
   .notes p { margin: 0; }
   .notes :global(a) { color: var(--muted); }
   .notes :global(a:hover) { color: var(--text); }

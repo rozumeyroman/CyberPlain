@@ -9,7 +9,7 @@ const { t, url, pl } = await pageCtx(Astro.url);
 <a href={url.solution(cls.id)} class="name">{cls.data.title}</a>
 {products.length > 0 && (
   <details class="more">
-    <summary class="mono">{pl(products.length, t.n.products)}</summary>
+    <summary class="act">{pl(products.length, t.n.products)}</summary>
     <div class="chips">{products.map((p) => <a href={url.solution(p.id)} class="chip">{p.data.title}</a>)}</div>
   </details>
 )}

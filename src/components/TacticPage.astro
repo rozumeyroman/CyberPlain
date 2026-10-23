@@ -20,7 +20,7 @@ const TOP = 6;
     <a href={url.page('/mitre/')}>MITRE ATT&amp;CK</a><span aria-hidden="true">/</span><span aria-current="page">{num(i + 1)} {t.data.title}</span>
   </nav>
 
-  <div class="head"><span class="num">{num(i + 1)}</span><span class="mono meta">{t.id}{lang === 'uk' && ` · ${t.data.en}`}</span></div>
+  <div class="head"><span class="num">{num(i + 1)}</span><span class="mono meta">{t.id}{lang === 'uk' && ` · ${t.data.en}`}</span><a href={url.mitre(t.id)} class="act orig" aria-label={ui.source.attackId(t.id)}>{ui.source.short}</a></div>
   <h1>{t.data.title}</h1>
   {t.data.short ? <p class="lead-text">{t.data.short}</p> : <p class="soon-box">{ui.soon}</p>}
   {t.data.analogy && <div class="note-box"><span class="mono attack">{ui.analogy}</span>{t.data.analogy}</div>}
@@ -46,7 +46,7 @@ const TOP = 6;
           </table>
         );
         // Перші TOP — найкорисніші на етапі; решта згорнута, колонки однакові завдяки table-layout: fixed.
-        return k === 0 ? table : <details class="rest"><summary class="mono">{x.more(pl(part.length, ui.n.solutions))}</summary>{table}</details>;
+        return k === 0 ? table : <details class="rest"><summary class="act">{x.more(pl(part.length, ui.n.solutions))}</summary>{table}</details>;
       })
       }
   </Fold>
@@ -54,7 +54,7 @@ const TOP = 6;
   <section class="sec" aria-labelledby="tech">
     <h2 class="sec-title" id="tech">{x.techs}{techniques.length > 0 && <span class="mono">{techniques.length}</span>}</h2>
     {techniques.length === 0
-      ? <div class="soon-box">{x.noTechs}<br><a href={url.mitre(t.id)} class="mono">{x.techsOrig}</a></div>
+      ? <div class="soon-box">{x.noTechs}<br><a href={url.mitre(t.id)} class="act">{x.techsOrig}</a></div>
       : (
         <div class="techs">
           {techniques.map((y) => (
@@ -71,7 +71,7 @@ const TOP = 6;
                 {y.data.defenses.length > 0 && (
                   <div class="chips">{d.classesOf(y).map((c) => <a href={url.solution(c.id)} class="chip">{c.data.title}</a>)}</div>
                 )}
-                <a href={url.technique(y.id)} class="mono more">{x.details}</a>
+                <a href={url.technique(y.id)} class="act more">{x.details}</a>
               </div>
             </details>
           ))}
@@ -94,7 +94,7 @@ const TOP = 6;
 <style>
   .stage { table-layout: fixed; }
   .stage .c1 { width: 24%; } .stage .c3 { width: 96px; } .stage .c4 { width: 130px; }
-  .rest > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-top: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); font-size: 11px; color: var(--defense); }
+  .rest > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-top: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); }
   .rest > summary::-webkit-details-marker { display: none; }
   .rest > summary:hover { border-color: var(--defense); }
   .rest > summary::after { content: none; }
@@ -104,6 +104,7 @@ const TOP = 6;
   .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
   .num { font-size: 44px; font-weight: 600; letter-spacing: -0.03em; color: var(--attack); }
   .meta { font-size: 12px; color: var(--muted-2); }
+  .orig { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; }
   h1 { margin: 0 0 16px; font-size: clamp(36px, 8vw, 48px); line-height: 1.05; }
   .attack { color: var(--attack); }
   .cover { white-space: nowrap; }
@@ -127,8 +128,13 @@ const TOP = 6;
   .tbody .muted { color: var(--muted); }
   .tbody b { color: var(--text); font-weight: 600; }
   .quote { padding: 10px 14px; background: var(--surface); border-left: 2px solid var(--attack); }
-  .more { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start; }
-  @media (max-width: 640px) { .tbody { padding-left: 0; } }
+  .more { display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start; }
+  @media (max-width: 640px) {
+    .tbody { padding-left: 0; }
+    /* «Часта біль» — під назвою техніки, а не під ID */
+    summary { display: grid; grid-template-columns: 64px 1fr; gap: 6px 12px; align-items: baseline; }
+    summary .badge-pain { grid-column: 2; justify-self: start; }
+  }
 
   .pager { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; margin-top: 56px; }
   .card { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; border: 1px solid var(--line); color: var(--text); text-decoration: none; font-size: 15px; transition: border-color .15s; }

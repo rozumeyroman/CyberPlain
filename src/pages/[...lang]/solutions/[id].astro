@@ -49,7 +49,7 @@ const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
 
     <div class="facts">
       {cls && cls.data.d3fend.length > 0 && <div><span class="mono k">D3FEND</span><D3fendTags cls={cls} /></div>}
-      {product?.data.url && <div><span class="mono k">{x.source}</span><a href={product.data.url} class="mono src">{new URL(product.data.url).hostname} ↗</a></div>}
+      {product?.data.url && <div><span class="mono k">{x.source}</span><a href={product.data.url} class="act src">{new URL(product.data.url).hostname} ↗</a></div>}
       {product && <div><span class="mono k">{x.classes}</span><span class="chips">{own.map((c) => <a href={url.solution(c.id)} class="chip">{c.data.title}</a>)}</span></div>}
     </div>
 
@@ -84,6 +84,6 @@ const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
   .en { margin: 0 0 20px; font-size: 14px; color: var(--muted-2); }
   .facts { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
   .facts > div { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .src { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  .src { display: inline-flex; align-items: center; min-height: 44px; }
   .k { font-size: 11px; color: var(--muted-2); min-width: 72px; }
 </style>
