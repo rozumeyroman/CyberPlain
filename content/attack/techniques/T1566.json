@@ -22,7 +22,8 @@
     "siem",
     "ti",
     "browser-protection",
-    "sandbox"
+    "sandbox",
+    "bas"
   ],
   "subs": {
     "001": "Лист із вкладенням",

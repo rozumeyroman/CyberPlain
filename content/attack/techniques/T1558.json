@@ -18,7 +18,8 @@
     "deception",
     "edr",
     "itdr",
-    "ispm"
+    "ispm",
+    "pentest"
   ],
   "subs": {
     "001": "Золотий квиток",

@@ -21,7 +21,8 @@
     "itdr",
     "ispm",
     "nhi",
-    "jit"
+    "jit",
+    "pentest"
   ],
   "subs": {
     "001": "Токен застосунку",

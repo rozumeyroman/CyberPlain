@@ -16,6 +16,8 @@
     "vm",
     "ids",
     "ndr",
-    "ngfw"
+    "ngfw",
+    "bas",
+    "pentest"
   ]
 }

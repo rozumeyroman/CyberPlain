@@ -20,7 +20,8 @@
     "soar",
     "itdr",
     "dark-web",
-    "password-manager"
+    "password-manager",
+    "pentest"
   ],
   "subs": {
     "001": "Вгадування пароля",

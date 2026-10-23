@@ -16,6 +16,7 @@
     "ndr",
     "ids",
     "deception",
-    "edr"
+    "edr",
+    "pentest"
   ]
 }

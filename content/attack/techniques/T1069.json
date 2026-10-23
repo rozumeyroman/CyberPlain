@@ -16,7 +16,8 @@
     "edr",
     "deception",
     "ueba",
-    "itdr"
+    "itdr",
+    "pentest"
   ],
   "subs": {
     "001": "Локальні групи",

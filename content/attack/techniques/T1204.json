@@ -18,7 +18,8 @@
     "email",
     "siem",
     "browser-protection",
-    "sandbox"
+    "sandbox",
+    "bas"
   ],
   "subs": {
     "001": "Шкідливе посилання",

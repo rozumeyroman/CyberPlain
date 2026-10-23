@@ -22,7 +22,8 @@
     "itdr",
     "device-control",
     "nhi",
-    "jit"
+    "jit",
+    "pentest"
   ],
   "subs": {
     "001": "Віддалений робочий стіл (RDP)",

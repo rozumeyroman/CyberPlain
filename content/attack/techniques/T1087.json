@@ -17,7 +17,8 @@
     "deception",
     "ueba",
     "edr",
-    "itdr"
+    "itdr",
+    "pentest"
   ],
   "subs": {
     "001": "Локальні облікові записи",

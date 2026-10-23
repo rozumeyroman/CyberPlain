@@ -16,6 +16,7 @@
     "ndr",
     "ngfw",
     "ti",
-    "siem"
+    "siem",
+    "bas"
   ]
 }

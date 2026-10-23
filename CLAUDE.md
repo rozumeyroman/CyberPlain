@@ -278,7 +278,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -317,6 +317,10 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | FortiWeb Advanced / Enterprise | + пісочниця (FortiWeb Cloud Sandbox) |
 | FortiAppSec Cloud WAF Standard | WAF, захист від DDoS |
 | FortiAppSec Cloud WAF Advanced / Enterprise | + DAST, пісочниця |
+| Picus Breach and Attack Simulation, Exposure Validation, Detection Rule Validation | BAS |
+| Picus Autonomous Penetration Testing | автоматизований пентест |
+| Picus Attack Surface Validation | CAASM |
+| Picus Cloud Security Validation | CIEM, BAS |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -391,6 +395,18 @@ Standard / Advanced / Enterprise; FortiAppSec Cloud WAF (https://www.fortinet.co
 FortiWeb Cloud Sandbox / Sandboxing for File Uploads (з Advanced) — `sandbox`; L3–4 і L7 DDoS FortiAppSec (усі плани) — `ddos`
 (у FortiWeb — лише DoS застосунку, у межах `waf`). DLP FortiWeb Enterprise — у вебвідповідях, не `dlp` (як Barracuda); IP reputation — не `ti`;
 Credential Stuffing Defense, ABP, Client-Side Security, Threat Analytics, SOCaaS — лише в тексті.
+
+Picus (https://www.picussecurity.com/autonomous-exposure-validation-platform; one-pager модулів і даташит ATT&CK від автора):
+6 продуктів за модулями, назви — з сайту (жовтень 2026): Breach and Attack Simulation (ex-Security Control Validation, SCV),
+Autonomous Penetration Testing (ex-Attack Path Validation, APV), Exposure Validation (EXV), Detection Rule Validation (DRV,
+«powered by BAS»), Attack Surface Validation (ASV, «Easy-to-deploy CAASM» — `caasm`), Cloud Security Validation (CSV). Редакцій
+і таблиці пакетів немає. Класи `bas` і `pentest` заведено під Picus: вони не захищають самі, а перевіряють захист, тому
+`defenses[]` — лише техніки, які модулі імітують явно: `bas` — модулі атак SCV (фішинг T1566, завантаження шкідливих файлів T1105/T1204,
+вебатаки T1190, URL-фільтрація T1189/T1071, експлуатація вразливостей T1203/T1210/T1068, викрадення даних T1041/T1048/T1567,
+вимагачі T1486); `pentest` — сценарії APV (T1003, T1021, T1046, T1068, T1069, T1078, T1087, T1110, T1210, T1550, T1557, T1558).
+D3FEND: `bas` — D3-SYSVA; `pentest` — D3-SYSVA, D3-NVA, D3-AM. EXV і DRV — `bas` (EXV проганяє TTP-ланцюжки CVE проти захисту;
+не `vm` — сам не сканує). CSV: аудит налаштувань і симулятор IAM-політик — `ciem`, симуляція атак у AWS — `bas`; не `cnapp`
+(без захисту робочих навантажень і контейнерів). AI Security Validation — частина BAS, лише в тексті.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

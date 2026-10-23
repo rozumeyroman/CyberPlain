@@ -17,6 +17,7 @@
     "ngfw",
     "vm",
     "ti",
-    "browser-protection"
+    "browser-protection",
+    "bas"
   ]
 }

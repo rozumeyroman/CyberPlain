@@ -18,7 +18,8 @@
     "ids",
     "edr",
     "deception",
-    "vpn"
+    "vpn",
+    "pentest"
   ],
   "subs": {
     "001": "Отруєння розпізнавання імен і SMB relay",

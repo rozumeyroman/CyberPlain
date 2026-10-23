@@ -19,7 +19,8 @@
     "pam",
     "soar",
     "itdr",
-    "epm"
+    "epm",
+    "pentest"
   ],
   "subs": {
     "001": "Пам’ять LSASS",
