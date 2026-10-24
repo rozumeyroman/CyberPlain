@@ -18,7 +18,7 @@ const flat = (y: D3Technique): D3Technique[] => y.children.flatMap((c) => [c, ..
     <a href={url.page('/d3fend/')}>D3FEND</a><span aria-hidden="true">/</span><span aria-current="page">{num(t.order)} {t.title}</span>
   </nav>
 
-  <div class="head"><span class="num">{num(t.order)}</span><span class="mono meta">D3FEND{lang === 'uk' && ` · ${t.en}`}</span></div>
+  <div class="head"><span class="num">{num(t.order)}</span><span class="mono meta">D3FEND{lang === 'uk' && ` · ${t.en}`}</span><a href={url.d3fendOrig(t)} class="act orig" aria-label={ui.source.d3fendOrig}>{ui.source.short}</a></div>
   <h1>{t.title}</h1>
   {t.short ? <p class="lead-text">{t.short}</p> : <p class="soon-box">{ui.soon}</p>}
   {t.analogy && <div class="note-box"><span class="mono defense">{ui.analogy}</span>{t.analogy}</div>}
@@ -62,6 +62,7 @@ const flat = (y: D3Technique): D3Technique[] => y.children.flatMap((c) => [c, ..
 
 <style>
   .head { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .orig { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; }
   .num { font-size: 44px; font-weight: 600; letter-spacing: -0.03em; color: var(--defense); }
   .meta { font-size: 12px; color: var(--muted-2); }
   h1 { margin: 0 0 16px; font-size: clamp(36px, 8vw, 48px); line-height: 1.05; }

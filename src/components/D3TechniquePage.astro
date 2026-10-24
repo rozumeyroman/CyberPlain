@@ -25,7 +25,7 @@ const attack = [...new Set(subtree(t).flatMap((y) => y.attack))];
     <span aria-current="page">{t.id}</span>
   </nav>
 
-  <div class="head"><span class="id-defense big">{t.id}</span><span class="mono meta">{kind}{lang === 'uk' && ` · ${t.en}`}</span></div>
+  <div class="head"><span class="id-defense big">{t.id}</span><span class="mono meta">{kind}{lang === 'uk' && ` · ${t.en}`}</span><a href={url.d3fendOrig(t)} class="act orig" aria-label={ui.source.d3fendId(t.id)}>{ui.source.short}</a></div>
   <h1>{t.title}</h1>
   {t.simple
     ? <p class="lead-text">{t.simple}</p>
@@ -71,6 +71,7 @@ const attack = [...new Set(subtree(t).flatMap((y) => y.attack))];
 
 <style>
   .head { display: flex; gap: 8px 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 12px; }
+  .orig { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; }
   .id-defense { font-family: var(--font-mono); color: var(--defense); }
   .big { font-size: 20px; }
   .meta { font-size: 12px; color: var(--muted-2); }

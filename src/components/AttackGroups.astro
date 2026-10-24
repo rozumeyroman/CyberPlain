@@ -1,10 +1,13 @@
 ---
 // Техніки ATT&CK, згруповані за етапами атаки. Техніка з кількома етапами — один раз, у першому з них;
-// решта етапів — номерами поруч («також 05 · 06»).
+// решта етапів — номерами поруч («також 05 · 06»). Довгий список (понад COLLAPSE технік) — етапи згорнуті.
 import { pageCtx, num, type Technique } from '../lib/data';
 
 interface Props { techniques: Technique[] }
-const { d, url, t: ui } = await pageCtx(Astro.url);
+const { d, url, t: ui, pl } = await pageCtx(Astro.url);
+const COLLAPSE = 40;
+const open = Astro.props.techniques.length <= COLLAPSE;
+const Tag = open ? 'div' : 'details';
 const order = (id: string) => d.tactics.findIndex((x) => x.id === id) + 1;
 const all = d.byTactic(Astro.props.techniques);
 const stagesOf = new Map<string, typeof all[number]['tactic'][]>();
@@ -16,8 +19,14 @@ const groups = all
 const also = (id: string) => stagesOf.get(id)!.slice(1);
 ---
 {groups.map((g) => (
-  <div class="group">
-    <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.title} · {g.tactic.id}</a>
+  <Tag class="group">
+    {open
+      ? <a href={url.tactic(g.tactic.id)} class="mono gtitle">{num(order(g.tactic.id))} {g.tactic.data.title} · {g.tactic.id}</a>
+      : <summary class="mono">
+          <span>{num(order(g.tactic.id))} {g.tactic.data.title} ·</span>
+          <a href={url.tactic(g.tactic.id)} class="tid">{g.tactic.id}</a>
+          <span class="cnt">· {pl(g.techniques.length, ui.n.techniques)}</span>
+        </summary>}
     <ul>{g.techniques.map((t) => (
       <li><a href={url.technique(t.id)}>
         <span class="id-attack">{t.id}</span>
@@ -29,12 +38,23 @@ const also = (id: string) => stagesOf.get(id)!.slice(1);
         )}</span>
       </a></li>
     ))}</ul>
-  </div>
+  </Tag>
 ))}
 
 <style>
   .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
   .gtitle { font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  summary { list-style: none; cursor: pointer; display: flex; align-items: center; flex-wrap: wrap; gap: 0 8px; min-height: 44px; font-size: 11px; color: var(--muted); }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: ''; width: 7px; height: 7px; margin: -3px 0 0 4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg); transition: transform .15s;
+  }
+  .group:not([open]) > summary::after { transform: rotate(-45deg); margin-top: 0; }
+  summary:hover { color: var(--text); }
+  .tid { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .cnt { color: var(--muted-2); }
+  .group:not([open]) { padding-bottom: 8px; }
   ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 24px; }
   li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; line-height: 1.35; }
   li a:hover { color: var(--text); }

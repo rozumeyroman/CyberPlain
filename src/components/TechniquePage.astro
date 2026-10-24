@@ -15,6 +15,7 @@ const order = (id: string) => d.tactics.findIndex((y) => y.id === id) + 1;
 const defenses = d.classesOf(t);
 const subs = d.subtechniquesOf(t);
 const d3 = d.d3fendForAttack(t);
+const TOP = 6;
 ---
 <section class="wrap page">
   <nav aria-label={ui.crumbs} class="mono crumbs">
@@ -26,6 +27,10 @@ const d3 = d.d3fendForAttack(t);
   <div class="head"><span class="id-attack big">{t.id}</span>{lang === 'uk' && <span class="mono meta">{t.data.en}</span>}{t.data.pain && <span class="badge-pain">{ui.pain}</span>}<a href={url.mitre(t.id)} class="act orig" aria-label={ui.source.attackId(t.id)}>{ui.source.short}</a></div>
   <h1>{t.data.title}</h1>
   {t.data.simple ? <p class="lead-text">{t.data.simple}</p> : <p class="soon-box">{ui.soon}</p>}
+  <div class="stages">
+    <span class="mono k">{tactics.length > 1 ? x.stages : x.stage}</span>
+    <div class="chips">{tactics.map((ta) => <a href={url.tactic(ta.id)} class="chip">{num(order(ta.id))} {ta.data.title} · {ta.id}</a>)}</div>
+  </div>
 
   <div class="grid">
     {t.data.goal && <div class="note-box"><span class="mono attack">{x.goal}</span>{t.data.goal}</div>}
@@ -59,20 +64,25 @@ const d3 = d.d3fendForAttack(t);
   <Fold id="sol" title={x.sols} count={defenses.length ? pl(defenses.length, ui.n.solutions) : undefined}>
     {defenses.length === 0
       ? <p class="soon-box">{x.noSols}</p>
-      : (
-        <table class="tbl">
-          <thead><tr><th>{ui.solution}</th><th>{x.thWhat}</th><th>D3FEND</th></tr></thead>
-          <tbody>
-            {defenses.map((c) => (
-              <tr>
-                <td><SolutionLinks cls={c} products={d.productsOf(c.id)} /></td>
-                <td data-label={x.thWhat} class:list={{ empty: !c.data.simple }}>{c.data.simple ?? ui.dash}</td>
-                <td data-label="D3FEND" class="inline"><D3fendTags cls={c} /></td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+      : [defenses.slice(0, TOP), defenses.slice(TOP)].filter((part) => part.length > 0).map((part, k) => {
+        const table = (
+          <table class="tbl sols">
+            <colgroup><col class="c1" /><col /><col class="c3" /></colgroup>
+            {k === 0 && <thead><tr><th>{ui.solution}</th><th>{x.thWhat}</th><th>D3FEND</th></tr></thead>}
+            <tbody>
+              {part.map((c) => (
+                <tr>
+                  <td><SolutionLinks cls={c} products={d.productsOf(c.id)} /></td>
+                  <td data-label={x.thWhat} class:list={{ empty: !c.data.simple }}>{c.data.simple ?? ui.dash}</td>
+                  <td data-label="D3FEND" class="inline"><D3fendTags cls={c} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+        // Як на сторінці етапу: перші TOP видно, решта — «Показати ще»; колонки однакові завдяки table-layout: fixed.
+        return k === 0 ? table : <details class="rest"><summary class="act">{ui.tactic.more(pl(part.length, ui.n.solutions))}</summary>{table}</details>;
+      })}
   </Fold>
 
   <section class="sec" aria-labelledby="d3">
@@ -87,10 +97,6 @@ const d3 = d.d3fendForAttack(t);
         </>}
   </section>
 
-  <section class="sec" aria-labelledby="st">
-    <h2 class="sec-title" id="st">{tactics.length > 1 ? x.stages : x.stage}</h2>
-    <div class="chips">{tactics.map((ta) => <a href={url.tactic(ta.id)} class="chip">{num(order(ta.id))} {ta.data.title} · {ta.id}</a>)}</div>
-  </section>
 </section>
 
 <section class="wrap bottom"><AttackSource href={url.mitre(t.id)} label={ui.source.attackId(t.id)} /></section>
@@ -101,6 +107,8 @@ const d3 = d.d3fendForAttack(t);
   .page > :global(:not(.lead-text)), .bottom > :global(*) { max-width: 980px; }
   .page .soon-box { max-width: none; }
   .big { font-size: 20px; }
+  .stages { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: -12px 0 28px; }
+  .stages .k { font-size: 11px; color: var(--muted-2); }
   .orig { margin-left: auto; display: inline-flex; align-items: center; min-height: 44px; }
   .meta { font-size: 12px; color: var(--muted-2); }
   h1 { margin: 0 0 16px; font-size: clamp(32px, 7vw, 44px); line-height: 1.1; }
@@ -124,4 +132,12 @@ const d3 = d.d3fendForAttack(t);
   .more-d3[open] summary { display: none; }
   .note { margin: 0 0 16px; max-width: 760px; font-size: 14px; line-height: 1.55; color: var(--muted); }
   .bottom { padding-top: 40px; padding-bottom: 72px; }
+  .sols { table-layout: fixed; }
+  .sols .c1 { width: 26%; } .sols .c3 { width: 130px; }
+  @media (max-width: 760px) { .sols .c1, .sols .c3 { width: auto; } }
+  .rest > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; margin-top: 12px; border: 1px solid var(--line-strong); border-radius: var(--radius); }
+  .rest > summary::-webkit-details-marker { display: none; }
+  .rest > summary:hover { border-color: var(--defense); }
+  .rest[open] > summary { display: none; }
+  .rest .tbl { border-top: 0; }
 </style>

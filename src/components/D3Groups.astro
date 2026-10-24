@@ -1,18 +1,28 @@
 ---
 // Техніки D3FEND, згруповані за тактиками D3FEND, з категорією кожної. whole — тактики «загалом» (без техніки).
+// Довгий список (понад COLLAPSE технік) — тактики згорнуті.
 import { pageCtx, num, type D3Tactic, type D3Technique } from '../lib/data';
 
 interface Props { techniques: D3Technique[]; whole?: D3Tactic[] }
 const { techniques, whole = [] } = Astro.props;
-const { lang, t: ui, url, d } = await pageCtx(Astro.url);
+const { lang, t: ui, url, d, pl } = await pageCtx(Astro.url);
+const COLLAPSE = 40;
+const open = techniques.length <= COLLAPSE;
+const Tag = open ? 'div' : 'details';
 const groups = d.d3fendTactics
   .map((tactic) => ({ tactic, whole: whole.includes(tactic), techniques: tactic.all.filter((t) => techniques.includes(t)) }))
   .filter((g) => g.whole || g.techniques.length > 0);
 const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent; return c; };
 ---
 {groups.map((g) => (
-  <div class="group">
-    <a href={url.d3fendTactic(g.tactic.id)} class="mono gtitle">{num(g.tactic.order)} {g.tactic.title}{lang === 'uk' && ` · ${g.tactic.en}`}</a>
+  <Tag class="group">
+    {open
+      ? <a href={url.d3fendTactic(g.tactic.id)} class="mono gtitle">{num(g.tactic.order)} {g.tactic.title}{lang === 'uk' && ` · ${g.tactic.en}`}</a>
+      : <summary class="mono">
+          <span>{num(g.tactic.order)} {g.tactic.title}{lang === 'uk' && ` · ${g.tactic.en}`}</span>
+          {g.techniques.length > 0 && <span class="cnt">· {pl(g.techniques.length, ui.n.techniques)}</span>}
+          <a href={url.d3fendTactic(g.tactic.id)} class="tid" aria-label={g.tactic.title}>→</a>
+        </summary>}
     <ul>
       {g.whole && <li><a href={url.d3fendTactic(g.tactic.id)}><span class="d3id">—</span><span>{ui.d3.whole}<span class="cat">{ui.d3.wholeNote}</span></span></a></li>}
       {g.techniques.map((t) => {
@@ -20,12 +30,23 @@ const category = (t: D3Technique) => { let c = t; while (c.parent) c = c.parent;
         return <li><a href={url.d3fendTechnique(t.id)}><span class="d3id">{t.id}</span><span>{t.title}{c !== t && <span class="cat">{c.title}</span>}</span></a></li>;
       })}
     </ul>
-  </div>
+  </Tag>
 ))}
 
 <style>
   .group { border-top: 1px solid var(--line); padding: 8px 0 16px; }
   .gtitle { font-size: 11px; color: var(--defense); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; }
+  summary { list-style: none; cursor: pointer; display: flex; align-items: center; flex-wrap: wrap; gap: 0 8px; min-height: 44px; font-size: 11px; color: var(--muted); }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: ''; width: 7px; height: 7px; margin: -3px 0 0 4px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg); transition: transform .15s;
+  }
+  .group:not([open]) > summary::after { transform: rotate(-45deg); margin-top: 0; }
+  summary:hover { color: var(--text); }
+  .tid { order: 1; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 14px; text-decoration: none; }
+  .cnt { color: var(--muted-2); }
+  .group:not([open]) { padding-bottom: 8px; }
   ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 0 24px; }
   li a { display: flex; gap: 10px; align-items: baseline; min-height: 44px; padding: 10px 0; color: var(--text-2); text-decoration: none; font-size: 15px; line-height: 1.35; }
   li a:hover { color: var(--text); }
