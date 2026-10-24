@@ -110,7 +110,7 @@ export interface AVuln {
   gaps: string[]; sources: Src[];
 }
 export interface AAttack {
-  id: string; title: string; date: string; dateNote?: string; original: Orig;
+  id: string; title: string; date: string; dateNote?: string; original?: Orig;
   actor: { name: string; profile: string[] }; victim: { name: string; sector: string; country: string };
   summary: string; body: string[]; claims: Fig[]; claimsNote?: string; steps: AStep[]; lessons: string[];
   caveats: string[]; vulnerabilities: AVuln[]; sources: Src[];

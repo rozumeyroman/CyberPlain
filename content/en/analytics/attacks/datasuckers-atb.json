@@ -1,12 +1,12 @@
 {
   "title": "DATASUCKERS vs the ATB retail chain: a 10-step attack",
   "dateNote": "≈5 October 2026, per the group's claim",
-  "summary": "According to the DATASUCKERS group, the ATB retail chain was not broken through a single hole but through a chain of ten small steps. Each looked minor; together they gave access to databases, mail and source code. The breakdown shows which class of solution could stop the attack, or reduce the damage, at each step.",
+  "summary": "According to the DATASUCKERS group, the ATB retail chain was not broken through a single hole but through a chain of ten small steps in one evening. Each looked minor; together they gave access to databases, mail and source code. ATB denies that customer data leaked, so the scale is disputed; below you can see which class of solution could stop such an attack at each step.",
   "body": [
-    "This is a retelling of an incident breakdown by Alesta (a 15-slide deck marked for partners). It is written in plain language for people who do not work in security every day. It has little technical detail: no vulnerability numbers (CVEs), tool names, versions or indicators of compromise.",
-    "The deck's main idea is that the chain breaks at any link. First, passwords turned up in public view, then came an injection into a database query and open registration on a portal. After that, reading internal files, a web shell, a reused password and a master key inside a backup. All of this, per the group's claim, happened in one evening.",
-    "Below, each step is described the way the deck presents it, with an everyday analogy. Next to each step are the classes of solutions that stop or compensate it, and an explanation of how. The deck itself does not map steps to MITRE ATT&CK techniques: that is CyberPlain's editorial tagging, marked with an asterisk.",
-    "All figures and facts of the attack come from the group's claims and partial confirmations by companies. We have not verified them and make no verdict on what exactly happened. The wording \"per the group's claim\" applies to every step."
+    "According to the DATASUCKERS group, the ATB retail chain was not broken through one big hole but through a chain of ten small steps, completed in a single evening. Each looked minor on its own, but together they gave the attackers everything: databases, mail and source code.",
+    "The chain, in the group's version, went like this. First, secrets turned up in plain sight, then came an SQL injection, open registration on the supplier portal and reading files on the server. After that, a web shell with a WAF bypass, privilege escalation through the monitoring system (the password was reused from mail), a master SSH key inside backups, every database (the default password admin / changeme), corporate mail and, finally, source code: 524 projects.",
+    "What public sources say. On 5 October 2026 ATB's website was defaced. The company confirmed an attack on its online resources but denied that customer data leaked, saying such data is not stored on the attacked resources; some online services were taken offline. The group demanded $400,000. The Record (5 Oct 2026) notes that the authenticity and scale of the data could not be independently verified. Highload (8 Oct 2026) reports that independent OSINT checkers confirmed only the defacement of the homepage, found no sign that a ransom was paid and called the \"proof\" weak.",
+    "So the real extent remains disputed, and the step-by-step chain below is the group's own version. We present it not to decide who is right but to show, at each step, which class of solution could stop the attack or reduce the damage. Mapping the steps to MITRE ATT&CK techniques is CyberPlain's editorial tagging, marked with an asterisk (*)."
   ],
   "claims": [
     {
@@ -26,13 +26,13 @@
       "label": "the group's demand"
     }
   ],
-  "claimsNote": "All figures are claims by the group and partial confirmations by companies; not independently verified.",
+  "claimsNote": "All figures are the group's claims; not independently verified, and ATB denies that customer data leaked.",
   "actor": {
     "name": "DATASUCKERS",
     "profile": [
-      "A financially motivated group: as the deck describes it, it steals data and demands money for non-disclosure, or sells the data.",
+      "A financially motivated group: by its own claims, it steals data and demands money for non-disclosure, or sells the data.",
       "Communicates in Russian and publishes leaks and threats on Telegram.",
-      "Targets large B2C companies with large personal-data sets. The deck also lists other claims by the group: Tez Tour (September 2026) and Dodo Pizza (about 29 September 2026). These are claims too, not independently confirmed."
+      "Targets large B2C companies with large personal-data sets. Among the group's other claims are Tez Tour (September 2026) and Dodo Pizza (about 29 September 2026); these are claims too, not independently confirmed. According to The Record (16 Oct 2026), Moscow police detained suspected members of the group."
     ]
   },
   "victim": {
@@ -53,22 +53,22 @@
           "why": "Shows the external perimeter as the attacker sees it, including forgotten public pages. The service page without a password could have been spotted and closed before the attack."
         },
         {
-          "why": "Scans sites and services and finds exposed configuration and common vulnerabilities. In the deck this role is played by Check Point Threat Exposure Management, which is not in the site's portfolio, so we show the closest class."
+          "why": "Scans sites and services and finds exposed configuration and common vulnerabilities. A service page that returns configuration without a password would show up in the report."
         },
         {
           "why": "Keeps passwords in a vault with rotation instead of in code or configuration files. Even if a password leaks, it quickly stops working."
         },
         {
-          "why": "Removes passwords written into code: the app receives them from a vault at run time. The deck does not name this separately; it is an editorial addition."
+          "why": "Removes passwords written into code: the app receives them from a vault at run time. This is an editorial addition."
         }
       ],
       "gaps": [
-        "Finding passwords in code before release (SAST) — the deck names it as the main tool here. CyberPlain has no separate class for it."
+        "Finding passwords in code before release (SAST) — the main tool at this step. CyberPlain has no separate class for it."
       ]
     },
     {
       "title": "SQL injection on the main site",
-      "what": "According to the group's claim, through an ordinary filter field on the site the attacker made the database return other people's data. The deck mentions about 8 million customers with phones and emails (the headline says 7.9 million; both figures are from the deck). An analogy: one more request was slipped into the order window, and the cashier carried it out.",
+      "what": "According to the group's claim, through an ordinary filter field on the site the attacker made the database return other people's data. The claim concerns about 8 million customers with phones and emails (the claim also gives a more precise figure, 7.9 million). An analogy: one more request was slipped into the order window, and the cashier carried it out.",
       "tools": [
         "SQL injection in a filter field"
       ],
@@ -80,28 +80,28 @@
           "why": "Tests the running site from the outside and finds the field that allows injection. The hole can be fixed before an attacker uses it."
         },
         {
-          "why": "Simulates such requests against your defences and shows whether the WAF really stops them. The deck lists BAS for this step in its summary table."
+          "why": "Simulates such requests against your defences and shows whether the WAF really stops them."
         }
       ],
       "gaps": [
-        "Finding vulnerabilities in code before release (SAST) — the deck names it as the root-cause fix. CyberPlain has no separate class for it."
+        "Finding vulnerabilities in code before release (SAST) addresses the root cause. CyberPlain has no separate class for it."
       ]
     },
     {
       "title": "Self-registration on the supplier portal",
-      "what": "According to the group's claim, the partner portal let anyone register without checks or moderation. The attacker created a legitimate account and got inside. It is like an office door that opens for anyone who calls themselves a supplier.",
+      "what": "According to the group's claim, the supplier portal let anyone register without checks or moderation. The attacker created a legitimate account and got inside. It is like an office door that opens for anyone who calls themselves a supplier.",
       "tools": [
         "open registration on the portal"
       ],
       "solutions": [
         {
-          "why": "Requires a second factor at sign-in, portals included. A newly created account without confirmation does not get in so easily. In the deck this role is played by Silverfort Identity Protection."
+          "why": "Requires a second factor at sign-in, portals included. A newly created account without confirmation does not get in so easily."
         },
         {
           "why": "Watches who signs in, from where and to what, and notices an unusual sign-in by a new account. It lets you block it or ask for an extra check."
         },
         {
-          "why": "Finds risky settings, such as open registration or weak moderation, before someone uses them. In the deck this is Check Point Threat Exposure Management, which is not in the site's portfolio, so we show the closest class."
+          "why": "Finds risky settings, such as open registration or weak moderation, before someone uses them."
         }
       ],
       "gaps": [
@@ -122,23 +122,23 @@
           "why": "If database passwords are kept in a vault rather than in clear text in a file, the file that was read opens nothing. The attacker does not see a live password."
         },
         {
-          "why": "The app takes database passwords from a secrets vault at run time, so they are not in configuration files. Even if the file is read, there is nothing in it. The deck does not name this separately; it is an editorial addition."
+          "why": "The app takes database passwords from a secrets vault at run time, so they are not in configuration files. Even if the file is read, there is nothing in it. This is an editorial addition."
         }
       ],
       "gaps": [
-        "Finding the file-read flaw in code (SAST) — the deck names it as the root-cause fix. CyberPlain has no separate class for it."
+        "Finding the file-read flaw in code (SAST) addresses the root cause. CyberPlain has no separate class for it."
       ]
     },
     {
       "title": "Web shell and WAF bypass",
-      "what": "According to the group's claim, the attacker uploaded a disguised file that let him run commands on the server (a web shell). He got past the WAF by hiding the payload behind a large block of junk. The deck explains that inspecting the whole request body removes this trick. An analogy: a guard checks only the first page of a thick folder.",
+      "what": "According to the group's claim, the attacker uploaded a disguised file that let him run commands on the server (a web shell). He got past the WAF by hiding the payload behind a large block of junk. Inspecting the whole request body removes this trick. An analogy: a guard checks only the first page of a thick folder.",
       "tools": [
         "disguised web shell",
         "junk block to bypass the WAF"
       ],
       "solutions": [
         {
-          "why": "Sees the web server suddenly start running commands, which it does not do normally, and stops it even after the WAF is bypassed. The deck calls this the \"main stop\" of the step."
+          "why": "Sees the web server suddenly start running commands, which it does not do normally, and stops it even after the WAF is bypassed. This is the main safeguard at this step."
         },
         {
           "why": "A correctly configured WAF inspects the whole request body, so hiding the payload behind junk does not work."
@@ -157,7 +157,7 @@
       ],
       "solutions": [
         {
-          "why": "Notices a sign-in to a foreign system and signs of \"one password everywhere\", and can demand an extra check or block the sign-in. In the deck this is Silverfort Identity Protection."
+          "why": "Notices a sign-in to a foreign system and signs of \"one password everywhere\", and can demand an extra check or block the sign-in."
         },
         {
           "why": "A second factor means one stolen password is not enough to sign in to the monitoring system. Reusing the mail password no longer opens the door by itself."
@@ -166,7 +166,7 @@
           "why": "Isolates administrative access, makes passwords unique and keeps sessions supervised. One password no longer opens several systems."
         },
         {
-          "why": "Shows that the monitoring system runs with excessive privileges and flags it as a critical risk. In the deck this is done by Check Point Threat Exposure Management, which is not in the site's portfolio, so we show the closest class."
+          "why": "Shows that the monitoring system runs with excessive privileges and flags it as a critical risk."
         }
       ],
       "gaps": []
@@ -185,7 +185,7 @@
           "why": "Records the attacker moving between servers and the use of the stolen key. Movement across the network becomes visible."
         },
         {
-          "why": "Gathers events from different systems into one picture and signals unusual movement across the network. In the deck this is Rapid7 Incident Command."
+          "why": "Gathers events from different systems into one picture and signals unusual movement across the network."
         },
         {
           "why": "Compares account behaviour with the norm and notices that an admin key is suddenly used at an unusual time or from unusual places."
@@ -202,13 +202,13 @@
       ],
       "solutions": [
         {
-          "why": "Finds default and weak passwords before an attacker does. In the deck this role is played by Check Point Threat Exposure Management, which is not in the site's portfolio, so we show the closest class."
+          "why": "Finds default and weak passwords before an attacker does."
         },
         {
           "why": "Removes default and shared passwords and makes them unique and managed. The password admin / changeme stops working."
         },
         {
-          "why": "Sees mass \"pulling\" of databases as a deviation from the norm. The alarm fires while the data has not yet left. In the deck this is Rapid7 Incident Command."
+          "why": "Sees mass \"pulling\" of databases as a deviation from the norm. The alarm fires while the data has not yet left."
         },
         {
           "why": "Notices that an account reads databases in volumes and at times unusual for it, and raises an alarm."
@@ -228,7 +228,7 @@
           "why": "Requires a second factor to sign in to mail. A stolen password alone no longer opens the mailbox."
         },
         {
-          "why": "Also covers the \"old\" mail protocols, which usually have no MFA, a typical blind spot. In the deck this is Silverfort Identity Protection."
+          "why": "Also covers the \"old\" mail protocols, which usually have no MFA, a typical blind spot."
         },
         {
           "why": "If the mailbox is a service one, access to it is controlled and recorded, and its password is not kept in clear text."
@@ -251,14 +251,14 @@
           "why": "Sees mass copying and archiving of code on the server. That is a sign of theft which can be stopped on the spot."
         },
         {
-          "why": "Finds the default password in the analytics system (the same admin / changeme). In the deck this is done by Check Point Threat Exposure Management, which is not in the site's portfolio, so we show the closest class."
+          "why": "Finds the default password in the analytics system (the same admin / changeme)."
         }
       ],
       "gaps": []
     }
   ],
   "lessons": [
-    "No single box saves you; the combination does. That is how the deck sums up the story (slide 15).",
+    "No single box saves you; the combination does: the chain breaks at any link.",
     "Before the attack: check the external perimeter and risky settings, to remove the open doors at the entrance.",
     "During the attack: a WAF, EDR and account protection stop the attacker in motion.",
     "Throughout: managing secrets and keys (PAM) breaks the chain in most places, because a stolen password no longer opens the whole network."

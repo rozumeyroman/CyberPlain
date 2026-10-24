@@ -50,7 +50,7 @@ const editorial = a.steps.some((s) => s.techniques.some((y) => y.editorial) || s
       <div><dt class="mono k">{x.facts.date}</dt><dd>{a.dateNote ?? fmtDate(lang, a.date)}</dd></div>
       <div><dt class="mono k">{x.facts.victim}</dt><dd>{a.victim.name} · {a.victim.sector} · {a.victim.country}</dd></div>
       <div><dt class="mono k">{x.facts.actor}</dt><dd>{a.actor.name}</dd></div>
-      <div><dt class="mono k">{x.facts.original}</dt><dd>{a.original.title} · {a.original.publisher}{a.original.pages && <> · {x.facts.pagesN(a.original.pages)}</>}</dd></div>
+      {a.original && <div><dt class="mono k">{x.facts.original}</dt><dd>{a.original.title} · {a.original.publisher}{a.original.pages && <> · {x.facts.pagesN(a.original.pages)}</>}</dd></div>}
     </dl>
 
     <section class="sec" aria-labelledby="actor">

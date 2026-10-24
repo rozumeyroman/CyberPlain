@@ -149,7 +149,7 @@ const attacks = defineCollection({
     title: z.string(),
     date: isoDate,
     dateNote: z.string().optional(),
-    original,
+    original: original.optional(),
     actor: z.object({ name: z.string(), profile: z.array(z.string()) }).strict(),
     victim: z.object({ name: z.string(), sector: z.string(), country: z.string() }).strict(),
     summary: z.string(),
