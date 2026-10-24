@@ -16,12 +16,25 @@ export const site = {
   author: { name: { uk: 'Роман Розумей', en: 'Roman Rozumey' }, url: 'https://github.com/rozumeyroman' },
 
   // href — без мовного префікса: його додає url.page() з src/lib/data.ts.
+  // Вкладка з children — випадаюче меню (Popover без JS); note — підпис під пунктом меню.
   tabs: [
     { label: { uk: 'Home', en: 'Home' }, href: '/' },
-    { label: { uk: 'MITRE ATT&CK', en: 'MITRE ATT&CK' }, href: '/mitre/' },
-    { label: { uk: 'D3FEND', en: 'D3FEND' }, href: '/d3fend/' },
-    { label: { uk: 'Рішення', en: 'Solutions' }, href: '/solutions/' },
-    { label: { uk: 'Вендори', en: 'Vendors' }, href: '/vendors/' },
+    {
+      id: 'mitre',
+      label: { uk: 'MITRE', en: 'MITRE' },
+      children: [
+        { label: { uk: 'MITRE ATT&CK', en: 'MITRE ATT&CK' }, note: { uk: 'Як діє зловмисник: етапи й техніки атак', en: 'How attackers operate: stages and techniques' }, href: '/mitre/' },
+        { label: { uk: 'MITRE D3FEND', en: 'MITRE D3FEND' }, note: { uk: 'Як захищатись: тактики й техніки захисту', en: 'How to defend: tactics and countermeasures' }, href: '/d3fend/' },
+      ],
+    },
+    {
+      id: 'solutions',
+      label: { uk: 'Рішення', en: 'Solutions' },
+      children: [
+        { label: { uk: 'Класи рішень', en: 'Solution classes' }, note: { uk: 'Що робить кожен клас і від яких атак захищає', en: 'What each class does and which attacks it stops' }, href: '/solutions/' },
+        { label: { uk: 'Вендори', en: 'Vendors' }, note: { uk: 'Виробники та їхні продукти', en: 'Vendors and their products' }, href: '/vendors/' },
+      ],
+    },
   ],
 
   // Стають CSS-змінними --<ключ> у Base.astro.

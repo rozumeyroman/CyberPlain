@@ -17,6 +17,8 @@ const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
 const ogImage = new URL(site.ogImage, Astro.site).href;
 const isActive = (href: string) => (href === '/' ? path === url.page('/') : path.startsWith(url.page(href)));
+// Вкладка-меню активна, якщо активний будь-який її пункт.
+const tabActive = (tab: (typeof site.tabs)[number]) => (tab.children ? tab.children.some((c) => isActive(c.href)) : isActive(tab.href!));
 // Та сама сторінка іншою мовою — абсолютні адреси для hreflang; x-default — англійська.
 const alt = (l: (typeof langs)[number]) => new URL(switchPath(path, l), Astro.site).href;
 const localHref = (href: string) => (href.startsWith('/') ? url.page(href) : href);
@@ -57,9 +59,20 @@ const localHref = (href: string) => (href.startsWith('/') ? url.page(href) : hre
     <div class="wrap header-in">
       <a href={url.page('/')} class="brand"><Logo /><span>{site.name}</span></a>
       <nav aria-label={t.sections} class="tabs">
-        {site.tabs.map((tab) => (
-          <a href={url.page(tab.href)} class:list={['tab', 'mono', { on: isActive(tab.href) }]} aria-current={isActive(tab.href) ? 'page' : undefined}>{tab.label[lang]}</a>
-        ))}
+        {site.tabs.map((tab) => tab.children
+          ? (
+            <button type="button" popovertarget={`menu-${tab.id}`} class:list={['tab', 'mono', 'drop', { on: tabActive(tab) }]} style={`anchor-name: --menu-${tab.id}`}>{tab.label[lang]}</button>
+            <div id={`menu-${tab.id}`} popover class="menu" style={`position-anchor: --menu-${tab.id}`}>
+              <div class="mhead"><span class="mono">{tab.label[lang]}</span><button type="button" popovertarget={`menu-${tab.id}`} popovertargetaction="hide" class="mono mclose">{t.close}</button></div>
+              {tab.children.map((c) => (
+                <a href={url.page(c.href)} class:list={{ on: isActive(c.href) }} aria-current={isActive(c.href) ? 'page' : undefined}>
+                  <span class="ml">{c.label[lang]}</span><span class="mn">{c.note[lang]}</span>
+                </a>
+              ))}
+            </div>
+          )
+          : <a href={url.page(tab.href)} class:list={['tab', 'mono', { on: isActive(tab.href) }]} aria-current={isActive(tab.href) ? 'page' : undefined}>{tab.label[lang]}</a>
+        )}
       </nav>
       <nav aria-label={t.switcher} class="langs">
         {langs.map((l) => (
@@ -103,20 +116,38 @@ const localHref = (href: string) => (href.startsWith('/') ? url.page(href) : hre
   }
   .tab:hover, .tab.on { color: var(--text); }
   .tab.on { border-bottom-color: var(--defense); }
+  button.tab { background: none; border: 0; border-bottom: 1px solid transparent; cursor: pointer; gap: 8px; }
+  button.tab.on { border-bottom-color: var(--defense); }
+  /* Шеврон біля вкладки-меню */
+  .drop::after { content: ''; width: 6px; height: 6px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+
+  /* Випадаюче меню: нативний Popover (закривається кліком поза ним і Esc). Без anchor positioning —
+     смуга під шапкою; з ним — під своєю вкладкою; на мобільному — панель знизу екрана. */
+  .menu {
+    position: fixed; inset: 60px 0 auto 0; margin: 0; padding: 8px;
+    border: 1px solid var(--line-strong); border-radius: var(--radius-lg); background: var(--surface); color: var(--text);
+  }
+  @supports (anchor-name: --a) {
+    .menu { inset: auto; top: anchor(bottom); left: anchor(left); width: 340px; }
+  }
+  .menu a { display: flex; flex-direction: column; gap: 2px; min-height: 44px; padding: 12px 14px; border-radius: var(--radius); color: var(--text); text-decoration: none; }
+  .menu a:hover { background: var(--bg); color: var(--text); }
+  .menu a:hover .ml, .menu a.on .ml { color: var(--defense); }
+  .ml { font-size: 15px; font-weight: 600; transition: color .15s; }
+  .mn { font-size: 13px; line-height: 1.4; color: var(--muted); }
+  .mhead { display: none; }
   @media (max-width: 640px) {
     /* Мова — у верхньому рядку поруч із логотипом, вкладки переносяться на другий */
     .brand { order: 1; }
     .langs { order: 2; margin-left: auto; margin-right: -14px; }
-    .tabs {
-      order: 3; flex-basis: 100%; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter);
-      /* Правий край затемнено: обрізана вкладка показує, що рядок прокручується */
-      -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
-      mask-image: linear-gradient(to right, #000 calc(100% - 48px), transparent);
-      scrollbar-width: none;
+    .tabs { order: 3; flex-basis: 100%; margin: 0 calc(-1 * var(--gutter)); padding: 0 var(--gutter); }
+    .menu {
+      inset: auto 0 0 0; width: auto; border-width: 1px 0 0; border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+      padding: 8px 8px calc(16px + env(safe-area-inset-bottom));
     }
-    .tabs::-webkit-scrollbar { display: none; }
-    /* Запас у кінці, щоб остання вкладка після прокрутки виходила з-під затемнення */
-    .tabs::after { content: ''; flex: 0 0 32px; }
+    .menu::backdrop { background: rgb(0 0 0 / .55); }
+    .mhead { display: flex; justify-content: space-between; align-items: center; padding: 0 0 0 14px; font-size: 11px; color: var(--muted-2); }
+    .mclose { min-height: 44px; padding: 0 14px; background: none; border: 0; color: var(--defense); font-size: 11px; cursor: pointer; }
     .tab { min-height: 48px; }
   }
 
