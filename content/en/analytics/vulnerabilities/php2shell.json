@@ -1,83 +1,85 @@
 {
   "title": "PHP2Shell",
-  "summary": "Two critical flaws in PHP itself let an attacker run their own code on a web server, or read fragments of its memory, with no password. Attacks began before the fixes were released.",
+  "summary": "Two critical flaws in the PHP engine itself let an attacker run their own code on a web server, or read fragments of its memory, with no password. Attempts began before the fixes were released, and almost any PHP site is in the blast radius.",
   "description": [
-    "This is not a bug in one particular website's code but in the PHP runtime itself, the program that runs web applications. So any site or service built on PHP is at risk, however carefully it was written.",
-    "The attacker needs no password and no account: a request over the network is enough. Combined, the two flaws allow running custom code on the web server or reading fragments of its memory.",
-    "The attack happens below the application layer, so the site's own logs may show nothing. That makes it hard to spot: you have to look at server processes and at WAF and IPS logs.",
-    "The first attack attempts were seen on 17 October 2026, details leaked online on 20 October, and fixes were released only on 21 October. So for several days the flaws were exploited with no patch available. The note gives no exploitation details, and we do not invent any."
+    "Imagine every building in a city fitted with the same lock, and someone finds a defect in that lock. It does not matter how good your door, your alarm or your guard is: the mechanism itself is weak. That is roughly the story of PHP2Shell. It is not a bug in one particular website's code, but two flaws in PHP itself, the program that runs web applications. So a WooCommerce or Magento shop, a corporate portal and a hosting panel are all at risk, even when their own code is flawless.",
+    "Why is everyone talking about it so loudly? First, the rating. The PHP team scored both flaws 9.2 on CVSS 4.0, which means critical. Identifiers listing 10.0 circulated earlier, but the PHP Foundation called them incorrect, so go by 9.2. Second, the starting position the attacker needs: no password, no account, no user interaction. A network request is enough. The vector for CVE-2026-109618 is CVSS:4.0/AV:N/AC:H/AT:P/PR:N/UI:N/VC:H/VI:H/VA:H, which reads: attack from the network, no authentication, high impact on confidentiality, integrity and availability.",
+    "Now the mechanics, without the heavy math. CVE-2026-109618 (GHSA-w8hw-w9fx-j79w, \"RCE via OOM corruption\") is about how PHP enforces its memory limit. When a request runs out of memory, PHP does not wind down neatly; it jumps out of wherever it is using a mechanism called longjmp(). If that happens while the request's memory is only partly set up, the early exit leaves junk behind, and when the request shuts down PHP reads that junk and makes decisions based on it. From there, an attacker can steer it into running their code. Notably, the failed allocation does not have to have anything to do with the corrupted memory; it only has to fail at the wrong moment. The path can be reached through multipart parsing: requests without a usable content length, parts with many headers, or many empty file controls with nested field names.",
+    "The second flaw, CVE-2026-109619, is \"stale global state\" (a use-after-free). After a request, especially one that ended in a fatal error, a PHP worker can be left holding pointers to memory that has already been freed. The next request on the same worker may use them before the state is reset. The PHP team confirms memory disclosure as an impact: an attacker can read fragments of server memory, which can contain database passwords, tokens, keys and certificates. So even with no foreign code running, this is dangerous.",
+    "The most worrying detail is where the attack lands. Reportedly, exploitation needs a single unauthenticated request that is handled before any application code runs. That means your login page, your permission checks and even your own filters make no difference here: they never get the chance to act. Meanwhile the site's own logs may show nothing. A quiet log is not proof that all is well.",
+    "The scale is clear from a few simple numbers. According to W3Techs, PHP is used by 69.3% of sites whose server-side language is known. Tenable estimates that between 1.3 and over 1.9 million internet-exposed hosts may be vulnerable. The exposed setups include PHP-FPM, Apache mod_php (which the PHP team rates highest risk), php-cgi, FrankenPHP and LiteSpeed. The earliest affected code path has been traced back to PHP 5.4.0. And PHP is embedded in a huge number of commercial and open-source products: Palo Alto Networks reports that all PAN-OS and Panorama versions are affected, while Fortinet and Cisco were still checking their products at the time of reporting.",
+    "The timeline is a story of its own. On 17 October 2026, Amazon Threat Intelligence saw an exploitation attempt on its MadPot honeypots, before public disclosure. On 20 October the CVE identifiers leaked, PHP moved its scheduled release up by a day, and CERT-EU published its first advisory. On 21 October the fixes and the GHSA advisory came out, and more attempts were seen the same day, apparently from multiple actors. Wiz said in its technical analysis that frontier AI models helped turn the long-standing flaw into a working exploit. Kevin Beaumont predicted \"a mass of incidents\", and Hal Pomeranz expects a long tail, driven by forgotten applications with embedded PHP that nobody remembers.",
+    "One more flaw is worth knowing about. On 23 October CERT-EU added another remote code execution bug, CVE-2026-115560, in version 1.2 of its advisory. PHP has not yet published details and considers exploitation unlikely in typical configurations; there will be no out-of-band release for it. As a stopgap, the advice is to disable session.upload_progress.enabled and restart the workers until the next bugfix release. This page focuses on CVE-2026-109618 and CVE-2026-109619.",
+    "What should you do, in plain words? Update, which is the only complete fix. If you cannot update right away, isolate the application from the internet or take it offline, as CERT-EU, CISA and the UK NCSC advise. Everything listed below as interim only reduces risk and does not make a system safe. Then check whether anyone has already visited: retro-hunt the logs from 17 October, look for web shells and for web server processes spawning shells or downloaders, and rotate passwords and keys if memory may have leaked. This is not a reason to panic, just a reason to get things in order, the same way we change locks once we learn about a defect."
   ],
   "affected": [
     {
-      "product": "PHP (all web modes)",
-      "versions": "5.4–8.5",
+      "product": "PHP 8.2–8.5 before the fixed releases",
+      "versions": "8.2–8.5 below 8.2.35, 8.3.36, 8.4.27, 8.5.12",
       "fixed": "8.5.12 / 8.4.27 / 8.3.36 / 8.2.35",
-      "note": "You can also install fixed distribution packages."
+      "note": "Applies to any web mode: PHP-FPM, Apache mod_php (highest risk per PHP), php-cgi, FrankenPHP, LiteSpeed. Fixed distribution packages work too."
     },
     {
-      "product": "PHP, branches 5.4–7.3",
-      "versions": "5.4–7.3",
-      "note": "No fixes available."
-    },
-    {
-      "product": "PHP, branches 7.4–8.1",
+      "product": "PHP 7.4–8.1",
       "versions": "7.4–8.1",
-      "note": "Fix status is not stated in the source."
+      "note": "End of life, no official release. The PHP team published only minimal source backports (for source builds and for users without an LTS vendor). Distribution and LTS vendors received patches in advance, so check with yours. rpms.remirepo.net had no updates on release day."
+    },
+    {
+      "product": "PHP 5.4–7.3",
+      "versions": "5.4–7.3",
+      "note": "End of life, no fix from PHP. The earliest affected code path has been traced to PHP 5.4.0."
     },
     {
       "product": "Palo Alto PAN-OS and Panorama",
       "versions": "All versions",
-      "note": "Per Palo Alto's statement as cited in the source; no link to an advisory."
+      "note": "As reported by Palo Alto Networks. Fortinet and Cisco were still checking their products at the time of reporting."
     },
     {
-      "product": "PHP applications",
+      "product": "Applications and products built on PHP",
       "versions": "Depends on the PHP version underneath",
-      "note": "WordPress, Drupal, Joomla, Magento, internal portals, hosting panels, web interfaces of network devices."
+      "note": "Magento, Shopware, WooCommerce, WordPress, Drupal, Joomla and others are affected through the runtime even if their own code is clean. Many commercial and open-source products embed PHP, so check forgotten internal portals and panels too."
     }
   ],
   "impact": [
     "Full control of the web server: site defacement, web shells, miners, botnet agents.",
-    "Leak of database passwords, tokens, API keys and certificates from server memory, even without code execution.",
-    "Access to customer data.",
+    "Leak of database passwords, tokens, keys and certificates from server memory, even without code execution.",
+    "Access to customer data handled by the application.",
     "The server becomes a foothold for attacks on the internal network.",
-    "Site logs may show nothing, so a compromise is easy to miss."
+    "The attack runs before application code, so login, permission checks and site logs may show nothing, and a compromise is easy to miss."
   ],
   "remediation": [
-    "Update PHP to 8.5.12, 8.4.27, 8.3.36 or 8.2.35, or install your distribution's fixed packages. The source calls this the only complete solution.",
-    "Restart all PHP processes: without a restart the old version stays in memory.",
-    "Rebuild containers so they pick up the fixed version.",
-    "For branches 5.4–7.3 there are no fixes: remove such servers from the internet or migrate to a supported branch.",
+    "Find every PHP that handles web requests, including embedded copies, containers and vendor products. Start with the ones visible from the internet.",
+    "Update PHP to 8.5.12, 8.4.27, 8.3.36 or 8.2.35, or install your distribution's fixed packages. For 7.4–8.1, ask your distribution or LTS vendor for a patch; without one, only the minimal backports published by the PHP team remain. For 5.4–7.3 there is no fix: migrate to a supported branch.",
+    "Restart all PHP processes and rebuild containers: otherwise the old version stays in memory or in the image.",
+    "If you cannot update immediately, isolate the application from the internet or take it offline (as advised by CERT-EU, CISA and NCSC). Temporary and NOT a safe state: for CVE-2026-109618, enforce memory_limit=-1 so the application cannot override it; set a conservative post_max_size (8M without uploads, 32M with); enforce request size, field, part, header and nesting limits at the proxy or web server; block multipart at the frontend if the application does not use it; use container (cgroup) memory limits rather than RLIMIT_AS or RLIMIT_DATA. For CVE-2026-109619: session.upload_progress.enabled=0, and on PHP 8.5 also fatal_error_backtraces=0; fix reachable fatal errors and timeouts. Restart all PHP workers after any configuration change.",
+    "Temporary and NOT a safe state: virtual patching on a WAF or IPS. It works only if the WAF runs in blocking mode and direct access to the server that bypasses the WAF is closed; vendors already see bypass attempts.",
+    "For the third flaw, CVE-2026-115560, until the next bugfix release set session.upload_progress.enabled=0 and restart the workers.",
+    "Check for compromise: retro-hunt logs from 17 October and look for web shells and for web server or PHP-FPM processes spawning shells or downloaders. If memory may have leaked, rotate database passwords, tokens and keys.",
     "Rescan the network and confirm no vulnerable services remain."
   ],
   "timeline": [
-    { "text": "First attack attempts recorded, before any fixes were released." },
-    { "text": "Details of the flaws leaked online before the patches." },
-    { "text": "PHP released out-of-band fixes; Rapid7 InsightVM got checks for both CVEs." },
-    { "text": "Help Net Security published an article." },
-    { "text": "Date of the analytical note this page is based on." }
+    { "text": "Amazon Threat Intelligence sees an exploitation attempt on its MadPot honeypots before disclosure. The IP is tied to a commercial anonymisation service; how the actor obtained the details is unknown." },
+    { "text": "The CVE identifiers leak. PHP moves its scheduled release up by a day, and CERT-EU publishes its initial advisory (v1.0)." },
+    { "text": "PHP releases the fixes and publishes the GHSA. More attempts are seen, apparently from multiple actors. Cloudflare deploys initial WAF rules for known vectors (a stopgap, only for traffic through Cloudflare)." },
+    { "text": "watchTowr reports early attacks and reproduces both bugs. Wiz publishes a technical analysis and says AI models helped turn the old flaw into a working exploit. Searchlight Cyber releases an open-source scanner." },
+    { "text": "Rapid7 publishes InsightVM checks for both CVEs." },
+    { "text": "An F5 blog reports that its AI WAF in blocking mode stopped the attack in testing before a dedicated signature existed." },
+    { "text": "CERT-EU, in version 1.2, adds a third code execution flaw, CVE-2026-115560. There is no out-of-band release for it." },
+    { "text": "Tenable releases Security Center patch SC-202610.2 (PHP 8.2.35)." },
+    { "text": "CISA has not yet added the CVEs to KEV, but urges immediate patching and taking unpatchable PHP systems offline. The UK NCSC advises the same for systems that cannot be patched quickly." }
   ],
-  "caveats": [
-    "The note names no author. It lists solutions from several vendors, so it may be a commercial brief.",
-    "CVE numbers are given as printed in the note; we have not checked them against primary sources.",
-    "The note gives no links to advisories (PHP, CERT-EU, Palo Alto), only names and identifiers.",
-    "The note does not say which of the two CVEs gives code execution and which gives memory reading, and does not name the vulnerable component.",
-    "WAF and IPS are only a temporary compensating control and do not replace updating PHP. Vendors already see attempts to bypass the rules.",
-    "WAF protection works only if direct access to the server that bypasses the WAF is closed."
-  ],
+  "caveats": [],
   "solutions": [
-    { "why": "Dedicated checks for both CVEs show which PHP servers are vulnerable and help confirm the problem is closed after updating." },
-    { "why": "Shows which PHP servers are visible from the internet: those need fixing first." },
-    { "why": "Gathers all assets into one picture so a forgotten PHP server does not slip through." },
+    { "why": "Dedicated checks for both CVEs (including in Rapid7 InsightVM) show which PHP servers are vulnerable and help confirm the problem is closed after updating." },
+    { "why": "Shows which PHP servers are visible from the internet: those get fixed first." },
+    { "why": "Gathers all assets into one picture so a forgotten server or an application with embedded PHP does not slip through." },
     { "why": "The PHPInventory artifact for Velociraptor finds PHP on Windows, Linux and macOS, including embedded copies and servers that do not reveal their version." },
-    { "why": "A virtual patch in front of the site drops attacking requests until PHP is updated. It works only in blocking mode and only when direct access to the server that bypasses the WAF is closed." },
-    { "why": "IPS signatures in prevent mode block exploitation attempts. For IPS to see attacks in encrypted traffic, HTTPS inspection is required." },
+    { "why": "A virtual patch in front of the site drops attacking requests until PHP is updated. It is a temporary measure: it works in blocking mode and only when direct access to the server that bypasses the WAF is closed." },
+    { "why": "IPS signatures in prevent mode block exploitation attempts. For IPS to see attacks in encrypted traffic, HTTPS inspection is required. It is a temporary measure, not a substitute for updating." },
     { "why": "Safely replays the attack against your WAF, IPS and EDR and reports for each control: blocked, detected or missed. Gaps found are closed and tested again." },
-    { "why": "Spots shells and downloaders launched by web server processes, a sign that the attack has already worked." },
+    { "why": "Spots shells and downloaders launched by web server or PHP-FPM processes, a sign that the attack has already worked." },
     { "why": "Lets you search logs retroactively from 17 October and find traces of web shells and suspicious processes." },
     { "why": "If server memory may have leaked, change database passwords, tokens and keys. A secrets manager makes that rotation faster and controlled." }
   ],
-  "gaps": [
-    "Updating PHP and restarting processes is a job for administrators, not a separate solution class.",
-    "Migrating off unsupported PHP branches 5.4–7.3 is a project for the application owner."
-  ]
+  "gaps": []
 }
