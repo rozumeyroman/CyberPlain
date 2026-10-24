@@ -1,0 +1,191 @@
+{
+  "title": "Surviving the post-Mythos era: a practical guide",
+  "dateNote": "The document gives no date; written before July 2026",
+  "summary": "A summary of a short Picus Security brief: AI can already find vulnerabilities and turn them into working exploits faster than teams can fix them, so defences have to be tested continuously rather than assumed.",
+  "body": [
+    "The brief starts from the news of 7 April 2026, when Anthropic announced Claude Mythos Preview and Project Glasswing. According to Anthropic, the model can find previously unknown vulnerabilities on its own and chain them into working attacks. The authors conclude that exploitable vulnerabilities are piling up faster than anyone can patch them.",
+    "The core idea is simple: defence does not need a new science, but the basics must be done faster and with proof. The old question, \"what do we patch first?\", gives way to a new one: what in my network can actually be exploited, how far would an attacker get, and would my defences stop them? The authors write that a control never tested against a realistic attack is an assumption, not a defence.",
+    "The twelve recommendations fall into four themes: verify that defences work; detect and respond faster; harden systems; organise and prepare. For leadership they suggest three priorities: prove that controls really fire, limit the blast radius, and report security posture in business language on a regular basis.",
+    "How to read it: the brief was written by a company that sells a breach and attack simulation (BAS) platform, so the \"How Picus helps\" section is advertising, even though the authors call the advice vendor-neutral. Most figures are quoted from other publications rather than measured by the authors. The document itself names no CVEs and no ATT&CK identifiers: the MITRE mapping below is ours, editorial."
+  ],
+  "figures": [
+    {
+      "value": "72.4% vs 14.4%",
+      "label": "exploit success rate on complex browser vulnerabilities: Mythos Preview versus the previous best (Anthropic's figures, as quoted by the brief)"
+    },
+    {
+      "value": "600+ / 55+ / 5 weeks",
+      "label": "one low-skill attacker compromised over 600 FortiGate devices in 55+ countries using commercial AI services (Amazon Threat Intelligence, as quoted by the brief)"
+    },
+    {
+      "value": "25 min",
+      "label": "from initial access to data exfiltration in the fastest AI-assisted attacks (Unit 42 Global Incident Response Report 2025, as quoted by the brief)"
+    },
+    {
+      "value": ">99%",
+      "label": "of discovered vulnerabilities that are still unpatched (according to the brief)"
+    },
+    {
+      "value": "24 h",
+      "label": "the time within which internet-facing applications should be patched once an exploit exists (Anthropic's advice, as quoted by the brief)"
+    }
+  ],
+  "caveats": [
+    "This is a vendor document from a company that sells attack simulation (BAS). The advice is useful, but it is seen through the lens of the vendor's own product.",
+    "The statistics are second-hand: the brief quotes Anthropic, Amazon, Palo Alto Networks and others, and we have not checked those sources ourselves.",
+    "The document refers to a Glasswing report \"expected in early July 2026\", so it was written before that.",
+    "The brief contains no CVEs or ATT&CK identifiers. Techniques T1190 and T1528 and the link to solution classes are CyberPlain's editorial interpretation (marked *)."
+  ],
+  "findings": [
+    {
+      "title": "AI finds and weaponises vulnerabilities faster than they are patched",
+      "text": "The brief suggests replacing a flat CVSS list with a four-part view: how dangerous the flaw is, whether it can be reached from the internet, which controls stand in the way, and what it means for the business. The question is the path from outside systems to the company's crown jewels.",
+      "solutions": [
+        {
+          "why": "Shows which vulnerabilities exist in the network and lets you rank them by real reachability, not only by CVSS score."
+        },
+        {
+          "why": "Sees from outside what an attacker sees: which services are open to the internet and should be first in the queue."
+        },
+        {
+          "why": "Adds context to the vulnerability list: what the asset is, who owns it and how important it is."
+        },
+        {
+          "why": "Uses simulation to check whether an exploit really passes the existing controls, which removes flaws that are \"scary only on paper\"."
+        }
+      ]
+    },
+    {
+      "title": "A control that is not tested is an assumption",
+      "text": "The authors give examples of invisible gaps: a firewall exception for a legacy integration, an EDR policy relaxed because of a noisy application, a SIEM rule nobody has updated. They propose moving from quarterly checks to continuous ones and testing three things: whether the exploit works, whether attack chains cross segments, and whether detection and response actually fire.",
+      "solutions": [
+        {
+          "why": "Repeatedly plays safe versions of attacks against the firewall, WAF, EDR and SIEM rules and shows what slips through."
+        },
+        {
+          "why": "Walks the chain like an attacker, from a workstation to critical systems, and shows where segmentation boundaries do not hold."
+        }
+      ]
+    },
+    {
+      "title": "Virtual patching becomes a proper discipline",
+      "text": "For every critical vulnerability that is not yet fixed, the brief advises having a stand-in for the patch: a firewall signature, a WAF rule, endpoint detection logic and a SIEM correlation. The key point is to verify with a repeat simulation that the stand-in works, rather than assume it does.",
+      "solutions": [
+        {
+          "why": "Blocks a known attack pattern against a web application while the fix is not yet installed."
+        },
+        {
+          "why": "IPS signatures at the network edge cover a known vulnerability until the host is updated."
+        },
+        {
+          "why": "Detection rules on the endpoint catch the consequences of exploitation even without the patch."
+        }
+      ]
+    },
+    {
+      "title": "Behavioural detection and pre-approved containment",
+      "text": "AI-assisted attacks move so fast that signatures are not enough: the authors advise hunting for behaviour such as logins from unusual sources, movement between segments outside normal flows, and privilege escalation outside change windows. They also advise approving automatic actions in advance: isolating a host, disabling a service account, blocking a newly seen command channel. In their words, a false isolation lasting 15 minutes costs far less than a real attack sitting 4 hours in an alert queue.",
+      "solutions": [
+        {
+          "why": "Spots suspicious behaviour on the host and can isolate it automatically."
+        },
+        {
+          "why": "Sees unusual network traffic, including between segments and towards new command addresses."
+        },
+        {
+          "why": "Notices when accounts and services deviate from their normal behaviour."
+        },
+        {
+          "why": "Gathers signals in one place, correlates them and triggers a response."
+        },
+        {
+          "why": "Runs pre-approved playbooks such as isolation, blocking and notification, without waiting in a queue."
+        },
+        {
+          "why": "Protects accounts: notices suspicious authentication and helps disable a compromised service account."
+        }
+      ]
+    },
+    {
+      "title": "Limit the blast radius",
+      "text": "Every crown jewel should be protected by at least three independently verified layers: network segmentation, identity verification and behavioural detection. The authors warn against measures that only add friction (SMS codes, non-standard ports), because they do not stop a patient attacker. They recommend phishing-resistant MFA, just-in-time access with no standing privileges, short-lived tokens and fast secret rotation.",
+      "solutions": [
+        {
+          "why": "Makes a login with a stolen password harder on every path to critical systems."
+        },
+        {
+          "why": "Removes standing privileges: rights are granted for the time needed and then disappear."
+        },
+        {
+          "why": "Puts privileged accounts under control and session recording."
+        },
+        {
+          "why": "Replaces long-lived static keys with short-lived ones and allows rotation in hours rather than every 90 days."
+        },
+        {
+          "why": "Keeps service accounts and tokens, which nobody usually reviews, in view."
+        },
+        {
+          "why": "Segmentation and egress control stop an attack chain from going further than the first foothold."
+        }
+      ]
+    },
+    {
+      "title": "Shrink the attack surface",
+      "text": "The brief advises building a full picture: what we have, what of it is visible from outside and what is protected. Admin interfaces, development environments and internal tools should sit behind a VPN or a zero-trust proxy, and DNS records, cloud policies and certificates should be tidied up. Separately, the security tools themselves should be audited, since firewalls and EDR are attractive targets too.",
+      "solutions": [
+        {
+          "why": "Finds everything visible from the internet, including forgotten services, and helps remove it."
+        },
+        {
+          "why": "Gives one view of assets, their vulnerabilities and the controls that protect them."
+        },
+        {
+          "why": "Exposes an internal application only to an authorised person through a zero-trust proxy, not to the whole internet."
+        },
+        {
+          "why": "Keeps an inventory of certificates so that none are forgotten or expired."
+        }
+      ]
+    },
+    {
+      "title": "Protect AI agents and the tokens they run on",
+      "text": "The brief advises inventorying all models, MCP servers and plugins and treating each MCP server as a third-party integration. A separate risk is OAuth tokens: an attacker who gets one acts through ordinary API calls and easily slips past network detection. So every token and grant should be tied to its expected use and watched for anomalies.",
+      "solutions": [
+        {
+          "why": "Keeps a register of machine identities (tokens, keys, service accounts) and finds the surplus ones."
+        },
+        {
+          "why": "Detects suspicious use of identities, including stolen tokens."
+        },
+        {
+          "why": "Sees when a token starts reaching unusual resources or unusual volumes."
+        },
+        {
+          "why": "Helps assess third-party integrations and MCP servers as carefully as a new SaaS vendor."
+        }
+      ]
+    },
+    {
+      "title": "The FortiGate campaign shows what to expect and what to prepare for",
+      "text": "According to the brief, the attacker in the FortiGate campaign used AI to reach Active Directory environments, extract full credential databases and go after backup infrastructure. The lesson: have a rehearsed response plan and backups that cannot be tampered with from the same network. The brief also advises rehearsing several incidents on the same day.",
+      "solutions": [
+        {
+          "why": "Backups give a way to recover, but only if they are protected from people who are already inside the network."
+        },
+        {
+          "why": "An isolated, immutable backup vault stays out of the attacker's reach even when the domain has been taken over."
+        },
+        {
+          "why": "Lets you quickly collect evidence and understand what happened when several incidents run at once."
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "Microsegmentation (limiting workload-to-workload traffic to only the required ports): there is no separate class on the site, so it is only mentioned here.",
+    "DNS filtering and TLS inspection at trust-zone boundaries: there are no separate classes.",
+    "OT/SCADA security and systems that cannot be updated: there is no separate class; the brief advises only virtual patching and verified compensating controls for them.",
+    "SBOMs and open-source dependency tracking: there is no separate class."
+  ]
+}

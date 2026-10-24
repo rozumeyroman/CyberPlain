@@ -1,0 +1,150 @@
+---
+// /analytics/attacks/<id>/ — розбір реальної атаки: ланцюжок кроків, техніки ATT&CK, класи рішень і матриця «клас → кроки».
+import Base from '../../../../layouts/Base.astro';
+import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
+import AttackChain from '../../../../components/AttackChain.astro';
+import SolutionLinks from '../../../../components/SolutionLinks.astro';
+import SourceList from '../../../../components/SourceList.astro';
+import { site } from '../../../../../site.config';
+import { loadData, pageCtx, type AAttack } from '../../../../lib/data';
+import { fmtDate, langs, routeLang } from '../../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const l of langs) {
+    const { analytics } = await loadData(l);
+    paths.push(...analytics.attacks.map((attack) => ({ params: { lang: routeLang(l), id: attack.id }, props: { attack } })));
+  }
+  return paths;
+}
+
+const { attack: a } = Astro.props as { attack: AAttack };
+const { lang, t, url, d, pl } = await pageCtx(Astro.url);
+const x = t.analytics;
+const matrix = d.classSteps(a);
+const editorial = a.steps.some((s) => s.techniques.some((y) => y.editorial) || s.solutions.some((z) => z.editorial));
+---
+<Base title={a.title} description={a.summary}>
+  <section class="wrap page">
+    <nav aria-label={t.crumbs} class="mono crumbs">
+      <a href={url.analytics}>{x.title}</a><span aria-hidden="true">/</span>
+      <a href={url.attacks}>{x.attacks.title}</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{a.title}</span>
+    </nav>
+
+    <div class="mono tag">[ {x.kind.attack} ]</div>
+    <h1>{a.title}</h1>
+    <p class="lead-text">{a.summary}</p>
+
+    {a.claims.length > 0 && (
+      <section class="claims" aria-labelledby="claims">
+        <h2 class="mono ct" id="claims">{x.attack.claims}</h2>
+        <ul class="figs">
+          {a.claims.map((c) => <li><span class="v">{c.value}</span><span class="l">{c.label}</span></li>)}
+        </ul>
+        {a.claimsNote && <p class="cn">{a.claimsNote}</p>}
+      </section>
+    )}
+
+    <dl class="facts">
+      <div><dt class="mono k">{x.facts.date}</dt><dd>{a.dateNote ?? fmtDate(lang, a.date)}</dd></div>
+      <div><dt class="mono k">{x.facts.victim}</dt><dd>{a.victim.name} · {a.victim.sector} · {a.victim.country}</dd></div>
+      <div><dt class="mono k">{x.facts.actor}</dt><dd>{a.actor.name}</dd></div>
+      <div><dt class="mono k">{x.facts.original}</dt><dd>{a.original.title} · {a.original.publisher}{a.original.pages && <> · {x.facts.pagesN(a.original.pages)}</>}</dd></div>
+    </dl>
+
+    <section class="sec" aria-labelledby="actor">
+      <h2 class="sec-title" id="actor">{x.attack.actor}: {a.actor.name}</h2>
+      <ul class="plain">{a.actor.profile.map((p) => <li>{p}</li>)}</ul>
+    </section>
+
+    {a.body.length > 0 && (
+      <section class="sec" aria-labelledby="plain">
+        <h2 class="sec-title" id="plain">{x.plain}</h2>
+        <div class="prose">{a.body.map((p) => <p>{p}</p>)}</div>
+      </section>
+    )}
+
+    <section class="sec" aria-labelledby="chain">
+      <h2 class="sec-title" id="chain">{x.attack.chain}<span class="mono">{pl(a.steps.length, x.n.steps)}</span></h2>
+      <nav aria-label={x.attack.stepsNav} class="chips jump" id="steps">
+        {a.steps.map((s) => <a href={`#step-${s.n}`} class="chip">{s.n}. {s.title}</a>)}
+      </nav>
+      <AttackChain steps={a.steps} />
+      {editorial && <p class="foot">{x.editorialMapping(site.name)}</p>}
+    </section>
+
+    <section class="sec" aria-labelledby="matrix">
+      <h2 class="sec-title" id="matrix">{x.attack.matrix}</h2>
+      <table class="tbl mx">
+        <thead><tr><th>{x.thClass}</th><th>{x.attack.thSteps}</th></tr></thead>
+        <tbody>
+          {matrix.map((m) => (
+            <tr>
+              <td><SolutionLinks cls={m.cls} products={m.products} /></td>
+              <td data-label={x.attack.thSteps}>
+                <span class="chips">{m.steps.map((s) => <a href={`#step-${s.n}`} class="chip n" aria-label={`${x.attack.step(s.n)}: ${s.title}`}>{s.n}</a>)}</span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    {a.lessons.length > 0 && (
+      <section class="sec" aria-labelledby="les">
+        <h2 class="sec-title" id="les">{x.attack.lessons}</h2>
+        <ul class="plain">{a.lessons.map((l) => <li>{l}</li>)}</ul>
+      </section>
+    )}
+
+    {a.caveats.length > 0 && (
+      <section class="sec" aria-labelledby="cav">
+        <h2 class="sec-title" id="cav">{x.caveats}</h2>
+        <div class="note-box"><ul class="plain">{a.caveats.map((c) => <li>{c}</li>)}</ul></div>
+      </section>
+    )}
+
+    {a.vulnerabilities.length > 0 && (
+      <section class="sec" aria-labelledby="rel">
+        <h2 class="sec-title" id="rel">{x.related.vulns}</h2>
+        <div class="cards">
+          {a.vulnerabilities.map((v) => <AnalyticsCard href={url.vuln(v.id)} tag={`[ ${x.kind.vulnerability} ]`} title={v.title} summary={v.summary} meta={[v.cves.join(', ')]} cta={x.open} />)}
+        </div>
+      </section>
+    )}
+
+    <SourceList sources={a.sources} />
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .page > :global(:not(.lead-text)) { max-width: 980px; }
+  .tag { font-size: 12px; color: var(--attack); margin-bottom: 16px; }
+  h1 { margin: 0 0 16px; font-size: clamp(32px, 7vw, 48px); line-height: 1.1; }
+  .claims { margin: 0 0 28px; padding: 18px 20px; border: 1px solid var(--attack); background: var(--surface); }
+  .ct { margin: 0 0 12px; font-size: 11px; font-weight: 400; color: var(--attack); letter-spacing: .08em; }
+  .figs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 16px; }
+  .figs li { display: flex; flex-direction: column; gap: 4px; }
+  .v { font: 500 clamp(22px, 5vw, 28px)/1.1 var(--font-mono); color: var(--attack); }
+  .l { font-size: 14px; line-height: 1.45; color: var(--text-2); }
+  .cn { margin: 14px 0 0; font-size: 13px; line-height: 1.55; color: var(--muted); }
+  .k { font-size: 11px; color: var(--muted-2); margin: 0; font-weight: 400; }
+  .facts { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0 0 8px; }
+  .facts > div { display: flex; flex-direction: column; gap: 2px; }
+  .facts dd { margin: 0; font-size: 15px; color: var(--text-2); }
+  .prose p { margin: 0 0 16px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--text-2); }
+  .plain { margin: 0; padding-left: 20px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--text-2); }
+  .plain li + li { margin-top: 8px; }
+  .jump { margin-bottom: 20px; }
+  .jump .chip { min-height: 44px; }
+  #steps { scroll-margin-top: 130px; }
+  .chip.n { min-width: 44px; min-height: 44px; justify-content: center; font-family: var(--font-mono); }
+  .mx { table-layout: fixed; }
+  .mx th:first-child { width: 36%; }
+  @media (max-width: 760px) { .mx th:first-child { width: auto; } }
+  .foot { margin: 20px 0 0; max-width: 760px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+  .note-box { max-width: none; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+</style>

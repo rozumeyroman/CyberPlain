@@ -1,0 +1,129 @@
+---
+// /analytics/reports/<id>/ — розбір звіту: висновки, цифри, техніки ATT&CK і класи рішень.
+import Base from '../../../../layouts/Base.astro';
+import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
+import AnalyticsSolutions from '../../../../components/AnalyticsSolutions.astro';
+import SourceList from '../../../../components/SourceList.astro';
+import TechRefs from '../../../../components/TechRefs.astro';
+import { site } from '../../../../../site.config';
+import { loadData, pageCtx, type AReport } from '../../../../lib/data';
+import { fmtDate, langs, routeLang } from '../../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const l of langs) {
+    const { analytics } = await loadData(l);
+    paths.push(...analytics.reports.map((report) => ({ params: { lang: routeLang(l), id: report.id }, props: { report } })));
+  }
+  return paths;
+}
+
+const { report: r } = Astro.props as { report: AReport };
+const { lang, t, url } = await pageCtx(Astro.url);
+const x = t.analytics;
+const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) || f.solutions.some((s) => s.editorial));
+---
+<Base title={r.title} description={r.summary}>
+  <section class="wrap page">
+    <nav aria-label={t.crumbs} class="mono crumbs">
+      <a href={url.analytics}>{x.title}</a><span aria-hidden="true">/</span>
+      <a href={url.reports}>{x.reports.title}</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{r.title}</span>
+    </nav>
+
+    <div class="mono tag">[ {x.kind[r.kind]} · {r.original.publisher} ]</div>
+    <h1>{r.title}</h1>
+    <p class="orig"><span class="mono k">{x.facts.original}</span> {r.original.title}</p>
+
+    <dl class="facts">
+      <div><dt class="mono k">{x.facts.publisher}</dt><dd>{r.original.publisher}</dd></div>
+      <div><dt class="mono k">{x.facts.date}</dt><dd>{fmtDate(lang, r.date)}{r.dateNote && <span class="dn"> · {r.dateNote}</span>}</dd></div>
+      {r.original.pages && <div><dt class="mono k">{x.facts.pages}</dt><dd>{x.facts.pagesN(r.original.pages)}</dd></div>}
+      <div><dt class="mono k">{x.facts.source}</dt><dd>{r.original.url ? <a href={r.original.url} rel="noopener noreferrer">{new URL(r.original.url).hostname} ↗</a> : x.facts.noUrl}</dd></div>
+    </dl>
+
+    <p class="lead-text">{r.summary}</p>
+
+    <section class="sec" aria-labelledby="plain">
+      <h2 class="sec-title" id="plain">{x.plain}</h2>
+      <div class="prose">{r.body.map((p) => <p>{p}</p>)}</div>
+    </section>
+
+    {r.figures.length > 0 && (
+      <section class="sec" aria-labelledby="fig">
+        <h2 class="sec-title" id="fig">{x.figures}</h2>
+        <ul class="figs">
+          {r.figures.map((f) => <li><span class="v">{f.value}</span><span class="l">{f.label}</span></li>)}
+        </ul>
+      </section>
+    )}
+
+    {r.caveats.length > 0 && (
+      <section class="sec" aria-labelledby="cav">
+        <h2 class="sec-title" id="cav">{x.caveats}</h2>
+        <div class="note-box"><ul class="plain">{r.caveats.map((c) => <li>{c}</li>)}</ul></div>
+      </section>
+    )}
+
+    <section class="sec" aria-labelledby="find">
+      <h2 class="sec-title" id="find">{x.findings}</h2>
+      {r.findings.map((f, i) => (
+        <details class="sec fold find" open id={`finding-${i + 1}`}>
+          <summary><h3 class="sec-title"><span class="mono num">{i + 1}</span> {f.title}</h3></summary>
+          <p class="text">{f.text}</p>
+          {f.techniques.length > 0 && <div class="techs"><span class="mono k">{x.vuln.techniques}</span><TechRefs items={f.techniques} /></div>}
+          <AnalyticsSolutions items={f.solutions} />
+        </details>
+      ))}
+      {editorial && <p class="foot">{x.editorialMapping(site.name)}</p>}
+    </section>
+
+    {r.gaps.length > 0 && (
+      <section class="sec" aria-labelledby="gaps">
+        <h2 class="sec-title" id="gaps">{x.gaps}</h2>
+        <p class="note">{x.gapsNote}</p>
+        <ul class="plain">{r.gaps.map((g) => <li>{g}</li>)}</ul>
+      </section>
+    )}
+
+    {r.vulnerabilities.length > 0 && (
+      <section class="sec" aria-labelledby="rel">
+        <h2 class="sec-title" id="rel">{x.related.vulns}</h2>
+        <div class="cards">
+          {r.vulnerabilities.map((v) => <AnalyticsCard href={url.vuln(v.id)} tag={`[ ${x.kind.vulnerability} ]`} title={v.title} summary={v.summary} meta={[v.cves.join(', ')]} cta={x.open} />)}
+        </div>
+      </section>
+    )}
+
+    <SourceList sources={r.sources} />
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .page > :global(:not(.lead-text)) { max-width: 980px; }
+  .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
+  h1 { margin: 0 0 12px; font-size: clamp(32px, 7vw, 48px); line-height: 1.1; }
+  .orig { margin: 0 0 24px; font-size: 15px; color: var(--muted); }
+  .k { font-size: 11px; color: var(--muted-2); margin: 0; font-weight: 400; }
+  .facts { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0 0 28px; }
+  .facts > div { display: flex; flex-direction: column; gap: 2px; }
+  .facts dd { margin: 0; font-size: 15px; color: var(--text-2); }
+  .dn { color: var(--muted); }
+  .prose p { margin: 0 0 16px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--text-2); }
+  .figs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .figs li { background: var(--bg); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .v { font: 500 clamp(26px, 5vw, 34px)/1.1 var(--font-mono); color: var(--defense); letter-spacing: -0.02em; }
+  .l { font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .plain { margin: 0; padding-left: 20px; font-size: 15px; line-height: 1.6; color: var(--text-2); }
+  .plain li + li { margin-top: 6px; }
+  .note-box { max-width: none; }
+  .find { margin-top: 24px; scroll-margin-top: 130px; }
+  .find .sec-title { font-size: clamp(19px, 4vw, 22px); line-height: 1.3; }
+  .num { color: var(--defense); margin-right: 4px; }
+  .text { margin: 0 0 16px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--text-2); }
+  .techs { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+  .foot { margin: 20px 0 0; max-width: 760px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+  .note { margin: 0 0 12px; max-width: 760px; font-size: 14px; color: var(--muted); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+</style>

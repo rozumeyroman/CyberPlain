@@ -1,0 +1,191 @@
+---
+// /analytics/vulnerabilities/<id>/ — розбір вразливості: кого стосується, офіційне виправлення, чим прикрити ризик.
+import Base from '../../../../layouts/Base.astro';
+import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
+import AnalyticsSolutions from '../../../../components/AnalyticsSolutions.astro';
+import SourceList from '../../../../components/SourceList.astro';
+import TechRefs from '../../../../components/TechRefs.astro';
+import { site } from '../../../../../site.config';
+import { loadData, pageCtx, type AVuln, type Phase } from '../../../../lib/data';
+import { fmtDate, langs, routeLang } from '../../../../lib/i18n';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const l of langs) {
+    const { analytics } = await loadData(l);
+    paths.push(...analytics.vulnerabilities.map((vuln) => ({ params: { lang: routeLang(l), id: vuln.id }, props: { vuln } })));
+  }
+  return paths;
+}
+
+const { vuln: v } = Astro.props as { vuln: AVuln };
+const { lang, t, url, d } = await pageCtx(Astro.url);
+const x = t.analytics;
+const phases: Phase[] = ['find', 'protect', 'verify', 'detect'];
+const groups = phases.map((p) => ({ phase: p, items: v.solutions.filter((s) => s.phase === p) })).filter((g) => g.items.length > 0);
+const editorial = v.techniques.some((y) => y.editorial) || v.solutions.some((s) => s.editorial);
+const reports = d.reportsAbout(v.id);
+const attacks = d.attacksUsing(v.id);
+---
+<Base title={v.title} description={v.summary}>
+  <section class="wrap page">
+    <nav aria-label={t.crumbs} class="mono crumbs">
+      <a href={url.analytics}>{x.title}</a><span aria-hidden="true">/</span>
+      <a href={url.vulns}>{x.vulns.title}</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{v.title}</span>
+    </nav>
+
+    <div class="mono tag">[ {x.kind.vulnerability} ]</div>
+    <h1>{v.title}</h1>
+    <div class="chips cves" aria-label={x.facts.cves}>{v.cves.map((c) => <span class="chip mono">{c}</span>)}</div>
+
+    <dl class="facts">
+      {v.cvss && <div><dt class="mono k">{x.facts.cvss}</dt><dd><span class="mono score">{v.cvss.score.toFixed(1)}</span> <span class="dn">v{v.cvss.version}</span></dd></div>}
+      {v.exploitedSince && <div><dt class="mono k">{x.facts.exploited}</dt><dd>{x.facts.exploitedSince(fmtDate(lang, v.exploitedSince))}</dd></div>}
+      <div><dt class="mono k">{x.facts.asOf}</dt><dd>{fmtDate(lang, v.date)}</dd></div>
+    </dl>
+
+    <p class="lead-text">{v.summary}</p>
+
+    <section class="sec" aria-labelledby="what">
+      <h2 class="sec-title" id="what">{x.vuln.what}</h2>
+      <div class="prose">{v.description.map((p) => <p>{p}</p>)}</div>
+    </section>
+
+    <section class="sec" aria-labelledby="aff">
+      <h2 class="sec-title" id="aff">{x.vuln.affected}</h2>
+      <table class="tbl aff">
+        <thead><tr><th>{x.vuln.thProduct}</th><th>{x.vuln.thVersions}</th><th>{x.vuln.thFixed}</th><th>{x.vuln.thNote}</th></tr></thead>
+        <tbody>
+          {v.affected.map((a) => (
+            <tr>
+              <td data-label={x.vuln.thProduct}><strong class="pn">{a.product}</strong></td>
+              <td data-label={x.vuln.thVersions}>{a.versions}</td>
+              <td data-label={x.vuln.thFixed} class:list={{ empty: !a.fixed }}>{a.fixed ?? t.dash}</td>
+              <td data-label={x.vuln.thNote} class:list={{ empty: !a.note }}>{a.note ?? t.dash}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+
+    {v.impact.length > 0 && (
+      <section class="sec" aria-labelledby="imp">
+        <h2 class="sec-title" id="imp">{x.vuln.impact}</h2>
+        <ul class="plain">{v.impact.map((i) => <li>{i}</li>)}</ul>
+      </section>
+    )}
+
+    <section class="sec" aria-labelledby="fix">
+      <h2 class="sec-title" id="fix">{x.vuln.fix}</h2>
+      <ol class="plain steps">{v.remediation.map((s) => <li>{s}</li>)}</ol>
+      {v.advisories.length > 0 && (
+        <div class="adv">
+          <h3 class="mono k">{x.vuln.advisories}</h3>
+          <ul class="plain nolist">
+            {v.advisories.map((a) => (
+              <li>
+                {a.url
+                  ? <a href={a.url} rel="noopener noreferrer"><strong>{a.issuer}</strong> · {a.label} ↗</a>
+                  : <><strong>{a.issuer}</strong> · {a.label} <span class="mono k">{x.noSourceUrl}</span></>}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+
+    {v.timeline.length > 0 && (
+      <section class="sec" aria-labelledby="tl">
+        <h2 class="sec-title" id="tl">{x.vuln.timeline}</h2>
+        <ol class="tl">
+          {v.timeline.map((e) => <li><time class="mono k" datetime={e.date}>{fmtDate(lang, e.date)}</time><span>{e.text}</span></li>)}
+        </ol>
+      </section>
+    )}
+
+    <section class="sec" aria-labelledby="comp">
+      <h2 class="sec-title" id="comp">{x.vuln.compensate}</h2>
+      {groups.map((g) => (
+        <div class="phase">
+          <h3 class="mono ph">{x.vuln.phase[g.phase]}</h3>
+          <AnalyticsSolutions items={g.items} />
+        </div>
+      ))}
+      {editorial && <p class="foot">{x.editorialMapping(site.name)}</p>}
+    </section>
+
+    {v.techniques.length > 0 && (
+      <section class="sec" aria-labelledby="tech">
+        <h2 class="sec-title" id="tech">{x.vuln.techniques}</h2>
+        <TechRefs items={v.techniques} />
+      </section>
+    )}
+
+    {v.caveats.length > 0 && (
+      <section class="sec" aria-labelledby="cav">
+        <h2 class="sec-title" id="cav">{x.caveats}</h2>
+        <div class="note-box"><ul class="plain">{v.caveats.map((c) => <li>{c}</li>)}</ul></div>
+      </section>
+    )}
+
+    {v.gaps.length > 0 && (
+      <section class="sec" aria-labelledby="gaps">
+        <h2 class="sec-title" id="gaps">{x.gaps}</h2>
+        <p class="note">{x.gapsNote}</p>
+        <ul class="plain">{v.gaps.map((g) => <li>{g}</li>)}</ul>
+      </section>
+    )}
+
+    {reports.length > 0 && (
+      <section class="sec" aria-labelledby="rr">
+        <h2 class="sec-title" id="rr">{x.related.reports}</h2>
+        <div class="cards">
+          {reports.map((r) => <AnalyticsCard href={url.report(r.id)} tag={`[ ${x.kind[r.kind]} · ${r.original.publisher} ]`} title={r.title} summary={r.summary} meta={[fmtDate(lang, r.date)]} cta={x.open} />)}
+        </div>
+      </section>
+    )}
+
+    {attacks.length > 0 && (
+      <section class="sec" aria-labelledby="ra">
+        <h2 class="sec-title" id="ra">{x.related.attacks}</h2>
+        <div class="cards">
+          {attacks.map((a) => <AnalyticsCard href={url.attack(a.id)} tag={`[ ${x.kind.attack} ]`} tone="attack" title={a.title} summary={a.summary} meta={[fmtDate(lang, a.date)]} cta={x.open} />)}
+        </div>
+      </section>
+    )}
+
+    <SourceList sources={v.sources} />
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .page > :global(:not(.lead-text)) { max-width: 980px; }
+  .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
+  h1 { margin: 0 0 16px; font-size: clamp(32px, 7vw, 48px); line-height: 1.1; }
+  .cves { margin-bottom: 20px; }
+  .cves .chip { font-size: 13px; }
+  .k { font-size: 11px; color: var(--muted-2); margin: 0; font-weight: 400; }
+  .facts { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0 0 28px; }
+  .facts > div { display: flex; flex-direction: column; gap: 2px; }
+  .facts dd { margin: 0; font-size: 15px; color: var(--text-2); }
+  .score { font-size: 20px; color: var(--attack); }
+  .dn { color: var(--muted); }
+  .prose p { margin: 0 0 16px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--text-2); }
+  .plain { margin: 0; padding-left: 20px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--text-2); }
+  .plain li + li { margin-top: 8px; }
+  .nolist { list-style: none; padding-left: 0; }
+  .adv { margin-top: 28px; }
+  .adv h3 { margin-bottom: 10px; }
+  .pn { color: var(--text); }
+  .tl { list-style: none; margin: 0; padding: 0; max-width: 760px; border-left: 1px solid var(--line-strong); }
+  .tl li { display: flex; flex-direction: column; gap: 2px; padding: 0 0 16px 18px; font-size: 16px; line-height: 1.5; color: var(--text-2); }
+  .phase { margin-top: 24px; }
+  .ph { margin: 0 0 10px; font-size: 12px; font-weight: 400; color: var(--defense); letter-spacing: .08em; }
+  .foot { margin: 20px 0 0; max-width: 760px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+  .note-box { max-width: none; }
+  .note { margin: 0 0 12px; max-width: 760px; font-size: 14px; color: var(--muted); }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+  .aff { table-layout: fixed; }
+</style>

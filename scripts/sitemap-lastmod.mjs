@@ -24,10 +24,16 @@ function gitDates() {
   return dates;
 }
 
-const readDir = (dir) =>
-  readdirSync(dir)
-    .filter((f) => f.endsWith('.json'))
-    .map((f) => ({ id: f.slice(0, -5), file: `${dir}/${f}`, data: JSON.parse(readFileSync(join(dir, f), 'utf8')) }));
+const readDir = (dir) => {
+  try {
+    return readdirSync(dir)
+      .filter((f) => f.endsWith('.json'))
+      .map((f) => ({ id: f.slice(0, -5), file: `${dir}/${f}`, data: JSON.parse(readFileSync(join(dir, f), 'utf8')) }));
+  } catch (e) {
+    if (e.code === 'ENOENT') return []; // розділу ще немає
+    throw e;
+  }
+};
 
 export function buildLastmod() {
   const dates = gitDates();
@@ -42,6 +48,9 @@ export function buildLastmod() {
   const products = readDir('content/solutions/products');
   const d3Tactics = readDir('content/d3fend/tactics');
   const d3Techniques = readDir('content/d3fend/techniques');
+  const reports = readDir('content/analytics/reports');
+  const vulns = readDir('content/analytics/vulnerabilities');
+  const attacks = readDir('content/analytics/attacks');
   const files = (xs) => xs.map((x) => x.file);
   const attackData = 'data/mitre/attack.json';
   const d3Data = 'data/mitre/d3fend.json';
@@ -71,6 +80,28 @@ export function buildLastmod() {
   for (const t of d3Tactics) set(`/d3fend/${t.id}/`, [t.file, d3Data, ...files(classes)]);
   for (const t of d3Techniques)
     set(`/d3fend/${t.id}/`, [t.file, d3Data, ...files(classes.filter((c) => c.data.d3fend?.includes(t.id)))]);
+
+  // Аналітика: власний JSON + класи рішень, на які він посилається + пов'язані записи.
+  const used = (e) => {
+    const lists = [e.data.solutions, ...(e.data.findings ?? []).map((f) => f.solutions), ...(e.data.steps ?? []).map((x) => x.solutions)];
+    const ids = new Set(lists.flatMap((l) => (l ?? []).map((x) => x.class)));
+    return files(classes.filter((c) => ids.has(c.id)));
+  };
+  const vulnIds = (e) => e.data.vulnerabilities ?? [];
+  for (const v of vulns) {
+    const rel = [...reports, ...attacks].filter((x) => vulnIds(x).includes(v.id));
+    set(`/analytics/vulnerabilities/${v.id}/`, [v.file, ...used(v), ...files(rel)]);
+  }
+  for (const r of reports) {
+    set(`/analytics/reports/${r.id}/`, [r.file, ...used(r), ...files(vulns.filter((v) => vulnIds(r).includes(v.id)))]);
+  }
+  for (const a of attacks) {
+    set(`/analytics/attacks/${a.id}/`, [a.file, ...used(a), ...files(vulns.filter((v) => vulnIds(a).includes(v.id)))]);
+  }
+  set('/analytics/reports/', files(reports));
+  set('/analytics/vulnerabilities/', files(vulns));
+  set('/analytics/attacks/', files(attacks));
+  set('/analytics/', [...files(reports), ...files(vulns), ...files(attacks)]);
 
   set('/mitre/', ['content/attack/intro.json', attackData, ...files(tactics)]);
   set('/d3fend/', ['content/d3fend/intro.json', d3Data, ...files(d3Tactics)]);

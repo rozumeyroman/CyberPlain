@@ -1,0 +1,30 @@
+---
+// Джерела: з посиланням — лише якщо воно є в самому джерелі; без нього — назва і позначка.
+import { pageCtx } from '../lib/data';
+
+interface Props { sources: { label: string; url?: string }[] }
+const { sources } = Astro.props;
+const { t } = await pageCtx(Astro.url);
+const x = t.analytics;
+---
+{sources.length > 0 && (
+  <section class="sec" aria-labelledby="src">
+    <h2 class="sec-title" id="src">{x.sources}</h2>
+    <ul class="list">
+      {sources.map((s) => (
+        <li>
+          {s.url
+            ? <a href={s.url} rel="noopener noreferrer">{s.label} <span class="mono host">{new URL(s.url).hostname} ↗</span></a>
+            : <>{s.label} <span class="mono host">{x.noSourceUrl}</span></>}
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; max-width: 760px; }
+  .list li { padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--text-2); }
+  .list a { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; min-height: 28px; }
+  .host { font-size: 11px; color: var(--muted-2); letter-spacing: .06em; }
+</style>

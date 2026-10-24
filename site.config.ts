@@ -36,6 +36,15 @@ export const site = {
         { label: { uk: 'Вендори', en: 'Vendors' }, note: { uk: 'Виробники та їхні продукти', en: 'Vendors and their products' }, href: '/vendors/' },
       ],
     },
+    {
+      id: 'analytics',
+      label: { uk: 'Аналітика', en: 'Analytics' },
+      children: [
+        { label: { uk: 'Аналітичні звіти', en: 'Analytical reports' }, note: { uk: 'Головне зі звітів: висновки, цифри й чим це закрити', en: 'The essentials of reports: findings, numbers and how to close the gaps' }, href: '/analytics/reports/' },
+        { label: { uk: 'Вразливості', en: 'Vulnerabilities' }, note: { uk: 'Кого стосується, що робити і чим прикрити ризик', en: 'Who is affected, what to do and how to cover the risk' }, href: '/analytics/vulnerabilities/' },
+        { label: { uk: 'Атаки', en: 'Attacks' }, note: { uk: 'Реальні атаки крок за кроком і що їх зупинило б', en: 'Real attacks step by step and what would have stopped them' }, href: '/analytics/attacks/' },
+      ],
+    },
   ],
 
   // Стають CSS-змінними --<ключ> у Base.astro.

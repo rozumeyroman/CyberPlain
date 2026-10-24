@@ -1,0 +1,30 @@
+---
+// Техніки ATT&CK чипами: ID завжди видно; «*» — зіставлення зробили ми; asInSource — як ID записаний у джерелі.
+import { pageCtx, type ATech } from '../lib/data';
+
+interface Props { items: ATech[] }
+const { items } = Astro.props;
+const { t, url } = await pageCtx(Astro.url);
+const x = t.analytics;
+---
+{items.length > 0 && (
+  <ul class="refs">
+    {items.map((r) => (
+      <li>
+        <a href={url.technique(r.technique.id)} class="chip">
+          <span class="id-attack">{r.id}</span>&nbsp;{r.title}{r.editorial && <><span class="star" aria-hidden="true">*</span><span class="sr-only"> ({x.editorial})</span></>}
+        </a>
+        {r.asInSource && <span class="mono src">{x.asInSource(r.asInSource)}</span>}
+      </li>
+    ))}
+  </ul>
+)}
+
+<style>
+  .refs { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+  .refs li { display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .chip { min-height: 44px; }
+  .id-attack { font-size: 12px; }
+  .star { color: var(--attack); margin-left: 2px; }
+  .src { font-size: 10px; color: var(--muted-2); letter-spacing: .06em; }
+</style>

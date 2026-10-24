@@ -1,0 +1,83 @@
+{
+  "title": "PHP2Shell",
+  "summary": "Two critical flaws in PHP itself let an attacker run their own code on a web server, or read fragments of its memory, with no password. Attacks began before the fixes were released.",
+  "description": [
+    "This is not a bug in one particular website's code but in the PHP runtime itself, the program that runs web applications. So any site or service built on PHP is at risk, however carefully it was written.",
+    "The attacker needs no password and no account: a request over the network is enough. Combined, the two flaws allow running custom code on the web server or reading fragments of its memory.",
+    "The attack happens below the application layer, so the site's own logs may show nothing. That makes it hard to spot: you have to look at server processes and at WAF and IPS logs.",
+    "The first attack attempts were seen on 17 October 2026, details leaked online on 20 October, and fixes were released only on 21 October. So for several days the flaws were exploited with no patch available. The note gives no exploitation details, and we do not invent any."
+  ],
+  "affected": [
+    {
+      "product": "PHP (all web modes)",
+      "versions": "5.4–8.5",
+      "fixed": "8.5.12 / 8.4.27 / 8.3.36 / 8.2.35",
+      "note": "You can also install fixed distribution packages."
+    },
+    {
+      "product": "PHP, branches 5.4–7.3",
+      "versions": "5.4–7.3",
+      "note": "No fixes available."
+    },
+    {
+      "product": "PHP, branches 7.4–8.1",
+      "versions": "7.4–8.1",
+      "note": "Fix status is not stated in the source."
+    },
+    {
+      "product": "Palo Alto PAN-OS and Panorama",
+      "versions": "All versions",
+      "note": "Per Palo Alto's statement as cited in the source; no link to an advisory."
+    },
+    {
+      "product": "PHP applications",
+      "versions": "Depends on the PHP version underneath",
+      "note": "WordPress, Drupal, Joomla, Magento, internal portals, hosting panels, web interfaces of network devices."
+    }
+  ],
+  "impact": [
+    "Full control of the web server: site defacement, web shells, miners, botnet agents.",
+    "Leak of database passwords, tokens, API keys and certificates from server memory, even without code execution.",
+    "Access to customer data.",
+    "The server becomes a foothold for attacks on the internal network.",
+    "Site logs may show nothing, so a compromise is easy to miss."
+  ],
+  "remediation": [
+    "Update PHP to 8.5.12, 8.4.27, 8.3.36 or 8.2.35, or install your distribution's fixed packages. The source calls this the only complete solution.",
+    "Restart all PHP processes: without a restart the old version stays in memory.",
+    "Rebuild containers so they pick up the fixed version.",
+    "For branches 5.4–7.3 there are no fixes: remove such servers from the internet or migrate to a supported branch.",
+    "Rescan the network and confirm no vulnerable services remain."
+  ],
+  "timeline": [
+    { "text": "First attack attempts recorded, before any fixes were released." },
+    { "text": "Details of the flaws leaked online before the patches." },
+    { "text": "PHP released out-of-band fixes; Rapid7 InsightVM got checks for both CVEs." },
+    { "text": "Help Net Security published an article." },
+    { "text": "Date of the analytical note this page is based on." }
+  ],
+  "caveats": [
+    "The note names no author. It lists solutions from several vendors, so it may be a commercial brief.",
+    "CVE numbers are given as printed in the note; we have not checked them against primary sources.",
+    "The note gives no links to advisories (PHP, CERT-EU, Palo Alto), only names and identifiers.",
+    "The note does not say which of the two CVEs gives code execution and which gives memory reading, and does not name the vulnerable component.",
+    "WAF and IPS are only a temporary compensating control and do not replace updating PHP. Vendors already see attempts to bypass the rules.",
+    "WAF protection works only if direct access to the server that bypasses the WAF is closed."
+  ],
+  "solutions": [
+    { "why": "Dedicated checks for both CVEs show which PHP servers are vulnerable and help confirm the problem is closed after updating." },
+    { "why": "Shows which PHP servers are visible from the internet: those need fixing first." },
+    { "why": "Gathers all assets into one picture so a forgotten PHP server does not slip through." },
+    { "why": "The PHPInventory artifact for Velociraptor finds PHP on Windows, Linux and macOS, including embedded copies and servers that do not reveal their version." },
+    { "why": "A virtual patch in front of the site drops attacking requests until PHP is updated. It works only in blocking mode and only when direct access to the server that bypasses the WAF is closed." },
+    { "why": "IPS signatures in prevent mode block exploitation attempts. For IPS to see attacks in encrypted traffic, HTTPS inspection is required." },
+    { "why": "Safely replays the attack against your WAF, IPS and EDR and reports for each control: blocked, detected or missed. Gaps found are closed and tested again." },
+    { "why": "Spots shells and downloaders launched by web server processes, a sign that the attack has already worked." },
+    { "why": "Lets you search logs retroactively from 17 October and find traces of web shells and suspicious processes." },
+    { "why": "If server memory may have leaked, change database passwords, tokens and keys. A secrets manager makes that rotation faster and controlled." }
+  ],
+  "gaps": [
+    "Updating PHP and restarting processes is a job for administrators, not a separate solution class.",
+    "Migrating off unsupported PHP branches 5.4–7.3 is a project for the application owner."
+  ]
+}

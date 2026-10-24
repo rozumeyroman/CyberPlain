@@ -18,7 +18,7 @@ const canonical = new URL(path, Astro.site).href;
 const ogImage = new URL(site.ogImage, Astro.site).href;
 const isActive = (href: string) => (href === '/' ? path === url.page('/') : path.startsWith(url.page(href)));
 // Вкладка-меню активна, якщо активний будь-який її пункт.
-const tabActive = (tab: (typeof site.tabs)[number]) => (tab.children ? tab.children.some((c) => isActive(c.href)) : isActive(tab.href!));
+const tabActive = (tab: (typeof site.tabs)[number]) => (tab.children ? isActive(`/${tab.id}/`) || tab.children.some((c) => isActive(c.href)) : isActive(tab.href!));
 // Та сама сторінка іншою мовою — абсолютні адреси для hreflang; x-default — англійська.
 const alt = (l: (typeof langs)[number]) => new URL(switchPath(path, l), Astro.site).href;
 const localHref = (href: string) => (href.startsWith('/') ? url.page(href) : href);

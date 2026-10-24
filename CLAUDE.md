@@ -58,6 +58,9 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (описані всі 271)
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
+  analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, body[], figures[], findings[{techniques[], solutions[]}], vulnerabilities[]
+  analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], remediation[], timeline[], solutions[{phase}]
+  analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, techniques[], solutions[]}], lessons[]
 scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
                           #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
@@ -79,6 +82,10 @@ src/
                                      #   опис, перші 3 класи з defenses[]; якір /pain/#T1566
   pages/d3fend/index.astro           # 7 тактик D3FEND з категоріями
   pages/d3fend/[id].astro            # /d3fend/harden/ — тактика, /d3fend/D3-AA/ — категорія чи техніка
+  pages/analytics/index.astro        # /analytics/ — вхід: три блоки з останніми записами
+  pages/analytics/{reports,vulnerabilities,attacks}/index.astro  # списки карток
+  pages/analytics/{reports,vulnerabilities,attacks}/[id].astro   # розбір запису (components: AnalyticsSolutions, TechRefs,
+                                     #   AttackChain, AnalyticsCard, SourceList)
   pages/licenses.astro
   pages/favicon.svg.ts               # іконка з кольорів site.config; public/favicon.ico і
                                      #   apple-touch-icon.png — її растрові копії (перегенерувати при зміні)
@@ -88,7 +95,7 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 ```
 
 Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/[...lang]/<tab>/`. Шапка: Home · MITRE (ATT&CK, D3FEND, Часта біль) ·
-Рішення (класи рішень, вендори); вкладка з `children` — випадаюче меню (`id`, пункти з `label`, `note`, `href`).
+Рішення (класи рішень, вендори) · Аналітика (звіти, вразливості, атаки); вкладка з `children` — випадаюче меню (`id`, пункти з `label`, `note`, `href`).
 
 **Мови.** Українська — у корені (`/mitre/T1595/`), англійська — під `/en/` (`/en/mitre/T1595/`); сторінки лежать
 в `src/pages/[...lang]/`, кожна з `getStaticPaths` на обидві мови (`langParams`/`routeLang` з `src/lib/i18n.ts`).
@@ -137,6 +144,26 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 (разом із різновидами), сторінка техніки ATT&CK — «Захисні заходи D3FEND». Це зіставлення через
 цифрові артефакти й дуже широке (бекап «захищає» від пошуку власника системи), тому в `defenses[]`
 його автоматично не переносимо: `defenses[]` — практичний редакторський список рішень.
+
+**Аналітика** (`/analytics/`, вкладка «Аналітика»: звіти, вразливості, атаки; 0 KB JS). Три колекції в `content/analytics/`
+(`reports`, `vulnerabilities`, `attacks`), схеми — у `src/content.config.ts` (усі `.strict()`). ID записів унікальні в усіх
+трьох колекціях (адреси `/analytics/<розділ>/<id>/`). Зв'язки зберігаємо з одного боку: звіт чи атака → `vulnerabilities[]`;
+зворотний бік (`reportsAbout`, `attacksUsing`) і матриця «клас → кроки» (`classSteps`) обчислюються в `loadData()`.
+- **Техніки** (`techniques[]`): рядок `"T1190"` = наше (редакторське) зіставлення, на сторінці з «*»; якщо джерело саме
+  називає техніку — `{ "id": "T1190", "editorial": false }`; `asInSource` — як ID записаний у джерелі, коли в ATT&CK v20 його
+  немає (T1562.003 → `T1690`, T1562.010 → `T1689`). Кожен ID (і підтехніка) перевіряється за `data/mitre/attack.json`; сторінка
+  техніки — завжди батьківська.
+- **Рішення**: `{ class, why, editorial }` — лише існуючі класи (`why` — до двох речень про конкретний висновок чи крок); `editorial: true`
+  — клас додано нами, а не джерелом. Чого в портфелі немає (SAST, мікросегментація тощо) — у `gaps[]` текстом, нових класів не заводимо.
+  У вразливості `solutions[].phase` = `find | protect | verify | detect`.
+- **Дати** — `YYYY`, `YYYY-MM` або `YYYY-MM-DD`; `dateNote` — пояснення, коли дата неточна. Посилання (`url`) у `sources[]`,
+  `original` і `advisories[]` — лише якщо вони є в самому джерелі. Заяви угруповання (`claims`) завжди з `claimsNote`.
+- **Англійська**: обов'язковий оверлей `content/en/analytics/<розділ>/<той самий ID>.json` лише з текстовими полями (масиви тієї ж
+  довжини, елементи об'єктів — лише перекладені ключі). `original.*`, `sources[]`, `advisories[]` не перекладаємо. `loadData('en')`
+  зупиняє збірку, якщо немає оверлею, оверлей без оригіналу, ключ відсутній в оригіналі, довжини масивів різні або після злиття
+  лишилась кирилиця поза `original` і `sources`. Англійські власні назви лишаються латиницею.
+- Тон — як на решті сайту; звіти вендорів переказуємо своїми словами з посиланням на видавця, цифри — короткі й зі словами, що це
+  дані вендора, а не незалежні вимірювання.
 
 Неіснуючий ID у посиланні — помилка збирання (Astro `reference()` + перевірки в `loadData()`).
 Порожні поля сторінки показують як «готується»; нічого не вигадуємо. Дані TA0043 перенесені з

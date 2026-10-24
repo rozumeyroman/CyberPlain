@@ -27,6 +27,13 @@ export const urlFor = (lang: Lang) => {
         : `https://attack.mitre.org/techniques/${id.replace('.', '/')}/`,
     d3fendTactic: (id: string) => p(`/d3fend/${id}/`),
     d3fendTechnique: (id: string) => p(`/d3fend/${id}/`),
+    analytics: p('/analytics/'),
+    reports: p('/analytics/reports/'),
+    report: (id: string) => p(`/analytics/reports/${id}/`),
+    vulns: p('/analytics/vulnerabilities/'),
+    vuln: (id: string) => p(`/analytics/vulnerabilities/${id}/`),
+    attacks: p('/analytics/attacks/'),
+    attack: (id: string) => p(`/analytics/attacks/${id}/`),
     d3fendOrig: (x: D3Tactic | D3Technique) => `https://d3fend.mitre.org/${'categories' in x ? 'tactic' : 'technique'}/d3f:${x.iri}/`,
   };
 };
@@ -72,6 +79,75 @@ export interface StageSolution {
   note?: string;
 }
 
+// ── Аналітика ──
+export type Phase = 'find' | 'protect' | 'verify' | 'detect';
+export interface ASolution { cls: SolutionClass; products: Product[]; why: string; editorial: boolean; phase?: Phase }
+// Посилання на техніку ATT&CK: сторінка — батьківська техніка; sub — підтехніка, якщо є.
+export interface ATech {
+  id: string; technique: Technique; sub?: Subtechnique; title: string;
+  asInSource?: string; // як ID записаний у джерелі, якщо в ATT&CK його немає
+  editorial: boolean; // зіставлення зробили ми (на сторінці з «*»)
+}
+export interface AFinding { title: string; text: string; techniques: ATech[]; solutions: ASolution[] }
+export interface AStep {
+  n: number; title: string; tactic: Tactic; what: string; tools: string[];
+  techniques: ATech[]; solutions: ASolution[]; gaps: string[];
+}
+type Src = { label: string; url?: string };
+type Fig = { value: string; label: string };
+type Orig = { title: string; publisher: string; pages?: number; url?: string };
+export interface AReport {
+  id: string; title: string; kind: 'report' | 'brief' | 'note'; original: Orig; date: string; dateNote?: string;
+  summary: string; body: string[]; figures: Fig[]; caveats: string[]; findings: AFinding[]; gaps: string[];
+  vulnerabilities: AVuln[]; sources: Src[];
+}
+export interface AVuln {
+  id: string; title: string; cves: string[]; cvss?: { version: string; score: number }; date: string; exploitedSince?: string;
+  summary: string; description: string[];
+  affected: { product: string; versions: string; fixed?: string; note?: string }[];
+  impact: string[]; remediation: string[]; advisories: { issuer: string; label: string; url?: string }[];
+  timeline: { date: string; text: string }[]; caveats: string[]; techniques: ATech[]; solutions: ASolution[];
+  gaps: string[]; sources: Src[];
+}
+export interface AAttack {
+  id: string; title: string; date: string; dateNote?: string; original: Orig;
+  actor: { name: string; profile: string[] }; victim: { name: string; sector: string; country: string };
+  summary: string; body: string[]; claims: Fig[]; claimsNote?: string; steps: AStep[]; lessons: string[];
+  caveats: string[]; vulnerabilities: AVuln[]; sources: Src[];
+}
+
+// Англійський оверлей поверх українського запису: рядок замінює рядок, масиви однакової довжини, ключі мають існувати в оригіналі.
+function mergeEn(where: string, src: any, over: any): any {
+  if (typeof over === 'string') {
+    if (typeof src !== 'string') throw new Error(`${where}: переклад — рядок, а в оригіналі інший тип`);
+    return over;
+  }
+  if (Array.isArray(over)) {
+    if (!Array.isArray(src)) throw new Error(`${where}: переклад — масив, а в оригіналі ні`);
+    if (src.length !== over.length) throw new Error(`${where}: у перекладі ${over.length} елементів, в оригіналі ${src.length}`);
+    return src.map((x, i) => mergeEn(`${where}[${i}]`, x, over[i]));
+  }
+  if (over && typeof over === 'object') {
+    if (!src || typeof src !== 'object' || Array.isArray(src)) throw new Error(`${where}: переклад — об'єкт, а в оригіналі інший тип`);
+    const out: Record<string, any> = { ...src };
+    for (const [k, v] of Object.entries(over)) {
+      if (v === undefined) continue;
+      if (!(k in src)) throw new Error(`${where}.${k}: цього поля немає в оригіналі`);
+      out[k] = mergeEn(`${where}.${k}`, src[k], v);
+    }
+    return out;
+  }
+  throw new Error(`${where}: у перекладі можуть бути лише текстові поля`);
+}
+
+const CYRILLIC = /[Ѐ-ӿ]/;
+function findCyrillic(v: unknown, path: string): string | undefined {
+  if (typeof v === 'string') return CYRILLIC.test(v) ? `${path}: «${v.length > 60 ? v.slice(0, 60) + '…' : v}»` : undefined;
+  if (Array.isArray(v)) for (let i = 0; i < v.length; i++) { const r = findCyrillic(v[i], `${path}[${i}]`); if (r) return r; }
+  else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) { const r = findCyrillic(x, `${path}.${k}`); if (r) return r; }
+  return undefined;
+}
+
 function assertUniqueIds(label: string, ...groups: { id: string }[][]) {
   const seen = new Set<string>();
   for (const e of groups.flat()) {
@@ -89,6 +165,8 @@ async function build(lang: Lang) {
     getCollection('tactics'), getCollection('techniques'), getCollection('classes'), getCollection('products'),
     getCollection('d3fendTactics'), getCollection('d3fendTechniques'),
   ]);
+
+  const [reportsSrc, vulnsSrc, attacksSrc] = await Promise.all([getCollection('reports'), getCollection('vulnerabilities'), getCollection('attacks')]);
 
   // ── Мовний шар: uk — як є; en — тексти з content/en/ замість українських (чого немає — undefined) ──
   const gaps: string[] = [];
@@ -263,7 +341,117 @@ async function build(lang: Lang) {
     .sort((a, b) => a.name.localeCompare(b.name));
   assertUniqueIds('vendors', vendors);
 
+
+  // ── Аналітика: звіти, вразливості, атаки ──
+  const tacticById = new Map(tactics.map((ta) => [ta.id, ta]));
+  const withEn = async <E extends Row>(dir: string, src: E[], name: 'enReports' | 'enVulnerabilities' | 'enAttacks') => {
+    if (lang === 'uk') return src.map((e) => ({ id: e.id, file: `content/analytics/${dir}/${e.id}.json`, data: e.data }));
+    const over = (await getCollection(name)) as Row[];
+    const srcIds = new Set(src.map((e) => e.id));
+    for (const o of over) if (!srcIds.has(o.id)) throw new Error(`content/en/analytics/${dir}/${o.id}.json: у content/analytics/${dir} немає запису ${o.id}`);
+    const byId = new Map(over.map((o) => [o.id, o]));
+    return src.map((e) => {
+      const file = `content/en/analytics/${dir}/${e.id}.json`;
+      const o = byId.get(e.id);
+      if (!o) throw new Error(`${file}: немає англійського перекладу запису ${e.id}`);
+      const data = mergeEn(file, e.data, o.data);
+      const { original: _o, sources: _s, ...rest } = data;
+      const left = findCyrillic(rest, 'content');
+      if (left) throw new Error(`${file}: після злиття лишився український текст — ${left}`);
+      return { id: e.id, file, data };
+    });
+  };
+  const [rSrc, vSrc, aSrc] = await Promise.all([
+    withEn('reports', reportsSrc as Row[], 'enReports'),
+    withEn('vulnerabilities', vulnsSrc as Row[], 'enVulnerabilities'),
+    withEn('attacks', attacksSrc as Row[], 'enAttacks'),
+  ]);
+  assertUniqueIds('analytics', rSrc, vSrc, aSrc);
+
+  const resolveSolutions = (file: string, where: string, list: any[]): ASolution[] => {
+    const seen = new Set<string>();
+    return list.map((s, i) => {
+      const cls = classById.get(s.class.id);
+      if (!cls) throw new Error(`${file} → ${where}[${i}]: класу рішень «${s.class.id}» немає`);
+      const key = `${s.class.id}/${s.phase ?? ''}`;
+      if (seen.has(key)) throw new Error(`${file} → ${where}[${i}]: клас «${s.class.id}» повторюється в одному списку`);
+      seen.add(key);
+      return { cls, products: productsOf(cls.id), why: s.why, editorial: !!s.editorial, phase: s.phase };
+    });
+  };
+  const resolveTechs = (file: string, where: string, list: any[]): ATech[] =>
+    list.map((r, i) => {
+      const ref = typeof r === 'string' ? { id: r } : r;
+      const at = `${file} → ${where}[${i}]`;
+      const [parent] = ref.id.split('.');
+      const raw = rawTech.get(parent);
+      if (!raw) throw new Error(`${at}: техніки ${parent} немає в імпорті ATT&CK ${attackRaw.version} (якщо в джерелі інший ID — вкажіть asInSource)`);
+      if (ref.id.includes('.') && !raw.subtechniques.some((x) => x.id === ref.id)) throw new Error(`${at}: підтехніки ${ref.id} немає в імпорті ATT&CK ${attackRaw.version}`);
+      const technique = techById.get(parent);
+      if (!technique) throw new Error(`${at}: для техніки ${parent} немає опису в content/attack/techniques`);
+      const sub = ref.id.includes('.') ? subtechniquesOf(technique).find((x) => x.id === ref.id) : undefined;
+      return {
+        id: ref.id, technique, sub, title: sub ? sub.title : technique.data.title,
+        asInSource: ref.asInSource, editorial: typeof r === 'string' ? true : r.editorial ?? false,
+      };
+    });
+  const sortNew = <T extends { id: string; date: string }>(xs: T[]) => xs.sort((a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id));
+  const needNotes = (file: string, e: { claims: unknown[]; claimsNote?: string }) => {
+    if (e.claims.length > 0 && !e.claimsNote) throw new Error(`${file}: є claims, але немає claimsNote`);
+  };
+
+  const vulnerabilitiesAll: AVuln[] = sortNew(vSrc.map(({ id, file, data: v }) => ({
+    ...v, id,
+    techniques: resolveTechs(file, 'techniques', v.techniques),
+    solutions: resolveSolutions(file, 'solutions', v.solutions),
+  })));
+  const vulnById = new Map(vulnerabilitiesAll.map((v) => [v.id, v]));
+  const resolveVulns = (file: string, refs: { id: string }[]) =>
+    refs.map((r) => {
+      const v = vulnById.get(r.id);
+      if (!v) throw new Error(`${file} → vulnerabilities: запису «${r.id}» немає в content/analytics/vulnerabilities`);
+      return v;
+    });
+  const reportsAll: AReport[] = sortNew(rSrc.map(({ id, file, data: r }) => ({
+    ...r, id,
+    findings: r.findings.map((f: any, i: number) => ({
+      ...f,
+      techniques: resolveTechs(file, `findings[${i}].techniques`, f.techniques),
+      solutions: resolveSolutions(file, `findings[${i}].solutions`, f.solutions),
+    })),
+    vulnerabilities: resolveVulns(file, r.vulnerabilities),
+  })));
+  const attacksAll: AAttack[] = sortNew(aSrc.map(({ id, file, data: a }) => {
+    needNotes(file, a);
+    return {
+      ...a, id,
+      steps: a.steps.map((st: any, i: number): AStep => {
+        const tactic = tacticById.get(st.tactic.id);
+        if (!tactic) throw new Error(`${file} → steps[${i}].tactic: етапу «${st.tactic.id}» немає`);
+        return {
+          ...st, n: i + 1, tactic,
+          techniques: resolveTechs(file, `steps[${i}].techniques`, st.techniques),
+          solutions: resolveSolutions(file, `steps[${i}].solutions`, st.solutions),
+        };
+      }),
+      vulnerabilities: resolveVulns(file, a.vulnerabilities),
+    };
+  }));
+  const reportsAbout = (vulnId: string) => reportsAll.filter((r) => r.vulnerabilities.some((v) => v.id === vulnId));
+  const attacksUsing = (vulnId: string) => attacksAll.filter((a) => a.vulnerabilities.some((v) => v.id === vulnId));
+  // Клас рішень → кроки атаки, які він зупиняє (для матриці «клас → кроки»).
+  const classSteps = (attack: AAttack) => {
+    const m = new Map<string, { cls: SolutionClass; products: Product[]; steps: AStep[] }>();
+    for (const st of attack.steps) for (const s of st.solutions) {
+      if (!m.has(s.cls.id)) m.set(s.cls.id, { cls: s.cls, products: s.products, steps: [] });
+      m.get(s.cls.id)!.steps.push(st);
+    }
+    return [...m.values()].sort((a, b) => b.steps.length - a.steps.length || a.cls.data.title.localeCompare(b.cls.data.title));
+  };
+  const analytics = { reports: reportsAll, vulnerabilities: vulnerabilitiesAll, attacks: attacksAll };
+
   return {
+    analytics, reportsAbout, attacksUsing, classSteps,
     vendors, vendorId,
     tactics, techniques, classes, products, classById, productsOf, techniquesOf, subtechniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic,
     d3fendTactics, d3byId, d3fendOf, d3fendTacticsOf, d3fendSolutionsOfTechnique, d3fendSolutionsOfTactic, d3fendForAttack,

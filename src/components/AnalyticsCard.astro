@@ -1,0 +1,26 @@
+---
+// Картка запису аналітики в списках: тип, назва, короткий опис і підписи (дата, видавець, кількість).
+interface Props { href: string; tag: string; title: string; summary: string; meta?: string[]; tone?: 'defense' | 'attack'; cta: string }
+const { href, tag, title, summary, meta = [], tone = 'defense', cta } = Astro.props;
+---
+<article class={`card ${tone}`}>
+  <div class="mono tag">{tag}</div>
+  <h3><a href={href}>{title}</a></h3>
+  <p class="sum">{summary}</p>
+  {meta.length > 0 && <p class="mono meta">{meta.join(' · ')}</p>}
+  <a href={href} class="act go" aria-label={`${cta}: ${title}`}>{cta}</a>
+</article>
+
+<style>
+  .card { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; border: 1px solid var(--line); background: var(--bg); transition: border-color .15s; }
+  .card:hover, .card:focus-within { border-color: var(--defense); }
+  .card.attack:hover, .card.attack:focus-within { border-color: var(--attack); }
+  .tag { font-size: 11px; color: var(--defense); }
+  .attack .tag { color: var(--attack); }
+  h3 { margin: 0; font-size: 19px; line-height: 1.3; letter-spacing: -0.01em; }
+  h3 a { color: var(--text); text-decoration: none; }
+  h3 a:hover { color: var(--defense-hover); }
+  .sum { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .meta { margin: 0; font-size: 11px; color: var(--muted-2); }
+  .go { display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start; margin-top: auto; }
+</style>

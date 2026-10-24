@@ -1,0 +1,40 @@
+---
+// /analytics/reports/ — список записів розділу.
+import Base from '../../../../layouts/Base.astro';
+import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
+import { pageCtx } from '../../../../lib/data';
+import { fmtDate, langParams } from '../../../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+const { lang, t, url, d, pl } = await pageCtx(Astro.url);
+const x = t.analytics;
+const s = x.reports;
+const list = d.analytics.reports;
+---
+<Base title={s.title} description={s.description}>
+  <section class="wrap page">
+    <nav aria-label={t.crumbs} class="mono crumbs">
+      <a href={url.analytics}>{x.title}</a><span aria-hidden="true">/</span>
+      <span aria-current="page">{s.title}</span>
+    </nav>
+    <div class="mono tag">{s.tag}</div>
+    <h1>{s.title}<span class="mono cnt">{pl(list.length, x.n.reports)}</span></h1>
+    <p class="lead-text">{s.lead}</p>
+    {list.length === 0 ? <p class="soon-box">{s.empty}</p> : (
+      <div class="cards">
+        {list.map((e) => (
+          <AnalyticsCard href={url.report(e.id)} tag={`[ ${x.kind[e.kind]} · ${e.original.publisher} ]`} title={e.title} summary={e.summary} meta={[fmtDate(lang, e.date), ...(e.original.pages ? [x.facts.pagesN(e.original.pages)] : [])]} cta={x.open} />
+        ))}
+      </div>
+    )}
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  .cnt { font-size: 12px; color: var(--muted-2); letter-spacing: .08em; margin-left: 12px; font-weight: 400; vertical-align: middle; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 16px; }
+</style>

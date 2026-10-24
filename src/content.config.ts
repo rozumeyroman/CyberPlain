@@ -79,6 +79,99 @@ const d3fendTechniques = defineCollection({
   }),
 });
 
+// ── Аналітика: звіти, вразливості, атаки (content/analytics/*) ──
+// ID унікальні в усіх трьох колекціях (адреси /analytics/<розділ>/<id>/; перевіряє loadData()).
+// Зв'язки зберігаємо з одного боку: звіт/атака → вразливість; зворотний бік обчислюється.
+const isoDate = z.string().regex(/^\d{4}(-\d{2}(-\d{2})?)?$/);
+const techId = z.string().regex(/^T\d{4}(\.\d{3})?$/);
+// Рядок = редакторське зіставлення (на сторінці з «*»), якщо джерело саму техніку не називає.
+// Якщо джерело називає ID — об'єкт { id, editorial: false }; asInSource — як ID записаний у джерелі (коли його немає в ATT&CK).
+const techRef = z.union([
+  techId,
+  z.object({ id: techId, asInSource: z.string().optional(), editorial: z.boolean().optional() }).strict(),
+]);
+const source = z.object({ label: z.string(), url: z.string().url().optional() }).strict();
+const solution = z.object({ class: reference('classes'), why: z.string(), editorial: z.boolean().default(false) }).strict();
+const phase = z.enum(['find', 'protect', 'verify', 'detect']);
+const figure = z.object({ value: z.string(), label: z.string() }).strict();
+const original = z.object({ title: z.string(), publisher: z.string(), pages: z.number().int().positive().optional(), url: z.string().url().optional() }).strict();
+
+const reports = defineCollection({
+  loader: fromDir('./content/analytics/reports'),
+  schema: z.object({
+    title: z.string(),
+    kind: z.enum(['report', 'brief', 'note']),
+    original,
+    date: isoDate,
+    dateNote: z.string().optional(),
+    summary: z.string(),
+    body: z.array(z.string()).min(1),
+    figures: z.array(figure).default([]),
+    caveats: z.array(z.string()).default([]),
+    findings: z.array(z.object({
+      title: z.string(),
+      text: z.string(),
+      techniques: z.array(techRef).default([]),
+      solutions: z.array(solution).min(1),
+    }).strict()).min(1),
+    gaps: z.array(z.string()).default([]),
+    vulnerabilities: z.array(reference('vulnerabilities')).default([]),
+    sources: z.array(source).default([]),
+  }).strict(),
+});
+
+const vulnerabilities = defineCollection({
+  loader: fromDir('./content/analytics/vulnerabilities'),
+  schema: z.object({
+    title: z.string(),
+    cves: z.array(z.string().regex(/^CVE-\d{4}-\d{4,}$/)).min(1),
+    cvss: z.object({ version: z.string(), score: z.number().min(0).max(10) }).strict().optional(),
+    date: isoDate,
+    exploitedSince: isoDate.optional(),
+    summary: z.string(),
+    description: z.array(z.string()),
+    affected: z.array(z.object({ product: z.string(), versions: z.string(), fixed: z.string().optional(), note: z.string().optional() }).strict()).min(1),
+    impact: z.array(z.string()),
+    remediation: z.array(z.string()),
+    advisories: z.array(z.object({ issuer: z.string(), label: z.string(), url: z.string().url().optional() }).strict()).default([]),
+    timeline: z.array(z.object({ date: isoDate, text: z.string() }).strict()).default([]),
+    caveats: z.array(z.string()).default([]),
+    techniques: z.array(techRef).default([]),
+    solutions: z.array(solution.extend({ phase }).strict()).min(1),
+    gaps: z.array(z.string()).default([]),
+    sources: z.array(source).default([]),
+  }).strict(),
+});
+
+const attacks = defineCollection({
+  loader: fromDir('./content/analytics/attacks'),
+  schema: z.object({
+    title: z.string(),
+    date: isoDate,
+    dateNote: z.string().optional(),
+    original,
+    actor: z.object({ name: z.string(), profile: z.array(z.string()) }).strict(),
+    victim: z.object({ name: z.string(), sector: z.string(), country: z.string() }).strict(),
+    summary: z.string(),
+    body: z.array(z.string()),
+    claims: z.array(figure).default([]),
+    claimsNote: z.string().optional(),
+    steps: z.array(z.object({
+      title: z.string(),
+      tactic: reference('tactics'),
+      what: z.string(),
+      tools: z.array(z.string()).default([]),
+      techniques: z.array(techRef).min(1),
+      solutions: z.array(solution).min(1), // why = як саме клас зупиняє або компенсує ЦЕЙ крок
+      gaps: z.array(z.string()).default([]),
+    }).strict()).min(1),
+    lessons: z.array(z.string()).default([]),
+    caveats: z.array(z.string()).default([]),
+    vulnerabilities: z.array(reference('vulnerabilities')).default([]),
+    sources: z.array(source).default([]),
+  }).strict(),
+});
+
 // Англійський шар: content/en/<той самий шлях>/<той самий ID>.json лише з перекладеними полями.
 // Ключі, яких немає в дозволеному списку, — помилка схеми (strict); зв'язок із джерелом перевіряє loadData().
 const overlay = (dir: string, shape: z.ZodRawShape) =>
@@ -92,7 +185,28 @@ const enProducts = overlay('solutions/products', { simple: str });
 const enD3fendTactics = overlay('d3fend/tactics', { short: str, analogy: str });
 const enD3fendTechniques = overlay('d3fend/techniques', { simple: str, analogy: str });
 
+// Аналітика: лише текстові поля; масиви — тієї ж довжини й порядку, елементи об'єктів містять лише перекладені ключі.
+// original.*, sources[] і advisories[] не перекладаємо.
+const part = (shape: z.ZodRawShape) => z.object(shape).partial().strict();
+const arr = (shape: z.ZodRawShape) => z.array(part(shape));
+const strs = z.array(str);
+const enReports = overlay('analytics/reports', {
+  title: str, dateNote: str, summary: str, body: strs, figures: arr({ value: str, label: str }), caveats: strs,
+  findings: arr({ title: str, text: str, solutions: arr({ why: str }) }), gaps: strs,
+});
+const enVulnerabilities = overlay('analytics/vulnerabilities', {
+  title: str, summary: str, description: strs, affected: arr({ product: str, versions: str, fixed: str, note: str }),
+  impact: strs, remediation: strs, timeline: arr({ text: str }), caveats: strs, solutions: arr({ why: str }), gaps: strs,
+});
+const enAttacks = overlay('analytics/attacks', {
+  title: str, dateNote: str, summary: str, body: strs, claims: arr({ value: str, label: str }), claimsNote: str,
+  actor: part({ name: str, profile: strs }), victim: part({ name: str, sector: str, country: str }),
+  steps: arr({ title: str, what: str, tools: strs, solutions: arr({ why: str }), gaps: strs }),
+  lessons: strs, caveats: strs,
+});
+
 export const collections = {
   tactics, techniques, classes, products, d3fendTactics, d3fendTechniques,
   enTactics, enTechniques, enClasses, enProducts, enD3fendTactics, enD3fendTechniques,
+  reports, vulnerabilities, attacks, enReports, enVulnerabilities, enAttacks,
 };

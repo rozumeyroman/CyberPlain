@@ -1,0 +1,93 @@
+{
+  "title": "Analytical note on PHP2Shell",
+  "dateNote": "Data as of 23 October 2026",
+  "summary": "A two-page note about a critical flaw in PHP itself that was being exploited before fixes were released. It proposes four steps: find, protect, verify, fix and monitor.",
+  "body": [
+    "The note is dated 23 October 2026 and describes PHP2Shell: two defects in the PHP runtime itself, not in any particular site's code. The attack needs no password and no account. Depending on how the defects are combined, an attacker can run their own code on the web server or read fragments of its memory.",
+    "The note's timeline: the first attack attempts were seen on 17 October, details leaked online on 20 October, and PHP released out-of-band fixes on 21 October. So attacks began before the patches existed. Every PHP web mode can be affected, and therefore WordPress, Drupal, Joomla, Magento, hosting panels and the web interfaces of network devices too.",
+    "What makes it especially nasty is that the attack happens below the application layer: a site's own logs may show nothing. That is why the note advises looking at processes on the server and at WAF and IPS logs, not just the site's logs.",
+    "The proposed plan has four steps. First, find every copy of PHP and work out which are visible from the internet. Second, cover them with a WAF or IPS in blocking mode. Third, check with an attack simulation that this really works. Fourth, update PHP, restart processes and hunt for signs of compromise.",
+    "Read the note with a caveat: no author is named, and the list of solutions (Rapid7, Picus, F5, Imperva, Check Point) looks like sales material. We also have not verified the CVE numbers independently, and the note gives no links to official advisories."
+  ],
+  "figures": [
+    {
+      "value": "9.2",
+      "label": "CVSS v4.0 score for PHP2Shell (one score for both vulnerabilities)"
+    },
+    {
+      "value": "17 October",
+      "label": "date of the first recorded attacks, four days before fixes were released"
+    },
+    {
+      "value": "5.4–8.5",
+      "label": "range of PHP versions that the note calls affected"
+    },
+    {
+      "value": "1.3–1.9 million",
+      "label": "internet-facing hosts running PHP (per the note, citing W3Techs)"
+    }
+  ],
+  "caveats": [
+    "No author is named, and the list of solutions looks like sales material.",
+    "CVE-2026-109618 and CVE-2026-109619 are given as in the note; we have not verified them independently.",
+    "The note gives no links to official advisories (only their names), so nothing here should be treated as checked against the primary source.",
+    "A WAF or IPS is only a temporary shield and does not replace updating PHP. Vendors already see attempts to bypass the rules, and a WAF works only if direct access to the server around the WAF is closed."
+  ],
+  "findings": [
+    {
+      "title": "Find: where we run PHP and what is visible from the internet",
+      "text": "Step one of the plan: find every copy of PHP, including embedded ones and those on servers that do not reveal their version, and work out which can be reached from outside. Those get closed first.",
+      "solutions": [
+        {
+          "why": "Checks for both CVEs find vulnerable web services and, after the fix, confirm they are closed."
+        },
+        {
+          "why": "Shows the external perimeter and what is visible from the internet and should be fixed first."
+        },
+        {
+          "why": "Brings into one picture which assets run PHP and who is responsible for them."
+        },
+        {
+          "why": "The PHPInventory artifact in Velociraptor finds PHP on Windows, Linux and macOS, including embedded copies."
+        }
+      ]
+    },
+    {
+      "title": "Protect: cover the server until it is updated",
+      "text": "Step two: turn on a WAF and IPS with signatures for both CVEs in blocking mode (logging alone stops nothing). Servers that cannot be protected, the note says, should be taken off the internet.",
+      "solutions": [
+        {
+          "why": "Blocks the malicious request to the server, but only in blocking mode and only when direct access to the server around the WAF is closed."
+        },
+        {
+          "why": "IPS signatures (HTTPS inspection is needed to see attacks in encrypted traffic) temporarily close the flaw at the network edge."
+        }
+      ]
+    },
+    {
+      "title": "Verify: does the protection really stop the attack",
+      "text": "Step three: safely replay the attack and see whether it was blocked, merely noticed or let through. This matters because vendors already see attempts to bypass the rules.",
+      "solutions": [
+        {
+          "why": "Simulates the campaign against the WAF, IPS and EDR and shows for each control: blocked, detected or missed, so that gaps can be closed and tested again."
+        }
+      ]
+    },
+    {
+      "title": "Fix and monitor: update and hunt for signs of compromise",
+      "text": "Step four: update PHP, restart all processes, rebuild containers and rescan. In parallel, look for signs of compromise, including in logs from 17 October, because attackers may already have been inside.",
+      "solutions": [
+        {
+          "why": "Notices when a web-server process launches a shell or a downloader, a typical sign of compromise."
+        },
+        {
+          "why": "Lets you search logs retroactively from 17 October for web shells and suspicious processes."
+        },
+        {
+          "why": "Helps collect evidence from a server that may have been breached and understand the scope."
+        }
+      ]
+    }
+  ],
+  "gaps": []
+}

@@ -1,0 +1,32 @@
+---
+// Таблиця «клас рішень → чому/як допомагає» для звітів, вразливостей і кроків атак. Без JS; на вузьких екранах рядки складаються стовпчиком.
+import SolutionLinks from './SolutionLinks.astro';
+import { pageCtx, type ASolution } from '../lib/data';
+
+interface Props { items: ASolution[]; how?: boolean }
+const { items, how = false } = Astro.props;
+const { t } = await pageCtx(Astro.url);
+const x = t.analytics;
+---
+<table class="tbl sols">
+  <colgroup><col class="c1" /><col /></colgroup>
+  <thead><tr><th>{x.thClass}</th><th>{how ? x.thHow : x.thWhy}</th></tr></thead>
+  <tbody>
+    {items.map((s) => (
+      <tr>
+        <td><SolutionLinks cls={s.cls} products={s.products} /></td>
+        <td data-label={how ? x.thHow : x.thWhy}>
+          {s.why}
+          {s.editorial && <span class="mono ed" title={x.editorial}> * {x.editorial}</span>}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  .sols { table-layout: fixed; }
+  .sols .c1 { width: 30%; }
+  @media (max-width: 760px) { .sols .c1 { width: auto; } }
+  .ed { display: inline-block; margin-left: 6px; font-size: 10px; color: var(--muted-2); white-space: nowrap; }
+</style>

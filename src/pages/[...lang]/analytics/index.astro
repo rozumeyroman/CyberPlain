@@ -1,0 +1,65 @@
+---
+// /analytics/ — вхід у розділ: три блоки (звіти, вразливості, атаки) з останніми записами.
+import Base from '../../../layouts/Base.astro';
+import AnalyticsCard from '../../../components/AnalyticsCard.astro';
+import { pageCtx } from '../../../lib/data';
+import { fmtDate, langParams } from '../../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+const { lang, t, url, d, pl } = await pageCtx(Astro.url);
+const x = t.analytics;
+const TOP = 3;
+const { reports, vulnerabilities, attacks } = d.analytics;
+---
+<Base title={x.title} description={x.description}>
+  <section class="wrap page">
+    <div class="mono tag">{x.tag}</div>
+    <h1>{x.title}</h1>
+    <p class="lead-text">{x.lead}</p>
+
+    <section class="sec" aria-labelledby="r">
+      <h2 class="sec-title" id="r">{x.reports.title}<span class="mono">{pl(reports.length, x.n.reports)}</span></h2>
+      {reports.length === 0 ? <p class="soon-box">{x.reports.empty}</p> : (
+        <div class="cards">
+          {reports.slice(0, TOP).map((r) => (
+            <AnalyticsCard href={url.report(r.id)} tag={`[ ${x.kind[r.kind]} · ${r.original.publisher} ]`} title={r.title} summary={r.summary} meta={[fmtDate(lang, r.date)]} cta={x.open} />
+          ))}
+        </div>
+      )}
+      <a href={url.reports} class="act all">{x.all}: {x.reports.title} →</a>
+    </section>
+
+    <section class="sec" aria-labelledby="v">
+      <h2 class="sec-title" id="v">{x.vulns.title}<span class="mono">{pl(vulnerabilities.length, x.n.vulns)}</span></h2>
+      {vulnerabilities.length === 0 ? <p class="soon-box">{x.vulns.empty}</p> : (
+        <div class="cards">
+          {vulnerabilities.slice(0, TOP).map((v) => (
+            <AnalyticsCard href={url.vuln(v.id)} tag={`[ ${x.kind.vulnerability} ]`} title={v.title} summary={v.summary} meta={[v.cves.join(', '), fmtDate(lang, v.date)]} cta={x.open} />
+          ))}
+        </div>
+      )}
+      <a href={url.vulns} class="act all">{x.all}: {x.vulns.title} →</a>
+    </section>
+
+    <section class="sec" aria-labelledby="a">
+      <h2 class="sec-title" id="a">{x.attacks.title}<span class="mono">{pl(attacks.length, x.n.attacks)}</span></h2>
+      {attacks.length === 0 ? <p class="soon-box">{x.attacks.empty}</p> : (
+        <div class="cards">
+          {attacks.slice(0, TOP).map((a) => (
+            <AnalyticsCard href={url.attack(a.id)} tag={`[ ${x.kind.attack} ]`} tone="attack" title={a.title} summary={a.summary} meta={[fmtDate(lang, a.date), pl(a.steps.length, x.n.steps)]} cta={x.open} />
+          ))}
+        </div>
+      )}
+      <a href={url.attacks} class="act all">{x.all}: {x.attacks.title} →</a>
+    </section>
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .tag { font-size: 12px; color: var(--defense); margin: 48px 0 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+  .all { display: inline-flex; align-items: center; min-height: 44px; margin-top: 12px; }
+</style>

@@ -1,0 +1,57 @@
+---
+// Ланцюжок атаки: впорядкований список кроків; кожен крок — окрема стаття з якорем #step-N.
+import AnalyticsSolutions from './AnalyticsSolutions.astro';
+import TechRefs from './TechRefs.astro';
+import { pageCtx, num, type AStep } from '../lib/data';
+
+interface Props { steps: AStep[] }
+const { steps } = Astro.props;
+const { t, url, d } = await pageCtx(Astro.url);
+const x = t.analytics;
+const order = (id: string) => d.tactics.findIndex((y) => y.id === id) + 1;
+---
+<ol class="chain">
+  {steps.map((s) => (
+    <li>
+      <article class="step" id={`step-${s.n}`} aria-labelledby={`step-h-${s.n}`}>
+        <div class="head">
+          <span class="mono n">{x.attack.step(s.n)}</span>
+          <a href={url.tactic(s.tactic.id)} class="chip tac">{num(order(s.tactic.id))} {s.tactic.data.title} · <span class="id-attack">{s.tactic.id}</span></a>
+          <a href="#steps" class="act up" aria-label={x.attack.toSteps}>↑</a>
+        </div>
+        <h3 id={`step-h-${s.n}`}>{s.title}</h3>
+        <p class="what">{s.what}</p>
+        {s.tools.length > 0 && (
+          <div class="row"><span class="mono k">{x.attack.tools}</span><span class="chips">{s.tools.map((tool) => <span class="chip tool">{tool}</span>)}</span></div>
+        )}
+        <div class="row"><span class="mono k">{x.attack.techniques}</span><TechRefs items={s.techniques} /></div>
+        <div class="row stop"><span class="mono k">{x.attack.stop}</span><AnalyticsSolutions items={s.solutions} how />
+        </div>
+        {s.gaps.length > 0 && (
+          <div class="gaps">
+            <span class="mono k">{x.gaps}</span>
+            <ul>{s.gaps.map((g) => <li>{g}</li>)}</ul>
+          </div>
+        )}
+      </article>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .chain { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+  .step { scroll-margin-top: 130px; padding: 20px; border: 1px solid var(--line); border-left: 3px solid var(--attack); background: var(--bg); display: flex; flex-direction: column; gap: 14px; }
+  .step:target { border-color: var(--attack); }
+  .head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+  .n { font-size: 12px; color: var(--attack); }
+  .tac { min-height: 32px; }
+  .up { margin-left: auto; display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 16px; }
+  h3 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -0.01em; }
+  .what { margin: 0; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--text-2); }
+  .row { display: flex; flex-direction: column; gap: 6px; }
+  .k { font-size: 11px; color: var(--muted-2); }
+  .stop .k { color: var(--defense); }
+  .tool { font-family: var(--font-mono); font-size: 12px; }
+  .gaps { padding: 12px 14px; border: 1px dashed var(--line-strong); max-width: 760px; }
+  .gaps ul { margin: 6px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--muted); }
+</style>
