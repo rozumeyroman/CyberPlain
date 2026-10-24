@@ -76,6 +76,7 @@ export function buildLastmod() {
   set('/d3fend/', ['content/d3fend/intro.json', d3Data, ...files(d3Tactics)]);
   set('/solutions/', [...files(classes), ...files(products), ...files(techniques)]);
   set('/vendors/', files(products));
+  set('/pain/', [attackData, ...files(techniques.filter((x) => x.data.pain)), ...files(classes)]);
   set('/', [...files(tactics), ...files(classes)]);
   set('/licenses/', ['NOTICE.md', 'src/pages/[...lang]/licenses.astro'], ['NOTICE.en.md']);
   return map;

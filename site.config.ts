@@ -25,6 +25,7 @@ export const site = {
       children: [
         { label: { uk: 'MITRE ATT&CK', en: 'MITRE ATT&CK' }, note: { uk: 'Як діє зловмисник: етапи й техніки атак', en: 'How attackers operate: stages and techniques' }, href: '/mitre/' },
         { label: { uk: 'MITRE D3FEND', en: 'MITRE D3FEND' }, note: { uk: 'Як захищатись: тактики й техніки захисту', en: 'How to defend: tactics and countermeasures' }, href: '/d3fend/' },
+        { label: { uk: 'Часта біль', en: 'Common pain points' }, note: { uk: 'Типові скарги замовника і чим допомогти', en: 'Typical customer complaints and how to help' }, href: '/pain/' },
       ],
     },
     {

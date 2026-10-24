@@ -1,0 +1,98 @@
+---
+// «Часта біль»: усі техніки з pain: true, згруповані за етапами атаки. Головне в картці — цитата замовника,
+// далі техніка, опис і перші класи рішень з defenses[]. Техніка з кількома етапами — один раз, у першому.
+import Base from '../../../layouts/Base.astro';
+import { pageCtx, num } from '../../../lib/data';
+import { langParams } from '../../../lib/i18n';
+
+export const getStaticPaths = langParams;
+
+const { t, url, d, pl } = await pageCtx(Astro.url);
+const x = t.painPage;
+const TOP = 3;
+const order = (id: string) => d.tactics.findIndex((y) => y.id === id) + 1;
+const pains = d.techniques.filter((y) => y.data.pain);
+const seen = new Set<string>();
+const groups = d.byTactic(pains)
+  .map((g) => ({ ...g, techniques: g.techniques.filter((y) => !seen.has(y.id) && !!seen.add(y.id)) }))
+  .filter((g) => g.techniques.length > 0);
+const also = (y: (typeof pains)[number]) => d.tacticsOf(y).map((ta) => ta.id).filter((id) => id !== d.tacticsOf(y)[0].id);
+---
+<Base title={x.title} description={x.description}>
+  <section class="wrap page">
+    <div class="mono tag">{x.tag}</div>
+    <h1>{x.title}<span class="mono cnt">{pl(pains.length, x.n)}</span></h1>
+    <p class="lead-text">{x.lead}</p>
+
+    <nav aria-label={x.stages} class="jump" id="stages">
+      {groups.map((g) => <a href={`#${g.tactic.id}`} class="chip">{num(order(g.tactic.id))} {g.tactic.data.title} <span class="n">{g.techniques.length}</span></a>)}
+    </nav>
+
+    {groups.map((g) => (
+      <section class="group" id={g.tactic.id} aria-labelledby={`h-${g.tactic.id}`}>
+        <div class="ghead">
+          <h2 class="mono gtitle" id={`h-${g.tactic.id}`}><a href={url.tactic(g.tactic.id)}>{num(order(g.tactic.id))} {g.tactic.data.title} · {g.tactic.id}</a></h2>
+          <a href="#stages" class="act up" aria-label={x.toStages}>↑</a>
+        </div>
+        <div class="cards">
+          {g.techniques.map((y) => {
+            const cls = d.classesOf(y);
+            // Одне зайве рішення показуємо одразу, а не «ще 1».
+            const top = cls.length > TOP + 1 ? TOP : cls.length;
+            return (
+              <article class="card" id={y.id}>
+                {y.data.quote && <p class="quote">{t.quote(y.data.quote)}</p>}
+                <h3><a href={url.technique(y.id)}><span class="id-attack">{y.id}</span> {y.data.title}</a></h3>
+                {also(y).length > 0 && <p class="mono also">{t.alsoIn} {also(y).map((id) => num(order(id))).join(' · ')}</p>}
+                {y.data.simple && <p class="simple">{y.data.simple}</p>}
+                {cls.length > 0 && (
+                  <div class="help">
+                    <span class="mono k">{x.help}</span>
+                    <div class="chips">
+                      {cls.slice(0, top).map((c) => <a href={url.solution(c.id)} class="chip">{c.data.title}</a>)}
+                      {cls.length > top && <a href={`${url.technique(y.id)}#sol`} class="act more">{x.more(pl(cls.length - top, t.n.solutions))}</a>}
+                    </div>
+                  </div>
+                )}
+                <a href={url.technique(y.id)} class="act go">{x.details}</a>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .page { padding-bottom: 72px; }
+  .tag { font-size: 12px; color: var(--attack); margin: 48px 0 16px; }
+  h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  .cnt { font-size: 12px; color: var(--muted-2); letter-spacing: .08em; margin-left: 12px; font-weight: 400; vertical-align: middle; }
+  .jump { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .jump .chip { min-height: 44px; }
+  .jump .n { color: var(--muted-2); margin-left: 4px; }
+  /* Шапка липка: якір не ховається під нею */
+  .group, .card { scroll-margin-top: 130px; }
+  .group { margin-top: 40px; border-top: 1px solid var(--line); }
+  .ghead { display: flex; justify-content: space-between; align-items: center; }
+  .up { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-size: 16px; }
+  #stages { scroll-margin-top: 130px; }
+  .gtitle { margin: 0; font-size: 11px; font-weight: 400; letter-spacing: .08em; }
+  .gtitle a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 16px; margin-top: 8px; }
+  .card { display: flex; flex-direction: column; gap: 12px; padding: 18px 20px; border: 1px solid var(--line); background: var(--bg); transition: border-color .15s; }
+  .card:target { border-color: var(--attack); }
+  .quote { margin: 0; padding: 2px 0 2px 14px; border-left: 2px solid var(--attack); font-size: 18px; line-height: 1.45; color: var(--text); }
+  h3 { margin: 0; font-size: 16px; letter-spacing: -0.01em; line-height: 1.35; }
+  h3 a { color: var(--text-2); text-decoration: none; }
+  h3 a:hover { color: var(--defense-hover); }
+  h3 .id-attack { font-size: 13px; margin-right: 6px; }
+  .also { margin: -8px 0 0; font-size: 11px; color: var(--muted-2); }
+  .simple { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .help { display: flex; flex-direction: column; gap: 6px; }
+  .help .k { font-size: 11px; color: var(--defense); }
+  .help .chips { align-items: center; }
+  .more { display: inline-flex; align-items: center; min-height: 32px; padding: 0 4px; }
+  .go { display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start; margin-top: auto; }
+</style>

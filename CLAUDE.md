@@ -75,6 +75,8 @@ src/
   pages/solutions/index.astro        # таблиця класів рішень
   pages/solutions/[id].astro         # /solutions/vm/ — клас, /solutions/rapid7-insightvm/ — продукт
   pages/vendors/index.astro          # вендори (з product.vendor) → розгортання до їхніх продуктів
+  pages/pain/index.astro             # «Часта біль»: техніки з pain: true за етапами — цитата замовника,
+                                     #   опис, перші 3 класи з defenses[]; якір /pain/#T1566
   pages/d3fend/index.astro           # 7 тактик D3FEND з категоріями
   pages/d3fend/[id].astro            # /d3fend/harden/ — тактика, /d3fend/D3-AA/ — категорія чи техніка
   pages/licenses.astro
@@ -85,7 +87,7 @@ design/                   # референсні макети (не код са�
 LICENSE  LICENSE-CONTENT  NOTICE.md
 ```
 
-Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/[...lang]/<tab>/`. Шапка: Home · MITRE (ATT&CK, D3FEND) ·
+Нова вкладка = запис у `site.config.ts → tabs` + папка `src/pages/[...lang]/<tab>/`. Шапка: Home · MITRE (ATT&CK, D3FEND, Часта біль) ·
 Рішення (класи рішень, вендори); вкладка з `children` — випадаюче меню (`id`, пункти з `label`, `note`, `href`).
 
 **Мови.** Українська — у корені (`/mitre/T1595/`), англійська — під `/en/` (`/en/mitre/T1595/`); сторінки лежать
