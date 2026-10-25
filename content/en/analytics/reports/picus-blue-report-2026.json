@@ -16,11 +16,6 @@
     { "value": "7%", "label": "of data theft attempts stopped, the weakest area for the fourth year running" },
     { "value": "338 million+", "label": "simulated attacks in the report's sample" }
   ],
-  "caveats": [
-    "The report was prepared by a vendor that sells attack simulation (BAS) systems, and it contains promotional sections. Take its conclusions with that in mind.",
-    "The data comes from simulations in Picus customers' networks, not from real incidents, and the sample is not random. It is a guide, not market-wide statistics.",
-    "The mapping to ATT&CK techniques and solution classes below is our editorial interpretation; an asterisk (*) next to an ID means the ID itself does not appear in the report."
-  ],
   "findings": [
     {
       "title": "A strong perimeter, a soft interior",
