@@ -39,7 +39,7 @@ const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) |
       <div><dt class="mono k">{x.facts.publisher}</dt><dd>{r.original.publisher}</dd></div>
       <div><dt class="mono k">{x.facts.date}</dt><dd>{fmtDate(lang, r.date)}{r.dateNote && <span class="dn"> · {r.dateNote}</span>}</dd></div>
       {r.original.pages && <div><dt class="mono k">{x.facts.pages}</dt><dd>{x.facts.pagesN(r.original.pages)}</dd></div>}
-      <div><dt class="mono k">{x.facts.source}</dt><dd>{r.original.url ? <a href={r.original.url} rel="noopener noreferrer">{new URL(r.original.url).hostname} ↗</a> : x.facts.noUrl}</dd></div>
+      <div><dt class="mono k">{x.facts.source}</dt><dd>{r.original.url ? <a href={r.original.url} rel="noopener noreferrer">{x.facts.download}</a> : x.facts.noUrl}</dd></div>
     </dl>
 
     <p class="lead-text">{r.summary}</p>
