@@ -310,7 +310,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR і XSIAM (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR і XSIAM, Splunk Enterprise Security (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -353,11 +353,13 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Picus Autonomous Penetration Testing | автоматизований пентест |
 | Picus Attack Surface Validation | CAASM |
 | Picus Cloud Security Validation | CIEM, BAS |
-| Cortex XDR Prevent | контроль пристроїв і мережевий екран комп’ютера, шифрування дисків |
-| Cortex XDR Pro per Endpoint | + EDR |
+| Cortex XDR Prevent | EDR, контроль пристроїв і мережевий екран комп’ютера, шифрування дисків |
+| Cortex XDR Pro per Endpoint | ті самі класи (+ виявлення, розслідування, реагування — у тексті) |
 | Cortex XSIAM NG-SIEM | SIEM, UEBA, SOAR, NDR |
 | Cortex XSIAM Enterprise | + EDR, контроль пристроїв і мережевий екран, шифрування дисків, управління вразливостями |
 | Cortex XSIAM Premium | + CNAPP, CWPP, CIEM, WAF, кіберрозвідка, EASM |
+| Splunk Enterprise Security Essentials | SIEM, кіберрозвідка, CAASM |
+| Splunk Enterprise Security Premier | + SOAR, UEBA, пісочниця |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -448,8 +450,8 @@ D3FEND: `bas` — D3-SYSVA; `pentest` — D3-SYSVA, D3-NVA, D3-AM. EXV і DRV �
 Palo Alto Networks Cortex XDR (даташит https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/cortex-xdr,
 березень 2026, таблиця Licensing Options): 2 продукти — XDR Prevent і XDR Pro per Endpoint. Prevent — лише запобігання (NGAV: ML,
 поведінковий захист, захист від експлойтів) + Endpoint Controls (Device control, host firewall — `device-control`; BitLocker/FileVault —
-`encryption`); виявлення й реагування в ньому «—», тому `edr` не ставимо (рішення можна переглянути з автором). Pro — `edr` (детектори,
-кейси, 100+ плейбуків, Live Terminal). «Extended Detection Analytics (network, cloud, identity)» — аналітика підключених даних, не `ndr`
+`encryption`); виявлення й реагування в ньому «—», але `edr` ставимо (рішення автора: блокування на агенті — як «EDR (EPP + XDR)» у SentinelOne).
+Pro — ті самі класи (детектори, кейси, 100+ плейбуків, Live Terminal — у тексті). «Extended Detection Analytics (network, cloud, identity)» — аналітика підключених даних, не `ndr`
 (Network Traffic Analysis за документацією 3.x — лише Pro per GB) і не `ueba` (поведінка користувачів — у add-on ITDR); плейбуки — не `soar`
 (SOAR — у XSIAM). Add-on (Cloud Runtime Security, ITDR, Advanced Email Security, Host Insights, Forensics, DLP, Exposure Management, ASM,
 MDR, MTH, XTH) класом не рахуємо; Mobile security, Cortex Agentic Assistant — лише в тексті. Pro per GB / Cloud per Host і нові назви
@@ -464,6 +466,13 @@ Security (CSPM, CIEM, DSPM, безагентне сканування, ASPM, CI/
 `waf`; XTI і Threat Intel Management — `ti`; Attack Surface Management (інтернет-ресурси) — `easm`. Add-on у всіх тарифах (ITDR, Forensics,
 Advanced Email Security, Exposure Management, DLP, Code Security) класом не рахуємо. CDR (аналітика хмарних журналів) — лише в тексті.
 Старий тариф Enterprise Plus не додано.
+
+Splunk Enterprise Security (https://www.splunk.com/en_us/products/enterprise-security.html, таблиця редакцій — там і на
+https://help.splunk.com/en/splunk-enterprise-security-8/enterprise-security-editions; бриф ES — 2024, ще з SOAR за окремою підпискою): 2 продукти —
+ES Essentials і ES Premier. Essentials: SIEM (RBA, 1 700+ виявлень, Detection Studio) — `siem`; Threat Intelligence Management — `ti`;
+Exposure Analytics (безперервне виявлення активів і облікових записів із журналів, наповнює Asset & Identity) — `caasm`. Premier: + Splunk SOAR
+— `soar`, UEBA — `ueba`, Automated Threat Analysis (Splunk Attack Analyzer: детонація файлів і посилань, лише хмара) — `sandbox`. AI Assistant
+і AI-агенти — лише в тексті. Splunk Enterprise / Splunk Cloud Platform — платформа даних, на якій працює ES, окремим продуктом не додано.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
