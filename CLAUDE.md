@@ -310,7 +310,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR і XSIAM, Splunk Enterprise Security (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR і XSIAM, Splunk Enterprise Security, CrowdStrike Falcon (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -360,6 +360,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Cortex XSIAM Premium | + CNAPP, CWPP, CIEM, WAF, кіберрозвідка, EASM |
 | Splunk Enterprise Security Essentials | SIEM, кіберрозвідка, CAASM |
 | Splunk Enterprise Security Premier | + SOAR, UEBA, пісочниця |
+| CrowdStrike Falcon Go, Pro, Enterprise | EDR, контроль пристроїв і мережевий екран комп’ютера (класи однакові) |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -473,6 +474,13 @@ ES Essentials і ES Premier. Essentials: SIEM (RBA, 1 700+ виявлень, Det
 Exposure Analytics (безперервне виявлення активів і облікових записів із журналів, наповнює Asset & Identity) — `caasm`. Premier: + Splunk SOAR
 — `soar`, UEBA — `ueba`, Automated Threat Analysis (Splunk Attack Analyzer: детонація файлів і посилань, лише хмара) — `sandbox`. AI Assistant
 і AI-агенти — лише в тексті. Splunk Enterprise / Splunk Cloud Platform — платформа даних, на якій працює ES, окремим продуктом не додано.
+
+CrowdStrike (таблиця пакетів https://www.crowdstrike.com/en-us/pricing/, жовтень 2026; даташит Falcon Endpoint Protection Pro 2024 —
+опис можливостей Pro, його таблиця з Falcon Elite застаріла): 3 продукти — Falcon Go, Pro, Enterprise. NGAV (Falcon Prevent) — `edr` у всіх
+(як Cortex XDR Prevent); Device Control і Firewall Management (з Pro) — `device-control`. Enterprise: EDR (Falcon Insight XDR) — уже `edr`;
+«Threat Intelligence & Hunting» — це Falcon Adversary OverWatch (полювання силами експертів, сервіс) — не `ti`, лише в тексті. Mobile Device
+Protection, Express Support — лише в тексті. Identity Protection, IT Hygiene (Falcon Discover), Next-Gen SIEM — у всіх пакетах «✗», класом не
+рахуємо. Falcon Complete — сервіс MDR, не додано; Falcon Flex — модель ліцензування, не пакет.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
