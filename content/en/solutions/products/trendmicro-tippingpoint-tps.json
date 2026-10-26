@@ -1,0 +1,3 @@
+{
+  "simple": "TippingPoint hardware intrusion prevention system (IPS), including the TXE Series — up to 100 Gbps in 1U and 500 Gbps in 5U. Inspects and blocks traffic in all directions — inbound, outbound and lateral, with on-box SSL decryption. Digital Vaccine filters from the Zero Day Initiative virtually patch vulnerabilities an average of 96 days before the official patch (vendor data); plus IP and URL reputation and malware analysis. Pulls in vulnerability scanner results (Rapid7, Qualys, Tenable) and maps CVEs to filters; with TrendAI Vision One — playbook-driven blocking of IPs, domains and URLs and an NDR network sensor (separate license)."
+}

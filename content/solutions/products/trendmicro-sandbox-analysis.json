@@ -1,0 +1,9 @@
+{
+  "name": "TrendAI Vision One Sandbox Analysis",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "sandbox"
+  ],
+  "simple": "Хмарна пісочниця: відкриває підозрілі файли й посилання в ізольованому середовищі й показує, що вони роблять. Файли надсилають вручну, через API, зі сценаріїв реагування або автоматично — з Endpoint Security Core і Essentials, ZTSA Internet Access, мережевих сенсорів і Deep Discovery Inspector (кожне джерело ліцензується окремо). Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

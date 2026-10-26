@@ -1,0 +1,3 @@
+{
+  "simple": "SIEM and response automation of the TrendAI Vision One platform (Security Operations). Collects third-party logs alongside data from Trend’s own sensors (endpoints, email, network, cloud, identities), correlates weak signals into incidents with the full attack story and retains data for analysis and compliance audits. Agentic SOAR: response playbooks that can be described in plain language automatically contain the threat and remediate across tools; the Companion AI assistant guides investigations. Licensed by the volume of ingested and retained data. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+}

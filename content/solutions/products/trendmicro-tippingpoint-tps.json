@@ -1,0 +1,10 @@
+{
+  "name": "Trend Micro TippingPoint Threat Protection System",
+  "vendor": "Trend Micro",
+  "url": "https://cdn.sanity.io/files/ch6z6vqj/production/98e303d1aee8a8955e1985925758861e4637f183.pdf/ds-tippingpoint-txe-series.pdf",
+  "classes": [
+    "ngfw",
+    "ti"
+  ],
+  "simple": "Апаратна система запобігання вторгненням (IPS) TippingPoint, зокрема TXE Series — до 100 Гбіт/с в 1U і 500 Гбіт/с у 5U. Перевіряє й блокує трафік у всіх напрямках — вхідний, вихідний і всередині мережі, з розшифруванням SSL на пристрої. Фільтри Digital Vaccine від Zero Day Initiative закривають вразливості віртуальними латками в середньому за 96 днів до офіційного патча (дані вендора); також репутація IP і URL, аналіз шкідливих програм. Підтягує результати сканерів вразливостей (Rapid7, Qualys, Tenable) і зіставляє CVE з фільтрами; з TrendAI Vision One — блокування IP, доменів і URL за сценаріями та мережевий сенсор NDR (окрема ліцензія)."
+}

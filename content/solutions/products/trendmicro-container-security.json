@@ -1,0 +1,9 @@
+{
+  "name": "TrendAI Vision One Container Security",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "cwpp"
+  ],
+  "simple": "Захист контейнерів від збирання до завершення роботи: сканує образи на вразливості, шкідливі програми й секрети, перевіряє налаштування Kubernetes, не пускає небезпечні образи в кластер, стежить за контейнерами під час роботи й блокує підозрілу активність; власні правила виявлення — за доплату. Kubernetes, Amazon ECS і безсерверні контейнери. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

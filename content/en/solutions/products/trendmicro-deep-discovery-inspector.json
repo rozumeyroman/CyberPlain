@@ -1,0 +1,3 @@
+{
+  "simple": "A physical or virtual appliance that passively analyzes all traffic without affecting the network — 100+ protocols, all ports, external and internal. Detects targeted attacks, ransomware, zero-day exploits, command-and-control channels and lateral movement using file, web, IP and mobile app reputation, heuristics and machine learning. Checks suspicious files in its own sandbox with images tuned to your systems. Shares indicators in STIX, TAXII and YARA formats; with TrendAI Vision One it works as an XDR for Networks sensor (separate license)."
+}

@@ -1,0 +1,9 @@
+{
+  "name": "TrendAI Vision One Forensics",
+  "vendor": "Trend Micro",
+  "url": "https://cdn.sanity.io/files/ch6z6vqj/production/d75c98b5d4f30e42536d78305a2a11e72ea1f5f6.pdf/ds-vision-one-forensices.pdf",
+  "classes": [
+    "dfir"
+  ],
+  "simple": "Цифрова криміналістика прямо в консолі платформи, без окремих інструментів: збирає докази з комп’ютерів, організує їх у робочих просторах, швидко перевіряє комп’ютери запитами osquery і правилами YARA, будує єдину хронологію подій і звіт із даними кіберрозвідки. Потрібен XDR for Endpoints (EDR); ліцензія — за обсягом сховища доказів (Evidence Collection). Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

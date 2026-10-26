@@ -1,0 +1,9 @@
+{
+  "name": "TrendAI Vision One XDR for Networks",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "ndr"
+  ],
+  "simple": "Аналіз мережевого трафіку (NDR): віртуальний мережевий сенсор (Virtual Network Sensor), сенсор на пристроях TippingPoint або Deep Discovery Inspector стежить за трафіком, зокрема розшифрованим, і помічає канали керування, рух мережею, підозрілі передачі файлів і пристрої без агентів — IoT, принтери, особисті пристрої. Показує хронологію атаки, зіставляє мережеві події з даними з комп’ютерів і хмари, зберігає події від шести місяців. Підозрілі файли можна автоматично відправляти в пісочницю (за доплату). Ліцензія — за пропускною здатністю (кроками по 500 Мбіт/с). Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

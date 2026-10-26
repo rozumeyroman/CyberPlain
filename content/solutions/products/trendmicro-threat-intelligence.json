@@ -1,0 +1,9 @@
+{
+  "name": "TrendAI Vision One Threat Intelligence",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "ti"
+  ],
+  "simple": "Кіберрозвідка TrendAI Research і Zero Day Initiative: профілі угруповань і кампаній, стратегічні звіти, готові запити для полювання на загрози, постійно оновлюваний потік індикаторів компрометації, який через API передається у ваші засоби захисту. Ліцензія — на обліковий запис платформи (Threat Intelligence Hub). Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

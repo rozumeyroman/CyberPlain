@@ -1,0 +1,3 @@
+{
+  "simple": "Container protection from build to termination: scans images for vulnerabilities, malware and secrets, checks Kubernetes configuration, keeps unsafe images out of the cluster, monitors containers at runtime and blocks suspicious activity; custom detection rules cost extra. Kubernetes, Amazon ECS and serverless containers. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+}

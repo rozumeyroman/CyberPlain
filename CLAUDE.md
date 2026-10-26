@@ -311,7 +311,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
 модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM і NGFW, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
-захист кінцевих точок, пастки, CTEM і CNAPP Fortinet (рішення автора, жовтень 2026).
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -381,6 +381,21 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | FortiRecon EASM and BP | + захист бренду |
 | FortiRecon EASM, BP, and ACI | + моніторинг даркнету, кіберрозвідка, TPRM |
 | FortiCNAPP | CNAPP, CWPP, CIEM |
+| TrendAI Vision One Endpoint Security Core / Essentials | EDR, контроль пристроїв і мережевий екран, DLP, кіберрозвідка (класи однакові) |
+| TrendAI Vision One Endpoint Security Pro | + CWPP |
+| TrendAI Vision One Email and Collaboration Security Core / Essentials / Pro | захист пошти, DLP, пісочниця, UEBA (класи однакові) |
+| TrendAI Vision One CREM Core | CAASM, EASM, управління вразливостями, ISPM |
+| TrendAI Vision One CREM Essentials | + навчання персоналу |
+| TrendAI Vision One Cloud Risk Management | CNAPP, CIEM, EASM |
+| TrendAI Vision One Container Security | CWPP |
+| TrendAI Vision One Agentic SIEM | SIEM, SOAR |
+| TrendAI Vision One XDR for Networks | NDR |
+| TrendAI Vision One Identity Security | ITDR, ISPM, UEBA |
+| TrendAI Vision One Data Security | DLP |
+| TrendAI Vision One ZTSA Private Access / Internet Access | доступ без VPN / кіберрозвідка |
+| TrendAI Vision One Threat Intelligence, Sandbox Analysis, Forensics | кіберрозвідка, пісочниця, DFIR (по одному класу) |
+| Trend Micro TippingPoint Threat Protection System | NGFW/IPS, кіберрозвідка |
+| Trend Micro Deep Discovery Inspector | NDR, IDS, пісочниця |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -539,6 +554,27 @@ Fortinet (продукти за ордеринг-гайдами https://www.fort
 - **FortiCNAPP** (ex-Lacework): один продукт — ліцензія Risk & Threat (за ресурсами, усі можливості): CSPM/KSPM, IaC, DSPM — `cnapp`; агент із
   runtime-моніторингом, FIM і K8s admission — `cwpp`; CIEM — `ciem`. FortiDAST — add-on (без `dast`); Code Security (SCA, секрети в коді) —
   окрема покупка, не додано; legacy-тарифи за vCPU не додано.
+
+Trend Micro: бізнес-напрям з 2026 — **TrendAI** (trendaisecurity.com), платформа — **TrendAI Vision One** (раніше Trend Vision One); вендор на
+сайті — «Trend Micro», назви продуктів — «TrendAI Vision One …». Ліцензування — кредити TrendAI Flex; пакети й функції — за таблицею
+https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services (жовтень 2026), продукт = пакет чи рішення
+з таблиці. Endpoint Security Core / Essentials / Pro: антивірус — `edr` (як Cortex XDR Prevent), мережевий екран і контроль пристроїв —
+`device-control`, DLP — `dlp`, Web Reputation — `ti` (як FortiEndpoint); XDR for Endpoints у Essentials — у тексті; Pro (контроль цілісності,
+аналіз журналів, серверний IPS, контейнери — колишній Deep Security) — `cwpp`; IPS для комп’ютерів, контроль застосунків — лише в тексті.
+Email and Collaboration Security Core / Essentials / Pro: `email`, DLP — `dlp`, File Sandboxing — `sandbox`, Account Takeover — `ueba` (як
+Harmony Email); URL Sandboxing, Continuity, шифрування, DMARC (Essentials), XDR for Email (Pro) — у тексті. CREM Core: Cyber Risk Overview
+(інвентар активів) — `caasm`, Attack Surface Discovery — `easm`, Threat and Exposure Management і Network Vulnerability Scanner — `vm`, Identity
+Security Posture — `ispm`; Essentials: Security Awareness — `awareness`, Attack Path Prediction і Compliance — у тексті. Cloud account assessment
+(CSPM, EASM, DSPM, ASPM, безагентне сканування, cloud identity entitlement) — продукт «Cloud Risk Management» за назвою на сторінці Cloud Security:
+`cnapp`, `ciem`, `easm`. Container Security — `cwpp`. Agentic SIEM — `siem` + `soar` (Agentic SOAR названо на сторінці Security Operations;
+окремого рядка в таблиці кредитів немає). XDR for Networks (Virtual Network Sensor, сенсор на TippingPoint / DDI) — `ndr`. Identity Security
+(ISPM + ITDR, UEBA в даташиті) і Data Security (DSPM, data lineage, Data Control) — у таблиці кредитів окремих рядків немає, класи за
+сторінками й брифами: `itdr` + `ispm` + `ueba`; `dlp`. ZTSA Private Access — `vpnless`; Internet Access (SWG за Web Reputation, CASB) — `ti`;
+AI Secure Access, Send to Sandbox — лише в тексті. Threat Intelligence (Hub) — `ti`; Sandbox Analysis — `sandbox`; Forensics (Evidence
+Collection, потрібен EDR) — `dfir`. Поза кредитами: TippingPoint TPS (апаратний IPS, Digital Vaccine/ZDI, репутація IP і URL) — `ngfw` + `ti`;
+Deep Discovery Inspector (пасивний аналіз трафіку з власною пісочницею) — `ndr`, `ids`, `sandbox`. Не додано: XDR for Email/Cloud/Data окремо
+(входять у пакети чи без класу), Mobile Security, File Security, AI Application Security, Code Security, Cloud IPS, Deep Discovery Analyzer /
+Email Inspector, ScanMail, PortalProtect, сервіси (MDR, IR).
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

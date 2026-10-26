@@ -1,0 +1,11 @@
+{
+  "name": "TrendAI Vision One Cloud Risk Management",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "cnapp",
+    "ciem",
+    "easm"
+  ],
+  "simple": "Оцінка ризиків хмарних акаунтів (AWS, Azure, Google Cloud): перевіряє налаштування й відповідність стандартам (CSPM), шукає ресурси, видимі з інтернету (EASM), чутливі дані (DSPM), ризики API й застосунків (ASPM), без агентів сканує на вразливості й шкідливі програми, показує шляхи атаки й надмірні права хмарних облікових записів. Ліцензія — за кількістю хмарних акаунтів і ресурсів у них (кроками по 500), окремо від XDR. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

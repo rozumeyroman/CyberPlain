@@ -1,0 +1,12 @@
+{
+  "name": "TrendAI Vision One Email and Collaboration Security Core",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "email",
+    "dlp",
+    "sandbox",
+    "ueba"
+  ],
+  "simple": "Захист пошти й інструментів спільної роботи Microsoft 365, Google Workspace, Box і Dropbox: через API (Cloud Email and Collaboration Protection) або як шлюз перед поштою (Cloud Email Gateway Protection). Блокує фішинг, зокрема через QR-коди, шахрайство з діловим листуванням (BEC) за аналізом стилю письма й поведінки відправника, шкідливі програми й спам, перевіряє вкладення в пісочниці й повторно сканує вже доставлені листи, перевіряє внутрішнє листування, запобігає витоку даних (DLP), помічає захоплення облікових записів. Перевірка посилань у пісочниці, Email Continuity, шифрування й XDR для пошти — у старших редакціях. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

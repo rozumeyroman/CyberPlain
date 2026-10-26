@@ -1,0 +1,12 @@
+{
+  "name": "TrendAI Vision One Cyber Risk Exposure Management Core",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "caasm",
+    "easm",
+    "vm",
+    "ispm"
+  ],
+  "simple": "Керування кіберризиками й експозиціями (CREM): збирає перелік активів компанії — комп’ютерів, серверів, хмарних ресурсів, облікових записів і того, що видно з інтернету, — і рахує для кожного оцінку ризику з урахуванням критичності й активних загроз. Знаходить ресурси в інтернеті (Attack Surface Discovery), керує вразливостями й небезпечними налаштуваннями з пріоритетами, сканує мережеве обладнання на вразливості (Network Vulnerability Scanner), оцінює ризики облікових записів (Identity Security Posture): облікові записи без MFA, застарілі, з надмірними правами. Прогноз шляхів атаки, навчання персоналу й контроль відповідності стандартам — у редакції Essentials. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

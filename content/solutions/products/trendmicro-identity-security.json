@@ -1,0 +1,11 @@
+{
+  "name": "TrendAI Vision One Identity Security",
+  "vendor": "Trend Micro",
+  "url": "https://cdn.sanity.io/files/ch6z6vqj/production/12996ea63f9a436e6ff6c6798f8a0973e2583e92.pdf/sb-identity-security.pdf",
+  "classes": [
+    "itdr",
+    "ispm",
+    "ueba"
+  ],
+  "simple": "Захист облікових записів: стан захищеності (ISPM) і виявлення атак (ITDR) разом. Через Microsoft Entra ID, Active Directory, Okta й OpenLDAP знаходить усі облікові записи — людей, сервісів і AI-агентів, — показує застарілі, без MFA, з надмірними правами. Вивчає звичну поведінку користувачів (UEBA), помічає незвичні входи й рух мережею, зіставляє їх із подіями на комп’ютерах і в пошті. Реагує: блокує обліковий запис, скидає пароль, завершує сесії, автоматично вимикає застарілі записи за сценаріями. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}

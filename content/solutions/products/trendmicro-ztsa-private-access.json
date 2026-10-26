@@ -1,0 +1,9 @@
+{
+  "name": "TrendAI Vision One ZTSA Private Access",
+  "vendor": "Trend Micro",
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
+  "classes": [
+    "vpnless"
+  ],
+  "simple": "Доступ до внутрішніх застосунків за принципом нульової довіри (ZTNA) замість VPN: працівник бачить лише дозволені застосунки, а не всю мережу, з перевіркою особи й стану пристрою. Частина TrendAI Vision One Zero Trust Secure Access (ZTSA): агент або без агента, для корпоративних і особистих пристроїв; доступ динамічно відкликається, коли зростає оцінка ризику користувача чи пристрою. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+}
