@@ -310,7 +310,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR і XSIAM (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -355,6 +355,9 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Picus Cloud Security Validation | CIEM, BAS |
 | Cortex XDR Prevent | контроль пристроїв і мережевий екран комп’ютера, шифрування дисків |
 | Cortex XDR Pro per Endpoint | + EDR |
+| Cortex XSIAM NG-SIEM | SIEM, UEBA, SOAR, NDR |
+| Cortex XSIAM Enterprise | + EDR, контроль пристроїв і мережевий екран, шифрування дисків, управління вразливостями |
+| Cortex XSIAM Premium | + CNAPP, CWPP, CIEM, WAF, кіберрозвідка, EASM |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -451,6 +454,16 @@ Palo Alto Networks Cortex XDR (даташит https://www.paloaltonetworks.com/a
 (SOAR — у XSIAM). Add-on (Cloud Runtime Security, ITDR, Advanced Email Security, Host Insights, Forensics, DLP, Exposure Management, ASM,
 MDR, MTH, XTH) класом не рахуємо; Mobile security, Cortex Agentic Assistant — лише в тексті. Pro per GB / Cloud per Host і нові назви
 документації 5.x (Enterprise Runtime Security) не додано.
+
+Cortex XSIAM (таблиця тарифів https://cortex-docs.paloaltonetworks.com/cortex-xsiam/learn-about-cortex-xsiam/cortex-xsiam-product-licenses;
+даташит березня 2026 — лише опис): 3 продукти за тарифами NG-SIEM / Enterprise / Premium. NG-SIEM: Core Analytics, Automation, UEBA —
+`siem`, `ueba`, `soar`; `ndr` — бо даташит називає NDR базовою можливістю платформи (аналітика журналів мережевих екранів і потоків,
+власних сенсорів немає; у XDR Pro per Endpoint такого збору немає, тому там без `ndr`). Enterprise: агент XDR (Enterprise Runtime Security:
+NGAV, Endpoint Controls) — `edr`, `device-control`, `encryption`; Host Insights (Vulnerability Management) — `vm`. Premium: Cloud Posture
+Security (CSPM, CIEM, DSPM, безагентне сканування, ASPM, CI/CD) — `cnapp` + `ciem`; Cloud Runtime Security (CWP, CDR, WAAS) — `cwpp` +
+`waf`; XTI і Threat Intel Management — `ti`; Attack Surface Management (інтернет-ресурси) — `easm`. Add-on у всіх тарифах (ITDR, Forensics,
+Advanced Email Security, Exposure Management, DLP, Code Security) класом не рахуємо. CDR (аналітика хмарних журналів) — лише в тексті.
+Старий тариф Enterprise Plus не додано.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
