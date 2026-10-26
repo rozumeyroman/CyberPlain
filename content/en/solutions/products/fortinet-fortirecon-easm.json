@@ -1,0 +1,3 @@
+{
+  "simple": "Fortinet’s attack surface management service (CTEM). Searches the internet for everything that belongs to the company — domains, servers, cloud resources — and shows prioritized vulnerabilities and misconfigurations, leaked credentials, risks of subsidiaries and companies being acquired, and runs a surface-level check of web applications. The internal module (IASM) scans internal subnets through a Docker agent, finding devices and their vulnerabilities. Executive reports, API, integration with FortiGate and AWS, GCP and Azure, and playbooks for responding to findings (100 runs per month). Brand protection and adversary intelligence are in higher bundles."
+}

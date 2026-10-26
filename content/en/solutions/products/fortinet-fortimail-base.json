@@ -1,0 +1,3 @@
+{
+  "simple": "Fortinet FortiMail email gateway as a hardware appliance (FML-200F – FML-3000F) or a virtual machine (VM01 – VM32) for your own data center or cloud; sits in front of any mail server as a gateway, runs transparently or as a mail server itself. FortiGuard antispam (99.99% of spam per vendor data) based on sender reputation, links and behavior, multi-layer antivirus, protection against new threat outbreaks, inbound and outbound filtering, SPF, DKIM and DMARC checks, secure delivery (TLS), recipient email encryption (IBE), email data loss prevention (DLP) by keywords, patterns and file fingerprints, and reporting. Sandboxing, attachment sanitization (CDR), click-time URL protection and impersonation analysis are in the Enterprise ATP bundle."
+}

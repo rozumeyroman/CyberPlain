@@ -58,28 +58,69 @@
     "Rescan the network and confirm no vulnerable services remain."
   ],
   "timeline": [
-    { "text": "Amazon Threat Intelligence sees an exploitation attempt on its MadPot honeypots before disclosure. The IP is tied to a commercial anonymisation service; how the actor obtained the details is unknown." },
-    { "text": "The CVE identifiers leak. PHP moves its scheduled release up by a day, and CERT-EU publishes its initial advisory (v1.0)." },
-    { "text": "PHP releases the fixes and publishes the GHSA. More attempts are seen, apparently from multiple actors. Cloudflare deploys initial WAF rules for known vectors (a stopgap, only for traffic through Cloudflare)." },
-    { "text": "watchTowr reports early attacks and reproduces both bugs. Wiz publishes a technical analysis and says AI models helped turn the old flaw into a working exploit. Searchlight Cyber releases an open-source scanner." },
-    { "text": "Rapid7 publishes InsightVM checks for both CVEs." },
-    { "text": "An F5 blog reports that its AI WAF in blocking mode stopped the attack in testing before a dedicated signature existed." },
-    { "text": "CERT-EU, in version 1.2, adds a third code execution flaw, CVE-2026-115560. There is no out-of-band release for it." },
-    { "text": "Tenable releases Security Center patch SC-202610.2 (PHP 8.2.35)." },
-    { "text": "CISA has not yet added the CVEs to KEV, but urges immediate patching and taking unpatchable PHP systems offline. The UK NCSC advises the same for systems that cannot be patched quickly." }
+    {
+      "text": "Amazon Threat Intelligence sees an exploitation attempt on its MadPot honeypots before disclosure. The IP is tied to a commercial anonymisation service; how the actor obtained the details is unknown."
+    },
+    {
+      "text": "The CVE identifiers leak. PHP moves its scheduled release up by a day, and CERT-EU publishes its initial advisory (v1.0)."
+    },
+    {
+      "text": "PHP releases the fixes and publishes the GHSA. More attempts are seen, apparently from multiple actors. Cloudflare deploys initial WAF rules for known vectors (a stopgap, only for traffic through Cloudflare)."
+    },
+    {
+      "text": "watchTowr reports early attacks and reproduces both bugs. Wiz publishes a technical analysis and says AI models helped turn the old flaw into a working exploit. Searchlight Cyber releases an open-source scanner."
+    },
+    {
+      "text": "Rapid7 publishes InsightVM checks for both CVEs."
+    },
+    {
+      "text": "An F5 blog reports that its AI WAF in blocking mode stopped the attack in testing before a dedicated signature existed."
+    },
+    {
+      "text": "CERT-EU, in version 1.2, adds a third code execution flaw, CVE-2026-115560. There is no out-of-band release for it."
+    },
+    {
+      "text": "Tenable releases Security Center patch SC-202610.2 (PHP 8.2.35)."
+    },
+    {
+      "text": "CISA has not yet added the CVEs to KEV, but urges immediate patching and taking unpatchable PHP systems offline. The UK NCSC advises the same for systems that cannot be patched quickly."
+    }
   ],
   "caveats": [],
   "solutions": [
-    { "why": "Dedicated checks for both CVEs (including in Rapid7 InsightVM) show which PHP servers are vulnerable and help confirm the problem is closed after updating." },
-    { "why": "Shows which PHP servers are visible from the internet: those get fixed first." },
-    { "why": "Gathers all assets into one picture so a forgotten server or an application with embedded PHP does not slip through." },
-    { "why": "The PHPInventory artifact for Velociraptor finds PHP on Windows, Linux and macOS, including embedded copies and servers that do not reveal their version." },
-    { "why": "A virtual patch in front of the site drops attacking requests until PHP is updated. It is a temporary measure: it works in blocking mode and only when direct access to the server that bypasses the WAF is closed." },
-    { "why": "IPS signatures in prevent mode block exploitation attempts. For IPS to see attacks in encrypted traffic, HTTPS inspection is required. It is a temporary measure, not a substitute for updating." },
-    { "why": "Safely replays the attack against your WAF, IPS and EDR and reports for each control: blocked, detected or missed. Gaps found are closed and tested again." },
-    { "why": "Spots shells and downloaders launched by web server or PHP-FPM processes, a sign that the attack has already worked." },
-    { "why": "Lets you search logs retroactively from 17 October and find traces of web shells and suspicious processes." },
-    { "why": "If server memory may have leaked, change database passwords, tokens and keys. A secrets manager makes that rotation faster and controlled." }
+    {
+      "why": "Dedicated checks for both CVEs (including in Rapid7 InsightVM) show which PHP servers are vulnerable and help confirm the problem is closed after updating."
+    },
+    {
+      "why": "Shows which PHP servers are visible from the internet: those get fixed first."
+    },
+    {
+      "why": "Gathers all assets into one picture so a forgotten server or an application with embedded PHP does not slip through."
+    },
+    {
+      "why": "The PHPInventory artifact for Velociraptor finds PHP on Windows, Linux and macOS, including embedded copies and servers that do not reveal their version."
+    },
+    {
+      "why": "A virtual patch in front of the site drops attacking requests until PHP is updated. It is a temporary measure: it works in blocking mode and only when direct access to the server that bypasses the WAF is closed."
+    },
+    {
+      "why": "IPS signatures in prevent mode block exploitation attempts. For IPS to see attacks in encrypted traffic, HTTPS inspection is required. It is a temporary measure, not a substitute for updating."
+    },
+    {
+      "why": "Safely replays the attack against your WAF, IPS and EDR and reports for each control: blocked, detected or missed. Gaps found are closed and tested again."
+    },
+    {
+      "why": "Spots shells and downloaders launched by web server or PHP-FPM processes, a sign that the attack has already worked."
+    },
+    {
+      "why": "On cloud servers and in containers, spots that a PHP process suddenly launched a shell or a downloader and stops it."
+    },
+    {
+      "why": "Lets you search logs retroactively from 17 October and find traces of web shells and suspicious processes."
+    },
+    {
+      "why": "If server memory may have leaked, change database passwords, tokens and keys. A secrets manager makes that rotation faster and controlled."
+    }
   ],
   "gaps": []
 }

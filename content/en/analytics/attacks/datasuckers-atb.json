@@ -77,6 +77,9 @@
           "why": "Sits in front of the site and recognises requests with an injection in the filter field. Such a request is blocked before it reaches the database."
         },
         {
+          "why": "IPS signatures on the firewall recognise typical SQL injections in requests to the site and block them at the perimeter. It is a second line in case there is no WAF or it was bypassed."
+        },
+        {
           "why": "Tests the running site from the outside and finds the field that allows injection. The hole can be fixed before an attacker uses it."
         },
         {
@@ -232,6 +235,9 @@
         },
         {
           "why": "If the mailbox is a service one, access to it is controlled and recorded, and its password is not kept in clear text."
+        },
+        {
+          "why": "Spots an unusual sign-in to the mailbox and a mass export of emails that is atypical for this account. The alert gives a chance to cut off access while little has been exported."
         }
       ],
       "gaps": []
@@ -252,6 +258,9 @@
         },
         {
           "why": "Finds the default password in the analytics system (the same admin / changeme)."
+        },
+        {
+          "why": "Sees large archives of source code or databases with personal data leaving the company and can stop the transfer."
         }
       ],
       "gaps": []

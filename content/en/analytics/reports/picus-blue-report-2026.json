@@ -9,89 +9,171 @@
     "The report is a vendor document, and Picus openly offers its own platform as the cure. So read it as a good map of problems, not as neutral research. Below are the report's eight findings in plain words, with ATT&CK techniques and the solution classes that address them."
   ],
   "figures": [
-    { "value": "69%", "label": "of simulated attacks stopped by security controls (62% in 2025)" },
-    { "value": "58%", "label": "of attacks left a trace in logs, the best result in four editions" },
-    { "value": "14%", "label": "of attacks triggered an alert; unchanged since 2025" },
-    { "value": "37%", "label": "of attacker actions stopped after the attacker is inside the network" },
-    { "value": "7%", "label": "of data theft attempts stopped, the weakest area for the fourth year running" },
-    { "value": "338 million+", "label": "simulated attacks in the report's sample" }
+    {
+      "value": "69%",
+      "label": "of simulated attacks stopped by security controls (62% in 2025)"
+    },
+    {
+      "value": "58%",
+      "label": "of attacks left a trace in logs, the best result in four editions"
+    },
+    {
+      "value": "14%",
+      "label": "of attacks triggered an alert; unchanged since 2025"
+    },
+    {
+      "value": "37%",
+      "label": "of attacker actions stopped after the attacker is inside the network"
+    },
+    {
+      "value": "7%",
+      "label": "of data theft attempts stopped, the weakest area for the fourth year running"
+    },
+    {
+      "value": "338 million+",
+      "label": "simulated attacks in the report's sample"
+    }
   ],
   "findings": [
     {
       "title": "A strong perimeter, a soft interior",
       "text": "Once inside the network, defences stop only 37% of attacker actions. Reconnaissance and data gathering (Discovery · Collection) are blocked in roughly 10% of cases, reading credentials from memory and the registry in 22%, while running programs and moving between computers are blocked far more often (about 90% for lateral movement). Quiet steps pass almost unopposed.",
       "solutions": [
-        { "why": "Automated pentesting shows which quiet steps inside the network get through at your company, which is how Picus arrived at the 37% figure." },
-        { "why": "Identity protection notices suspicious use of passwords and tickets once the attacker is already inside." },
-        { "why": "Watches behaviour on the computer, not just known programs, so it can spot quiet password reading." },
-        { "why": "Notices when an account suddenly browses things it has never opened, which is a sign of reconnaissance." },
-        { "why": "Decoy accounts and files catch whoever is quietly exploring the network, since an ordinary user would never go there." }
+        {
+          "why": "Automated pentesting shows which quiet steps inside the network get through at your company, which is how Picus arrived at the 37% figure."
+        },
+        {
+          "why": "Identity protection notices suspicious use of passwords and tickets once the attacker is already inside."
+        },
+        {
+          "why": "Watches behaviour on the computer, not just known programs, so it can spot quiet password reading."
+        },
+        {
+          "why": "Notices when an account suddenly browses things it has never opened, which is a sign of reconnaissance."
+        },
+        {
+          "why": "Decoy accounts and files catch whoever is quietly exploring the network, since an ordinary user would never go there."
+        }
       ]
     },
     {
       "title": "Stealth and \"quiet\" techniques are barely stopped",
       "text": "The worst-blocked techniques are the ones that hide traces: disabling command history (T1562.003 in the source, T1690 in MITRE ATT&CK v20) at 1%, running malicious code through signed system programs (T1216) at 9%, forcing a downgrade of protocol or logging (T1562.010 in the source, T1689 in v20) at 16%, and holding a payload dormant until a real target is confirmed (T1480.001) at 17%. The Stealth tactic is one of only two where defences got worse (53% to 47%).",
       "solutions": [
-        { "why": "Looks at actions rather than a program's signature, so it can notice a signed system utility suddenly doing something odd, or someone wiping the command history." },
-        { "why": "Gathers logs in one place and flags when they suddenly go silent, which is exactly what attackers are after." },
-        { "why": "Safely plays these techniques against your defences and shows which ones go unnoticed." }
+        {
+          "why": "Looks at actions rather than a program's signature, so it can notice a signed system utility suddenly doing something odd, or someone wiping the command history."
+        },
+        {
+          "why": "Gathers logs in one place and flags when they suddenly go silent, which is exactly what attackers are after."
+        },
+        {
+          "why": "Safely plays these techniques against your defences and shows which ones go unnoticed."
+        }
       ]
     },
     {
       "title": "Threat groups and ransomware: protection against specific adversaries is weakening",
       "text": "Nine of the ten worst-blocked threat groups got more effective against defences; for the Play ransomware only 13% of simulations were stopped (50% last year). The average for the ten worst ransomware families fell from roughly 44% to 32%. General hardening of endpoints has not carried over to ransomware attack chains.",
       "solutions": [
-        { "why": "Runs full scenarios of known groups and ransomware against your network and shows at which step the chain is not interrupted." },
-        { "why": "Tells you which groups and ransomware families take an interest in your industry, so you can test your defences against exactly those." },
-        { "why": "Stops encryption by behaviour (mass file changes) even when the specific ransomware family is new." },
-        { "why": "If encryption still happens, clean backups give you a chance to recover without paying a ransom." },
-        { "why": "An isolated immutable vault keeps the ransomware from reaching the copies too." }
+        {
+          "why": "Runs full scenarios of known groups and ransomware against your network and shows at which step the chain is not interrupted."
+        },
+        {
+          "why": "Tells you which groups and ransomware families take an interest in your industry, so you can test your defences against exactly those."
+        },
+        {
+          "why": "Stops encryption by behaviour (mass file changes) even when the specific ransomware family is new."
+        },
+        {
+          "why": "If encryption still happens, clean backups give you a chance to recover without paying a ransom."
+        },
+        {
+          "why": "An isolated immutable vault keeps the ransomware from reaching the copies too."
+        }
       ]
     },
     {
       "title": "Malware downloads: indicator-based protection is falling behind",
       "text": "Malicious file download scenarios are blocked in 50% of cases (60% last year, 71% in 2024). Protection that looks for known indicators (IOCs) always lags behind new threats, so it needs reinforcing with behaviour checks. The report also notes a rollback on macOS: from 76% to 61%.",
       "solutions": [
-        { "why": "Opens a suspicious file in a safe environment and watches what it does, instead of matching it against a list of known threats." },
-        { "why": "Catches malicious behaviour on the computer itself; check that the agent is really installed on macOS as well, where the score dropped." }
+        {
+          "why": "Opens a suspicious file in a safe environment and watches what it does, instead of matching it against a list of known threats."
+        },
+        {
+          "why": "Catches malicious behaviour on the computer itself; check that the agent is really installed on macOS as well, where the score dropped."
+        },
+        {
+          "why": "Blocks downloads from known malicious addresses and domains before the file reaches the computer — this complements behavior checks rather than replacing them."
+        }
       ]
     },
     {
       "title": "There are logs, but no alerts",
       "text": "The share of attacks that left a trace in logs is 58%, while only 14% trigger an alert. The report calls this a \"detection engineering\" problem. Of the causes of detection rule failures, 49% are performance issues (up from 24%): rules that are too broad, long time windows, slow queries. Another 41% are log collection issues, including \"silent\" ones where nobody ever sees the event.",
       "solutions": [
-        { "why": "This is where detection rules live; they need to be written for today's attacker behaviour and regularly checked to confirm they fire." },
-        { "why": "Adds behaviour analytics that turn scattered logs into a clear signal rather than yet another stream of events." },
-        { "why": "Shows exactly which detection rules stay silent when a simulated attack passes by." }
+        {
+          "why": "This is where detection rules live; they need to be written for today's attacker behaviour and regularly checked to confirm they fire."
+        },
+        {
+          "why": "Adds behaviour analytics that turn scattered logs into a clear signal rather than yet another stream of events."
+        },
+        {
+          "why": "Shows exactly which detection rules stay silent when a simulated attack passes by."
+        }
       ]
     },
     {
       "title": "Data theft and covert contact with the attacker's server",
       "text": "Data theft is the worst-blocked area for the fourth year running: 7% (3% in 2025). In other words, more than nine out of ten attempts succeed. Covert contact between the attacker and the command server gets through too: application layer protocol (T1071) is blocked in 16% of cases, data encoding (T1132) in 9%.",
       "solutions": [
-        { "why": "Looks at the content and direction of data leaving the company and stops what should not be going out." },
-        { "why": "Analyses network traffic and spots unusual outbound connections and hidden command channels." },
-        { "why": "Limits where connections from inside the network can go at all, and inspects outbound traffic." }
+        {
+          "why": "Looks at the content and direction of data leaving the company and stops what should not be going out."
+        },
+        {
+          "why": "Analyses network traffic and spots unusual outbound connections and hidden command channels."
+        },
+        {
+          "why": "Limits where connections from inside the network can go at all, and inspects outbound traffic."
+        },
+        {
+          "why": "Blocks connections to known command servers and malicious or newly registered domains, including at the DNS level."
+        }
       ]
     },
     {
       "title": "Legitimate accounts are the weak spot",
       "text": "Valid Accounts (T1078), meaning stolen or weak passwords, is stopped in only 15% of cases. The report names password spraying, MFA fatigue and token theft. An attacker who logs in \"legitimately\" looks to most tools like an ordinary user.",
       "solutions": [
-        { "why": "A second factor stops a stolen password from being enough on its own; methods resistant to phishing and prompt fatigue work best." },
-        { "why": "Notices suspicious sign-ins and the use of tickets and tokens once the password is already in the wrong hands." },
-        { "why": "Limits what can be done even with a privileged account and keeps a record of actions." }
+        {
+          "why": "A second factor stops a stolen password from being enough on its own; methods resistant to phishing and prompt fatigue work best."
+        },
+        {
+          "why": "Notices suspicious sign-ins and the use of tickets and tokens once the password is already in the wrong hands."
+        },
+        {
+          "why": "Limits what can be done even with a privileged account and keeps a record of actions."
+        }
       ]
     },
     {
       "title": "The worst-covered vulnerabilities and web applications",
       "text": "The ten worst-blocked recent vulnerabilities (CVEs) are stopped in under 25% of cases; the worst only in 8%. This is everyday software: a browser, archivers, a text editor, core OS components, crypto libraries. Web application protection (WAF) stops 61% (63% last year), which, in the authors' words, points to a plateau in tuning and input validation testing.",
       "solutions": [
-        { "why": "Shows where these vulnerabilities remain unpatched in your network so you can update them first." },
-        { "why": "IPS signatures temporarily cover a vulnerability when patching immediately is impossible, but they need testing against current CVEs." },
-        { "why": "Helps stop privilege escalation on the computer itself even if the vulnerability is not yet patched." },
-        { "why": "Filters malicious requests to a web application, but needs regular tuning or results stagnate." },
-        { "why": "Scans the web application from outside, like an attacker, and finds holes the WAF may have missed." }
+        {
+          "why": "Shows where these vulnerabilities remain unpatched in your network so you can update them first."
+        },
+        {
+          "why": "IPS signatures temporarily cover a vulnerability when patching immediately is impossible, but they need testing against current CVEs."
+        },
+        {
+          "why": "Helps stop privilege escalation on the computer itself even if the vulnerability is not yet patched."
+        },
+        {
+          "why": "Filters malicious requests to a web application, but needs regular tuning or results stagnate."
+        },
+        {
+          "why": "Scans the web application from outside, like an attacker, and finds holes the WAF may have missed."
+        }
       ]
     }
   ]

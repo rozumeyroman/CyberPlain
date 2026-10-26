@@ -1,0 +1,9 @@
+{
+  "name": "Fortinet FortiMail Collaboration Security",
+  "vendor": "Fortinet",
+  "url": "https://www.fortinet.com/products/fortimail-workspace-security",
+  "classes": [
+    "sandbox"
+  ],
+  "simple": "Захист застосунків для спільної роботи — компонент FortiMail Workspace Security: Microsoft Teams, Slack, Zendesk, Salesforce і хмарні сховища OneDrive, Google Drive, SharePoint, AWS S3. Миттєво перевіряє всі файли, посилання й повідомлення тими самими рушіями, що й пошту (статичний аналіз, динамічний на платформі HAP, AI), щоб шкідливі програми й фішинг не поширювались через чати, сховища й CRM. У складі пакета FortiMail Workspace Security без доплати — цілодобова служба реагування Fortinet: аналізує тривоги, налаштовує політики й допомагає усунути наслідки."
+}

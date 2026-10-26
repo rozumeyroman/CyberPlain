@@ -1,0 +1,9 @@
+{
+  "name": "Fortinet FortiDeceptor",
+  "vendor": "Fortinet",
+  "url": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-fortideceptor.pdf",
+  "classes": [
+    "deception"
+  ],
+  "simple": "Платформа пасток Fortinet: розставляє в мережі несправжні пристрої — Linux, Windows (з ліцензією Windows), промислові SCADA, IoT, власні й хмарні в AWS, Azure, GCP — і приманки (Deception Tokens) на справжніх комп’ютерах, які заманюють зловмисника. Сама знаходить пристрої в мережі й підказує, де ставити пастки. Будь-яке звертання до пастки — тривога майже без хибних спрацювань із докладними даними: індикатори компрометації й прийоми атаки (TTP); через інтеграцію з Fortinet Security Fabric, мережевими екранами, NAC, EDR, SIEM і SOAR допомагає одразу ізолювати заражений комп’ютер. Апаратний пристрій, віртуальна машина, публічна хмара або хмарний сервіс (Deception as a Service); ліцензія за кількістю мереж (VLAN)."
+}

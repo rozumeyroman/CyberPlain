@@ -1,0 +1,11 @@
+{
+  "name": "Fortinet FortiCNAPP",
+  "vendor": "Fortinet",
+  "url": "https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-forticnapp.pdf",
+  "classes": [
+    "cnapp",
+    "cwpp",
+    "ciem"
+  ],
+  "simple": "Платформа захисту хмари Fortinet (раніше Lacework) для AWS, Azure, Google Cloud і Kubernetes — ліцензія Risk & Threat за кількістю хмарних ресурсів з усіма можливостями. Знаходить ресурси й перевіряє налаштування (CSPM, KSPM) і відповідність SOC 2, ISO 27001, HIPAA, PCI, NIST, CIS; сканує контейнери, хости й шаблони інфраструктури як коду на вразливості й відкриті секрети, перевіряє відкриті компоненти (SCA, SBOM); урізає надмірні права в хмарі (CIEM); агент стежить за серверами й контейнерами під час роботи, контролює цілісність файлів і не пускає в Kubernetes небезпечні образи. Polygraph сам вивчає звичну поведінку й піднімає тривогу лише на аномалії, а Exposure Polygraph показує шляхи атаки. Знаходить і класифікує чутливі дані в S3 і Azure Blob (DSPM). Тестування вебзастосунків (FortiDAST) — за доплату, захист коду (Code Security) — окрема покупка."
+}

@@ -310,7 +310,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR і XSIAM, Splunk Enterprise Security, CrowdStrike Falcon (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM і NGFW, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -361,6 +362,25 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Splunk Enterprise Security Essentials | SIEM, кіберрозвідка, CAASM |
 | Splunk Enterprise Security Premier | + SOAR, UEBA, пісочниця |
 | CrowdStrike Falcon Go, Pro, Enterprise | EDR, контроль пристроїв і мережевий екран комп’ютера (класи однакові) |
+| Palo Alto PA-Series, VM-Series (+ Precision AI NS bundle і Prisma Access Agent) | NGFW/IPS, пісочниця, захист браузера, кіберрозвідка, VPN |
+| FortiGate ATP / UTP | NGFW/IPS, кіберрозвідка, пісочниця, VPN (класи однакові) |
+| FortiGate Enterprise Protection | + DLP |
+| FortiMail Base Bundle (апарат/VM) | захист пошти, DLP |
+| FortiMail Enterprise ATP Bundle | + пісочниця/CDR |
+| FortiMail Cloud SaaS (Workspace Security) | захист пошти, пісочниця, UEBA |
+| FortiMail Browser Security | захист браузера, пісочниця, DLP |
+| FortiMail Collaboration Security | пісочниця |
+| FortiSIEM | SIEM, UEBA, CAASM |
+| FortiSIEM Cloud | + кіберрозвідка |
+| FortiSOAR | SOAR |
+| FortiEndpoint Zero Trust Connect | доступ без VPN (ZTNA), VPN, управління вразливостями, кіберрозвідка |
+| FortiEndpoint Protect Core | + EDR, пісочниця |
+| FortiEndpoint Protect Plus / XDR / Data / Complete | + DLP (класи однакові) |
+| FortiDeceptor | пастки |
+| FortiRecon EASM | EASM, управління вразливостями (IASM) |
+| FortiRecon EASM and BP | + захист бренду |
+| FortiRecon EASM, BP, and ACI | + моніторинг даркнету, кіберрозвідка, TPRM |
+| FortiCNAPP | CNAPP, CWPP, CIEM |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -481,6 +501,44 @@ CrowdStrike (таблиця пакетів https://www.crowdstrike.com/en-us/pri
 «Threat Intelligence & Hunting» — це Falcon Adversary OverWatch (полювання силами експертів, сервіс) — не `ti`, лише в тексті. Mobile Device
 Protection, Express Support — лише в тексті. Identity Protection, IT Hygiene (Falcon Discover), Next-Gen SIEM — у всіх пакетах «✗», класом не
 рахуємо. Falcon Complete — сервіс MDR, не додано; Falcon Flex — модель ліцензування, не пакет.
+
+Palo Alto Networks NGFW (https://www.paloaltonetworks.com/network-security/next-generation-firewall-hardware, даташити серій): 2 продукти —
+PA-Series (апаратна лінійка PA-500 – PA-7500, PA-50R; моделі лише в тексті, як Quantum Spark) і VM-Series. Офіційної таблиці пакетів на сайті
+вендора немає, підписки CDSS продаються окремо, тому **рішення автора: NGFW Palo Alto на сайті завжди з двома підписками** і про це сказано в
+описі — Precision AI Network Security Subscription Bundle (Advanced Threat Prevention, Advanced URL Filtering, Advanced WildFire, Advanced DNS
+Security, Advanced SD-WAN, Advanced IP Defense, Device Security) і Prisma Access Agent (за документацією замінює ліцензію шлюзу GlobalProtect).
+Класи: ATP — `ngfw`; WildFire — `sandbox`; URL Filtering (інлайн-фішинг) — `browser-protection` + `ti`; DNS Security, IP Defense — `ti`; Prisma
+Access Agent — `vpn`. Device Security (виявлення IoT) — не CAASM, SD-WAN — лише в тексті. CN-Series і Cloud NGFW не додано.
+
+Fortinet (продукти за ордеринг-гайдами https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-<продукт>.pdf, жовтень 2026):
+- **FortiGate** (таблиця https://www.fortinet.com/support/support-services/fortiguard-security-subscriptions/fortigate-security-bundles) — 3 продукти
+  за пакетами FortiGuard ATP / UTP / Enterprise Protection (апарат і FortiGate-VM, моделі лише в тексті). FortiOS: мережевий екран, IPsec/SSL VPN —
+  `ngfw`, `vpn`. ATP: IPS — `ngfw`; антивірус, Botnet (репутація IP) — `ti` (як Quantum NGTP); Sandbox SaaS (лише виявлення) — `sandbox`. UTP: веб- і
+  DNS-фільтрація, Anti-Botnet & C2 — у межах `ti` (як URL Filtering у Quantum), тому класи як в ATP. Enterprise: DLP — `dlp`; AI-based Inline Malware
+  Prevention, Attack Surface Security Rating, IoT Security, CASB — лише в тексті. OT Security, SD-WAN/SASE, FortiAnalyzer Cloud, SOCaaS — à la carte.
+- **FortiMail** (апарат FML-xxxF і VM): пакети Base і Enterprise ATP — 2 продукти. Email DLP є в усіх пакетах — `dlp`; CDR, URL Click Protection,
+  Impersonation Analysis, Cloud Sandboxing — `sandbox` (Enterprise ATP). Пакет з Cloud Email API — лише в тексті Enterprise ATP. FortiMail Cloud
+  (хостинговий шлюз Gateway / Premium) не додано — автор просив хмарний захист як Workspace Security.
+- **FortiMail Workspace Security** (ex-Perception Point, https://www.fortinet.com/products/fortimail-workspace-security) — 3 компоненти, що
+  продаються разом або окремо: Cloud SaaS (ICES для M365/Google: `email`, динамічний аналіз HAP — `sandbox`, захоплення облікових записів — `ueba`,
+  як Harmony Email), Browser Security (розширення: `browser-protection`, `sandbox`, контроль копіювання/завантаження/GenAI — `dlp`), Collaboration
+  Security (Teams, Slack, сховища: `sandbox`). Цілодобова служба реагування входить у пакет — сервіс, лише в тексті.
+- **FortiSIEM**: 2 продукти — локальний (апарат/VM; Device + EPS або GB/день) і FortiSIEM Cloud. Discovery/CMDB — `caasm` (як Exposure Analytics
+  Splunk), Log-based UEBA включено — `ueba`; Cloud ще включає агентів, endpoint UEBA та IOC — `ti` (у локальному — add-on). Remediation Actions і
+  Security Automation Service — не `soar` (SOAR — окремий FortiSOAR).
+- **FortiSOAR**: один продукт (Enterprise і Starter Edition — класи однакові; Multi-Tenant для MSSP не додано) — `soar`; TIM — add-on.
+- **FortiEndpoint** (єдиний агент FortiClient + FortiEDR + FortiDLP, лише хмарне керування): 6 продуктів за редакціями Zero Trust Connect, Protect
+  Core, Protect Plus, Protect XDR, Protect Data, Complete. ZTNA — `vpnless`, VPN — `vpn`, Vulnerability Scan — `vm`, FortiGuard Web Filtering — `ti`
+  (у всіх). EPP — `edr` (як Cortex XDR Prevent), Sandbox — `sandbox` (з Core). DLP повна — `dlp` з Plus (у Core «базова»). EDR, Threat Hunting
+  (Plus, XDR, Complete), XDR, DLP Advanced/Insider Risk — лише в тексті, класи вже є. FortiGuard Endpoint Forensics Service, SOCaaS — сервіси,
+  лише в тексті; FortiIdentity Cloud Basic — не `mfa`, лише в тексті. Окремі FortiEDR і FortiClient не додано.
+- **FortiDeceptor**: один продукт (апарат/VM і Deception as a Service) — `deception`; виявлення активів для розстановки пасток — лише в тексті.
+- **FortiRecon** (CTEM): 3 продукти за пакетами EASM / EASM and BP / EASM, BP, and ACI. EASM — `easm`; IASM (агент сканує внутрішні підмережі на
+  вразливості) — `vm`; Leaked Credentials, Orchestration (SOAR, 100 запусків) — лише в тексті. BP — `brand-protection`. ACI: даркнет і ринки
+  стілерів — `dark-web`, технічна розвідка й IoC — `ti`, Vendor Risk Assessment (25) — `tprm`. Red Teaming — окрема послуга.
+- **FortiCNAPP** (ex-Lacework): один продукт — ліцензія Risk & Threat (за ресурсами, усі можливості): CSPM/KSPM, IaC, DSPM — `cnapp`; агент із
+  runtime-моніторингом, FIM і K8s admission — `cwpp`; CIEM — `ciem`. FortiDAST — add-on (без `dast`); Code Security (SCA, секрети в коді) —
+  окрема покупка, не додано; legacy-тарифи за vCPU не додано.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

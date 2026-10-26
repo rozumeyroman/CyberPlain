@@ -1,0 +1,3 @@
+{
+  "simple": "Fortinet’s deception platform: places fake devices on the network — Linux, Windows (with a Windows license), industrial SCADA, IoT, custom and cloud decoys in AWS, Azure and GCP — and lures (Deception Tokens) on real computers to draw the attacker in. Discovers devices on the network on its own and suggests where to place decoys. Any touch of a decoy is an alert with almost no false positives and rich detail: indicators of compromise and attack techniques (TTPs); through integration with the Fortinet Security Fabric, firewalls, NAC, EDR, SIEM and SOAR it helps isolate the infected computer right away. Hardware appliance, virtual machine, public cloud or a cloud service (Deception as a Service); licensed by number of networks (VLANs)."
+}
