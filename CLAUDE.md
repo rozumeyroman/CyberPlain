@@ -310,7 +310,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus (рішення автора, жовтень 2026).
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -353,6 +353,8 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Picus Autonomous Penetration Testing | автоматизований пентест |
 | Picus Attack Surface Validation | CAASM |
 | Picus Cloud Security Validation | CIEM, BAS |
+| Cortex XDR Prevent | контроль пристроїв і мережевий екран комп’ютера, шифрування дисків |
+| Cortex XDR Pro per Endpoint | + EDR |
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -439,6 +441,16 @@ Autonomous Penetration Testing (ex-Attack Path Validation, APV), Exposure Valida
 D3FEND: `bas` — D3-SYSVA; `pentest` — D3-SYSVA, D3-NVA, D3-AM. EXV і DRV — `bas` (EXV проганяє TTP-ланцюжки CVE проти захисту;
 не `vm` — сам не сканує). CSV: аудит налаштувань і симулятор IAM-політик — `ciem`, симуляція атак у AWS — `bas`; не `cnapp`
 (без захисту робочих навантажень і контейнерів). AI Security Validation — частина BAS, лише в тексті.
+
+Palo Alto Networks Cortex XDR (даташит https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/cortex-xdr,
+березень 2026, таблиця Licensing Options): 2 продукти — XDR Prevent і XDR Pro per Endpoint. Prevent — лише запобігання (NGAV: ML,
+поведінковий захист, захист від експлойтів) + Endpoint Controls (Device control, host firewall — `device-control`; BitLocker/FileVault —
+`encryption`); виявлення й реагування в ньому «—», тому `edr` не ставимо (рішення можна переглянути з автором). Pro — `edr` (детектори,
+кейси, 100+ плейбуків, Live Terminal). «Extended Detection Analytics (network, cloud, identity)» — аналітика підключених даних, не `ndr`
+(Network Traffic Analysis за документацією 3.x — лише Pro per GB) і не `ueba` (поведінка користувачів — у add-on ITDR); плейбуки — не `soar`
+(SOAR — у XSIAM). Add-on (Cloud Runtime Security, ITDR, Advanced Email Security, Host Insights, Forensics, DLP, Exposure Management, ASM,
+MDR, MTH, XTH) класом не рахуємо; Mobile security, Cortex Agentic Assistant — лише в тексті. Pro per GB / Cloud per Host і нові назви
+документації 5.x (Enterprise Runtime Security) не додано.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph
