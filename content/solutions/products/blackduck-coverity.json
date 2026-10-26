@@ -1,0 +1,9 @@
+{
+  "name": "Black Duck Coverity Static Analysis",
+  "vendor": "Black Duck",
+  "url": "https://www.blackduck.com/static-analysis-tools-sast/coverity.html",
+  "classes": [
+    "sast"
+  ],
+  "simple": "Аналіз вихідного коду (SAST) без запуску застосунку: знаходить вразливості й дефекти якості, зокрема складні, що проходять через кілька файлів і бібліотек. 22 мови й понад 250 фреймворків, перевірка інфраструктури як коду. Звіти відповідності OWASP Top 10, CWE Top 25, PCI DSS, DISA STIG, EU CRA, стандартам безпечного коду CERT і функційної безпеки MISRA, AUTOSAR, ISO 26262, IEC 61508, DO-178C — з сертифікацією TÜV SÜD для критичних систем (автомобілі, авіація, залізниця). Встановлюється у власному ЦОД, зокрема повністю ізольовано від інтернету, або працює як Polaris fAST Static у хмарі. AI-сортування знахідок, перевірка pull request, плагін Code Sight в IDE, MCP-сервер для AI-асистентів розробника. Black Duck — колишній підрозділ Synopsys Software Integrity Group, окрема компанія з жовтня 2024 року."
+}

@@ -98,6 +98,9 @@
       "why": "Gathers all assets into one picture so a forgotten server or an application with embedded PHP does not slip through."
     },
     {
+      "why": "Finds PHP embedded in your applications, containers and firmware from the component list (SBOM) — together with the version that needs updating."
+    },
+    {
       "why": "The PHPInventory artifact for Velociraptor finds PHP on Windows, Linux and macOS, including embedded copies and servers that do not reveal their version."
     },
     {

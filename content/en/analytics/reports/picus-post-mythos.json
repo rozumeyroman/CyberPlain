@@ -185,6 +185,9 @@
           "why": "Shows vulnerable components and dependencies that must be updated or retired."
         },
         {
+          "why": "Builds an SBOM and shows vulnerable dependencies and libraries that need to be updated or removed."
+        },
+        {
           "why": "Covers cloud settings, containers and access policies, where drift accumulates."
         },
         {
@@ -210,6 +213,9 @@
         },
         {
           "why": "Dynamic testing helps find vulnerabilities in applications and APIs that AI writes or embeds."
+        },
+        {
+          "why": "Checks AI-written code for vulnerabilities and embedded secrets before it goes into production."
         }
       ]
     },

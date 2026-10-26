@@ -1,0 +1,3 @@
+{
+  "simple": "Builds a list of the open-source and third-party libraries in your applications, containers and firmware (SBOM), finds known vulnerabilities, malicious packages and license violations in them, and tells you which version to install."
+}

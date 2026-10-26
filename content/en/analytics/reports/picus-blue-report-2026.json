@@ -179,6 +179,9 @@
         },
         {
           "why": "Scans the web application from outside, like an attacker, and finds holes the WAF may have missed."
+        },
+        {
+          "why": "Finds vulnerabilities in your own web application code before release — so the WAF doesn’t have to be the only protection."
         }
       ]
     }

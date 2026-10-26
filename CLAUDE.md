@@ -154,7 +154,7 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   немає (T1562.003 → `T1690`, T1562.010 → `T1689`). Кожен ID (і підтехніка) перевіряється за `data/mitre/attack.json`; сторінка
   техніки — завжди батьківська.
 - **Рішення**: `{ class, why, editorial }` — лише існуючі класи (`why` — до двох речень про конкретний висновок чи крок); `editorial: true`
-  — клас додано нами, а не джерелом. Чого в портфелі немає (SAST, мікросегментація тощо) — у `gaps[]` текстом, нових класів не заводимо.
+  — клас додано нами, а не джерелом. Чого в портфелі немає (мікросегментація тощо) — у `gaps[]` текстом, нових класів не заводимо.
   У вразливості `solutions[].phase` = `find | protect | verify | detect`.
 - **Дати** — `YYYY`, `YYYY-MM` або `YYYY-MM-DD`; `dateNote` — пояснення, коли дата неточна. Посилання (`url`) у `sources[]`,
   `original` і `advisories[]` — лише якщо вони є в самому джерелі. Заяви угруповання (`claims`) завжди з `claimsNote`.
@@ -311,7 +311,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
 модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM і NGFW, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
-захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro (рішення автора, жовтень 2026).
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -400,6 +400,11 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | TrendAI Vision One Threat Intelligence, Sandbox Analysis, Forensics | кіберрозвідка, пісочниця, DFIR (по одному класу) |
 | Trend Micro TippingPoint Threat Protection System | NGFW/IPS, вебфільтрація (репутація IP і URL) |
 | Trend Micro Deep Discovery Inspector | NDR, IDS, пісочниця |
+| Black Duck Polaris Platform | SAST, SCA, DAST |
+| Black Duck Coverity Static Analysis | SAST |
+| Black Duck SCA | SCA |
+| Black Duck Continuous Dynamic, Seeker Interactive Analysis, Defensics Fuzz Testing | DAST (DAST / IAST / фазинг) |
+| Black Duck Code Sight | SAST, SCA |
 
 **EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026).**
 - `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
@@ -588,6 +593,15 @@ Collection, потрібен EDR) — `dfir`. Поза кредитами: Tippi
 Deep Discovery Inspector (пасивний аналіз трафіку з власною пісочницею) — `ndr`, `ids`, `sandbox`. Не додано: XDR for Email/Cloud/Data окремо
 (входять у пакети чи без класу), Mobile Security, File Security, AI Application Security, Code Security, Cloud IPS, Deep Discovery Analyzer /
 Email Inspector, ScanMail, PortalProtect, сервіси (MDR, IR).
+
+Black Duck (ex-Synopsys Software Integrity Group, з жовтня 2024; сайт https://www.blackduck.com віддає 403 скриптам — читати через WebFetch):
+таблиць пакетів немає (ціни — «Get pricing»), продукт = продукт зі сторінки вендора. Класи `sast` і `sca` заведено під Black Duck (рішення автора:
+SAST перестав бути «gap» в аналітиці); `dast` розширено до динамічного тестування застосунків — DAST, IAST, фазинг (D3-SYSVA). Polaris Platform
+(SaaS: fAST Static, fAST SCA, fAST Dynamic, IaC, секрети; оплата за споживанням) — `sast`, `sca`, `dast`. Coverity Static Analysis — `sast`.
+Black Duck SCA — `sca`, один продукт: Standard Edition і старший план без назви на сторінці (сніпети, бінарні файли й прошивки, AI-моделі) — у тексті.
+Continuous Dynamic (DAST, ex-WhiteHat), Seeker Interactive Analysis (IAST), Defensics Fuzz Testing (фазинг протоколів) — `dast`. Code Sight
+(плагін IDE) — `sast`, `sca`. Не додано: Software Risk Manager (ASPM — зводить знахідки інших сканерів, класу немає), Black Duck Signal
+(агентний AI), Black Duck Assist, ContextAI, Detect / Bridge CLI (інтеграції).
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

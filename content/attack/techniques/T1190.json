@@ -17,6 +17,8 @@
     "easm",
     "waf",
     "dast",
+    "sast",
+    "sca",
     "ngfw",
     "ids",
     "vpnless",

@@ -1,0 +1,10 @@
+{
+  "name": "Black Duck Code Sight",
+  "vendor": "Black Duck",
+  "url": "https://www.blackduck.com/code-sight.html",
+  "classes": [
+    "sast",
+    "sca"
+  ],
+  "simple": "Плагін для середовищ розробки VS Code, Visual Studio, Eclipse й IntelliJ: перевіряє код (зокрема написаний AI), сторонні бібліотеки, API й інфраструктуру як код просто під час написання — швидкими перевірками коду й компонентів або повною перевіркою Coverity. AI-помічник Black Duck Assist пояснює знахідку й пропонує виправлення. Продається окремо за кількістю розробників або входить у Coverity, Black Duck SCA, Software Risk Manager чи Polaris. Black Duck — колишній підрозділ Synopsys Software Integrity Group, окрема компанія з жовтня 2024 року."
+}

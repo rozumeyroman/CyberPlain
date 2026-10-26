@@ -1,0 +1,9 @@
+{
+  "name": "Black Duck Seeker Interactive Analysis",
+  "vendor": "Black Duck",
+  "url": "https://www.blackduck.com/interactive-application-security-testing.html",
+  "classes": [
+    "dast"
+  ],
+  "simple": "Інтерактивне тестування (IAST): стежить за вебзастосунком зсередини, поки його звично тестують, і повідомляє про вразливості за секунди. Запатентована активна перевірка сама повторює атаку й лишає лише реальні, придатні до експлуатації вразливості — з точним рядком коду й порадою щодо виправлення. Показує, де чутливі дані й секрети зберігаються чи передаються без належного шифрування (PCI DSS, GDPR), знаходить відомі й невідомі API (REST, SOAP, GraphQL, gRPC) і перевіряє їх, звітує за OWASP Top 10, PCI DSS, CWE Top 25. Вбудовується в CI/CD. Black Duck — колишній підрозділ Synopsys Software Integrity Group, окрема компанія з жовтня 2024 року."
+}

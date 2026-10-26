@@ -18,7 +18,8 @@
     "deception",
     "edr",
     "secrets",
-    "password-manager"
+    "password-manager",
+    "sast"
   ],
   "subs": {
     "001": "Паролі у файлах",

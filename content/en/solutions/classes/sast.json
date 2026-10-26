@@ -1,0 +1,3 @@
+{
+  "simple": "Checks application source code before release and finds vulnerabilities — injections, reading other files, unsafe data handling — as well as passwords and keys written right into the code, and tells the developer what to fix and where."
+}

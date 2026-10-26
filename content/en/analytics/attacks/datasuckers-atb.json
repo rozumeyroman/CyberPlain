@@ -50,6 +50,9 @@
       ],
       "solutions": [
         {
+          "why": "Finds passwords and keys written into the application code before release — exactly how the secrets ended up in the mobile app."
+        },
+        {
           "why": "Shows the external perimeter as the attacker sees it, including forgotten public pages. The service page without a password could have been spotted and closed before the attack."
         },
         {
@@ -62,9 +65,7 @@
           "why": "Removes passwords written into code: the app receives them from a vault at run time. This is an editorial addition."
         }
       ],
-      "gaps": [
-        "Finding passwords in code before release (SAST) — the main tool at this step. CyberPlain has no separate class for it."
-      ]
+      "gaps": []
     },
     {
       "title": "SQL injection on the main site",
@@ -83,12 +84,13 @@
           "why": "Tests the running site from the outside and finds the field that allows injection. The hole can be fixed before an attacker uses it."
         },
         {
+          "why": "Finds the field in the code that builds a database query from user input without validation before the site goes live. This addresses the root cause."
+        },
+        {
           "why": "Simulates such requests against your defences and shows whether the WAF really stops them."
         }
       ],
-      "gaps": [
-        "Finding vulnerabilities in code before release (SAST) addresses the root cause. CyberPlain has no separate class for it."
-      ]
+      "gaps": []
     },
     {
       "title": "Self-registration on the supplier portal",
@@ -122,15 +124,16 @@
           "why": "Recognises and blocks attempts to read system files through a portal request. The attacker never reaches the file's contents."
         },
         {
+          "why": "Finds the place in the code where a file path is taken from the request without validation — the file-read flaw is fixed before release."
+        },
+        {
           "why": "If database passwords are kept in a vault rather than in clear text in a file, the file that was read opens nothing. The attacker does not see a live password."
         },
         {
           "why": "The app takes database passwords from a secrets vault at run time, so they are not in configuration files. Even if the file is read, there is nothing in it. This is an editorial addition."
         }
       ],
-      "gaps": [
-        "Finding the file-read flaw in code (SAST) addresses the root cause. CyberPlain has no separate class for it."
-      ]
+      "gaps": []
     },
     {
       "title": "Web shell and WAF bypass",
