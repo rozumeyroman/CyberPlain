@@ -13,8 +13,10 @@
   ],
   "defenses": [
     "edr",
+    "epp",
     "ndr",
     "ngfw",
+    "web-filtering",
     "ti",
     "siem",
     "bas"

@@ -3,6 +3,7 @@
   "vendor": "CrowdStrike",
   "url": "https://www.crowdstrike.com/en-us/pricing/",
   "classes": [
+    "epp",
     "edr",
     "device-control"
   ],

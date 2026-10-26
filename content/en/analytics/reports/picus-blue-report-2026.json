@@ -82,6 +82,9 @@
           "why": "Tells you which groups and ransomware families take an interest in your industry, so you can test your defences against exactly those."
         },
         {
+          "why": "Next-generation antivirus blocks the ransomware itself and mass encryption before it touches many files."
+        },
+        {
           "why": "Stops encryption by behaviour (mass file changes) even when the specific ransomware family is new."
         },
         {
@@ -98,6 +101,9 @@
       "solutions": [
         {
           "why": "Opens a suspicious file in a safe environment and watches what it does, instead of matching it against a list of known threats."
+        },
+        {
+          "why": "Checks the downloaded file with machine learning and behavior, not just known signatures, so it also catches new variants."
         },
         {
           "why": "Catches malicious behaviour on the computer itself; check that the agent is really installed on macOS as well, where the score dropped."

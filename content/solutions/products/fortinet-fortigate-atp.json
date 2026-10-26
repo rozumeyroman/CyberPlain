@@ -4,7 +4,6 @@
   "url": "https://www.fortinet.com/support/support-services/fortiguard-security-subscriptions/fortigate-security-bundles",
   "classes": [
     "ngfw",
-    "ti",
     "sandbox",
     "vpn"
   ],

@@ -3,7 +3,7 @@
   "vendor": "Palo Alto Networks",
   "url": "https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/cortex-xdr",
   "classes": [
-    "edr",
+    "epp",
     "device-control",
     "encryption"
   ],

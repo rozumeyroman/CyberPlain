@@ -321,12 +321,12 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Exposure Command Ultimate | + CNAPP (хмара, контейнери, IaC, права доступу), DAST |
 | Incident Command Essential | SIEM, UEBA, SOAR, CAASM, EASM, Threat Intelligence |
 | Incident Command Advanced | + Deception |
-| Incident Command Ultimate | + EDR, NDR, IDS, DFIR (Velociraptor) |
+| Incident Command Ultimate | + EPP + EDR, NDR, IDS, DFIR (Velociraptor) |
 | Threat Command | моніторинг даркнету, захист бренду, кіберрозвідка (редакцій на сайті немає) |
-| SentinelOne Singularity Complete | EDR (EPP + XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
+| SentinelOne Singularity Complete | EPP + EDR (XDR), CWPP, контроль пристроїв і мережевий екран комп’ютера |
 | SentinelOne Singularity Commercial | + ITDR |
 | SentinelOne Singularity Enterprise | + DFIR (Forensic Data Collection) |
-| Harmony Endpoint Advanced | VPN, EDR, контроль пристроїв і мережевий екран, DFIR, кіберрозвідка, захист браузера, пісочниця/CDR |
+| Harmony Endpoint Advanced | VPN, EPP + EDR, контроль пристроїв і мережевий екран, DFIR, кіберрозвідка (IOC Management), вебфільтрація, захист браузера, пісочниця/CDR |
 | Harmony Endpoint Complete | + шифрування дисків і флешок |
 | Harmony Endpoint Elite | + управління вразливостями, DLP, SOAR (Playblocks) |
 | Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
@@ -334,7 +334,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Harmony Email Security Awareness Training | навчання персоналу (add-on, окремий продукт) |
 | CloudGuard WAF | WAF, захист від DDoS |
 | Quantum Spark NGFW | NGFW/IPS, VPN |
-| Quantum Spark NGTP | + кіберрозвідка (Anti-Bot, URL Filtering, антивірус за ThreatCloud) |
+| Quantum Spark NGTP | + вебфільтрація (Anti-Bot, URL Filtering; антивірус на шлюзі — у межах NGFW) |
 | Quantum Spark SNBT | + пісочниця, захист від фішингу (Zero Phishing) |
 | Silverfort Core | ISPM, MFA |
 | Silverfort Plus | + NHI (сервісні облікові записи) |
@@ -354,34 +354,38 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Picus Autonomous Penetration Testing | автоматизований пентест |
 | Picus Attack Surface Validation | CAASM |
 | Picus Cloud Security Validation | CIEM, BAS |
-| Cortex XDR Prevent | EDR, контроль пристроїв і мережевий екран комп’ютера, шифрування дисків |
-| Cortex XDR Pro per Endpoint | ті самі класи (+ виявлення, розслідування, реагування — у тексті) |
+| Cortex XDR Prevent | EPP, контроль пристроїв і мережевий екран комп’ютера, шифрування дисків |
+| Cortex XDR Pro per Endpoint | + EDR |
 | Cortex XSIAM NG-SIEM | SIEM, UEBA, SOAR, NDR |
-| Cortex XSIAM Enterprise | + EDR, контроль пристроїв і мережевий екран, шифрування дисків, управління вразливостями |
+| Cortex XSIAM Enterprise | + EPP + EDR, контроль пристроїв і мережевий екран, шифрування дисків, управління вразливостями |
 | Cortex XSIAM Premium | + CNAPP, CWPP, CIEM, WAF, кіберрозвідка, EASM |
 | Splunk Enterprise Security Essentials | SIEM, кіберрозвідка, CAASM |
 | Splunk Enterprise Security Premier | + SOAR, UEBA, пісочниця |
-| CrowdStrike Falcon Go, Pro, Enterprise | EDR, контроль пристроїв і мережевий екран комп’ютера (класи однакові) |
-| Palo Alto PA-Series, VM-Series (+ Precision AI NS bundle і Prisma Access Agent) | NGFW/IPS, пісочниця, захист браузера, кіберрозвідка, VPN |
-| FortiGate ATP / UTP | NGFW/IPS, кіберрозвідка, пісочниця, VPN (класи однакові) |
-| FortiGate Enterprise Protection | + DLP |
+| CrowdStrike Falcon Go | EPP, контроль пристроїв |
+| CrowdStrike Falcon Pro | те саме (+ мережевий екран комп’ютера, у тому ж класі) |
+| CrowdStrike Falcon Enterprise | + EDR |
+| Palo Alto PA-Series, VM-Series (+ Precision AI NS bundle і Prisma Access Agent) | NGFW/IPS, пісочниця, захист браузера, вебфільтрація, VPN |
+| FortiGate ATP | NGFW/IPS, пісочниця, VPN |
+| FortiGate UTP | + вебфільтрація |
+| FortiGate Enterprise Protection | + DLP (до UTP) |
 | FortiMail Base Bundle (апарат/VM) | захист пошти, DLP |
 | FortiMail Enterprise ATP Bundle | + пісочниця/CDR |
 | FortiMail Cloud SaaS (Workspace Security) | захист пошти, пісочниця, UEBA |
-| FortiMail Browser Security | захист браузера, пісочниця, DLP |
+| FortiMail Browser Security | захист браузера, вебфільтрація, пісочниця, DLP |
 | FortiMail Collaboration Security | пісочниця |
 | FortiSIEM | SIEM, UEBA, CAASM |
 | FortiSIEM Cloud | + кіберрозвідка |
 | FortiSOAR | SOAR |
-| FortiEndpoint Zero Trust Connect | доступ без VPN (ZTNA), VPN, управління вразливостями, кіберрозвідка |
-| FortiEndpoint Protect Core | + EDR, пісочниця |
-| FortiEndpoint Protect Plus / XDR / Data / Complete | + DLP (класи однакові) |
+| FortiEndpoint Zero Trust Connect | доступ без VPN (ZTNA), VPN, управління вразливостями, вебфільтрація |
+| FortiEndpoint Protect Core | + EPP, пісочниця |
+| FortiEndpoint Protect Plus / XDR / Complete | + EDR, DLP |
+| FortiEndpoint Protect Data | + DLP (без EDR) |
 | FortiDeceptor | пастки |
 | FortiRecon EASM | EASM, управління вразливостями (IASM) |
 | FortiRecon EASM and BP | + захист бренду |
 | FortiRecon EASM, BP, and ACI | + моніторинг даркнету, кіберрозвідка, TPRM |
 | FortiCNAPP | CNAPP, CWPP, CIEM |
-| TrendAI Vision One Endpoint Security Core / Essentials | EDR, контроль пристроїв і мережевий екран, DLP, кіберрозвідка (класи однакові) |
+| TrendAI Vision One Endpoint Security Core / Essentials | EPP (Core) / EPP + EDR (Essentials), контроль пристроїв і мережевий екран, DLP, вебфільтрація |
 | TrendAI Vision One Endpoint Security Pro | + CWPP |
 | TrendAI Vision One Email and Collaboration Security Core / Essentials / Pro | захист пошти, DLP, пісочниця, UEBA (класи однакові) |
 | TrendAI Vision One CREM Core | CAASM, EASM, управління вразливостями, ISPM |
@@ -392,10 +396,20 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | TrendAI Vision One XDR for Networks | NDR |
 | TrendAI Vision One Identity Security | ITDR, ISPM, UEBA |
 | TrendAI Vision One Data Security | DLP |
-| TrendAI Vision One ZTSA Private Access / Internet Access | доступ без VPN / кіберрозвідка |
+| TrendAI Vision One ZTSA Private Access / Internet Access | доступ без VPN / вебфільтрація |
 | TrendAI Vision One Threat Intelligence, Sandbox Analysis, Forensics | кіберрозвідка, пісочниця, DFIR (по одному класу) |
-| Trend Micro TippingPoint Threat Protection System | NGFW/IPS, кіберрозвідка |
+| Trend Micro TippingPoint Threat Protection System | NGFW/IPS, вебфільтрація (репутація IP і URL) |
 | Trend Micro Deep Discovery Inspector | NDR, IDS, пісочниця |
+
+**EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026).**
+- `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
+  запис подій, виявлення, розслідування й реагування. Продукт лише з антивірусом (у таблиці вендора EDR «—») — `epp` без `edr`; продукт з EDR —
+  `epp` + `edr` (усі EDR-пакети мають і запобігання). `defenses[]` `epp` — лише техніки, де запобігання справді спрацьовує (виконання шкідливого
+  файлу, експлойти, ін’єкції, вимагачі й вайпери, крадіжка паролів із пам’яті, захист агента від вимкнення); дослідження мережі, збір даних —
+  лише `edr`.
+- `web-filtering` — вебфільтрація, DNS-захист і блокування за репутацією IP/URL/доменів (URL Filtering, Web Reputation, SWG, DNS Security,
+  Anti-Bot/C2) на шлюзі, у хмарі чи агентом. `ti` — лише кіберрозвідка як продукт: стрічки IoC, профілі угруповань, звіти, TIP/керування
+  індикаторами. Антивірус і репутація IP на шлюзі NGFW — у межах `ngfw`.
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -430,7 +444,7 @@ CloudGuard WAF (https://www.checkpoint.com/cloudguard/waf/): редакцій н
 
 Quantum Spark (https://www.checkpoint.com/downloads/products/quantum-spark-2500-datasheet.pdf): лінійка, не окремі моделі
 (рішення автора); продукт = рівень підписки NGFW / NGTP / SNBT (таблиця Subscription Services). Anti-Bot, URL Filtering,
-антивірус — блокування за репутацією ThreatCloud → `ti`; антиспам на шлюзі — не `email`, лише в тексті; Zero Phishing
+Anti-Bot і URL Filtering — `web-filtering`, антивірус на шлюзі — у межах `ngfw` (раніше `ti`); антиспам на шлюзі — не `email`, лише в тексті; Zero Phishing
 на шлюзі — `browser-protection` (опис класу розширено: «у браузері або на шлюзі»). IoT, SD-WAN — лише в тексті.
 
 Клас `vpn` (рішення автора): зашифрований тунель для віддалених працівників і між офісами; D3-ET перенесено з `ngfw`.
@@ -486,8 +500,8 @@ D3FEND: `bas` — D3-SYSVA; `pentest` — D3-SYSVA, D3-NVA, D3-AM. EXV і DRV �
 Palo Alto Networks Cortex XDR (даташит https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/cortex-xdr,
 березень 2026, таблиця Licensing Options): 2 продукти — XDR Prevent і XDR Pro per Endpoint. Prevent — лише запобігання (NGAV: ML,
 поведінковий захист, захист від експлойтів) + Endpoint Controls (Device control, host firewall — `device-control`; BitLocker/FileVault —
-`encryption`); виявлення й реагування в ньому «—», але `edr` ставимо (рішення автора: блокування на агенті — як «EDR (EPP + XDR)» у SentinelOne).
-Pro — ті самі класи (детектори, кейси, 100+ плейбуків, Live Terminal — у тексті). «Extended Detection Analytics (network, cloud, identity)» — аналітика підключених даних, не `ndr`
+`encryption`); виявлення й реагування в ньому «—», тому `epp`, без `edr`.
+Pro — `epp` + `edr` (детектори, кейси, 100+ плейбуків, Live Terminal — у тексті). «Extended Detection Analytics (network, cloud, identity)» — аналітика підключених даних, не `ndr`
 (Network Traffic Analysis за документацією 3.x — лише Pro per GB) і не `ueba` (поведінка користувачів — у add-on ITDR); плейбуки — не `soar`
 (SOAR — у XSIAM). Add-on (Cloud Runtime Security, ITDR, Advanced Email Security, Host Insights, Forensics, DLP, Exposure Management, ASM,
 MDR, MTH, XTH) класом не рахуємо; Mobile security, Cortex Agentic Assistant — лише в тексті. Pro per GB / Cloud per Host і нові назви
@@ -511,8 +525,7 @@ Exposure Analytics (безперервне виявлення активів і 
 і AI-агенти — лише в тексті. Splunk Enterprise / Splunk Cloud Platform — платформа даних, на якій працює ES, окремим продуктом не додано.
 
 CrowdStrike (таблиця пакетів https://www.crowdstrike.com/en-us/pricing/, жовтень 2026; даташит Falcon Endpoint Protection Pro 2024 —
-опис можливостей Pro, його таблиця з Falcon Elite застаріла): 3 продукти — Falcon Go, Pro, Enterprise. NGAV (Falcon Prevent) — `edr` у всіх
-(як Cortex XDR Prevent); Device Control і Firewall Management (з Pro) — `device-control`. Enterprise: EDR (Falcon Insight XDR) — уже `edr`;
+опис можливостей Pro, його таблиця з Falcon Elite застаріла): 3 продукти — Falcon Go, Pro, Enterprise. NGAV (Falcon Prevent) — `epp` у всіх; Device Control і Firewall Management (з Pro) — `device-control`. Enterprise: EDR (Falcon Insight XDR) — `edr`;
 «Threat Intelligence & Hunting» — це Falcon Adversary OverWatch (полювання силами експертів, сервіс) — не `ti`, лише в тексті. Mobile Device
 Protection, Express Support — лише в тексті. Identity Protection, IT Hygiene (Falcon Discover), Next-Gen SIEM — у всіх пакетах «✗», класом не
 рахуємо. Falcon Complete — сервіс MDR, не додано; Falcon Flex — модель ліцензування, не пакет.
@@ -522,14 +535,14 @@ PA-Series (апаратна лінійка PA-500 – PA-7500, PA-50R; моде�
 вендора немає, підписки CDSS продаються окремо, тому **рішення автора: NGFW Palo Alto на сайті завжди з двома підписками** і про це сказано в
 описі — Precision AI Network Security Subscription Bundle (Advanced Threat Prevention, Advanced URL Filtering, Advanced WildFire, Advanced DNS
 Security, Advanced SD-WAN, Advanced IP Defense, Device Security) і Prisma Access Agent (за документацією замінює ліцензію шлюзу GlobalProtect).
-Класи: ATP — `ngfw`; WildFire — `sandbox`; URL Filtering (інлайн-фішинг) — `browser-protection` + `ti`; DNS Security, IP Defense — `ti`; Prisma
+Класи: ATP — `ngfw`; WildFire — `sandbox`; URL Filtering — `web-filtering` + `browser-protection` (інлайн-фішинг); DNS Security, IP Defense — `web-filtering`; Prisma
 Access Agent — `vpn`. Device Security (виявлення IoT) — не CAASM, SD-WAN — лише в тексті. CN-Series і Cloud NGFW не додано.
 
 Fortinet (продукти за ордеринг-гайдами https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-<продукт>.pdf, жовтень 2026):
 - **FortiGate** (таблиця https://www.fortinet.com/support/support-services/fortiguard-security-subscriptions/fortigate-security-bundles) — 3 продукти
   за пакетами FortiGuard ATP / UTP / Enterprise Protection (апарат і FortiGate-VM, моделі лише в тексті). FortiOS: мережевий екран, IPsec/SSL VPN —
-  `ngfw`, `vpn`. ATP: IPS — `ngfw`; антивірус, Botnet (репутація IP) — `ti` (як Quantum NGTP); Sandbox SaaS (лише виявлення) — `sandbox`. UTP: веб- і
-  DNS-фільтрація, Anti-Botnet & C2 — у межах `ti` (як URL Filtering у Quantum), тому класи як в ATP. Enterprise: DLP — `dlp`; AI-based Inline Malware
+  `ngfw`, `vpn`. ATP: IPS — `ngfw`; антивірус і Botnet (репутація IP) на шлюзі — у межах `ngfw`; Sandbox SaaS (лише виявлення) — `sandbox`. UTP: веб- і
+  DNS-фільтрація, Anti-Botnet & C2 — `web-filtering`. Enterprise: DLP — `dlp`; AI-based Inline Malware
   Prevention, Attack Surface Security Rating, IoT Security, CASB — лише в тексті. OT Security, SD-WAN/SASE, FortiAnalyzer Cloud, SOCaaS — à la carte.
 - **FortiMail** (апарат FML-xxxF і VM): пакети Base і Enterprise ATP — 2 продукти. Email DLP є в усіх пакетах — `dlp`; CDR, URL Click Protection,
   Impersonation Analysis, Cloud Sandboxing — `sandbox` (Enterprise ATP). Пакет з Cloud Email API — лише в тексті Enterprise ATP. FortiMail Cloud
@@ -543,9 +556,9 @@ Fortinet (продукти за ордеринг-гайдами https://www.fort
   Security Automation Service — не `soar` (SOAR — окремий FortiSOAR).
 - **FortiSOAR**: один продукт (Enterprise і Starter Edition — класи однакові; Multi-Tenant для MSSP не додано) — `soar`; TIM — add-on.
 - **FortiEndpoint** (єдиний агент FortiClient + FortiEDR + FortiDLP, лише хмарне керування): 6 продуктів за редакціями Zero Trust Connect, Protect
-  Core, Protect Plus, Protect XDR, Protect Data, Complete. ZTNA — `vpnless`, VPN — `vpn`, Vulnerability Scan — `vm`, FortiGuard Web Filtering — `ti`
-  (у всіх). EPP — `edr` (як Cortex XDR Prevent), Sandbox — `sandbox` (з Core). DLP повна — `dlp` з Plus (у Core «базова»). EDR, Threat Hunting
-  (Plus, XDR, Complete), XDR, DLP Advanced/Insider Risk — лише в тексті, класи вже є. FortiGuard Endpoint Forensics Service, SOCaaS — сервіси,
+  Core, Protect Plus, Protect XDR, Protect Data, Complete. ZTNA — `vpnless`, VPN — `vpn`, Vulnerability Scan — `vm`, FortiGuard Web Filtering — `web-filtering`
+  (у всіх). EPP — `epp` (з Core), EDR — `edr` (Plus, XDR, Complete), Sandbox — `sandbox` (з Core). DLP повна — `dlp` з Plus (у Core «базова»). Threat Hunting, XDR,
+  DLP Advanced/Insider Risk — лише в тексті. FortiGuard Endpoint Forensics Service, SOCaaS — сервіси,
   лише в тексті; FortiIdentity Cloud Basic — не `mfa`, лише в тексті. Окремі FortiEDR і FortiClient не додано.
 - **FortiDeceptor**: один продукт (апарат/VM і Deception as a Service) — `deception`; виявлення активів для розстановки пасток — лише в тексті.
 - **FortiRecon** (CTEM): 3 продукти за пакетами EASM / EASM and BP / EASM, BP, and ACI. EASM — `easm`; IASM (агент сканує внутрішні підмережі на
@@ -558,8 +571,8 @@ Fortinet (продукти за ордеринг-гайдами https://www.fort
 Trend Micro: бізнес-напрям з 2026 — **TrendAI** (trendaisecurity.com), платформа — **TrendAI Vision One** (раніше Trend Vision One); вендор на
 сайті — «Trend Micro», назви продуктів — «TrendAI Vision One …». Ліцензування — кредити TrendAI Flex; пакети й функції — за таблицею
 https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services (жовтень 2026), продукт = пакет чи рішення
-з таблиці. Endpoint Security Core / Essentials / Pro: антивірус — `edr` (як Cortex XDR Prevent), мережевий екран і контроль пристроїв —
-`device-control`, DLP — `dlp`, Web Reputation — `ti` (як FortiEndpoint); XDR for Endpoints у Essentials — у тексті; Pro (контроль цілісності,
+з таблиці. Endpoint Security Core / Essentials / Pro: антивірус — `epp`, XDR for Endpoints (з Essentials) — `edr`, мережевий екран і контроль пристроїв —
+`device-control`, DLP — `dlp`, Web Reputation — `web-filtering`; Pro (контроль цілісності,
 аналіз журналів, серверний IPS, контейнери — колишній Deep Security) — `cwpp`; IPS для комп’ютерів, контроль застосунків — лише в тексті.
 Email and Collaboration Security Core / Essentials / Pro: `email`, DLP — `dlp`, File Sandboxing — `sandbox`, Account Takeover — `ueba` (як
 Harmony Email); URL Sandboxing, Continuity, шифрування, DMARC (Essentials), XDR for Email (Pro) — у тексті. CREM Core: Cyber Risk Overview
@@ -569,7 +582,7 @@ Security Posture — `ispm`; Essentials: Security Awareness — `awareness`, Att
 `cnapp`, `ciem`, `easm`. Container Security — `cwpp`. Agentic SIEM — `siem` + `soar` (Agentic SOAR названо на сторінці Security Operations;
 окремого рядка в таблиці кредитів немає). XDR for Networks (Virtual Network Sensor, сенсор на TippingPoint / DDI) — `ndr`. Identity Security
 (ISPM + ITDR, UEBA в даташиті) і Data Security (DSPM, data lineage, Data Control) — у таблиці кредитів окремих рядків немає, класи за
-сторінками й брифами: `itdr` + `ispm` + `ueba`; `dlp`. ZTSA Private Access — `vpnless`; Internet Access (SWG за Web Reputation, CASB) — `ti`;
+сторінками й брифами: `itdr` + `ispm` + `ueba`; `dlp`. ZTSA Private Access — `vpnless`; Internet Access (SWG за Web Reputation, CASB) — `web-filtering`;
 AI Secure Access, Send to Sandbox — лише в тексті. Threat Intelligence (Hub) — `ti`; Sandbox Analysis — `sandbox`; Forensics (Evidence
 Collection, потрібен EDR) — `dfir`. Поза кредитами: TippingPoint TPS (апаратний IPS, Digital Vaccine/ZDI, репутація IP і URL) — `ngfw` + `ti`;
 Deep Discovery Inspector (пасивний аналіз трафіку з власною пісочницею) — `ndr`, `ids`, `sandbox`. Не додано: XDR for Email/Cloud/Data окремо

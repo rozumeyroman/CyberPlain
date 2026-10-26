@@ -14,6 +14,7 @@
   "defenses": [
     "ndr",
     "ids",
-    "ngfw"
+    "ngfw",
+    "web-filtering"
   ]
 }

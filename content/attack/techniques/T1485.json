@@ -15,6 +15,7 @@
   "defenses": [
     "backup",
     "edr",
+    "epp",
     "cnapp",
     "cyber-recovery"
   ],

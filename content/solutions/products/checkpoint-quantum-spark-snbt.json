@@ -4,7 +4,7 @@
   "url": "https://www.checkpoint.com/downloads/products/quantum-spark-2500-datasheet.pdf",
   "classes": [
     "ngfw",
-    "ti",
+    "web-filtering",
     "sandbox",
     "browser-protection",
     "vpn"

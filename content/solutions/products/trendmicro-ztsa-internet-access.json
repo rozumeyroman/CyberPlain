@@ -3,7 +3,7 @@
   "vendor": "Trend Micro",
   "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
   "classes": [
-    "ti"
+    "web-filtering"
   ],
   "simple": "Безпечний вебшлюз (SWG) і контроль хмарних застосунків (CASB): блокує шкідливі й небезпечні сайти за репутацією Trend, керує доступом до SaaS і діями в них, показує, хто й куди ходить в інтернеті. Перевірка підозрілих файлів у пісочниці — за доплату; контроль GenAI-сервісів із перевіркою промптів — окремо (AI Secure Access). Частина TrendAI Vision One Zero Trust Secure Access (ZTSA): агент або без агента, для корпоративних і особистих пристроїв; доступ динамічно відкликається, коли зростає оцінка ризику користувача чи пристрою. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
 }

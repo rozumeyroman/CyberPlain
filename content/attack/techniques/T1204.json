@@ -15,11 +15,13 @@
   "defenses": [
     "awareness",
     "edr",
+    "epp",
     "email",
     "siem",
     "browser-protection",
     "sandbox",
-    "bas"
+    "bas",
+    "web-filtering"
   ],
   "subs": {
     "001": "Шкідливе посилання",

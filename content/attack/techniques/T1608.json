@@ -15,6 +15,7 @@
   "defenses": [
     "ti",
     "ngfw",
+    "web-filtering",
     "awareness"
   ],
   "subs": {

@@ -15,6 +15,7 @@
   ],
   "defenses": [
     "edr",
+    "epp",
     "backup",
     "siem",
     "soar",

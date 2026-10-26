@@ -80,6 +80,9 @@
           "why": "IPS signatures at the network edge cover a known flaw until the host is updated."
         },
         {
+          "why": "Exploit prevention on the endpoint blocks the exploitation technique itself, even before the vulnerability is patched."
+        },
+        {
           "why": "Detection logic on the endpoint catches the consequences of exploitation even without the patch."
         },
         {

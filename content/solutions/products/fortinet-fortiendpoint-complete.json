@@ -6,7 +6,8 @@
     "vpnless",
     "vpn",
     "vm",
-    "ti",
+    "web-filtering",
+    "epp",
     "edr",
     "sandbox",
     "dlp"

@@ -16,6 +16,7 @@
     "email",
     "awareness",
     "edr",
+    "epp",
     "mfa",
     "soar",
     "brand-protection",
@@ -23,7 +24,8 @@
     "ti",
     "browser-protection",
     "sandbox",
-    "bas"
+    "bas",
+    "web-filtering"
   ],
   "subs": {
     "001": "Лист із вкладенням",

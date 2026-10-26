@@ -3,6 +3,7 @@
   "vendor": "SentinelOne",
   "url": "https://www.sentinelone.com/platform-packages/",
   "classes": [
+    "epp",
     "edr",
     "cwpp",
     "device-control"

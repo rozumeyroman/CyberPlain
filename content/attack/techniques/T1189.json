@@ -14,7 +14,9 @@
   ],
   "defenses": [
     "edr",
+    "epp",
     "ngfw",
+    "web-filtering",
     "vm",
     "ti",
     "browser-protection",

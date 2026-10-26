@@ -14,7 +14,8 @@
   "defenses": [
     "ndr",
     "ti",
-    "ngfw"
+    "ngfw",
+    "web-filtering"
   ],
   "subs": {
     "001": "Fast Flux DNS",

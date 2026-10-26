@@ -13,6 +13,7 @@
   ],
   "defenses": [
     "vm",
-    "edr"
+    "edr",
+    "epp"
   ]
 }

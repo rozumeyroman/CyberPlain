@@ -15,6 +15,7 @@
   "defenses": [
     "vm",
     "edr",
+    "epp",
     "siem",
     "bas",
     "pentest"

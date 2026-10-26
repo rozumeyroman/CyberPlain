@@ -17,7 +17,8 @@
     "mfa",
     "awareness",
     "brand-protection",
-    "browser-protection"
+    "browser-protection",
+    "web-filtering"
   ],
   "subs": {
     "001": "Через сервіси й месенджери",

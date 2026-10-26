@@ -16,6 +16,7 @@
     "ndr",
     "ids",
     "ngfw",
+    "web-filtering",
     "ti",
     "siem",
     "bas"
