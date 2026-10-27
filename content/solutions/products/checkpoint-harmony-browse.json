@@ -1,0 +1,11 @@
+{
+  "name": "Check Point Harmony Browse",
+  "vendor": "Check Point",
+  "url": "https://sc1.checkpoint.com/uc/pdf/datasheets/Harmony_Browse_Data%20Sheet.pdf",
+  "classes": [
+    "browser-protection",
+    "web-filtering",
+    "sandbox"
+  ],
+  "simple": "Розширення для браузера, що захищає людей у вебі на керованих і особистих пристроях — додатковий шар до захисту комп’ютерів. Блокує фішингові сайти, зокрема нові (Zero-Phishing), шкідливі сайти й небажані категорії (URL Filtering), не дає ввести корпоративний пароль на сторонньому сайті, перевіряє завантажені файли в пісочниці й одразу віддає очищену копію без активного вмісту (CDR)."
+}

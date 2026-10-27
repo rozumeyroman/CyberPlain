@@ -332,6 +332,12 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Harmony Email (Email Only / Email & Collaboration) Advanced Protect | захист пошти, пісочниця/CDR, UEBA |
 | Harmony Email … Complete Protect | + DLP |
 | Harmony Email Security Awareness Training | навчання персоналу (add-on, окремий продукт) |
+| Harmony Mobile, Harmony Browse | захист браузера (Zero-Phishing), вебфільтрація, пісочниця |
+| Workforce AI Security Essentials / Enterprise | DLP (вебзастосунки AI / + десктоп, асистенти коду, MCP) |
+| External Risk Management Essential | EASM, захист бренду |
+| External Risk Management Advanced / Complete / Elite | + моніторинг даркнету, кіберрозвідка, TPRM (класи однакові; Complete і Elite — з аналітиком) |
+| Threat Exposure Management Essential / IoC Management | кіберрозвідка (керування IoC) |
+| Threat Exposure Management Vulnerability Remediation / Complete | + управління вразливостями |
 | CloudGuard WAF | WAF, захист від DDoS |
 | Quantum Spark NGFW | NGFW/IPS, VPN |
 | Quantum Spark NGTP | + вебфільтрація (Anti-Bot, URL Filtering; антивірус на шлюзі — у межах NGFW) |
@@ -442,6 +448,20 @@ Harmony Email & Collaboration (https://www.checkpoint.com/harmony/email-security
 «Account takeover prevention (anomalies)» — `ueba`; Sandboxing + CDR — `sandbox`; Shadow IT — лише в тексті. Add-on
 (Archiving, IRaaS, DMARC, Leaked Credentials, SSPM, Browse) класом не рахуємо; Security Awareness Training (AI Phishing
 Training) — окремий продукт `checkpoint-harmony-email-sat` з класом `awareness` (рішення автора).
+
+Check Point, розширення (жовтень 2026, рішення автора): Harmony Mobile (бриф https://www.checkpoint.com/downloads/products/harmony-mobile-solution-brief.pdf;
+Mobile Threat Defense) — Zero-Phishing — `browser-protection`, Safe Browsing / URL Filtering / Anti-Bot — `web-filtering`, хмарна пісочниця застосунків
+і файлів — `sandbox`; блокування шкідливих застосунків — не `epp` (клас описує комп’ютери, мобільні техніки — поза ATT&CK Enterprise), CVE ОС,
+захист від MitM, Conditional Access — лише в тексті. Harmony Browse (даташит) — `browser-protection`, `web-filtering`, `sandbox` (Sandbox + CDR).
+Workforce AI Security (https://www.checkpoint.com/ai-security/ai-workforce-security/; описи редакцій — від автора, підтверджені admin guide):
+Essentials (вебзастосунки AI) і Enterprise (+ десктоп, IDE-асистенти, агентні інструменти, MCP) — `dlp`. Exposure Management:
+External Risk Management (ex-Cyberint; таблиця пакетів від автора + даташити EM_ERM_*_Package.pdf) — Essential: ASM — `easm`, Brand Protection — `brand-protection`;
+Credentials & Account Takeover monitoring — не `dark-web` (як Account Leak у Rapid7), новини, звіти Check Point Research, пошук IoC — лише в тексті. Advanced /
+Complete / Elite: + даркнет-джерела й витоки — `dark-web`, Global Threat Intelligence Knowledgebase — `ti`, Supply Chain Intelligence — `tprm`; керований
+сервіс аналітика (Complete, Elite) — лише в тексті. Розбіжність: даташит Essential включає Social Media impersonation, таблиця автора — ні; на класи не
+впливає. Threat Exposure Management (Exposure Prioritization & Remediation, ex-Veriti; даташити EM-TEM-*.pdf, назви пакетів — з таблиці автора): керування
+IoC (вручну, між засобами захисту, зі стрічок) — `ti`; Vulnerability Prioritization and Remediation (оновлення й віртуальні латки) — `vm` (Vulnerability
+Remediation, Complete); перевірка й посилення налаштувань мережевих екранів і засобів захисту комп’ютерів, пошук хибних спрацювань — лише в тексті.
 
 CloudGuard WAF (https://www.checkpoint.com/cloudguard/waf/): редакцій немає — ліцензія за обсягом запитів
 (окремо, у складі CloudGuard Workloads або PAYG), тому один продукт. DDoS Protection — функція WAF-as-a-Service, рахуємо
