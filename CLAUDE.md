@@ -366,7 +366,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Cortex XSIAM Enterprise | + EPP + EDR, контроль пристроїв і мережевий екран, шифрування дисків, управління вразливостями |
 | Cortex XSIAM Premium | + CNAPP, CWPP, CIEM, WAF, кіберрозвідка, EASM |
 | Splunk Enterprise Security Essentials | SIEM, кіберрозвідка, CAASM |
-| Splunk Enterprise Security Premier | + SOAR, UEBA, пісочниця |
+| Splunk Enterprise Security Premier | + SOAR, UEBA |
 | CrowdStrike Falcon Go | EPP, контроль пристроїв |
 | CrowdStrike Falcon Pro | те саме (+ мережевий екран комп’ютера, у тому ж класі) |
 | CrowdStrike Falcon Enterprise | + EDR |
@@ -546,7 +546,7 @@ Splunk Enterprise Security (https://www.splunk.com/en_us/products/enterprise-sec
 https://help.splunk.com/en/splunk-enterprise-security-8/enterprise-security-editions; бриф ES — 2024, ще з SOAR за окремою підпискою): 2 продукти —
 ES Essentials і ES Premier. Essentials: SIEM (RBA, 1 700+ виявлень, Detection Studio) — `siem`; Threat Intelligence Management — `ti`;
 Exposure Analytics (безперервне виявлення активів і облікових записів із журналів, наповнює Asset & Identity) — `caasm`. Premier: + Splunk SOAR
-— `soar`, UEBA — `ueba`, Automated Threat Analysis (Splunk Attack Analyzer: детонація файлів і посилань, лише хмара) — `sandbox`. AI Assistant
+— `soar`, UEBA — `ueba`, Automated Threat Analysis (Splunk Attack Analyzer: детонація файлів і посилань, лише хмара) — не `sandbox` (клас включає очищення файлів/CDR, якого в Splunk немає; рішення автора), лише в тексті. AI Assistant
 і AI-агенти — лише в тексті. Splunk Enterprise / Splunk Cloud Platform — платформа даних, на якій працює ES, окремим продуктом не додано.
 
 CrowdStrike (таблиця пакетів https://www.crowdstrike.com/en-us/pricing/, жовтень 2026; даташит Falcon Endpoint Protection Pro 2024 —
