@@ -7,12 +7,24 @@ export const getStaticPaths = langParams;
 
 const { t, url, d, pl } = await pageCtx(Astro.url);
 const x = t.vendors;
+// Класи — лише ті, що покриває хоча б один продукт.
+const stats = x.stats({
+  vendors: d.vendors.length,
+  products: d.products.length,
+  classes: new Set(d.products.flatMap((p) => p.data.classes.map((r) => r.id))).size,
+});
 ---
 <Base title={x.title} description={x.description}>
   <section class="wrap page">
     <div class="mono tag">{x.tag}</div>
     <h1>{x.title}</h1>
     <p class="lead-text">{x.lead}</p>
+
+    {d.vendors.length > 0 && (
+      <div class="grid-lines stats">
+        {stats.map((s) => <div class="stat"><div class="num">{s.n}</div><div class="mono cap">{s.label}</div></div>)}
+      </div>
+    )}
 
     {d.vendors.length === 0
       ? <p class="soon-box">{x.soon}</p>
@@ -49,6 +61,12 @@ const x = t.vendors;
   .page { padding-bottom: 72px; }
   .tag { font-size: 12px; color: var(--defense); margin: 48px 0 16px; }
   h1 { font-size: clamp(36px, 8vw, 56px); margin: 0 0 20px; }
+  /* Лічильники — як статистика на головній: великі числа в клітинках із лініями 1px */
+  .stats { grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); margin: 8px 0 40px; }
+  .stat { padding: 20px 16px; }
+  .num { font-size: clamp(32px, 6vw, 44px); font-weight: 600; letter-spacing: -0.03em; line-height: 1; color: var(--defense); }
+  .cap { font-size: 11px; color: var(--muted); margin-top: 10px; }
+  @media (min-width: 640px) { .stat { padding: 24px 24px; } }
   .list { border-top: 1px solid var(--line); }
   .item { border-bottom: 1px solid var(--line); }
   summary {

@@ -151,6 +151,12 @@ const uk = {
     soon: 'Розділ готується.',
     thProduct: 'Продукт',
     thClasses: 'Класи рішень',
+    // Лічильники над списком; підпис узгоджено з числом.
+    stats: (c: { vendors: number; products: number; classes: number }) => [
+      { n: c.vendors, label: word('uk', c.vendors, ['вендор', 'вендори', 'вендорів']) },
+      { n: c.products, label: word('uk', c.products, ['продукт', 'продукти', 'продуктів']) },
+      { n: c.classes, label: word('uk', c.classes, ['клас рішень', 'класи рішень', 'класів рішень']) },
+    ],
   },
   painPage: {
     title: 'Часта біль замовника',
@@ -454,6 +460,11 @@ const en: typeof uk = {
     soon: 'This section is coming soon.',
     thProduct: 'Product',
     thClasses: 'Solution classes',
+    stats: (c) => [
+      { n: c.vendors, label: word('en', c.vendors, ['vendor', 'vendors']) },
+      { n: c.products, label: word('en', c.products, ['product', 'products']) },
+      { n: c.classes, label: `solution ${word('en', c.classes, ['class', 'classes'])}` },
+    ],
   },
   painPage: {
     title: 'Common customer pain points',
