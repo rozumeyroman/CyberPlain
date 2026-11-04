@@ -101,13 +101,6 @@
 | **Захист** | Cloudflare WAF (Managed Challenge, гео-правила), AI bot policies, керований robots.txt |
 | **Мови інтерфейсу** | Українська (основна) і англійська (`/en/`) |
 
-Локальний запуск:
-
-```bash
-npm install
-npm run dev
-```
-
 ## Ліцензії
 
 - Код — [MIT](LICENSE).
