@@ -1,0 +1,256 @@
+{
+  "title": "TraderTraitor vs Binance: 8 steps to a $6.34 billion theft",
+  "dateNote": "29 October 2026 (the theft); preparation since June 2026",
+  "actor": {
+    "name": "TraderTraitor",
+    "profile": [
+      "A North Korean state group, a subgroup of the Lazarus cluster. The FBI officially named it as the perpetrator of the Binance attack on 31 October 2026; TRM Labs and Chainalysis reached the same conclusion.",
+      "The goal is money for the regime: it steals cryptocurrency from exchanges and crypto companies. The pattern repeats: fake recruiters and “test assignments” for developers, and at the end, abuse of a legitimate transaction-signing mechanism rather than theft of a key.",
+      "Known earlier cases with the same pattern: DMM Bitcoin (May 2024, ≈$308 million; a “recruiter” sent a Python “test” to an employee of a wallet provider) and Bybit (February 2025, ≈$1.5 billion; a Safe{Wallet} developer’s Mac was hacked and the signing interface was swapped). CISA described this pattern back in 2022 (AA22-108A).",
+      "According to Binance itself, in 2026 alone the exchange repelled 57 suspected DPRK-linked attacks: fake interviews, counterfeit developer tools, packages, browser extensions and fake video calls."
+    ]
+  },
+  "victim": {
+    "name": "Binance",
+    "sector": "crypto exchange",
+    "country": "international"
+  },
+  "summary": "Nobody stole the keys. The North Korean group TraderTraitor spent four months preparing inside Binance: a fake job interview, a swapped program on a developer’s laptop, an internal AI assistant as a bridge to other computers, a forgotten token in a file. In a single evening on 29 October the internal signing service itself signed transfers worth $6.34 billion. Below: at which of the eight steps which class of solution could break the chain.",
+  "body": [
+    "This is the largest cryptocurrency theft in history, and it did not start with a hole in the exchange but with people. In June 2026 a DevOps engineer on the wallet team searched for an AI coding tool through a search engine and installed a counterfeit Homebrew package. Binance noticed, replaced the laptop and the passwords, but the attacker already knew the key thing: who works with the wallets and with whom. In September another engineer was contacted by a “project director” on a job platform, followed by two video interviews and a “test assignment” run on a work laptop.",
+    "After that everything happened quietly. The malware swapped pyenv, a tool the developer uses every day. On 20 October, through an internal AI tool, the attacker reached the computers of two more engineers and found a container deployment token on one of them. On 29 October at 17:15 UTC he deployed his own container with a script in the production environment, and at 20:05 the transfers began: first 233 million XRP from five hot wallets in four minutes, then BTC, SOL, ETH and other networks.",
+    "The nastiest detail is EIP-7702, a new Ethereum feature. The same signing service signed 50 “authorizations”, and the Binance14 hot wallet started executing the attacker’s contract code. Pausing withdrawals did not undo this, because the authorization lives on the blockchain itself, not in the exchange’s systems. Money kept leaking until 23:56; 200 million USDT topped up to the wallet at 21:44 vanished in 12 seconds. The authorization was revoked only at 00:10 on 30 October: an MPC wallet has no “single key”, and the procedure had to be built during the night.",
+    "The loss is $6.34 billion according to Binance’s preliminary report of 3 November. Stablecoin issuers, the Arbitrum Security Council and others froze or intercepted $2.85 billion; the attacker quickly swapped the rest into ETH and TRX to get ahead of the freezes. Binance is covering the loss from its own funds. The main lesson: the chain passed through several independent control points, and each of them could have broken it. The cheapest breaks are not running someone else’s code on a work laptop, not keeping long-lived tokens in files, and not letting the signing service sign anything that is not tied to an approved withdrawal request.",
+    "Binance calls its findings preliminary and does not disclose some technical details. The step descriptions below follow the Binance report, the FBI notice and independent on-chain analysis; the mapping to MITRE ATT&CK techniques and solution classes is our editorial assessment, marked with an asterisk (*)."
+  ],
+  "claims": [
+    {
+      "value": "$6.34 billion",
+      "label": "stolen from hot wallets"
+    },
+    {
+      "value": "$2.85 billion",
+      "label": "frozen or intercepted"
+    },
+    {
+      "value": "9–10",
+      "label": "blockchains in a single evening"
+    },
+    {
+      "value": "2 h 50 min",
+      "label": "from container launch to the first theft"
+    }
+  ],
+  "claimsNote": "Amounts come from Binance’s preliminary report of 3.11.2026 and are not final. Analytics firms give close estimates (TRM Labs — $6.36 billion, Chainalysis — ≈$6.4 billion). The number of networks differs: 9 per BitOK and the media, 10 per TRM Labs and Chainalysis.",
+  "steps": [
+    {
+      "title": "The first strike showed whom to hit next",
+      "what": "In June a DevOps engineer on the wallet team searched for an AI tool through a search engine and installed a counterfeit Homebrew package. Binance detected the infection and replaced the laptop and passwords. But the attacker already knew the make-up of the wallet team: who works with whom and whom to target next. For that he created fake personas of a “project director”, “HR” and a “CEO” with “live” social media accounts. It is like a burglar who was thrown out of the office but managed to photograph the floor plan.",
+      "tools": [
+        "counterfeit Homebrew package from a search engine",
+        "fake personas on social media"
+      ],
+      "solutions": [
+        {
+          "why": "Sees that an “installer” from a search engine launches hidden commands and isolates the laptop. The event record shows exactly what the attacker managed to see, and therefore which colleague he will pick next."
+        },
+        {
+          "why": "Blocks fake sites and suspicious downloads right in the browser, including new ones that are not on any list yet. The developer never reaches the counterfeit installer."
+        },
+        {
+          "why": "After the first incident the whole wallet team can be put on a watchlist: any unusual action by their accounts immediately becomes an alert. Binance treated only the laptop as compromised, not the whole team."
+        },
+        {
+          "why": "Profiles of DPRK groups with their techniques mapped to MITRE and fresh indicators for SIEM and EDR. The team knows TraderTraitor’s pattern (fake recruiters, counterfeit developer tools) in advance."
+        }
+      ],
+      "gaps": [
+        "The right response to the June incident is a process, not a product: treat the whole team as the target, warn colleagues about a targeted campaign and check which secrets were reachable from that laptop.",
+        "Fewer details about wallet team roles in public profiles (LinkedIn and the like) — also a process, not a solution class."
+      ]
+    },
+    {
+      "title": "A fake job interview and a “test assignment”",
+      "what": "In September another engineer was contacted by a “project director” on a job platform. Next came a video interview with “HR”, who showed a “personal” social media account to build trust, and a second round with the “CEO” of a non-existent company in a messenger. Then: “download the test assignment”. The engineer ran it on a work laptop, and the setup script executed malicious code. Analogy: a “courier” asks you to sign, and the pen opens the door.",
+      "tools": [
+        "fake vacancy on a job platform",
+        "video interviews with “HR” and the “CEO”",
+        "“test assignment” repository with a setup script"
+      ],
+      "solutions": [
+        {
+          "why": "The main technical stop at this step: sees that the downloaded “project” launches hidden commands and writes into system folders, and stops the process. Binance says its endpoint protection missed this sample, so behaviour rules for macOS matter more than signatures."
+        },
+        {
+          "why": "A suspicious “assignment” archive is first opened in an isolated environment that shows what the setup script really does. It works only together with the rule “someone else’s code goes to the sandbox first”: a repository cloned from Git will not get there by itself."
+        },
+        {
+          "why": "Teaches engineers to recognise the “fake interview → test assignment” scenario, the most common DPRK way into crypto companies. Binance repelled 57 such attacks; the 58th got through."
+        },
+        {
+          "why": "Runs exactly these scenarios in advance (a malicious file, scripts launched on macOS) and shows whether the EDR catches them. The blind spot becomes visible before the attack, not after."
+        }
+      ],
+      "gaps": [
+        "The cheapest break of the whole chain is a rule, not a box: a third-party “test assignment” runs only in a virtual machine or a disposable cloud environment, never on a work laptop.",
+        "A separate device for access to wallet infrastructure (PAW): the laptop for mail, interviews and browsing is not the one used to work with critical systems. This is an architectural decision; there is no separate class."
+      ]
+    },
+    {
+      "title": "Swapping a programmer’s everyday tool",
+      "what": "The malicious code quietly replaced pyenv, a program the developer uses every day, in the Homebrew folder. It took six file operations (create a copy, write the malicious content, delete the original, rename, recreate the link) and not a single administrator password prompt: the folder belongs to the user. Then came a connection to the command server and cleaning up traces. Every pyenv call relaunched the malware. Analogy: someone swapped the key in your pocket for a duplicate with a bug inside.",
+      "tools": [
+        "swapped pyenv in /opt/homebrew",
+        "command and control channel (C2)",
+        "obfuscation and trace removal"
+      ],
+      "solutions": [
+        {
+          "why": "Catches the swap itself: “something other than the package manager rewrote a developer program and recreated the link” is a strong sign of attack. File integrity monitoring in the EDR would notice the pyenv change even if the sample itself is unknown."
+        },
+        {
+          "why": "Spots a new command channel to the attacker’s server in network traffic, even when the agent on the laptop stays silent."
+        },
+        {
+          "why": "Brings together DNS and network logs and shows that a developer tool suddenly “calls” an unknown domain. On its own a trifle; together with events on the laptop, an alert."
+        },
+        {
+          "why": "Blocks connections to new and suspicious domains by reputation. A fresh command server may not be on any list yet, so this is a second line, not the main one."
+        },
+        {
+          "why": "Checks whether the EDR really notices program swaps on macOS. Binance called the sample a “zero-day” that bypassed protection; BAS would have exposed such a blind spot in advance."
+        }
+      ],
+      "gaps": [
+        "A Homebrew folder protected from writes by a regular user (configured via MDM): then the swap would need administrator rights and a separate prompt, which is easier to notice."
+      ]
+    },
+    {
+      "title": "The internal AI assistant became a bridge",
+      "what": "On 20 October, through the infected laptop and an internal Binance AI tool, the attacker gained control of the computers of two more engineers: the DevOps engineer from June (A) and another developer (C). Binance does not disclose how exactly the tool allowed this; it is only known that its access was rebuilt. Most likely the AI agent could perform actions on engineers’ machines and did not check on whose behalf it was asked. Analogy: an office assistant with a master key runs errands for anyone who asks.",
+      "tools": [
+        "internal Binance AI tool"
+      ],
+      "solutions": [
+        {
+          "why": "Records an anomaly that is easy to write as a rule: “an AI assistant acting for one employee operates on other people’s computers”. For this the AI tool’s action logs must be sent to the SIEM."
+        },
+        {
+          "why": "If the AI tool reaches machines under a service account, NHI knows its usual routes and blocks deviations. The mechanism at Binance is not disclosed, so this is an editorial assumption."
+        },
+        {
+          "why": "Only Check Point Workforce AI Security works here (other DLP products in the class will not help): it sees all AI tools, coding assistants and MCP servers in the company and blocks their dangerous actions. The internal AI agent does not stay in the shadows."
+        },
+        {
+          "why": "On machines A and C it records that the AI agent process suddenly launches a shell and reads files with tokens. This is visible in the process tree, even if the agent itself is a legitimate program."
+        }
+      ],
+      "gaps": [
+        "A threat model for internal AI agents is the architecture of the tool itself: actions only on behalf of a specific user, no operations on other people’s machines, least privilege and human confirmation for commands on computers."
+      ]
+    },
+    {
+      "title": "The access key was simply sitting in a file",
+      "what": "On engineer A’s laptop the attacker found a token for deploying containers into the wallet infrastructure. The token was stored in a file and had no short expiry, so it was still valid nine days later. Having found it on 20 October, the attacker calmly waited until the 29th. It is like an undated pass forgotten in the pocket of an old jacket.",
+      "tools": [
+        "long-lived deploy token in a file on a laptop"
+      ],
+      "solutions": [
+        {
+          "why": "The token does not live on the laptop: a secrets vault issues it for minutes and for a specific task. A token found nine days later opens nothing."
+        },
+        {
+          "why": "Removes the standing right to deploy into the wallet cluster: access is granted only for the duration of a task and taken away automatically. Most of the time there is simply nothing to steal."
+        },
+        {
+          "why": "Fake tokens and “credential” files on the wallet team’s laptops: real engineers do not touch them. An attempt to use the decoy would have raised an alert back on 20 October, nine days before the theft."
+        }
+      ],
+      "gaps": [
+        "After the June incident it was worth checking which long-lived secrets sat on the laptops of the whole team, not only the replaced one — this is an incident response process."
+      ]
+    },
+    {
+      "title": "Their own container inside Binance",
+      "what": "On 29 October at 17:15 UTC the attacker logged into engineer C’s computer, used engineer A’s token and deployed his own container with a script in the production environment. The script called the internal transaction signing service. There were 2 hours 50 minutes left before the first theft — a window in which any handled alert could have stopped the attack before the first dollar. Analogy: a stranger in someone else’s uniform walks into the vault with someone else’s pass.",
+      "tools": [
+        "engineer C’s computer",
+        "engineer A’s deploy token",
+        "container with a malicious script"
+      ],
+      "solutions": [
+        {
+          "why": "Notices that one engineer’s credentials were used from another engineer’s computer, and for an unusual action too — a deploy into the wallet cluster in the evening. A classic “first time from a new device” alert."
+        },
+        {
+          "why": "Does not let an unverified image into the cluster (control at deploy time), and if the container does start, sees an unknown process calling the signing service and stops it."
+        },
+        {
+          "why": "Checks cluster settings and permissions before the attack: shows that the wallet cluster accepts deploys from a personal token and without image signature checks."
+        },
+        {
+          "why": "Works if deploys go through a sign-in to the user directory: then a privileged action from “someone else’s” machine requires confirmation by the account owner. A static token bypasses MFA, which is exactly why it should be replaced with an MFA sign-in."
+        }
+      ],
+      "gaps": [
+        "Deploys only through CI/CD with signed images and no human tokens — a platform setting, not a separate product.",
+        "Microsegmentation: only the withdrawal system should be able to reach the signing service; then a new container would not even connect to it. The portfolio has no separate microsegmentation class."
+      ]
+    },
+    {
+      "title": "The signing service signed everything itself",
+      "what": "The script called the internal wallet signing service directly, bypassing the normal withdrawal process. The MPC-based service (the key is split across several servers) obediently signed transfers from hot wallets on 9–10 blockchains: 233 million XRP in 4 minutes, 18,270 BTC in 11 transactions and more. There are no signs that the keys themselves were stolen: the system signed everything because the request came from a “trusted” client. An internal alert on large volumes fired within minutes, but BTC and Tron withdrawals were paused only at ≈20:36. Analogy: a bank teller pays out on any request because someone in a bank uniform brought it.",
+      "tools": [
+        "internal signing service (MPC)",
+        "script in the container"
+      ],
+      "solutions": [
+        {
+          "why": "An automatic emergency brake: an alert on large volumes immediately shuts down the signing service by a ready playbook instead of waiting for people to figure it out. At Binance almost half an hour passed between the alert and the withdrawal pause."
+        },
+        {
+          "why": "Ties the volume alert to events from earlier steps (a new container, someone else’s token, a deploy from another machine). Then it is immediately clear that this is an attack, not peak load."
+        },
+        {
+          "why": "Non-standard operations on production wallet systems only through a PAM session approved by another person and recorded. A script from a rogue container has no such approval."
+        }
+      ],
+      "gaps": [
+        "The main control is in the signing service itself: every signature is tied to an approved withdrawal request that the MPC servers verify independently (“no request — no signature”), plus amount and velocity limits, address allow-lists and a quorum of people for non-standard operations. These are MPC platform policies; the portfolio has no separate class."
+      ]
+    },
+    {
+      "title": "EIP-7702: the wallet was handed to someone else’s contract",
+      "what": "Using the same service, the attacker signed 50 EIP-7702 “authorizations” (an Ethereum feature since 2025) and submitted them in a single transaction at 20:20:59. An authorization is valid only with the wallet’s current transaction sequence number, and the Binance14 wallet is very active, so the attacker ordered a “fan” of signatures for 50 consecutive numbers; one worked. From then on the wallet executed the attacker’s contract commands. Pausing withdrawals did not undo this: the authorization lives on the blockchain, not in the exchange’s systems. Money leaked until 23:56, and the authorization was revoked only at 00:10. Analogy: a power of attorney over an account that you cannot cancel until you collect the signatures of all co-owners.",
+      "tools": [
+        "50 EIP-7702 authorizations in one transaction",
+        "fund-draining contract (drainer)"
+      ],
+      "solutions": [
+        {
+          "why": "A pre-built and rehearsed playbook for revoking the authorization through the signing service: minutes instead of ≈4 hours of improvisation at night."
+        }
+      ],
+      "gaps": [
+        "Here IT security is almost powerless, so stopping the attack at steps 1–6 is critical.",
+        "Forbid the signing service from signing EIP-7702 authorizations for hot wallets (or allow them only to an approved address with a quorum) and treat dozens of signatures in a row as an anomaly — MPC platform policies.",
+        "On-chain monitoring of your own wallets and fund tracing (Chainalysis, Crystal Intelligence, TRM Labs) — outside the portfolio.",
+        "Minimal balances on hot wallets and a ban on topping up a compromised wallet: 200 million USDT added at 21:44 was drained in 12 seconds. This is a treasury process.",
+        "Fast coordination with stablecoin issuers is the last line that worked: $2.85 billion was frozen."
+      ]
+    }
+  ],
+  "lessons": [
+    "Protect not only the keys but everything that can sign with them: at Bybit, DMM Bitcoin and Binance the key was not stolen; a legitimate system was made to sign what the attacker needed.",
+    "The attack started with a developer on macOS and with people, not with a hole in the exchange: the rule “someone else’s code only in a virtual machine” would have broken the chain at step 2.",
+    "The first incident is reconnaissance: after June the whole wallet team should have been treated as the target, not one laptop.",
+    "Binance had 4 months of preparation and 2 hours 50 minutes between the container launch and the first theft. Each of those hours is a chance, if alerts get handled and the emergency brake fires automatically.",
+    "Internal AI agents are a new attack surface: they need the same limits as people (actions on their own behalf, least privilege, a log in the SIEM)."
+  ],
+  "caveats": [
+    "The Binance report is preliminary; some technical details will stay confidential. How exactly the internal AI tool gave access to other computers and how the container authenticated to the signing service has not been disclosed.",
+    "The malware family, command servers and indicators of compromise have not been published, so it cannot be compared with known DPRK samples.",
+    "Part of the timeline (rehearsals on the attacker’s own wallets, the swap of 435 million USDT into ETH, the BTC and Tron withdrawal pause at 20:36) comes from a single analytics firm (BitOK) and is not independently confirmed.",
+    "Steps 7–8 took place on the blockchain: MITRE ATT&CK describes them only in general terms (T1657 Financial Theft), and the main defences there are policies of the signing service itself rather than solution classes."
+  ]
+}
