@@ -76,12 +76,37 @@
   посиланням біля терміна.
 - Список рішень — орієнтир для розмови, а не гарантія захисту. Атака може пропускати етапи
   чи йти в іншому порядку: це карта, а не маршрут.
-- Портфель — 140 продуктів від 17 вендорів у 49 класах рішень (Barracuda, Black Duck, Check Point,
-  CrowdStrike, Dell Technologies, F5, Fortinet, Imperva, Palo Alto Networks, Picus Security, Rapid7,
-  Segura, SentinelOne, Silverfort, SOCRadar, Splunk, Trend Micro); це не огляд ринку, а продукти,
-  з якими працює автор. Класи без продуктів теж показуються, щоб карта захисту була повною.
+- Портфель рішень на сайті сформований з практичного досвіду команди, яка захищає реальні
+  інфраструктури, — це не огляд ринку. Зараз це 140 продуктів від 17 вендорів у 49 класах рішень
+  (Barracuda, Black Duck, Check Point, CrowdStrike, Dell Technologies, F5, Fortinet, Imperva,
+  Palo Alto Networks, Picus Security, Rapid7, Segura, SentinelOne, Silverfort, SOCRadar, Splunk,
+  Trend Micro). Класи без продуктів теж показуються, щоб карта захисту була повною.
 - Під час першого візиту Cloudflare може показати коротку перевірку «чи ви людина» — це захист
   від скрейперів і AI-ботів.
+
+## Стек технологій
+
+Сайт навмисно легкий: чистий HTML і CSS, без клієнтських фреймворків.
+
+| Шар | Що використовується |
+|---|---|
+| **Генератор сайту** | [Astro](https://astro.build) 7 — статична збірка (`output: 'static'`), без React/Vue; карта сайту — `@astrojs/sitemap` |
+| **Мова** | TypeScript (сторінки, схеми контенту, логіка зв'язків), JavaScript (Worker і скрипти імпорту) на Node.js LTS |
+| **Розмітка й стилі** | HTML + CSS: токени кольорів у CSS-змінних, шрифти Onest і JetBrains Mono (Google Fonts), іконки — інлайн SVG |
+| **Інтерактив** | Без власного JavaScript (0 KB): підказки, фільтри, меню й панелі — на CSS, `<details>` і HTML Popover API |
+| **Контент** | JSON-файли в репозиторії (Astro Content Collections зі схемами й перевіркою посилань під час збірки) |
+| **Дані MITRE** | Імпорт ATT&CK зі STIX-репозиторію MITRE і D3FEND з API d3fend.mitre.org (`npm run import:attack`, `import:d3fend`) |
+| **Хостинг** | [Cloudflare Workers](https://workers.cloudflare.com) (безкоштовний план) + Static Assets; Worker віддає статику й веде Workers Logs |
+| **Деплой** | Workers Builds з GitHub: push у `main` → прод (`npm run build`, `npx wrangler deploy`) |
+| **Захист** | Cloudflare WAF (Managed Challenge, гео-правила), AI bot policies, керований robots.txt |
+| **Мови інтерфейсу** | Українська (основна) і англійська (`/en/`) |
+
+Локальний запуск:
+
+```bash
+npm install
+npm run dev
+```
 
 ## Ліцензії
 
