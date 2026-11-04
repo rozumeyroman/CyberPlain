@@ -1,0 +1,186 @@
+{
+  "title": "UAC-0050 posing as DTEK Energo: an “electricity debt” that installs LiteManager",
+  "dateNote": "29 October 2026 — CERT-UA recorded the wave of emails; the warning was published on 30 October",
+  "actor": {
+    "name": "UAC-0050",
+    "profile": [
+      "A Russia-linked group active since at least 2020. Its main target is Ukraine’s public sector, sometimes its allies.",
+      "CERT-UA distinguishes three lines of its work: cyber espionage, financial theft and information-psychological operations under the “Fire Cells Group” brand.",
+      "Its signature is legitimate remote management programs (Remote Utilities, LiteManager) and remote access trojans (Remcos), delivered through legitimate cloud services and file-sharing sites.",
+      "In October 2024 (CERT-UA#11776) the group already sent emails posing as the State Tax Service with the same chain: a PDF with a link → archive → password-protected archive → SFX file → LiteManager. The targets were accountants working with remote banking systems; sometimes less than an hour passed between infection and theft of funds."
+    ]
+  },
+  "victim": {
+    "name": "government agencies",
+    "sector": "public sector",
+    "country": "Ukraine"
+  },
+  "summary": "The attackers break nothing: they ask an accountant to install a legitimate remote access program themselves. An email from a “DTEK Energo accountant” about an electricity debt leads through a PDF with a link and two archives to a file that quietly installs LiteManager as an auto-starting service. Antivirus often lets such a program through because it is genuine. Below: seven steps and the solution classes that could break the chain at each of them.",
+  "body": [
+    "On 29 October 2026 CERT-UA (State Service of Special Communications) recorded a mass mailing to government agencies. The sender was supposedly a DTEK Energo accountant, and the subject was paying off an electricity debt. The lure is timed to the moment: amid strikes on energy infrastructure and emergency outages, an email about an electricity debt does not look strange.",
+    "The chain is simple, but every link has a purpose. The PDF attachment contains no malicious code, only a “pay the debt” link. It downloads a RAR archive from DigitalOcean Spaces, a legitimate cloud storage service, so the link does not look suspicious by reputation. Inside is another password-protected archive and a text file with the password: encrypted content cannot be checked by antivirus or automated sandboxes. The last element is an EXE file, a self-extracting archive (SFX), which installs the legitimate remote management program LiteManager as a system service with autostart.",
+    "A separate trick concerns the network. LiteManager’s settings contain many IP addresses and domains, but most of them belong to legitimate resources; only a few are used for real communication with the attackers. This way the real command servers get lost in the “noise” for network monitoring.",
+    "The DTEK brand was used only as a mask: the sources show no signs that the company itself was compromised, and DigitalOcean was not hacked — the storage was simply used to host the file. The number of victims, what the attackers did after installing the program and indicators of compromise have not been published. The group used almost the same chain in 2024, when the goal was stealing funds through remote banking — but this is not confirmed for the 2026 campaign.",
+    "The step descriptions follow the State Service of Special Communications (CERT-UA) warning of 30.10.2026. The mapping to MITRE ATT&CK techniques and solution classes is our editorial assessment, marked with an asterisk (*)."
+  ],
+  "steps": [
+    {
+      "title": "An email from a “DTEK Energo accountant”",
+      "what": "A government agency receives an email supposedly from a DTEK Energo accountant: there is an electricity debt that must be paid urgently. A PDF file is attached. The attackers count on an anxious background — strikes on energy infrastructure and power outages. It is unknown whether the DTEK domain itself was spoofed or the emails came from look-alike or unrelated addresses. Analogy: a “bill” from a supplier nobody ordered from, but one that feels too risky to leave unpaid.",
+      "tools": [
+        "email posing as DTEK Energo about a debt",
+        "PDF attachment"
+      ],
+      "solutions": [
+        {
+          "why": "Checks the sender’s reputation and notices that “DTEK” is writing from an address it does not own. The email goes to quarantine or gets an “external sender” label."
+        },
+        {
+          "why": "Training mailings based on real attacks: the “energy supplier bill with an urgent demand” scenario is worth adding separately. Staff know that debts are checked in the supplier’s account, not via a link in an email."
+        }
+      ],
+      "gaps": [
+        "A process recommended by CERT-UA itself: account balances are checked only through official supplier apps or verified portals, not via a link in an email.",
+        "DMARC/SPF/DKIM checks help only if the DTEK domain itself was spoofed; the sources do not say, and they do not work against look-alike domains."
+      ]
+    },
+    {
+      "title": "A PDF with a “pay the debt” link",
+      "what": "The PDF itself launches nothing: it only carries a “pay the debt” link. Many mail filters check links in the email body but not inside attachments, so the trick often gets through. All the user has to do is click. Analogy: the envelope holds nothing dangerous — just a note with an address to go to.",
+      "tools": [
+        "link inside a PDF"
+      ],
+      "solutions": [
+        {
+          "why": "Extracts links not only from the email body but also from PDF attachments, and checks them at click time. The link to the archive download is blocked or marked as dangerous."
+        },
+        {
+          "why": "Opens the attachment in an isolated environment and gives the user a cleaned copy of the PDF without active links. There is simply nothing to click."
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "title": "An archive from legitimate cloud storage",
+      "what": "The link downloads a RAR archive from DigitalOcean Spaces, a legitimate cloud storage service used by countless companies. A reputation block will not fire here: the domain is clean. The attacker uploaded the file in advance and relies on trust in a well-known service. Analogy: the parcel was sent through the real post office, so it looks no different from any other.",
+      "tools": [
+        "DigitalOcean Spaces",
+        "RAR archive"
+      ],
+      "solutions": [
+        {
+          "why": "Works only as a policy by category and file type, not by reputation: block downloads of archives and EXE files from public cloud storage for everyone who does not need it for work. Most government staff have no need for RAR files from the internet."
+        },
+        {
+          "why": "Blocks file downloads by type (RAR, EXE) on the firewall. The same rule as in the web filter, but at the perimeter, for every device in the office."
+        },
+        {
+          "why": "The downloaded file is first checked in a sandbox on the gateway or in the browser, and the user receives it only after the check, or gets a cleaned copy."
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "title": "An archive inside an archive, under a password",
+      "what": "The downloaded archive contains another password-protected RAR archive and a text file with that password. Encrypted content cannot be checked by antivirus or automated sandboxes, and the password in a separate file counts on the user unpacking everything by hand. Analogy: a safe with its key taped next to it — closed to the guards, open to the victim in a second.",
+      "tools": [
+        "nested password-protected RAR archive",
+        "text file with the password"
+      ],
+      "solutions": [
+        {
+          "why": "A “block encrypted archives” policy: the outer archive is not encrypted, so the gateway sees a locked archive inside and blocks the download. This is a direct counter to exactly this trick."
+        },
+        {
+          "why": "Some sandboxes try the password from neighbouring files or the email text and check the content. Whether a specific product can do this must be checked per vendor."
+        }
+      ],
+      "gaps": [
+        "CERT-UA’s advice for people: do not enter passwords to unpack unknown archives."
+      ]
+    },
+    {
+      "title": "Running the SFX file",
+      "what": "The last file is an EXE that is a self-extracting archive (SFX). When run, it unpacks its content into a temporary folder and starts the installation. In 2024 the group also disguised the file with a double “.pdf.exe” extension and showed a decoy document; whether this happened this time is not reported. Analogy: a “box” that opens itself and puts its contents away in the cupboards.",
+      "tools": [
+        "self-extracting archive (SFX)"
+      ],
+      "solutions": [
+        {
+          "why": "Blocks a new, rare file from the downloads or temporary folder by behaviour and reputation, before the program is installed."
+        },
+        {
+          "why": "Sees the typical chain “archiver → EXE from a temporary folder → installer” and stops the process or isolates the computer."
+        },
+        {
+          "why": "Safely replays the chain “archive → SFX → remote access program installation” and shows at which step protection works and at which it does not."
+        }
+      ],
+      "gaps": [
+        "Built-in Windows application control (AppLocker, WDAC) that forbids running EXE files from downloads and temporary folders is the most effective single measure, but it is an OS setting, not a separate class. In the 2024 campaign CERT-UA advised exactly that: configure the built-in OS protections.",
+        "Showing file extensions (group policy): the user sees “.pdf.exe” if the file is disguised with a double extension."
+      ]
+    },
+    {
+      "title": "LiteManager as an auto-starting service",
+      "what": "The SFX file quietly installs LiteManager, a legitimate remote management program, as a system service that starts with Windows. The program is genuine and signed, so antivirus often does not treat it as malicious. Creating a service usually requires administrator rights: if the user works without them, the installation should fail. Analogy: the attacker does not break the door, but asks the owner to issue him a permanent pass.",
+      "tools": [
+        "LiteManager",
+        "auto-starting Windows service"
+      ],
+      "solutions": [
+        {
+          "why": "The user works without standing local administrator rights, so the installer cannot create the service. The attack breaks at the cheapest step."
+        },
+        {
+          "why": "Notices the installation of a remote access program that is not on the allowed list and the creation of a new service. In prevention mode it stops it and isolates the computer."
+        },
+        {
+          "why": "Links “archive download → EXE run from a temporary folder → new remote access service within minutes” into one chain and raises a high-severity alert."
+        }
+      ],
+      "gaps": [
+        "A policy of allowed remote access programs: only the corporate tool is allowed, anything else is an incident. This is a process, not a separate class.",
+        "LiteManager also has a no-install mode, so the absence of administrator rights lowers the risk but does not remove it completely."
+      ]
+    },
+    {
+      "title": "Command servers hidden among legitimate addresses",
+      "what": "LiteManager’s settings contain many IP addresses and domains, but most of them belong to legitimate resources. Only a few are used for real communication with the attackers. Network monitoring struggles to tell the real servers from the “noise”, and blocking by address achieves nothing. What the attackers did after installation is not reported. Analogy: the real phone number was copied into a directory among a hundred others.",
+      "tools": [
+        "LiteManager settings with “noise” addresses"
+      ],
+      "solutions": [
+        {
+          "why": "Recognises the remote access application itself in traffic and blocks it regardless of the address. Hiding among legitimate addresses then does not help."
+        },
+        {
+          "why": "Notices long remote sessions and regular “check-ins” from a workstation to unusual addresses. Helps work out which addresses from the settings actually answered."
+        },
+        {
+          "why": "Profiles of UAC-0050 with techniques mapped to MITRE and indicators from earlier campaigns. Indicators for this specific campaign have not been published yet."
+        },
+        {
+          "why": "On an alert about a new remote access service it automatically isolates the computer and blocks the session without waiting for a person. In 2024 less than an hour sometimes passed between infection and theft."
+        }
+      ],
+      "gaps": [
+        "Forbidding direct connections from workstations to the internet (proxy only): then hiding the servers does not matter. This is a network setting, not a separate class.",
+        "Do not blindly block every address from the settings: some of them are legitimate resources."
+      ]
+    }
+  ],
+  "lessons": [
+    "A legitimate remote access program is as much a threat as a trojan: antivirus lets it through, so you need a list of allowed programs and an EDR that understands their abuse.",
+    "The cheapest breaks in the chain: staff without local administrator rights, a ban on running EXE files from download folders, and checking bills only in the supplier’s account.",
+    "A legitimate cloud domain bypasses reputation filters: policies by file type and category work against it, not blocklists.",
+    "The group has repeated its playbook for years, changing only the lure (tax service, emergency service, DTEK) and the hosting. A UAC-0050 profile in threat intelligence lets you prepare in advance.",
+    "If the goal is money, as in 2024, the last line of defence is one-time codes and payment confirmation from a separate device in remote banking systems."
+  ],
+  "caveats": [
+    "No indicators of compromise (hashes, storage address, real command servers), number of victims or what the attackers did after installing LiteManager have been published.",
+    "It is unknown whether the DTEK domain was spoofed, whether there was a decoy document and whether an MSI installer was used, as in 2024.",
+    "Details from the 2024 campaigns (double extension, MSI, theft through remote banking) are an analogy with the group’s earlier actions, not a fact about this campaign.",
+    "The DTEK brand was used as a mask; the sources show no signs that the company itself or DigitalOcean was compromised."
+  ]
+}
