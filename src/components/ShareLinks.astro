@@ -1,0 +1,56 @@
+---
+// «Поділитися» в кінці статті аналітики: звичайні посилання на сторінки поширення мереж (0 KB JS, без віджетів,
+// cookies і сторонніх скриптів). Адреса — канонічна, як у <link rel="canonical">; прев'ю бере og:* зі сторінки.
+// Іконки — власні спрощені монохромні гліфи (currentColor), кольори сайту, а не фірмові: колір — лише на hover рамки.
+import { pageCtx } from '../lib/data';
+
+interface Props { title: string }
+const { title } = Astro.props;
+const { t } = await pageCtx(Astro.url);
+const x = t.analytics.share;
+const u = encodeURIComponent(new URL(Astro.url.pathname, Astro.site).href);
+const nets = [
+  { name: 'Telegram', href: `https://t.me/share/url?url=${u}&text=${encodeURIComponent(title)}`,
+    d: 'M21.4 3.6 2.9 10.7c-1.2.5-1.2 1.2-.2 1.5l4.7 1.5 1.8 5.6c.2.6.4.8.9.8.4 0 .6-.2.9-.4l2.3-2.2 4.7 3.5c.9.5 1.5.2 1.7-.8l3.1-14.7c.3-1.3-.5-1.9-1.4-1.9zM9.7 13.4l8.5-5.4c.4-.2.7-.1.4.2l-7 6.4-.3 3.1-1.6-4.3z' },
+  { name: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${u}`,
+    d: 'M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3zM9.5 9.75h3.8v1.6h.06c.53-1 1.84-2.06 3.78-2.06 4.04 0 4.79 2.66 4.79 6.12V21h-4v-4.95c0-1.18-.02-2.7-1.65-2.7-1.65 0-1.9 1.29-1.9 2.62V21H9.5z' },
+  { name: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${u}`,
+    d: 'M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.32 0-3.9 1.41-3.9 4v2.2H7.75v3h2.62V21z' },
+];
+---
+<aside class="share cell" aria-labelledby="share-h">
+  <div class="txt">
+    <h2 class="mono k" id="share-h">{x.title}</h2>
+    <p>{x.note}</p>
+  </div>
+  <ul class="nets">
+    {nets.map((n) => (
+      <li>
+        <a href={n.href} target="_blank" rel="noopener noreferrer" aria-label={x.via(n.name)}>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d={n.d} /></svg>
+          <span>{n.name}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+  .share { margin-top: 56px; padding: 20px 24px; max-width: 980px; display: flex; flex-wrap: wrap; align-items: center;
+    justify-content: space-between; gap: 16px 24px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); }
+  .k { margin: 0 0 4px; font-size: 11px; font-weight: 400; color: var(--defense); letter-spacing: .08em; }
+  .txt p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--text-2); }
+  .nets { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .nets a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line-strong);
+    border-radius: var(--radius); background: var(--bg); color: var(--text-2); font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: border-color .15s, color .15s; }
+  .nets a:hover { border-color: var(--defense); color: var(--text); }
+  .nets a:focus-visible { outline: 2px solid var(--defense); outline-offset: 2px; }
+  .nets svg { flex: none; color: var(--muted); transition: color .15s; }
+  .nets a:hover svg { color: var(--defense); }
+  @media (max-width: 560px) {
+    .share { padding: 16px; }
+    .nets { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .nets a { width: 100%; justify-content: center; gap: 6px; padding: 0 6px; font-size: 13px; }
+  }
+</style>

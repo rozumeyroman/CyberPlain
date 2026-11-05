@@ -5,6 +5,7 @@ import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
 import AttackChain from '../../../../components/AttackChain.astro';
 import Illustration from '../../../../components/Illustration.astro';
 import SolutionLinks from '../../../../components/SolutionLinks.astro';
+import ShareLinks from '../../../../components/ShareLinks.astro';
 import SourceList from '../../../../components/SourceList.astro';
 import { site } from '../../../../../site.config';
 import { loadData, pageCtx, type AAttack } from '../../../../lib/data';
@@ -118,6 +119,7 @@ const editorial = a.steps.some((s) => s.techniques.some((y) => y.editorial) || s
     )}
 
     <SourceList sources={a.sources} />
+    <ShareLinks title={a.title} />
   </section>
 </Base>
 

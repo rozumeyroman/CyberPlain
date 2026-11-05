@@ -237,6 +237,7 @@ const uk = {
     gapsNote: 'Це теж частина захисту, але окремого класу рішень для неї на сайті немає.',
     sources: 'Джерела',
     noSourceUrl: 'без посилання у джерелі',
+    share: { title: 'Поділитися', note: 'Надішліть розбір колезі чи замовнику', via: (net: string) => `Поділитися в ${net} (відкриється нова вкладка)` },
     related: { vulns: 'Пов’язані вразливості', reports: 'Звіти про це', attacks: 'Атаки, де це використано' },
     vuln: {
       what: 'Що сталося',
@@ -545,6 +546,7 @@ const en: typeof uk = {
     gapsNote: 'This is part of the defense too, but the site has no separate solution class for it.',
     sources: 'Sources',
     noSourceUrl: 'no link in the source',
+    share: { title: 'Share', note: 'Send this breakdown to a colleague or a client', via: (net: string) => `Share on ${net} (opens in a new tab)` },
     related: { vulns: 'Related vulnerabilities', reports: 'Reports about this', attacks: 'Attacks that used this' },
     vuln: {
       what: 'What happened',
