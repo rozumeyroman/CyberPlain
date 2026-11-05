@@ -3,6 +3,7 @@
 import Base from '../../../../layouts/Base.astro';
 import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
 import AnalyticsSolutions from '../../../../components/AnalyticsSolutions.astro';
+import Illustration from '../../../../components/Illustration.astro';
 import SourceList from '../../../../components/SourceList.astro';
 import TechRefs from '../../../../components/TechRefs.astro';
 import { site } from '../../../../../site.config';
@@ -18,9 +19,6 @@ export async function getStaticPaths() {
   return paths;
 }
 
-// Ілюстрації — наші SVG-схеми, інлайнимо під час збирання (шрифти й кольори сайту, 0 KB JS).
-const svgs = import.meta.glob('../../../../assets/analytics/*.svg', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
-
 const { vuln: v } = Astro.props as { vuln: AVuln };
 const { lang, t, url, d } = await pageCtx(Astro.url);
 const x = t.analytics;
@@ -29,14 +27,6 @@ const groups = phases.map((p) => ({ phase: p, items: v.solutions.filter((s) => s
 const editorial = v.techniques.some((y) => y.editorial) || v.solutions.some((s) => s.editorial);
 const reports = d.reportsAbout(v.id);
 const attacks = d.attacksUsing(v.id);
-const esc = (str: string) => str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
-let ill: string | undefined;
-if (v.illustration) {
-  const key = `../../../../assets/analytics/${v.illustration.file}.${lang}.svg`;
-  const raw = svgs[key];
-  if (!raw) throw new Error(`${v.id}: немає ілюстрації src/assets/analytics/${v.illustration.file}.${lang}.svg`);
-  ill = raw.replace('<svg ', `<svg role="img" aria-label="${esc(v.illustration.alt)}" `);
-}
 ---
 <Base title={v.title} description={v.summary}>
   <section class="wrap page">
@@ -61,12 +51,7 @@ if (v.illustration) {
     <section class="sec" aria-labelledby="what">
       <h2 class="sec-title" id="what">{x.vuln.what}</h2>
       <div class="prose">{v.description.slice(0, 2).map((p) => <p>{p}</p>)}</div>
-      {ill && v.illustration && (
-        <figure class="ill">
-          <div class="ill-scroll" tabindex="0" aria-label={v.illustration.caption} set:html={ill} />
-          <figcaption>{v.illustration.caption}</figcaption>
-        </figure>
-      )}
+      {v.illustration && <Illustration owner={v.id} {...v.illustration} />}
       <div class="prose">{v.description.slice(2).map((p) => <p>{p}</p>)}</div>
     </section>
 
@@ -206,25 +191,4 @@ if (v.illustration) {
   .note { margin: 0 0 12px; max-width: 760px; font-size: 14px; color: var(--muted); }
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
   .aff { table-layout: fixed; }
-  .ill { margin: 8px 0 28px; max-width: 980px; }
-  .ill-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); padding: 16px; }
-  .ill-scroll:focus-visible { outline: 2px solid var(--defense); outline-offset: 2px; }
-  @media (max-width: 640px) { .ill-scroll { padding: 8px; } }
-  .ill-scroll :global(svg) { display: block; width: 100%; min-width: 620px; height: auto; font-family: var(--font); }
-  .ill figcaption { margin-top: 10px; max-width: 760px; font-size: 13px; line-height: 1.55; color: var(--muted); }
-  .ill :global(.k) { font-family: var(--font-mono); letter-spacing: .08em; fill: var(--muted); }
-  .ill :global(.tm) { fill: var(--text); }
-  .ill :global(.ts) { fill: var(--text-2); }
-  .ill :global(.ta) { fill: var(--attack); }
-  .ill :global(.td) { fill: var(--defense); }
-  .ill :global(.b), .ill :global(.b-out) { fill: none; stroke: var(--line-strong); }
-  .ill :global(.b) { fill: var(--bg); }
-  .ill :global(.b-def) { fill: var(--bg); stroke: var(--defense); }
-  .ill :global(.b-att) { fill: var(--bg); stroke: var(--attack); }
-  .ill :global(.b-dash) { fill: none; stroke: var(--line-strong); stroke-dasharray: 5 4; }
-  .ill :global(.lm) { stroke: var(--text-2); stroke-width: 1.5; fill: none; }
-  .ill :global(.la) { stroke: var(--attack); stroke-width: 1.5; fill: none; }
-  .ill :global(.dash) { stroke-dasharray: 6 5; }
-  .ill :global(.fm) { fill: var(--text-2); }
-  .ill :global(.fa) { fill: var(--attack); }
 </style>

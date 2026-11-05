@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 476">
+<defs>
+<marker id="bn-mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fm" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="bn-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="k" x="16" y="58" font-size="11">ЧЕРВЕНЬ – ЖОВТЕНЬ 2026</text>
+<line class="lg" x1="16" y1="90" x2="352" y2="90"/>
+<line class="lg" x1="16.0" y1="86" x2="16.0" y2="94"/>
+<text class="k" x="20.0" y="108" font-size="10">ЧЕР</text>
+<line class="lg" x1="83.2" y1="86" x2="83.2" y2="94"/>
+<text class="k" x="87.2" y="108" font-size="10">ЛИП</text>
+<line class="lg" x1="152.6" y1="86" x2="152.6" y2="94"/>
+<text class="k" x="156.6" y="108" font-size="10">СЕР</text>
+<line class="lg" x1="222.1" y1="86" x2="222.1" y2="94"/>
+<text class="k" x="226.1" y="108" font-size="10">ВЕР</text>
+<line class="lg" x1="289.3" y1="86" x2="289.3" y2="94"/>
+<text class="k" x="293.3" y="108" font-size="10">ЖОВ</text>
+<line class="la" x1="16.0" y1="90" x2="83.2" y2="90" stroke-width="4"/>
+<text class="ts" x="16" y="78" font-size="12">підроблений Homebrew</text>
+<line class="la" x1="222.1" y1="90" x2="289.3" y2="90" stroke-width="4"/>
+<text class="ts" x="222.1" y="78" font-size="12">«співбесіда»</text>
+<circle class="fa" cx="331.8" cy="90" r="4"/>
+<text class="ts" x="352" y="128" text-anchor="end" font-size="12">20.10 · AI-помічник, токен</text>
+<line class="lg" x1="331.8" y1="96" x2="331.8" y2="116"/>
+<circle class="fa" cx="352" cy="90" r="4"/>
+<line class="lg dash" x1="356" y1="90" x2="392" y2="90"/>
+<rect class="b-out" x="392" y="40" width="392" height="116" rx="6"/>
+<text class="k" x="404" y="58" font-size="11">29–30 ЖОВТНЯ, UTC</text>
+<line class="lg" x1="400" y1="90" x2="784" y2="90"/>
+<line class="lg" x1="400.0" y1="94" x2="400.0" y2="98"/>
+<line class="lg" x1="451.2" y1="94" x2="451.2" y2="98"/>
+<line class="lg" x1="502.4" y1="94" x2="502.4" y2="98"/>
+<line class="lg" x1="553.6" y1="94" x2="553.6" y2="98"/>
+<line class="lg" x1="604.8" y1="94" x2="604.8" y2="98"/>
+<line class="lg" x1="656.0" y1="94" x2="656.0" y2="98"/>
+<line class="lg" x1="707.2" y1="94" x2="707.2" y2="98"/>
+<line class="lg" x1="758.4" y1="94" x2="758.4" y2="98"/>
+<rect class="b-def" x="412.8" y="84" width="145.09999999999997" height="12" rx="2"/>
+<text class="td" x="412.8" y="76" font-size="12">2 год 50 хв — вікно, щоб зупинити</text>
+<rect class="b-att" style="fill:var(--attack);fill-opacity:.35" x="557.9" y="84" width="197.10000000000002" height="12" rx="2"/>
+<text class="ta" x="778" y="76" text-anchor="end" font-size="12">перекази до 23:56</text>
+<line class="lg" x1="412.8" y1="98" x2="412.8" y2="105"/>
+<text class="ts" x="412.8" y="116" text-anchor="start" font-size="11">17:15 · контейнер</text>
+<circle class="fa" cx="412.8" cy="90" r="3"/>
+<line class="lg" x1="571.5" y1="98" x2="571.5" y2="105"/>
+<text class="ts" x="571.5" y="116" text-anchor="start" font-size="11">20:21 · EIP-7702</text>
+<circle class="fa" cx="571.5" cy="90" r="3"/>
+<line class="lg" x1="766.9" y1="98" x2="766.9" y2="125"/>
+<text class="ts" x="778" y="136" text-anchor="end" font-size="11">00:10 · дозвіл відкликано</text>
+<circle class="fa" cx="766.9" cy="90" r="3"/>
+<text class="k" x="16" y="196" font-size="11">ШЛЯХ ДО ГРОШЕЙ</text>
+<rect class="b-att" x="16" y="212" width="168" height="84" rx="4"/>
+<text class="k ta" x="28" y="232" font-size="10">КРОКИ 2–3</text>
+<text class="tm" x="28" y="254" font-size="13" font-weight="600">Ноутбук розробника</text>
+<text class="ts" x="28" y="272" font-size="12">«тестове завдання»</text>
+<text class="ts" x="28" y="288" font-size="12">→ підмінений pyenv</text>
+<rect class="b-def" x="110" y="203" width="64" height="18" rx="3"/>
+<text class="k td" x="142.0" y="216" text-anchor="middle" font-size="9">РОЗРИВ</text>
+<line class="la" x1="184" y1="254" x2="212" y2="254" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="216" y="212" width="168" height="84" rx="4"/>
+<text class="k ta" x="228" y="232" font-size="10">КРОК 4</text>
+<text class="tm" x="228" y="254" font-size="13" font-weight="600">AI-помічник Binance</text>
+<text class="ts" x="228" y="272" font-size="12">виконує дії</text>
+<text class="ts" x="228" y="288" font-size="12">на машинах інженерів</text>
+<line class="la" x1="384" y1="254" x2="412" y2="254" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="416" y="212" width="168" height="84" rx="4"/>
+<text class="k ta" x="428" y="232" font-size="10">КРОК 4</text>
+<text class="tm" x="428" y="254" font-size="13" font-weight="600">Ноутбуки A і C</text>
+<text class="ts" x="428" y="272" font-size="12">ще двох інженерів</text>
+<line class="la" x1="584" y1="254" x2="612" y2="254" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="616" y="212" width="168" height="84" rx="4"/>
+<text class="k ta" x="628" y="232" font-size="10">КРОК 5</text>
+<text class="tm" x="628" y="254" font-size="13" font-weight="600">Токен деплою у файлі</text>
+<text class="ts" x="628" y="272" font-size="12">без короткого терміну,</text>
+<text class="ts" x="628" y="288" font-size="12">чинний і через 9 днів</text>
+<rect class="b-def" x="710" y="203" width="64" height="18" rx="3"/>
+<text class="k td" x="742.0" y="216" text-anchor="middle" font-size="9">РОЗРИВ</text>
+<polyline class="la" points="700,296 700,316 100,316 100,336" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="16" y="340" width="168" height="84" rx="4"/>
+<text class="k ta" x="28" y="360" font-size="10">КРОК 6 · 17:15</text>
+<text class="tm" x="28" y="382" font-size="13" font-weight="600">Свій контейнер</text>
+<text class="ts" x="28" y="400" font-size="12">з машини C</text>
+<text class="ts" x="28" y="416" font-size="12">з токеном A</text>
+<line class="la" x1="184" y1="382" x2="212" y2="382" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="216" y="340" width="168" height="84" rx="4"/>
+<text class="k ta" x="228" y="360" font-size="10">КРОК 7</text>
+<text class="tm" x="228" y="382" font-size="13" font-weight="600">Сервіс підписання</text>
+<text class="ts" x="228" y="400" font-size="12">MPC підписав усе сам,</text>
+<text class="ts" x="228" y="416" font-size="12">без заявки на виведення</text>
+<rect class="b-def" x="310" y="331" width="64" height="18" rx="3"/>
+<text class="k td" x="342.0" y="344" text-anchor="middle" font-size="9">РОЗРИВ</text>
+<line class="la" x1="384" y1="382" x2="412" y2="382" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="416" y="340" width="168" height="84" rx="4"/>
+<text class="k ta" x="428" y="360" font-size="10">КРОК 7 · 20:05</text>
+<text class="tm" x="428" y="382" font-size="13" font-weight="600">Гарячі гаманці</text>
+<text class="ts" x="428" y="400" font-size="12">9–10 блокчейнів</text>
+<text class="ta" x="428" y="416" font-size="12">$6,34 млрд</text>
+<line class="la" x1="584" y1="382" x2="612" y2="382" marker-end="url(#bn-ma)"/>
+<rect class="b-att" x="616" y="340" width="168" height="84" rx="4"/>
+<text class="k ta" x="628" y="360" font-size="10">КРОК 8 · 20:20:59</text>
+<text class="tm" x="628" y="382" font-size="13" font-weight="600">Дозвіл EIP-7702</text>
+<text class="ts" x="628" y="400" font-size="12">гаманець виконує</text>
+<text class="ts" x="628" y="416" font-size="12">контракт нападника</text>
+<rect class="b-def" x="16" y="446" width="64" height="18" rx="3"/>
+<text class="k td" x="48" y="459" text-anchor="middle" font-size="9">РОЗРИВ</text>
+<text class="ts" x="92" y="459" font-size="12">найдешевші точки, де ланцюг можна було розірвати (висновок статті)</text>
+</svg>

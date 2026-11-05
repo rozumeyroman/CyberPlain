@@ -1,0 +1,46 @@
+---
+// Ілюстрація аналітики: наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg, інлайниться під час збирання
+// (шрифти й кольори сайту через класи нижче, 0 KB JS). На вузькому екрані схема скролиться горизонтально.
+import { pageCtx } from '../lib/data';
+
+interface Props { owner: string; file: string; alt: string; caption: string }
+const { owner, file, alt, caption } = Astro.props;
+const { lang } = await pageCtx(Astro.url);
+const svgs = import.meta.glob('../assets/analytics/*.svg', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+const raw = svgs[`../assets/analytics/${file}.${lang}.svg`];
+if (!raw) throw new Error(`${owner}: немає ілюстрації src/assets/analytics/${file}.${lang}.svg`);
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+const svg = raw.replace('<svg ', `<svg role="img" aria-label="${esc(alt)}" `);
+---
+<figure class="ill">
+  <div class="ill-scroll" tabindex="0" aria-label={caption} set:html={svg} />
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .ill { margin: 8px 0 28px; max-width: 980px; }
+  .ill-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); padding: 16px; }
+  .ill-scroll:focus-visible { outline: 2px solid var(--defense); outline-offset: 2px; }
+  @media (max-width: 640px) { .ill-scroll { padding: 8px; } }
+  .ill-scroll :global(svg) { display: block; width: 100%; min-width: 720px; height: auto; font-family: var(--font); }
+  figcaption { margin-top: 10px; max-width: 760px; font-size: 13px; line-height: 1.55; color: var(--muted); }
+  .ill :global(.k) { font-family: var(--font-mono); letter-spacing: .08em; fill: var(--muted); }
+  .ill :global(.tm) { fill: var(--text); }
+  .ill :global(.ts) { fill: var(--text-2); }
+  .ill :global(.ta) { fill: var(--attack); }
+  .ill :global(.td) { fill: var(--defense); }
+  .ill :global(.b), .ill :global(.b-out) { fill: none; stroke: var(--line-strong); }
+  .ill :global(.b) { fill: var(--bg); }
+  .ill :global(.b-def) { fill: var(--bg); stroke: var(--defense); }
+  .ill :global(.b-att) { fill: var(--bg); stroke: var(--attack); }
+  .ill :global(.b-dash) { fill: none; stroke: var(--line-strong); stroke-dasharray: 5 4; }
+  .ill :global(.lm) { stroke: var(--text-2); stroke-width: 1.5; fill: none; }
+  .ill :global(.la) { stroke: var(--attack); stroke-width: 1.5; fill: none; }
+  .ill :global(.ld) { stroke: var(--defense); stroke-width: 1.5; fill: none; }
+  .ill :global(.lg) { stroke: var(--line-strong); stroke-width: 1; fill: none; }
+  .ill :global(.dash) { stroke-dasharray: 6 5; }
+  .ill :global(.fm) { fill: var(--text-2); }
+  .ill :global(.fa) { fill: var(--attack); }
+  .ill :global(.fd) { fill: var(--defense); }
+  .ill :global(.fg) { fill: var(--muted); }
+</style>

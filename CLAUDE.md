@@ -62,6 +62,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], remediation[], timeline[], solutions[{phase}]
                                                   #   illustration{file, alt, caption} → наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg
   analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, techniques[], solutions[]}], lessons[]
+                                                  #   illustration{file, alt, caption} — схема після 2-го абзацу «Простими словами»
 scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
                           #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
@@ -163,6 +164,9 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   довжини, елементи об'єктів — лише перекладені ключі). `original.*`, `sources[]`, `advisories[]` не перекладаємо. `loadData('en')`
   зупиняє збірку, якщо немає оверлею, оверлей без оригіналу, ключ відсутній в оригіналі, довжини масивів різні або після злиття
   лишилась кирилиця поза `original` і `sources`. Англійські власні назви лишаються латиницею.
+- **Ілюстрації** (`Illustration.astro`): в атаках і вразливостях — наша SVG-схема механіки (`src/assets/analytics/<file>.<uk|en>.svg`,
+  однакова геометрія обох мов, лише класи кольорів з компонента: `tm/ts/ta/td/k`, `b/b-att/b-def/b-dash`, `la/lm`). Мінімум 11px тексту,
+  ширина 800, на мобільному скролиться в рамці. Підпис — джерело схеми і що в ній редакційне чи умовне.
 - Тон — як на решті сайту; звіти вендорів переказуємо своїми словами з посиланням на видавця, цифри — короткі й зі словами, що це
   дані вендора, а не незалежні вимірювання.
 

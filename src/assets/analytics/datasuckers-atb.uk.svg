@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 448">
+<defs>
+<marker id="atb-mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fm" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="atb-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="k" x="16" y="30" font-size="11">ЗА ЗАЯВОЮ УГРУПОВАННЯ · ОДИН ВЕЧІР · ДЕСЯТЬ КРОКІВ</text>
+<rect class="b-att" x="16" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="26" y="68" font-size="11">01</text>
+<text class="k" x="148" y="68" text-anchor="end" font-size="10">TA0043</text>
+<text class="tm" x="26" y="92" font-size="13" font-weight="600">Секрети</text>
+<text class="tm" x="26" y="110" font-size="13">на видноті</text>
+<text class="ts" x="26" y="136" font-size="11">→ паролі БД і пошти</text>
+<line class="la" x1="158" y1="98" x2="168" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="171" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="181" y="68" font-size="11">02</text>
+<text class="k" x="303" y="68" text-anchor="end" font-size="10">TA0001</text>
+<text class="tm" x="181" y="92" font-size="13" font-weight="600">SQL-ін’єкція</text>
+<text class="tm" x="181" y="110" font-size="13">на сайті</text>
+<text class="ts" x="181" y="136" font-size="11">→ дані клієнтів</text>
+<line class="la" x1="313" y1="98" x2="323" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="326" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="336" y="68" font-size="11">03</text>
+<text class="k" x="458" y="68" text-anchor="end" font-size="10">TA0001</text>
+<text class="tm" x="336" y="92" font-size="13" font-weight="600">Реєстрація</text>
+<text class="tm" x="336" y="110" font-size="13">без перевірки</text>
+<text class="ts" x="336" y="136" font-size="11">→ акаунт на порталі</text>
+<line class="la" x1="468" y1="98" x2="478" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="481" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="491" y="68" font-size="11">04</text>
+<text class="k" x="613" y="68" text-anchor="end" font-size="10">TA0006</text>
+<text class="tm" x="491" y="92" font-size="13" font-weight="600">Читання файлів</text>
+<text class="tm" x="491" y="110" font-size="13">на сервері (LFI)</text>
+<text class="ts" x="491" y="136" font-size="11">→ паролі до 3 БД</text>
+<line class="la" x1="623" y1="98" x2="633" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="636" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="646" y="68" font-size="11">05</text>
+<text class="k" x="768" y="68" text-anchor="end" font-size="10">TA0003</text>
+<text class="tm" x="646" y="92" font-size="13" font-weight="600">Веб-шел,</text>
+<text class="tm" x="646" y="110" font-size="13">обхід WAF</text>
+<text class="ts" x="646" y="136" font-size="11">→ команди на сервері</text>
+<rect class="b-att" x="16" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="26" y="208" font-size="11">06</text>
+<text class="k" x="148" y="208" text-anchor="end" font-size="10">TA0004</text>
+<text class="tm" x="26" y="232" font-size="13" font-weight="600">Моніторинг</text>
+<text class="tm" x="26" y="250" font-size="13">з паролем пошти</text>
+<text class="ts" x="26" y="276" font-size="11">→ права адміна</text>
+<line class="la" x1="158" y1="238" x2="168" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="171" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="181" y="208" font-size="11">07</text>
+<text class="k" x="303" y="208" text-anchor="end" font-size="10">TA0008</text>
+<text class="tm" x="181" y="232" font-size="13" font-weight="600">SSH-ключ</text>
+<text class="tm" x="181" y="250" font-size="13">у бекапах</text>
+<text class="ts" x="181" y="276" font-size="11">→ усі сервери</text>
+<line class="la" x1="313" y1="238" x2="323" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="326" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="336" y="208" font-size="11">08</text>
+<text class="k" x="458" y="208" text-anchor="end" font-size="10">TA0009</text>
+<text class="tm" x="336" y="232" font-size="13" font-weight="600">Усі бази</text>
+<text class="tm" x="336" y="250" font-size="13">даних</text>
+<text class="ts" x="336" y="276" font-size="11">→ дані працівників</text>
+<line class="la" x1="468" y1="238" x2="478" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="481" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="491" y="208" font-size="11">09</text>
+<text class="k" x="613" y="208" text-anchor="end" font-size="10">TA0009</text>
+<text class="tm" x="491" y="232" font-size="13" font-weight="600">Корпоративна</text>
+<text class="tm" x="491" y="250" font-size="13">пошта</text>
+<text class="ts" x="491" y="276" font-size="11">→ тисячі листів</text>
+<line class="la" x1="623" y1="238" x2="633" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="636" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="646" y="208" font-size="11">10</text>
+<text class="k" x="768" y="208" text-anchor="end" font-size="10">TA0009</text>
+<text class="tm" x="646" y="232" font-size="13" font-weight="600">Вихідний код</text>
+<text class="tm" x="646" y="250" font-size="13">524 проєкти</text>
+<text class="ts" x="646" y="276" font-size="11">→ увесь код</text>
+<polyline class="la" points="707,148 707,168 87,168 87,184" marker-end="url(#atb-ma)"/>
+<text class="k" x="16" y="328" font-size="11">ТРИ ПРИЧИНИ, ЩО ПОВТОРЮЮТЬСЯ</text>
+<rect class="b" x="16" y="340" width="238" height="92" rx="4"/>
+<text class="tm" x="30" y="364" font-size="13" font-weight="600">Секрети у відкритому вигляді</text>
+<text class="ts" x="30" y="382" font-size="12">у коді, файлах і бекапах</text>
+<rect class="b-att" x="30" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="44" y="412" text-anchor="middle" font-size="12">1</text>
+<rect class="b-att" x="64" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="78" y="412" text-anchor="middle" font-size="12">4</text>
+<rect class="b-att" x="98" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="112" y="412" text-anchor="middle" font-size="12">7</text>
+<rect class="b" x="281" y="340" width="238" height="92" rx="4"/>
+<text class="tm" x="295" y="364" font-size="13" font-weight="600">Слабкі й повторні паролі</text>
+<text class="ts" x="295" y="382" font-size="12">повтор, типові, без MFA</text>
+<rect class="b-att" x="295" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="309" y="412" text-anchor="middle" font-size="12">6</text>
+<rect class="b-att" x="329" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="343" y="412" text-anchor="middle" font-size="12">8</text>
+<rect class="b-att" x="363" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="377" y="412" text-anchor="middle" font-size="12">9</text>
+<rect class="b-att" x="397" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="411" y="412" text-anchor="middle" font-size="12">10</text>
+<rect class="b" x="546" y="340" width="238" height="92" rx="4"/>
+<text class="tm" x="560" y="364" font-size="13" font-weight="600">Діри у вебзастосунках</text>
+<text class="ts" x="560" y="382" font-size="12">ін’єкція, реєстрація, веб-шел</text>
+<rect class="b-att" x="560" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="574" y="412" text-anchor="middle" font-size="12">2</text>
+<rect class="b-att" x="594" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="608" y="412" text-anchor="middle" font-size="12">3</text>
+<rect class="b-att" x="628" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="642" y="412" text-anchor="middle" font-size="12">5</text>
+</svg>

@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 448">
+<defs>
+<marker id="atb-mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fm" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="atb-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="k" x="16" y="30" font-size="11">AS CLAIMED BY THE GROUP · ONE EVENING · TEN STEPS</text>
+<rect class="b-att" x="16" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="26" y="68" font-size="11">01</text>
+<text class="k" x="148" y="68" text-anchor="end" font-size="10">TA0043</text>
+<text class="tm" x="26" y="92" font-size="13" font-weight="600">Secrets in</text>
+<text class="tm" x="26" y="110" font-size="13">plain sight</text>
+<text class="ts" x="26" y="136" font-size="11">→ DB, mail passwords</text>
+<line class="la" x1="158" y1="98" x2="168" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="171" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="181" y="68" font-size="11">02</text>
+<text class="k" x="303" y="68" text-anchor="end" font-size="10">TA0001</text>
+<text class="tm" x="181" y="92" font-size="13" font-weight="600">SQL injection</text>
+<text class="tm" x="181" y="110" font-size="13">on the website</text>
+<text class="ts" x="181" y="136" font-size="11">→ customer data</text>
+<line class="la" x1="313" y1="98" x2="323" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="326" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="336" y="68" font-size="11">03</text>
+<text class="k" x="458" y="68" text-anchor="end" font-size="10">TA0001</text>
+<text class="tm" x="336" y="92" font-size="13" font-weight="600">Sign-up with</text>
+<text class="tm" x="336" y="110" font-size="13">no checks</text>
+<text class="ts" x="336" y="136" font-size="11">→ portal account</text>
+<line class="la" x1="468" y1="98" x2="478" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="481" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="491" y="68" font-size="11">04</text>
+<text class="k" x="613" y="68" text-anchor="end" font-size="10">TA0006</text>
+<text class="tm" x="491" y="92" font-size="13" font-weight="600">Reading files</text>
+<text class="tm" x="491" y="110" font-size="13">on the server (LFI)</text>
+<text class="ts" x="491" y="136" font-size="11">→ passwords to 3 DBs</text>
+<line class="la" x1="623" y1="98" x2="633" y2="98" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="636" y="48" width="142" height="100" rx="4"/>
+<text class="k ta" x="646" y="68" font-size="11">05</text>
+<text class="k" x="768" y="68" text-anchor="end" font-size="10">TA0003</text>
+<text class="tm" x="646" y="92" font-size="13" font-weight="600">Web shell,</text>
+<text class="tm" x="646" y="110" font-size="13">WAF bypass</text>
+<text class="ts" x="646" y="136" font-size="11">→ commands on server</text>
+<rect class="b-att" x="16" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="26" y="208" font-size="11">06</text>
+<text class="k" x="148" y="208" text-anchor="end" font-size="10">TA0004</text>
+<text class="tm" x="26" y="232" font-size="13" font-weight="600">Monitoring with</text>
+<text class="tm" x="26" y="250" font-size="13">the mail password</text>
+<text class="ts" x="26" y="276" font-size="11">→ admin rights</text>
+<line class="la" x1="158" y1="238" x2="168" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="171" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="181" y="208" font-size="11">07</text>
+<text class="k" x="303" y="208" text-anchor="end" font-size="10">TA0008</text>
+<text class="tm" x="181" y="232" font-size="13" font-weight="600">SSH key</text>
+<text class="tm" x="181" y="250" font-size="13">in backups</text>
+<text class="ts" x="181" y="276" font-size="11">→ every server</text>
+<line class="la" x1="313" y1="238" x2="323" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="326" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="336" y="208" font-size="11">08</text>
+<text class="k" x="458" y="208" text-anchor="end" font-size="10">TA0009</text>
+<text class="tm" x="336" y="232" font-size="13" font-weight="600">All the</text>
+<text class="tm" x="336" y="250" font-size="13">databases</text>
+<text class="ts" x="336" y="276" font-size="11">→ employee data</text>
+<line class="la" x1="468" y1="238" x2="478" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="481" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="491" y="208" font-size="11">09</text>
+<text class="k" x="613" y="208" text-anchor="end" font-size="10">TA0009</text>
+<text class="tm" x="491" y="232" font-size="13" font-weight="600">Corporate</text>
+<text class="tm" x="491" y="250" font-size="13">email</text>
+<text class="ts" x="491" y="276" font-size="11">→ thousands of emails</text>
+<line class="la" x1="623" y1="238" x2="633" y2="238" marker-end="url(#atb-ma)"/>
+<rect class="b-att" x="636" y="188" width="142" height="100" rx="4"/>
+<text class="k ta" x="646" y="208" font-size="11">10</text>
+<text class="k" x="768" y="208" text-anchor="end" font-size="10">TA0009</text>
+<text class="tm" x="646" y="232" font-size="13" font-weight="600">Source code</text>
+<text class="tm" x="646" y="250" font-size="13">524 projects</text>
+<text class="ts" x="646" y="276" font-size="11">→ all the code</text>
+<polyline class="la" points="707,148 707,168 87,168 87,184" marker-end="url(#atb-ma)"/>
+<text class="k" x="16" y="328" font-size="11">THREE CAUSES THAT KEEP COMING BACK</text>
+<rect class="b" x="16" y="340" width="238" height="92" rx="4"/>
+<text class="tm" x="30" y="364" font-size="13" font-weight="600">Secrets stored in the clear</text>
+<text class="ts" x="30" y="382" font-size="12">in code, files and backups</text>
+<rect class="b-att" x="30" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="44" y="412" text-anchor="middle" font-size="12">1</text>
+<rect class="b-att" x="64" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="78" y="412" text-anchor="middle" font-size="12">4</text>
+<rect class="b-att" x="98" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="112" y="412" text-anchor="middle" font-size="12">7</text>
+<rect class="b" x="281" y="340" width="238" height="92" rx="4"/>
+<text class="tm" x="295" y="364" font-size="13" font-weight="600">Weak and reused passwords</text>
+<text class="ts" x="295" y="382" font-size="12">reused, default, no MFA</text>
+<rect class="b-att" x="295" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="309" y="412" text-anchor="middle" font-size="12">6</text>
+<rect class="b-att" x="329" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="343" y="412" text-anchor="middle" font-size="12">8</text>
+<rect class="b-att" x="363" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="377" y="412" text-anchor="middle" font-size="12">9</text>
+<rect class="b-att" x="397" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="411" y="412" text-anchor="middle" font-size="12">10</text>
+<rect class="b" x="546" y="340" width="238" height="92" rx="4"/>
+<text class="tm" x="560" y="364" font-size="13" font-weight="600">Holes in web applications</text>
+<text class="ts" x="560" y="382" font-size="12">injection, sign-up, web shell</text>
+<rect class="b-att" x="560" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="574" y="412" text-anchor="middle" font-size="12">2</text>
+<rect class="b-att" x="594" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="608" y="412" text-anchor="middle" font-size="12">3</text>
+<rect class="b-att" x="628" y="394" width="28" height="26" rx="3"/>
+<text class="k ta" x="642" y="412" text-anchor="middle" font-size="12">5</text>
+</svg>

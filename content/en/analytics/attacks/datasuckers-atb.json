@@ -2,6 +2,10 @@
   "title": "DATASUCKERS vs the ATB retail chain: a 10-step attack",
   "dateNote": "≈5 October 2026, per the group's claim",
   "summary": "According to the DATASUCKERS group, the ATB retail chain was not broken through a single hole but through a chain of ten small steps in one evening. Each looked minor; together they gave access to databases, mail and source code. ATB denies that customer data leaked, so the scale is disputed; below you can see which class of solution could stop such an attack at each step.",
+  "illustration": {
+    "alt": "Diagram: the ten attack steps as the group describes them, from secrets in the mobile app code to theft of the source code; each step gave the access needed for the next. Below are three recurring causes: secrets stored in the clear (steps 1, 4, 7), weak and reused passwords (6, 8, 9, 10) and holes in web applications (2, 3, 5).",
+    "caption": "Ten small steps add up to a full breach: what each step gave and which causes keep coming back. Our diagram, based on the group's claim, which ATB disputes; the grouping of causes is editorial."
+  },
   "body": [
     "According to the DATASUCKERS group, the ATB retail chain was not broken through one big hole but through a chain of ten small steps, completed in a single evening. Each looked minor on its own, but together they gave the attackers everything: databases, mail and source code.",
     "The chain, in the group's version, went like this. First, secrets turned up in plain sight, then came an SQL injection, open registration on the supplier portal and reading files on the server. After that, a web shell with a WAF bypass, privilege escalation through the monitoring system (the password was reused from mail), a master SSH key inside backups, every database (the default password admin / changeme), corporate mail and, finally, source code: 524 projects.",

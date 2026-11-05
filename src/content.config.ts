@@ -120,6 +120,9 @@ const reports = defineCollection({
   }).strict(),
 });
 
+// Ілюстрація: наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg (інлайниться під час збирання, 0 KB JS).
+const illustration = z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional();
+
 const vulnerabilities = defineCollection({
   loader: fromDir('./content/analytics/vulnerabilities'),
   schema: z.object({
@@ -129,8 +132,7 @@ const vulnerabilities = defineCollection({
     date: isoDate,
     exploitedSince: isoDate.optional(),
     summary: z.string(),
-    // Ілюстрація: наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg (інлайниться під час збирання, 0 KB JS).
-    illustration: z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional(),
+    illustration,
     description: z.array(z.string()),
     affected: z.array(z.object({ product: z.string(), versions: z.string(), fixed: z.string().optional(), note: z.string().optional() }).strict()).min(1),
     impact: z.array(z.string()),
@@ -155,6 +157,7 @@ const attacks = defineCollection({
     actor: z.object({ name: z.string(), profile: z.array(z.string()) }).strict(),
     victim: z.object({ name: z.string(), sector: z.string(), country: z.string() }).strict(),
     summary: z.string(),
+    illustration, // показується в «Простими словами» після другого абзацу
     body: z.array(z.string()),
     claims: z.array(figure).default([]),
     claimsNote: z.string().optional(),
@@ -201,7 +204,7 @@ const enVulnerabilities = overlay('analytics/vulnerabilities', {
   impact: strs, remediation: strs, timeline: arr({ text: str }), caveats: strs, solutions: arr({ why: str }), gaps: strs,
 });
 const enAttacks = overlay('analytics/attacks', {
-  title: str, dateNote: str, summary: str, body: strs, claims: arr({ value: str, label: str }), claimsNote: str,
+  title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: strs, claims: arr({ value: str, label: str }), claimsNote: str,
   actor: part({ name: str, profile: strs }), victim: part({ name: str, sector: str, country: str }),
   steps: arr({ title: str, what: str, tools: strs, solutions: arr({ why: str }), gaps: strs }),
   lessons: strs, caveats: strs,
