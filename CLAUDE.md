@@ -60,6 +60,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
   analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, body[], figures[], findings[{techniques[], solutions[]}], vulnerabilities[]
   analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], remediation[], timeline[], solutions[{phase}]
+                                                  #   illustration{file, alt, caption} → наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg
   analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, techniques[], solutions[]}], lessons[]
 scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
                           #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться

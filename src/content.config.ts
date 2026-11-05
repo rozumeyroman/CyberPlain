@@ -129,6 +129,8 @@ const vulnerabilities = defineCollection({
     date: isoDate,
     exploitedSince: isoDate.optional(),
     summary: z.string(),
+    // Ілюстрація: наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg (інлайниться під час збирання, 0 KB JS).
+    illustration: z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional(),
     description: z.array(z.string()),
     affected: z.array(z.object({ product: z.string(), versions: z.string(), fixed: z.string().optional(), note: z.string().optional() }).strict()).min(1),
     impact: z.array(z.string()),
@@ -195,7 +197,7 @@ const enReports = overlay('analytics/reports', {
   findings: arr({ title: str, text: str, solutions: arr({ why: str }) }), gaps: strs,
 });
 const enVulnerabilities = overlay('analytics/vulnerabilities', {
-  title: str, summary: str, description: strs, affected: arr({ product: str, versions: str, fixed: str, note: str }),
+  title: str, summary: str, illustration: part({ alt: str, caption: str }), description: strs, affected: arr({ product: str, versions: str, fixed: str, note: str }),
   impact: strs, remediation: strs, timeline: arr({ text: str }), caveats: strs, solutions: arr({ why: str }), gaps: strs,
 });
 const enAttacks = overlay('analytics/attacks', {

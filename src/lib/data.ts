@@ -104,6 +104,7 @@ export interface AReport {
 export interface AVuln {
   id: string; title: string; cves: string[]; cvss?: { version: string; score: number }; date: string; exploitedSince?: string;
   summary: string; description: string[];
+  illustration?: { file: string; alt: string; caption: string };
   affected: { product: string; versions: string; fixed?: string; note?: string }[];
   impact: string[]; remediation: string[]; advisories: { issuer: string; label: string; url?: string }[];
   timeline: { date: string; text: string }[]; caveats: string[]; techniques: ATech[]; solutions: ASolution[];
