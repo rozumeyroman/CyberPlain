@@ -118,6 +118,9 @@
         },
         {
           "why": "Safely replays the chain “archive → SFX → remote access program installation” and shows at which step protection works and at which it does not."
+        },
+        {
+          "why": "Only an EPM with application control helps here (like Idira Endpoint Privilege Manager): an unknown EXE from the downloads or temporary folder does not start or runs in a restricted mode without access to the system. An EPM without application control will not stop this step."
         }
       ],
       "gaps": [

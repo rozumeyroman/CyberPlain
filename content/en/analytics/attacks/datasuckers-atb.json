@@ -199,6 +199,9 @@
         },
         {
           "why": "Compares account behaviour with the norm and notices that an admin key is suddenly used at an unusual time or from unusual places."
+        },
+        {
+          "why": "Instead of one permanent SSH key — short-lived certificates and accounts created only for the duration of a task (as in Idira Secure Infrastructure Access). A key from a backup would have opened nothing."
         }
       ],
       "gaps": []

@@ -147,6 +147,9 @@
         },
         {
           "why": "On machines A and C it records that the AI agent process suddenly launches a shell and reads files with tokens. This is visible in the process tree, even if the agent itself is a legitimate program."
+        },
+        {
+          "why": "An access broker for AI agents (like the Agent Identity Broker in Idira Secure AI Agents) gives an agent rights only for a specific task and records on whose behalf it acts; an agent that goes beyond its task can be cut off instantly. Actions on other people’s machines without such permission would not have gone through."
         }
       ],
       "gaps": [
@@ -194,6 +197,9 @@
         },
         {
           "why": "Works if deploys go through a sign-in to the user directory: then a privileged action from “someone else’s” machine requires confirmation by the account owner. A static token bypasses MFA, which is exactly why it should be replaced with an MFA sign-in."
+        },
+        {
+          "why": "Rights to deploy into the wallet cluster are granted only for an approved task and taken away automatically (zero standing privileges, as in Idira Secure Infrastructure Access for Kubernetes). On the evening of 29 October engineer A’s token simply would not have had those rights."
         }
       ],
       "gaps": [

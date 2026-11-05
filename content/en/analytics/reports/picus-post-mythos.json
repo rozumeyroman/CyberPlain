@@ -216,6 +216,9 @@
         },
         {
           "why": "Checks AI-written code for vulnerabilities and embedded secrets before it goes into production."
+        },
+        {
+          "why": "Ties an agent’s permissions to the task: access is granted for the duration of a specific action, on behalf of a specific user, and taken away automatically, and an agent behaving abnormally can be cut off instantly (as in Idira Secure AI Agents)."
         }
       ]
     },
