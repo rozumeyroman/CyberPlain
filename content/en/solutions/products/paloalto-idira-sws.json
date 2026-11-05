@@ -1,0 +1,3 @@
+{
+  "simple": "Protection for what happens after sign-in to web applications: a browser extension records user actions in sensitive applications step by step (screenshots on clicks and key presses, with search and AI summaries) and prevents copying or downloading sensitive data without permission. Only the protected application is recorded, not other tabs; recordings are encrypted. Helps investigate access abuse and keeps sessions from being left unattended. Works together with Idira Identity; licensed per user, with searchable recording storage as a separate add-on."
+}

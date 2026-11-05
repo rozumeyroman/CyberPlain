@@ -17,6 +17,7 @@
     "epp",
     "backup",
     "siem",
-    "cyber-recovery"
+    "cyber-recovery",
+    "epm"
   ]
 }

@@ -1,0 +1,3 @@
+{
+  "simple": "Certificate lifecycle management deployed on your own infrastructure (formerly Venafi Trust Protection Platform, built on the Trust Protection Foundation); not part of Idira. Discovers TLS certificates on the network, keeps a single inventory, warns about expiry and automatically issues and renews certificates through integrations with certificate authorities, servers and network devices. The same line includes separate products SSH Manager (SSH keys) and CodeSign Manager (code signing certificates). Standard / Enterprise / Max editions — the classes are the same."
+}

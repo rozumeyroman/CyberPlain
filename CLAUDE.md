@@ -315,7 +315,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 ## Портфель рішень
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
-модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM і NGFW, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
+модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM, NGFW, Idira (identity security) і Next-Gen Trust Security, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
 захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck (рішення автора, жовтень 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
@@ -376,6 +376,18 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | CrowdStrike Falcon Pro | те саме (+ мережевий екран комп’ютера, у тому ж класі) |
 | CrowdStrike Falcon Enterprise | + EDR |
 | Palo Alto PA-Series, VM-Series (+ Precision AI NS bundle і Prisma Access Agent) | NGFW/IPS, пісочниця, захист браузера, вебфільтрація, VPN |
+| Idira Privileged Access Manager SaaS / Self-Hosted | PAM, ITDR |
+| Idira Secure Infrastructure Access | PAM, JIT |
+| Idira Secure Cloud Access | JIT |
+| Idira Vendor PAM | PAM, JIT, доступ без VPN, MFA |
+| Idira Endpoint Privilege Manager | EPM |
+| Idira Identity | MFA |
+| Idira Secure Web Sessions | DLP |
+| Idira Workforce Password Management | менеджер паролів |
+| Idira Identity Governance | IGA |
+| Idira Secrets Manager, SaaS / Self-Hosted, Secrets Hub, Credential Provider, Central Credential Provider | керування секретами |
+| Idira Secure AI Agents | NHI, JIT |
+| Palo Alto Networks Next-Gen Trust Security, Certificate Manager, Self-Hosted | CLM |
 | FortiGate ATP | NGFW/IPS, пісочниця, VPN |
 | FortiGate UTP | + вебфільтрація |
 | FortiGate Enterprise Protection | + DLP (до UTP) |
@@ -567,6 +579,30 @@ PA-Series (апаратна лінійка PA-500 – PA-7500, PA-50R; моде�
 Security, Advanced SD-WAN, Advanced IP Defense, Device Security) і Prisma Access Agent (за документацією замінює ліцензію шлюзу GlobalProtect).
 Класи: ATP — `ngfw`; WildFire — `sandbox`; URL Filtering — `web-filtering` + `browser-protection` (інлайн-фішинг); DNS Security, IP Defense — `web-filtering`; Prisma
 Access Agent — `vpn`. Device Security (виявлення IoT) — не CAASM, SD-WAN — лише в тексті. CN-Series і Cloud NGFW не додано.
+
+Palo Alto Networks Idira (ex-CyberArk; платформа identity security, GA 12.05.2026; сторінки https://www.paloaltonetworks.com/idira/…,
+назви — за офіційним crosswalk https://github.com/cyberark/Idira-Partner-Integration-Docs/blob/main/docs/naming-crosswalk.md; досьє автора
+`idira_products_v2.md`, листопад 2026). Таблиць пакетів на сайті немає, тому продукт = продукт із crosswalk чи сторінки (редакції за SKU —
+лише в тексті). Назви: PAM — завжди з типом розгортання без коми (*Idira Privileged Access Manager SaaS*), Secrets Manager — з комою
+(*Idira Secrets Manager, SaaS*). SIA — ex-Dynamic Privileged Access (не Alero); Alero → Remote Access → **Idira Vendor PAM**. 18 продуктів:
+- PAM SaaS (ex-Privilege Cloud) і Self-Hosted (ex-PAS): сховище, ротація, ізоляція й запис сесій — `pam`; вбудована аналітика ITDR / PTA (Golden Ticket,
+  DCSync, PtH, vault sweeping) — `itdr`. Adaptive MFA і VPN-less з опису SKU Standard User — лише в тексті (їх дають Idira Identity і Vendor PAM).
+- SIA (add-on до PAM SaaS): ZSP до серверів, БД, Kubernetes — `jit`, сесії з записом і vaulted-доступ — `pam`; «без VPN» на сторінці лише для
+  хмари/K8s — `vpnless` не ставимо. SCA: JIT-ролі в AWS/Azure/GCP — `jit`; аналізу надмірних прав немає — не `ciem`.
+- Vendor PAM (лише до PAM SaaS/Self-Hosted): `pam`, ZSP для зовнішніх — `jit`, без VPN — `vpnless`, біометрична MFA — `mfa`; ITDR — лише в тексті.
+- EPM: `epm`; контроль застосунків, захист від вимагачів і крадіжки паролів (QuickStart), Endpoint Sign-in (add-on) — лише в тексті (контроль
+  застосунків — не `epp`). Identity (ex-Idaptive): SSO, адаптивна й безпарольна MFA — `mfa`; Lifecycle, App Gateway, Identity Flows — у тексті
+  (Identity Flows окремим продуктом не додано). Secure Web Sessions: запис дій у вебзастосунках + блокування копіювання й завантаження — `dlp`
+  (як FortiMail Browser Security). WPM — `password-manager`.
+- Identity Governance (ex-Zilla): клас `iga` заведено під нього (реєстр прав, перегляди доступів, JML, SoD, покинуті облікові записи);
+  `defenses[]` — T1078, T1098; D3FEND — D3-AM, D3-UAP, D3-UGPH, D3-CR.
+- ITDR окремим продуктом не додано («built into the platform», окремої SKU немає). Machine: Secrets Manager SaaS / Self-Hosted, Secrets Hub,
+  Credential Provider (агент, ex-AIM), Central Credential Provider (REST, ex-AAM) — `secrets`; Idira Conjur (open source, безкоштовний) — лише в тексті.
+- Secure AI Agents: реєстр агентів і MCP-серверів — `nhi` (AI-агенти разом із NHI, як у Silverfort), Agent Identity Broker і Kill Switch — `jit`.
+- Next-Gen Trust Security (ex-CyberArk Certificate Manager SaaS / Venafi) і Certificate Manager, Self-Hosted (ex-Venafi TPP) — поза брендом Idira,
+  вендор той самий — `clm`. SSH Manager і CodeSign Manager не додано.
+- Під Idira уточнено `defenses[]` класів (загальні для всього класу): `epm` + T1136 (створення локального облікового запису) і T1490 (видалення тіньових
+  копій) — обидва вимагають прав адміністратора; `pam` + T1110 (унікальні паролі, що змінюються, марнять підбір).
 
 Fortinet (продукти за ордеринг-гайдами https://www.fortinet.com/content/dam/fortinet/assets/data-sheets/og-<продукт>.pdf, жовтень 2026):
 - **FortiGate** (таблиця https://www.fortinet.com/support/support-services/fortiguard-security-subscriptions/fortigate-security-bundles) — 3 продукти

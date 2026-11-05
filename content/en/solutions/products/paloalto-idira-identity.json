@@ -1,0 +1,3 @@
+{
+  "simple": "Workforce sign-in and access management (formerly CyberArk Identity, Idaptive): single sign-on (SSO) to cloud, SaaS and legacy applications; adaptive MFA that takes the user, device and context into account; phishing-resistant passwordless sign-in — biometrics, passkeys (FIDO2) and device-bound credentials; MFA at computer sign-in. A user directory and automatic creation and disabling of accounts in applications when a person joins, changes jobs or leaves; a gateway for on-premises web applications; a builder for automation scenarios (Identity Flows). A cloud service; licensed per user, as Standard / Enterprise packs or individual modules (SSO, MFA, lifecycle management)."
+}

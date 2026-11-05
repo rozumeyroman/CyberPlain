@@ -1,0 +1,10 @@
+{
+  "name": "Idira Secure Infrastructure Access",
+  "vendor": "Palo Alto Networks",
+  "url": "https://www.paloaltonetworks.com/resources/whitepapers/securing-access-to-modern-infrastructures-with-idira",
+  "classes": [
+    "pam",
+    "jit"
+  ],
+  "simple": "Хмарне безагентне рішення для доступу адміністраторів до серверів Windows і Linux, баз даних і кластерів Kubernetes у локальних і хмарних середовищах (колишній CyberArk Dynamic Privileged Access). Працює за моделлю «нуль постійних привілеїв»: обліковий запис, права в групі чи короткоживучий сертифікат SSH створюються лише на час завдання й зникають після нього, тож красти заздалегідь нічого. Можна підключатися й зі збереженими у сховищі паролями. Адміністратор працює звичними клієнтами RDP, SSH і баз даних; сесії ізолюються, записуються й потрапляють у спільний журнал аудиту. Продається як доповнення (за користувача) до Idira Privileged Access Manager SaaS."
+}

@@ -21,7 +21,8 @@
     "itdr",
     "dark-web",
     "password-manager",
-    "pentest"
+    "pentest",
+    "pam"
   ],
   "subs": {
     "001": "Вгадування пароля",

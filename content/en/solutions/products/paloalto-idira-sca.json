@@ -1,0 +1,3 @@
+{
+  "simple": "Engineer access to AWS, Azure and Google Cloud consoles, command line and APIs without standing privileges or static access keys. The required role or permission is granted only for the duration of a task — on request and approval — and taken away automatically afterwards; every grant and action is audited. So a stolen cloud account or key opens nothing most of the time, and permissions do not pile up over the years. Engineers keep using the native consoles and CLI; an MCP server is available for AI tools. Part of the Idira platform; check licensing with your distributor."
+}
