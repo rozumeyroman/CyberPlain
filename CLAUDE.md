@@ -65,6 +65,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
                                                   #   illustration{file, alt, caption} → наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg
   analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, what, result, techniques[], solutions[]}], lessons[]
                                                   #   illustration{file, alt, caption} — схема після 2-го абзацу «Простими словами»
+scripts/og-analytics.mjs  # прев'ю статті аналітики для соцмереж → public/og/analytics/<id>.<uk|en>.png
 scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
                           #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
@@ -194,6 +195,9 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   послідовність чи цифри для порівняння, інакше образна ілюстрація головної думки (`src/assets/analytics/<file>.<uk|en>.svg`,
   однакова геометрія обох мов, лише класи кольорів з компонента: `tm/ts/ta/td/k`, `b/b-att/b-def/b-dash`, `la/lm`). Мінімум 11px тексту,
   ширина 800, на мобільному скролиться в рамці. Підпис — джерело схеми і що в ній редакційне чи умовне.
+- **Прев'ю для соцмереж** (`og:image`): `public/og/analytics/<id>.<uk|en>.png` 1200×630 у стилі `public/og.png` (логотип, «Аналітика · вид»,
+  заголовок, джерело) — `npm run og:analytics -- <id>` (Playwright). `src/lib/og.ts` підставляє файл, якщо він є, інакше — загальне `site.ogImage`.
+  Змінився заголовок статті — перегенеруй.
 - **Поділитися** (`ShareLinks.astro`, у кінці кожного звіту, вразливості й атаки): Telegram, LinkedIn, Facebook — звичайні посилання
   на сторінки поширення мереж з канонічною адресою (0 KB JS, без віджетів і cookies, нова вкладка). Іконки — власні монохромні гліфи,
   кольори сайту, а не фірмові. Прев'ю бере `og:*` сторінки; боти прев'ю мають бути у винятках WAF (див. «Захист від ботів»).

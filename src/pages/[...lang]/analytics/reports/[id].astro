@@ -9,6 +9,7 @@ import SolutionLinks from '../../../../components/SolutionLinks.astro';
 import SourceList from '../../../../components/SourceList.astro';
 import TechRefs from '../../../../components/TechRefs.astro';
 import { site } from '../../../../../site.config';
+import { ogImage } from '../../../../lib/og';
 import { loadData, pageCtx, type AReport } from '../../../../lib/data';
 import { fmtDate, langs, routeLang } from '../../../../lib/i18n';
 
@@ -35,7 +36,7 @@ r.findings.forEach((f, i) => f.solutions.forEach((s) => {
 }));
 const matrix = [...byClass.values()].sort((a, b) => b.n.length - a.n.length || a.cls.data.title.localeCompare(b.cls.data.title));
 ---
-<Base title={r.title} description={r.summary}>
+<Base title={r.title} description={r.summary} image={ogImage(r.id, lang)}>
   <section class="wrap page">
     <nav aria-label={t.crumbs} class="mono crumbs">
       <a href={url.analytics}>{x.title}</a><span aria-hidden="true">/</span>

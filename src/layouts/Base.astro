@@ -9,13 +9,14 @@ import '../styles/base.css';
 const lang = langOf(Astro.url);
 const t = ui[lang];
 const url = urlFor(lang);
-const { title, description = site.description[lang] } = Astro.props;
+// image — власне прев'ю сторінки (1200×630, шлях від кореня сайту), інакше загальне site.ogImage.
+const { title, description = site.description[lang], image } = Astro.props;
 const fullTitle = title ? `${title} — ${site.name}` : `${site.name} — ${site.tagline[lang]}`;
 const colorVars = `:root{${Object.entries(site.colors).map(([k, v]) => `--${k}:${v}`).join(';')}}`;
 
 const path = Astro.url.pathname;
 const canonical = new URL(path, Astro.site).href;
-const ogImage = new URL(site.ogImage, Astro.site).href;
+const ogImage = new URL(image ?? site.ogImage, Astro.site).href;
 const isActive = (href: string) => (href === '/' ? path === url.page('/') : path.startsWith(url.page(href)));
 // Вкладка-меню активна, якщо активний будь-який її пункт.
 const tabActive = (tab: (typeof site.tabs)[number]) => (tab.children ? isActive(`/${tab.id}/`) || tab.children.some((c) => isActive(c.href)) : isActive(tab.href!));
