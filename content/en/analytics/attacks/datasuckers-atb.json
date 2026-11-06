@@ -48,6 +48,7 @@
     {
       "title": "Secrets lying in plain sight",
       "what": "According to the group's claim, the attacker unpacked the mobile app and found passwords written directly into the code. A separate service page with no password returned configuration that included database and mail passwords. It is like leaving spare keys under the doormat and hanging a sign on the door.",
+      "result": "Per the claim, passwords to databases and mail before any break-in at all, plus knowledge of where to use them. Each of those passwords then opens a separate door.",
       "tools": [
         "unpacking the mobile app",
         "service page with no password"
@@ -74,6 +75,7 @@
     {
       "title": "SQL injection on the main site",
       "what": "According to the group's claim, through an ordinary filter field on the site the attacker made the database return other people's data. The claim concerns about 8 million customers with phones and emails (the claim also gives a more precise figure, 7.9 million). An analogy: one more request was slipped into the order window, and the cashier carried it out.",
+      "result": "Per the claim, a database of about 8 million customers with phone numbers and email, already enough for extortion or sale even if it had stopped there.",
       "tools": [
         "SQL injection in a filter field"
       ],
@@ -99,6 +101,7 @@
     {
       "title": "Self-registration on the supplier portal",
       "what": "According to the group's claim, the supplier portal let anyone register without checks or moderation. The attacker created a legitimate account and got inside. It is like an office door that opens for anyone who calls themselves a supplier.",
+      "result": "A genuine supplier account: the attacker is already inside the portal and sees functions closed to outsiders.",
       "tools": [
         "open registration on the portal"
       ],
@@ -120,6 +123,7 @@
     {
       "title": "Reading other people's files on the server",
       "what": "According to the group's claim, through the portal the attacker made the server show internal system files (local file inclusion, LFI). In one of them, passwords for three production databases lay in clear text. It is like asking a librarian to look in someone else's cabinet and read it aloud.",
+      "result": "Per the claim, plain-text passwords to three production databases: keys to the data without any further break-in.",
       "tools": [
         "file reading through the portal (LFI)"
       ],
@@ -142,6 +146,7 @@
     {
       "title": "Web shell and WAF bypass",
       "what": "According to the group's claim, the attacker uploaded a disguised file that let him run commands on the server (a web shell). He got past the WAF by hiding the payload behind a large block of junk. Inspecting the whole request body removes this trick. An analogy: a guard checks only the first page of a thick folder.",
+      "result": "The ability to run commands on the portal server, bypassing the WAF: a lasting foothold inside the network.",
       "tools": [
         "disguised web shell",
         "junk block to bypass the WAF"
@@ -162,6 +167,7 @@
     {
       "title": "Privilege escalation through the monitoring system",
       "what": "According to the group's claim, the attacker signed in to the monitoring system with a stolen password, the same one used for mail. The system ran with top privileges, so he became an administrator. An analogy: the key to the break room turned out to be a master key to the whole building.",
+      "result": "Administrator rights through the monitoring system, which runs with the highest privileges: everything that system can see is now within reach.",
       "tools": [
         "password reused from mail"
       ],
@@ -184,6 +190,7 @@
     {
       "title": "\"Keys to everything\" from backups",
       "what": "According to the group's claim, through internal channels the attacker reached the backups. Inside lay the administrator's master SSH key, one key that opens all the network's servers at once. It is like keeping the master key in a safe with its own key lying next to it.",
+      "result": "The administrator's master SSH key, one key to every server on the network. From here the attacker moves around the network as an administrator.",
       "tools": [
         "master SSH key from a backup"
       ],
@@ -209,6 +216,7 @@
     {
       "title": "Access to all databases",
       "what": "According to the group's claim, with stolen passwords the attacker connected to all the databases: customers and employees, including passport data. In one place the password was a default: admin / changeme. It is like leaving the factory code on a safe.",
+      "result": "Per the claim, customer and employee data, including passport details: the most valuable material for extortion and sale.",
       "tools": [
         "stolen passwords",
         "default password admin / changeme"
@@ -232,6 +240,7 @@
     {
       "title": "Access to corporate mail",
       "what": "According to the group's claim, another stolen password opened corporate mail. The attacker exported thousands of emails, including live password-reset links for other systems. An analogy: someone else's mailbox holds spare keys to the neighbouring doors.",
+      "result": "Thousands of emails and valid password reset links for other systems, which means access to even more accounts.",
       "tools": [
         "stolen mail password",
         "legacy mail protocols without MFA"
@@ -255,6 +264,7 @@
     {
       "title": "Theft of all source code",
       "what": "According to the group's claim, with the master key the attacker downloaded all of the company's source code, 524 projects. He also found an analytics system with a default password. It is like carrying the whole archive out of the office because the key fitted every cabinet.",
+      "result": "Per the claim, the company's entire source code, 524 projects, and code may hold new passwords and keys to systems not yet touched.",
       "tools": [
         "master SSH key",
         "analytics system with a default password"

@@ -50,6 +50,7 @@
     {
       "title": "The first strike showed whom to hit next",
       "what": "In June a DevOps engineer on the wallet team searched for an AI tool through a search engine and installed a counterfeit Homebrew package. Binance detected the infection and replaced the laptop and passwords. But the attacker already knew the make-up of the wallet team: who works with whom and whom to target next. For that he created fake personas of a “project director”, “HR” and a “CEO” with “live” social media accounts. It is like a burglar who was thrown out of the office but managed to photograph the floor plan.",
+      "result": "The make-up of the wallet team, who works with whom and whom to target next, plus fake personas built around those people. The first laptop was replaced, but the attacker kept the target map.",
       "tools": [
         "counterfeit Homebrew package from a search engine",
         "fake personas on social media"
@@ -76,6 +77,7 @@
     {
       "title": "A fake job interview and a “test assignment”",
       "what": "In September another engineer was contacted by a “project director” on a job platform. Next came a video interview with “HR”, who showed a “personal” social media account to build trust, and a second round with the “CEO” of a non-existent company in a messenger. Then: “download the test assignment”. The engineer ran it on a work laptop, and the setup script executed malicious code. Analogy: a “courier” asks you to sign, and the pen opens the door.",
+      "result": "Malicious code running on an engineer's work laptop: the first foothold inside Binance.",
       "tools": [
         "fake vacancy on a job platform",
         "video interviews with “HR” and the “CEO”",
@@ -103,6 +105,7 @@
     {
       "title": "Swapping a programmer’s everyday tool",
       "what": "The malicious code quietly replaced pyenv, a program the developer uses every day, in the Homebrew folder. It took six file operations (create a copy, write the malicious content, delete the original, rename, recreate the link) and not a single administrator password prompt: the folder belongs to the user. Then came a connection to the command server and cleaning up traces. Every pyenv call relaunched the malware. Analogy: someone swapped the key in your pocket for a duplicate with a bug inside.",
+      "result": "Hidden persistent access: every daily pyenv call launched the malware again, and the connection to the command server gave the attacker control of the laptop.",
       "tools": [
         "swapped pyenv in /opt/homebrew",
         "command and control channel (C2)",
@@ -132,6 +135,7 @@
     {
       "title": "The internal AI assistant became a bridge",
       "what": "On 20 October, through the infected laptop and an internal Binance AI tool, the attacker gained control of the computers of two more engineers: the DevOps engineer from June (A) and another developer (C). Binance does not disclose how exactly the tool allowed this; it is only known that its access was rebuilt. Most likely the AI agent could perform actions on engineers’ machines and did not check on whose behalf it was asked. Analogy: an office assistant with a master key runs errands for anyone who asks.",
+      "result": "Control of two more engineers' computers, including DevOps engineer A with access to the wallet infrastructure.",
       "tools": [
         "internal Binance AI tool"
       ],
@@ -159,6 +163,7 @@
     {
       "title": "The access key was simply sitting in a file",
       "what": "On engineer A’s laptop the attacker found a token for deploying containers into the wallet infrastructure. The token was stored in a file and had no short expiry, so it was still valid nine days later. Having found it on 20 October, the attacker calmly waited until the 29th. It is like an undated pass forgotten in the pocket of an old jacket.",
+      "result": "A valid token for deploying containers in the wallet infrastructure, and nine quiet days to choose the moment.",
       "tools": [
         "long-lived deploy token in a file on a laptop"
       ],
@@ -180,6 +185,7 @@
     {
       "title": "Their own container inside Binance",
       "what": "On 29 October at 17:15 UTC the attacker logged into engineer C’s computer, used engineer A’s token and deployed his own container with a script in the production environment. The script called the internal transaction signing service. There were 2 hours 50 minutes left before the first theft — a window in which any handled alert could have stopped the attack before the first dollar. Analogy: a stranger in someone else’s uniform walks into the vault with someone else’s pass.",
+      "result": "The attacker's own code in Binance's production environment with access to the internal transaction signing service, 2 hours 50 minutes before the first theft.",
       "tools": [
         "engineer C’s computer",
         "engineer A’s deploy token",
@@ -210,6 +216,7 @@
     {
       "title": "The signing service signed everything itself",
       "what": "The script called the internal wallet signing service directly, bypassing the normal withdrawal process. The MPC-based service (the key is split across several servers) obediently signed transfers from hot wallets on 9–10 blockchains: 233 million XRP in 4 minutes, 18,270 BTC in 11 transactions and more. There are no signs that the keys themselves were stolen: the system signed everything because the request came from a “trusted” client. An internal alert on large volumes fired within minutes, but BTC and Tron withdrawals were paused only at ≈20:36. Analogy: a bank teller pays out on any request because someone in a bank uniform brought it.",
+      "result": "Signed transfers from hot wallets on 9–10 blockchains: money taken out without stealing a single key.",
       "tools": [
         "internal signing service (MPC)",
         "script in the container"
@@ -232,6 +239,7 @@
     {
       "title": "EIP-7702: the wallet was handed to someone else’s contract",
       "what": "Using the same service, the attacker signed 50 EIP-7702 “authorizations” (an Ethereum feature since 2025) and submitted them in a single transaction at 20:20:59. An authorization is valid only with the wallet’s current transaction sequence number, and the Binance14 wallet is very active, so the attacker ordered a “fan” of signatures for 50 consecutive numbers; one worked. From then on the wallet executed the attacker’s contract commands. Pausing withdrawals did not undo this: the authorization lives on the blockchain, not in the exchange’s systems. Money leaked until 23:56, and the authorization was revoked only at 00:10. Analogy: a power of attorney over an account that you cannot cancel until you collect the signatures of all co-owners.",
+      "result": "The Binance14 wallet executed the attacker's contract, and halting withdrawals on the exchange did not undo that: funds kept draining until 23:56, and 200 million USDT topped up at 21:44 vanished in 12 seconds.",
       "tools": [
         "50 EIP-7702 authorizations in one transaction",
         "fund-draining contract (drainer)"

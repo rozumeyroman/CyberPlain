@@ -31,6 +31,7 @@
     {
       "title": "An email from a “DTEK Energo accountant”",
       "what": "A government agency receives an email supposedly from a DTEK Energo accountant: there is an electricity debt that must be paid urgently. A PDF file is attached. The attackers count on an anxious background — strikes on energy infrastructure and power outages. It is unknown whether the DTEK domain itself was spoofed or the emails came from look-alike or unrelated addresses. Analogy: a “bill” from a supplier nobody ordered from, but one that feels too risky to leave unpaid.",
+      "result": "The recipient's attention and alarm about a “debt” in accounting: the email reached the inbox, and the person is ready to act fast.",
       "tools": [
         "email posing as DTEK Energo about a debt",
         "PDF attachment"
@@ -51,6 +52,7 @@
     {
       "title": "A PDF with a “pay the debt” link",
       "what": "The PDF itself launches nothing: it only carries a “pay the debt” link. Many mail filters check links in the email body but not inside attachments, so the trick often gets through. All the user has to do is click. Analogy: the envelope holds nothing dangerous — just a note with an address to go to.",
+      "result": "A click on the link: the user goes where the attacker leads, and a mail filter that does not check attachments never sees it.",
       "tools": [
         "link inside a PDF"
       ],
@@ -67,6 +69,7 @@
     {
       "title": "An archive from legitimate cloud storage",
       "what": "The link downloads a RAR archive from DigitalOcean Spaces, a legitimate cloud storage service used by countless companies. A reputation block will not fire here: the domain is clean. The attacker uploaded the file in advance and relies on trust in a well-known service. Analogy: the parcel was sent through the real post office, so it looks no different from any other.",
+      "result": "An archive on the work computer, downloaded from a clean domain, which reputation filters let through.",
       "tools": [
         "DigitalOcean Spaces",
         "RAR archive"
@@ -87,6 +90,7 @@
     {
       "title": "An archive inside an archive, under a password",
       "what": "The downloaded archive contains another password-protected RAR archive and a text file with that password. Encrypted content cannot be checked by antivirus or automated sandboxes, and the password in a separate file counts on the user unpacking everything by hand. Analogy: a safe with its key taped next to it — closed to the guards, open to the victim in a second.",
+      "result": "A malicious file the user unpacked personally, past antivirus and sandboxes, one click away from running.",
       "tools": [
         "nested password-protected RAR archive",
         "text file with the password"
@@ -106,6 +110,7 @@
     {
       "title": "Running the SFX file",
       "what": "The last file is an EXE that is a self-extracting archive (SFX). When run, it unpacks its content into a temporary folder and starts the installation. In 2024 the group also disguised the file with a double “.pdf.exe” extension and showed a decoy document; whether this happened this time is not reported. Analogy: a “box” that opens itself and puts its contents away in the cupboards.",
+      "result": "The installer running on the user's computer, with the user's rights.",
       "tools": [
         "self-extracting archive (SFX)"
       ],
@@ -131,6 +136,7 @@
     {
       "title": "LiteManager as an auto-starting service",
       "what": "The SFX file quietly installs LiteManager, a legitimate remote management program, as a system service that starts with Windows. The program is genuine and signed, so antivirus often does not treat it as malicious. Creating a service usually requires administrator rights: if the user works without them, the installation should fail. Analogy: the attacker does not break the door, but asks the owner to issue him a permanent pass.",
+      "result": "Persistent remote access to the computer through a legitimate program that starts with Windows and is often not treated as malicious.",
       "tools": [
         "LiteManager",
         "auto-starting Windows service"
@@ -154,6 +160,7 @@
     {
       "title": "Command servers hidden among legitimate addresses",
       "what": "LiteManager’s settings contain many IP addresses and domains, but most of them belong to legitimate resources. Only a few are used for real communication with the attackers. Network monitoring struggles to tell the real servers from the “noise”, and blocking by address achieves nothing. What the attackers did after installation is not reported. Analogy: the real phone number was copied into a directory among a hundred others.",
+      "result": "A hidden control channel that is hard to tell from normal traffic and cannot be blocked by address. What the attackers did next has not been reported.",
       "tools": [
         "LiteManager settings with “noise” addresses"
       ],
