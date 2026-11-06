@@ -1,3 +1,16 @@
 {
-  "simple": "A single Fortinet agent for computers, laptops, smartphones and tablets that combines FortiClient, FortiEDR and FortiDLP, with one cloud console and one license (cloud management only). Every edition includes zero trust access to applications (ZTNA) with continuous device posture checks, VPN, SaaS application control (CASB), vulnerability scanning on computers with remediation help, FortiGuard web and video filtering, cloud FortiAnalyzer for logs and basic FortiIdentity Cloud MFA. Endpoint protection (EPP): blocks malware, ransomware and exploits in real time based on behavior, checks suspicious files in a cloud sandbox and shields vulnerable software with virtual patching; shows which AI applications are installed and used. FortiGuard forensic analysis and monitoring by Fortinet’s SOC (SOCaaS) are included in the license. DLP is basic only; EDR and full DLP are in higher editions."
+  "summary": "Fortinet FortiEndpoint Protect Core: ZTNA, VPN, web filtering and vulnerability scanning plus next-generation antivirus and a cloud sandbox.",
+  "value": [
+    "Malware, ransomware and exploits are stopped on computers before they run.",
+    "Suspicious files are checked in a cloud sandbox.",
+    "Application access and VPN come from the same agent and console."
+  ],
+  "simple": "A single Fortinet agent for computers, laptops, smartphones and tablets that combines FortiClient, FortiEDR and FortiDLP, with one cloud console and one license (cloud management only). Every edition includes zero trust access to applications (ZTNA) with continuous device posture checks, VPN, SaaS application control (CASB), vulnerability scanning on computers with remediation help, FortiGuard web and video filtering, cloud FortiAnalyzer for logs and basic FortiIdentity Cloud MFA. Endpoint protection (EPP): blocks malware, ransomware and exploits in real time based on behavior, checks suspicious files in a cloud sandbox and shields vulnerable software with virtual patching; shows which AI applications are installed and used. FortiGuard forensic analysis and monitoring by Fortinet’s SOC (SOCaaS) are included in the license. DLP is basic only; EDR and full DLP are in higher editions.",
+  "notIncluded": [
+    "EDR and full DLP come with the higher editions (DLP here is basic only)."
+  ],
+  "classification": [
+    "EPP and Sandbox start with Core; basic DLP is not counted as a class.",
+    "FortiGuard forensics and SOCaaS are services and stay in the text."
+  ]
 }

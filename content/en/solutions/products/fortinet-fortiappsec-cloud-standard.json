@@ -1,3 +1,16 @@
 {
-  "simple": "Fortinet’s cloud WAF (formerly FortiWeb Cloud): nothing to install — a site is onboarded by changing DNS, and protection runs from clusters in AWS, Azure, Google Cloud and Oracle Cloud for applications in any cloud or your own data center. Licensed by bandwidth (from 25 Mbps) and number of applications. Blocks OWASP Top 10 attacks with FortiGuard signatures, filters by IP reputation and country, protects cookies, guards against request forgery and data theft in the browser (man-in-the-browser), stops the site from leaking internal information, scans uploaded files with antivirus, and allows only API requests that match the OpenAPI/XML/JSON schema. Filters network-layer (L3–4) and application-layer (L7) DDoS, and filters bots by signatures, thresholds, biometrics and decoys. Includes a CDN, load balancing with server health checks, automatic SSL certificates and log export to a SIEM. The Standard plan is the core protection for web applications and APIs."
+  "summary": "Fortinet FortiAppSec Cloud WAF (formerly FortiWeb Cloud), Standard plan: a site connects by changing DNS, with protection against web application attacks and DDoS.",
+  "value": [
+    "Sites and APIs are protected from common attacks without your own hardware, wherever the application runs.",
+    "The site stays available during a DDoS attack.",
+    "Protection runs from clusters in the major clouds, licensed by bandwidth and number of applications."
+  ],
+  "simple": "Fortinet’s cloud WAF (formerly FortiWeb Cloud): nothing to install — a site is onboarded by changing DNS, and protection runs from clusters in AWS, Azure, Google Cloud and Oracle Cloud for applications in any cloud or your own data center. Licensed by bandwidth (from 25 Mbps) and number of applications. Blocks OWASP Top 10 attacks with FortiGuard signatures, filters by IP reputation and country, protects cookies, guards against request forgery and data theft in the browser (man-in-the-browser), stops the site from leaking internal information, scans uploaded files with antivirus, and allows only API requests that match the OpenAPI/XML/JSON schema. Filters network-layer (L3–4) and application-layer (L7) DDoS, and filters bots by signatures, thresholds, biometrics and decoys. Includes a CDN, load balancing with server health checks, automatic SSL certificates and log export to a SIEM. The Standard plan is the core protection for web applications and APIs.",
+  "notIncluded": [
+    "Site vulnerability scanning (DAST) and the sandbox for uploaded files start with the Advanced plan."
+  ],
+  "classification": [
+    "L3–4 and L7 DDoS (all plans) map to DDoS protection.",
+    "IP reputation is not threat intelligence; Credential Stuffing Defense, ABP, Client-Side Security and Threat Analytics stay in the text."
+  ]
 }

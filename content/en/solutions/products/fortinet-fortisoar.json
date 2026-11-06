@@ -1,3 +1,15 @@
 {
-  "simple": "Fortinet’s response automation platform (SOAR): playbooks from simple to complex, incident and case management, 700+ ready-made connectors to SIEM, EDR, firewalls, clouds, IT and OT systems, and 6,500+ ready playbooks and 100+ solution packs in the Content Hub. AI agents investigate incidents, reason and respond on their own — the subscription includes 5 million FortiAI tokens per month (about 60 investigations). A virtual machine in your own data center or cloud, or a dedicated instance hosted by Fortinet; Enterprise and Starter (up to 10,000 actions per day) editions for small teams and pilots, with high-availability, disaster-recovery and air-gapped options. Threat intelligence management (TIM) is a separate module."
+  "summary": "Fortinet FortiSOAR response automation platform: playbooks, incident management and 700+ connectors, with AI agents for investigations.",
+  "value": [
+    "Routine response actions run automatically, and alerts do not wait for hours.",
+    "Thousands of ready-made playbooks and connectors give a fast start.",
+    "AI agents help investigate incidents, easing the team’s load."
+  ],
+  "simple": "Fortinet’s response automation platform (SOAR): playbooks from simple to complex, incident and case management, 700+ ready-made connectors to SIEM, EDR, firewalls, clouds, IT and OT systems, and 6,500+ ready playbooks and 100+ solution packs in the Content Hub. AI agents investigate incidents, reason and respond on their own — the subscription includes 5 million FortiAI tokens per month (about 60 investigations). A virtual machine in your own data center or cloud, or a dedicated instance hosted by Fortinet; Enterprise and Starter (up to 10,000 actions per day) editions for small teams and pilots, with high-availability, disaster-recovery and air-gapped options. Threat intelligence management (TIM) is a separate module.",
+  "notIncluded": [
+    "Threat intelligence management (TIM) is a separate module."
+  ],
+  "classification": [
+    "One product (Enterprise and Starter have the same classes), SOAR; Multi-Tenant for MSSPs is not included."
+  ]
 }

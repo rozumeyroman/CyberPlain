@@ -1,3 +1,17 @@
 {
-  "simple": "Fortinet FortiGate next-generation firewalls — hardware models from desktop units for branches to data-center chassis (built on Fortinet’s own security processors) and virtual FortiGate-VM for private and public clouds; the product here is a FortiGuard subscription bundle that applies to any model. FortiOS itself provides a firewall with application and user control, SSL/TLS decryption, IPsec and SSL VPN for offices and remote workers, and SD-WAN; management via FortiManager or the cloud. The Advanced Threat Protection (ATP) bundle is the entry-level threat protection: An intrusion prevention system (IPS) with deep traffic inspection, antivirus and malware protection including mobile malware, blocking of connections to known botnets, protection against new threat outbreaks (Outbreak Prevention), a cloud sandbox for unknown files (detection only) and SaaS application control (CASB). Web and DNS filtering, DLP and security rating are not part of this bundle."
+  "summary": "Fortinet FortiGate firewalls with the ATP subscription bundle, the base threat protection: firewall, IPS, gateway antivirus, VPN and a cloud sandbox.",
+  "value": [
+    "Known attacks, exploits and malicious files are blocked between the internet and the network.",
+    "Offices and remote workers connect over an encrypted VPN.",
+    "Unknown files are checked in a cloud sandbox."
+  ],
+  "simple": "Fortinet FortiGate next-generation firewalls — hardware models from desktop units for branches to data-center chassis (built on Fortinet’s own security processors) and virtual FortiGate-VM for private and public clouds; the product here is a FortiGuard subscription bundle that applies to any model. FortiOS itself provides a firewall with application and user control, SSL/TLS decryption, IPsec and SSL VPN for offices and remote workers, and SD-WAN; management via FortiManager or the cloud. The Advanced Threat Protection (ATP) bundle is the entry-level threat protection: An intrusion prevention system (IPS) with deep traffic inspection, antivirus and malware protection including mobile malware, blocking of connections to known botnets, protection against new threat outbreaks (Outbreak Prevention), a cloud sandbox for unknown files (detection only) and SaaS application control (CASB). Web and DNS filtering, DLP and security rating are not part of this bundle.",
+  "notIncluded": [
+    "No website and DNS filtering: that comes with the UTP bundle.",
+    "No DLP or security rating: those are in Enterprise Protection."
+  ],
+  "classification": [
+    "The product is the FortiGuard bundle, models are in the text only; IPS, antivirus and Botnet at the gateway are within NGFW.",
+    "Sandbox SaaS (detection only) is the sandbox class."
+  ]
 }

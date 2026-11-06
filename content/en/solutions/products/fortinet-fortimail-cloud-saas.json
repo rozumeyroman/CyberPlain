@@ -1,3 +1,13 @@
 {
-  "simple": "Cloud email security for Microsoft 365, Google Workspace and other email services via API — a component of FortiMail Workspace Security (formerly Perception Point). Scans every email: static analysis (antivirus engines, reputation, SPF, DKIM, DMARC), dynamic analysis — attachments and links are recursively unpacked and opened in an isolated environment on the patented hardware-assisted platform HAP, which catches the exploit before code runs — and AI (language models, computer vision against QR-code phishing) against business email compromise, impersonation and payload-less attacks. Detects account takeover from sign-in events. The FortiMail Workspace Security suite includes Fortinet’s 24/7 incident response service at no extra cost: it analyzes alerts, tunes policies and helps with remediation."
+  "summary": "Cloud email protection for Microsoft 365 and Google Workspace via API, a component of Fortinet FortiMail Workspace Security (formerly Perception Point).",
+  "value": [
+    "Phishing and malicious attachments are stopped, including exploits before they execute.",
+    "A taken-over mailbox shows up through behavioural anomalies.",
+    "Fortinet’s 24/7 response service is included in the bundle."
+  ],
+  "simple": "Cloud email security for Microsoft 365, Google Workspace and other email services via API — a component of FortiMail Workspace Security (formerly Perception Point). Scans every email: static analysis (antivirus engines, reputation, SPF, DKIM, DMARC), dynamic analysis — attachments and links are recursively unpacked and opened in an isolated environment on the patented hardware-assisted platform HAP, which catches the exploit before code runs — and AI (language models, computer vision against QR-code phishing) against business email compromise, impersonation and payload-less attacks. Detects account takeover from sign-in events. The FortiMail Workspace Security suite includes Fortinet’s 24/7 incident response service at no extra cost: it analyzes alerts, tunes policies and helps with remediation.",
+  "classification": [
+    "ICES is email protection, HAP dynamic analysis is the sandbox class, account takeover is UEBA (as with Harmony Email).",
+    "The response service is a service and stays in the text."
+  ]
 }

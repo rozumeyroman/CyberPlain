@@ -1,3 +1,16 @@
 {
-  "simple": "A single Fortinet agent for computers, laptops, smartphones and tablets that combines FortiClient, FortiEDR and FortiDLP, with one cloud console and one license (cloud management only). Every edition includes zero trust access to applications (ZTNA) with continuous device posture checks, VPN, SaaS application control (CASB), vulnerability scanning on computers with remediation help, FortiGuard web and video filtering, cloud FortiAnalyzer for logs and basic FortiIdentity Cloud MFA. Zero Trust Connect is secure access and hygiene only: malware protection (EPP), EDR and DLP are not part of this edition."
+  "summary": "The base Fortinet FortiEndpoint edition: secure access and hygiene, with ZTNA, VPN, vulnerability scanning and web filtering in one agent.",
+  "value": [
+    "Employees reach only the applications they need, with device posture checks.",
+    "Remote workers connect over an encrypted VPN.",
+    "Vulnerabilities on computers and malicious sites are under control."
+  ],
+  "simple": "A single Fortinet agent for computers, laptops, smartphones and tablets that combines FortiClient, FortiEDR and FortiDLP, with one cloud console and one license (cloud management only). Every edition includes zero trust access to applications (ZTNA) with continuous device posture checks, VPN, SaaS application control (CASB), vulnerability scanning on computers with remediation help, FortiGuard web and video filtering, cloud FortiAnalyzer for logs and basic FortiIdentity Cloud MFA. Zero Trust Connect is secure access and hygiene only: malware protection (EPP), EDR and DLP are not part of this edition.",
+  "notIncluded": [
+    "There is no malware protection (EPP), EDR or DLP in this edition."
+  ],
+  "classification": [
+    "ZTNA is access without VPN, VPN is VPN, Vulnerability Scan is vulnerability management, FortiGuard Web Filtering is web filtering.",
+    "FortiIdentity Cloud Basic is not MFA and stays in the text."
+  ]
 }

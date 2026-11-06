@@ -1,3 +1,16 @@
 {
-  "simple": "Fortinet’s WAF for your own data center and cloud: FortiWeb hardware appliances (from 100 Mbps), virtual machines on common hypervisors and in AWS, Azure, Google Cloud and Oracle Cloud, and containers. Two layers of protection: first FortiGuard signatures, IP reputation (botnets, anonymous proxies, infected hosts) and protocol validation, then machine learning on a model of your specific application — it tells a harmless user mistake from an attack and raises almost no false alarms. Blocks OWASP Top 10 attacks (SQL injection, XSS, request forgery, session hijacking), zero-day attacks, bots and scraping, password guessing, application-layer DoS and website defacement; scans uploaded files with antivirus. APIs: discovers APIs in traffic on its own and allows only requests that match the OpenAPI/XML/JSON schema. A built-in web application vulnerability scanner, and findings from third-party scanners (Acunetix, Qualys, AppScan and others) are automatically turned into rules (“virtual patches”). Sign-in via LDAP, RADIUS, SAML and RSA two-factor authentication; threat sharing with FortiGate and FortiSandbox. Standard bundle: FortiGuard web security, IP reputation and antivirus."
+  "summary": "Fortinet FortiWeb WAF for your own data centre and cloud, Standard bundle: signatures, IP reputation and machine learning on a model of your application, plus a built-in vulnerability scanner.",
+  "value": [
+    "Sites and APIs are protected from common and zero-day attacks with minimal false alarms.",
+    "The built-in scanner finds site vulnerabilities.",
+    "It runs as an appliance, VM or container, in the data centre or any cloud."
+  ],
+  "simple": "Fortinet’s WAF for your own data center and cloud: FortiWeb hardware appliances (from 100 Mbps), virtual machines on common hypervisors and in AWS, Azure, Google Cloud and Oracle Cloud, and containers. Two layers of protection: first FortiGuard signatures, IP reputation (botnets, anonymous proxies, infected hosts) and protocol validation, then machine learning on a model of your specific application — it tells a harmless user mistake from an attack and raises almost no false alarms. Blocks OWASP Top 10 attacks (SQL injection, XSS, request forgery, session hijacking), zero-day attacks, bots and scraping, password guessing, application-layer DoS and website defacement; scans uploaded files with antivirus. APIs: discovers APIs in traffic on its own and allows only requests that match the OpenAPI/XML/JSON schema. A built-in web application vulnerability scanner, and findings from third-party scanners (Acunetix, Qualys, AppScan and others) are automatically turned into rules (“virtual patches”). Sign-in via LDAP, RADIUS, SAML and RSA two-factor authentication; threat sharing with FortiGate and FortiSandbox. Standard bundle: FortiGuard web security, IP reputation and antivirus.",
+  "notIncluded": [
+    "The cloud sandbox for uploaded files starts with the Advanced bundle."
+  ],
+  "classification": [
+    "The Built-in Vulnerability Scanner is DAST; application DoS is within WAF.",
+    "IP reputation is not threat intelligence."
+  ]
 }

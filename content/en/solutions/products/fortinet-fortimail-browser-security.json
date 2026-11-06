@@ -1,3 +1,12 @@
 {
-  "simple": "Browser protection — a component of FortiMail Workspace Security: a lightweight extension for Chrome, Edge, Firefox, Safari and other Chromium browsers, with no full agent, so it also suits personal devices. AI detects phishing by spoofed logos and login forms, blocks malicious sites and extensions (checking them in a cloud sandbox), analyzes downloaded files on the HAP platform, and filters sites by category and file type. Prevents data from leaving: restricts copying, uploads, downloads and printing on sensitive sites and data sharing with GenAI applications, reveals shadow AI applications, keeps a browser inventory and can allow access to corporate SaaS only with the extension. The FortiMail Workspace Security suite includes Fortinet’s 24/7 incident response service at no extra cost: it analyzes alerts, tunes policies and helps with remediation."
+  "summary": "Browser protection, a component of Fortinet FortiMail Workspace Security: a lightweight extension that blocks phishing and malicious sites and stops data being taken out.",
+  "value": [
+    "Phishing and malicious sites and extensions are blocked right in the browser, including on personal devices.",
+    "Data from sensitive sites is not copied or passed into GenAI apps.",
+    "Downloaded files are checked in a sandbox."
+  ],
+  "simple": "Browser protection — a component of FortiMail Workspace Security: a lightweight extension for Chrome, Edge, Firefox, Safari and other Chromium browsers, with no full agent, so it also suits personal devices. AI detects phishing by spoofed logos and login forms, blocks malicious sites and extensions (checking them in a cloud sandbox), analyzes downloaded files on the HAP platform, and filters sites by category and file type. Prevents data from leaving: restricts copying, uploads, downloads and printing on sensitive sites and data sharing with GenAI applications, reveals shadow AI applications, keeps a browser inventory and can allow access to corporate SaaS only with the extension. The FortiMail Workspace Security suite includes Fortinet’s 24/7 incident response service at no extra cost: it analyzes alerts, tunes policies and helps with remediation.",
+  "classification": [
+    "The extension is browser protection, site categories are web filtering, the cloud sandbox is the sandbox class, copy/download/GenAI control is DLP."
+  ]
 }

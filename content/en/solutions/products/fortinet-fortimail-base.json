@@ -1,3 +1,16 @@
 {
-  "simple": "Fortinet FortiMail email gateway as a hardware appliance (FML-200F – FML-3000F) or a virtual machine (VM01 – VM32) for your own data center or cloud; sits in front of any mail server as a gateway, runs transparently or as a mail server itself. FortiGuard antispam (99.99% of spam per vendor data) based on sender reputation, links and behavior, multi-layer antivirus, protection against new threat outbreaks, inbound and outbound filtering, SPF, DKIM and DMARC checks, secure delivery (TLS), recipient email encryption (IBE), email data loss prevention (DLP) by keywords, patterns and file fingerprints, and reporting. Sandboxing, attachment sanitization (CDR), click-time URL protection and impersonation analysis are in the Enterprise ATP bundle."
+  "summary": "Fortinet FortiMail email gateway (appliance or VM), Base bundle: anti-spam, antivirus and DLP in front of any mail server.",
+  "value": [
+    "Spam, phishing and viruses are stopped before they reach mailboxes.",
+    "Confidential data does not quietly leave by email.",
+    "It works with any mail server in your own data centre or cloud."
+  ],
+  "simple": "Fortinet FortiMail email gateway as a hardware appliance (FML-200F – FML-3000F) or a virtual machine (VM01 – VM32) for your own data center or cloud; sits in front of any mail server as a gateway, runs transparently or as a mail server itself. FortiGuard antispam (99.99% of spam per vendor data) based on sender reputation, links and behavior, multi-layer antivirus, protection against new threat outbreaks, inbound and outbound filtering, SPF, DKIM and DMARC checks, secure delivery (TLS), recipient email encryption (IBE), email data loss prevention (DLP) by keywords, patterns and file fingerprints, and reporting. Sandboxing, attachment sanitization (CDR), click-time URL protection and impersonation analysis are in the Enterprise ATP bundle.",
+  "notIncluded": [
+    "The sandbox, attachment disarm (CDR) and click-time link checks come with the Enterprise ATP bundle."
+  ],
+  "classification": [
+    "Email DLP is in every bundle, the DLP class.",
+    "FortiMail Cloud (hosted gateway) is not included; cloud protection is represented by Workspace Security."
+  ]
 }

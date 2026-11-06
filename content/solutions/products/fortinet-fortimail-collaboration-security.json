@@ -1,9 +1,18 @@
 {
   "name": "Fortinet FortiMail Collaboration Security",
   "vendor": "Fortinet",
-  "url": "https://www.fortinet.com/products/fortimail-workspace-security",
   "classes": [
     "sandbox"
   ],
-  "simple": "Захист застосунків для спільної роботи — компонент FortiMail Workspace Security: Microsoft Teams, Slack, Zendesk, Salesforce і хмарні сховища OneDrive, Google Drive, SharePoint, AWS S3. Миттєво перевіряє всі файли, посилання й повідомлення тими самими рушіями, що й пошту (статичний аналіз, динамічний на платформі HAP, AI), щоб шкідливі програми й фішинг не поширювались через чати, сховища й CRM. У складі пакета FortiMail Workspace Security без доплати — цілодобова служба реагування Fortinet: аналізує тривоги, налаштовує політики й допомагає усунути наслідки."
+  "summary": "Захист інструментів співпраці — компонент Fortinet FortiMail Workspace Security: Teams, Slack, Salesforce і хмарні сховища перевіряються тими самими рушіями, що й пошта.",
+  "value": [
+    "Шкідливі файли й фішинг не поширюються через чати, сховища й CRM.",
+    "Файли й посилання перевіряються миттєво, не гальмуючи роботу.",
+    "Цілодобова служба реагування Fortinet входить у пакет."
+  ],
+  "simple": "Захист застосунків для спільної роботи — компонент FortiMail Workspace Security: Microsoft Teams, Slack, Zendesk, Salesforce і хмарні сховища OneDrive, Google Drive, SharePoint, AWS S3. Миттєво перевіряє всі файли, посилання й повідомлення тими самими рушіями, що й пошту (статичний аналіз, динамічний на платформі HAP, AI), щоб шкідливі програми й фішинг не поширювались через чати, сховища й CRM. У складі пакета FortiMail Workspace Security без доплати — цілодобова служба реагування Fortinet: аналізує тривоги, налаштовує політики й допомагає усунути наслідки.",
+  "classification": [
+    "Клас — пісочниця (динамічний аналіз HAP)."
+  ],
+  "url": "https://www.fortinet.com/products/fortimail-workspace-security"
 }

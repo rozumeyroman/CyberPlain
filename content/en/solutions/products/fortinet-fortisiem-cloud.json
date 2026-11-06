@@ -1,3 +1,15 @@
 {
-  "simple": "Fortinet’s SIEM as a cloud service; licensed by FortiSIEM compute units and storage. Collects and normalizes logs from network equipment, servers, clouds and applications, correlates events and builds compliance reports. Discovers devices and applications on its own and keeps an inventory of them (CMDB), tracks configuration changes as well as availability and performance — one system for network and security monitoring. Incidents mapped to MITRE ATT&CK, case management, response actions, two-way integration with FortiSOAR, multi-tenant mode for MSSPs. Log-based user behavior analytics (UEBA). The cloud subscription already includes Windows and Linux agents (file, registry and Active Directory integrity monitoring), endpoint UEBA with remote worker monitoring and the FortiGuard indicators of compromise service; full response automation is in FortiSOAR."
+  "summary": "Fortinet FortiSIEM Cloud, SIEM as a cloud service: logs, event correlation, behavioural analytics, asset inventory and indicators of compromise.",
+  "value": [
+    "Attack traces from different systems come together into one picture without your own hardware.",
+    "Agents, endpoint UEBA and FortiGuard indicators are already included.",
+    "Compliance reports are built from the same data."
+  ],
+  "simple": "Fortinet’s SIEM as a cloud service; licensed by FortiSIEM compute units and storage. Collects and normalizes logs from network equipment, servers, clouds and applications, correlates events and builds compliance reports. Discovers devices and applications on its own and keeps an inventory of them (CMDB), tracks configuration changes as well as availability and performance — one system for network and security monitoring. Incidents mapped to MITRE ATT&CK, case management, response actions, two-way integration with FortiSOAR, multi-tenant mode for MSSPs. Log-based user behavior analytics (UEBA). The cloud subscription already includes Windows and Linux agents (file, registry and Active Directory integrity monitoring), endpoint UEBA with remote worker monitoring and the FortiGuard indicators of compromise service; full response automation is in FortiSOAR.",
+  "notIncluded": [
+    "Full response automation is in FortiSOAR."
+  ],
+  "classification": [
+    "Cloud includes agents, endpoint UEBA and IOCs, the threat intelligence class (an add-on in self-managed FortiSIEM)."
+  ]
 }
