@@ -1,3 +1,4 @@
 {
-  "simple": "Checks network traffic for known attack signatures and suspicious signs and alerts about intrusion attempts."
+  "simple": "Checks network traffic for known attack signatures and suspicious signs and alerts about intrusion attempts.",
+  "risk": "Intrusion attempts in network traffic go unnoticed until they become a successful attack."
 }

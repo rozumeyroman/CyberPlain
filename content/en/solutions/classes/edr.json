@@ -1,3 +1,4 @@
 {
-  "simple": "An agent on the computer watches programs, files and memory, spots malicious behavior and lets you immediately stop a process or isolate the computer."
+  "simple": "An agent on the computer watches programs, files and memory, spots malicious behavior and lets you immediately stop a process or isolate the computer.",
+  "risk": "Malware or an attacker that got past the antivirus quietly operates on computers and servers, and afterwards there is nothing to investigate."
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "Analyzes traffic inside the network and spots suspicious connections and behavior, even where there are no agents."
+  "simple": "Analyzes traffic inside the network and spots suspicious connections and behavior, even where there are no agents.",
+  "risk": "The attacker moves through the network and keeps in touch with a command server where there are no agents, and nobody sees it."
 }

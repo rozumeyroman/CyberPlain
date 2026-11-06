@@ -1,3 +1,4 @@
 {
-  "simple": "Keeps a single record of who has access to what, regularly asks managers to review and confirm rights, automatically grants and removes access when a person joins, changes jobs or leaves, and finds orphaned accounts and excessive rights — so no spare “keys” are left lying around in your systems."
+  "simple": "Keeps a single record of who has access to what, regularly asks managers to review and confirm rights, automatically grants and removes access when a person joins, changes jobs or leaves, and finds orphaned accounts and excessive rights — so no spare “keys” are left lying around in your systems.",
+  "risk": "Former employees and people who changed roles keep unnecessary access for years, and any such account becomes a key for an attacker."
 }

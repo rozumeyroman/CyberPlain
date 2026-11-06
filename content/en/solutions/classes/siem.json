@@ -1,3 +1,4 @@
 {
-  "simple": "Collects event logs from all systems in one place, correlates them and shows the alerts worth investigating."
+  "simple": "Collects event logs from all systems in one place, correlates them and shows the alerts worth investigating.",
+  "risk": "Traces of the attack are scattered across the logs of different systems, and nobody puts them together in time."
 }

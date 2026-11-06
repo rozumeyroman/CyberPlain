@@ -1,3 +1,4 @@
 {
-  "simple": "Creates an encrypted tunnel between a remote employee’s computer or a branch office and the company network, so data in transit — including over public Wi-Fi or the internet between offices — can’t be snooped on or tampered with."
+  "simple": "Creates an encrypted tunnel between a remote employee’s computer or a branch office and the company network, so data in transit — including over public Wi-Fi or the internet between offices — can’t be snooped on or tampered with.",
+  "risk": "Data from remote workers and branches travels over the internet or public Wi-Fi in the clear and can be intercepted or altered."
 }

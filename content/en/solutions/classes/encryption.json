@@ -1,3 +1,4 @@
 {
-  "simple": "Encrypts the disks of laptops and computers and removable media, so data on a lost or stolen device or USB drive can’t be read without the key."
+  "simple": "Encrypts the disks of laptops and computers and removable media, so data on a lost or stolen device or USB drive can’t be read without the key.",
+  "risk": "Data on a lost or stolen laptop or USB stick can be read by whoever finds it."
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "Gives employees and contractors access only to specific approved systems through a secure gateway — without a VPN that opens up the whole network, and without RDP or SSH ports exposed to the internet, which attackers most often get in through."
+  "simple": "Gives employees and contractors access only to specific approved systems through a secure gateway — without a VPN that opens up the whole network, and without RDP or SSH ports exposed to the internet, which attackers most often get in through.",
+  "risk": "RDP, SSH or a VPN that opens the whole network, exposed to the internet, becomes the attacker’s most common way in."
 }

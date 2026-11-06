@@ -1,9 +1,12 @@
 {
   "name": "Palo Alto Networks Certificate Manager, Self-Hosted",
   "vendor": "Palo Alto Networks",
-  "url": "https://www.paloaltonetworks.com/network-security/next-gen-trust-security/certificate-manager",
+  "line": "Certificate Manager",
+  "edition": "Self-Hosted",
+  "order": 2,
   "classes": [
     "clm"
   ],
-  "simple": "Керування життєвим циклом сертифікатів, яке розгортається у власній інфраструктурі (колишній Venafi Trust Protection Platform, побудований на Trust Protection Foundation); не входить до Idira. Знаходить сертифікати TLS у мережі, веде їх єдиний перелік, попереджає про закінчення строку й автоматично випускає та оновлює сертифікати через інтеграції з центрами сертифікації, серверами й мережевими пристроями. Поруч у тій самій лінійці — окремі продукти SSH Manager (ключі SSH) і CodeSign Manager (сертифікати підпису коду). Редакції Standard / Enterprise / Max — класи однакові."
+  "simple": "Керування життєвим циклом сертифікатів, яке розгортається у власній інфраструктурі (колишній Venafi Trust Protection Platform, побудований на Trust Protection Foundation); не входить до Idira. Знаходить сертифікати TLS у мережі, веде їх єдиний перелік, попереджає про закінчення строку й автоматично випускає та оновлює сертифікати через інтеграції з центрами сертифікації, серверами й мережевими пристроями. Поруч у тій самій лінійці — окремі продукти SSH Manager (ключі SSH) і CodeSign Manager (сертифікати підпису коду). Редакції Standard / Enterprise / Max — класи однакові.",
+  "url": "https://www.paloaltonetworks.com/network-security/next-gen-trust-security/certificate-manager"
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "Finds all the service and technical accounts used by applications and scripts, works out where they normally sign in from and to, and lets them work only along that route — so a stolen service password doesn’t open access to the whole network."
+  "simple": "Finds all the service and technical accounts used by applications and scripts, works out where they normally sign in from and to, and lets them work only along that route — so a stolen service password doesn’t open access to the whole network.",
+  "risk": "A stolen password or token of a service account nobody controls opens access to many systems at once."
 }

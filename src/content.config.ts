@@ -43,6 +43,8 @@ const classes = defineCollection({
     ua: z.string(),
     en: z.string().optional(),
     simple: z.string().optional(),
+    // Ризик людською мовою: що трапиться в компанії без цього класу. Сторінка продукту бере його з усіх класів продукту.
+    risk: z.string().optional(),
     // D3FEND: ID технік (D3-MFA) або назви тактик (Harden), якщо точної техніки немає. Перевіряє loadData().
     d3fend: z.array(z.string()).default([]),
   }),
@@ -53,10 +55,19 @@ const products = defineCollection({
   schema: z.object({
     name: z.string(),
     vendor: z.string(),
-    classes: z.array(reference('classes')).min(1),
-    simple: z.string().optional(),
+    // Лінійка й редакція: продукти з однаковими vendor + line — редакції однієї лінійки (таблиця «Редакції» на сторінці).
+    // order — порядок редакцій від базової до старшої.
+    line: z.string().optional(),
+    edition: z.string().optional(),
+    order: z.number().int().optional(),
+    classes: z.array(reference('classes')).min(1), // перший — головний клас продукту
+    summary: z.string().optional(), // 1–2 речення «що це» — лід сторінки
+    value: z.array(z.string()).default([]), // що дає замовнику, мовою бізнесу (3–4 пункти)
+    simple: z.string().optional(), // детальний опис можливостей редакції
+    notIncluded: z.array(z.string()).default([]), // чого в цій редакції немає / що докуповується (add-on)
+    classification: z.array(z.string()).default([]), // як ми класифікували: що рахуємо класом, що лише в тексті і чому
     url: z.string().url().optional(), // першоджерело: сторінка продукту чи пакетів у вендора
-  }),
+  }).strict(),
 });
 
 // D3FEND: сирі ID, назви, визначення й ієрархія — з data/mitre/d3fend.json; тут лише наш шар пояснень.
@@ -200,8 +211,10 @@ const overlay = (dir: string, shape: z.ZodRawShape) =>
 const str = z.string();
 const enTactics = overlay('attack/tactics', { short: str, analogy: str, solutionNotes: z.record(z.string(), z.string()) });
 const enTechniques = overlay('attack/techniques', { simple: str, goal: str, analogy: str, quote: str, questions: z.array(z.string()) });
-const enClasses = overlay('solutions/classes', { simple: str });
-const enProducts = overlay('solutions/products', { simple: str });
+const enClasses = overlay('solutions/classes', { simple: str, risk: str });
+const enProducts = overlay('solutions/products', {
+  summary: str, value: z.array(str), simple: str, notIncluded: z.array(str), classification: z.array(str),
+});
 const enD3fendTactics = overlay('d3fend/tactics', { short: str, analogy: str });
 const enD3fendTechniques = overlay('d3fend/techniques', { simple: str, analogy: str });
 

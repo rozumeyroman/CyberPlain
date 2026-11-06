@@ -1,3 +1,4 @@
 {
-  "simple": "Pulls data from all your systems into one list of what the company has: computers, servers, cloud, applications, accounts — and shows which of them are not protected."
+  "simple": "Pulls data from all your systems into one list of what the company has: computers, servers, cloud, applications, accounts — and shows which of them are not protected.",
+  "risk": "A forgotten server, a laptop without a security agent or an unknown cloud resource becomes the attacker’s way in, because nobody knows it exists."
 }

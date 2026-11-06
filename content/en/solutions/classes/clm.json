@@ -1,3 +1,4 @@
 {
-  "simple": "Finds all digital certificates (SSL/TLS and others) on servers, websites and in the cloud, keeps a single inventory of them, warns about expiration and renews them automatically — so services don’t go down because of an expired certificate and unknown certificates don’t go unnoticed."
+  "simple": "Finds all digital certificates (SSL/TLS and others) on servers, websites and in the cloud, keeps a single inventory of them, warns about expiration and renews them automatically — so services don’t go down because of an expired certificate and unknown certificates don’t go unnoticed.",
+  "risk": "An expired certificate takes a site or service down, and unknown or weak certificates let connections be spoofed or eavesdropped on."
 }

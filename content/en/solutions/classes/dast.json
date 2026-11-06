@@ -1,3 +1,4 @@
 {
-  "simple": "Safely “attacks” the company’s running websites, APIs, AI applications or network services — from the outside, from inside the application during testing (IAST) or with a stream of malformed data (fuzzing) — to find vulnerabilities before an attacker does."
+  "simple": "Safely “attacks” the company’s running websites, APIs, AI applications or network services — from the outside, from inside the application during testing (IAST) or with a stream of malformed data (fuzzing) — to find vulnerabilities before an attacker does.",
+  "risk": "An attacker, not the development team, is the first to find a vulnerability in a site, API or service."
 }

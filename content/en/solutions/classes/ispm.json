@@ -1,3 +1,4 @@
 {
-  "simple": "Looks for weak spots in Active Directory and cloud user directories: hidden administrators, outdated and abandoned accounts, excessive permissions, insecure settings and outdated sign-in protocols (for example, NTLMv1) — and suggests what to fix first."
+  "simple": "Looks for weak spots in Active Directory and cloud user directories: hidden administrators, outdated and abandoned accounts, excessive permissions, insecure settings and outdated sign-in protocols (for example, NTLMv1) — and suggests what to fix first.",
+  "risk": "Hidden administrators, abandoned accounts and weak Active Directory settings give an attacker a shortcut to administrator rights."
 }

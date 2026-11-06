@@ -1,3 +1,4 @@
 {
-  "simple": "Regularly keeps copies of data and systems separate from the main network, so after encryption or destruction you can get everything back without paying a ransom."
+  "simple": "Regularly keeps copies of data and systems separate from the main network, so after encryption or destruction you can get everything back without paying a ransom.",
+  "risk": "After ransomware encryption or data destruction there is nothing to restore from, and the choice is to pay the ransom or lose the data."
 }

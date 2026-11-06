@@ -1,3 +1,4 @@
 {
-  "simple": "Shows who can do what in AWS, Azure, GCP and other clouds, finds excessive and unused permissions and helps trim them — so a stolen cloud account doesn’t give the attacker extra power."
+  "simple": "Shows who can do what in AWS, Azure, GCP and other clouds, finds excessive and unused permissions and helps trim them — so a stolen cloud account doesn’t give the attacker extra power.",
+  "risk": "A stolen cloud account with excessive rights lets the attacker delete resources, pull out data or run miners in AWS, Azure or GCP."
 }

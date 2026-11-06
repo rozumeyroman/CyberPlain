@@ -1,3 +1,4 @@
 {
-  "simple": "Requires one more proof besides the password to sign in, so a stolen password alone doesn’t open access."
+  "simple": "Requires one more proof besides the password to sign in, so a stolen password alone doesn’t open access.",
+  "risk": "A stolen, guessed or leaked password on its own opens email, VPN and cloud services to the attacker."
 }

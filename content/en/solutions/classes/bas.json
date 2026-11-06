@@ -1,3 +1,4 @@
 {
-  "simple": "Safely imitates real attacks — phishing, malicious files, attacks on websites and vulnerabilities, ransomware actions, data theft — and shows which of them your security tools (firewall, EDR, SIEM, email security, WAF) block or detect and which slip through; provides ready-made rules to close the gaps. It doesn’t protect against attacks itself — it proves that the other tools do, and notices when protection has drifted."
+  "simple": "Safely imitates real attacks — phishing, malicious files, attacks on websites and vulnerabilities, ransomware actions, data theft — and shows which of them your security tools (firewall, EDR, SIEM, email security, WAF) block or detect and which slip through; provides ready-made rules to close the gaps. It doesn’t protect against attacks itself — it proves that the other tools do, and notices when protection has drifted.",
+  "risk": "The company believes its defences work while they have been letting attacks through for months because of an exception, a weakened policy or a rule nobody tested."
 }

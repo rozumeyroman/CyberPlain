@@ -1,3 +1,4 @@
 {
-  "simple": "Opens suspicious downloaded files and attachments in an isolated environment and watches what they do, while giving the user a cleaned copy of the document right away — without macros and embedded code."
+  "simple": "Opens suspicious downloaded files and attachments in an isolated environment and watches what they do, while giving the user a cleaned copy of the document right away — without macros and embedded code.",
+  "risk": "A new malicious file that no antivirus knows yet is opened on an employee’s computer."
 }

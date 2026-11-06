@@ -1,3 +1,4 @@
 {
-  "simple": "Checks from the outside how well your suppliers and partners are protected: open vulnerabilities, leaks, mentions on the dark web — and shows which of them an attacker could use to get to you."
+  "simple": "Checks from the outside how well your suppliers and partners are protected: open vulnerabilities, leaks, mentions on the dark web — and shows which of them an attacker could use to get to you.",
+  "risk": "The attacker gets in through a poorly protected supplier or partner the company shares data and access with."
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "An agent on the computer blocks malware, ransomware, exploits and fileless attacks before they take effect — based on file traits, machine learning and behavior. It stops the attack but does not keep a continuous record of events or let you investigate what happened — that takes EDR."
+  "simple": "An agent on the computer blocks malware, ransomware, exploits and fileless attacks before they take effect — based on file traits, machine learning and behavior. It stops the attack but does not keep a continuous record of events or let you investigate what happened — that takes EDR.",
+  "risk": "A malicious file, ransomware or an exploit runs on the computer because nothing stopped it before launch."
 }

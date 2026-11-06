@@ -1,3 +1,4 @@
 {
-  "simple": "Removes standing administrator rights: privileged access is granted only when needed, to a specific system and for a limited time, and then taken away automatically — so even a stolen administrator account opens nothing most of the time."
+  "simple": "Removes standing administrator rights: privileged access is granted only when needed, to a specific system and for a limited time, and then taken away automatically — so even a stolen administrator account opens nothing most of the time.",
+  "risk": "Standing administrator rights turn every stolen privileged account into a key to the whole system, around the clock."
 }

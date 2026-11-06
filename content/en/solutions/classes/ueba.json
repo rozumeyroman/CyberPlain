@@ -1,3 +1,4 @@
 {
-  "simple": "Learns each account’s normal behavior and raises an alarm when it changes sharply: a sign-in from a new country, access to someone else’s data."
+  "simple": "Learns each account’s normal behavior and raises an alarm when it changes sharply: a sign-in from a new country, access to someone else’s data.",
+  "risk": "A stolen account or a dishonest insider acts within their rights, and the rules do not react."
 }

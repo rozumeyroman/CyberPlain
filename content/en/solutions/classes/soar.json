@@ -1,3 +1,4 @@
 {
-  "simple": "Performs routine actions in place of a person: creates tickets, sends notifications, isolates an infected computer or blocks an account following a ready-made playbook."
+  "simple": "Performs routine actions in place of a person: creates tickets, sends notifications, isolates an infected computer or blocks an account following a ready-made playbook.",
+  "risk": "An alert waits in the queue for hours while the attacker acts, because the team does every routine step by hand."
 }

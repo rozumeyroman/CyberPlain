@@ -1,3 +1,4 @@
 {
-  "simple": "Blocks phishing and malicious sites, including brand-new ones not yet on any list — right in the employee’s browser or on the network gateway; filters dangerous website categories, and some solutions also stop employees from entering a corporate password on a third-party site."
+  "simple": "Blocks phishing and malicious sites, including brand-new ones not yet on any list — right in the employee’s browser or on the network gateway; filters dangerous website categories, and some solutions also stop employees from entering a corporate password on a third-party site.",
+  "risk": "An employee opens a fresh phishing site that is not yet on any list and hands over a corporate password there."
 }

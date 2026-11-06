@@ -1,3 +1,4 @@
 {
-  "simple": "Checks incoming email and stops phishing, malicious attachments and links."
+  "simple": "Checks incoming email and stops phishing, malicious attachments and links.",
+  "risk": "A phishing email, a malicious attachment or a fake email “from the CEO” lands straight in an employee’s inbox."
 }

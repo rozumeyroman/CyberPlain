@@ -1,3 +1,4 @@
 {
-  "simple": "Watches hacker forums, black markets and closed Telegram and Discord channels and warns you when employee passwords, stolen databases or talk of an attack on your company appear there — so you can change passwords before anyone uses them."
+  "simple": "Watches hacker forums, black markets and closed Telegram and Discord channels and warns you when employee passwords, stolen databases or talk of an attack on your company appear there — so you can change passwords before anyone uses them.",
+  "risk": "Employee passwords or stolen company databases are sold on forums and Telegram, and the company finds out only after the attack."
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "Teaches employees to recognize phishing and social engineering and not to overshare."
+  "simple": "Teaches employees to recognize phishing and social engineering and not to overshare.",
+  "risk": "An employee opens a phishing email, types a password into a fake site or follows a scammer’s “urgent” request, and lets the attacker in."
 }

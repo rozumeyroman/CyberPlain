@@ -1,10 +1,12 @@
 ---
 // /solutions/<id>/ — клас рішень (vm) або продукт (rapid7-insightvm), і під /en/. ID не перетинаються (перевіряє loadData).
+// Продукт: коротко → що дає замовнику → ризики (з risk його класів) → покриття етапів → редакції лінійки → детально →
+// чого немає → як ми класифікували → згорнута технічна деталізація (ATT&CK, D3FEND).
 import Base from '../../../layouts/Base.astro';
 import AttackGroups from '../../../components/AttackGroups.astro';
 import D3Groups from '../../../components/D3Groups.astro';
 import D3fendTags from '../../../components/D3fendTags.astro';
-import { loadData, pageCtx, type SolutionClass, type Product } from '../../../lib/data';
+import { loadData, pageCtx, num, type SolutionClass, type Product } from '../../../lib/data';
 import { langs, routeLang } from '../../../lib/i18n';
 
 export async function getStaticPaths() {
@@ -23,34 +25,63 @@ export async function getStaticPaths() {
 const { cls, product } = Astro.props as { cls?: SolutionClass; product?: Product };
 const { lang, t, url, d, pl } = await pageCtx(Astro.url);
 const x = t.solutions;
+const pd = product?.data as (Product['data'] & {
+  line?: string; edition?: string; summary?: string; value: string[]; notIncluded: string[]; classification: string[];
+}) | undefined;
 const own = product ? product.data.classes.map((r) => d.classById.get(r.id)!) : [];
 // Техніки продукту — ті, від яких захищають його класи; самі зв'язки лежать лише в defenses[] технік.
 const techIds = new Set((cls ? [cls] : own).flatMap((c) => d.techniquesDefendedBy(c.id).map((y) => y.id)));
 const attack = d.techniques.filter((y) => techIds.has(y.id));
 const title = cls ? cls.data.title : product!.data.title;
 const simple = cls ? cls.data.simple : product!.data.simple;
+const lead = cls ? simple : pd!.summary ?? simple; // старі продукти без summary — опис як лід
 // D3FEND: техніки й «тактики загалом» з d3fend[] класу (продукту — усіх його класів), по тактиках D3FEND.
 const mine = (cls ? [cls] : own).map((c) => d.d3fendOf(c));
 const d3techs = [...new Set(mine.flatMap((m) => m.techniques))];
 const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
+
+// Продукт: ризики з класів, покриття етапів, редакції лінійки.
+const risks = own.filter((c) => (c.data as any).risk).map((c) => ({ cls: c, risk: (c.data as any).risk as string }));
+const coverage = d.tactics.map((ta) => {
+  const all = d.techniques.filter((y) => y.data.tactics.some((r) => r.id === ta.id));
+  const n = attack.filter((y) => y.data.tactics.some((r) => r.id === ta.id)).length;
+  return { ta, n, of: all.length, share: all.length ? n / all.length : 0 };
+});
+const editions = product ? d.editionsOf(product) : [];
+const edClasses = (() => {
+  const seen = new Map<string, SolutionClass>();
+  for (const p of editions) for (const r of p.data.classes) if (!seen.has(r.id)) seen.set(r.id, d.classById.get(r.id)!);
+  return [...seen.values()];
+})();
+const has = (p: Product, id: string) => p.data.classes.some((r) => r.id === id);
+const level = (s: number) => (s === 0 ? 0 : s < 0.25 ? 1 : s < 0.5 ? 2 : s < 0.75 ? 3 : 4);
+const showTechnical = !!product;
 ---
-<Base title={title} description={simple}>
+<Base title={title} description={lead}>
   <section class="wrap page">
     <nav aria-label={t.crumbs} class="mono crumbs">
       <a href={url.page('/solutions/')}>{x.title}</a><span aria-hidden="true">/</span>
-      {product && <><a href={url.solution(own[0].id)}>{own[0].data.title}</a><span aria-hidden="true">/</span></>}
+      {product && <>
+        <a href={url.page('/vendors/')}>{x.vendors}</a><span aria-hidden="true">/</span>
+        <a href={url.vendor(d.vendorId(product.data.vendor))}>{product.data.vendor}</a><span aria-hidden="true">/</span>
+      </>}
       <span aria-current="page">{title}</span>
     </nav>
 
     <div class="mono tag">{cls ? x.classTag : <>{x.productTag}<a href={url.vendor(d.vendorId(product!.data.vendor))}>{product!.data.vendor}</a> ]</>}</div>
     <h1>{title}</h1>
     {lang === 'uk' && cls?.data.en && <p class="en">{cls.data.en}</p>}
-    {simple ? <p class="lead-text">{simple}</p> : <p class="soon-box">{t.soon}</p>}
+    {pd?.line && pd.edition && <p class="en mono line">{x.line(pd.line, pd.edition)}</p>}
+    {lead ? <p class="lead-text">{lead}</p> : <p class="soon-box">{t.soon}</p>}
+
+    {cls && (cls.data as any).risk && (
+      <div class="risk-box"><span class="mono k r">{x.risk}</span><p>{(cls.data as any).risk}</p></div>
+    )}
 
     <div class="facts">
       {cls && cls.data.d3fend.length > 0 && <div><span class="mono k">D3FEND</span><D3fendTags cls={cls} /></div>}
       {product?.data.url && <div><span class="mono k">{x.source}</span><a href={product.data.url} class="act src">{new URL(product.data.url).hostname} ↗</a></div>}
-      {product && <div><span class="mono k">{x.classes}</span><span class="chips">{own.map((c) => <a href={url.solution(c.id)} class="chip">{c.data.title}</a>)}</span></div>}
+      {product && <div><span class="mono k">{x.classes}</span><span class="chips">{own.map((c, i) => <a href={url.solution(c.id)} class:list={['chip', { main: i === 0 }]}>{c.data.title}</a>)}</span></div>}
     </div>
 
     {cls && (
@@ -62,19 +93,129 @@ const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
       </section>
     )}
 
-    <section class="sec" aria-labelledby="tt">
-      <h2 class="sec-title" id="tt">{x.protects}{techIds.size > 0 && <span class="mono">{pl(techIds.size, t.n.techniques)}</span>}</h2>
-      {attack.length === 0
-        ? <p class="soon-box">{x.noAttack}</p>
-        : <AttackGroups techniques={attack} />}
-    </section>
+    {pd && pd.value.length > 0 && (
+      <section class="sec" aria-labelledby="val">
+        <h2 class="sec-title" id="val">{x.value}</h2>
+        <ul class="plain value">{pd.value.map((v) => <li>{v}</li>)}</ul>
+      </section>
+    )}
 
-    <section class="sec" aria-labelledby="dd">
-      <h2 class="sec-title" id="dd">{x.does}{d3techs.length > 0 && <span class="mono">{pl(d3techs.length, t.n.techniques)}</span>}</h2>
-      {d3techs.length === 0 && d3whole.length === 0
-        ? <p class="soon-box">{x.noD3}</p>
-        : <D3Groups techniques={d3techs} whole={d3whole} />}
-    </section>
+    {product && risks.length > 0 && (
+      <section class="sec" aria-labelledby="risks">
+        <h2 class="sec-title" id="risks">{x.risks}</h2>
+        <p class="note">{x.risksNote}</p>
+        <table class="tbl rk">
+          <thead><tr><th>{x.thRisk}</th><th>{x.thClass}</th></tr></thead>
+          <tbody>
+            {risks.map((r) => (
+              <tr>
+                <td data-label={x.thRisk}>{r.risk}</td>
+                <td data-label={x.thClass}><a href={url.solution(r.cls.id)}>{r.cls.data.title}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
+    {product && attack.length > 0 && (
+      <section class="sec" aria-labelledby="cov">
+        <h2 class="sec-title" id="cov">{x.coverage}</h2>
+        <p class="note">{x.coverageNote}</p>
+        <ol class="cov">
+          {coverage.map((c, i) => (
+            <li class:list={['cell', `l${level(c.share)}`]}>
+              <a href={url.tactic(c.ta.id)}>
+                <span class="mono cn">{num(i + 1)}</span>
+                <span class="ct">{c.ta.data.title}</span>
+                <span class="mono cv">{x.coverageCell(c.n, c.of)}</span>
+                <span class="bar" aria-hidden="true"><span style={`width:${Math.round(c.share * 100)}%`}></span></span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
+    {editions.length > 1 && (
+      <section class="sec" aria-labelledby="ed">
+        <h2 class="sec-title" id="ed">{x.editions}</h2>
+        <p class="note">{x.editionsNote}</p>
+        <div class="scroll" tabindex="0" role="region" aria-labelledby="ed">
+          <table class="ed">
+            <thead>
+              <tr>
+                <th>{x.thClass}</th>
+                {editions.map((p) => (
+                  <th class:list={{ cur: p.id === product!.id }} scope="col">
+                    {p.id === product!.id ? <span>{(p.data as any).edition}</span> : <a href={url.solution(p.id)}>{(p.data as any).edition}</a>}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {edClasses.map((c) => (
+                <tr>
+                  <th scope="row"><a href={url.solution(c.id)}>{c.data.title}</a></th>
+                  {editions.map((p) => (
+                    <td class:list={['mark', { cur: p.id === product!.id, on: has(p, c.id) }]}>
+                      <span aria-hidden="true">{has(p, c.id) ? '✓' : '—'}</span><span class="sr-only">{has(p, c.id) ? x.yes : x.no}</span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    {product && pd!.summary && simple && (
+      <section class="sec" aria-labelledby="det">
+        <h2 class="sec-title" id="det">{x.details}</h2>
+        <p class="body">{simple}</p>
+      </section>
+    )}
+
+    {pd && pd.notIncluded.length > 0 && (
+      <section class="sec" aria-labelledby="ni">
+        <h2 class="sec-title" id="ni">{x.notIncluded}</h2>
+        <ul class="plain">{pd.notIncluded.map((v) => <li>{v}</li>)}</ul>
+      </section>
+    )}
+
+    {pd && pd.classification.length > 0 && (
+      <section class="sec" aria-labelledby="cl">
+        <h2 class="sec-title" id="cl">{x.classification}</h2>
+        <p class="note">{x.classificationNote}</p>
+        <ul class="plain muted">{pd.classification.map((v) => <li>{v}</li>)}</ul>
+      </section>
+    )}
+
+    {showTechnical ? (
+      <section class="sec" aria-labelledby="tech">
+        <h2 class="sec-title" id="tech">{x.technical}</h2>
+        <details class="fold-t">
+          <summary><span class="sec-title sm">{x.protects}</span>{techIds.size > 0 && <span class="mono cnt">{pl(techIds.size, t.n.techniques)}</span>}</summary>
+          {attack.length === 0 ? <p class="soon-box">{x.noAttack}</p> : <AttackGroups techniques={attack} />}
+        </details>
+        <details class="fold-t">
+          <summary><span class="sec-title sm">{x.does}</span>{d3techs.length > 0 && <span class="mono cnt">{pl(d3techs.length, t.n.techniques)}</span>}</summary>
+          {d3techs.length === 0 && d3whole.length === 0 ? <p class="soon-box">{x.noD3}</p> : <D3Groups techniques={d3techs} whole={d3whole} />}
+        </details>
+      </section>
+    ) : (
+      <>
+        <section class="sec" aria-labelledby="tt">
+          <h2 class="sec-title" id="tt">{x.protects}{techIds.size > 0 && <span class="mono">{pl(techIds.size, t.n.techniques)}</span>}</h2>
+          {attack.length === 0 ? <p class="soon-box">{x.noAttack}</p> : <AttackGroups techniques={attack} />}
+        </section>
+        <section class="sec" aria-labelledby="dd">
+          <h2 class="sec-title" id="dd">{x.does}{d3techs.length > 0 && <span class="mono">{pl(d3techs.length, t.n.techniques)}</span>}</h2>
+          {d3techs.length === 0 && d3whole.length === 0 ? <p class="soon-box">{x.noD3}</p> : <D3Groups techniques={d3techs} whole={d3whole} />}
+        </section>
+      </>
+    )}
   </section>
 </Base>
 
@@ -82,8 +223,57 @@ const d3whole = [...new Set(mine.flatMap((m) => m.wholeTactics))];
   .tag { font-size: 12px; color: var(--defense); margin-bottom: 16px; }
   h1 { margin: 0 0 8px; font-size: clamp(32px, 7vw, 48px); line-height: 1.1; }
   .en { margin: 0 0 20px; font-size: 14px; color: var(--muted-2); }
+  .line { font-size: 12px; letter-spacing: .04em; }
   .facts { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
   .facts > div { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
   .src { display: inline-flex; align-items: center; min-height: 44px; }
   .k { font-size: 11px; color: var(--muted-2); min-width: 72px; }
+  .chip.main { border-color: var(--defense); color: var(--text); }
+  .risk-box { margin: 4px 0 20px; padding: 12px 14px; border-left: 2px solid var(--attack); background: var(--surface); max-width: 760px; }
+  .risk-box .r { color: var(--attack); }
+  .risk-box p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  .note { margin: 0 0 14px; max-width: 760px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+  .plain { margin: 0; padding-left: 20px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--text-2); }
+  .plain li + li { margin-top: 8px; }
+  .plain.muted { font-size: 15px; color: var(--muted); }
+  .value li::marker { color: var(--defense); }
+  .body { margin: 0; max-width: 760px; font-size: 16px; line-height: 1.65; color: var(--text-2); }
+  .rk { table-layout: fixed; max-width: 980px; }
+  .rk th:last-child { width: 32%; }
+  @media (max-width: 760px) { .rk th:last-child { width: auto; } }
+  .rk td { font-size: 15px; line-height: 1.5; color: var(--text-2); }
+  /* Покриття етапів: 15 клітинок, насиченість — частка технік етапу. */
+  .cov { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 176px), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); max-width: 980px; }
+  .cell a { display: grid; grid-template-columns: auto 1fr; gap: 2px 8px; padding: 10px 12px; min-height: 44px; background: var(--bg); text-decoration: none; color: var(--text-2); height: 100%; box-sizing: border-box; }
+  .cell a:hover { color: var(--text); }
+  .cn { font-size: 11px; color: var(--muted-2); }
+  .ct { font-size: 14px; line-height: 1.3; }
+  .cv { grid-column: 2; font-size: 11px; color: var(--muted); }
+  .bar { grid-column: 1 / -1; height: 4px; margin-top: 6px; background: var(--line); border-radius: 2px; overflow: hidden; }
+  .bar span { display: block; height: 100%; background: var(--defense); }
+  .cell.l0 a { color: var(--muted-2); }
+  .cell.l0 .ct { color: var(--muted); }
+  /* Редакції: таблиця з горизонтальним скролом на вузькому екрані. */
+  .scroll { overflow-x: auto; max-width: 980px; position: relative; } /* relative: sr-only у клітинках не розширює сторінку */
+  .ed .mark { position: relative; }
+  .scroll:focus-visible { outline: 2px solid var(--defense); outline-offset: 2px; }
+  .ed { width: 100%; min-width: 520px; border-collapse: collapse; border: 1px solid var(--line); }
+  .ed th, .ed td { padding: 10px 14px; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.4; vertical-align: middle; }
+  .ed thead th { white-space: nowrap; text-align: center; font: 400 11px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); background: var(--surface); }
+  .ed thead th:first-child { text-align: left; }
+  .ed tbody th { font-weight: 400; text-align: left; }
+  .ed tbody th a { color: var(--text-2); text-decoration: none; }
+  .ed tbody th a:hover { color: var(--text); }
+  .ed thead a { display: inline-flex; align-items: center; min-height: 32px; }
+  .ed .mark { text-align: center; color: var(--muted-2); }
+  .ed .mark.on { color: var(--defense); }
+  .ed .cur { background: var(--surface); }
+  .ed thead .cur { color: var(--text); box-shadow: inset 0 -2px 0 var(--defense); }
+  .fold-t { border-top: 1px solid var(--line); }
+  .fold-t summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; min-height: 44px; padding: 12px 0; }
+  .fold-t summary::-webkit-details-marker { display: none; }
+  .fold-t summary::before { content: '+'; font-family: var(--font-mono); color: var(--defense); width: 14px; }
+  .fold-t[open] summary::before { content: '−'; }
+  .sec-title.sm { font-size: clamp(18px, 4vw, 22px); margin: 0; }
+  .cnt { font-size: 12px; color: var(--muted-2); }
 </style>

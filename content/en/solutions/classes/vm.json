@@ -1,3 +1,4 @@
 {
-  "simple": "Regularly scans computers and servers for known vulnerabilities and misconfigurations and suggests what to fix first."
+  "simple": "Regularly scans computers and servers for known vulnerabilities and misconfigurations and suggests what to fix first.",
+  "risk": "A known vulnerability that has had a fix for a long time stays on servers and computers and becomes a way in for an attacker."
 }

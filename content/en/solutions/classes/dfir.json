@@ -1,3 +1,4 @@
 {
-  "simple": "Remotely collects traces of an attack from computers, analyzes memory and removes malicious files — to understand what happened and clean up the consequences."
+  "simple": "Remotely collects traces of an attack from computers, analyzes memory and removes malicious files — to understand what happened and clean up the consequences.",
+  "risk": "After an incident nobody knows how the attacker got in, what they did or whether they left, so they come back the same way."
 }

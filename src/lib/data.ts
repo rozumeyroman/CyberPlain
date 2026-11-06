@@ -188,6 +188,10 @@ async function build(lang: Lang) {
       const { questions: q, solutionNotes: n } = o.data;
       if (q && q.length !== s.data.questions.length) throw new Error(`${where}: questions — ${q.length} пунктів, в оригіналі ${s.data.questions.length}`);
       if (n && Object.keys(n).sort().join() !== Object.keys(s.data.solutionNotes).sort().join()) throw new Error(`${where}: ключі solutionNotes не збігаються з оригіналом`);
+      for (const k of ['value', 'notIncluded', 'classification']) {
+        const a = o.data[k];
+        if (Array.isArray(a) && a.length !== s.data[k].length) throw new Error(`${where}: ${k} — ${a.length} пунктів, в оригіналі ${s.data[k].length}`);
+      }
     }
     const missing = src.filter((e) => keys.some((k) => hasText(e.data[k]) && !hasText(overById.get(e.id)?.data[k]))).length;
     if (missing) gaps.push(`${dir} ${missing}/${src.length}`);
@@ -209,8 +213,10 @@ async function build(lang: Lang) {
   const tacticsAll = localize('attack/tactics', tacticsSrc, oTactics, ['short', 'analogy', 'solutionNotes'], (e) => pick(e.data.ua, e.data.en)) as unknown as Tactic[];
   const tactics = tacticsAll.sort((a, b) => a.data.order - b.data.order);
   const techniques = localize('attack/techniques', techniquesSrc, oTechniques, ['simple', 'goal', 'analogy', 'quote', 'questions'], (e) => pick(e.data.ua, e.data.en)) as unknown as Technique[];
-  const classes = localize('solutions/classes', classesSrc, oClasses, ['simple'], (e) => pick(e.data.ua, e.data.en ?? e.data.ua)) as unknown as SolutionClass[];
-  const products = localize('solutions/products', productsSrc, oProducts, ['simple'], (e) => e.data.name) as unknown as Product[];
+  const classes = localize('solutions/classes', classesSrc, oClasses, ['simple', 'risk'], (e) => pick(e.data.ua, e.data.en ?? e.data.ua)) as unknown as SolutionClass[];
+  const products = localize('solutions/products', productsSrc, oProducts, ['summary', 'value', 'simple', 'notIncluded', 'classification'], (e) => e.data.name) as unknown as Product[];
+  // Масиви продукту, яких немає в перекладі, лишаються порожніми (секції не показуються), а не українськими.
+  for (const p of products as unknown as Row[]) for (const k of ['value', 'notIncluded', 'classification']) p.data[k] ??= [];
   const d3Tactics = localize('d3fend/tactics', d3TacticsSrc, oD3Tactics, ['short', 'analogy'], () => '');
   const d3Texts = localize('d3fend/techniques', d3TextsSrc, oD3Techniques, ['simple', 'analogy'], () => '');
   if (gaps.length) console.warn(`EN: тексти без перекладу (записів) — ${gaps.join('; ')}`);
@@ -344,6 +350,25 @@ async function build(lang: Lang) {
     .map((name) => ({ id: vendorId(name), name, products: products.filter((p) => p.data.vendor === name).sort((a, b) => a.data.name.localeCompare(b.data.name)) }))
     .sort((a, b) => a.name.localeCompare(b.name));
   assertUniqueIds('vendors', vendors);
+  // Лінійки: продукти з однаковими vendor + line — редакції однієї лінійки, від базової (менший order) до старшої.
+  const lines = new Map<string, Product[]>();
+  for (const p of products) {
+    const { line, edition } = p.data as { line?: string; edition?: string };
+    if (!line) continue;
+    if (!edition) throw new Error(`content/solutions/products/${p.id}.json: є line, але немає edition`);
+    const key = `${p.data.vendor}/${line}`;
+    if (!lines.has(key)) lines.set(key, []);
+    lines.get(key)!.push(p);
+  }
+  for (const [key, ps] of lines) {
+    ps.sort((a, b) => ((a.data as any).order ?? 99) - ((b.data as any).order ?? 99) || a.data.name.localeCompare(b.data.name));
+    const eds = ps.map((p) => (p.data as any).edition);
+    if (new Set(eds).size !== eds.length) throw new Error(`Лінійка ${key}: редакції повторюються (${eds.join(', ')})`);
+  }
+  const editionsOf = (p: Product): Product[] => {
+    const line = (p.data as any).line;
+    return line ? lines.get(`${p.data.vendor}/${line}`)! : [p];
+  };
 
 
   // ── Аналітика: звіти, вразливості, атаки ──
@@ -459,7 +484,7 @@ async function build(lang: Lang) {
 
   return {
     analytics, reportsAbout, attacksUsing, classSteps,
-    vendors, vendorId,
+    vendors, vendorId, editionsOf,
     tactics, techniques, classes, products, classById, productsOf, techniquesOf, subtechniquesOf, techniquesDefendedBy, classesOf, tacticsOf, solutionsFor, byTactic,
     d3fendTactics, d3byId, d3fendOf, d3fendTacticsOf, d3fendSolutionsOfTechnique, d3fendSolutionsOfTactic, d3fendForAttack,
   };

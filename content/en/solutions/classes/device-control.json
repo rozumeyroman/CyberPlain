@@ -1,3 +1,4 @@
 {
-  "simple": "Decides which USB drives, disks and other external devices can be plugged into a computer and who the computer is allowed to connect to over the network — so malware doesn’t arrive on a USB drive and data doesn’t leave on one."
+  "simple": "Decides which USB drives, disks and other external devices can be plugged into a computer and who the computer is allowed to connect to over the network — so malware doesn’t arrive on a USB drive and data doesn’t leave on one.",
+  "risk": "Malware arrives on a USB stick, and data leaves on one or through an unauthorised network connection."
 }

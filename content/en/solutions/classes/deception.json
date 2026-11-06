@@ -1,3 +1,4 @@
 {
-  "simple": "Plants fake servers, files, users and passwords. Real employees never touch them, so anyone who does is almost certainly an attacker."
+  "simple": "Plants fake servers, files, users and passwords. Real employees never touch them, so anyone who does is almost certainly an attacker.",
+  "risk": "An attacker quietly explores the internal network for weeks, because their actions look like ordinary user activity."
 }

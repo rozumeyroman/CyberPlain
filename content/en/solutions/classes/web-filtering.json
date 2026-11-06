@@ -1,3 +1,4 @@
 {
-  "simple": "Keeps people and programs away from malicious, phishing and unwanted sites and domains — by category and reputation, on the firewall, in a cloud web gateway (SWG) or with an agent on the computer. Also blocks infected machines from connecting to command servers and data from being sent to third-party services."
+  "simple": "Keeps people and programs away from malicious, phishing and unwanted sites and domains — by category and reputation, on the firewall, in a cloud web gateway (SWG) or with an agent on the computer. Also blocks infected machines from connecting to command servers and data from being sent to third-party services.",
+  "risk": "Employees visit malicious and phishing sites, and infected computers freely talk to command servers."
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "Keeps administrator passwords in a vault, grants access only for the duration of a task and records what was done with administrator rights."
+  "simple": "Keeps administrator passwords in a vault, grants access only for the duration of a task and records what was done with administrator rights.",
+  "risk": "Administrator passwords sit in files and spreadsheets, stay unchanged for years, and nobody records what is done with them."
 }

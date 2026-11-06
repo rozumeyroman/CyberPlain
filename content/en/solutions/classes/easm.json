@@ -1,3 +1,4 @@
 {
-  "simple": "Continuously searches the internet for everything that belongs to the company: websites, domains, servers, cloud resources — and shows what an attacker sees from the outside."
+  "simple": "Continuously searches the internet for everything that belongs to the company: websites, domains, servers, cloud resources — and shows what an attacker sees from the outside.",
+  "risk": "The attacker finds a forgotten internet-facing site, server or service with a known vulnerability before the company does."
 }

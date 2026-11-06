@@ -1,3 +1,4 @@
 {
-  "simple": "Knows where confidential data lives and doesn’t let it be quietly sent out — by email, to the cloud or on a USB drive."
+  "simple": "Knows where confidential data lives and doesn’t let it be quietly sent out — by email, to the cloud or on a USB drive.",
+  "risk": "Confidential data quietly leaves by email, to the cloud, onto a USB stick or into an AI service, by accident or on purpose."
 }

@@ -1,3 +1,4 @@
 {
-  "simple": "Filters traffic between networks and the internet and blocks known attacks."
+  "simple": "Filters traffic between networks and the internet and blocks known attacks.",
+  "risk": "Known attacks, exploits and forbidden connections pass freely between the internet and the internal network."
 }

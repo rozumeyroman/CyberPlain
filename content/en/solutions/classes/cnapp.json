@@ -1,3 +1,4 @@
 {
-  "simple": "Shows all resources in AWS, Azure, GCP and Kubernetes, checks configurations and access permissions, looks for vulnerabilities in containers and spots threats in the cloud."
+  "simple": "Shows all resources in AWS, Azure, GCP and Kubernetes, checks configurations and access permissions, looks for vulnerabilities in containers and spots threats in the cloud.",
+  "risk": "A cloud misconfiguration such as an open bucket, excess access or a vulnerable container exposes data and services to the attacker."
 }

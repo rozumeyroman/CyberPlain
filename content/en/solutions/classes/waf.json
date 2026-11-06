@@ -1,3 +1,4 @@
 {
-  "simple": "Sits in front of a website and blocks attacks on web applications and automated scanning."
+  "simple": "Sits in front of a website and blocks attacks on web applications and automated scanning.",
+  "risk": "Injections, form attacks and automated scanning reach the web application and the data behind it."
 }
