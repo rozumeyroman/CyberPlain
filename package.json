@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "import:attack": "node scripts/import-attack.mjs",
-    "import:d3fend": "node scripts/import-d3fend.mjs"
+    "import:d3fend": "node scripts/import-d3fend.mjs",
+    "cowork:skill": "node scripts/cowork-skill.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
