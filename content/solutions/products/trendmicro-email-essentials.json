@@ -10,6 +10,18 @@
     "sandbox",
     "ueba"
   ],
+  "summary": "TrendAI Vision One Email and Collaboration Security Essentials: захист пошти й інструментів співпраці з перевіркою посилань у пісочниці, Email Continuity, шифруванням і DMARC.",
+  "value": [
+    "Фішинг, шкідливі вкладення й посилання зупиняються, зокрема нові.",
+    "Пошта працює навіть під час збою поштового сервісу.",
+    "Конфіденційні дані не йдуть назовні непомітно."
+  ],
   "simple": "Захист пошти й інструментів спільної роботи Microsoft 365, Google Workspace, Box і Dropbox: через API (Cloud Email and Collaboration Protection) або як шлюз перед поштою (Cloud Email Gateway Protection). Блокує фішинг, зокрема через QR-коди, шахрайство з діловим листуванням (BEC) за аналізом стилю письма й поведінки відправника, шкідливі програми й спам, перевіряє вкладення в пісочниці й повторно сканує вже доставлені листи, перевіряє внутрішнє листування, запобігає витоку даних (DLP), помічає захоплення облікових записів. Розширений захист: посилання перевіряються в пісочниці, безперервна робота пошти під час збоїв (Email Continuity), шифрування листів, поглиблений аналіз DMARC. XDR для пошти — у редакції Pro. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи.",
+  "notIncluded": [
+    "XDR для пошти — у Pro."
+  ],
+  "classification": [
+    "Класи такі самі, як у Core; URL Sandboxing, Continuity, шифрування, DMARC — лише в тексті."
+  ],
   "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services"
 }

@@ -1,3 +1,15 @@
 {
-  "simple": "Finds phishing sites and look-alike domains using your brand, checks whether your IP addresses and domains have landed on blocklists, and watches for leaks in cloud storage, code repositories and malware-analysis services. Automatically files takedown requests for fake domains, social media pages, counterfeit apps and fraudulent sites and tracks them through to completion. For banks — detection of stolen payment cards. Has configurable playbooks with AI agents."
+  "summary": "SOCRadar Brand Protection Essential: it finds phishing sites and look-alike domains using your brand and watches blocklists and leaks in cloud storage.",
+  "value": [
+    "Fake sites using the brand are found before they deceive customers.",
+    "It shows if company IPs or domains end up on blocklists.",
+    "Leaks in cloud storage and repositories are spotted."
+  ],
+  "simple": "Finds phishing sites and look-alike domains using your brand, checks whether your IP addresses and domains have landed on blocklists, and watches for leaks in cloud storage, code repositories and malware-analysis services. Automatically files takedown requests for fake domains, social media pages, counterfeit apps and fraudulent sites and tracks them through to completion. For banks — detection of stolen payment cards. Has configurable playbooks with AI agents.",
+  "notIncluded": [
+    "Mobile apps, social media and the dark web come with Business and Ultimate."
+  ],
+  "classification": [
+    "The brand protection class was created for SOCRadar."
+  ]
 }

@@ -1,3 +1,12 @@
 {
-  "simple": "Identity protection: posture management (ISPM) and threat detection and response (ITDR) together. Through Microsoft Entra ID, Active Directory, Okta and OpenLDAP it finds all accounts — people, services and AI agents — and shows stale ones, those without MFA and those with excessive permissions. Learns normal user behavior (UEBA), spots unusual sign-ins and lateral movement, and correlates them with endpoint and email events. Responds: locks the account, resets the password, signs out sessions and automatically disables stale accounts with playbooks. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Identity Security: identity posture and identity attack detection together, for Entra ID, Active Directory, Okta and OpenLDAP.",
+  "value": [
+    "Weak spots in the accounts of people, services and AI agents are found.",
+    "Attacks on accounts are visible, and suspicious behaviour shows up as anomalies.",
+    "It shows what to fix first."
+  ],
+  "simple": "Identity protection: posture management (ISPM) and threat detection and response (ITDR) together. Through Microsoft Entra ID, Active Directory, Okta and OpenLDAP it finds all accounts — people, services and AI agents — and shows stale ones, those without MFA and those with excessive permissions. Learns normal user behavior (UEBA), spots unusual sign-ins and lateral movement, and correlates them with endpoint and email events. Responds: locks the account, resets the password, signs out sessions and automatically disables stale accounts with playbooks. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "classification": [
+    "ISPM + ITDR, and UEBA per the datasheet; there is no separate credit table row."
+  ]
 }

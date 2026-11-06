@@ -1,3 +1,15 @@
 {
-  "simple": "Watches the dark web for your company’s data: hacker forums, black markets, Tor, Telegram, Discord, IRC and closed hacker channels. Alerts you when stolen employee or customer data appears there, as well as passwords and sessions collected by infostealer malware and botnets. Designed for small companies: one domain, one user."
+  "summary": "SOCRadar Advanced Dark Web Monitoring Essential: it watches hacker forums, black markets, Tor, Telegram and Discord for your company’s data.",
+  "value": [
+    "The company learns about leaked passwords or databases before they are used.",
+    "Talk of an attack on the company is spotted in advance.",
+    "No need to monitor closed channels yourself."
+  ],
+  "simple": "Watches the dark web for your company’s data: hacker forums, black markets, Tor, Telegram, Discord, IRC and closed hacker channels. Alerts you when stolen employee or customer data appears there, as well as passwords and sessions collected by infostealer malware and botnets. Designed for small companies: one domain, one user.",
+  "notIncluded": [
+    "Ransomware tracking, industry dark web and executive (VIP) account protection start with Business."
+  ],
+  "classification": [
+    "The dark web monitoring class was created for SOCRadar; “Flexible” in the table means the feature is included and its volume is licensed flexibly."
+  ]
 }

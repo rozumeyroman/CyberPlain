@@ -1,3 +1,15 @@
 {
-  "simple": "Cyber risk exposure management (CREM): builds an inventory of the company’s assets — computers, servers, cloud resources, accounts and what is visible from the internet — and scores the risk of each based on criticality and active threats. Discovers internet-facing resources (Attack Surface Discovery), manages vulnerabilities and dangerous misconfigurations with priorities, scans network devices for vulnerabilities (Network Vulnerability Scanner) and assesses account risk (Identity Security Posture): accounts without MFA, stale accounts and those with excessive permissions. Attack path prediction, security awareness training and compliance management are in the Essentials edition. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Cyber Risk Exposure Management Core: asset inventory, external attack surface, vulnerabilities and identity posture with a single risk score.",
+  "value": [
+    "It shows every company asset, including those visible from the internet.",
+    "Vulnerabilities and weak account settings are ranked by risk.",
+    "Management sees company risk as one clear score."
+  ],
+  "simple": "Cyber risk exposure management (CREM): builds an inventory of the company’s assets — computers, servers, cloud resources, accounts and what is visible from the internet — and scores the risk of each based on criticality and active threats. Discovers internet-facing resources (Attack Surface Discovery), manages vulnerabilities and dangerous misconfigurations with priorities, scans network devices for vulnerabilities (Network Vulnerability Scanner) and assesses account risk (Identity Security Posture): accounts without MFA, stale accounts and those with excessive permissions. Attack path prediction, security awareness training and compliance management are in the Essentials edition. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "Security awareness training is in Essentials."
+  ],
+  "classification": [
+    "Cyber Risk Overview is CAASM, Attack Surface Discovery is EASM, Threat and Exposure Management and the Network Vulnerability Scanner are vulnerability management, Identity Security Posture is ISPM."
+  ]
 }

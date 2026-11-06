@@ -1,3 +1,12 @@
 {
-  "simple": "Finds phishing sites and look-alike domains using your brand, checks whether your IP addresses and domains have landed on blocklists, and watches for leaks in cloud storage, code repositories and malware-analysis services. Automatically files takedown requests for fake domains, social media pages, counterfeit apps and fraudulent sites and tracks them through to completion. For banks — detection of stolen payment cards. Has configurable playbooks with AI agents. Additionally monitors mobile apps and social networks (X, Instagram, Facebook, YouTube, TikTok and others) and finds fake accounts posing as the company; and on the dark web — hacker discussions, leaks of employee and customer data, and passwords from infostealers and botnets. Has an API and integrations, user roles, an audit log and SSO; from three domains, with volumes of domains, IP addresses, dark web monitoring and integrations licensed flexibly to fit the company’s needs."
+  "summary": "The top SOCRadar Brand Protection Ultimate edition: brand protection across all channels plus dark web monitoring, with API, integrations and SSO.",
+  "value": [
+    "Fake sites, apps and accounts using the brand are found and taken down.",
+    "Talk about the company on the dark web is spotted in time.",
+    "Findings flow into your systems via API."
+  ],
+  "simple": "Finds phishing sites and look-alike domains using your brand, checks whether your IP addresses and domains have landed on blocklists, and watches for leaks in cloud storage, code repositories and malware-analysis services. Automatically files takedown requests for fake domains, social media pages, counterfeit apps and fraudulent sites and tracks them through to completion. For banks — detection of stolen payment cards. Has configurable playbooks with AI agents. Additionally monitors mobile apps and social networks (X, Instagram, Facebook, YouTube, TikTok and others) and finds fake accounts posing as the company; and on the dark web — hacker discussions, leaks of employee and customer data, and passwords from infostealers and botnets. Has an API and integrations, user roles, an audit log and SSO; from three domains, with volumes of domains, IP addresses, dark web monitoring and integrations licensed flexibly to fit the company’s needs.",
+  "classification": [
+    "“Flexible” in the table means the feature is included, so BP Ultimate also has dark web monitoring."
+  ]
 }

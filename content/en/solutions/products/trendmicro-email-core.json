@@ -1,3 +1,15 @@
 {
-  "simple": "Protection for Microsoft 365, Google Workspace, Box and Dropbox email and collaboration: via API (Cloud Email and Collaboration Protection) or as a gateway in front of mail (Cloud Email Gateway Protection). Blocks phishing including QR-code phishing, business email compromise (BEC) using writing-style and sender-behavior analysis, malware and spam, checks attachments in a sandbox and rescans already delivered emails, scans internal mail, prevents data loss (DLP) and detects account takeover. URL sandboxing, Email Continuity, encryption and XDR for email are in higher editions. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Email and Collaboration Security Core: protection for Microsoft 365, Google Workspace, Box and Dropbox via API or as a gateway, covering phishing, malicious files, account takeover and DLP.",
+  "value": [
+    "Phishing and malicious attachments are stopped before an employee opens them.",
+    "Confidential data does not quietly leave by email.",
+    "A taken-over account shows up through behavioural anomalies."
+  ],
+  "simple": "Protection for Microsoft 365, Google Workspace, Box and Dropbox email and collaboration: via API (Cloud Email and Collaboration Protection) or as a gateway in front of mail (Cloud Email Gateway Protection). Blocks phishing including QR-code phishing, business email compromise (BEC) using writing-style and sender-behavior analysis, malware and spam, checks attachments in a sandbox and rescans already delivered emails, scans internal mail, prevents data loss (DLP) and detects account takeover. URL sandboxing, Email Continuity, encryption and XDR for email are in higher editions. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "URL sandboxing, Email Continuity, encryption and email XDR come with the higher editions."
+  ],
+  "classification": [
+    "Email protection, DLP, File Sandboxing as the sandbox class and Account Takeover as UEBA (as with Harmony Email); the classes are the same in every edition."
+  ]
 }

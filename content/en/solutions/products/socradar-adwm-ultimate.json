@@ -1,3 +1,12 @@
 {
-  "simple": "Watches the dark web for your company’s data: hacker forums, black markets, Tor, Telegram, Discord, IRC and closed hacker channels. Alerts you when stolen employee or customer data appears there, as well as passwords and sessions collected by infostealer malware and botnets. Additionally, it tracks ransomware activity, the dark web in your industry and country, and leaks of executives’ accounts (VIP protection); has dark web threat hunting, multiple users with roles, an audit log and SSO; commercial use is permitted. Also has tracking of stolen payment cards (banks only), a dark web search engine, an API and integrations, and the OnWatch service; from three domains, with volumes licensed flexibly to fit the company’s needs."
+  "summary": "The top SOCRadar Advanced Dark Web Monitoring Ultimate edition: full dark web monitoring with card tracking, a search engine, API and the OnWatch service.",
+  "value": [
+    "Leaks and attack preparation against the company are spotted on the dark web in time.",
+    "Your own dark web search and integrations with your controls.",
+    "For banks, tracking of stolen payment cards."
+  ],
+  "simple": "Watches the dark web for your company’s data: hacker forums, black markets, Tor, Telegram, Discord, IRC and closed hacker channels. Alerts you when stolen employee or customer data appears there, as well as passwords and sessions collected by infostealer malware and botnets. Additionally, it tracks ransomware activity, the dark web in your industry and country, and leaks of executives’ accounts (VIP protection); has dark web threat hunting, multiple users with roles, an audit log and SSO; commercial use is permitted. Also has tracking of stolen payment cards (banks only), a dark web search engine, an API and integrations, and the OnWatch service; from three domains, with volumes licensed flexibly to fit the company’s needs.",
+  "classification": [
+    "The class is dark web monitoring; volumes are licensed flexibly."
+  ]
 }

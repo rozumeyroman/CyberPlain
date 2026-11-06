@@ -1,3 +1,15 @@
 {
-  "simple": "Network traffic analysis (NDR): a Virtual Network Sensor, a sensor on TippingPoint appliances or Deep Discovery Inspector monitors traffic, including decrypted traffic, and spots command-and-control channels, lateral movement, suspicious file transfers and devices without agents — IoT, printers, personal devices. Shows the attack timeline, correlates network events with endpoint and cloud data and keeps events for six months or more. Suspicious files can be sent to a sandbox automatically (extra cost). Licensed by throughput (in steps of 500 Mbps). Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One XDR for Networks: network traffic analysis (NDR) with a virtual sensor or a sensor on TippingPoint and Deep Discovery Inspector devices.",
+  "value": [
+    "An attacker in the network is visible even where there are no agents.",
+    "Network data is analysed together with endpoint and email data on the platform.",
+    "Licensing is by throughput."
+  ],
+  "simple": "Network traffic analysis (NDR): a Virtual Network Sensor, a sensor on TippingPoint appliances or Deep Discovery Inspector monitors traffic, including decrypted traffic, and spots command-and-control channels, lateral movement, suspicious file transfers and devices without agents — IoT, printers, personal devices. Shows the attack timeline, correlates network events with endpoint and cloud data and keeps events for six months or more. Suspicious files can be sent to a sandbox automatically (extra cost). Licensed by throughput (in steps of 500 Mbps). Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "Automatically sending suspicious files to the sandbox costs extra."
+  ],
+  "classification": [
+    "The class is NDR."
+  ]
 }

@@ -1,3 +1,15 @@
 {
-  "simple": "Protection for Windows, macOS and Linux computers and servers with one agent and a cloud console. Antivirus with machine learning and behavioral analysis against malware, ransomware and exploits, website reputation checks, host firewall, USB and device control, data loss prevention (DLP), application control and an intrusion prevention system (IPS) for laptops and desktops — virtual patches for vulnerabilities that are not yet updated. XDR for Endpoints (EDR): records endpoint activity, correlates it with email, network and cloud data, shows the whole attack chain and lets you isolate a computer, kill a process or run a response playbook. Server protection (integrity monitoring, log inspection, server IPS) and containers are in the Pro edition. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Endpoint Security Essentials: everything in Core plus EDR (XDR for Endpoints), with event recording, investigation and response.",
+  "value": [
+    "Attacks are stopped before they run, and anything that gets through is visible and can be investigated.",
+    "An infected computer is isolated from the console.",
+    "USB devices, network connections and data on the computer are under control."
+  ],
+  "simple": "Protection for Windows, macOS and Linux computers and servers with one agent and a cloud console. Antivirus with machine learning and behavioral analysis against malware, ransomware and exploits, website reputation checks, host firewall, USB and device control, data loss prevention (DLP), application control and an intrusion prevention system (IPS) for laptops and desktops — virtual patches for vulnerabilities that are not yet updated. XDR for Endpoints (EDR): records endpoint activity, correlates it with email, network and cloud data, shows the whole attack chain and lets you isolate a computer, kill a process or run a response playbook. Server protection (integrity monitoring, log inspection, server IPS) and containers are in the Pro edition. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "Server and container protection (CWPP) is in Pro."
+  ],
+  "classification": [
+    "XDR for Endpoints is EDR."
+  ]
 }

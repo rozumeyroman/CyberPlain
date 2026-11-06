@@ -1,3 +1,15 @@
 {
-  "simple": "Protection for Windows, macOS and Linux computers and servers with one agent and a cloud console. Antivirus with machine learning and behavioral analysis against malware, ransomware and exploits, website reputation checks, host firewall, USB and device control, data loss prevention (DLP), application control and an intrusion prevention system (IPS) for laptops and desktops — virtual patches for vulnerabilities that are not yet updated. EDR and server protection (integrity monitoring, log inspection, server IPS) and containers are in the Essentials and Pro editions. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Endpoint Security Core: one agent for computers and servers with antivirus, device control and host firewall, DLP and web filtering.",
+  "value": [
+    "Malware and ransomware are stopped before they run.",
+    "USB devices and the computer’s network connections are under control, and data does not leave on them.",
+    "Malicious sites do not open."
+  ],
+  "simple": "Protection for Windows, macOS and Linux computers and servers with one agent and a cloud console. Antivirus with machine learning and behavioral analysis against malware, ransomware and exploits, website reputation checks, host firewall, USB and device control, data loss prevention (DLP), application control and an intrusion prevention system (IPS) for laptops and desktops — virtual patches for vulnerabilities that are not yet updated. EDR and server protection (integrity monitoring, log inspection, server IPS) and containers are in the Essentials and Pro editions. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "EDR (XDR for Endpoints) starts with Essentials; server and container protection (CWPP) is in Pro."
+  ],
+  "classification": [
+    "Antivirus is EPP, firewall and device control map to device control, DLP is DLP, Web Reputation is web filtering; endpoint IPS and application control stay in the text."
+  ]
 }

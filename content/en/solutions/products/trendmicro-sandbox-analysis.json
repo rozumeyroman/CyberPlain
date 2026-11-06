@@ -1,3 +1,12 @@
 {
-  "simple": "Cloud sandbox: opens suspicious files and links in an isolated environment and shows what they do. Files are submitted manually, via API, from response playbooks or automatically — from Endpoint Security Core and Essentials, ZTSA Internet Access, network sensors and Deep Discovery Inspector (each source is licensed separately). Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Sandbox Analysis: a cloud sandbox that opens suspicious files and links in an isolated environment and shows what they do.",
+  "value": [
+    "An unknown file or link is checked without risk to work computers.",
+    "Files are submitted manually, via API or from response playbooks.",
+    "The team gets indicators for blocking."
+  ],
+  "simple": "Cloud sandbox: opens suspicious files and links in an isolated environment and shows what they do. Files are submitted manually, via API, from response playbooks or automatically — from Endpoint Security Core and Essentials, ZTSA Internet Access, network sensors and Deep Discovery Inspector (each source is licensed separately). Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "classification": [
+    "The class is the sandbox."
+  ]
 }

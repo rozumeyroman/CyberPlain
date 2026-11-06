@@ -1,3 +1,15 @@
 {
-  "simple": "Protection for Microsoft 365, Google Workspace, Box and Dropbox email and collaboration: via API (Cloud Email and Collaboration Protection) or as a gateway in front of mail (Cloud Email Gateway Protection). Blocks phishing including QR-code phishing, business email compromise (BEC) using writing-style and sender-behavior analysis, malware and spam, checks attachments in a sandbox and rescans already delivered emails, scans internal mail, prevents data loss (DLP) and detects account takeover. Advanced protection: links are checked in a sandbox, mail keeps working during outages (Email Continuity), email encryption and advanced DMARC analysis. XDR for email is in the Pro edition. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Email and Collaboration Security Essentials: email and collaboration protection with URL sandboxing, Email Continuity, encryption and DMARC.",
+  "value": [
+    "Phishing, malicious attachments and links are stopped, including new ones.",
+    "Email keeps working even during a mail service outage.",
+    "Confidential data does not quietly leave."
+  ],
+  "simple": "Protection for Microsoft 365, Google Workspace, Box and Dropbox email and collaboration: via API (Cloud Email and Collaboration Protection) or as a gateway in front of mail (Cloud Email Gateway Protection). Blocks phishing including QR-code phishing, business email compromise (BEC) using writing-style and sender-behavior analysis, malware and spam, checks attachments in a sandbox and rescans already delivered emails, scans internal mail, prevents data loss (DLP) and detects account takeover. Advanced protection: links are checked in a sandbox, mail keeps working during outages (Email Continuity), email encryption and advanced DMARC analysis. XDR for email is in the Pro edition. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "Email XDR is in Pro."
+  ],
+  "classification": [
+    "The classes match Core; URL Sandboxing, Continuity, encryption and DMARC stay in the text."
+  ]
 }

@@ -1,11 +1,20 @@
 {
   "name": "TrendAI Vision One Cloud Risk Management",
   "vendor": "Trend Micro",
-  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services",
   "classes": [
     "cnapp",
     "ciem",
     "easm"
   ],
-  "simple": "Оцінка ризиків хмарних акаунтів (AWS, Azure, Google Cloud): перевіряє налаштування й відповідність стандартам (CSPM), шукає ресурси, видимі з інтернету (EASM), чутливі дані (DSPM), ризики API й застосунків (ASPM), без агентів сканує на вразливості й шкідливі програми, показує шляхи атаки й надмірні права хмарних облікових записів. Ліцензія — за кількістю хмарних акаунтів і ресурсів у них (кроками по 500), окремо від XDR. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи."
+  "summary": "TrendAI Vision One Cloud Risk Management: оцінка ризиків хмарних акаунтів AWS, Azure і Google Cloud — налаштування, зовнішні ресурси, чутливі дані й права.",
+  "value": [
+    "Помилки налаштувань хмари знаходяться разом із перевіркою відповідності стандартам.",
+    "Видно хмарні ресурси, доступні з інтернету.",
+    "Надмірні права хмарних облікових записів знаходяться."
+  ],
+  "simple": "Оцінка ризиків хмарних акаунтів (AWS, Azure, Google Cloud): перевіряє налаштування й відповідність стандартам (CSPM), шукає ресурси, видимі з інтернету (EASM), чутливі дані (DSPM), ризики API й застосунків (ASPM), без агентів сканує на вразливості й шкідливі програми, показує шляхи атаки й надмірні права хмарних облікових записів. Ліцензія — за кількістю хмарних акаунтів і ресурсів у них (кроками по 500), окремо від XDR. Входить до платформи TrendAI Vision One (бізнес-напрям Trend Micro, раніше Trend Vision One); ліцензується кредитами TrendAI Flex, які можна перерозподіляти між рішеннями платформи.",
+  "classification": [
+    "Cloud account assessment (CSPM, EASM, DSPM, ASPM, безагентне сканування, cloud identity entitlement) — CNAPP, CIEM, EASM; назва — за сторінкою Cloud Security."
+  ],
+  "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services"
 }

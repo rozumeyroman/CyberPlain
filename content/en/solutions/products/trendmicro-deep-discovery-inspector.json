@@ -1,3 +1,15 @@
 {
-  "simple": "A physical or virtual appliance that passively analyzes all traffic without affecting the network — 100+ protocols, all ports, external and internal. Detects targeted attacks, ransomware, zero-day exploits, command-and-control channels and lateral movement using file, web, IP and mobile app reputation, heuristics and machine learning. Checks suspicious files in its own sandbox with images tuned to your systems. Shares indicators in STIX, TAXII and YARA formats; with TrendAI Vision One it works as an XDR for Networks sensor (separate license)."
+  "summary": "Trend Micro Deep Discovery Inspector: a physical or virtual appliance that passively analyses all network traffic and has its own sandbox.",
+  "value": [
+    "Attacks and an attacker in the network are visible even where there are no agents.",
+    "Suspicious files from traffic are checked in its own sandbox.",
+    "Analysis is passive and does not affect the network."
+  ],
+  "simple": "A physical or virtual appliance that passively analyzes all traffic without affecting the network — 100+ protocols, all ports, external and internal. Detects targeted attacks, ransomware, zero-day exploits, command-and-control channels and lateral movement using file, web, IP and mobile app reputation, heuristics and machine learning. Checks suspicious files in its own sandbox with images tuned to your systems. Shares indicators in STIX, TAXII and YARA formats; with TrendAI Vision One it works as an XDR for Networks sensor (separate license).",
+  "notIncluded": [
+    "Working as an XDR for Networks sensor in TrendAI Vision One is a separate licence."
+  ],
+  "classification": [
+    "NDR, IDS, sandbox; outside the TrendAI Flex credits."
+  ]
 }

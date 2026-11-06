@@ -53,11 +53,12 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   attack/techniques/T1595.json    # техніка: en, ua, tactics[], pain, simple, goal, analogy,
                                   #   quote, questions[], defenses[] (ID класів рішень),
                                   #   subs{"001": укр. назва підтехніки}
-  solutions/classes/vm.json       # клас рішень: ua, en, simple, d3fend[] (ID технік D3FEND або назви тактик)
+  solutions/classes/vm.json       # клас рішень: ua, en, simple, risk (ризик людською мовою), d3fend[] (ID технік D3FEND або назви тактик)
   d3fend/intro.json               # тексти сторінки /d3fend і дані джерела
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (описані всі 271)
-  solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
+  solutions/products/rapid7-surface-command.json  # продукт: name, vendor, line, edition, order, classes[] (перший — головний), summary,
+                                                  #   value[], simple, notIncluded[], classification[], url
   analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, illustration, body[], method[], figures[],
                                                   #   findings[{basis, text, risk, techniques[], solutions[]}], questions[], vulnerabilities[]
   analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], chain[] (кроки атаки + observed), remediation[], timeline[], solutions[{phase}]
@@ -137,6 +138,14 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 - таблиця «Чим захиститись на цьому етапі» = усі класи з `defenses[]` технік етапу,
   відсортовані за кількістю технік; текст «що робить» — `solutionNotes` етапу або `simple` класу;
 - сторінка рішення показує техніки, які на нього посилаються (продукт — через свої класи).
+
+**Сторінка продукту** (`/solutions/<id>/`, 0 KB JS): коротко (`summary`) → «Що дає замовнику» (`value[]`, 3–4 пункти мовою бізнесу) →
+«Від яких ризиків захищає» (обчислюється з `risk` класів продукту) → «Які етапи атаки покриває» (15 клітинок: частка технік етапу з
+`defenses[]` класів) → «Редакції» (таблиця класів усіх продуктів з тими самими `vendor` + `line`, за `order`) → «Детально» (`simple`) →
+«Чого в цій редакції немає» (`notIncluded[]`) → «Як ми класифікували» (`classification[]` — рішення з розділу «Портфель рішень» для
+цієї редакції) → згорнута технічна деталізація ATT&CK і D3FEND. Окремих SVG для продуктів не робимо (рішення автора): ілюстрації —
+обчислювані смуга етапів і таблиця редакцій. Лінійка = офіційні редакції чи варіанти розгортання з однаковою основою; окремі модулі
+й продукти — без `line`. Англійські `summary`, `value`, `notIncluded`, `classification` — в оверлеї (масиви тієї ж довжини).
 
 **D3FEND.** Тактика → категорія (верхній рівень, напр. D3-AA Agent Authentication) → техніки
 (можуть мати різновиди, D3-MFA). ID, англ. назви, визначення й ієрархія — з `data/mitre/d3fend.json`;
@@ -674,7 +683,7 @@ Security Posture — `ispm`; Essentials: Security Awareness — `awareness`, Att
 (ISPM + ITDR, UEBA в даташиті) і Data Security (DSPM, data lineage, Data Control) — у таблиці кредитів окремих рядків немає, класи за
 сторінками й брифами: `itdr` + `ispm` + `ueba`; `dlp`. ZTSA Private Access — `vpnless`; Internet Access (SWG за Web Reputation, CASB) — `web-filtering`;
 AI Secure Access, Send to Sandbox — лише в тексті. Threat Intelligence (Hub) — `ti`; Sandbox Analysis — `sandbox`; Forensics (Evidence
-Collection, потрібен EDR) — `dfir`. Поза кредитами: TippingPoint TPS (апаратний IPS, Digital Vaccine/ZDI, репутація IP і URL) — `ngfw` + `ti`;
+Collection, потрібен EDR) — `dfir`. Поза кредитами: TippingPoint TPS (апаратний IPS, Digital Vaccine/ZDI, репутація IP і URL) — `ngfw` + `web-filtering`;
 Deep Discovery Inspector (пасивний аналіз трафіку з власною пісочницею) — `ndr`, `ids`, `sandbox`. Не додано: XDR for Email/Cloud/Data окремо
 (входять у пакети чи без класу), Mobile Security, File Security, AI Application Security, Code Security, Cloud IPS, Deep Discovery Analyzer /
 Email Inspector, ScanMail, PortalProtect, сервіси (MDR, IR).

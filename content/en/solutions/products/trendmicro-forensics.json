@@ -1,3 +1,15 @@
 {
-  "simple": "Digital forensics right in the platform console, with no separate tools: collects evidence from computers, organizes it in workspaces, quickly triages computers with osquery queries and YARA rules, and builds a single super timeline and report enriched with threat intelligence. Requires XDR for Endpoints (EDR); licensed by evidence storage volume (Evidence Collection). Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Forensics: digital forensics right in the platform console, with evidence collection from computers and its analysis.",
+  "value": [
+    "After an incident it shows how the attacker got in and what they did.",
+    "Evidence is collected from computers remotely, without separate tools.",
+    "Investigations are faster because everything is in one console."
+  ],
+  "simple": "Digital forensics right in the platform console, with no separate tools: collects evidence from computers, organizes it in workspaces, quickly triages computers with osquery queries and YARA rules, and builds a single super timeline and report enriched with threat intelligence. Requires XDR for Endpoints (EDR); licensed by evidence storage volume (Evidence Collection). Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "notIncluded": [
+    "EDR is required on the computers."
+  ],
+  "classification": [
+    "Forensics (Evidence Collection) is DFIR."
+  ]
 }

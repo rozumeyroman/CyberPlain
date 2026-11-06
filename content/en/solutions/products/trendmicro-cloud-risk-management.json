@@ -1,3 +1,12 @@
 {
-  "simple": "Risk assessment for cloud accounts (AWS, Azure, Google Cloud): checks configuration and compliance (CSPM), finds internet-facing resources (EASM), sensitive data (DSPM) and API and application risks (ASPM), scans for vulnerabilities and malware without agents, and shows attack paths and excessive cloud permissions. Licensed per cloud account and the resources in it (in steps of 500), independently of XDR. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions."
+  "summary": "TrendAI Vision One Cloud Risk Management: risk assessment of AWS, Azure and Google Cloud accounts, covering settings, exposed resources, sensitive data and permissions.",
+  "value": [
+    "Cloud misconfigurations are found together with compliance checks.",
+    "It shows cloud resources reachable from the internet.",
+    "Excessive cloud account permissions are found."
+  ],
+  "simple": "Risk assessment for cloud accounts (AWS, Azure, Google Cloud): checks configuration and compliance (CSPM), finds internet-facing resources (EASM), sensitive data (DSPM) and API and application risks (ASPM), scans for vulnerabilities and malware without agents, and shows attack paths and excessive cloud permissions. Licensed per cloud account and the resources in it (in steps of 500), independently of XDR. Part of the TrendAI Vision One platform (Trend Micro’s business unit, formerly Trend Vision One); licensed with TrendAI Flex credits that can be reallocated across platform solutions.",
+  "classification": [
+    "Cloud account assessment (CSPM, EASM, DSPM, ASPM, agentless scanning, cloud identity entitlement) maps to CNAPP, CIEM and EASM; the name follows the Cloud Security page."
+  ]
 }

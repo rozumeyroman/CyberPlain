@@ -1,3 +1,15 @@
 {
-  "simple": "Continuously searches the internet for everything the company owns: domains, websites, IP addresses, services, cloud storage, code repositories — and keeps an inventory of these assets with an attack surface map. Finds misconfigurations in email, DNS, SSL certificates, websites and cloud, information leaks and open ports; passively checks for vulnerabilities and prioritizes risks. Weekly scans, plus analysis and scoring of the company’s mobile applications; audit log and SSO."
+  "summary": "SOCRadar Attack Surface Management Business: discovery and inventory of all the company’s external assets with extended features.",
+  "value": [
+    "It shows everything the company exposes to the internet.",
+    "Forgotten assets and new risks are spotted in time.",
+    "The attack surface map updates itself."
+  ],
+  "simple": "Continuously searches the internet for everything the company owns: domains, websites, IP addresses, services, cloud storage, code repositories — and keeps an inventory of these assets with an attack surface map. Finds misconfigurations in email, DNS, SSL certificates, websites and cloud, information leaks and open ports; passively checks for vulnerabilities and prioritizes risks. Weekly scans, plus analysis and scoring of the company’s mobile applications; audit log and SSO.",
+  "notIncluded": [
+    "API, integrations and the OnWatch service are in Ultimate."
+  ],
+  "classification": [
+    "The class is EASM."
+  ]
 }

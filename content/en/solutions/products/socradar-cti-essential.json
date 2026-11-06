@@ -1,3 +1,15 @@
 {
-  "simple": "Threat intelligence: indicator-of-compromise feeds (malicious IP addresses, domains and files) from 100+ sources, indicator scoring and search, profiles of threat groups and ransomware mapped to MITRE ATT&CK, reports by industry and region, dark web news. Tracks vulnerabilities — which ones are already being exploited and how dangerous they are, automatically analyzes suspicious files, provides ready-made SIGMA/YARA detection rules for SIEM and EDR, search in public repositories and cloud storage, and basic tracking of incidents at suppliers. Access to 1,000 SIGMA/YARA rules, one user, audit log and SSO."
+  "summary": "SOCRadar Cyber Threat Intelligence Essential: indicator of compromise feeds, threat group profiles and industry reports, with ready-made rules for SIEM and EDR.",
+  "value": [
+    "Controls receive fresh malicious addresses, domains and files.",
+    "It shows which groups and ransomware families are interested in your industry.",
+    "Ready-made SIGMA/YARA rules speed up detection."
+  ],
+  "simple": "Threat intelligence: indicator-of-compromise feeds (malicious IP addresses, domains and files) from 100+ sources, indicator scoring and search, profiles of threat groups and ransomware mapped to MITRE ATT&CK, reports by industry and region, dark web news. Tracks vulnerabilities — which ones are already being exploited and how dangerous they are, automatically analyzes suspicious files, provides ready-made SIGMA/YARA detection rules for SIEM and EDR, search in public repositories and cloud storage, and basic tracking of incidents at suppliers. Access to 1,000 SIGMA/YARA rules, one user, audit log and SSO.",
+  "notIncluded": [
+    "Extended volumes and features come with Ultimate."
+  ],
+  "classification": [
+    "The class is threat intelligence; supplier tracking in CTI is not TPRM."
+  ]
 }
