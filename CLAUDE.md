@@ -61,7 +61,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, body[], figures[], findings[{techniques[], solutions[]}], vulnerabilities[]
   analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], remediation[], timeline[], solutions[{phase}]
                                                   #   illustration{file, alt, caption} → наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg
-  analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, techniques[], solutions[]}], lessons[]
+  analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, what, result, techniques[], solutions[]}], lessons[]
                                                   #   illustration{file, alt, caption} — схема після 2-го абзацу «Простими словами»
 scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
                           #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться
@@ -159,6 +159,10 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   називає техніку — `{ "id": "T1190", "editorial": false }`; `asInSource` — як ID записаний у джерелі, коли в ATT&CK v20 його
   немає (T1562.003 → `T1690`, T1562.010 → `T1689`). Кожен ID (і підтехніка) перевіряється за `data/mitre/attack.json`; сторінка
   техніки — завжди батьківська.
+- **Кроки атаки**: `what` — що робить зловмисник (з аналогією), `result` — що він отримав після кроку і чим це загрожує (блок «Що отримав
+  зловмисник»; у старих статтях може бути відсутній). Деталізація — щоб читач розумів ризик кожного кроку й обґрунтовував захист, але без
+  коду експлойтів, пейлоадів, команд і запитів із параметрами та IoC (межа й тест — `cowork/…/references/style.md` → «Деталізація атаки»).
+  Рішення кроку впорядковані за ефективністю: першим — клас, що розриває ланцюг найраніше й найнадійніше; `why` = механізм + умова спрацювання.
 - **Рішення**: `{ class, why, editorial }` — лише існуючі класи (`why` — до двох речень про конкретний висновок чи крок); `editorial: true`
   — клас додано нами, а не джерелом. Чого в портфелі немає (мікросегментація тощо) — у `gaps[]` текстом, нових класів не заводимо.
   У вразливості `solutions[].phase` = `find | protect | verify | detect`.

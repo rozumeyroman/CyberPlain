@@ -1,5 +1,5 @@
 // Механічна перевірка MD-брифу аналітики (формат — cowork/cyberplain-analytics-brief/references/brief-format.md):
-// ID, дати, CVE, техніки ATT&CK, етапи, класи рішень, фази, обов'язкові розділи. Зміст і факти перевіряє команда
+// ID, дати, CVE, техніки ATT&CK, етапи, класи рішень, фази, обов'язкові розділи, «що відбувається» й «що отримує» в кроках. Зміст і факти перевіряє команда
 // рецензентів скіла publish-analytics, не цей скрипт.
 // Запуск: npm run brief:check -- <шлях до брифу.md>   (код виходу 1 — є помилки)
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
@@ -103,7 +103,7 @@ lines.slice(offset).forEach((raw, i) => {
   if (l.startsWith('## ')) { h2 = l.slice(3).trim(); h3 = ''; headings.push(h2); inClaims = /^(Заяви й цифри|Цифри зі звіту)$/.test(h2); return; }
   if (l.startsWith('### ')) {
     h3 = l.slice(4).trim();
-    if ((type === 'attack' && h2 === 'Кроки') || (type === 'report' && h2 === 'Висновки')) blocks.push({ line, name: h3, tech: false, sol: false });
+    if ((type === 'attack' && h2 === 'Кроки') || (type === 'report' && h2 === 'Висновки')) blocks.push({ line, name: h3, tech: false, sol: false, what: false, result: false });
     return;
   }
   if (l.startsWith('|')) {
@@ -118,6 +118,10 @@ lines.slice(offset).forEach((raw, i) => {
   }
   if (table && l) flush();
   if (inClaims && /^Примітка:\s*\S/.test(l)) claimsNote = true;
+  if (h3 && blocks.length && type === 'attack') {
+    if (/^Що відбувається:\s*\S/.test(l)) blocks.at(-1).what = true;
+    if (/^Що отримує зловмисник:\s*\S/.test(l)) blocks.at(-1).result = true;
+  }
   const step = l.match(/^- Етап:\s*(\S+)/);
   if (step && !tactics.has(step[1])) err(line, `${h3}: етапу «${step[1]}» немає (TA… з attack-v20.md)`);
   const m = h2 === 'Ілюстрація' && l.match(/^- (Файл|Alt|Підпис):\s*(.*)$/);
@@ -127,6 +131,8 @@ flush();
 
 for (const b of blocks) {
   if (type === 'attack' && !b.tech) err(b.line, `${b.name}: немає таблиці технік`);
+  if (type === 'attack' && !b.what) err(b.line, `${b.name}: немає «Що відбувається: …»`);
+  if (type === 'attack' && !b.result) err(b.line, `${b.name}: немає «Що отримує зловмисник: …» (проміжний результат кроку)`);
   if (!b.sol) err(b.line, `${b.name}: немає таблиці рішень`);
 }
 if (type === 'attack' && headings.includes('Кроки') && !blocks.length) err(0, 'Кроки: немає жодного «### Крок N. …»');

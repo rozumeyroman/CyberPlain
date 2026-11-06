@@ -90,7 +90,7 @@ export interface ATech {
 }
 export interface AFinding { title: string; text: string; techniques: ATech[]; solutions: ASolution[] }
 export interface AStep {
-  n: number; title: string; tactic: Tactic; what: string; tools: string[];
+  n: number; title: string; tactic: Tactic; what: string; result?: string; tools: string[];
   techniques: ATech[]; solutions: ASolution[]; gaps: string[];
 }
 type Src = { label: string; url?: string };

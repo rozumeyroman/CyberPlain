@@ -165,6 +165,7 @@ const attacks = defineCollection({
       title: z.string(),
       tactic: reference('tactics'),
       what: z.string(),
+      result: z.string().optional(), // що отримав зловмисник після кроку і чим це загрожує (проміжний результат)
       tools: z.array(z.string()).default([]),
       techniques: z.array(techRef).min(1),
       solutions: z.array(solution).min(1), // why = як саме клас зупиняє або компенсує ЦЕЙ крок
@@ -206,7 +207,7 @@ const enVulnerabilities = overlay('analytics/vulnerabilities', {
 const enAttacks = overlay('analytics/attacks', {
   title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: strs, claims: arr({ value: str, label: str }), claimsNote: str,
   actor: part({ name: str, profile: strs }), victim: part({ name: str, sector: str, country: str }),
-  steps: arr({ title: str, what: str, tools: strs, solutions: arr({ why: str }), gaps: strs }),
+  steps: arr({ title: str, what: str, result: str, tools: strs, solutions: arr({ why: str }), gaps: strs }),
   lessons: strs, caveats: strs,
 });
 
