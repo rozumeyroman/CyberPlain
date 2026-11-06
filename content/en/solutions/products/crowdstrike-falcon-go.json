@@ -1,3 +1,17 @@
 {
-  "simple": "AI-powered next-generation antivirus in one lightweight agent managed from the cloud: installs in minutes without a reboot and needs no daily signature updates. Stops malware, ransomware and more sophisticated attacks, including fileless ones, on Windows, macOS and Linux computers and servers — online and offline. Controls the use of USB drives, SD cards and Thunderbolt devices. Also protects Android and iOS smartphones: spots malicious activity and keeps unauthorized users away from corporate data. Help with installation and setup — Express Support. The host firewall, detection and response (EDR), threat hunting, identity protection, IT hygiene and SIEM are not part of this bundle."
+  "summary": "The entry CrowdStrike Falcon package: an AI-based next-generation antivirus in one lightweight, cloud-managed agent, plus device control.",
+  "value": [
+    "Malware, ransomware and fileless attacks are stopped on computers and servers before they run.",
+    "The agent installs in minutes and needs no daily signature updates.",
+    "Unknown USB sticks and devices cannot connect without permission."
+  ],
+  "simple": "AI-powered next-generation antivirus in one lightweight agent managed from the cloud: installs in minutes without a reboot and needs no daily signature updates. Stops malware, ransomware and more sophisticated attacks, including fileless ones, on Windows, macOS and Linux computers and servers — online and offline. Controls the use of USB drives, SD cards and Thunderbolt devices. Also protects Android and iOS smartphones: spots malicious activity and keeps unauthorized users away from corporate data. Help with installation and setup — Express Support. The host firewall, detection and response (EDR), threat hunting, identity protection, IT hygiene and SIEM are not part of this bundle.",
+  "notIncluded": [
+    "No EDR (event recording and investigation): that is in Falcon Enterprise.",
+    "Host firewall management comes with Falcon Pro."
+  ],
+  "classification": [
+    "Falcon Prevent (NGAV) is EPP; Device Control maps to the device control class; Mobile Device Protection and Express Support stay in the text.",
+    "Identity Protection, IT Hygiene and Next-Gen SIEM are “✗” in every package and are not counted as classes."
+  ]
 }

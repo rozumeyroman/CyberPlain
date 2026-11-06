@@ -1,3 +1,16 @@
 {
-  "simple": "Connects to cloud email through an API — no gateway, proxy or agents — and checks incoming and internal emails: stops phishing (AI builds a graph of employee communications and spots forgeries), known viruses and malicious links, including at the moment of the click, with URL rewriting. Opens unknown attachments in a sandbox and immediately hands back a cleaned copy of the document (Threat Extraction). Spots email account takeover by sign-in and behavior anomalies and detects unauthorized cloud applications (shadow IT). Protects not only Microsoft 365 and Gmail but also collaboration tools — Microsoft Teams, file storage (OneDrive, SharePoint, Google Drive) and Slack: the same checks of messages, links and files. Archiving, DMARC, phishing-simulation training and incident response by Check Point analysts are separate add-ons."
+  "summary": "Check Point protection for email and collaboration tools via API: Microsoft 365, Gmail, Teams, file storage and Slack, covering phishing, malicious files and account takeover.",
+  "value": [
+    "Phishing and malicious files are stopped in email as well as in Teams, Slack and shared storage.",
+    "Unknown files are checked in a sandbox, and the person immediately gets a sanitised copy.",
+    "A taken-over account shows up through behavioural anomalies."
+  ],
+  "simple": "Connects to cloud email through an API — no gateway, proxy or agents — and checks incoming and internal emails: stops phishing (AI builds a graph of employee communications and spots forgeries), known viruses and malicious links, including at the moment of the click, with URL rewriting. Opens unknown attachments in a sandbox and immediately hands back a cleaned copy of the document (Threat Extraction). Spots email account takeover by sign-in and behavior anomalies and detects unauthorized cloud applications (shadow IT). Protects not only Microsoft 365 and Gmail but also collaboration tools — Microsoft Teams, file storage (OneDrive, SharePoint, Google Drive) and Slack: the same checks of messages, links and files. Archiving, DMARC, phishing-simulation training and incident response by Check Point analysts are separate add-ons.",
+  "notIncluded": [
+    "DLP comes with Complete Protect.",
+    "Archiving, DMARC, phishing simulation training and analyst-led response are separate add-ons."
+  ],
+  "classification": [
+    "Account takeover prevention (anomalies) is UEBA; Sandboxing + CDR is the sandbox class."
+  ]
 }

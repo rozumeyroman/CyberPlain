@@ -1,3 +1,17 @@
 {
-  "simple": "Protects computers and servers (Windows, macOS, Linux, VDI) with a single agent, managed from the cloud or on premises. Blocks malware, ransomware (with recovery of encrypted files), exploits, communication between infected machines and attacker servers (Anti-Bot), and fileless attacks by behavior; uses Check Point ThreatCloud threat intelligence and its own indicators of compromise. Automatically collects forensic data and builds an attack report mapped to MITRE ATT&CK, and lets you hunt for threats. Includes a host firewall, USB port and device control, application control, a check that the computer complies with policies, and a VPN client for remote access. In the browser, it blocks phishing sites, including brand-new ones (Zero Phishing), filters URLs, turns on safe search and doesn’t let employees enter a corporate password on a third-party site. Checks suspicious downloaded files in a sandbox (Threat Emulation) and immediately hands back a cleaned copy (Threat Extraction). Posture Management, DLP and XDR are purchased separately."
+  "summary": "The base current edition of Check Point Harmony Endpoint: one agent for computers and servers with antivirus, EDR, browser protection, sandbox, VPN and threat intelligence.",
+  "value": [
+    "Malware and ransomware are stopped, and encrypted files are restored.",
+    "Phishing sites are blocked right in the browser, and files from the internet arrive sanitised.",
+    "Anything that gets through is visible in the event record and can be investigated and cleaned up."
+  ],
+  "simple": "Protects computers and servers (Windows, macOS, Linux, VDI) with a single agent, managed from the cloud or on premises. Blocks malware, ransomware (with recovery of encrypted files), exploits, communication between infected machines and attacker servers (Anti-Bot), and fileless attacks by behavior; uses Check Point ThreatCloud threat intelligence and its own indicators of compromise. Automatically collects forensic data and builds an attack report mapped to MITRE ATT&CK, and lets you hunt for threats. Includes a host firewall, USB port and device control, application control, a check that the computer complies with policies, and a VPN client for remote access. In the browser, it blocks phishing sites, including brand-new ones (Zero Phishing), filters URLs, turns on safe search and doesn’t let employees enter a corporate password on a third-party site. Checks suspicious downloaded files in a sandbox (Threat Emulation) and immediately hands back a cleaned copy (Threat Extraction). Posture Management, DLP and XDR are purchased separately.",
+  "notIncluded": [
+    "Disk and USB encryption starts with Complete.",
+    "Vulnerability management, DLP and SOAR are in Elite (in Advanced only as add-ons)."
+  ],
+  "classification": [
+    "Forensic collection is DFIR; Threat Cloud + IOC Management is threat intelligence; Firewall + Port Protection is device control.",
+    "Application Control and Endpoint Compliance stay in the text; Posture Management, DLP and XDR as add-ons are not counted."
+  ]
 }

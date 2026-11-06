@@ -1,3 +1,15 @@
 {
-  "simple": "Continuous dynamic testing (DAST) of web applications that is safe even for production sites: low-and-slow safe checks with no downtime, it notices code and configuration changes and retests on its own, and confirms fixes. Every finding is verified by AI and Black Duck experts, so there are almost no false alarms (vendor data). No agents or hardware needed — just a URL, login and schedule; unlimited concurrent assessments; also tests single-page apps and multi-step workflows. Pushes findings to Jira and SIEM and pulls login secrets from HashiCorp Vault. Separately — expert business logic assessments (PCI-aligned). Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024."
+  "summary": "Black Duck’s continuous dynamic testing (DAST) for web applications, safe even for live sites, with manual verification of findings.",
+  "value": [
+    "Vulnerabilities in live sites are found continuously, not once a year.",
+    "Almost no false alarms: AI and the vendor’s specialists verify every finding (vendor data).",
+    "After code changes the site is tested again, showing the fix really worked."
+  ],
+  "simple": "Continuous dynamic testing (DAST) of web applications that is safe even for production sites: low-and-slow safe checks with no downtime, it notices code and configuration changes and retests on its own, and confirms fixes. Every finding is verified by AI and Black Duck experts, so there are almost no false alarms (vendor data). No agents or hardware needed — just a URL, login and schedule; unlimited concurrent assessments; also tests single-page apps and multi-step workflows. Pushes findings to Jira and SIEM and pulls login secrets from HashiCorp Vault. Separately — expert business logic assessments (PCI-aligned). Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024.",
+  "notIncluded": [
+    "Expert business-logic testing (for PCI requirements) is separate."
+  ],
+  "classification": [
+    "The class is DAST (formerly WhiteHat)."
+  ]
 }

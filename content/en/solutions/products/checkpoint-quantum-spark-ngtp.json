@@ -1,3 +1,15 @@
 {
-  "simple": "Check Point’s line of next-generation firewalls for small and mid-sized businesses and branch offices (models from desktop to 1U, with Wi-Fi 7 and 5G). Every device has a firewall with user control, VPN between offices and for remote employees, QoS, protection for IoT devices (cameras, VoIP, printers) and SD-WAN for a backup link; management through a web interface, the cloud-based Spark Management for MSPs, or Smart-1. With the NGTP subscription: application control, IPS, website filtering by category (URL Filtering), antivirus, Anti-Bot (blocks communication between infected computers and attacker servers using Check Point ThreatCloud data) and antispam. The subscription works on any model in the line; in the first year the device ships with SNBT, after which you can renew NGFW, NGTP or SNBT."
+  "summary": "Check Point Quantum Spark firewalls with the NGTP subscription: firewall, IPS, VPN, plus website filtering and botnet blocking.",
+  "value": [
+    "Employees do not reach malicious and phishing sites.",
+    "Infected computers cannot talk to attackers’ servers.",
+    "Known attacks are blocked at the edge, and remote workers connect over VPN."
+  ],
+  "simple": "Check Point’s line of next-generation firewalls for small and mid-sized businesses and branch offices (models from desktop to 1U, with Wi-Fi 7 and 5G). Every device has a firewall with user control, VPN between offices and for remote employees, QoS, protection for IoT devices (cameras, VoIP, printers) and SD-WAN for a backup link; management through a web interface, the cloud-based Spark Management for MSPs, or Smart-1. With the NGTP subscription: application control, IPS, website filtering by category (URL Filtering), antivirus, Anti-Bot (blocks communication between infected computers and attacker servers using Check Point ThreatCloud data) and antispam. The subscription works on any model in the line; in the first year the device ships with SNBT, after which you can renew NGFW, NGTP or SNBT.",
+  "notIncluded": [
+    "The sandbox for unknown files and gateway Zero Phishing come with the SNBT subscription."
+  ],
+  "classification": [
+    "Anti-Bot and URL Filtering are web filtering; gateway antivirus is within NGFW; gateway anti-spam is not email protection and stays in the text."
+  ]
 }

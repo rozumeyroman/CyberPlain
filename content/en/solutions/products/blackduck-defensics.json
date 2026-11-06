@@ -1,3 +1,12 @@
 {
-  "simple": "Black-box fuzzing for device and software makers: floods network protocols, file formats and interfaces with malformed data and finds crashes and zero-day vulnerabilities without access to source code. 300+ ready, continuously maintained test suites with RFC specification coverage; protocol bundles for specific industries; APIs for automation in the development process and CI. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024."
+  "summary": "Black Duck Defensics black-box fuzzing for device and software makers: it floods protocols and formats with malformed data and finds unknown vulnerabilities.",
+  "value": [
+    "Zero-day vulnerabilities in network protocols and formats are found before the product ships.",
+    "No access to source code is needed.",
+    "More than 300 ready-made test suites plug into development and CI."
+  ],
+  "simple": "Black-box fuzzing for device and software makers: floods network protocols, file formats and interfaces with malformed data and finds crashes and zero-day vulnerabilities without access to source code. 300+ ready, continuously maintained test suites with RFC specification coverage; protocol bundles for specific industries; APIs for automation in the development process and CI. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024.",
+  "classification": [
+    "We count fuzzing within the DAST (dynamic application testing) class."
+  ]
 }

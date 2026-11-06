@@ -1,3 +1,12 @@
 {
-  "simple": "A browser extension that protects people on the web on managed and personal devices — an extra layer on top of endpoint protection. Blocks phishing sites, including new ones (Zero-Phishing), malicious sites and unwanted categories (URL Filtering), stops corporate passwords from being entered on third-party sites, and checks downloaded files in a sandbox while immediately delivering a sanitized copy without active content (CDR)."
+  "summary": "Check Point’s browser extension: it protects people on the web on managed and personal devices, as an extra layer on top of endpoint protection.",
+  "value": [
+    "Fresh phishing sites are blocked, and corporate passwords are not entered on third-party sites.",
+    "Malicious and unwanted sites do not open.",
+    "Downloaded files are checked in a sandbox, and the user immediately gets a sanitised copy."
+  ],
+  "simple": "A browser extension that protects people on the web on managed and personal devices — an extra layer on top of endpoint protection. Blocks phishing sites, including new ones (Zero-Phishing), malicious sites and unwanted categories (URL Filtering), stops corporate passwords from being entered on third-party sites, and checks downloaded files in a sandbox while immediately delivering a sanitized copy without active content (CDR).",
+  "classification": [
+    "Zero-Phishing is browser protection, URL Filtering is web filtering, Sandbox + CDR is the sandbox class."
+  ]
 }

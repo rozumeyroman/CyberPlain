@@ -1,3 +1,16 @@
 {
-  "simple": "Protects websites and APIs that a company runs in its own data center, in virtualization or in the cloud: deployed as a hardware or virtual appliance between the internet and the web servers (models from 25 Mbps to 10 Gbps). Blocks OWASP Top 10 attacks (SQL injection, XSS and more) and zero-day attacks with “smart signatures”, filters traffic by country and IP reputation (including Tor and public proxies), protects JSON and XML APIs and discovers their endpoints on its own. Stops password guessing, scraping and spam bots, fends off application-layer DDoS; inspects uploaded files and masks card numbers and other sensitive data in the site’s responses so they can’t be stolen through a vulnerability. The built-in Barracuda Vulnerability Remediation Service safely scans your sites for vulnerabilities and closes the findings with WAF rules in one click (a “virtual patch”), and the WAF also accepts reports from 20+ third-party scanners. Can require sign-in via LDAP/AD, SAML or RADIUS with MFA before the application is reached; sends logs to a SIEM. Machine-learning bot protection, volumetric DDoS protection and file sandboxing are separate subscriptions."
+  "summary": "Barracuda’s hardware or virtual WAF between the internet and web servers: it protects websites and APIs in your own data centre, virtualisation or cloud.",
+  "value": [
+    "Websites and APIs in your own infrastructure are protected from common and zero-day attacks.",
+    "The built-in scanner finds vulnerabilities and closes them with a rule while a fix is prepared.",
+    "Traffic from Tor, proxies and unwanted countries is cut off before it reaches the web server."
+  ],
+  "simple": "Protects websites and APIs that a company runs in its own data center, in virtualization or in the cloud: deployed as a hardware or virtual appliance between the internet and the web servers (models from 25 Mbps to 10 Gbps). Blocks OWASP Top 10 attacks (SQL injection, XSS and more) and zero-day attacks with “smart signatures”, filters traffic by country and IP reputation (including Tor and public proxies), protects JSON and XML APIs and discovers their endpoints on its own. Stops password guessing, scraping and spam bots, fends off application-layer DDoS; inspects uploaded files and masks card numbers and other sensitive data in the site’s responses so they can’t be stolen through a vulnerability. The built-in Barracuda Vulnerability Remediation Service safely scans your sites for vulnerabilities and closes the findings with WAF rules in one click (a “virtual patch”), and the WAF also accepts reports from 20+ third-party scanners. Can require sign-in via LDAP/AD, SAML or RADIUS with MFA before the application is reached; sends logs to a SIEM. Machine-learning bot protection, volumetric DDoS protection and file sandboxing are separate subscriptions.",
+  "notIncluded": [
+    "Machine-learning bot protection, volumetric DDoS protection and the file sandbox are separate subscriptions."
+  ],
+  "classification": [
+    "Add-ons (Advanced Bot Protection, Active DDoS Prevention, Advanced Threat Protection) are not counted as classes, so no DDoS or UEBA; application-layer DoS is within WAF.",
+    "Vulnerability Remediation Service is DAST; the models (360–1060) are in the text only."
+  ]
 }

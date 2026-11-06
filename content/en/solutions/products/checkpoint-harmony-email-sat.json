@@ -1,3 +1,13 @@
 {
-  "simple": "Trains employees to recognize phishing using examples of attacks that really reach your company: generative AI creates simulated phishing emails based on real attacks that Harmony Email has stopped — from QR codes and fake emails from executives (BEC) to internal mailings. You can set the attack type and sender, prioritize training for the most-attacked departments and people, and automatically send extra materials from a library of training modules and videos to those who “fall for it”. A separate add-on to Harmony Email & Collaboration; simulations work for Microsoft 365 (Exchange Online) mailboxes."
+  "summary": "Check Point phishing awareness training: generative AI builds simulations based on real attacks that Harmony Email has stopped.",
+  "value": [
+    "Employees train on the attacks that actually reach the company.",
+    "The most targeted departments and people are trained first.",
+    "Anyone who “falls for it” automatically gets short training."
+  ],
+  "simple": "Trains employees to recognize phishing using examples of attacks that really reach your company: generative AI creates simulated phishing emails based on real attacks that Harmony Email has stopped — from QR codes and fake emails from executives (BEC) to internal mailings. You can set the attack type and sender, prioritize training for the most-attacked departments and people, and automatically send extra materials from a library of training modules and videos to those who “fall for it”. A separate add-on to Harmony Email & Collaboration; simulations work for Microsoft 365 (Exchange Online) mailboxes.",
+  "classification": [
+    "A separate add-on to Harmony Email & Collaboration, so a separate product with the awareness training class (author’s decision).",
+    "Simulations work for Microsoft 365 mailboxes."
+  ]
 }

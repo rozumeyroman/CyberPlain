@@ -1,3 +1,17 @@
 {
-  "simple": "Connects to cloud email through an API — no gateway, proxy or agents — and checks incoming and internal emails: stops phishing (AI builds a graph of employee communications and spots forgeries), known viruses and malicious links, including at the moment of the click, with URL rewriting. Opens unknown attachments in a sandbox and immediately hands back a cleaned copy of the document (Threat Extraction). Spots email account takeover by sign-in and behavior anomalies and detects unauthorized cloud applications (shadow IT). Protects Microsoft 365 and Gmail. Archiving, DMARC, phishing-simulation training and incident response by Check Point analysts are separate add-ons."
+  "summary": "Check Point cloud email protection (Microsoft 365, Gmail) via API, with no gateway or agents: phishing, malicious attachments and links, account takeover.",
+  "value": [
+    "Phishing and fake “CEO” emails are stopped before an employee opens them.",
+    "Unknown attachments are checked in a sandbox, and the person immediately gets a sanitised copy.",
+    "A taken-over mailbox shows up through behavioural anomalies."
+  ],
+  "simple": "Connects to cloud email through an API — no gateway, proxy or agents — and checks incoming and internal emails: stops phishing (AI builds a graph of employee communications and spots forgeries), known viruses and malicious links, including at the moment of the click, with URL rewriting. Opens unknown attachments in a sandbox and immediately hands back a cleaned copy of the document (Threat Extraction). Spots email account takeover by sign-in and behavior anomalies and detects unauthorized cloud applications (shadow IT). Protects Microsoft 365 and Gmail. Archiving, DMARC, phishing-simulation training and incident response by Check Point analysts are separate add-ons.",
+  "notIncluded": [
+    "DLP comes with Complete Protect.",
+    "Teams, file storage and Slack are in the Email & Collaboration scope.",
+    "Archiving, DMARC, phishing simulation training and analyst-led response are separate add-ons."
+  ],
+  "classification": [
+    "Account takeover prevention (anomalies) is UEBA; Sandboxing + CDR is the sandbox class; Shadow IT stays in the text."
+  ]
 }

@@ -1,3 +1,12 @@
 {
-  "simple": "Interactive testing (IAST): watches a web application from the inside while it is tested as usual and reports vulnerabilities within seconds. Patented active verification replays the attack on its own and keeps only real, exploitable vulnerabilities — with the exact line of code and remediation advice. Shows where sensitive data and secrets are stored or transmitted without proper encryption (PCI DSS, GDPR), discovers known and unknown APIs (REST, SOAP, GraphQL, gRPC) and tests them, and reports against OWASP Top 10, PCI DSS and CWE Top 25. Integrates into CI/CD. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024."
+  "summary": "Black Duck Seeker interactive testing (IAST): it watches a web application from the inside during normal testing and reports real vulnerabilities.",
+  "value": [
+    "Vulnerabilities are found during normal testing, without a separate security phase.",
+    "Only confirmed vulnerabilities remain, with the exact line of code.",
+    "It shows where sensitive data travels unencrypted, and all of the application’s APIs."
+  ],
+  "simple": "Interactive testing (IAST): watches a web application from the inside while it is tested as usual and reports vulnerabilities within seconds. Patented active verification replays the attack on its own and keeps only real, exploitable vulnerabilities — with the exact line of code and remediation advice. Shows where sensitive data and secrets are stored or transmitted without proper encryption (PCI DSS, GDPR), discovers known and unknown APIs (REST, SOAP, GraphQL, gRPC) and tests them, and reports against OWASP Top 10, PCI DSS and CWE Top 25. Integrates into CI/CD. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024.",
+  "classification": [
+    "We count IAST within the DAST (dynamic application testing) class."
+  ]
 }

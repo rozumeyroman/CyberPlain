@@ -1,3 +1,13 @@
 {
-  "simple": "A digital “bunker” for your most important data: automatically copies it to an isolated vault — in your own data center or in the cloud — with a physical or logical “air gap”, a separate network, and its own accounts, MFA and management that never connect to production systems. Copies are immutable at the PowerProtect hardware level, with protection against clock tampering (NTP). Cyber Detect (CyberSense) analytics inspects the full contents of files, databases and virtual machines, spots encryption, mass deletion and other signs of ransomware damage, and after an attack provides a report: what is damaged, whose files, and which is the last clean copy — so you can recover without reinfection. Works with open systems and mainframes; has automated recovery playbooks for critical systems."
+  "summary": "Dell’s digital “bunker” for critical data: an isolated, immutable copy vault with its own management and analytics that spot ransomware damage.",
+  "value": [
+    "Even if an attacker has taken over the network and the backup system, a guaranteed clean copy remains.",
+    "After an attack it shows exactly what was damaged and which copy was the last clean one, so you restore without reinfection.",
+    "The business gets back to work without paying a ransom."
+  ],
+  "simple": "A digital “bunker” for your most important data: automatically copies it to an isolated vault — in your own data center or in the cloud — with a physical or logical “air gap”, a separate network, and its own accounts, MFA and management that never connect to production systems. Copies are immutable at the PowerProtect hardware level, with protection against clock tampering (NTP). Cyber Detect (CyberSense) analytics inspects the full contents of files, databases and virtual machines, spots encryption, mass deletion and other signs of ransomware damage, and after an attack provides a report: what is damaged, whose files, and which is the last clean copy — so you can recover without reinfection. Works with open systems and mainframes; has automated recovery playbooks for critical systems.",
+  "classification": [
+    "There are no editions: one product, backup plus the isolated cyber recovery vault class created for it.",
+    "Cyber Detect (CyberSense) is part of the solution; it gives the class D3-FCOA and T1565."
+  ]
 }

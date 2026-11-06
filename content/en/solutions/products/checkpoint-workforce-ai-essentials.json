@@ -1,3 +1,15 @@
 {
-  "simple": "Control over employees’ use of AI in web applications: discovers every AI service used in the company, including shadow AI, assesses its risk, classifies the content of prompts and uploaded files, sets rules per application, user and data type, and blocks sensitive data from being shared in real time (DLP). Desktop AI apps, code assistants and agentic tools are in the Enterprise edition."
+  "summary": "Check Point control of employees’ use of AI services on the web: it finds every AI app and blocks sensitive data from being sent to them.",
+  "value": [
+    "It shows which AI services employees use, including shadow ones.",
+    "Sensitive data does not end up in public AI services.",
+    "Rules are set per application, user and data type."
+  ],
+  "simple": "Control over employees’ use of AI in web applications: discovers every AI service used in the company, including shadow AI, assesses its risk, classifies the content of prompts and uploaded files, sets rules per application, user and data type, and blocks sensitive data from being shared in real time (DLP). Desktop AI apps, code assistants and agentic tools are in the Enterprise edition.",
+  "notIncluded": [
+    "Desktop AI apps, IDE coding assistants, agentic tools and MCP come with Enterprise."
+  ],
+  "classification": [
+    "The class is DLP (AI web applications)."
+  ]
 }

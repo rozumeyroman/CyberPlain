@@ -1,3 +1,13 @@
 {
-  "simple": "A plug-in for the VS Code, Visual Studio, Eclipse and IntelliJ development environments: checks code (including AI-written code), third-party libraries, APIs and infrastructure as code right while it is written — with rapid code and component scans or a full Coverity scan. The Black Duck Assist AI assistant explains a finding and suggests a fix. Sold separately per developer or included with Coverity, Black Duck SCA, Software Risk Manager or Polaris. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024."
+  "summary": "Black Duck’s IDE plug-in: it checks code and third-party libraries while they are being written, before the commit.",
+  "value": [
+    "Developers see a vulnerability in their code or library straight away, not after release.",
+    "Fixes are cheaper because they happen while the code, including AI-written code, is being written.",
+    "Fewer vulnerabilities reach CI checks and production applications."
+  ],
+  "simple": "A plug-in for the VS Code, Visual Studio, Eclipse and IntelliJ development environments: checks code (including AI-written code), third-party libraries, APIs and infrastructure as code right while it is written — with rapid code and component scans or a full Coverity scan. The Black Duck Assist AI assistant explains a finding and suggests a fix. Sold separately per developer or included with Coverity, Black Duck SCA, Software Risk Manager or Polaris. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024.",
+  "classification": [
+    "Code checks are SAST, third-party component checks are SCA.",
+    "The Black Duck Assist AI helper stays in the text only."
+  ]
 }

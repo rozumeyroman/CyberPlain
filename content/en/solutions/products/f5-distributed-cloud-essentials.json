@@ -1,3 +1,16 @@
 {
-  "simple": "F5’s cloud service for protecting websites and APIs (WAF for Distributed Cloud): it runs from F5’s global points of presence in front of applications in any cloud or your own data center. Blocks OWASP Top 10 attacks and uses more than 8,500 signatures for known vulnerabilities (CVEs), tuning itself so it doesn’t cut off normal requests; filters traffic from malicious IPs by F5’s reputation database, by country and by ASN; protects against request forgery (CSRF), masks card numbers and other sensitive data in the site’s responses, and checks GraphQL and JWT tokens. Filters network-layer (L3–4) and application-layer DDoS (L7 — machine learning spots abnormal spikes), limits request rates, and serves a JavaScript check or CAPTCHA. Built-in site scanning: finds everything the company exposes to the internet (servers, software versions, known CVEs) and runs automated penetration tests against the OWASP Top 10 for web apps and LLMs, with step-by-step evidence. Includes a CDN, secure DNS, load balancing and log export to a SIEM. The Essentials package is for protecting public-facing web applications; deep API discovery from traffic and code and advanced bot protection (including against stolen-password stuffing) cost extra."
+  "summary": "The base F5 Distributed Cloud WAF package: protection for public sites and APIs from F5’s global points of presence, DDoS protection, scanning and discovery of external assets.",
+  "value": [
+    "Public sites and APIs are protected from common attacks and known vulnerabilities wherever the application runs.",
+    "The site stays available during a DDoS attack.",
+    "It shows which company assets are reachable from the internet and where the sites have vulnerabilities."
+  ],
+  "simple": "F5’s cloud service for protecting websites and APIs (WAF for Distributed Cloud): it runs from F5’s global points of presence in front of applications in any cloud or your own data center. Blocks OWASP Top 10 attacks and uses more than 8,500 signatures for known vulnerabilities (CVEs), tuning itself so it doesn’t cut off normal requests; filters traffic from malicious IPs by F5’s reputation database, by country and by ASN; protects against request forgery (CSRF), masks card numbers and other sensitive data in the site’s responses, and checks GraphQL and JWT tokens. Filters network-layer (L3–4) and application-layer DDoS (L7 — machine learning spots abnormal spikes), limits request rates, and serves a JavaScript check or CAPTCHA. Built-in site scanning: finds everything the company exposes to the internet (servers, software versions, known CVEs) and runs automated penetration tests against the OWASP Top 10 for web apps and LLMs, with step-by-step evidence. Includes a CDN, secure DNS, load balancing and log export to a SIEM. The Essentials package is for protecting public-facing web applications; deep API discovery from traffic and code and advanced bot protection (including against stolen-password stuffing) cost extra.",
+  "notIncluded": [
+    "Deep API discovery from traffic and code and advanced bot protection cost extra."
+  ],
+  "classification": [
+    "External attack surface management is EASM, DAST is DAST, L3–4 and L7 DDoS map to DDoS protection.",
+    "Add-ons (Advanced Bot Protection, Routed DDoS, API discovery) are not counted as classes."
+  ]
 }

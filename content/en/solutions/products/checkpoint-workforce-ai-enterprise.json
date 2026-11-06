@@ -1,3 +1,12 @@
 {
-  "simple": "Control over employees’ use of AI on the web and on computers: discovers every AI service, including shadow AI, desktop AI apps, code assistants in IDEs (such as GitHub Copilot and Cursor), agentic tools and connected MCP servers, assesses risk, classifies the content of prompts and files, sets rules per application, user and data type, and blocks sensitive data sharing (DLP) and unsafe AI tool actions in real time."
+  "summary": "Check Point control of employees’ AI use on the web and on computers: AI services, desktop apps, coding assistants, agentic tools and MCP servers.",
+  "value": [
+    "It shows all AI use in the company, from the browser to coding assistants in the IDE.",
+    "Sensitive data and code do not reach AI services without permission.",
+    "Risky AI agent actions are blocked in real time."
+  ],
+  "simple": "Control over employees’ use of AI on the web and on computers: discovers every AI service, including shadow AI, desktop AI apps, code assistants in IDEs (such as GitHub Copilot and Cursor), agentic tools and connected MCP servers, assesses risk, classifies the content of prompts and files, sets rules per application, user and data type, and blocks sensitive data sharing (DLP) and unsafe AI tool actions in real time.",
+  "classification": [
+    "The class is DLP (web apps, desktop, coding assistants, MCP); edition descriptions come from the author and are confirmed by the admin guide."
+  ]
 }

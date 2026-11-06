@@ -1,3 +1,15 @@
 {
-  "simple": "Open-source and third-party component analysis (SCA): finds libraries in applications and containers, including undeclared ones, checks them against Black Duck’s own advisories (BDSA) with reachability of the vulnerable code and remediation guidance, detects malicious packages and open-source licenses, and imports and exports SBOMs in SPDX and CycloneDX; application and container scans are unlimited. The Standard Edition is for developers: vulnerabilities, licenses and custom policies. The higher, enterprise-wide plan adds detection of open-source snippets pasted into your code (including by AI assistants), analysis of binaries and firmware without source code, detection of AI models and their risks, full license texts with obligations and automatic policy enforcement. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024."
+  "summary": "Black Duck software composition analysis (SCA): it finds libraries in applications and containers along with their vulnerabilities, malicious packages and licences.",
+  "value": [
+    "The company knows which third-party components its applications are built from and can show an SBOM to a customer or regulator.",
+    "Vulnerable and malicious libraries are found before an attacker uses them.",
+    "Open-source licence risks are visible in advance."
+  ],
+  "simple": "Open-source and third-party component analysis (SCA): finds libraries in applications and containers, including undeclared ones, checks them against Black Duck’s own advisories (BDSA) with reachability of the vulnerable code and remediation guidance, detects malicious packages and open-source licenses, and imports and exports SBOMs in SPDX and CycloneDX; application and container scans are unlimited. The Standard Edition is for developers: vulnerabilities, licenses and custom policies. The higher, enterprise-wide plan adds detection of open-source snippets pasted into your code (including by AI assistants), analysis of binaries and firmware without source code, detection of AI models and their risks, full license texts with obligations and automatic policy enforcement. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024.",
+  "notIncluded": [
+    "Snippet detection, binary and firmware analysis and AI model discovery come with the higher plan."
+  ],
+  "classification": [
+    "The class is SCA; Standard Edition and the higher plan have the same classes, the difference stays in the text."
+  ]
 }

@@ -1,3 +1,13 @@
 {
-  "simple": "Protection for Android and iOS smartphones and tablets against mobile threats (Mobile Threat Defense). Blocks downloads of malicious apps — analyzing them in the cloud with machine learning, sandboxing and code analysis — and malicious files before they reach device storage. Blocks phishing, including new phishing sites, in all apps (Zero-Phishing), malicious sites and unwanted categories in any browser and communication of infected devices with command servers (Anti-Bot), controls DNS, detects man-in-the-middle attacks and malicious Wi-Fi and disconnects from them. Finds vulnerable OS versions, rooting and jailbreaking and keeps risky devices away from corporate data regardless of MDM. Deploys through your existing MDM/UEM without user interaction, works with work and personal profiles and does not analyze personal data."
+  "summary": "Check Point protection for Android and iOS smartphones and tablets (Mobile Threat Defense): malicious apps, phishing in any app, risky networks.",
+  "value": [
+    "Phishing is blocked in every app, not just the browser.",
+    "Malicious apps and files are stopped before they reach the device.",
+    "It installs through your existing MDM without user involvement and does not analyse personal data."
+  ],
+  "simple": "Protection for Android and iOS smartphones and tablets against mobile threats (Mobile Threat Defense). Blocks downloads of malicious apps — analyzing them in the cloud with machine learning, sandboxing and code analysis — and malicious files before they reach device storage. Blocks phishing, including new phishing sites, in all apps (Zero-Phishing), malicious sites and unwanted categories in any browser and communication of infected devices with command servers (Anti-Bot), controls DNS, detects man-in-the-middle attacks and malicious Wi-Fi and disconnects from them. Finds vulnerable OS versions, rooting and jailbreaking and keeps risky devices away from corporate data regardless of MDM. Deploys through your existing MDM/UEM without user interaction, works with work and personal profiles and does not analyze personal data.",
+  "classification": [
+    "Zero-Phishing is browser protection, Safe Browsing / URL Filtering / Anti-Bot is web filtering, the cloud app and file sandbox is the sandbox class.",
+    "Blocking malicious apps is not EPP (that class describes computers); OS CVEs, MitM protection and Conditional Access stay in the text."
+  ]
 }

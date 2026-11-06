@@ -1,3 +1,17 @@
 {
-  "simple": "Check Point External Risk Management (formerly Cyberint) — part of Check Point Exposure Management: an agentless cloud service that looks for threats outside the perimeter. Finds all the company’s internet-facing resources (domains, subdomains, IPs, cloud resources) and their vulnerabilities and misconfigurations with a risk score; looks for lookalike domains, phishing sites and brand abuse; monitors leaked credentials and account takeover; provides news, ransomware watch, Check Point Research reports and indicator-of-compromise searches. Licensed by number of external assets; “coins” pay for takedowns of fraudulent resources and investigations. Weekly scanning, one user. Dark web collection and search, leak detection, the threat knowledgebase and supplier intelligence are in higher packages."
+  "summary": "The base Check Point External Risk Management package (formerly Cyberint): discovery of everything the company exposes to the internet, plus brand protection against impersonation.",
+  "value": [
+    "It shows every domain, IP and cloud resource the company exposes, and their vulnerabilities.",
+    "Fake sites and look-alike domains using the brand are found and taken down.",
+    "An agentless cloud service: nothing to install."
+  ],
+  "simple": "Check Point External Risk Management (formerly Cyberint) — part of Check Point Exposure Management: an agentless cloud service that looks for threats outside the perimeter. Finds all the company’s internet-facing resources (domains, subdomains, IPs, cloud resources) and their vulnerabilities and misconfigurations with a risk score; looks for lookalike domains, phishing sites and brand abuse; monitors leaked credentials and account takeover; provides news, ransomware watch, Check Point Research reports and indicator-of-compromise searches. Licensed by number of external assets; “coins” pay for takedowns of fraudulent resources and investigations. Weekly scanning, one user. Dark web collection and search, leak detection, the threat knowledgebase and supplier intelligence are in higher packages.",
+  "notIncluded": [
+    "Dark web sources and leaks, the threat knowledge base and supplier intelligence come with Advanced, Complete and Elite."
+  ],
+  "classification": [
+    "ASM is EASM, Brand Protection is the brand protection class.",
+    "Credentials & Account Takeover monitoring is not dark web monitoring (like Account Leak in Rapid7) and stays in the text.",
+    "The Essential datasheet includes social media impersonation while the author’s table does not; it does not affect the classes."
+  ]
 }

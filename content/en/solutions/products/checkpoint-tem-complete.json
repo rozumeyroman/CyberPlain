@@ -1,3 +1,12 @@
 {
-  "simple": "Check Point Threat Exposure Management (Exposure Prioritization & Remediation, formerly Veriti) — part of Check Point Exposure Management: an agentless platform that pulls vulnerability and configuration data from your existing security tools (70+ integrations: firewalls, WAFs, EDR, vulnerability scanners, CNAPP) and safely fixes exposures through those tools — checking business impact before any change, via API or ITSM tickets. Licensed by number of network security controls (firewalls, WAFs) and assets. The Complete package is everything together for any supported vendor: vulnerability prioritization and remediation (patching or virtual patching), custom protections, assessing and hardening firewall settings as well as endpoint and OS security controls, finding false positives; indicator-of-compromise management: adding, changing and removing iocs on security controls manually and in bulk, spreading IoCs across security controls and ingesting them from feeds; a private exposure map."
+  "summary": "The top Check Point Threat Exposure Management Complete package: from indicator management and control settings to vulnerability prioritisation and remediation.",
+  "value": [
+    "Vulnerabilities and risky settings from 70+ controls are brought into one queue.",
+    "Exposures are closed through the controls themselves: an update, a rule or a virtual patch.",
+    "Fresh indicators are blocked in every control at once."
+  ],
+  "simple": "Check Point Threat Exposure Management (Exposure Prioritization & Remediation, formerly Veriti) — part of Check Point Exposure Management: an agentless platform that pulls vulnerability and configuration data from your existing security tools (70+ integrations: firewalls, WAFs, EDR, vulnerability scanners, CNAPP) and safely fixes exposures through those tools — checking business impact before any change, via API or ITSM tickets. Licensed by number of network security controls (firewalls, WAFs) and assets. The Complete package is everything together for any supported vendor: vulnerability prioritization and remediation (patching or virtual patching), custom protections, assessing and hardening firewall settings as well as endpoint and OS security controls, finding false positives; indicator-of-compromise management: adding, changing and removing iocs on security controls manually and in bulk, spreading IoCs across security controls and ingesting them from feeds; a private exposure map.",
+  "classification": [
+    "The classes match Vulnerability Remediation: vulnerability management and threat intelligence."
+  ]
 }

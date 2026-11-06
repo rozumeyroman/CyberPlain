@@ -1,3 +1,16 @@
 {
-  "simple": "Connects to cloud email through an API — no gateway, proxy or agents — and checks incoming and internal emails: stops phishing (AI builds a graph of employee communications and spots forgeries), known viruses and malicious links, including at the moment of the click, with URL rewriting. Opens unknown attachments in a sandbox and immediately hands back a cleaned copy of the document (Threat Extraction). Spots email account takeover by sign-in and behavior anomalies and detects unauthorized cloud applications (shadow IT). Protects Microsoft 365 and Gmail. Prevents leaks of confidential data through emails and messages (DLP). Archiving, DMARC, phishing-simulation training and incident response by Check Point analysts are separate add-ons."
+  "summary": "Check Point cloud email protection via API with DLP: phishing, malicious attachments, account takeover and data leak control in email.",
+  "value": [
+    "Phishing and malicious attachments are stopped before an employee opens them.",
+    "Confidential data does not quietly leave by email.",
+    "A taken-over mailbox shows up through behavioural anomalies."
+  ],
+  "simple": "Connects to cloud email through an API — no gateway, proxy or agents — and checks incoming and internal emails: stops phishing (AI builds a graph of employee communications and spots forgeries), known viruses and malicious links, including at the moment of the click, with URL rewriting. Opens unknown attachments in a sandbox and immediately hands back a cleaned copy of the document (Threat Extraction). Spots email account takeover by sign-in and behavior anomalies and detects unauthorized cloud applications (shadow IT). Protects Microsoft 365 and Gmail. Prevents leaks of confidential data through emails and messages (DLP). Archiving, DMARC, phishing-simulation training and incident response by Check Point analysts are separate add-ons.",
+  "notIncluded": [
+    "Teams, file storage and Slack are in the Email & Collaboration scope.",
+    "Archiving, DMARC, phishing simulation training and analyst-led response are separate add-ons."
+  ],
+  "classification": [
+    "As Advanced Protect plus DLP, the data leak protection class."
+  ]
 }

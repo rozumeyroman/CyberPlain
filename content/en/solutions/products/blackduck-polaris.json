@@ -1,3 +1,12 @@
 {
-  "simple": "A cloud (SaaS) application security testing platform: code analysis (Polaris fAST Static on the Coverity engine), third-party component analysis with SBOM generation (Polaris fAST SCA on the Black Duck KnowledgeBase) and dynamic testing of websites, single-page apps, APIs and cloud services (Polaris fAST Dynamic) in one place, plus infrastructure-as-code checks and secrets detection in code. Connects to repositories, scans every pull request, can break a build by policy, pushes findings to Jira or ServiceNow and opens pull requests that upgrade a vulnerable library on its own. A single risk score that accounts for the KEV catalog, exploitability and whether the vulnerable code is reachable; the Black Duck Assist AI assistant explains findings and suggests fixes, and AI triage requires human approval. Consumption-based pricing; full Coverity and Black Duck SCA scans can also be run from the platform. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024."
+  "summary": "Black Duck Polaris cloud platform: code analysis, third-party component analysis and dynamic testing of sites and APIs in one place.",
+  "value": [
+    "One platform instead of three separate application testing tools.",
+    "Checks every change in the repository and shows developers what to fix.",
+    "Builds an SBOM and finds secrets written into the code."
+  ],
+  "simple": "A cloud (SaaS) application security testing platform: code analysis (Polaris fAST Static on the Coverity engine), third-party component analysis with SBOM generation (Polaris fAST SCA on the Black Duck KnowledgeBase) and dynamic testing of websites, single-page apps, APIs and cloud services (Polaris fAST Dynamic) in one place, plus infrastructure-as-code checks and secrets detection in code. Connects to repositories, scans every pull request, can break a build by policy, pushes findings to Jira or ServiceNow and opens pull requests that upgrade a vulnerable library on its own. A single risk score that accounts for the KEV catalog, exploitability and whether the vulnerable code is reachable; the Black Duck Assist AI assistant explains findings and suggests fixes, and AI triage requires human approval. Consumption-based pricing; full Coverity and Black Duck SCA scans can also be run from the platform. Black Duck is the former Synopsys Software Integrity Group, an independent company since October 2024.",
+  "classification": [
+    "fAST Static is SAST, fAST SCA is SCA, fAST Dynamic is DAST; IaC checks and secret scanning stay in the text."
+  ]
 }

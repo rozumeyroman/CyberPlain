@@ -1,3 +1,12 @@
 {
-  "simple": "Check Point’s line of next-generation firewalls for small and mid-sized businesses and branch offices (models from desktop to 1U, with Wi-Fi 7 and 5G). Every device has a firewall with user control, VPN between offices and for remote employees, QoS, protection for IoT devices (cameras, VoIP, printers) and SD-WAN for a backup link; management through a web interface, the cloud-based Spark Management for MSPs, or Smart-1. With the SNBT (SandBlast) subscription — the most complete protection: application control, IPS, website filtering, antivirus, Anti-Bot, antispam, plus the SandBlast Threat Emulation sandbox for unknown files and Zero Phishing — blocking phishing sites on the gateway, without agents. The subscription works on any model in the line; in the first year the device ships with SNBT, after which you can renew NGFW, NGTP or SNBT."
+  "summary": "Check Point Quantum Spark firewalls with the most complete SNBT subscription: everything in NGTP plus a sandbox for unknown files and gateway phishing blocking.",
+  "value": [
+    "Unknown malicious files are stopped in the sandbox before they reach a computer.",
+    "Fresh phishing sites are blocked at the gateway, with no agents on computers.",
+    "Known attacks, malicious sites and botnet traffic are blocked at the edge."
+  ],
+  "simple": "Check Point’s line of next-generation firewalls for small and mid-sized businesses and branch offices (models from desktop to 1U, with Wi-Fi 7 and 5G). Every device has a firewall with user control, VPN between offices and for remote employees, QoS, protection for IoT devices (cameras, VoIP, printers) and SD-WAN for a backup link; management through a web interface, the cloud-based Spark Management for MSPs, or Smart-1. With the SNBT (SandBlast) subscription — the most complete protection: application control, IPS, website filtering, antivirus, Anti-Bot, antispam, plus the SandBlast Threat Emulation sandbox for unknown files and Zero Phishing — blocking phishing sites on the gateway, without agents. The subscription works on any model in the line; in the first year the device ships with SNBT, after which you can renew NGFW, NGTP or SNBT.",
+  "classification": [
+    "Threat Emulation is the sandbox class; gateway Zero Phishing is browser protection (the class description now covers “in the browser or at the gateway”)."
+  ]
 }

@@ -1,3 +1,16 @@
 {
-  "simple": "Check Point Threat Exposure Management (Exposure Prioritization & Remediation, formerly Veriti) — part of Check Point Exposure Management: an agentless platform that pulls vulnerability and configuration data from your existing security tools (70+ integrations: firewalls, WAFs, EDR, vulnerability scanners, CNAPP) and safely fixes exposures through those tools — checking business impact before any change, via API or ITSM tickets. Licensed by number of network security controls (firewalls, WAFs) and assets. The Essential package covers Check Point controls only: assessing and hardening firewall settings (switching protections to prevent mode), finding false positives, and vulnerabilities from Wiz, Check Point Endpoint or External Risk Management. Indicator-of-compromise management: adding, changing and removing IoCs on security controls manually and in bulk. Vulnerability prioritization and remediation are in higher packages."
+  "summary": "The base Check Point Threat Exposure Management package (formerly Veriti) for Check Point controls: indicator management and hardening of their settings.",
+  "value": [
+    "Check Point controls are switched to blocking mode where it is safe.",
+    "False positives are found before someone turns protection off because of them.",
+    "Indicators of compromise are pushed to the controls from one place."
+  ],
+  "simple": "Check Point Threat Exposure Management (Exposure Prioritization & Remediation, formerly Veriti) — part of Check Point Exposure Management: an agentless platform that pulls vulnerability and configuration data from your existing security tools (70+ integrations: firewalls, WAFs, EDR, vulnerability scanners, CNAPP) and safely fixes exposures through those tools — checking business impact before any change, via API or ITSM tickets. Licensed by number of network security controls (firewalls, WAFs) and assets. The Essential package covers Check Point controls only: assessing and hardening firewall settings (switching protections to prevent mode), finding false positives, and vulnerabilities from Wiz, Check Point Endpoint or External Risk Management. Indicator-of-compromise management: adding, changing and removing IoCs on security controls manually and in bulk. Vulnerability prioritization and remediation are in higher packages.",
+  "notIncluded": [
+    "Vulnerability prioritisation and remediation come with Vulnerability Remediation and Complete.",
+    "Integrations with other vendors’ controls come with the higher packages."
+  ],
+  "classification": [
+    "IoC management is threat intelligence; checking and hardening control settings and finding false positives stay in the text."
+  ]
 }

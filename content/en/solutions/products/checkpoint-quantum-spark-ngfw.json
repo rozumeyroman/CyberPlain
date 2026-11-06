@@ -1,3 +1,16 @@
 {
-  "simple": "Check Point’s line of next-generation firewalls for small and mid-sized businesses and branch offices (models from desktop to 1U, with Wi-Fi 7 and 5G). Every device has a firewall with user control, VPN between offices and for remote employees, QoS, protection for IoT devices (cameras, VoIP, printers) and SD-WAN for a backup link; management through a web interface, the cloud-based Spark Management for MSPs, or Smart-1. With the NGFW subscription: application control and an intrusion prevention system (IPS) — blocks attempts to exploit known vulnerabilities in traffic. The subscription works on any model in the line; in the first year the device ships with SNBT, after which you can renew NGFW, NGTP or SNBT."
+  "summary": "Check Point Quantum Spark firewalls for small businesses and branches with the NGFW subscription: firewall, IPS and VPN.",
+  "value": [
+    "Known attacks and unwanted connections between the internet and the office network are blocked.",
+    "Remote workers and branches connect over an encrypted VPN.",
+    "One device per office, managed from the web or the cloud."
+  ],
+  "simple": "Check Point’s line of next-generation firewalls for small and mid-sized businesses and branch offices (models from desktop to 1U, with Wi-Fi 7 and 5G). Every device has a firewall with user control, VPN between offices and for remote employees, QoS, protection for IoT devices (cameras, VoIP, printers) and SD-WAN for a backup link; management through a web interface, the cloud-based Spark Management for MSPs, or Smart-1. With the NGFW subscription: application control and an intrusion prevention system (IPS) — blocks attempts to exploit known vulnerabilities in traffic. The subscription works on any model in the line; in the first year the device ships with SNBT, after which you can renew NGFW, NGTP or SNBT.",
+  "notIncluded": [
+    "Web filtering and Anti-Bot come with the NGTP subscription; sandbox and Zero Phishing with SNBT."
+  ],
+  "classification": [
+    "The product is the subscription tier, not the model (author’s decision); models are in the text only.",
+    "IoT and SD-WAN stay in the text."
+  ]
 }

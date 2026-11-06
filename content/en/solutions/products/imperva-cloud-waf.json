@@ -1,3 +1,16 @@
 {
-  "simple": "Imperva’s cloud WAF (a Thales company): a site is onboarded by changing DNS, and all traffic first passes through Imperva’s global network — no matter where the application runs, in the cloud or in your own data center. PCI DSS certified; most customers switch on blocking mode right away — rules are written and tested by the Imperva Threat Research team, new signatures are added daily and critical ones immediately. Blocks OWASP Top 10 attacks (SQL injection, XSS, remote file inclusion, access to forbidden resources), tells humans from bots (behavior, device fingerprint, CAPTCHA), filters by IP reputation and country, and inspects uploaded files. Machine-learning Attack Analytics distills thousands of events into a few clear attack stories; integrates with SIEM and Terraform. Sold in FlexProtect plans together with a CDN and API protection; DDoS protection for websites, advanced bot and account-takeover protection, protection against data theft through third-party scripts (Client-Side Protection) and RASP are in the top Premier plan or cost extra."
+  "summary": "Imperva (Thales) cloud WAF: a site connects by changing DNS, and all traffic first passes through Imperva’s global network.",
+  "value": [
+    "Sites are protected from common attacks wherever the application runs, without your own hardware.",
+    "The Imperva team writes and tests the rules, so blocking mode can be switched on straight away.",
+    "PCI DSS certified, which makes audits easier."
+  ],
+  "simple": "Imperva’s cloud WAF (a Thales company): a site is onboarded by changing DNS, and all traffic first passes through Imperva’s global network — no matter where the application runs, in the cloud or in your own data center. PCI DSS certified; most customers switch on blocking mode right away — rules are written and tested by the Imperva Threat Research team, new signatures are added daily and critical ones immediately. Blocks OWASP Top 10 attacks (SQL injection, XSS, remote file inclusion, access to forbidden resources), tells humans from bots (behavior, device fingerprint, CAPTCHA), filters by IP reputation and country, and inspects uploaded files. Machine-learning Attack Analytics distills thousands of events into a few clear attack stories; integrates with SIEM and Terraform. Sold in FlexProtect plans together with a CDN and API protection; DDoS protection for websites, advanced bot and account-takeover protection, protection against data theft through third-party scripts (Client-Side Protection) and RASP are in the top Premier plan or cost extra.",
+  "notIncluded": [
+    "DDoS protection for websites, advanced bot and account-takeover protection, Client-Side Protection and RASP come with the higher Premier plan or at extra cost."
+  ],
+  "classification": [
+    "The product is defined by the WAF, not by the FlexProtect plans, which mix application and data protection.",
+    "DDoS Protection for Websites is an add-on (included in Premier), so the DDoS class is not set."
+  ]
 }
