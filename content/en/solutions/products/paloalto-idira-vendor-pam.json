@@ -1,3 +1,15 @@
 {
-  "simple": "Access for contractors, vendors and remote administrators to critical systems without VPN, agents or passwords (formerly CyberArk Remote Access, Alero). A contractor signs in with biometric MFA on their own smartphone (scanning a one-time QR code), gets access only to the systems needed and only for the duration of the task, and connects through the browser in an isolated session — credentials never reach their device. Sessions are recorded with command-level audit; access is granted and revoked automatically when a contractor joins, changes role or finishes the contract; suspicious activity detection (ITDR) and discovery of forgotten contractor access are included. Sold only to Idira Privileged Access Manager SaaS or Self-Hosted customers: per vendor user or in packs by the number of registered users and monthly logins."
+  "summary": "Idira Vendor PAM (formerly CyberArk Alero): contractor and remote administrator access to critical systems without VPN, agents or passwords.",
+  "value": [
+    "Contractors reach only the systems they need, and only for the task.",
+    "Sign-in is through biometric MFA, with no VPN that opens the whole network.",
+    "Contractor sessions are recorded, and passwords are not shown to them."
+  ],
+  "simple": "Access for contractors, vendors and remote administrators to critical systems without VPN, agents or passwords (formerly CyberArk Remote Access, Alero). A contractor signs in with biometric MFA on their own smartphone (scanning a one-time QR code), gets access only to the systems needed and only for the duration of the task, and connects through the browser in an isolated session — credentials never reach their device. Sessions are recorded with command-level audit; access is granted and revoked automatically when a contractor joins, changes role or finishes the contract; suspicious activity detection (ITDR) and discovery of forgotten contractor access are included. Sold only to Idira Privileged Access Manager SaaS or Self-Hosted customers: per vendor user or in packs by the number of registered users and monthly logins.",
+  "notIncluded": [
+    "Sold only to Idira Privileged Access Manager SaaS or Self-Hosted customers."
+  ],
+  "classification": [
+    "PAM, ZSP for externals is JIT, no VPN is access without VPN, biometric MFA is MFA; ITDR stays in the text."
+  ]
 }

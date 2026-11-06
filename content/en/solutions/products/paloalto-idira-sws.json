@@ -1,3 +1,15 @@
 {
-  "simple": "Protection for what happens after sign-in to web applications: a browser extension records user actions in sensitive applications step by step (screenshots on clicks and key presses, with search and AI summaries) and prevents copying or downloading sensitive data without permission. Only the protected application is recorded, not other tabs; recordings are encrypted. Helps investigate access abuse and keeps sessions from being left unattended. Works together with Idira Identity; licensed per user, with searchable recording storage as a separate add-on."
+  "summary": "Idira Secure Web Sessions: a browser extension records user actions in sensitive web applications and blocks copying and downloading data.",
+  "value": [
+    "It shows exactly what was done in sensitive web applications, for investigations.",
+    "Data is not copied or downloaded from sensitive sites without permission.",
+    "Sessions are not left unsupervised."
+  ],
+  "simple": "Protection for what happens after sign-in to web applications: a browser extension records user actions in sensitive applications step by step (screenshots on clicks and key presses, with search and AI summaries) and prevents copying or downloading sensitive data without permission. Only the protected application is recorded, not other tabs; recordings are encrypted. Helps investigate access abuse and keeps sessions from being left unattended. Works together with Idira Identity; licensed per user, with searchable recording storage as a separate add-on.",
+  "notIncluded": [
+    "Searchable recording storage is a separate add-on."
+  ],
+  "classification": [
+    "Action recording plus copy and download blocking is DLP (as with FortiMail Browser Security)."
+  ]
 }

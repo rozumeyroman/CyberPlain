@@ -1,3 +1,12 @@
 {
-  "simple": "Access rights management across the whole life of an account (based on Zilla Security): a single record of who has access to what, with change history; automated access review campaigns with AI hints on what to revoke; automatic granting, changing and revoking of rights when a person joins, changes jobs or leaves. Finds orphaned accounts, excessive rights and segregation-of-duties (SoD) conflicts. Connects applications via API, and those without an API (including on-premises ones) via robotic automation (RPA). Prepares reports for SOX, PCI DSS, ISO 27001, DORA and GDPR audits. A cloud service; licensed per user, Standard / Enterprise editions and modules (Comply, Provision, SoD and others)."
+  "summary": "Idira Identity Governance (based on Zilla Security): a single register of access rights, regular reviews and automatic granting and revoking of access.",
+  "value": [
+    "Leavers and people who change roles do not keep unnecessary access.",
+    "Abandoned accounts and excessive rights are found automatically.",
+    "Access reviews for audits run without manual spreadsheets."
+  ],
+  "simple": "Access rights management across the whole life of an account (based on Zilla Security): a single record of who has access to what, with change history; automated access review campaigns with AI hints on what to revoke; automatic granting, changing and revoking of rights when a person joins, changes jobs or leaves. Finds orphaned accounts, excessive rights and segregation-of-duties (SoD) conflicts. Connects applications via API, and those without an API (including on-premises ones) via robotic automation (RPA). Prepares reports for SOX, PCI DSS, ISO 27001, DORA and GDPR audits. A cloud service; licensed per user, Standard / Enterprise editions and modules (Comply, Provision, SoD and others).",
+  "classification": [
+    "The IGA class was created for this product; its defenses[] are T1078 and T1098."
+  ]
 }

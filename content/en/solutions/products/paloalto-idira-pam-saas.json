@@ -1,3 +1,13 @@
 {
-  "simple": "Privileged access management as a cloud service on the Idira platform (formerly CyberArk Privilege Cloud). Stores the passwords and SSH keys of administrator, service and local accounts in a protected vault and rotates them automatically — including after every use. Administrators connect to servers, databases and web consoles through a broker that isolates the session: the password never reaches their computer, and every session is recorded on video with a list of commands and short AI summaries. Built-in threat analytics (ITDR) spots credential theft, Kerberos attacks (Golden Ticket, DCSync), Pass-the-Hash and bulk password retrieval from the vault — and can end the session, rotate the password or require re-authentication. Licensed per user (Basic — without brokered connections, Standard, Enterprise); check the exact edition contents with your distributor."
+  "summary": "Idira Privileged Access Manager SaaS (formerly CyberArk Privilege Cloud): an administrator password vault with rotation, session isolation and recording, and detection of attacks on accounts.",
+  "value": [
+    "Administrator passwords are not left in files and change regularly.",
+    "What was done with administrator rights is visible and recorded.",
+    "Kerberos ticket theft and similar attacks are spotted by built-in analytics."
+  ],
+  "simple": "Privileged access management as a cloud service on the Idira platform (formerly CyberArk Privilege Cloud). Stores the passwords and SSH keys of administrator, service and local accounts in a protected vault and rotates them automatically — including after every use. Administrators connect to servers, databases and web consoles through a broker that isolates the session: the password never reaches their computer, and every session is recorded on video with a list of commands and short AI summaries. Built-in threat analytics (ITDR) spots credential theft, Kerberos attacks (Golden Ticket, DCSync), Pass-the-Hash and bulk password retrieval from the vault — and can end the session, rotate the password or require re-authentication. Licensed per user (Basic — without brokered connections, Standard, Enterprise); check the exact edition contents with your distributor.",
+  "classification": [
+    "The vault, rotation, session isolation and recording are PAM; built-in ITDR / PTA analytics (Golden Ticket, DCSync, PtH) are ITDR.",
+    "Adaptive MFA and VPN-less from the SKU description stay in the text (Idira Identity and Vendor PAM provide them)."
+  ]
 }

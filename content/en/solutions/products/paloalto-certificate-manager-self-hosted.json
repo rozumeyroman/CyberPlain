@@ -1,3 +1,15 @@
 {
-  "simple": "Certificate lifecycle management deployed on your own infrastructure (formerly Venafi Trust Protection Platform, built on the Trust Protection Foundation); not part of Idira. Discovers TLS certificates on the network, keeps a single inventory, warns about expiry and automatically issues and renews certificates through integrations with certificate authorities, servers and network devices. The same line includes separate products SSH Manager (SSH keys) and CodeSign Manager (code signing certificates). Standard / Enterprise / Max editions — the classes are the same."
+  "summary": "Palo Alto Networks certificate lifecycle management deployed in your own infrastructure (formerly Venafi Trust Protection Platform).",
+  "value": [
+    "All of the company’s certificates are visible, including in isolated segments.",
+    "Services do not go down because of an expired certificate: renewal is automatic.",
+    "Everything stays in your own infrastructure, for regulatory requirements."
+  ],
+  "simple": "Certificate lifecycle management deployed on your own infrastructure (formerly Venafi Trust Protection Platform, built on the Trust Protection Foundation); not part of Idira. Discovers TLS certificates on the network, keeps a single inventory, warns about expiry and automatically issues and renews certificates through integrations with certificate authorities, servers and network devices. The same line includes separate products SSH Manager (SSH keys) and CodeSign Manager (code signing certificates). Standard / Enterprise / Max editions — the classes are the same.",
+  "notIncluded": [
+    "SSH Manager (SSH keys) and CodeSign Manager (code signing certificates) are separate products."
+  ],
+  "classification": [
+    "Outside the Idira brand, the CLM class."
+  ]
 }

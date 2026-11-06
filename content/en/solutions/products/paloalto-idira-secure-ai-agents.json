@@ -1,3 +1,12 @@
 {
-  "simple": "Protection for AI agents as a new kind of privileged account. Discovers agents and MCP servers across SaaS, cloud and development environments and brings them into a single registry with context: owner, purpose, status, permissions. A broker (Agent Identity Broker) grants an agent access to resources only for the duration of a specific task and takes it away right after; if an agent strays from its task or behaves oddly, its access can be cut off instantly (Kill Switch). Records agent actions — what was done, by which agent and on behalf of which user; provides access reviews and lifecycle management for an agent from creation to retirement. Also available in Prisma AIRS; check licensing with your distributor."
+  "summary": "Idira Secure AI Agents: an inventory of AI agents and MCP servers as privileged accounts, with access granted to them only for the duration of a task.",
+  "value": [
+    "It shows every AI agent and MCP server in the company and their owners.",
+    "An agent gets access only for a specific task and loses it immediately afterwards.",
+    "An agent behaving oddly can be cut off instantly."
+  ],
+  "simple": "Protection for AI agents as a new kind of privileged account. Discovers agents and MCP servers across SaaS, cloud and development environments and brings them into a single registry with context: owner, purpose, status, permissions. A broker (Agent Identity Broker) grants an agent access to resources only for the duration of a specific task and takes it away right after; if an agent strays from its task or behaves oddly, its access can be cut off instantly (Kill Switch). Records agent actions — what was done, by which agent and on behalf of which user; provides access reviews and lifecycle management for an agent from creation to retirement. Also available in Prisma AIRS; check licensing with your distributor.",
+  "classification": [
+    "The agent and MCP server registry is NHI (AI agents together with NHI, as at Silverfort); Agent Identity Broker and Kill Switch are JIT."
+  ]
 }

@@ -1,3 +1,16 @@
 {
-  "simple": "Protects computers and servers (Windows, macOS, Linux) with one lightweight agent managed from the cloud. Blocks malware, ransomware, exploits and fileless attacks: machine learning over 20,000+ file characteristics, behavioral protection of processes and protection against application exploitation techniques. Collects detailed telemetry from computers into the Cortex cloud data lake, where thousands of built-in machine-learning detectors spot attacks in real time; related alerts are automatically grouped into a single case with a risk score and the full attack story. Analytics and response actions also cover network, cloud and identity data when it is connected. Responds through 100+ ready-made playbooks and quick actions, and Live Terminal gives a remote console to the affected computer for investigation and containment; Cortex Agentic Assistant AI agents triage alerts, enrich them and contain the threat on their own. Controls USB drives and Bluetooth devices, the host firewall and disk encryption (BitLocker, FileVault). Sold separately: protection for cloud servers and containers, ITDR, email security, vulnerability assessment (Host Insights), forensics, DLP, attack surface management, and MDR and threat hunting by Unit 42."
+  "summary": "Palo Alto Networks Cortex XDR Pro per Endpoint: attack prevention plus detection, investigation and response on computers and servers.",
+  "value": [
+    "Attacks are stopped before they run, and anything that gets through is visible and can be investigated.",
+    "Alerts are grouped into incidents, and an infected computer is isolated straight away.",
+    "USB devices, network connections and disk encryption come from the same agent."
+  ],
+  "simple": "Protects computers and servers (Windows, macOS, Linux) with one lightweight agent managed from the cloud. Blocks malware, ransomware, exploits and fileless attacks: machine learning over 20,000+ file characteristics, behavioral protection of processes and protection against application exploitation techniques. Collects detailed telemetry from computers into the Cortex cloud data lake, where thousands of built-in machine-learning detectors spot attacks in real time; related alerts are automatically grouped into a single case with a risk score and the full attack story. Analytics and response actions also cover network, cloud and identity data when it is connected. Responds through 100+ ready-made playbooks and quick actions, and Live Terminal gives a remote console to the affected computer for investigation and containment; Cortex Agentic Assistant AI agents triage alerts, enrich them and contain the threat on their own. Controls USB drives and Bluetooth devices, the host firewall and disk encryption (BitLocker, FileVault). Sold separately: protection for cloud servers and containers, ITDR, email security, vulnerability assessment (Host Insights), forensics, DLP, attack surface management, and MDR and threat hunting by Unit 42.",
+  "notIncluded": [
+    "Cloud server and container protection, ITDR, email protection, Host Insights, forensics, DLP, ASM, MDR and hunting are bought separately."
+  ],
+  "classification": [
+    "Pro is EPP + EDR; Extended Detection Analytics is neither NDR nor UEBA, playbooks are not SOAR (SOAR is in XSIAM).",
+    "Pro per GB / Cloud per Host and the 5.x documentation names are not included."
+  ]
 }

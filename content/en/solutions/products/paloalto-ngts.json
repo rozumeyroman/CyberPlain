@@ -1,3 +1,13 @@
 {
-  "simple": "Cloud certificate lifecycle management and private PKI (successor to CyberArk Certificate Manager SaaS, formerly Venafi TLS Protect Cloud); not part of Idira — it belongs to Palo Alto Networks network security. Discovers public and private certificates on firewalls, remote access gateways, servers and Kubernetes clusters and keeps a single inventory with owners, expiry dates and certificate authorities. Automatically issues, renews, deploys and validates certificates and works with multiple certificate authorities; a cloud private PKI replaces your own CA servers (ACME, EST, SCEP). Helps prepare for the move to post-quantum algorithms. Starter / Standard / Enterprise / Max editions — the classes are the same."
+  "summary": "Palo Alto Networks Next-Gen Trust Security, cloud certificate lifecycle and private PKI management (formerly CyberArk Certificate Manager SaaS, Venafi TLS Protect Cloud).",
+  "value": [
+    "All of the company’s certificates, including unknown ones, are in one inventory.",
+    "Services do not go down because of an expired certificate: renewal is automatic.",
+    "Certificates are issued and replaced by policy, without manual work."
+  ],
+  "simple": "Cloud certificate lifecycle management and private PKI (successor to CyberArk Certificate Manager SaaS, formerly Venafi TLS Protect Cloud); not part of Idira — it belongs to Palo Alto Networks network security. Discovers public and private certificates on firewalls, remote access gateways, servers and Kubernetes clusters and keeps a single inventory with owners, expiry dates and certificate authorities. Automatically issues, renews, deploys and validates certificates and works with multiple certificate authorities; a cloud private PKI replaces your own CA servers (ACME, EST, SCEP). Helps prepare for the move to post-quantum algorithms. Starter / Standard / Enterprise / Max editions — the classes are the same.",
+  "classification": [
+    "Outside the Idira brand, same vendor, the CLM class.",
+    "SSH Manager and CodeSign Manager are separate products and are not included."
+  ]
 }

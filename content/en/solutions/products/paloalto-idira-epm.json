@@ -1,3 +1,12 @@
 {
-  "simple": "Removes standing local administrator rights on Windows, macOS and Linux computers and servers: approved programs and actions get elevated rights by policy, temporary administrator access is granted on request and recorded, and MFA can be required before elevation. Application control allows, blocks or ring-fences unknown programs (Restricted Mode) so they cannot act beyond what is allowed. Ready-made QuickStart policies protect against ransomware and against password theft from system memory, browsers and the Windows Credential Manager. For Linux — sudo policies and sign-in with directory accounts (Identity Bridge); there is also computer sign-in through the corporate identity provider (add-on) and integration with EDR and SIEM. A cloud service on the Idira platform; licensed per workstation or server."
+  "summary": "Idira Endpoint Privilege Manager: it removes standing local administrator rights on Windows, macOS and Linux and grants elevated rights only by rule.",
+  "value": [
+    "Malware launched by a user does not get full control of the computer.",
+    "Employees can still install the software they need, by rule and without help-desk tickets.",
+    "Everything done with administrator rights is recorded."
+  ],
+  "simple": "Removes standing local administrator rights on Windows, macOS and Linux computers and servers: approved programs and actions get elevated rights by policy, temporary administrator access is granted on request and recorded, and MFA can be required before elevation. Application control allows, blocks or ring-fences unknown programs (Restricted Mode) so they cannot act beyond what is allowed. Ready-made QuickStart policies protect against ransomware and against password theft from system memory, browsers and the Windows Credential Manager. For Linux — sudo policies and sign-in with directory accounts (Identity Bridge); there is also computer sign-in through the corporate identity provider (add-on) and integration with EDR and SIEM. A cloud service on the Idira platform; licensed per workstation or server.",
+  "classification": [
+    "The class is EPM; application control, ransomware and credential theft protection (QuickStart) and Endpoint Sign-in (add-on) stay in the text (application control is not EPP)."
+  ]
 }

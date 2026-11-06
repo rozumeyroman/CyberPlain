@@ -1,3 +1,15 @@
 {
-  "simple": "Protects computers and servers (Windows, macOS, Linux) with one lightweight agent that installs and updates without a reboot, managed from the cloud. Blocks malware, ransomware, exploits and fileless attacks before they run: machine learning checks over 20,000 file characteristics and stops even unknown malware, behavioral protection watches what processes do and stops new attack patterns, and exploit prevention blocks the exploitation techniques themselves — even when nobody has seen the vulnerability before. Controls access for USB drives and Bluetooth devices, the host firewall (Windows, macOS) and disk encryption (BitLocker, FileVault). This is prevention only: analytics-based attack detection, grouping alerts into cases, investigation and response are not part of this edition."
+  "summary": "Palo Alto Networks Cortex XDR Prevent: a lightweight agent that prevents attacks on computers and servers, with antivirus, exploit protection, device control, host firewall and encryption.",
+  "value": [
+    "Malware, ransomware and exploits are stopped before they run.",
+    "USB devices and the computer’s network connections are under control.",
+    "Disks are encrypted, so data on a lost laptop cannot be read."
+  ],
+  "simple": "Protects computers and servers (Windows, macOS, Linux) with one lightweight agent that installs and updates without a reboot, managed from the cloud. Blocks malware, ransomware, exploits and fileless attacks before they run: machine learning checks over 20,000 file characteristics and stops even unknown malware, behavioral protection watches what processes do and stops new attack patterns, and exploit prevention blocks the exploitation techniques themselves — even when nobody has seen the vulnerability before. Controls access for USB drives and Bluetooth devices, the host firewall (Windows, macOS) and disk encryption (BitLocker, FileVault). This is prevention only: analytics-based attack detection, grouping alerts into cases, investigation and response are not part of this edition.",
+  "notIncluded": [
+    "No detection, investigation or response (EDR): those are in Pro per Endpoint."
+  ],
+  "classification": [
+    "Prevent is prevention only (NGAV) plus Endpoint Controls: Device control and host firewall map to device control, BitLocker/FileVault to encryption; no EDR."
+  ]
 }

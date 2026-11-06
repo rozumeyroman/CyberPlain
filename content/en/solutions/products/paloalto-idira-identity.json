@@ -1,3 +1,12 @@
 {
-  "simple": "Workforce sign-in and access management (formerly CyberArk Identity, Idaptive): single sign-on (SSO) to cloud, SaaS and legacy applications; adaptive MFA that takes the user, device and context into account; phishing-resistant passwordless sign-in — biometrics, passkeys (FIDO2) and device-bound credentials; MFA at computer sign-in. A user directory and automatic creation and disabling of accounts in applications when a person joins, changes jobs or leaves; a gateway for on-premises web applications; a builder for automation scenarios (Identity Flows). A cloud service; licensed per user, as Standard / Enterprise packs or individual modules (SSO, MFA, lifecycle management)."
+  "summary": "Idira Identity (formerly CyberArk Identity, Idaptive): single sign-on to applications and adaptive, including passwordless, MFA for employees.",
+  "value": [
+    "A stolen password alone does not open access to applications.",
+    "One sign-in instead of dozens of passwords means fewer weak and reused passwords.",
+    "Checks take the device and context into account without getting in the way of normal work."
+  ],
+  "simple": "Workforce sign-in and access management (formerly CyberArk Identity, Idaptive): single sign-on (SSO) to cloud, SaaS and legacy applications; adaptive MFA that takes the user, device and context into account; phishing-resistant passwordless sign-in — biometrics, passkeys (FIDO2) and device-bound credentials; MFA at computer sign-in. A user directory and automatic creation and disabling of accounts in applications when a person joins, changes jobs or leaves; a gateway for on-premises web applications; a builder for automation scenarios (Identity Flows). A cloud service; licensed per user, as Standard / Enterprise packs or individual modules (SSO, MFA, lifecycle management).",
+  "classification": [
+    "SSO and adaptive and passwordless MFA map to the MFA class; Lifecycle, App Gateway and Identity Flows stay in the text."
+  ]
 }

@@ -1,3 +1,12 @@
 {
-  "simple": "Privileged access management deployed entirely on your own infrastructure (formerly CyberArk PAM Self-Hosted, Core PAS, “the Vault”) — for isolated segments, critical infrastructure and regulatory requirements. A protected vault for passwords and SSH keys, automatic password rotation (CPM), isolation and recording of RDP, SSH, database and web console sessions (PSM) — the password never reaches the administrator’s computer, and an independent activity log survives even if the server’s logs are wiped. The Privileged Threat Analytics (PTA) module detects attacks on accounts: Golden Ticket, DCSync, Pass-the-Hash, use of unmanaged privileged accounts — and can trigger a password rotation. Licensed per user (subscription or perpetual); components are planned separately: vault high availability, number of concurrent PSM sessions, test environment, hardware appliances with HSM."
+  "summary": "Idira Privileged Access Manager Self-Hosted (formerly CyberArk PAS): privileged access management entirely in your own infrastructure, for isolated segments and critical infrastructure.",
+  "value": [
+    "Administrator passwords are not left in files and change regularly.",
+    "What was done with administrator rights is visible and recorded.",
+    "Everything stays in your own infrastructure, including without internet access."
+  ],
+  "simple": "Privileged access management deployed entirely on your own infrastructure (formerly CyberArk PAM Self-Hosted, Core PAS, “the Vault”) — for isolated segments, critical infrastructure and regulatory requirements. A protected vault for passwords and SSH keys, automatic password rotation (CPM), isolation and recording of RDP, SSH, database and web console sessions (PSM) — the password never reaches the administrator’s computer, and an independent activity log survives even if the server’s logs are wiped. The Privileged Threat Analytics (PTA) module detects attacks on accounts: Golden Ticket, DCSync, Pass-the-Hash, use of unmanaged privileged accounts — and can trigger a password rotation. Licensed per user (subscription or perpetual); components are planned separately: vault high availability, number of concurrent PSM sessions, test environment, hardware appliances with HSM.",
+  "classification": [
+    "As SaaS: PAM + ITDR."
+  ]
 }

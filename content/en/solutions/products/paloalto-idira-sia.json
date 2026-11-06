@@ -1,3 +1,13 @@
 {
-  "simple": "An agentless cloud solution for administrator access to Windows and Linux servers, databases and Kubernetes clusters on premises and in the cloud (formerly CyberArk Dynamic Privileged Access). It follows the zero standing privileges model: an account, a group membership or a short-lived SSH certificate is created only for the duration of a task and disappears afterwards, so there is nothing to steal in advance. Connections with vaulted passwords are also possible. Administrators keep their usual RDP, SSH and database clients; sessions are isolated, recorded and land in a unified audit log. Sold as a per-user add-on to Idira Privileged Access Manager SaaS."
+  "summary": "Idira Secure Infrastructure Access (formerly CyberArk Dynamic Privileged Access): agentless administrator access to servers, databases and Kubernetes without standing privileges.",
+  "value": [
+    "Administrators have no standing rights: access is granted for the task.",
+    "Sessions are recorded, and passwords are not shown to administrators.",
+    "It works the same way for on-premises and cloud environments."
+  ],
+  "simple": "An agentless cloud solution for administrator access to Windows and Linux servers, databases and Kubernetes clusters on premises and in the cloud (formerly CyberArk Dynamic Privileged Access). It follows the zero standing privileges model: an account, a group membership or a short-lived SSH certificate is created only for the duration of a task and disappears afterwards, so there is nothing to steal in advance. Connections with vaulted passwords are also possible. Administrators keep their usual RDP, SSH and database clients; sessions are isolated, recorded and land in a unified audit log. Sold as a per-user add-on to Idira Privileged Access Manager SaaS.",
+  "classification": [
+    "ZSP to servers, databases and Kubernetes is JIT; recorded sessions and vaulted access are PAM.",
+    "“No VPN” on the page applies only to cloud/K8s, so the access-without-VPN class is not set."
+  ]
 }

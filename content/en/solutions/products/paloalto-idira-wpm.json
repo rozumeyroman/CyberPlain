@@ -1,3 +1,12 @@
 {
-  "simple": "An enterprise password manager for employees: a centralised encrypted vault (in the cloud or on your own infrastructure) with policies, a strong password generator, alerts about passwords that have appeared in leaks, and controlled sharing of work accounts without sending passwords over messengers. It also stores notes, files, tokens and keys; mobile access with offline mode, audit and reports are included. Useful for applications that do not support single sign-on (SSO). Licensed per user."
+  "summary": "Idira Workforce Password Management: a corporate password manager for employees with an encrypted vault and safe sharing.",
+  "value": [
+    "Work passwords are not kept in spreadsheets and notes.",
+    "Strong unique passwords are generated automatically, so one leaked password does not open several systems.",
+    "Access can be shared without revealing the password itself."
+  ],
+  "simple": "An enterprise password manager for employees: a centralised encrypted vault (in the cloud or on your own infrastructure) with policies, a strong password generator, alerts about passwords that have appeared in leaks, and controlled sharing of work accounts without sending passwords over messengers. It also stores notes, files, tokens and keys; mobile access with offline mode, audit and reports are included. Useful for applications that do not support single sign-on (SSO). Licensed per user.",
+  "classification": [
+    "The class is corporate password manager."
+  ]
 }
