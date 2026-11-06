@@ -1,0 +1,157 @@
+{
+  "title": "Rapid7 Quarterly Threat Landscape, Q3 2026: three days to attack",
+  "dateNote": "Publication date per the Rapid7 press release and blog; the PDF was created on 14 October 2026. The data covers Q3 2026 (July–September).",
+  "summary": "Rapid7 has summed up Q3 2026: new serious vulnerabilities start being attacked on average three days after disclosure, and nearly eight in ten of the flaws actually attacked need neither a password nor any user action. Alongside that come a market for ready-made network access, ransomware, and the first signs of AI taking over the \"middle\" of an attack. Below is what this means for a customer and what in the portfolio closes each gap.",
+  "illustration": {
+    "alt": "Timeline from a vulnerability's disclosure to day 30. The first attack happens on day three on average, 71% of exploitation cases fall in the first week and 90% within a month, while the monthly patch window arrives only at the end of the scale. Green marks where the chain can be broken earlier: find reachable systems on disclosure day and shield them with IPS or WAF until they are patched.",
+    "caption": "Most attacks on a new flaw happen before the monthly patch window. Our diagram based on the Rapid7 Quarterly Threat Landscape Report Q3 2026; the break points are our editorial mapping."
+  },
+  "body": [
+    "Rapid7 publishes this review every quarter. This time the company built it for the first time through its new Rapid7 Intelligence unit: vulnerability research, ransomware leak sites, dark web monitoring and incident response are told as one story instead of four. The report is short — 10 pages of data and conclusions.",
+    "The main idea fits in one number: 3. That is how many days on average pass between the disclosure of a new vulnerability rated CVSS 7–10 and the first attack on it. According to Rapid7, 71% of recorded exploitation cases fall in the first week and 90% in the first month. Imagine the lock on your building's front door has been declared faulty and the newspaper reports it: burglars will read the news within days, while the locksmith is scheduled for the end of the month. That is why the authors suggest talking about risk in \"days of exposure\" rather than in the number of unpatched flaws.",
+    "The second idea: don't panic over the number of vulnerabilities. There are far more new serious CVEs (partly because AI helps find them), but few are actually attacked — 43 new flaws in the quarter, even fewer than in the previous one. Attackers \"shop in one aisle\": they pick remote flaws that need no password and no user involvement. So defence should prioritise by reachability and evidence of exploitation rather than patch everything in a row.",
+    "The third idea: techniques don't change, only group names do. Command lines and scripts, obfuscation and masquerading, credential theft and remote access remain the foundation of both espionage and criminal attacks. On underground forums two thirds of listings sell ready-made network entry (RDP or network access), and the \"exploits\" there are mostly repackaged flaws the vendor has already disclosed.",
+    "The fourth idea concerns AI: in 8% of tracked reporting AI is an operational part of the attack, yet in every documented case a human chose the target and the goal. The machine takes on tactics: which technique to use next, whom to attack, what to do when a step fails.",
+    "Keep the publisher's interest in mind: Rapid7 sells vulnerability and external attack surface management (Exposure Command), an MDR service and the Command Platform, and the report points to them directly. The figures are Rapid7's data, not independent measurements."
+  ],
+  "method": [
+    "The report combines four Rapid7 sources: vulnerability and exploit analytics, ransomware groups' leak sites, monitoring of underground forums, markets and paste sites, and observations from the incident response and MDR teams. The mapping of CVEs to groups comes from Rapid7's own dataset in MISP (a threat information sharing platform).",
+    "Vulnerability statistics cover only CVEs rated CVSS 7–10. The report does not explain how \"exploitation\" was confirmed or how the average behind the \"3 days\" was calculated; there is no sample size beyond the numbers given (2,930 CVEs by impact type, 43 exploited, 63 underground posts).",
+    "Ransomware is counted from listings on the groups' leak sites — these are the groups' claims, not confirmed incidents; some victims never appear on such sites.",
+    "The AI data is a share of tracked threat publications, not of measured attacks; on bypassing AI model safeguards the report cites a disclosure by \"at least one major AI provider\" without naming it.",
+    "The publisher is a vendor that sells vulnerability management, threat intelligence and MDR; the report links to these products."
+  ],
+  "figures": [
+    { "value": "3 days", "label": "on average from the disclosure of a new CVSS 7–10 vulnerability to the first attack on it (Rapid7 data)" },
+    { "value": "71%", "label": "of recorded exploitation cases happen within 7 days of disclosure; 80% within 14 days, 90% within 30 days (Rapid7 data)" },
+    { "value": "79%", "label": "of newly exploited vulnerabilities (34 of 43) are attacked over the network with no authentication and no user action — the so-called \"holy grails\" (Rapid7 data)" },
+    { "value": "43", "label": "new CVSS 7–10 vulnerabilities began to be exploited in the quarter — 7% fewer than in Q2 but 19% more than a year earlier (Rapid7 data)" },
+    { "value": "41 of 63", "label": "underground posts in the quarter sold RDP or network access to companies (Rapid7 dark web monitoring data)" },
+    { "value": "8%", "label": "of the threat reporting tracked by Rapid7 cites AI as an operational part of an attack (Rapid7 data)" }
+  ],
+  "caveats": [
+    "All figures are Rapid7's data. \"3 days\" is an average (as stated in the report), but the report does not disclose how it was calculated, how exploitation was confirmed or the sample sizes.",
+    "Ransomware data is leak-site listings, i.e. the groups' own claims; the US share partly reflects which victims end up on such sites. Ukraine does not appear in the report's list of top countries.",
+    "The report has an inconsistency in its year-on-year growth chart: two rows carry the same label \"New CVSS 7-10 CVEs\" (133% and 19%). Per the Rapid7 blog, 19% is the growth in exploited flaws; we present 133% as the growth in new CVSS 7–10 flaws, which is our reading of the label.",
+    "The 79% of \"holy grails\" (34 of 43) is counted against exploited flaws, while the 46% on the \"attack surface classification\" chart is counted against all tracked ones; these are different bases, not a contradiction.",
+    "The AI provider whose data on split-up requests the report cites is not named; we could not verify that primary source.",
+    "Techniques T1059, T1027 and T1036 are named in the report; the rest in findings 01–05 and 07–08 were mapped by the editors. For finding 09 the techniques come from a separate Rapid7 study of ted, not from the quarterly report.",
+    "The external attack surface and vulnerability management classes in findings 01–02 are marked \"source\" because the report itself advises starting with a map of the external surface (Exposure Command); the other classes are our mapping."
+  ],
+  "findings": [
+    {
+      "title": "01 · Three days — and the monthly patch cycle is already late",
+      "text": "According to Rapid7, a new serious flaw is attacked on average three days after disclosure, and seven in ten recorded exploitation cases fall in the first week. CISA adds such flaws to its Known Exploited Vulnerabilities catalogue (KEV) within three days too (median). So if a company patches once a month in a change window, most attacks on a new flaw happen before that window. Hence the authors' proposal: express risk appetite in the number of days a system may stay exposed, and don't wait for scheduled patching for flaws on the perimeter.",
+      "risk": "A server or gateway reachable from the internet can be breached before IT even learns about the update — and it is a door into the whole internal network.",
+      "solutions": [
+        { "why": "Scans systems for the new CVE and moves it up the queue if it is already exploited or listed in KEV, cutting the \"days of exposure\". It only finds the flaw if a check for it has been released and scans run more often than once a month." },
+        { "why": "Continuously shows which of the company's servers and services are visible from the internet, so on disclosure day you know exactly where to look; the report urges organisations to \"find and fix\" exposed systems first. Works only if all the company's domains and address ranges are in the inventory." },
+        { "why": "An IPS signature for a new flaw often appears before the company manages to patch and blocks attempts at the perimeter as a stopgap. Works only with an IPS profile enabled on the rules for that service and with traffic decryption if the attack travels inside HTTPS." },
+        { "why": "For flaws in web applications, a virtual WAF rule filters out requests typical of exploitation while patching is under way. It protects only sites whose traffic actually passes through the WAF." },
+        { "why": "Threat intelligence feeds and exploitation data give the \"this flaw is already under attack\" signal in the first days — exactly when every day counts. Useful only when the signal flows automatically into vulnerability management priorities." }
+      ]
+    },
+    {
+      "title": "02 · \"Holy grails\" are under attack: remote, no password, no click",
+      "text": "Of the 43 newly exploited flaws, 34 (79%) can be used over the network without an account and without any human action. Among all tracked CVEs such \"ideal for the attacker\" flaws make up only 46%, so attackers deliberately choose them. Rapid7's conclusion in the blog post accompanying the report: the CVSS score alone is a poor guide to priority; what matters more is whether the system is reachable from outside and whether attacks are already happening. For example, F5 reported attacks on the F5 BIG-IP APM flaw (CVE-2026-94127, CVSS 9.8) on the day of its advisory, 22 September 2026; it was added to KEV the same day.",
+      "risk": "Remote access gateways, VPNs, load balancers and mail servers are the most valuable targets because they sit between the internet and internal systems; breaching such a device needs neither a stolen password nor an employee's mistake.",
+      "solutions": [
+        { "why": "Removes login portals, RDP and SSH exposed to the internet: an employee reaches only approved systems through a gateway, so a \"holy grail\" has fewer points to hit. It won't help for services that must be public (website, mail)." },
+        { "why": "Shows exactly the part of the infrastructure where \"holy grails\" live: internet-facing gateways, panels and services with their versions. The report explicitly advises starting with a map of the external surface; it finds only resources tied to the company's known domains or addresses." },
+        { "why": "Lets you put flaws tagged \"remote\", \"no authentication\" and \"exploited\" first, not just rank by CVSS score. For devices like F5 the scanner sees the version but not always the configuration the vulnerability depends on — a manual check is needed." },
+        { "why": "Limits which addresses can reach a management or login portal at all and blocks known exploits with IPS signatures. For zero-day flaws there is no signature yet, so narrowing access is what matters most." }
+      ]
+    },
+    {
+      "title": "03 · More and more vulnerabilities are found, few are attacked",
+      "text": "There are 133% more new CVSS 7–10 flaws than a year ago, and 86% more public proofs of concept (PoC). Yet only 9.4% of PoCs turn into a real attack within 30 days. Of 2,082 remote code execution flaws, 18 were exploited (0.62%); authentication bypass flaws have the highest share — 3 of 191 (1.57%). The authors separate two waves: the flood of discovered flaws is real (AI finds them faster than people can sort through them), but a flood of exploitation is not yet visible in the data.",
+      "risk": "A team that tries to close everything in a row drowns in the queue and fails to patch in time the few systems that are actually attacked.",
+      "solutions": [
+        { "why": "Filters thousands of findings down to those that are exploited and reachable and builds a short queue. Works well only if prioritisation takes exploitation data and the system's business importance into account, not just CVSS." },
+        { "why": "Supplies the fact that \"a working exploit has appeared\" or \"the flaw is under attack\", which separates that 9.4% of PoCs from the rest. Useful when this data flows into vulnerability management automatically." },
+        { "why": "Checks whether a stopgap (IPS, WAF) really stops an attack on a flaw that hasn't been patched yet — that is, whether patching can safely wait. It gives no protection by itself and covers only flaws for which a simulation scenario exists." }
+      ]
+    },
+    {
+      "title": "04 · Network access is sold like a retail product",
+      "text": "The largest category of underground posts in the quarter is access for sale: 41 of 63. The range runs from individual accounts (bank logins together with \"full\" personal data of customers of at least three major US banks) to full entry into a company's network. An example from the report is \"corporate access via Tailscale and RDP\" together with webmail access at a footwear company. Separately, 10 posts are marked as \"priority\" access to government or corporate networks (the post categories overlap). In other words, an attack doesn't require exploiting a vulnerability: entry can simply be bought.",
+      "risk": "Selling access is usually the first step before extortion; the buyer logs in with a valid account, so without extra controls the login looks like an employee at work.",
+      "solutions": [
+        { "why": "A second factor on RDP, VPN and webmail logins makes a bought password useless without the owner's phone or key. Works only if MFA covers all external logins, not just some." },
+        { "why": "Removes internet-exposed RDP — the brokers' most common product — and grants access only to specific systems after checking the user and device. It won't cover remote access tools installed behind IT's back." },
+        { "why": "Brings together the list of computers and installed software from different systems and reveals remote access tools installed behind IT's back — exactly the kind of entry brokers sell. It sees only the devices it collects data from." },
+        { "why": "Notices when a listing or accounts linked to the company appear on a forum — a chance to change passwords and close the entry before it is sold. It sees only the venues and channels the provider monitors, and not every broker names the victim." },
+        { "why": "Notices when a bought account tries to escalate privileges, attacks Active Directory or moves between servers under someone else's identity, and can block the session. Needs data from Active Directory or the cloud user directory." },
+        { "why": "Compares a login with the specific employee's habits: a new country or device, unusual hours, access to someone else's data. Needs time to learn and login logs from all external services." }
+      ]
+    },
+    {
+      "title": "05 · Forum \"exploits\" are repackaged known flaws",
+      "text": "Of the 14 underground posts about exploits and \"zero-days\", most concerned flaws the vendor had already disclosed or that were already in the CISA KEV catalogue. Example: a discussion of CVE-2026-94127 in F5 BIG-IP APM appeared on 25 September — three days after F5's advisory. Rapid7 concludes that this is fast \"commercial repackaging\" of the known rather than a wave of genuinely new zero-days.",
+      "risk": "For criminals it is enough that a company hasn't patched within a few days; the market turns every new advisory into a product for those who can't write an exploit themselves.",
+      "solutions": [
+        { "why": "Since the \"product\" is known CVEs, timely scanning and patching closes exactly what is being sold. Works if the cycle for perimeter flaws is measured in days." },
+        { "why": "The signal that \"a flaw is being sold or has a working exploit\" moves it up the queue before mass attacks. Useful when intelligence is linked to the company's asset list." },
+        { "why": "Shows when forums discuss an exploit for a product the company uses. Covers only the venues the provider tracks." }
+      ]
+    },
+    {
+      "title": "06 · Group names change, techniques don't",
+      "text": "Rapid7 tracked 15 groups (espionage and criminal). The most frequent ATT&CK techniques are command lines and scripts (107 events), obfuscation of files and data (83) and masquerading as legitimate (75). For spies and criminals alike, scripts, credential theft and compromise of remote access remain the foundation. So the authors advise the public sector (and, by implication, everyone) to invest in detecting and responding to typical ransomware actions rather than in lists of \"groups that attack organisations like us\": such lists go stale every quarter.",
+      "risk": "Defences tuned to specific names or malicious files miss a new group performing the same actions; the attacker gets from the first script to encryption.",
+      "solutions": [
+        { "why": "Sees behaviour regardless of the group's name: an office application launches PowerShell, a process unpacks an encoded script, a program named after a system service sits in the wrong place. Works only where the agent is installed — servers and Linux systems are often left without it." },
+        { "why": "Correlates events from different systems and applies rules to techniques rather than names — and they don't age with the lists of groups. Effective only if it collects process and script execution logs and the rules are tested." },
+        { "why": "Safely reproduces the most frequent techniques (scripts, obfuscation, masquerading) and shows which of them EDR and SIEM miss. It doesn't stop attacks itself — it only proves the rest of the defence works." }
+      ]
+    },
+    {
+      "title": "07 · Ransomware: two leaders and almost unchanged methods",
+      "text": "By leak-site listings, the quarter's leaders are The Gentlemen (342 victims) and Qilin (339), followed far behind by INC Ransom (99), DeadLock (98) and KryBit (95). The US accounts for 1,112 listings (60.4%) — roughly eight times more than Germany (7.3%). The most frequent sectors are business services (17%), manufacturing (16.1%) and healthcare (14.9%). In the public sector, incidents among the top ten countries rose by 15% (55 versus 48), and the US share grew from 33% to 45%. The line-up of groups changes fast: eight groups from Q2 disappeared from the public sector statistics and seven new ones appeared. Hence the same conclusion: it is more durable to invest in detecting typical actions than to track names.",
+      "risk": "Encryption and publication of data mean downtime of production or a service, recovery costs and possible fines for a personal data leak — whatever the group is called.",
+      "solutions": [
+        { "why": "Blocks the encryptor from launching and attempts to delete shadow copies before they take effect, including new variants — by behaviour. Works if the agent is on the servers and the attacker hasn't managed to disable it with administrator rights." },
+        { "why": "Records activity on computers, spots the ransomware chain — from the first script to mass file renaming — and isolates the computer from the network. Works where the agent is installed and when someone is there to respond to the alert." },
+        { "why": "Notices takeover of administrator accounts and movement across the network under someone else's identity — a step without which ransomware can't reach all the servers. Needs data from Active Directory." },
+        { "why": "Removes standing administrator rights on computers, without which shadow copies can't be deleted and protection can't be disabled. It won't help if the attacker has already taken over a domain administrator account." },
+        { "why": "Keeps an immutable copy of critical systems in an isolated vault, so even after the network and backups are encrypted there is a chance to recover without paying a ransom — if those systems are in the isolated copy and recovery has been tested. It does not protect against publication of stolen data." },
+        { "why": "Regular copies kept separate from the main network shorten downtime after encryption. They help only if the copies are out of reach of the accounts the attacker has captured and recovery has been tested." }
+      ]
+    },
+    {
+      "title": "08 · AI takes over the \"middle\" of an attack, but a human picks the target",
+      "text": "In 8% of tracked reporting AI is an operational part of the attack, not just a helper for writing emails. In every documented case a human chose the target and the goal; AI handled the tactical \"middle\": picking the next technique, sorting targets, looking for a workaround when a step failed. To get around AI services' safeguards, attackers split one task into several small sessions: according to one major AI provider (the report does not name it), individual malicious requests are refused often, while split-up ones are refused noticeably less often. The authors advise treating calls to AI service APIs from unexpected servers and processes as a separate, full-fledged data source for detection.",
+      "risk": "An attack in which AI suggests the next step can recover faster after a failure and depend less on the human's skill; in our assessment, this shortens the time between the first and the last step.",
+      "solutions": [
+        { "why": "Sees and can restrict which servers and programs contact AI service domains — a call from the accounting server or a domain controller stands out immediately. Works if all outbound server traffic goes through a web gateway or DNS filter." },
+        { "why": "Shows which process on a computer is calling an AI API — an employee's browser or an unknown script. Needs rules for such calls: by default they are not considered suspicious." },
+        { "why": "Notices unusual connections to AI services from network segments where they shouldn't occur, even without an agent on the host. Without decryption it sees only the fact and volume of the connection, not the content." },
+        { "why": "Brings together proxy, DNS and EDR logs to compare AI calls with each server's usual profile. Needs dedicated rules and a list of approved AI services." }
+      ]
+    },
+    {
+      "title": "09 · State hackers hide in perimeter infrastructure",
+      "text": "Rapid7 linked 15 vulnerabilities to six tracked groups, including APT31, Lazarus, Sandworm and Void Blizzard (the latter, according to the report, consistently targets government bodies and law enforcement in NATO countries and Ukraine). Separately, the report mentions Rapid7's own study: in South Korea an attacker whom Rapid7 links to North Korea with medium confidence built the \"ted\" backdoor straight into a rebuilt HAProxy 2.8.12 load balancer at automotive and media companies, probably since early 2025. The backdoor intercepted web traffic (in some samples, session cookies too), executed commands and hid its requests from application logs; alongside it ran an SSH password interceptor and the curlRAT trojan. Rapid7 advises treating such perimeter devices as strictly as core servers and not relying on their own logs.",
+      "risk": "A captured load balancer or gateway sees all user traffic — passwords, sessions, data — and can stay unnoticed for months because its logs are \"clean\".",
+      "solutions": [
+        { "why": "An agent on a Linux server monitors program integrity and notices that the HAProxy or sshd executable has been replaced or that the load balancer is launching a shell. Works only where an agent can be installed — on many hardware perimeter devices that's not possible." },
+        { "why": "Rapid7 advises network traffic correlation independent of the device itself: NDR notices unusual outbound connections from the load balancer even when its logs are clean. Requires the perimeter segment's traffic to be mirrored to a sensor." },
+        { "why": "Receives logs from the load balancer and neighbouring systems straight away, off the device, so wiping traces on the device itself is no longer enough, and rules notice it launching a shell or connecting outward. Requires the perimeter device to forward its logs to the SIEM." },
+        { "why": "Group profiles and indicators from studies like ted let you check your own systems for the same traces. Indicators go stale quickly, so the described behavioural signs are what matter most." }
+      ]
+    }
+  ],
+  "gaps": [
+    "A patch cycle measured in days. A policy under which perimeter flaws flagged as \"exploited\" are patched within 24–72 hours rather than in the monthly change window is a process and a management decision, not a product.",
+    "Managed detection and response (MDR). The report points to Rapid7's MDR service; there is no such class in the portfolio — you can talk about the EDR and SIEM underneath it, but a 24/7 team is a separate service.",
+    "An AI service usage policy. A list of approved AI services and of the servers allowed to call them is an organisational rule; without it, monitoring of AI calls has nothing to compare against.",
+    "Hardening perimeter devices. Restricting access to the management interfaces of load balancers and gateways and verifying checksums of their software are settings of the product itself and a process, not a separate class."
+  ],
+  "questions": [
+    "How many days pass for you from the disclosure of a critical flaw in a gateway or VPN to the installed update — and who decides to patch outside the scheduled window?",
+    "Do you have an up-to-date list of everything visible from the internet — including login portals, RDP and remote access tools that contractors or employees may have installed?",
+    "On which external logins (VPN, RDP, webmail, cloud services) does a second factor work for you, and where not yet?",
+    "How would you find out that accounts or access to your network are being sold on underground forums?",
+    "Would you notice if a server, rather than an employee, started calling AI services — and have you defined which AI services are allowed?"
+  ]
+}
