@@ -1,0 +1,14 @@
+{
+  "summary": "Teramind Enterprise & Government is the top plan: DLP, activity recording and behavior analytics, plus on-screen text recognition, field capture in applications and vendor-led deployment, including in government clouds.",
+  "value": [
+    "Text on screen and in images is recognized, so it can be found in recordings and used in investigations.",
+    "You can see what an employee enters and sees in the fields of business applications and websites, for investigations and fraud control.",
+    "An attempt to send sensitive data by email, to the cloud or to an AI service can be blocked by a rule, and a change in an employee’s behavior shows up in the risk score.",
+    "Deployment, rules and integrations are set up by the vendor, which lightens the load on your own team."
+  ],
+  "simple": "Teramind’s top plan for insider threat and data loss control by an agent on computers: DLP with content-based and file-operation rules, classification, tags, fingerprints and redaction; control of email, web uploads, cloud, the clipboard and AI services (the vendor’s Insider Risk Management page also lists USB and printing); behavior analytics with anomalies and risk scoring; screen recording and an activity log with full-text search and event forwarding to a SIEM. On top of the DLP plan: on-screen text recognition (OCR of screen content), capture of field values in websites and applications (Custom website / app field capture) and in-app parsing for fraud detection. Professional services are included: deployment assistance, custom reports, setup of behavior rules and integrations, an enterprise SLA and premium support. Hosting is possible in AWS GovCloud and Azure Government, as well as in the Teramind cloud, own data center or a private cloud. Licensed per user, terms by agreement. Recording employees’ activity, keystrokes, audio, camera and geolocation requires a legal basis and notice to employees (GDPR, labor law): the scope of collection is configured to company policy, and recording only on rule violations reduces it.",
+  "classification": [
+    "The classes are the same as in DLP: DLP (Data Loss Prevention section) and UEBA (User Behavior Analytics). OCR and field capture strengthen activity recording and investigations and add no new class.",
+    "Professional services, SLA and government clouds are text only."
+  ]
+}

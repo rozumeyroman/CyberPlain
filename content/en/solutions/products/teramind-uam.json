@@ -1,0 +1,21 @@
+{
+  "summary": "Teramind UAM (User Activity Monitoring) is an agent on employee computers that records their activity, learns each person’s normal behavior and warns about risky users and insider threats.",
+  "value": [
+    "The security team sees when an employee behaves unusually: works at odd hours, copies files in bulk, prints more.",
+    "Every user has a risk score, so it is clear whom to check first instead of checking everyone.",
+    "After an incident there is a screen recording and an activity log showing what the person did before, during and after the violation.",
+    "Logs and ready-made reports help during audits (per the vendor, for GDPR, HIPAA, PCI DSS)."
+  ],
+  "simple": "The Teramind agent collects user activity on the computer: websites and applications, email, messengers, online meetings, file transfers, printing, console commands, keystrokes, camera use and geolocation, and records the screen (optionally with audio) with Live view and Remote control. User Behavior Analytics builds a baseline for each user, spots anomalies (Anomaly detection) and calculates a Dynamic risk score. AI controls are already in this plan: recording of AI conversations, AI Data Exfiltration Control and Agentic AI Governance. Policies are set in a visual rule editor with regular expressions and ready-made templates; on a violation the security team can be alerted or the action blocked (Activity blocking). Recording can run only during a rule violation, recordings are full-text searchable, and events are forwarded to a SIEM. Deployment: Teramind cloud, own data center (VMware, Hyper-V, Nutanix AHV) or a private cloud in AWS or Azure; licensed per user. Compared with DLP, this edition monitors and records activity but does not recognize sensitive data by content: there are no content-based rules, classification, document fingerprinting or clipboard control. Recording employees’ activity, keystrokes, audio, camera and geolocation requires a legal basis and notice to employees (GDPR, labor law): the scope of collection is configured to company policy, and recording only on rule violations reduces it.",
+  "notIncluded": [
+    "No content-based rules, classification or document fingerprinting: those come with the DLP plan; AI exfiltration control here is action-based, without content analysis.",
+    "No clipboard control: it comes with the DLP plan.",
+    "No on-screen text recognition (OCR): it is only in Enterprise & Government."
+  ],
+  "classification": [
+    "Behavior anomalies and dynamic risk scoring (User Behavior Analytics section of the table) are UEBA.",
+    "AI controls (conversation recording, AI Data Exfiltration Control, Agentic AI Governance) start with this plan but without content analysis: the Data Loss Prevention section of the table is “✗” for UAM, so no DLP class, text only.",
+    "Screen recording, keystrokes, activity log and full-text search (Audit & Forensics) are text only: this is user activity recording, not DFIR (no attack evidence collection, memory analysis or malware removal).",
+    "Policy-based blocking of websites and applications (Activity blocking) is not web filtering (no reputation or malicious-site categories); Remote control is text only."
+  ]
+}

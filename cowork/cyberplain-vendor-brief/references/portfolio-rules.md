@@ -8,7 +8,7 @@
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
 модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM, NGFW, Idira (identity security) і Next-Gen Trust Security, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
-захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck (рішення автора, жовтень 2026).
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind (рішення автора, жовтень–листопад 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -120,6 +120,9 @@
 | Black Duck SCA | SCA |
 | Black Duck Continuous Dynamic, Seeker Interactive Analysis, Defensics Fuzz Testing | DAST (DAST / IAST / фазинг) |
 | Black Duck Code Sight | SAST, SCA |
+| Teramind UAM | UEBA |
+| Teramind DLP | + DLP |
+| Teramind Enterprise & Government | те саме (+ OCR, захоплення полів, професійні послуги) |
 
 **EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026).**
 - `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
@@ -355,6 +358,17 @@ Black Duck SCA — `sca`, один продукт: Standard Edition і стар�
 Continuous Dynamic (DAST, ex-WhiteHat), Seeker Interactive Analysis (IAST), Defensics Fuzz Testing (фазинг протоколів) — `dast`. Code Sight
 (плагін IDE) — `sast`, `sca`. Не додано: Software Risk Manager (ASPM — зводить знахідки інших сканерів, класу немає), Black Duck Signal
 (агентний AI), Black Duck Assist, ContextAI, Detect / Bridge CLI (інтеграції).
+
+Teramind (таблиця планів https://www.teramind.co/services/price/, листопад 2026; сторінки DLP, Insider Risk Management, AI Governance):
+3 продукти лінійки «Teramind» за планами UAM / DLP / Enterprise & Government. Агент на комп’ютерах (запис екрана й аудіо, клавіші, пошта,
+месенджери, файли, друк, консоль, камера, геолокація) — сам по собі не клас, лише в тексті; у текстах — речення про правову підставу й
+повідомлення працівників (рішення автора). UAM: Anomaly detection і Dynamic risk scoring — `ueba`; AI-функції (AI Conversations Recording,
+AI Data Exfiltration Control, Agentic AI Governance) — з UAM за карткою плану, але без аналізу вмісту (розділ Data Loss Prevention «✗») —
+не `dlp`, лише в тексті (рішення автора; на відміну від Workforce AI Security). DLP і Enterprise: розділ Data Loss Prevention (правила за вмістом
+і файловими операціями, класифікація, відбитки) і Clipboard — `dlp`, + `ueba`. USB і друк — канали витоку зі сторінки Insider Risk (план не
+вказано), у тексті DLP; `device-control` не ставимо. Audit & Forensics — не `dfir`; Activity blocking — не `web-filtering`; Remote control,
+In-app fraud detection, OCR, захоплення полів, професійні послуги, AWS GovCloud / Azure Government — лише в тексті. Starter (правила без аномалій)
+— жодного класу, не додано; клас `uam` не заводимо — дублює `dlp`/`ueba` (рішення автора). NextGen поки лише в хмарі — не в текстах.
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

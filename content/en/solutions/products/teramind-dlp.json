@@ -1,0 +1,20 @@
+{
+  "summary": "Teramind DLP is data loss prevention by an agent on employee computers, combined with activity recording and behavior analytics: it finds sensitive data and keeps it from being sent out unnoticed.",
+  "value": [
+    "An attempt to send personal data, card data or trade secrets by email, web upload, cloud or an AI service can be blocked by a rule or logged.",
+    "The employee immediately sees which rule they broke.",
+    "A change in an employee’s behavior shows up in the risk score, giving a reason to check them earlier.",
+    "Recordings and logs support investigations and evidence in case of deliberate data theft."
+  ],
+  "simple": "The Teramind agent on the computer combines user activity recording with DLP. It recognizes sensitive data with ready-made and custom patterns (PII, PHI, PCI; per the vendor, more than 200 pre-packaged rules), classifies documents by content and metadata, applies tags and fingerprints (Fingerprinting and tagging), redacts sensitive content (Redaction) and enforces content-based and file-operation rules. It controls email and attachments, web uploads, cloud transfers, the clipboard and work with AI services: conversation recording, LLM content rules for prompts, pasting sensitive data and uploading files to chatbots; the vendor’s Insider Risk Management page also lists USB and printing among the channels. On a violation: an alert, a warning to the user, automatic blocking of the action or session termination. Behavior analytics spots anomalies and calculates a risk score for each user; there is screen recording, a log of keystrokes, console commands and printing, full-text search and event forwarding to a SIEM. Separately, In-app fraud detection. Deployment: Teramind cloud, own data center or a private cloud in AWS or Azure; licensed per user. Compared with Enterprise & Government, it lacks OCR, field capture in websites and applications, and professional services. Recording employees’ activity, keystrokes, audio, camera and geolocation requires a legal basis and notice to employees (GDPR, labor law): the scope of collection is configured to company policy, and recording only on rule violations reduces it.",
+  "notIncluded": [
+    "No text recognition on screen and in images (OCR): it is only in Enterprise & Government.",
+    "No form field capture in websites and applications (Custom website / app field capture): only in Enterprise & Government.",
+    "Hosting in AWS GovCloud and Azure Government, and rule and integration setup by the vendor, are only in Enterprise & Government."
+  ],
+  "classification": [
+    "The Data Loss Prevention section of the table (content-based and file-operation rules, classification, fingerprinting, “Prevent malicious or negligent data exfiltration”) and the clipboard are DLP, the main class.",
+    "Anomalies and risk scoring are UEBA, as in UAM.",
+    "Control of USB drives and devices (allowing or blocking the devices themselves) is not named in the table; USB on the Insider Risk page is a leak channel within DLP, so no device control; In-app fraud detection, screen recording and Remote control are text only."
+  ]
+}

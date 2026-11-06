@@ -221,6 +221,14 @@
 | `splunk-es-essentials` | Splunk Enterprise Security Essentials | Enterprise Security · Essentials | siem, ti, caasm |
 | `splunk-es-premier` | Splunk Enterprise Security Premier | Enterprise Security · Premier | siem, ti, caasm, soar, ueba |
 
+## Teramind (3)
+
+| ID | Назва | Лінійка · редакція | Класи |
+|---|---|---|---|
+| `teramind-uam` | Teramind UAM | Teramind · UAM | ueba |
+| `teramind-dlp` | Teramind DLP | Teramind · DLP | dlp, ueba |
+| `teramind-enterprise` | Teramind Enterprise & Government | Teramind · Enterprise & Government | dlp, ueba |
+
 ## Trend Micro (21)
 
 | ID | Назва | Лінійка · редакція | Класи |
