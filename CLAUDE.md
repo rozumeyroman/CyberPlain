@@ -59,7 +59,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (описані всі 271)
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
   analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, body[], figures[], findings[{techniques[], solutions[]}], vulnerabilities[]
-  analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], remediation[], timeline[], solutions[{phase}]
+  analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], chain[] (кроки атаки + observed), remediation[], timeline[], solutions[{phase}]
                                                   #   illustration{file, alt, caption} → наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg
   analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, what, result, techniques[], solutions[]}], lessons[]
                                                   #   illustration{file, alt, caption} — схема після 2-го абзацу «Простими словами»
@@ -163,6 +163,9 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   зловмисник»; у старих статтях може бути відсутній). Деталізація — щоб читач розумів ризик кожного кроку й обґрунтовував захист, але без
   коду експлойтів, пейлоадів, команд і запитів із параметрами та IoC (межа й тест — `cowork/…/references/style.md` → «Деталізація атаки»).
   Рішення кроку впорядковані за ефективністю: першим — клас, що розриває ланцюг найраніше й найнадійніше; `why` = механізм + умова спрацювання.
+- **Ланцюжок атаки вразливості** (`chain[]`, ті самі поля, що крок атаки, + обов'язковий `observed`: `true` — бачили в реальних атаках,
+  `false` — ймовірний сценарій; на сторінці — після «Чим це загрожує», тим самим `AttackChain`). Від пошуку вразливих систем до мети нападника;
+  `solutions[]` за фазами лишаються планом дій, ланцюжок — обґрунтуванням. У старих вразливостях може бути порожній (секція не показується).
 - **Рішення**: `{ class, why, editorial }` — лише існуючі класи (`why` — до двох речень про конкретний висновок чи крок); `editorial: true`
   — клас додано нами, а не джерелом. Чого в портфелі немає (мікросегментація тощо) — у `gaps[]` текстом, нових класів не заводимо.
   У вразливості `solutions[].phase` = `find | protect | verify | detect`.

@@ -61,11 +61,14 @@ const lines = text.split('\n');
 const offset = fm[0].split('\n').length - 1;
 const headings = [];
 let h2 = '', h3 = '', table = null, tableLine = 0, rows = [];
+// Кроки атаки: «## Кроки» в атаці і «## Ланцюжок атаки» у вразливості.
+const stepSection = () => (type === 'attack' && h2 === 'Кроки') || (type === 'vulnerability' && h2 === 'Ланцюжок атаки');
+const phased = () => type === 'vulnerability' && h2 === 'Рішення'; // фази — лише в загальній таблиці рішень вразливості
 const flush = () => {
   if (!table) return;
   const where = h3 ? `${h2} → ${h3}` : h2;
   if (table === 'tech') {
-    if (type === 'attack' && h3 && rows.length === 0) err(tableLine, `${where}: у кроці немає жодної техніки`);
+    if (stepSection() && h3 && rows.length === 0) err(tableLine, `${where}: у кроці немає жодної техніки`);
     for (const r of rows) {
       const [tid, who, asIn] = r.cells;
       if (!/^T\d{4}(\.\d{3})?$/.test(tid)) { err(r.line, `${where}: «${tid}» — не ID техніки`); continue; }
@@ -82,9 +85,9 @@ const flush = () => {
     for (const r of rows) {
       const [cls, phase, who, why] = r.cells;
       if (!classes.has(cls)) err(r.line, `${where}: класу «${cls}» немає (дивись portfolio.md)`);
-      if (type === 'vulnerability' && !['find', 'protect', 'verify', 'detect'].includes(phase)) err(r.line, `${where}: фаза «${phase}» — find | protect | verify | detect`);
-      if (type !== 'vulnerability' && phase) warn(r.line, `${where}: фаза поза вразливістю ігнорується`);
-      const key = `${cls}/${type === 'vulnerability' ? phase : ''}`;
+      if (phased() && !['find', 'protect', 'verify', 'detect'].includes(phase)) err(r.line, `${where}: фаза «${phase}» — find | protect | verify | detect`);
+      if (!phased() && phase) warn(r.line, `${where}: фаза тут ігнорується (вона лише в загальній таблиці «Рішення» вразливості)`);
+      const key = `${cls}/${phased() ? phase : ''}`;
       if (seen.has(key)) err(r.line, `${where}: клас «${cls}» повторюється в одному списку`);
       seen.add(key);
       if (!['джерело', 'редакція'].includes(who)) err(r.line, `${where}: «Хто» = джерело | редакція, а не «${who}»`);
@@ -103,7 +106,7 @@ lines.slice(offset).forEach((raw, i) => {
   if (l.startsWith('## ')) { h2 = l.slice(3).trim(); h3 = ''; headings.push(h2); inClaims = /^(Заяви й цифри|Цифри зі звіту)$/.test(h2); return; }
   if (l.startsWith('### ')) {
     h3 = l.slice(4).trim();
-    if ((type === 'attack' && h2 === 'Кроки') || (type === 'report' && h2 === 'Висновки')) blocks.push({ line, name: h3, tech: false, sol: false, what: false, result: false });
+    if (stepSection() || (type === 'report' && h2 === 'Висновки')) blocks.push({ line, name: h3, step: stepSection(), tech: false, sol: false, what: false, result: false, status: false });
     return;
   }
   if (l.startsWith('|')) {
@@ -118,9 +121,14 @@ lines.slice(offset).forEach((raw, i) => {
   }
   if (table && l) flush();
   if (inClaims && /^Примітка:\s*\S/.test(l)) claimsNote = true;
-  if (h3 && blocks.length && type === 'attack') {
+  if (h3 && blocks.length && stepSection()) {
     if (/^Що відбувається:\s*\S/.test(l)) blocks.at(-1).what = true;
     if (/^Що отримує зловмисник:\s*\S/.test(l)) blocks.at(-1).result = true;
+    const st = l.match(/^- Статус:\s*([^#\s]+)/);
+    if (st) {
+      blocks.at(-1).status = true;
+      if (!['підтверджено', 'ймовірно'].includes(st[1])) err(line, `${h3}: «Статус» = підтверджено | ймовірно, а не «${st[1]}»`);
+    }
   }
   const step = l.match(/^- Етап:\s*(\S+)/);
   if (step && !tactics.has(step[1])) err(line, `${h3}: етапу «${step[1]}» немає (TA… з attack-v20.md)`);
@@ -130,18 +138,22 @@ lines.slice(offset).forEach((raw, i) => {
 flush();
 
 for (const b of blocks) {
-  if (type === 'attack' && !b.tech) err(b.line, `${b.name}: немає таблиці технік`);
-  if (type === 'attack' && !b.what) err(b.line, `${b.name}: немає «Що відбувається: …»`);
-  if (type === 'attack' && !b.result) err(b.line, `${b.name}: немає «Що отримує зловмисник: …» (проміжний результат кроку)`);
+  if (b.step && !b.tech) err(b.line, `${b.name}: немає таблиці технік`);
+  if (b.step && !b.what) err(b.line, `${b.name}: немає «Що відбувається: …»`);
+  if (b.step && !b.result) err(b.line, `${b.name}: немає «Що отримує зловмисник: …» (проміжний результат кроку)`);
+  if (b.step && type === 'vulnerability' && !b.status) err(b.line, `${b.name}: немає «- Статус: підтверджено | ймовірно»`);
   if (!b.sol) err(b.line, `${b.name}: немає таблиці рішень`);
 }
 if (type === 'attack' && headings.includes('Кроки') && !blocks.length) err(0, 'Кроки: немає жодного «### Крок N. …»');
+const chainSteps = blocks.filter((b) => b.step).length;
+if (type === 'vulnerability' && headings.includes('Ланцюжок атаки') && !chainSteps) err(0, 'Ланцюжок атаки: немає жодного «### Крок N. …»');
+if (type === 'vulnerability' && chainSteps > 0 && chainSteps < 3) warn(0, `Ланцюжок атаки: лише ${chainSteps} крок(и) — зазвичай 4–7 (від пошуку вразливих систем до мети)`);
 if (type === 'report' && headings.includes('Висновки') && !blocks.length) err(0, 'Висновки: немає жодного «### …»');
 
 // ── Обов'язкові розділи ──
 const need = {
   common: ['Коротко', 'Джерела', 'Питання до автора', 'Перевірка фактів'],
-  vulnerability: ['Простими словами', 'Уражені версії', 'Наслідки', 'Що робити', 'Бюлетені', 'Хронологія', 'Рішення', 'Техніки ATT&CK', 'Прогалини', 'Застереження', 'Ілюстрація'],
+  vulnerability: ['Простими словами', 'Уражені версії', 'Наслідки', 'Ланцюжок атаки', 'Що робити', 'Бюлетені', 'Хронологія', 'Рішення', 'Техніки ATT&CK', 'Прогалини', 'Застереження', 'Ілюстрація'],
   attack: ['Простими словами', 'Заяви й цифри', 'Хто атакував', 'Кроки', 'Висновки', 'Застереження', 'Ілюстрація'],
   report: ['Про що звіт', 'Цифри зі звіту', 'Висновки', 'Прогалини', 'Застереження'],
 };

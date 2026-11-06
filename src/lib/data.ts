@@ -92,6 +92,7 @@ export interface AFinding { title: string; text: string; techniques: ATech[]; so
 export interface AStep {
   n: number; title: string; tactic: Tactic; what: string; result?: string; tools: string[];
   techniques: ATech[]; solutions: ASolution[]; gaps: string[];
+  observed?: boolean; // лише в ланцюжку вразливості: true — бачили в реальних атаках, false — ймовірний сценарій
 }
 type Src = { label: string; url?: string };
 type Fig = { value: string; label: string };
@@ -106,7 +107,7 @@ export interface AVuln {
   summary: string; description: string[];
   illustration?: { file: string; alt: string; caption: string };
   affected: { product: string; versions: string; fixed?: string; note?: string }[];
-  impact: string[]; remediation: string[]; advisories: { issuer: string; label: string; url?: string }[];
+  impact: string[]; chain: AStep[]; remediation: string[]; advisories: { issuer: string; label: string; url?: string }[];
   timeline: { date: string; text: string }[]; caveats: string[]; techniques: ATech[]; solutions: ASolution[];
   gaps: string[]; sources: Src[];
 }
@@ -401,8 +402,19 @@ async function build(lang: Lang) {
     if (e.claims.length > 0 && !e.claimsNote) throw new Error(`${file}: є claims, але немає claimsNote`);
   };
 
+  const resolveSteps = (file: string, where: string, list: any[]): AStep[] =>
+    list.map((st: any, i: number): AStep => {
+      const tactic = tacticById.get(st.tactic.id);
+      if (!tactic) throw new Error(`${file} → ${where}[${i}].tactic: етапу «${st.tactic.id}» немає`);
+      return {
+        ...st, n: i + 1, tactic,
+        techniques: resolveTechs(file, `${where}[${i}].techniques`, st.techniques),
+        solutions: resolveSolutions(file, `${where}[${i}].solutions`, st.solutions),
+      };
+    });
   const vulnerabilitiesAll: AVuln[] = sortNew(vSrc.map(({ id, file, data: v }) => ({
     ...v, id,
+    chain: resolveSteps(file, 'chain', v.chain),
     techniques: resolveTechs(file, 'techniques', v.techniques),
     solutions: resolveSolutions(file, 'solutions', v.solutions),
   })));
@@ -426,15 +438,7 @@ async function build(lang: Lang) {
     needNotes(file, a);
     return {
       ...a, id,
-      steps: a.steps.map((st: any, i: number): AStep => {
-        const tactic = tacticById.get(st.tactic.id);
-        if (!tactic) throw new Error(`${file} → steps[${i}].tactic: етапу «${st.tactic.id}» немає`);
-        return {
-          ...st, n: i + 1, tactic,
-          techniques: resolveTechs(file, `steps[${i}].techniques`, st.techniques),
-          solutions: resolveSolutions(file, `steps[${i}].solutions`, st.solutions),
-        };
-      }),
+      steps: resolveSteps(file, 'steps', a.steps),
       vulnerabilities: resolveVulns(file, a.vulnerabilities),
     };
   }));

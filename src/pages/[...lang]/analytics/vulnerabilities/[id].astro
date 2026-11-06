@@ -2,6 +2,7 @@
 // /analytics/vulnerabilities/<id>/ — розбір вразливості: кого стосується, офіційне виправлення, чим прикрити ризик.
 import Base from '../../../../layouts/Base.astro';
 import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
+import AttackChain from '../../../../components/AttackChain.astro';
 import AnalyticsSolutions from '../../../../components/AnalyticsSolutions.astro';
 import Illustration from '../../../../components/Illustration.astro';
 import ShareLinks from '../../../../components/ShareLinks.astro';
@@ -25,7 +26,8 @@ const { lang, t, url, d } = await pageCtx(Astro.url);
 const x = t.analytics;
 const phases: Phase[] = ['find', 'protect', 'verify', 'detect'];
 const groups = phases.map((p) => ({ phase: p, items: v.solutions.filter((s) => s.phase === p) })).filter((g) => g.items.length > 0);
-const editorial = v.techniques.some((y) => y.editorial) || v.solutions.some((s) => s.editorial);
+const editorial = v.techniques.some((y) => y.editorial) || v.solutions.some((s) => s.editorial)
+  || v.chain.some((st) => st.techniques.some((y) => y.editorial) || st.solutions.some((s) => s.editorial));
 const reports = d.reportsAbout(v.id);
 const attacks = d.attacksUsing(v.id);
 ---
@@ -77,6 +79,17 @@ const attacks = d.attacksUsing(v.id);
       <section class="sec" aria-labelledby="imp">
         <h2 class="sec-title" id="imp">{x.vuln.impact}</h2>
         <ul class="plain">{v.impact.map((i) => <li>{i}</li>)}</ul>
+      </section>
+    )}
+
+    {v.chain.length > 0 && (
+      <section class="sec" aria-labelledby="chain">
+        <h2 class="sec-title" id="chain">{x.vuln.chain}</h2>
+        <p class="note">{x.vuln.chainNote}</p>
+        <nav aria-label={x.attack.stepsNav} class="chips jump" id="chain-nav">
+          {v.chain.map((s) => <a href={`#step-${s.n}`} class="chip">{s.n}. {s.title}</a>)}
+        </nav>
+        <AttackChain steps={v.chain} nav="chain-nav" />
       </section>
     )}
 
@@ -193,4 +206,7 @@ const attacks = d.attacksUsing(v.id);
   .note { margin: 0 0 12px; max-width: 760px; font-size: 14px; color: var(--muted); }
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
   .aff { table-layout: fixed; }
+  .jump { margin-bottom: 20px; }
+  .jump .chip { min-height: 44px; }
+  #chain-nav { scroll-margin-top: 130px; }
 </style>

@@ -123,6 +123,18 @@ const reports = defineCollection({
 // Ілюстрація: наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg (інлайниться під час збирання, 0 KB JS).
 const illustration = z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional();
 
+// Крок атаки (атака — steps[], вразливість — chain[]): що робить зловмисник, що отримує, які техніки, що зупиняє крок.
+const stepShape = {
+  title: z.string(),
+  tactic: reference('tactics'),
+  what: z.string(),
+  result: z.string().optional(), // що отримав зловмисник після кроку і чим це загрожує (проміжний результат)
+  tools: z.array(z.string()).default([]),
+  techniques: z.array(techRef).min(1),
+  solutions: z.array(solution).min(1), // why = як саме клас зупиняє або компенсує ЦЕЙ крок; порядок — за ефективністю
+  gaps: z.array(z.string()).default([]),
+};
+
 const vulnerabilities = defineCollection({
   loader: fromDir('./content/analytics/vulnerabilities'),
   schema: z.object({
@@ -136,6 +148,9 @@ const vulnerabilities = defineCollection({
     description: z.array(z.string()),
     affected: z.array(z.object({ product: z.string(), versions: z.string(), fixed: z.string().optional(), note: z.string().optional() }).strict()).min(1),
     impact: z.array(z.string()),
+    // Ланцюжок атаки через ваду: від пошуку вразливих систем до мети. observed — крок бачили в реальних атаках (true)
+    // чи це ймовірний сценарій (false); обов'язкове, щоб на сторінці чесно розрізняти факт і припущення.
+    chain: z.array(z.object({ ...stepShape, observed: z.boolean() }).strict()).default([]),
     remediation: z.array(z.string()),
     advisories: z.array(z.object({ issuer: z.string(), label: z.string(), url: z.string().url().optional() }).strict()).default([]),
     timeline: z.array(z.object({ date: isoDate, text: z.string() }).strict()).default([]),
@@ -161,16 +176,7 @@ const attacks = defineCollection({
     body: z.array(z.string()),
     claims: z.array(figure).default([]),
     claimsNote: z.string().optional(),
-    steps: z.array(z.object({
-      title: z.string(),
-      tactic: reference('tactics'),
-      what: z.string(),
-      result: z.string().optional(), // що отримав зловмисник після кроку і чим це загрожує (проміжний результат)
-      tools: z.array(z.string()).default([]),
-      techniques: z.array(techRef).min(1),
-      solutions: z.array(solution).min(1), // why = як саме клас зупиняє або компенсує ЦЕЙ крок
-      gaps: z.array(z.string()).default([]),
-    }).strict()).min(1),
+    steps: z.array(z.object(stepShape).strict()).min(1),
     lessons: z.array(z.string()).default([]),
     caveats: z.array(z.string()).default([]),
     vulnerabilities: z.array(reference('vulnerabilities')).default([]),
@@ -202,7 +208,8 @@ const enReports = overlay('analytics/reports', {
 });
 const enVulnerabilities = overlay('analytics/vulnerabilities', {
   title: str, summary: str, illustration: part({ alt: str, caption: str }), description: strs, affected: arr({ product: str, versions: str, fixed: str, note: str }),
-  impact: strs, remediation: strs, timeline: arr({ text: str }), caveats: strs, solutions: arr({ why: str }), gaps: strs,
+  impact: strs, chain: arr({ title: str, what: str, result: str, tools: strs, solutions: arr({ why: str }), gaps: strs }),
+  remediation: strs, timeline: arr({ text: str }), caveats: strs, solutions: arr({ why: str }), gaps: strs,
 });
 const enAttacks = overlay('analytics/attacks', {
   title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: strs, claims: arr({ value: str, label: str }), claimsNote: str,
