@@ -95,7 +95,8 @@ src/
 design/                   # референсні макети (не код сайту, див. нижче)
 cowork/                   # аналітика через Claude Cowork: скіл cyberplain-analytics-brief (дослідження → MD-бриф),
                           #   references/{portfolio,attack-v20,existing}.md генерує npm run cowork:skill (+ zip у cowork/dist/)
-.claude/skills/publish-analytics/  # скіл Claude Code: MD-бриф → JSON + EN-оверлей + SVG, збірка, перевірка, коміт
+.claude/skills/publish-analytics/  # скіл Claude Code: MD-бриф → JSON + EN-оверлей + SVG, збірка, перевірка, коміт;
+                          #   review.md — рецензія брифу 4 субагентами з дебатами; формат брифу — npm run brief:check
 LICENSE  LICENSE-CONTENT  NOTICE.md
 ```
 
@@ -174,7 +175,8 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   на сторінки поширення мереж з канонічною адресою (0 KB JS, без віджетів і cookies, нова вкладка). Іконки — власні монохромні гліфи,
   кольори сайту, а не фірмові. Прев'ю бере `og:*` сторінки; боти прев'ю мають бути у винятках WAF (див. «Захист від ботів»).
 - **Бриф з Cowork**: нові статті зазвичай приходять MD-брифом (формат — `cowork/cyberplain-analytics-brief/references/brief-format.md`);
-  публікуємо скілом `publish-analytics`, фактів понад бриф не додаємо. Змінилась схема аналітики, класи чи продукти — онови формат брифу
+  публікуємо скілом `publish-analytics`: формат — `npm run brief:check`, зміст — рецензенти-субагенти з дебатами; фактів понад бриф
+  не додаємо, зміну змісту вирішує автор. Змінилась схема аналітики, класи чи продукти — онови формат брифу
   й шаблони, запусти `npm run cowork:skill` і нагадай автору перезавантажити zip у Cowork.
 - Тон — як на решті сайту; звіти вендорів переказуємо своїми словами з посиланням на видавця, цифри — короткі й зі словами, що це
   дані вендора, а не незалежні вимірювання.
