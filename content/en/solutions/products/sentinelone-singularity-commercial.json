@@ -1,3 +1,16 @@
 {
-  "simple": "Protects computers, servers, cloud workloads and accounts in one platform with one agent. AI right on the device blocks malware and ransomware and stops the attack on its own: ends the process, cuts the computer off from the network, restores encrypted files with one click (rollback). Protects servers, virtual machines, containers and Kubernetes (CWPP); controls the connection of USB drives and other devices and the host firewall; has a remote console (Remote Shell). Detects attacks on accounts in Active Directory and cloud directories (ITDR) — credential theft, privilege escalation, lateral movement — and can disable a compromised account or require a password change. SentinelOne experts continuously hunt for threats in your environment (Managed Threat Hunting). The Purple AI assistant answers questions in plain language. Event history is kept for 90 days. The agentic AI SOC analyst and 24/7 MDR cost extra."
+  "summary": "SentinelOne Singularity Commercial: everything in Complete plus identity protection (ITDR), detecting and responding to attacks on Active Directory and cloud directories.",
+  "value": [
+    "Computers, servers and cloud workloads are protected by one agent.",
+    "Password theft and Active Directory attacks are visible and can be stopped.",
+    "Anything that gets through can be rolled back, investigated and removed."
+  ],
+  "simple": "Protects computers, servers, cloud workloads and accounts in one platform with one agent. AI right on the device blocks malware and ransomware and stops the attack on its own: ends the process, cuts the computer off from the network, restores encrypted files with one click (rollback). Protects servers, virtual machines, containers and Kubernetes (CWPP); controls the connection of USB drives and other devices and the host firewall; has a remote console (Remote Shell). Detects attacks on accounts in Active Directory and cloud directories (ITDR) — credential theft, privilege escalation, lateral movement — and can disable a compromised account or require a password change. SentinelOne experts continuously hunt for threats in your environment (Managed Threat Hunting). The Purple AI assistant answers questions in plain language. Event history is kept for 90 days. The agentic AI SOC analyst and 24/7 MDR cost extra.",
+  "notIncluded": [
+    "Forensic data collection is in Enterprise.",
+    "The AI SOC analyst and 24/7 MDR cost extra."
+  ],
+  "classification": [
+    "ITDR in the package is detection and response; Identity Deception and ISPM are not named in the package table, so deception and ISPM are not set."
+  ]
 }

@@ -1,3 +1,15 @@
 {
-  "simple": "Account protection built right into the sign-in process (Active Directory, cloud directories, other authentication systems) — without agents or changes to applications, in on-premises, cloud and hybrid environments. Builds a single inventory and graph of all accounts — human and machine — and their permissions. Finds weak spots: hidden administrators, outdated and abandoned accounts, insecure settings, outdated protocols (ISPM). Extends multi-factor authentication (MFA) to things that usually don’t support it: legacy and custom applications, the command line, OT equipment, local Windows sign-ins. The set of modules may differ for on-premises, cloud or hybrid environments."
+  "summary": "Silverfort Core: identity protection built into the sign-in process without agents, with MFA for any system and discovery of weak spots in Active Directory.",
+  "value": [
+    "MFA appears even where it could not be enabled before: legacy systems, command line, RDP.",
+    "Hidden administrators, abandoned accounts and weak AD settings are found.",
+    "No agents and no changes to applications."
+  ],
+  "simple": "Account protection built right into the sign-in process (Active Directory, cloud directories, other authentication systems) — without agents or changes to applications, in on-premises, cloud and hybrid environments. Builds a single inventory and graph of all accounts — human and machine — and their permissions. Finds weak spots: hidden administrators, outdated and abandoned accounts, insecure settings, outdated protocols (ISPM). Extends multi-factor authentication (MFA) to things that usually don’t support it: legacy and custom applications, the command line, OT equipment, local Windows sign-ins. The set of modules may differ for on-premises, cloud or hybrid environments.",
+  "notIncluded": [
+    "Service account protection (NHI) starts with Plus; ITDR with Advanced; just-in-time access in Enterprise."
+  ],
+  "classification": [
+    "The ISPM and NHI classes were created for Silverfort; Identity Graph & Inventory is not CAASM and stays in the text."
+  ]
 }

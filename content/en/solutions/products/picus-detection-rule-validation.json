@@ -1,3 +1,12 @@
 {
-  "simple": "Checks whether the detection rules in your SIEM will actually fire (DRV, powered by Picus Breach and Attack Simulation). Connects to Splunk, IBM QRadar and Microsoft Sentinel and continuously assesses every rule from three angles: whether the required logs are arriving, whether the rule runs without failures or skipped jobs, and whether it is too “heavy” (response time, broad queries). A rule-hygiene dashboard with an overall score sorts issues into critical (the rule doesn’t work), optimization recommendations and healthy rules. Shows the real MITRE ATT&CK coverage — where rules exist and work, where they are broken and where there are none at all — and AI suggests which ATT&CK techniques unmapped rules belong to. For every rule: a plain-language explanation and specific advice on how to fix it."
+  "summary": "Picus Detection Rule Validation: it checks whether the detection rules in your SIEM (Splunk, QRadar, Sentinel) will really fire on an attack.",
+  "value": [
+    "It shows broken or silent rules before a real attack.",
+    "Real MITRE ATT&CK coverage: where rules exist and work, and where there are none.",
+    "Less noise from rules that do not work and more trust in those that do."
+  ],
+  "simple": "Checks whether the detection rules in your SIEM will actually fire (DRV, powered by Picus Breach and Attack Simulation). Connects to Splunk, IBM QRadar and Microsoft Sentinel and continuously assesses every rule from three angles: whether the required logs are arriving, whether the rule runs without failures or skipped jobs, and whether it is too “heavy” (response time, broad queries). A rule-hygiene dashboard with an overall score sorts issues into critical (the rule doesn’t work), optimization recommendations and healthy rules. Shows the real MITRE ATT&CK coverage — where rules exist and work, where they are broken and where there are none at all — and AI suggests which ATT&CK techniques unmapped rules belong to. For every rule: a plain-language explanation and specific advice on how to fix it.",
+  "classification": [
+    "DRV is powered by BAS, the BAS class."
+  ]
 }

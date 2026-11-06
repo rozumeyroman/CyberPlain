@@ -1,3 +1,17 @@
 {
-  "simple": "Protects computers, servers and cloud workloads with one agent. AI right on the device blocks malware and ransomware, spots suspicious behavior and stops the attack on its own: ends the process, cuts the computer off from the network, restores encrypted files with one click (rollback). Protects servers, virtual machines, containers and Kubernetes (CWPP); controls the connection of USB drives and other devices and the host firewall; has a remote console (Remote Shell) for investigation and shows devices on the network that don’t have an agent yet. The Purple AI assistant answers questions in plain language and builds an attack timeline. Event history is kept for 14 days. Threat hunting by SentinelOne experts and the agentic AI SOC analyst cost extra."
+  "summary": "SentinelOne Singularity Complete: one agent for computers, servers and cloud workloads, with AI antivirus, EDR, server and container protection, and device control.",
+  "value": [
+    "Malware and ransomware are stopped right on the device, even without a cloud connection.",
+    "Anything that gets through is visible and can be rolled back, investigated and removed.",
+    "Servers, containers and Kubernetes are protected by the same agent."
+  ],
+  "simple": "Protects computers, servers and cloud workloads with one agent. AI right on the device blocks malware and ransomware, spots suspicious behavior and stops the attack on its own: ends the process, cuts the computer off from the network, restores encrypted files with one click (rollback). Protects servers, virtual machines, containers and Kubernetes (CWPP); controls the connection of USB drives and other devices and the host firewall; has a remote console (Remote Shell) for investigation and shows devices on the network that don’t have an agent yet. The Purple AI assistant answers questions in plain language and builds an attack timeline. Event history is kept for 14 days. Threat hunting by SentinelOne experts and the agentic AI SOC analyst cost extra.",
+  "notIncluded": [
+    "Identity protection (ITDR) starts with Commercial; forensic data collection is in Enterprise.",
+    "Expert threat hunting by SentinelOne and the AI SOC analyst cost extra."
+  ],
+  "classification": [
+    "The CWPP, device control and ITDR classes were created for the SentinelOne packages; CWPP is not CNAPP (no CSPM/IaC).",
+    "Purple AI, Managed Threat Hunting and MDR are services/AI, not classes."
+  ]
 }

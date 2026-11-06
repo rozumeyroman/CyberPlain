@@ -1,3 +1,15 @@
 {
-  "simple": "Shows the company’s whole attack surface — both from the inside and from the internet. Pulls data from various systems into a single list of devices, applications, accounts and security tools, finds resources visible from the outside, and maps the connections between assets and the “blast radius” if one of them is breached. Includes risk scoring based on real-world threats, a remediation center and automation (SOAR)."
+  "summary": "Rapid7 Surface Command: the company’s whole attack surface, inside and from the internet, in one list of devices, software, accounts and controls.",
+  "value": [
+    "It shows every company asset, including ones nobody tracks.",
+    "It shows which of them are exposed to the internet and unprotected.",
+    "Routine remediation actions run automatically."
+  ],
+  "simple": "Shows the company’s whole attack surface — both from the inside and from the internet. Pulls data from various systems into a single list of devices, applications, accounts and security tools, finds resources visible from the outside, and maps the connections between assets and the “blast radius” if one of them is breached. Includes risk scoring based on real-world threats, a remediation center and automation (SOAR).",
+  "notIncluded": [
+    "Vulnerability management is in Exposure Command."
+  ],
+  "classification": [
+    "The classes are CAASM, EASM and SOAR (from the Command Platform package table)."
+  ]
 }

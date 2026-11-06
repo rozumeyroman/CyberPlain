@@ -1,3 +1,12 @@
 {
-  "simple": "Brings cloud, application and infrastructure risks together in one place. Finds vulnerabilities in the network, on computers, in cloud resources and in containers; checks AWS, Azure, GCP and Kubernetes configurations against CIS and compliance standards; analyzes access permissions and attack paths; scans infrastructure as code; spots threats in the cloud and automatically fixes violations; tests web applications, APIs and AI applications (DAST). Also shows the whole attack surface, has a risk dashboard for executives and includes automation (SOAR)."
+  "summary": "Rapid7 Exposure Command Ultimate: cloud, application and infrastructure risk in one place, covering vulnerabilities, cloud settings, containers, IaC and application testing.",
+  "value": [
+    "One risk queue for network, cloud and applications.",
+    "Cloud misconfigurations and vulnerable containers are found before an attack.",
+    "Web applications are tested for vulnerabilities before an attacker does it."
+  ],
+  "simple": "Brings cloud, application and infrastructure risks together in one place. Finds vulnerabilities in the network, on computers, in cloud resources and in containers; checks AWS, Azure, GCP and Kubernetes configurations against CIS and compliance standards; analyzes access permissions and attack paths; scans infrastructure as code; spots threats in the cloud and automatically fixes violations; tests web applications, APIs and AI applications (DAST). Also shows the whole attack surface, has a risk dashboard for executives and includes automation (SOAR).",
+  "classification": [
+    "CNAPP (cloud, containers, IaC, access rights) and DAST are added on top of Essentials."
+  ]
 }

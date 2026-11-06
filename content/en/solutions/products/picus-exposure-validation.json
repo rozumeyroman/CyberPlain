@@ -1,3 +1,12 @@
 {
-  "simple": "Shows which of the thousands of vulnerabilities found can really be exploited in your network and which your existing protection already stops (EXV). Takes CVEs, EPSS and asset data from your scanners and inventory systems (VM, RBVM, CAASM), matches each CVE to MITRE ATT&CK attack techniques from the Picus library, and runs the full attack chain against the firewall, IPS, EDR, SIEM and more — even for systems that can’t be attacked live and for CVEs with no public or safe exploit, from day one of disclosure. Calculates its own Picus Exposure Score (CVSS, EPSS, control effectiveness, asset value; the weights are adjustable) — for example, CVSS 10.0 can become 5.2 if your defenses block the attack. For each vulnerability it gives a decision: patch, mitigate, monitor or accept the risk; it provides ready-made protection rules when a patch can’t be applied, opens tickets and verifies that the gap is closed."
+  "summary": "Picus Exposure Validation: it shows which of thousands of found vulnerabilities can really be exploited in your network and which existing defences already stop.",
+  "value": [
+    "The team patches what is really dangerous, not everything by CVSS.",
+    "It shows which vulnerabilities existing defences already cover, proven by testing rather than assumed.",
+    "A shorter remediation queue and justified priorities for management."
+  ],
+  "simple": "Shows which of the thousands of vulnerabilities found can really be exploited in your network and which your existing protection already stops (EXV). Takes CVEs, EPSS and asset data from your scanners and inventory systems (VM, RBVM, CAASM), matches each CVE to MITRE ATT&CK attack techniques from the Picus library, and runs the full attack chain against the firewall, IPS, EDR, SIEM and more — even for systems that can’t be attacked live and for CVEs with no public or safe exploit, from day one of disclosure. Calculates its own Picus Exposure Score (CVSS, EPSS, control effectiveness, asset value; the weights are adjustable) — for example, CVSS 10.0 can become 5.2 if your defenses block the attack. For each vulnerability it gives a decision: patch, mitigate, monitor or accept the risk; it provides ready-made protection rules when a patch can’t be applied, opens tickets and verifies that the gap is closed.",
+  "classification": [
+    "EXV runs CVE TTP chains against defences, so BAS; not vulnerability management because it does not scan by itself."
+  ]
 }

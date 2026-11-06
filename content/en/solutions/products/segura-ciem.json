@@ -1,3 +1,12 @@
 {
-  "simple": "Discovers and keeps an inventory of all accounts, resources, policies and permission changes in AWS, Azure, GCP and Oracle Cloud; analyzes permissions and trims them to match actual usage; shows access paths on a three-dimensional diagram; has reports, alerts and severity settings tailored to company policy. Integrated with Segura PAM. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+  "summary": "Segura Cloud Entitlements (CIEM): an inventory of accounts, resources and permissions in AWS, Azure, GCP and Oracle Cloud, cutting rights back to actual use.",
+  "value": [
+    "Excessive and unused cloud permissions are found and cut back.",
+    "It shows privilege escalation paths in the cloud.",
+    "A stolen cloud account gives an attacker fewer options."
+  ],
+  "simple": "Discovers and keeps an inventory of all accounts, resources, policies and permission changes in AWS, Azure, GCP and Oracle Cloud; analyzes permissions and trims them to match actual usage; shows access paths on a three-dimensional diagram; has reports, alerts and severity settings tailored to company policy. Integrated with Segura PAM. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid.",
+  "classification": [
+    "The class is CIEM; a separate product bought on top of PAM Core."
+  ]
 }

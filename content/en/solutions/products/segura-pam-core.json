@@ -1,3 +1,16 @@
 {
-  "simple": "Agentless privileged access management: discovers all privileged accounts — of people, machines and applications, including forgotten and shadow ones — and stores their passwords in an encrypted vault with automatic rotation. Grants access only for the duration of a task (Just-In-Time) with approval by role and time, records administrator sessions on video and shows them live so abuse can be spotted. Works with servers, cloud, DevOps and OT/SCADA; prepares reports for audits. Includes MySafe — an enterprise password manager for employees: encrypted vault, strong password generation, safe sharing of access without revealing the password, one-time codes (TOTP) and a warning if a password has shown up in leaks. Segura’s main product: one all-inclusive license, with no separate editions; cloud, on premises or hybrid."
+  "summary": "Segura PAM Core: agentless privileged access management with just-in-time access and the built-in MySafe password manager, in one all-inclusive licence.",
+  "value": [
+    "Privileged accounts of people, machines and applications are found, and their passwords are vaulted and rotated.",
+    "Administrator rights are granted only for the task, and sessions are recorded.",
+    "Employees get a corporate password manager without a separate purchase."
+  ],
+  "simple": "Agentless privileged access management: discovers all privileged accounts — of people, machines and applications, including forgotten and shadow ones — and stores their passwords in an encrypted vault with automatic rotation. Grants access only for the duration of a task (Just-In-Time) with approval by role and time, records administrator sessions on video and shows them live so abuse can be spotted. Works with servers, cloud, DevOps and OT/SCADA; prepares reports for audits. Includes MySafe — an enterprise password manager for employees: encrypted vault, strong password generation, safe sharing of access without revealing the password, one-time codes (TOTP) and a warning if a password has shown up in leaks. Segura’s main product: one all-inclusive license, with no separate editions; cloud, on premises or hybrid.",
+  "notIncluded": [
+    "Access without VPN, DevOps secrets, certificates, EPM and cloud entitlements are separate Segura products bought on top of PAM Core."
+  ],
+  "classification": [
+    "One licence with no editions: PAM + JIT + password manager (MySafe).",
+    "Segura Appliance is a hardware platform and is not added; Segura’s “ITDR” is a combination of modules and is not set as a class."
+  ]
 }

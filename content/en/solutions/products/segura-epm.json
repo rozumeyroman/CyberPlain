@@ -1,3 +1,12 @@
 {
-  "simple": "Removes standing local administrator rights on Windows and Linux computers: allowed programs and administrative actions receive elevated rights by rule and temporarily, and sudo commands on Linux are controlled by detailed policies. Records Windows sessions and sudo actions for audit; integrates with Active Directory and SIEM. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+  "summary": "Segura Endpoint Privilege Manager: it removes standing local administrator rights on Windows and Linux and grants elevated rights by rule and temporarily.",
+  "value": [
+    "Malware launched by a user does not get full control of the computer.",
+    "Needed programs and actions work by rule, without help-desk tickets.",
+    "Commands run with administrator rights are recorded."
+  ],
+  "simple": "Removes standing local administrator rights on Windows and Linux computers: allowed programs and administrative actions receive elevated rights by rule and temporarily, and sudo commands on Linux are controlled by detailed policies. Records Windows sessions and sudo actions for audit; integrates with Active Directory and SIEM. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid.",
+  "classification": [
+    "The class is EPM; a separate product bought on top of PAM Core."
+  ]
 }

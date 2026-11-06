@@ -1,3 +1,17 @@
 {
-  "simple": "A cloud SIEM for detecting and investigating attacks. Collects logs from computers, sign-in systems, the cloud and SaaS services; detects threats using a rule library (formerly Attacker Behavior Analytics) and unusual user behavior (UEBA); has plain-language search for threat hunting, investigation and automated-response playbooks (SOAR), built-in threat intelligence, asset inventory and monitoring of resources visible from the internet. The Rapid7 agent on computers provides ready-made detections of suspicious processes and PowerShell commands, Office macros, password theft from memory (Mimikatz, LSASS dump) and persistence in the system; it also alerts if user credentials show up in public leaks. Logs are retained for 90 days. Ransomware protection is available for an extra fee."
+  "summary": "Rapid7 Incident Command Essential: a cloud SIEM for detecting and investigating attacks, with logs, rules, behavioural analytics, automation and threat intelligence.",
+  "value": [
+    "Attack traces from computers, sign-in systems, cloud and SaaS come together into one picture.",
+    "Anomalous account behaviour is spotted, and routine actions run automatically.",
+    "Ready-made Rapid7 detections, without months of rule tuning."
+  ],
+  "simple": "A cloud SIEM for detecting and investigating attacks. Collects logs from computers, sign-in systems, the cloud and SaaS services; detects threats using a rule library (formerly Attacker Behavior Analytics) and unusual user behavior (UEBA); has plain-language search for threat hunting, investigation and automated-response playbooks (SOAR), built-in threat intelligence, asset inventory and monitoring of resources visible from the internet. The Rapid7 agent on computers provides ready-made detections of suspicious processes and PowerShell commands, Office macros, password theft from memory (Mimikatz, LSASS dump) and persistence in the system; it also alerts if user credentials show up in public leaks. Logs are retained for 90 days. Ransomware protection is available for an extra fee.",
+  "notIncluded": [
+    "Deception starts with Advanced; EDR, NDR, IDS and DFIR are in Ultimate.",
+    "Ransomware prevention costs extra."
+  ],
+  "classification": [
+    "InsightIDR: ABA/UBA rules and Rapid7 agent telemetry are SIEM/UEBA, not EDR (no host response).",
+    "“Account Leak” is not dark web monitoring and stays in the text."
+  ]
 }

@@ -1,3 +1,12 @@
 {
-  "simple": "Picus asset inventory (CAASM) (ASV): without a new scanner, it collects data from the tools you already have — Active Directory, EDR/EPP, configuration management systems, vulnerability scanners and external attack surface tools — into one list of devices, users, software, policies and vulnerabilities; you choose which source to trust first. Deploys in 2–3 hours. For every asset: network, CVEs, software, processes, services, patches and security tools; it shows computers with no security agent or with an agent that is disabled, outdated or misconfigured. Vulnerabilities from all sources are brought together and ranked by the Picus Asset Score, taking into account the results of Picus platform tests."
+  "summary": "Picus Attack Surface Validation: asset inventory (CAASM) that combines data from existing tools into one list of devices, users, software and vulnerabilities.",
+  "value": [
+    "It shows computers without a security agent, or with one that is disabled, outdated or misconfigured.",
+    "No new scanner is needed: data comes from what is already in place.",
+    "Vulnerabilities from every source are combined and ranked with Picus validation results."
+  ],
+  "simple": "Picus asset inventory (CAASM) (ASV): without a new scanner, it collects data from the tools you already have — Active Directory, EDR/EPP, configuration management systems, vulnerability scanners and external attack surface tools — into one list of devices, users, software, policies and vulnerabilities; you choose which source to trust first. Deploys in 2–3 hours. For every asset: network, CVEs, software, processes, services, patches and security tools; it shows computers with no security agent or with an agent that is disabled, outdated or misconfigured. Vulnerabilities from all sources are brought together and ranked by the Picus Asset Score, taking into account the results of Picus platform tests.",
+  "classification": [
+    "“Easy-to-deploy CAASM” on the vendor’s page maps to the CAASM class."
+  ]
 }

@@ -1,3 +1,12 @@
 {
-  "simple": "Tests the cloud (CSV): agentless and with read-only permissions, it checks the configuration of core AWS services (14 services, 75+ rules), Azure (16, 100+) and Google Cloud (15, 100+), as well as Kubernetes — public access, unencrypted storage, forgotten keys, cross-account access, unused resources. Collects cloud accounts and roles and, in a local policy simulator, shows who can escalate their privileges and what they can reach — so you trim excess permissions exactly where it matters. Safely, without affecting production, it simulates IAM privilege-escalation attacks in AWS: how a single foothold turns into access to critical systems. Findings are ranked by criticality, with policy-level advice; includes cloud posture dashboards and scheduled checks."
+  "summary": "Picus Cloud Security Validation: it checks AWS, Azure, Google Cloud and Kubernetes settings and safely simulates IAM privilege escalation attacks in AWS.",
+  "value": [
+    "It shows risky cloud settings without agents, with read-only permissions.",
+    "It shows how one entry point in the cloud turns into access to critical systems.",
+    "Excessive IAM rights are found before they are abused."
+  ],
+  "simple": "Tests the cloud (CSV): agentless and with read-only permissions, it checks the configuration of core AWS services (14 services, 75+ rules), Azure (16, 100+) and Google Cloud (15, 100+), as well as Kubernetes — public access, unencrypted storage, forgotten keys, cross-account access, unused resources. Collects cloud accounts and roles and, in a local policy simulator, shows who can escalate their privileges and what they can reach — so you trim excess permissions exactly where it matters. Safely, without affecting production, it simulates IAM privilege-escalation attacks in AWS: how a single foothold turns into access to critical systems. Findings are ranked by criticality, with policy-level advice; includes cloud posture dashboards and scheduled checks.",
+  "classification": [
+    "Configuration auditing and the IAM policy simulator are CIEM, attack simulation in AWS is BAS; not CNAPP (no workload or container protection)."
+  ]
 }

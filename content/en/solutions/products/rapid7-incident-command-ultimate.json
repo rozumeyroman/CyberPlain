@@ -1,3 +1,12 @@
 {
-  "simple": "A complete set for detecting and responding to attacks: SIEM, endpoint protection (EDR) and network control in one platform. Collects logs from computers, sign-in systems, the cloud and SaaS; detects threats using rules (formerly Attacker Behavior Analytics) and user behavior (UEBA); on computers, lets you stop a malicious process or isolate the machine; analyzes network traffic (NDR, IDS); includes traps for attackers, AI triage of alerts, ransomware protection, investigations with Velociraptor, automated response (SOAR) and advanced threat intelligence. The Rapid7 agent on computers provides ready-made detections of suspicious processes and PowerShell commands, Office macros, password theft from memory (Mimikatz, LSASS dump) and persistence in the system; it also alerts if user credentials show up in public leaks. Logs are retained for 180 days."
+  "summary": "Rapid7 Incident Command Ultimate: the full detection and response set, with SIEM, EDR, network analysis, deception and investigation in one platform.",
+  "value": [
+    "Attacks are visible on computers, in the network and in logs, and can be stopped.",
+    "An infected computer is isolated, and Velociraptor investigation shows what happened.",
+    "One platform instead of separate SIEM, EDR and NDR."
+  ],
+  "simple": "A complete set for detecting and responding to attacks: SIEM, endpoint protection (EDR) and network control in one platform. Collects logs from computers, sign-in systems, the cloud and SaaS; detects threats using rules (formerly Attacker Behavior Analytics) and user behavior (UEBA); on computers, lets you stop a malicious process or isolate the machine; analyzes network traffic (NDR, IDS); includes traps for attackers, AI triage of alerts, ransomware protection, investigations with Velociraptor, automated response (SOAR) and advanced threat intelligence. The Rapid7 agent on computers provides ready-made detections of suspicious processes and PowerShell commands, Office macros, password theft from memory (Mimikatz, LSASS dump) and persistence in the system; it also alerts if user credentials show up in public leaks. Logs are retained for 180 days.",
+  "classification": [
+    "Adds EPP + EDR, NDR, IDS and DFIR (Velociraptor) to Advanced; Ransomware Prevention is included in Ultimate."
+  ]
 }

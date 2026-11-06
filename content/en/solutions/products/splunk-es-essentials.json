@@ -1,3 +1,16 @@
 {
-  "simple": "A SIEM for the security operations center (SOC) running on the Splunk data platform — in your own data center (Splunk Enterprise) or as a cloud service (Splunk Cloud Platform). Collects and normalizes logs from any source (2,800+ apps and add-ons on Splunkbase) and searches and analyzes them with the SPL query language. Comes with 1,700+ ready-made detections from Splunk Threat Research mapped to MITRE ATT&CK; Detection Studio helps test, deploy and monitor your own detections and see gaps in ATT&CK coverage. Risk-Based Alerting collects small signals per user or computer and raises a single alert once the risk adds up — up to 90% fewer alerts (vendor data). Built-in Threat Intelligence Management pulls in indicator feeds and matches them against events. Exposure Analytics continuously discovers computers, users, IP and MAC addresses in the logs and builds an up-to-date asset inventory from them. Investigation, case management and response plans are in one workspace; the AI assistant answers questions, writes queries and summarizes incidents (in the cloud, where available). Response automation (SOAR), user behavior analytics (UEBA), automated analysis of malicious files and links, and AI agents are only in the Premier edition."
+  "summary": "Splunk Enterprise Security Essentials: SOC SIEM on the Splunk data platform, with logs from any source, 1,700+ detections, threat intelligence and asset tracking.",
+  "value": [
+    "Attack traces from any system come together into one risk-scored picture.",
+    "Ready-made detections and Detection Studio mean less manual rule work.",
+    "It shows company assets and accounts gathered from logs."
+  ],
+  "simple": "A SIEM for the security operations center (SOC) running on the Splunk data platform — in your own data center (Splunk Enterprise) or as a cloud service (Splunk Cloud Platform). Collects and normalizes logs from any source (2,800+ apps and add-ons on Splunkbase) and searches and analyzes them with the SPL query language. Comes with 1,700+ ready-made detections from Splunk Threat Research mapped to MITRE ATT&CK; Detection Studio helps test, deploy and monitor your own detections and see gaps in ATT&CK coverage. Risk-Based Alerting collects small signals per user or computer and raises a single alert once the risk adds up — up to 90% fewer alerts (vendor data). Built-in Threat Intelligence Management pulls in indicator feeds and matches them against events. Exposure Analytics continuously discovers computers, users, IP and MAC addresses in the logs and builds an up-to-date asset inventory from them. Investigation, case management and response plans are in one workspace; the AI assistant answers questions, writes queries and summarizes incidents (in the cloud, where available). Response automation (SOAR), user behavior analytics (UEBA), automated analysis of malicious files and links, and AI agents are only in the Premier edition.",
+  "notIncluded": [
+    "SOAR, UEBA, automated file and link analysis and AI agents come only with Premier."
+  ],
+  "classification": [
+    "SIEM (RBA, Detection Studio) is SIEM; Threat Intelligence Management is threat intelligence; Exposure Analytics is CAASM.",
+    "Splunk Enterprise / Cloud Platform is the data platform and is not added as a separate product."
+  ]
 }

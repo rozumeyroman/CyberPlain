@@ -1,3 +1,13 @@
 {
-  "simple": "Secure remote access for employees and contractors to company systems without a VPN: a person gets a link to approved access to only the needed devices, at a set time and for a limited period, with mandatory two-factor authentication or passwordless sign-in. Lets you close other remote access paths and open ports, restrict access by geolocation and time, records sessions and alerts on unusual actions. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+  "summary": "Segura Domum Remote Access: secure remote access for employees and contractors to the systems they need without a VPN, via a link, at a set time and with session recording.",
+  "value": [
+    "Contractors reach only approved systems, not the whole network.",
+    "No need to expose RDP or SSH to the internet.",
+    "Sessions are recorded, and passwords are not shown to the person."
+  ],
+  "simple": "Secure remote access for employees and contractors to company systems without a VPN: a person gets a link to approved access to only the needed devices, at a set time and for a limited period, with mandatory two-factor authentication or passwordless sign-in. Lets you close other remote access paths and open ports, restrict access by geolocation and time, records sessions and alerts on unusual actions. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid.",
+  "classification": [
+    "PAM + access without VPN; JIT removed (author’s decision).",
+    "A separate product bought on top of PAM Core."
+  ]
 }

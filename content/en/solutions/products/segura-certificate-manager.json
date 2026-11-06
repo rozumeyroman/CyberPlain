@@ -1,3 +1,12 @@
 {
-  "simple": "Certificate lifecycle management: automatically discovers SSL/TLS and other digital certificates on servers, websites, in directories and key stores, keeps a single inventory of them, warns well before expiration, and renews and publishes them automatically through public and private certificate authorities. Reports for audits. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid."
+  "summary": "Segura Certificate Manager: it finds all digital certificates, keeps an inventory and renews them in advance.",
+  "value": [
+    "Services do not go down because of an expired certificate.",
+    "Unknown certificates do not go unnoticed.",
+    "Certificate renewal is automatic, without manual reminders."
+  ],
+  "simple": "Certificate lifecycle management: automatically discovers SSL/TLS and other digital certificates on servers, websites, in directories and key stores, keeps a single inventory of them, warns well before expiration, and renews and publishes them automatically through public and private certificate authorities. Reports for audits. Separate product, purchased in addition to Segura PAM Core; cloud, on premises or hybrid.",
+  "classification": [
+    "The class is CLM; a separate product bought on top of PAM Core."
+  ]
 }

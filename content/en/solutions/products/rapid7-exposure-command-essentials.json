@@ -1,3 +1,15 @@
 {
-  "simple": "Finds vulnerabilities across the whole infrastructure and helps close them. Scans the network and computers with agents, checks configurations against policies, sets priorities based on real-world threats and asset importance, and manages remediation with deadlines and reports. Also shows the whole attack surface — a single list of assets, resources visible from the internet, and the connections between them — and includes automation (SOAR)."
+  "summary": "Rapid7 Exposure Command Essentials: it finds and helps fix vulnerabilities across the infrastructure, together with an asset inventory and external attack surface.",
+  "value": [
+    "Vulnerabilities in the network and on computers are found and ranked by real risk.",
+    "It shows every asset and which are exposed to the internet.",
+    "Routine remediation actions run automatically."
+  ],
+  "simple": "Finds vulnerabilities across the whole infrastructure and helps close them. Scans the network and computers with agents, checks configurations against policies, sets priorities based on real-world threats and asset importance, and manages remediation with deadlines and reports. Also shows the whole attack surface — a single list of assets, resources visible from the internet, and the connections between them — and includes automation (SOAR).",
+  "notIncluded": [
+    "Cloud protection (CNAPP) and dynamic application testing (DAST) are in Ultimate."
+  ],
+  "classification": [
+    "The classes are Surface Command plus vulnerability management."
+  ]
 }
