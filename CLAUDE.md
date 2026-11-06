@@ -95,10 +95,11 @@ src/
                                      #   apple-touch-icon.png — її растрові копії (перегенерувати при зміні)
   styles/tokens.css, base.css
 design/                   # референсні макети (не код сайту, див. нижче)
-cowork/                   # аналітика через Claude Cowork: скіл cyberplain-analytics-brief (дослідження → MD-бриф),
-                          #   references/{portfolio,attack-v20,existing}.md генерує npm run cowork:skill (+ zip у cowork/dist/)
+cowork/                   # Claude Cowork: скіли cyberplain-analytics-brief (статті → MD-бриф) і cyberplain-vendor-brief (вендор → MD-бриф);
+                          #   згенеровані references/ обох скілів і zip у cowork/dist/ — npm run cowork:skill
 .claude/skills/publish-analytics/  # скіл Claude Code: MD-бриф → JSON + EN-оверлей + SVG, збірка, перевірка, коміт;
                           #   review.md — рецензія брифу 4 субагентами з дебатами; формат брифу — npm run brief:check
+.claude/skills/publish-vendor/  # скіл Claude Code: бриф вендора → продукти + EN, CLAUDE.md, README; формат — npm run vendor:check
 LICENSE  LICENSE-CONTENT  NOTICE.md
 ```
 
@@ -743,3 +744,5 @@ ABA (Attacker Behavior Analytics) — стара назва Detection Rule Libra
 - Після кожного етапу: `npm run build` без помилок, перевір сторінку на 375px і 1440px.
 - Лічильники на сайті (головна, `/vendors/`) рахуються під час збірки. Змінився список продуктів, вендорів чи класів —
   онови числа й перелік вендорів у `README.md` («Чесно про обмеження») у тому самому коміті й звір їх з `/vendors/`.
+- Нові вендори й продукти зазвичай приходять брифом з Cowork (`cowork/cyberplain-vendor-brief/references/brief-format.md`) — публікуємо
+  скілом `publish-vendor`. Змінились класи, правила портфеля чи продукти — `npm run cowork:skill` і нагадай автору перезавантажити обидва zip.

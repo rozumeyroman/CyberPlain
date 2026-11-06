@@ -1,4 +1,4 @@
-// Скіл для Claude Cowork «cyberplain-analytics-brief»: оновлює згенеровані довідники
+// Скіли для Claude Cowork «cyberplain-analytics-brief» і «cyberplain-vendor-brief»: оновлює згенеровані довідники
 // (cowork/cyberplain-analytics-brief/references/{portfolio,attack-v20,existing}.md) з content/ і data/mitre/
 // і пакує папку скіла в cowork/dist/cyberplain-analytics-brief.zip для завантаження в Cowork.
 // Запуск: npm run cowork:skill   (без zip: npm run cowork:skill -- --no-zip)
@@ -60,13 +60,45 @@ for (const [d, label] of sections) {
   md += '\n';
 }
 writeFileSync(join(refs, 'existing.md'), md);
-console.log(`references оновлено: ${classes.length} класів, ${products.length} продуктів, ${attack.techniques.length} технік ATT&CK ${attack.version}`);
+console.log(`analytics: ${classes.length} класів, ${products.length} продуктів, ${attack.techniques.length} технік ATT&CK ${attack.version}`);
+
+// ── Скіл вендорів: cowork/cyberplain-vendor-brief/references/{classes,portfolio-rules,existing-products}.md ──
+const vrefs = join(root, 'cowork/cyberplain-vendor-brief/references');
+md = head('Класи рішень');
+md += 'Класи продукту — **лише ці** (ID у першій колонці). Ризик (`risk`) сайт показує на сторінці продукту автоматично.\n';
+md += 'Мапінг на ATT&CK (`defenses[]` технік) і D3FEND (`d3fend[]`) — на рівні класу: продукт отримує його через свої класи.\n\n';
+md += '| ID | Назва | Що робить | Ризик без нього | Продуктів |\n|---|---|---|---|---|\n';
+const cell = (s) => (s ?? '').replace(/\|/g, '/');
+for (const c of classes) md += `| \`${c.id}\` | ${c.ua} | ${cell(c.simple)} | ${cell(c.risk)} | ${products.filter((p) => p.classes.includes(c.id)).length} |\n`;
+writeFileSync(join(vrefs, 'classes.md'), md);
+
+const claude = readFileSync(join(root, 'CLAUDE.md'), 'utf8');
+const a = claude.indexOf('## Портфель рішень'), b = claude.indexOf('## Як працювати');
+md = head('Правила портфеля (розділ «Портфель рішень» з CLAUDE.md)');
+md += 'Обов\'язкові правила розмежування класів і рішення по кожному наявному вендору. Нового вендора класифікуй так само\n';
+md += 'суворо, а свій абзац «Рішення щодо класифікації» пиши в цьому ж стилі.\n\n';
+md += claude.slice(a, b).replace(/^## Портфель рішень\n/, '');
+writeFileSync(join(vrefs, 'portfolio-rules.md'), md);
+
+md = head('Уже на сайті: вендори й продукти');
+md += 'Назву вендора пиши так само. ID нового продукту не може збігатися з наявним (крім оновлення цього продукту).\n\n';
+for (const v of [...new Set(products.map((p) => p.vendor))].sort((x, y) => x.localeCompare(y))) {
+  const ps = products.filter((p) => p.vendor === v);
+  md += `## ${v} (${ps.length})\n\n| ID | Назва | Лінійка · редакція | Класи |\n|---|---|---|---|\n`;
+  for (const p of ps.sort((x, y) => (x.line ?? '~').localeCompare(y.line ?? '~') || (x.order ?? 0) - (y.order ?? 0) || x.id.localeCompare(y.id)))
+    md += `| \`${p.id}\` | ${p.name} | ${p.line ? `${p.line} · ${p.edition}` : '—'} | ${p.classes.join(', ')} |\n`;
+  md += '\n';
+}
+writeFileSync(join(vrefs, 'existing-products.md'), md);
+console.log(`vendors: ${[...new Set(products.map((p) => p.vendor))].length} вендорів`);
 
 if (!process.argv.includes('--no-zip')) {
   const out = join(root, 'cowork/dist');
   mkdirSync(out, { recursive: true });
-  const zip = join(out, 'cyberplain-analytics-brief.zip');
-  if (existsSync(zip)) rmSync(zip);
-  execFileSync('zip', ['-r', '-q', zip, 'cyberplain-analytics-brief', '-x', '*.DS_Store'], { cwd: join(root, 'cowork') });
-  console.log(`zip: cowork/dist/cyberplain-analytics-brief.zip`);
+  for (const name of ['cyberplain-analytics-brief', 'cyberplain-vendor-brief']) {
+    const zip = join(out, `${name}.zip`);
+    if (existsSync(zip)) rmSync(zip);
+    execFileSync('zip', ['-r', '-q', zip, name, '-x', '*.DS_Store'], { cwd: join(root, 'cowork') });
+    console.log(`zip: cowork/dist/${name}.zip`);
+  }
 }

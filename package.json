@@ -12,7 +12,8 @@
     "import:attack": "node scripts/import-attack.mjs",
     "import:d3fend": "node scripts/import-d3fend.mjs",
     "cowork:skill": "node scripts/cowork-skill.mjs",
-    "brief:check": "node scripts/check-brief.mjs"
+    "brief:check": "node scripts/check-brief.mjs",
+    "vendor:check": "node scripts/check-vendor-brief.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
