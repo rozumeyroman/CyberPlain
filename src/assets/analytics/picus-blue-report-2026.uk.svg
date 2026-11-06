@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 396">
+<text class="k" x="16" y="28" font-size="11">ІМІТОВАНІ АТАКИ · ЩО З НИМИ СТАЛОСЯ</text>
+<text class="tm" x="16" y="60" font-size="13">Зупинено засобами захисту</text>
+<rect class="b" x="328" y="48" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="48" width="276" height="14" rx="2"/>
+<text class="k td" x="740" y="60" font-size="12">69%</text>
+<text class="tm" x="16" y="94" font-size="13">Залишили слід у журналах</text>
+<rect class="b" x="328" y="82" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="82" width="232" height="14" rx="2"/>
+<text class="k td" x="740" y="94" font-size="12">58%</text>
+<text class="tm" x="16" y="128" font-size="13">Спричинили сповіщення</text>
+<rect class="b" x="328" y="116" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="116" width="56" height="14" rx="2"/>
+<text class="k td" x="740" y="128" font-size="12">14%</text>
+<line class="lg" x1="16" y1="152" x2="784" y2="152"/>
+<text class="k" x="16" y="178" font-size="11">ПІСЛЯ ПРОНИКНЕННЯ В МЕРЕЖУ · ЗУПИНЕНО</text>
+<text class="tm" x="16" y="210" font-size="13">Усі дії всередині мережі</text>
+<rect class="b" x="328" y="198" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="198" width="148" height="14" rx="2"/>
+<text class="k td" x="740" y="210" font-size="12">37%</text>
+<text class="tm" x="16" y="244" font-size="13">Перехід між комп’ютерами</text>
+<rect class="b" x="328" y="232" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="232" width="360" height="14" rx="2"/>
+<text class="k td" x="740" y="244" font-size="12">≈90%</text>
+<text class="tm" x="16" y="278" font-size="13">Читання паролів із пам’яті й реєстру</text>
+<rect class="b" x="328" y="266" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="266" width="88" height="14" rx="2"/>
+<text class="k td" x="740" y="278" font-size="12">22%</text>
+<text class="tm" x="16" y="312" font-size="13">Розвідка мережею і збір даних</text>
+<rect class="b" x="328" y="300" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="300" width="40" height="14" rx="2"/>
+<text class="k td" x="740" y="312" font-size="12">≈10%</text>
+<text class="tm" x="16" y="346" font-size="13">Викрадення даних</text>
+<rect class="b" x="328" y="334" width="400" height="14" rx="2"/>
+<rect class="fd" x="328" y="334" width="28" height="14" rx="2"/>
+<text class="k td" x="740" y="346" font-size="12">7%</text>
+<text class="ts" x="16" y="380" font-size="13">Гучні кроки зупиняють часто, тихі — майже ні</text>
+<text class="k" x="784" y="380" text-anchor="end" font-size="11">ДАНІ PICUS · BLUE REPORT 2026</text>
+</svg>

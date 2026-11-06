@@ -3,7 +3,9 @@
 import Base from '../../../../layouts/Base.astro';
 import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
 import AnalyticsSolutions from '../../../../components/AnalyticsSolutions.astro';
+import Illustration from '../../../../components/Illustration.astro';
 import ShareLinks from '../../../../components/ShareLinks.astro';
+import SolutionLinks from '../../../../components/SolutionLinks.astro';
 import SourceList from '../../../../components/SourceList.astro';
 import TechRefs from '../../../../components/TechRefs.astro';
 import { site } from '../../../../../site.config';
@@ -23,6 +25,15 @@ const { report: r } = Astro.props as { report: AReport };
 const { lang, t, url } = await pageCtx(Astro.url);
 const x = t.analytics;
 const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) || f.solutions.some((s) => s.editorial));
+const y = x.report;
+// Клас рішень → висновки, які він закриває (як «клас → кроки» на сторінці атаки); показуємо, якщо висновків більше двох.
+type Row = { cls: AReport['findings'][number]['solutions'][number]['cls']; products: AReport['findings'][number]['solutions'][number]['products']; n: number[] };
+const byClass = new Map<string, Row>();
+r.findings.forEach((f, i) => f.solutions.forEach((s) => {
+  if (!byClass.has(s.cls.id)) byClass.set(s.cls.id, { cls: s.cls, products: s.products, n: [] });
+  byClass.get(s.cls.id)!.n.push(i + 1);
+}));
+const matrix = [...byClass.values()].sort((a, b) => b.n.length - a.n.length || a.cls.data.title.localeCompare(b.cls.data.title));
 ---
 <Base title={r.title} description={r.summary}>
   <section class="wrap page">
@@ -47,7 +58,9 @@ const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) |
 
     <section class="sec" aria-labelledby="plain">
       <h2 class="sec-title" id="plain">{x.plain}</h2>
-      <div class="prose">{r.body.map((p) => <p>{p}</p>)}</div>
+      <div class="prose">{r.body.slice(0, 2).map((p) => <p>{p}</p>)}</div>
+      {r.illustration && <Illustration owner={r.id} {...r.illustration} />}
+      <div class="prose">{r.body.slice(2).map((p) => <p>{p}</p>)}</div>
     </section>
 
     {r.figures.length > 0 && (
@@ -56,6 +69,14 @@ const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) |
         <ul class="figs">
           {r.figures.map((f) => <li><span class="v">{f.value}</span><span class="l">{f.label}</span></li>)}
         </ul>
+      </section>
+    )}
+
+    {r.method.length > 0 && (
+      <section class="sec" aria-labelledby="method">
+        <h2 class="sec-title" id="method">{y.method}</h2>
+        <p class="note">{y.methodNote}</p>
+        <ul class="plain">{r.method.map((m) => <li>{m}</li>)}</ul>
       </section>
     )}
 
@@ -71,7 +92,9 @@ const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) |
       {r.findings.map((f, i) => (
         <details class="sec fold find" open id={`finding-${i + 1}`}>
           <summary><h3 class="sec-title"><span class="mono num">{i + 1}</span> {f.title}</h3></summary>
+          {f.basis && <span class:list={['mono', 'basis', f.basis]}>{y.basis[f.basis]}</span>}
           <p class="text">{f.text}</p>
+          {f.risk && <div class="risk"><span class="mono k">{y.risk}</span><p>{f.risk}</p></div>}
           {f.techniques.length > 0 && <div class="techs"><span class="mono k">{x.vuln.techniques}</span><TechRefs items={f.techniques} /></div>}
           <AnalyticsSolutions items={f.solutions} />
         </details>
@@ -79,11 +102,38 @@ const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) |
       {editorial && <p class="foot">{x.editorialMapping(site.name)}</p>}
     </section>
 
+    {r.findings.length > 2 && (
+      <section class="sec" aria-labelledby="matrix">
+        <h2 class="sec-title" id="matrix">{y.matrix}</h2>
+        <table class="tbl mx">
+          <thead><tr><th>{x.thClass}</th><th>{y.thFindings}</th></tr></thead>
+          <tbody>
+            {matrix.map((m) => (
+              <tr>
+                <td><SolutionLinks cls={m.cls} products={m.products} /></td>
+                <td data-label={y.thFindings}>
+                  <span class="chips">{m.n.map((n) => <a href={`#finding-${n}`} class="chip n" aria-label={`${y.finding(n)}: ${r.findings[n - 1].title}`}>{n}</a>)}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    )}
+
     {r.gaps.length > 0 && (
       <section class="sec" aria-labelledby="gaps">
         <h2 class="sec-title" id="gaps">{x.gaps}</h2>
         <p class="note">{x.gapsNote}</p>
         <ul class="plain">{r.gaps.map((g) => <li>{g}</li>)}</ul>
+      </section>
+    )}
+
+    {r.questions.length > 0 && (
+      <section class="sec" aria-labelledby="q">
+        <h2 class="sec-title" id="q">{y.questions}</h2>
+        <p class="note">{y.questionsNote}</p>
+        <ol class="plain qs">{r.questions.map((q) => <li>{q}</li>)}</ol>
       </section>
     )}
 
@@ -128,4 +178,15 @@ const editorial = r.findings.some((f) => f.techniques.some((y) => y.editorial) |
   .foot { margin: 20px 0 0; max-width: 760px; font-size: 13px; line-height: 1.55; color: var(--muted); }
   .note { margin: 0 0 12px; max-width: 760px; font-size: 14px; color: var(--muted); }
   .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 16px; }
+  .basis { display: inline-block; margin: 0 0 12px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 8px; border: 1px solid var(--defense); border-radius: 4px; color: var(--defense); }
+  .basis.recommendation { border-color: var(--line-strong); color: var(--text-2); }
+  .basis.editorial { border-style: dashed; border-color: var(--line-strong); color: var(--muted); }
+  .risk { margin: 0 0 16px; padding: 12px 14px; border-left: 2px solid var(--attack); background: var(--surface); max-width: 760px; }
+  .risk .k { color: var(--attack); }
+  .risk p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  .mx { table-layout: fixed; }
+  .mx th:first-child { width: 36%; }
+  @media (max-width: 760px) { .mx th:first-child { width: auto; } }
+  .chip.n { min-width: 44px; min-height: 44px; justify-content: center; font-family: var(--font-mono); }
+  .qs li + li { margin-top: 10px; }
 </style>

@@ -58,7 +58,8 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
   d3fend/tactics/harden.json      # тактика D3FEND (ID = англ. назва малими): ua, short, analogy
   d3fend/techniques/D3-AA.json    # категорія/техніка D3FEND: ua, simple, analogy (описані всі 271)
   solutions/products/rapid7-surface-command.json  # продукт: name, vendor, classes[], simple, url
-  analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, body[], figures[], findings[{techniques[], solutions[]}], vulnerabilities[]
+  analytics/reports/picus-blue-report-2026.json   # звіт: kind, original{}, summary, illustration, body[], method[], figures[],
+                                                  #   findings[{basis, text, risk, techniques[], solutions[]}], questions[], vulnerabilities[]
   analytics/vulnerabilities/php2shell.json        # вразливість: cves[], cvss, affected[], chain[] (кроки атаки + observed), remediation[], timeline[], solutions[{phase}]
                                                   #   illustration{file, alt, caption} → наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg
   analytics/attacks/datasuckers-atb.json          # атака: actor, victim, claims[], steps[{tactic, what, result, techniques[], solutions[]}], lessons[]
@@ -166,6 +167,10 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 - **Ланцюжок атаки вразливості** (`chain[]`, ті самі поля, що крок атаки, + обов'язковий `observed`: `true` — бачили в реальних атаках,
   `false` — ймовірний сценарій; на сторінці — після «Чим це загрожує», тим самим `AttackChain`). Від пошуку вразливих систем до мети нападника;
   `solutions[]` за фазами лишаються планом дій, ланцюжок — обґрунтуванням. У старих вразливостях може бути порожній (секція не показується).
+- **Висновки звіту**: `basis` — на чому стоїть висновок (`data` — виміряно у звіті, `recommendation` — порада автора, `editorial` — наш
+  висновок; на сторінці — позначка), `risk` — що на кону для компанії з цією прогалиною (блок «Що на кону»); звіт також має `method[]`
+  («Як отримано дані»: вибірка, середовище, інтерес видавця) і `questions[]` («Питання до замовника», 3–5). Матриця «клас → висновки»
+  обчислюється на сторінці (від трьох висновків). Рішення — за ефективністю, як у кроках.
 - **Рішення**: `{ class, why, editorial }` — лише існуючі класи (`why` — до двох речень про конкретний висновок чи крок); `editorial: true`
   — клас додано нами, а не джерелом. Чого в портфелі немає (мікросегментація тощо) — у `gaps[]` текстом, нових класів не заводимо.
   У вразливості `solutions[].phase` = `find | protect | verify | detect`.
@@ -175,7 +180,8 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
   довжини, елементи об'єктів — лише перекладені ключі). `original.*`, `sources[]`, `advisories[]` не перекладаємо. `loadData('en')`
   зупиняє збірку, якщо немає оверлею, оверлей без оригіналу, ключ відсутній в оригіналі, довжини масивів різні або після злиття
   лишилась кирилиця поза `original` і `sources`. Англійські власні назви лишаються латиницею.
-- **Ілюстрації** (`Illustration.astro`): в атаках і вразливостях — наша SVG-схема механіки (`src/assets/analytics/<file>.<uk|en>.svg`,
+- **Ілюстрації** (`Illustration.astro`): у **кожній** статті (атаки, вразливості, звіти; після 2-го абзацу) — наша SVG: схема, коли є механіка,
+  послідовність чи цифри для порівняння, інакше образна ілюстрація головної думки (`src/assets/analytics/<file>.<uk|en>.svg`,
   однакова геометрія обох мов, лише класи кольорів з компонента: `tm/ts/ta/td/k`, `b/b-att/b-def/b-dash`, `la/lm`). Мінімум 11px тексту,
   ширина 800, на мобільному скролиться в рамці. Підпис — джерело схеми і що в ній редакційне чи умовне.
 - **Поділитися** (`ShareLinks.astro`, у кінці кожного звіту, вразливості й атаки): Telegram, LinkedIn, Facebook — звичайні посилання

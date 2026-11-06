@@ -2,6 +2,10 @@
   "title": "Surviving the post-Mythos era: a practical guide",
   "dateNote": "The document gives no date; written before July 2026",
   "summary": "This Picus Security research brief starts from the premise that AI already finds vulnerabilities and turns them into working exploits faster than teams can close them. Its conclusion: patching alone is not enough, and every control has to be proven against realistic attacks in your own environment.",
+  "illustration": {
+    "alt": "Map of the brief: 12 recommendations in four themes. Validate: exposure management with context, continuous control validation, virtual patching. Detect and respond: behavioural detection and automatic actions, the SOC joined with exposure management, validation results as intelligence. Harden: limit the blast radius, shrink the attack surface, secure AI agents. Organize: risk metrics for leadership, preparing for the Glasswing wave, collective defence. The shared idea at the bottom: every measure is proven by testing, not assumed.",
+    "caption": "How the brief is built: four themes of three recommendations each, numbered as in the findings below. Our diagram based on the structure of the Picus Security document; the short item names are our paraphrase."
+  },
   "body": [
     "The starting point is 7 April 2026. That day Anthropic announced the Claude Mythos Preview model and launched Project Glasswing, a coalition to secure critical software. According to Anthropic, the model independently finds previously unknown vulnerabilities in major operating systems and browsers, writes working exploits without human help, and chains several flaws into one attack sequence. On complex browser vulnerabilities its exploit success rate reached 72.4%, against 14.4% for the previous best result. Another signal came from Amazon Threat Intelligence: in early 2026 a single low-skill attacker used commercial AI services to compromise more than 600 FortiGate devices in 55+ countries within five weeks.",
     "The brief's central thesis is that the human pace of vulnerability management has become the bottleneck. According to Anthropic, more than 99% of the vulnerabilities found under Glasswing are still unpatched, and for an AI a published patch is a ready pointer to building an exploit. Organisations that treat patching as their main defence structurally cannot keep up. So the question changes: instead of \"what do we patch first?\", ask what in my environment can actually be exploited, what the blast radius would be if it is, and whether my controls would stop the whole chain before it reaches anything that matters. A control that has never been tested against a realistic attack remains an assumption, not a defence.",
@@ -9,6 +13,12 @@
     "The Validate theme covers exposure management with context-aware scoring, continuous testing of controls, and virtual patching as a proper discipline. Detect & Respond calls for behavioural detection, pre-approved automated actions, a close link between the SOC and exposure management, and using internal validation results as intelligence. Harden covers segmentation, egress and identity control, shrinking the attack surface, and securing AI agents. Organize & Prepare covers new risk metrics for executives, preparation for the Glasswing disclosure wave, and collective defence through industry communities. The individual items are set out below.",
     "The authors also propose week-one actions: run BAS against the ten most important internet-facing systems; measure patch latency for thirty critical assets, from vendor advisory to production; confirm compensating controls for the most critical unpatched vulnerabilities by simulation rather than by reviewing configuration; hold a tabletop for three simultaneous serious incidents; and brief the board on the Glasswing timeline, bringing a plan and not just an alarm. The tone of the document is measured: in the authors' words, the right response is not alarm but calm acceleration. The speed of attacks is illustrated by a Unit 42 test: in a lab simulation of ransomware using generative AI at every stage, the median time to data exfiltration fell from two days to 25 minutes.",
     "One caveat. The document was produced by Picus Security, which sells an attack simulation platform, so the \"How Picus helps\" section is promotional, and the claim of vendor neutrality should be read with that in mind. The main claims about Mythos capabilities and the FortiGate campaign rest on publications by Anthropic and Amazon, which we list among the sources. The brief names no CVEs and no ATT&CK identifiers: techniques T1190 and T1528 and the mapping to solution classes are our own editorial tagging, marked \"*\"."
+  ],
+  "method": [
+    "This is not a study with its own measurements but a practical guide: 12 recommendations in four themes plus first-week actions.",
+    "The figures in the brief come from other publications that Picus cites: Anthropic (Mythos Preview capabilities, Project Glasswing), Amazon Threat Intelligence (the FortiGate campaign) and a Unit 42 lab test. The primary sources are listed under “Sources”.",
+    "The brief was prepared by Picus Security, which sells an attack simulation platform; the “How Picus helps” section is promotional.",
+    "The brief names neither CVEs nor ATT&CK identifiers: the techniques and solution classes next to the findings are our editorial mapping."
   ],
   "figures": [
     {
@@ -36,6 +46,7 @@
     {
       "title": "01 · Build exposure management with validation in your own environment",
       "text": "Instead of a flat CVSS list, the authors advise a composite score across four dimensions: threat context (severity and asset criticality), exploitability and reachability (a working exploit and a network path), control coverage (which compensating controls are confirmed by simulation), and business and regulatory impact. A flaw that is critical on paper but sits behind three validated layers then turns out less dangerous than a medium one with a clear path to a domain controller. This needs asset inventory, an outside view and simulation together.",
+      "risk": "Without context the team patches what is “critical on paper”, while a genuinely dangerous flaw with an open path to the domain controller waits in the queue, and an AI-assisted attacker gets there first.",
       "solutions": [
         {
           "why": "Collects and ranks the vulnerabilities on which a composite risk score is built, instead of bare CVSS."
@@ -54,6 +65,7 @@
     {
       "title": "02 · Validate controls against real exploit patterns",
       "text": "Examples of invisible gaps: a firewall exception for a legacy integration, an EDR policy relaxed because of a noisy application, a SIEM correlation rule that nobody has updated. The authors advise moving from quarterly checks to continuous ones and distinguishing three kinds of simulation: vulnerability exploitation (PASS if the patch removed the flaw and controls catch the attempt even without it), attack-path traversal across segments (FAIL if the attacker reaches critical assets), and detection and response (PASS if the event is detected and contained within the target time). The headline metric is the share of simulated techniques prevented or detected in time.",
+      "risk": "A control nobody has tested is only an assumption: a firewall exception or a weakened EDR policy will let the attack through, and you will find out from the incident.",
       "solutions": [
         {
           "why": "Continuously plays safe versions of exploits against the firewall, WAF, EDR and SIEM rules and returns a PASS or FAIL result."
@@ -72,6 +84,7 @@
     {
       "title": "03 · Make virtual patching a discipline of its own",
       "text": "For every critical vulnerability not yet closed, the authors advise defining a stand-in for the patch in advance: a firewall signature, a WAF rule, endpoint detection logic and a SIEM correlation. All of it should be confirmed by a repeat simulation, and the risk assessment should distinguish confirmed compensating controls from assumed ones. The brief also stresses that delivering such rules should not require downtime. In the authors' words, virtual patching is no longer a stopgap.",
+      "risk": "Until there is a patch the vulnerability is open, and with AI a working exploit appears faster than the patch can be deployed; an untested patch “substitute” may close nothing at all.",
       "solutions": [
         {
           "why": "A WAF rule blocks a known attack pattern against a web application until the fix is installed."
@@ -93,6 +106,7 @@
     {
       "title": "04 · Speed up detection and response",
       "text": "Attacks that use AI move so fast that signatures are not enough. The authors advise hunting for behaviour: logins from unusual sources, movement between segments outside normal application flows, privilege escalation outside change windows, and data staging that deviates from the network baseline. Automated actions should be approved in advance: isolating a host on high-confidence detection, disabling a service account on anomalous authentication, blocking communication with a newly seen command server, quarantining a workload showing ransomware staging. In their words, a false isolation lasting 15 minutes costs far less than a real attack sitting four hours in an alert queue.",
+      "risk": "An AI-assisted attack can reach data exfiltration in tens of minutes (25 in the Unit 42 lab test), so an alert that waits hours in a queue stops nothing.",
       "solutions": [
         {
           "why": "Detects suspicious behaviour on the host and can isolate it automatically at high confidence."
@@ -114,6 +128,7 @@
     {
       "title": "05 · Connect the SOC to exposure management and prepare an agentic SOC",
       "text": "The authors name three integration points: shared prioritisation context (a confirmed-exploitable vulnerability makes related detections top-tier), detection engineering driven by validation results (each week the validation team hands over undetected techniques, and the closure rate becomes a joint KPI), and incident enrichment (which vulnerabilities sit on the affected hosts, which paths are viable, what the blast radius is). For AI agents in the SOC they propose a written decision taxonomy: tier 1 acts autonomously on reversible, low-blast-radius actions; tier 2 has a human approve within about five minutes; tier 3 requires full investigation before production changes. The taxonomy should be approved before an incident, and the triage agents themselves should be attacked in exercises, including with crafted log entries.",
+      "risk": "The SOC responds to alerts without knowing which vulnerabilities and attack paths are behind them and misses what really matters; AI agents without agreed rules may do something nobody allowed.",
       "solutions": [
         {
           "why": "Brings signals together and gives the SOC a shared picture to which exposure context is attached."
@@ -132,6 +147,7 @@
     {
       "title": "06 · Turn validation findings into usable intelligence",
       "text": "The most valuable intelligence, the authors argue, is internal, and external feeds cannot replace it. Gaps found by simulation are both remediation tasks and inputs to detection engineering: until a gap is closed, the SOC escalates any related alert. Confirmed-exploitable vulnerabilities need detection coverage before the patch is deployed, and attack paths found by automated pentesting indicate where to hunt for threats manually.",
+      "risk": "A gap the simulation has already found stays a blind spot until it is closed: a real attack will pass through it just as quietly.",
       "solutions": [
         {
           "why": "Supplies the list of techniques that controls neither stopped nor noticed."
@@ -150,6 +166,7 @@
     {
       "title": "07 · Limit the blast radius: segmentation, egress control, identity",
       "text": "Every crown jewel should be protected by at least three independently validated layers: network segmentation, identity verification and behavioural detection; with fewer than two, the network is effectively flat. The brief recommends microsegmentation between workloads, tighter egress control, DNS filtering and TLS inspection, since an AI-built exploit still needs attacker infrastructure for payload delivery, exfiltration and control. The authors regard measures that only add friction (extra hops, rate limits, non-standard ports, SMS codes) as weak; instead they advise phishing-resistant MFA, just-in-time access, short-lived tokens from an identity provider, and secret rotation in hours or days rather than every 90 days.",
+      "risk": "In a flat network one successful exploit opens the way to the most valuable systems, and long-lived keys and standing privileges turn every stolen identity into a master key.",
       "solutions": [
         {
           "why": "Segmentation and egress control stop the attack chain from going beyond the first foothold."
@@ -174,6 +191,7 @@
     {
       "title": "08 · Inventory, reduce and harden the attack surface",
       "text": "The most consequential Mythos-class flaws, the authors say, live in older C/C++ projects beneath the application layer, so dependencies should be inventoried and SBOMs produced, unmaintained services shut down, and at-risk systems isolated. Judging exploitability needs a correlated view: what exists, what is exposed, what is protected. Admin interfaces, development environments and internal tools should move behind a VPN or a zero-trust access proxy, and DNS records, cloud policies and certificates should be tidied up. The brief also advises CIS Benchmark baselines, memory protections, detection of configuration drift within hours, and a separate audit of the security tools themselves, since firewalls, EDR, SIEM and WAF are attractive targets too.",
+      "risk": "Forgotten services, admin interfaces on the internet and old dependencies are ready-made entry points that AI finds and exploits faster than their owner notices them.",
       "solutions": [
         {
           "why": "Gives one picture of assets, vulnerabilities and controls, without which exploitability cannot be assessed."
@@ -201,6 +219,7 @@
     {
       "title": "09 · Secure the AI agent ecosystem",
       "text": "The authors advise inventorying all models, inference endpoints, system-prompt configurations, MCP servers and plugins, and treating each MCP server as a third-party integration reviewed to SaaS-vendor standards: compromising one server that serves 50 enterprises affects 50 agent deployments. The SaaS API layer is a domain of its own: an attacker holding an inherited OAuth token acts through legitimate API calls and bypasses network detection. So every token and grant should be tied to its expected use, machine-identity anomalies (unusual resources, volumes, new automations) should be watched, and sensitive actions should require human approval. Defensive agents are privileged entities too.",
+      "risk": "A compromised MCP server or a stolen OAuth token gives the attacker legitimate API calls on the agent’s behalf: network detection does not see it, and one server can affect dozens of companies.",
       "solutions": [
         {
           "why": "Keeps a register of machine identities (tokens, keys, service accounts) and finds the surplus ones."
@@ -225,6 +244,7 @@
     {
       "title": "10 · Update risk models and give leadership real-time visibility",
       "text": "The pre-Mythos assumption that most CVEs are never exploited understates exposure. The authors propose five continuously updated metrics: exposure posture (exposure management and validation), defensive effectiveness (BAS and automated pentesting), remediation velocity (fix tracking), response readiness (SOC metrics and tabletops) and the state of the agent ecosystem. When thresholds are crossed, leadership should be alerted automatically. An example board statement: \"prevented 72% of simulated techniques and detected a further 15% within our five-hour response window\" (illustrative numbers).",
+      "risk": "Leadership judges risk on outdated assumptions and learns about the problem from an incident rather than a metric.",
       "solutions": [
         {
           "why": "Provides the exposure and remediation-speed data that feed the metrics."
@@ -240,6 +260,7 @@
     {
       "title": "11 · Prepare for the Glasswing disclosure wave",
       "text": "Glasswing partners see disclosures first and patch first, so other organisations receive fixes on standard 90-day timelines. Anthropic advises planning for an order-of-magnitude increase in vulnerability-finding volume over two years. The authors propose building automated workflows in advance to triage batches of 50+ advisories a week, restricting internal patch communications during the 24 to 72 hour window, keeping vulnerability details out of ticket titles, and identifying systems that cannot be updated (legacy, OT/SCADA), where virtual patching and validated compensating controls are the only defence. Surge support, such as contractors and managed services, should be arranged as well.",
+      "risk": "A wave of bulletins will overwhelm manual triage, and systems that cannot be updated will stay open unless virtual patching is prepared for them in advance.",
       "solutions": [
         {
           "why": "Automates triage of the advisory wave and matches it to assets."
@@ -258,6 +279,7 @@
     {
       "title": "12 · Collective defence through industry communities",
       "text": "The authors advise taking part in ISACs, CERTs, sector coordinating groups and standards bodies, and sharing validated intelligence in near real time: BAS findings, detection rules, compensating-control configurations. Open-source projects should be treated as critical infrastructure and their maintainers funded, and patch validation results should be shared across trust boundaries. Industry observers estimate that comparable capabilities could reach open-source models within 12 to 18 months, so broader coordination is needed now.",
+      "risk": "An organisation defending on its own learns about new techniques last, and vulnerable open-source code in the supply chain remains everyone’s problem at once.",
       "solutions": [
         {
           "why": "Sharing validated intelligence and detection rules with the industry and receiving them in return."
@@ -267,5 +289,12 @@
         }
       ]
     }
+  ],
+  "questions": [
+    "How long does it take from a vendor bulletin to an installed patch on your most critical systems, in days rather than in the policy?",
+    "Which compensating controls for open critical vulnerabilities have you validated by simulation rather than just by reviewing settings?",
+    "Which actions can your SOC take automatically without waiting for approval, and who signed them off in advance?",
+    "How many independently validated layers of defence stand between the internet and your most valuable systems?",
+    "Who is responsible for keeping track of your AI agents, MCP servers and the tokens they use?"
   ]
 }

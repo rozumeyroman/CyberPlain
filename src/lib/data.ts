@@ -88,7 +88,8 @@ export interface ATech {
   asInSource?: string; // як ID записаний у джерелі, якщо в ATT&CK його немає
   editorial: boolean; // зіставлення зробили ми (на сторінці з «*»)
 }
-export interface AFinding { title: string; text: string; techniques: ATech[]; solutions: ASolution[] }
+export type Basis = 'data' | 'recommendation' | 'editorial';
+export interface AFinding { title: string; basis?: Basis; text: string; risk?: string; techniques: ATech[]; solutions: ASolution[] }
 export interface AStep {
   n: number; title: string; tactic: Tactic; what: string; result?: string; tools: string[];
   techniques: ATech[]; solutions: ASolution[]; gaps: string[];
@@ -99,7 +100,8 @@ type Fig = { value: string; label: string };
 type Orig = { title: string; publisher: string; pages?: number; url?: string };
 export interface AReport {
   id: string; title: string; kind: 'report' | 'brief' | 'note'; original: Orig; date: string; dateNote?: string;
-  summary: string; body: string[]; figures: Fig[]; caveats: string[]; findings: AFinding[]; gaps: string[];
+  summary: string; illustration?: { file: string; alt: string; caption: string }; body: string[]; method: string[];
+  figures: Fig[]; caveats: string[]; findings: AFinding[]; gaps: string[]; questions: string[];
   vulnerabilities: AVuln[]; sources: Src[];
 }
 export interface AVuln {

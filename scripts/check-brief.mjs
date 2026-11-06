@@ -1,5 +1,6 @@
 // Механічна перевірка MD-брифу аналітики (формат — cowork/cyberplain-analytics-brief/references/brief-format.md):
-// ID, дати, CVE, техніки ATT&CK, етапи, класи рішень, фази, обов'язкові розділи, «що відбувається» й «що отримує» в кроках. Зміст і факти перевіряє команда
+// ID, дати, CVE, техніки ATT&CK, етапи, класи рішень, фази, обов'язкові розділи, «що відбувається» й «що отримує» в кроках,
+// «основа» й «що на кону» у висновках звіту, ілюстрація (схема чи образ) у кожній статті. Зміст і факти перевіряє команда
 // рецензентів скіла publish-analytics, не цей скрипт.
 // Запуск: npm run brief:check -- <шлях до брифу.md>   (код виходу 1 — є помилки)
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
@@ -106,7 +107,7 @@ lines.slice(offset).forEach((raw, i) => {
   if (l.startsWith('## ')) { h2 = l.slice(3).trim(); h3 = ''; headings.push(h2); inClaims = /^(Заяви й цифри|Цифри зі звіту)$/.test(h2); return; }
   if (l.startsWith('### ')) {
     h3 = l.slice(4).trim();
-    if (stepSection() || (type === 'report' && h2 === 'Висновки')) blocks.push({ line, name: h3, step: stepSection(), tech: false, sol: false, what: false, result: false, status: false });
+    if (stepSection() || (type === 'report' && h2 === 'Висновки')) blocks.push({ line, name: h3, step: stepSection(), finding: type === 'report', tech: false, sol: false, what: false, result: false, status: false, basis: false, risk: false });
     return;
   }
   if (l.startsWith('|')) {
@@ -130,9 +131,17 @@ lines.slice(offset).forEach((raw, i) => {
       if (!['підтверджено', 'ймовірно'].includes(st[1])) err(line, `${h3}: «Статус» = підтверджено | ймовірно, а не «${st[1]}»`);
     }
   }
+  if (h3 && blocks.length && blocks.at(-1).finding) {
+    if (/^Що на кону:\s*\S/.test(l)) blocks.at(-1).risk = true;
+    const bs = l.match(/^- Основа:\s*([^#]+?)\s*(#.*)?$/);
+    if (bs) {
+      blocks.at(-1).basis = true;
+      if (!['дані звіту', 'рекомендація автора', 'наш висновок'].includes(bs[1])) err(line, `${h3}: «Основа» = дані звіту | рекомендація автора | наш висновок, а не «${bs[1]}»`);
+    }
+  }
   const step = l.match(/^- Етап:\s*(\S+)/);
   if (step && !tactics.has(step[1])) err(line, `${h3}: етапу «${step[1]}» немає (TA… з attack-v20.md)`);
-  const m = h2 === 'Ілюстрація' && l.match(/^- (Файл|Alt|Підпис):\s*(.*)$/);
+  const m = h2 === 'Ілюстрація' && l.match(/^- (Вид|Файл|Alt|Підпис):\s*(.*?)\s*(#.*)?$/);
   if (m) ill[m[1]] = m[2].trim();
 });
 flush();
@@ -142,6 +151,8 @@ for (const b of blocks) {
   if (b.step && !b.what) err(b.line, `${b.name}: немає «Що відбувається: …»`);
   if (b.step && !b.result) err(b.line, `${b.name}: немає «Що отримує зловмисник: …» (проміжний результат кроку)`);
   if (b.step && type === 'vulnerability' && !b.status) err(b.line, `${b.name}: немає «- Статус: підтверджено | ймовірно»`);
+  if (b.finding && !b.basis) err(b.line, `${b.name}: немає «- Основа: дані звіту | рекомендація автора | наш висновок»`);
+  if (b.finding && !b.risk) err(b.line, `${b.name}: немає «Що на кону: …» (ризик для компанії, де ця прогалина є)`);
   if (!b.sol) err(b.line, `${b.name}: немає таблиці рішень`);
 }
 if (type === 'attack' && headings.includes('Кроки') && !blocks.length) err(0, 'Кроки: немає жодного «### Крок N. …»');
@@ -155,15 +166,23 @@ const need = {
   common: ['Коротко', 'Джерела', 'Питання до автора', 'Перевірка фактів'],
   vulnerability: ['Простими словами', 'Уражені версії', 'Наслідки', 'Ланцюжок атаки', 'Що робити', 'Бюлетені', 'Хронологія', 'Рішення', 'Техніки ATT&CK', 'Прогалини', 'Застереження', 'Ілюстрація'],
   attack: ['Простими словами', 'Заяви й цифри', 'Хто атакував', 'Кроки', 'Висновки', 'Застереження', 'Ілюстрація'],
-  report: ['Про що звіт', 'Цифри зі звіту', 'Висновки', 'Прогалини', 'Застереження'],
+  report: ['Про що звіт', 'Цифри зі звіту', 'Як отримано дані', 'Висновки', 'Прогалини', 'Питання до замовника', 'Застереження', 'Ілюстрація'],
 };
 for (const h of [...need.common, ...(need[type] ?? [])]) if (!headings.includes(h)) err(0, `немає розділу «## ${h}» (назва має збігатися дослівно)`);
 if (!/^# \S/m.test(text.slice(fm[0].length))) err(0, 'немає заголовка «# …»');
 if (claimsRows > 0 && type === 'attack' && !claimsNote) err(0, 'Заяви й цифри: є рядки, але немає «Примітка: …»');
-if ((type === 'vulnerability' || type === 'attack') && headings.includes('Ілюстрація') && ill['Файл'] && ill['Файл'] !== '—') {
-  if (!/^[a-z0-9-]+$/.test(ill['Файл'])) err(0, `Ілюстрація: файл «${ill['Файл']}» — латиниця малими, цифри, дефіси`);
+if (headings.includes('Ілюстрація')) {
+  // Ілюстрація обов'язкова в кожній статті: схема, коли є механіка, інакше образ.
+  if (!['схема', 'образ'].includes(ill['Вид'])) err(0, `Ілюстрація: «Вид» = схема | образ, а не «${ill['Вид'] ?? ''}»`);
+  if (!ill['Файл'] || ill['Файл'] === '—') err(0, 'Ілюстрація: немає «Файл» — ілюстрація потрібна в кожній статті (схема чи образ)');
+  else if (!/^[a-z0-9-]+$/.test(ill['Файл'])) err(0, `Ілюстрація: файл «${ill['Файл']}» — латиниця малими, цифри, дефіси`);
   if (!ill['Alt']) err(0, 'Ілюстрація: порожній Alt');
-  if (!ill['Підпис']) err(0, 'Ілюстрація: порожній Підпис (має назвати джерела схеми)');
+  if (!ill['Підпис']) err(0, 'Ілюстрація: порожній Підпис (має назвати джерела ілюстрації)');
+}
+if (type === 'report') {
+  const q = text.split('\n## Питання до замовника')[1]?.split('\n## ')[0] ?? '';
+  const n = (q.match(/^\s*\d+\.\s+\S/gm) ?? []).filter((x) => !/^\s*\d+\.\s+—/.test(x)).length;
+  if (headings.includes('Питання до замовника') && (n < 3 || n > 6)) warn(0, `Питання до замовника: ${n} — зазвичай 3–5`);
 }
 if (/\b(?:\d{1,3}\.){3}\d{1,3}\b/.test(text.replace(/\b\d+\.\d+\.\d+\.\d+\b(?=\s*\/)/g, ''))) warn(0, 'схоже на IP-адресу в тексті — IoC на сайт не переносимо (перевір, чи це не номер версії)');
 if (/\b[a-f0-9]{32,64}\b/i.test(text)) warn(0, 'схоже на хеш у тексті — IoC на сайт не переносимо');

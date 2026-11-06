@@ -96,6 +96,10 @@ const phase = z.enum(['find', 'protect', 'verify', 'detect']);
 const figure = z.object({ value: z.string(), label: z.string() }).strict();
 const original = z.object({ title: z.string(), publisher: z.string(), pages: z.number().int().positive().optional(), url: z.string().url().optional() }).strict();
 
+// Ілюстрація: наша SVG (src/assets/analytics/<file>.<uk|en>.svg, інлайниться під час збирання, 0 KB JS) — схема механіки,
+// коли вона має сенс, інакше образна ілюстрація в стилі сайту.
+const illustration = z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional();
+
 const reports = defineCollection({
   loader: fromDir('./content/analytics/reports'),
   schema: z.object({
@@ -105,23 +109,27 @@ const reports = defineCollection({
     date: isoDate,
     dateNote: z.string().optional(),
     summary: z.string(),
+    illustration, // схема чи образна ілюстрація; показується в «Простими словами» після другого абзацу
     body: z.array(z.string()).min(1),
+    method: z.array(z.string()).default([]), // як отримано дані: вибірка, середовище, хто видав, що виміряно, а що — думка
     figures: z.array(figure).default([]),
     caveats: z.array(z.string()).default([]),
     findings: z.array(z.object({
       title: z.string(),
+      // На чому стоїть висновок: data — виміряно у звіті; recommendation — порада автора; editorial — наш висновок.
+      basis: z.enum(['data', 'recommendation', 'editorial']).optional(),
       text: z.string(),
+      risk: z.string().optional(), // що на кону для компанії, де ця прогалина є (аналог «Що отримав зловмисник»)
       techniques: z.array(techRef).default([]),
-      solutions: z.array(solution).min(1),
+      solutions: z.array(solution).min(1), // порядок — за ефективністю; why = механізм + умова спрацювання
     }).strict()).min(1),
     gaps: z.array(z.string()).default([]),
+    questions: z.array(z.string()).default([]), // питання до замовника, щоб почати розмову зі звіту
     vulnerabilities: z.array(reference('vulnerabilities')).default([]),
     sources: z.array(source).default([]),
   }).strict(),
 });
 
-// Ілюстрація: наша SVG-схема src/assets/analytics/<file>.<uk|en>.svg (інлайниться під час збирання, 0 KB JS).
-const illustration = z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional();
 
 // Крок атаки (атака — steps[], вразливість — chain[]): що робить зловмисник, що отримує, які техніки, що зупиняє крок.
 const stepShape = {
@@ -203,8 +211,9 @@ const part = (shape: z.ZodRawShape) => z.object(shape).partial().strict();
 const arr = (shape: z.ZodRawShape) => z.array(part(shape));
 const strs = z.array(str);
 const enReports = overlay('analytics/reports', {
-  title: str, dateNote: str, summary: str, body: strs, figures: arr({ value: str, label: str }), caveats: strs,
-  findings: arr({ title: str, text: str, solutions: arr({ why: str }) }), gaps: strs,
+  title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: strs, method: strs,
+  figures: arr({ value: str, label: str }), caveats: strs,
+  findings: arr({ title: str, text: str, risk: str, solutions: arr({ why: str }) }), gaps: strs, questions: strs,
 });
 const enVulnerabilities = overlay('analytics/vulnerabilities', {
   title: str, summary: str, illustration: part({ alt: str, caption: str }), description: strs, affected: arr({ product: str, versions: str, fixed: str, note: str }),
