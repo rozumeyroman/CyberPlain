@@ -47,6 +47,120 @@
     "The server becomes a foothold for attacks on the internal network.",
     "The attack runs before application code, so login, permission checks and site logs may show nothing, and a compromise is easy to miss."
   ],
+  "chain": [
+    {
+      "title": "Finding servers running PHP",
+      "what": "The attacker searches the internet for servers where PHP handles requests: WordPress, Magento or Drupal sites, corporate portals, hosting panels, products with embedded PHP. Tenable estimates there are 1.3 to more than 1.9 million potentially vulnerable hosts, and on 21 October Searchlight Cyber released an open scanner. The traces are mass identical requests to different sites. Analogy: a burglar walks through a town where every house has the same faulty lock.",
+      "result": "A list of internet-facing servers with PHP, including forgotten portals and vendor products their owners no longer remember.",
+      "tools": [
+        "mass internet scanning",
+        "open vulnerability scanner"
+      ],
+      "solutions": [
+        {
+          "why": "Shows which PHP servers are visible from the internet: the attacker will find those first, so fix those first."
+        },
+        {
+          "why": "Dedicated checks for both CVEs (including in Rapid7 InsightVM) show which PHP servers are vulnerable and confirm after the update that the problem is closed."
+        },
+        {
+          "why": "Pulls every asset into one picture so a forgotten server or application with embedded PHP does not slip through, the one the attacker would find before you."
+        },
+        {
+          "why": "Finds PHP embedded in your applications, containers and firmware from the component list (SBOM), together with the version to update."
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "title": "One request, and someone else's code on the server",
+      "what": "The attacker sends a single unauthenticated request that makes PHP corrupt its own memory while parsing form data (multipart) and eventually run prepared code (CVE-2026-109618). The request is handled before any application code, so site sign-in, permission checks and the site's own filters have no chance to act, and the site's logs may stay empty. Amazon Threat Intelligence saw such an attempt on its MadPot honeypots on 17 October, before disclosure, and on 21 October new attempts appeared, apparently from several actors. Analogy: a lock that opens when struck in one particular spot, before any guard inside can react.",
+      "result": "Code execution on the web server with the rights of the PHP process: full control over the site and the customer data it handles.",
+      "tools": [
+        "unauthenticated multipart request"
+      ],
+      "solutions": [
+        {
+          "why": "A virtual patch in front of the site cuts off the attack request before it reaches PHP, until PHP is updated. It only works in blocking mode and when direct access to the server bypassing the WAF is closed; vendors already see bypass attempts."
+        },
+        {
+          "why": "IPS signatures in prevention mode block the exploitation attempt at the network gateway. For the IPS to see an attack inside HTTPS, encrypted traffic has to be inspected."
+        },
+        {
+          "why": "Safely replays this attack against your WAF and IPS and reports for each tool whether it was blocked, detected or missed. That way temporary protection is tested, not assumed."
+        }
+      ],
+      "gaps": [
+        "Temporary PHP and web server settings (a hard memory_limit, limits on request size and parts, blocking multipart where it is not needed) are configuration, not a product, and they only reduce the risk until the update."
+      ]
+    },
+    {
+      "title": "Secrets from server memory",
+      "what": "The second flaw (CVE-2026-109619) is a different path: after a request that ended in a fatal error, a PHP worker keeps pointers to freed memory, and the next request can read fragments of it. The PHP team confirms memory disclosure as the consequence; the article has no reports of such theft in attacks, so this is a likely step. The traces are fatal errors and timeouts in PHP workers. Analogy: the previous visitor's papers left lying on the desk.",
+      "result": "Database passwords, tokens, keys and certificates from server memory, even without code execution. With them the attacker goes straight to the database or neighbouring services.",
+      "solutions": [
+        {
+          "why": "A virtual patch cuts off requests that drive a worker into a fatal error until PHP is updated. A temporary measure: blocking mode only, and no direct access bypassing the WAF."
+        },
+        {
+          "why": "If memory may have leaked, database passwords, tokens and keys must be changed. A secrets manager makes that rotation quick and controlled, and turns a stolen secret useless."
+        }
+      ],
+      "gaps": [
+        "As a stopgap for CVE-2026-109619: session.upload_progress.enabled=0 (in PHP 8.5 also fatal_error_backtraces=0) and a worker restart. These are PHP settings, not a product."
+      ]
+    },
+    {
+      "title": "Commands on the server",
+      "what": "Once it has code execution, the attacker launches a shell and downloaders from the web server or PHP-FPM process to bring its own tools onto the server. This is the most visible moment: a web server that normally just answers requests suddenly starts a command line. Analogy: a courier who was only meant to hand over a parcel starts walking through the offices.",
+      "result": "Interactive control of the server and the attacker's own tools on it, preparing for persistence and for using the server for their own ends.",
+      "solutions": [
+        {
+          "why": "Spots the web server or PHP-FPM process launching a shell or a downloader and stops it, a sign that the attack has already worked."
+        },
+        {
+          "why": "The same for servers and containers in the cloud: a PHP process that suddenly starts a shell is stopped at workload level."
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "title": "A web shell to come back",
+      "what": "So as not to depend on a flaw that is about to be fixed, the attacker leaves a web shell on the server: a file it can return through at any time. Updating PHP does not remove it. The traces are new or modified files in the site directories and requests to them. Analogy: leaving a window open once the door has been repaired.",
+      "result": "Persistent access to the server even after PHP is updated.",
+      "solutions": [
+        {
+          "why": "Sees the web server process writing a new executable file into a site directory, and the commands run through it afterwards."
+        },
+        {
+          "why": "A retrospective check of logs since 17 October finds requests to suspicious files and traces of web shells, even if the break-in itself went unnoticed."
+        },
+        {
+          "why": "Velociraptor (including the PHPInventory artefact) finds every copy of PHP and lets you collect artefacts from each server to check it for web shells."
+        }
+      ],
+      "gaps": []
+    },
+    {
+      "title": "Miners, botnet, defaced site",
+      "what": "From then on the server works for the attacker: it mines cryptocurrency, becomes a botnet agent, shows a defaced page or serves as a foothold for attacks on the internal network. The traces are constant CPU load, unusual outbound connections and changes to site pages. Analogy: a lodger has moved into your house, using the power and water and bringing in their own guests.",
+      "result": "Resource costs, reputational damage from a defaced site and an entry point into the company's internal network.",
+      "solutions": [
+        {
+          "why": "Spots a miner or botnet agent process launched under the web server's account and stops it."
+        },
+        {
+          "why": "In the cloud and containers, sees foreign processes and unusual load on the PHP workload and stops them."
+        },
+        {
+          "why": "Brings together web server, firewall and host logs to notice unusual outbound connections from the PHP server and changes to site pages."
+        }
+      ],
+      "gaps": [
+        "To stop a compromised web server becoming a foothold, it must be separated from the internal network: that is segmentation, and the portfolio has no microsegmentation class."
+      ]
+    }
+  ],
   "remediation": [
     "Find every PHP that handles web requests, including embedded copies, containers and vendor products. Start with the ones visible from the internet.",
     "Update PHP to 8.5.12, 8.4.27, 8.3.36 or 8.2.35, or install your distribution's fixed packages. For 7.4–8.1, ask your distribution or LTS vendor for a patch; without one, only the minimal backports published by the PHP team remain. For 5.4–7.3 there is no fix: migrate to a supported branch.",
