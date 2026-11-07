@@ -1,0 +1,18 @@
+{
+  "summary": "A Trellix DLP appliance that passively analyzes unencrypted network traffic and logs attempts to take sensitive data out. It blocks nothing; it only shows and collects evidence.",
+  "value": [
+    "You can see which sensitive data leaves the network over unencrypted connections, including from devices without an agent.",
+    "Stored copies of transferred data support leak investigations.",
+    "You can gauge the scale of leaks before turning on blocking."
+  ],
+  "simple": "A physical or virtual appliance receives a copy of traffic through a network tap and analyzes unencrypted network connections in real time for signs of data loss. It matches content against DLP policies, including exact data matching against records from the customer’s databases, logs incidents and stores data for investigations. It works passively and does not stop transfers. Incidents and policies live in the Trellix ePolicy Orchestrator (ePO) console shared with the other DLP products. Per the vendor, from version 11.11 in on-premises deployments, data transfer events to AI services are shown in the AI Data Risk Dashboard. Sold on its own and also part of the Data Loss Prevention Network Suite and Data Security Suite bundles.",
+  "notIncluded": [
+    "No blocking: for email and web that is DLP Network Prevent.",
+    "The appliance does not see encrypted traffic: the documentation describes analysis of unencrypted traffic.",
+    "Text recognition in images and scans (OCR) is a separate OCR Suite, included in the Data Security Suite bundle."
+  ],
+  "classification": [
+    "Detecting sensitive data loss in network traffic is DLP (by data content, not by threats).",
+    "Not NDR or IDS: the product looks for sensitive data, not attacks or attacker anomalies."
+  ]
+}

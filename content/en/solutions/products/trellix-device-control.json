@@ -1,0 +1,19 @@
+{
+  "summary": "An agent for Windows and macOS computers and Windows servers that decides which USB drives and other external devices may be connected and controls what is copied to them.",
+  "value": [
+    "Unknown USB drives, disks and other peripherals can be barred from work computers.",
+    "Less chance of malware reaching a computer from someone else’s USB drive.",
+    "Copying sensitive files to removable media can be blocked or logged by policy."
+  ],
+  "simple": "An agent on Windows workstations and servers and on macOS computers that manages removable media and peripherals. It blocks the installation of unauthorized devices and applies content policies: it logs, filters or blocks writing certain data to media. Per the documentation, Device Control uses a subset of the DLP Endpoint rules, the same engine in a narrower scope. Management is from the Trellix ePolicy Orchestrator (ePO) console on your own server or, per the vendor, as SaaS. Sold on its own for those who only need device control; also included in DLP Endpoint Complete.",
+  "notIncluded": [
+    "No email, browser or print control: that is DLP Endpoint Complete.",
+    "No discovery of sensitive files on the computer’s disks: that is DLP Endpoint Complete.",
+    "No USB drive encryption: that is Trellix File & Removable Media Protection.",
+    "No host firewall: the device control class here covers external devices only."
+  ],
+  "classification": [
+    "Blocking unauthorized devices and removable media is device control; the product has no host firewall.",
+    "Content filtering to removable media is not counted as DLP: it is a single channel, with no data discovery or classification in other channels."
+  ]
+}

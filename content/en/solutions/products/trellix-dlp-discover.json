@@ -1,0 +1,19 @@
+{
+  "summary": "The Trellix DLP scanner for network file shares, SharePoint, Box and databases: it finds and classifies sensitive data and helps move it out of the wrong places.",
+  "value": [
+    "You can see where personal data and business documents sit in the network and cloud storage.",
+    "Sensitive files in open folders can be moved to a protected location or protected with access rights.",
+    "It is easier to show an auditor or regulator exactly where protected data is stored.",
+    "Fingerprints of key documents help other Trellix DLP products find their copies."
+  ],
+  "simple": "A scanning server (physical or virtual) crawls network file shares, SharePoint, Box and databases, on-premises and in the cloud. It finds and classifies sensitive data: per the vendor, it supports more than 400 file types, with auto-classification and exact data matching against records from the customer’s databases, so a rule fires on real customer or contract numbers rather than any similar-looking digits. For findings you can set an action: copy or move the file, or apply rights management, which protects the document with rights on who may open it. Registration scans store document fingerprints in a database used by DLP policies. Management is from the Trellix ePolicy Orchestrator (ePO) console. Sold on its own and also part of the Data Loss Prevention Network Suite (named Data Security Network Suite in the datasheet) and Data Security Suite bundles.",
+  "notIncluded": [
+    "No blocking of data transfers at the moment of sending: that is DLP Endpoint Complete and DLP Network Prevent.",
+    "Text recognition in images and scans (OCR) is a separate OCR Suite, included in the Data Security Suite bundle.",
+    "No data protection in cloud services other than SharePoint and Box."
+  ],
+  "classification": [
+    "Discovery, classification and remediation of where sensitive data is stored is DLP (“knows where sensitive data sits”).",
+    "Database scanning here means finding data, not protecting the DBMS (that is a separate product, Trellix Database Security)."
+  ]
+}

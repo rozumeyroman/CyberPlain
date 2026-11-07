@@ -229,6 +229,16 @@
 | `teramind-dlp` | Teramind DLP | Teramind · DLP | dlp, ueba |
 | `teramind-enterprise` | Teramind Enterprise & Government | Teramind · Enterprise & Government | dlp, ueba |
 
+## Trellix (5)
+
+| ID | Назва | Лінійка · редакція | Класи |
+|---|---|---|---|
+| `trellix-device-control` | Trellix Device Control | — | device-control |
+| `trellix-dlp-discover` | Trellix Data Loss Prevention Discover | — | dlp |
+| `trellix-dlp-endpoint-complete` | Trellix Data Loss Prevention Endpoint Complete | — | dlp, device-control |
+| `trellix-dlp-network-monitor` | Trellix Data Loss Prevention Network Monitor | — | dlp |
+| `trellix-dlp-network-prevent` | Trellix Data Loss Prevention Network Prevent | — | dlp |
+
 ## Trend Micro (21)
 
 | ID | Назва | Лінійка · редакція | Класи |

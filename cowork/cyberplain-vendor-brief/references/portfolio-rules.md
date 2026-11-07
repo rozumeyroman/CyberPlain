@@ -8,7 +8,7 @@
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
 модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM, NGFW, Idira (identity security) і Next-Gen Trust Security, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
-захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind (рішення автора, жовтень–листопад 2026).
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind, DLP Trellix (рішення автора, жовтень–листопад 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -123,6 +123,10 @@
 | Teramind UAM | UEBA |
 | Teramind DLP | + DLP |
 | Teramind Enterprise & Government | те саме (+ OCR, захоплення полів, професійні послуги) |
+| Trellix DLP Endpoint Complete | DLP, контроль пристроїв (без мережевого екрана) |
+| Trellix Device Control | контроль пристроїв (без мережевого екрана) |
+| Trellix DLP Discover, DLP Network Prevent | DLP |
+| Trellix DLP Network Monitor | DLP (лише виявлення) |
 
 **EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026).**
 - `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
@@ -369,6 +373,17 @@ AI Data Exfiltration Control, Agentic AI Governance) — з UAM за картк�
 вказано), у тексті DLP; `device-control` не ставимо. Audit & Forensics — не `dfir`; Activity blocking — не `web-filtering`; Remote control,
 In-app fraud detection, OCR, захоплення полів, професійні послуги, AWS GovCloud / Azure Government — лише в тексті. Starter (правила без аномалій)
 — жодного класу, не додано; клас `uam` не заводимо — дублює `dlp`/`ueba` (рішення автора). NextGen поки лише в хмарі — не в текстах.
+
+Trellix DLP (https://www.trellix.com/products/dlp/, пакети — https://www.trellix.com/products/data-security-suites/ і даташит пакетів,
+листопад 2026; trellix.com віддає 403 скриптам — склад пакетів і окремі SKU звірено за прайс-оглядом дистриб’ютора Infinigate, 2025): 5 продуктів
+за компонентами — Endpoint Complete, Device Control, Discover, Network Monitor, Network Prevent (окремі модулі без лінійок; у дистриб’ютора в кожного
+власний SKU). Пакети Data Security Suites (Data Loss Prevention Network Suite / у даташиті Data Security Network Suite = Monitor + Prevent + Discover;
+Data Loss Prevention Suite; Data Security Endpoint Protection Suite; Data Security Suite; Data Encryption Suite) — комбінації компонентів, лише в тексті.
+Пошук, класифікація й блокування передачі — `dlp` (Network Monitor лише виявляє — теж `dlp`); вбудований і окремий Device Control — `device-control`
+(без мережевого екрана — сказано в «Чого немає», як Falcon Go). Фільтрація вмісту на флешки в Device Control — не `dlp` (один канал, без пошуку
+даних; межовий випадок). Шифрування файлу під час передачі — не `encryption`; Network Monitor — не `ndr`/`ids`, Network Prevent — не `email`/
+`web-filtering`. OCR Suite — add-on (у Data Security Suite включено); AI Data Risk Dashboard, Skyhigh Security — лише в тексті. Trellix Data
+Encryption і Database Security не додано (рішення автора).
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

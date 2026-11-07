@@ -1,0 +1,22 @@
+{
+  "summary": "The Trellix DLP agent for Windows and macOS computers and Windows servers: it finds sensitive data on the device and keeps it from being taken out unnoticed by email, through the browser, by printing or on a USB drive. Device Control is included.",
+  "value": [
+    "An attempt to take personal, payment or medical data or business documents off a work computer can be blocked by policy or logged.",
+    "You can see which computers and folders hold sensitive files.",
+    "Unknown USB drives and other external devices can be barred from work computers.",
+    "Employees see a warning and explain why they are sending data, which means fewer accidental leaks."
+  ],
+  "simple": "An agent on Windows workstations and servers and on macOS computers. It finds and classifies sensitive data in files, folders and disks on the device (Endpoint Discovery), with ready-made rules (personal data, health data, payment card data) and custom rules for intellectual property. The agent watches what users do with data and, depending on policy, logs or blocks the transfer: email attachments, file uploads and text pasted into web pages in Chrome, Edge, Firefox and Safari, printing, copying to removable media. On Windows it can also encrypt a file before transfer. The user sees a pop-up warning asking for a justification (user coaching). Device Control is included and stops unauthorized devices from being connected. Management is from a single Trellix ePolicy Orchestrator (ePO) console on your own server or, per the vendor, as SaaS, which also holds policies, incidents, cases and reports. Per the vendor, from agent versions 11.14 (Windows) and 11.13 (macOS) in on-premises deployments the AI Data Risk Dashboard is available at no extra cost: it shows data copied and uploaded to AI services (per the vendor, more than 400) and lets you block it. Sold on its own and also part of the Data Security Endpoint Protection Suite and Data Security Suite bundles.",
+  "notIncluded": [
+    "Text recognition in images and scans (OCR) is a separate OCR Suite (on computers, Windows only), included in the Data Security Suite bundle.",
+    "No full disk or USB drive encryption: those are separate Trellix Data Encryption products (Drive Encryption, Native Drive Encryption, File & Removable Media Protection); DLP encrypts only individual files by policy.",
+    "No data discovery in network file shares, SharePoint, Box or databases: that is DLP Discover.",
+    "No network-level email and web traffic control (without an agent): that is DLP Network Prevent.",
+    "No host firewall: the device control class here covers external devices only."
+  ],
+  "classification": [
+    "Discovery, classification and blocking of data transfers from the computer (email, web, printing, removable media) is DLP, the main class.",
+    "Built-in Device Control (blocking unauthorized devices) is device control; the product has no host firewall.",
+    "Encrypting a file during transfer is a DLP feature, not the encryption class (disks and USB drives are encrypted by separate products); the AI Data Risk Dashboard is text only, within DLP."
+  ]
+}

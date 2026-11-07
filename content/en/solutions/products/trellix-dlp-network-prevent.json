@@ -1,0 +1,19 @@
+{
+  "summary": "A Trellix DLP appliance that works with the mail server and web proxy and blocks emails and web transfers containing sensitive data by policy.",
+  "value": [
+    "An email or web upload with sensitive data that passes through the company’s mail server or web proxy can be stopped by a rule before it is sent.",
+    "One set of rules for email and web across the whole network, without agents on every computer.",
+    "Every blocked case is stored with evidence for investigation."
+  ],
+  "simple": "A physical or virtual appliance connects to the mail server (MTA, the server that relays email) and web proxy. They pass emails and web requests to it for inspection, and the appliance applies DLP policies: it allows, logs or blocks the transfer of sensitive data. It uses the same classifications as the other Trellix DLP products, including exact data matching against records from the customer’s databases. Blocked or logged content is stored encrypted in an evidence store. Policies and incidents are in the Trellix ePolicy Orchestrator (ePO) console. Per the vendor, from version 11.11 in on-premises deployments, AI service events go to the AI Data Risk Dashboard. Sold on its own and also part of the Data Loss Prevention Network Suite and Data Security Suite bundles.",
+  "notIncluded": [
+    "No protection of email against phishing and malicious attachments: this is DLP, not an email gateway.",
+    "Without the customer’s mail server or web proxy the product does not see traffic.",
+    "No control of USB drives, printing or copying on computers: that is DLP Endpoint Complete.",
+    "Text recognition in images and scans (OCR) is a separate OCR Suite, included in the Data Security Suite bundle."
+  ],
+  "classification": [
+    "Blocking sensitive data transfers by email and web is DLP.",
+    "Not email security or web filtering: the product checks content for sensitive data, not threats or website categories."
+  ]
+}
