@@ -6,7 +6,8 @@
   "order": 2,
   "classes": [
     "epp",
-    "device-control"
+    "device-control",
+    "host-firewall"
   ],
   "summary": "Пакет CrowdStrike Falcon Pro: антивірус нового покоління на AI, контроль пристроїв і керування мережевим екраном комп’ютера.",
   "value": [
@@ -19,7 +20,7 @@
     "EDR (запису подій і розслідування) немає — він є в Falcon Enterprise."
   ],
   "classification": [
-    "Firewall Management входить у той самий клас, що й Device Control, — «Контроль пристроїв і мережевий екран комп’ютера».",
+    "Device Control — «Контроль пристроїв», Firewall Management — «Мережевий екран комп’ютера».",
     "Identity Protection, IT Hygiene, Next-Gen SIEM у пакетах «✗» — класом не рахуємо."
   ],
   "url": "https://www.crowdstrike.com/en-us/pricing/"

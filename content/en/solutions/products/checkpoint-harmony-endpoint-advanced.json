@@ -11,7 +11,7 @@
     "Vulnerability management, DLP and SOAR are in Elite (in Advanced only as add-ons)."
   ],
   "classification": [
-    "Forensic collection is DFIR; Threat Cloud + IOC Management is threat intelligence; Firewall + Port Protection is device control.",
+    "Forensic collection is DFIR; Threat Cloud + IOC Management is threat intelligence; Port Protection is device control, Firewall is host firewall.",
     "Application Control and Endpoint Compliance stay in the text; Posture Management, DLP and XDR as add-ons are not counted."
   ]
 }

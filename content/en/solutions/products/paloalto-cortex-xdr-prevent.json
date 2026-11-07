@@ -10,6 +10,6 @@
     "No detection, investigation or response (EDR): those are in Pro per Endpoint."
   ],
   "classification": [
-    "Prevent is prevention only (NGAV) plus Endpoint Controls: Device control and host firewall map to device control, BitLocker/FileVault to encryption; no EDR."
+    "Prevent is prevention only (NGAV) plus Endpoint Controls: Device control maps to device control, host firewall to host firewall, BitLocker/FileVault to encryption; no EDR."
   ]
 }

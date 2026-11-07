@@ -9,6 +9,7 @@
     "edr",
     "cwpp",
     "device-control",
+    "host-firewall",
     "itdr"
   ],
   "summary": "SentinelOne Singularity Commercial: усе з Complete плюс захист облікових записів (ITDR) — виявлення й реагування на атаки на Active Directory і хмарні каталоги.",

@@ -12,7 +12,7 @@
     "No full disk or USB drive encryption: those are separate Trellix Data Encryption products (Drive Encryption, Native Drive Encryption, File & Removable Media Protection); DLP encrypts only individual files by policy.",
     "No data discovery in network file shares, SharePoint, Box or databases: that is DLP Discover.",
     "No network-level email and web traffic control (without an agent): that is DLP Network Prevent.",
-    "No host firewall: the device control class here covers external devices only."
+    "No host firewall: external device control only."
   ],
   "classification": [
     "Discovery, classification and blocking of data transfers from the computer (email, web, printing, removable media) is DLP, the main class.",

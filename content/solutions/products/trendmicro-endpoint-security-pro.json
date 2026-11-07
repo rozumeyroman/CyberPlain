@@ -8,6 +8,7 @@
     "epp",
     "edr",
     "device-control",
+    "host-firewall",
     "dlp",
     "web-filtering",
     "cwpp"

@@ -18,6 +18,7 @@
     "ndr",
     "ngfw",
     "bas",
-    "pentest"
+    "pentest",
+    "host-firewall"
   ]
 }

@@ -9,6 +9,7 @@
     "edr",
     "cwpp",
     "device-control",
+    "host-firewall",
     "itdr",
     "dfir"
   ],

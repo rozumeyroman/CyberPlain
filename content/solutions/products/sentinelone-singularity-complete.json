@@ -8,9 +8,10 @@
     "epp",
     "edr",
     "cwpp",
-    "device-control"
+    "device-control",
+    "host-firewall"
   ],
-  "summary": "SentinelOne Singularity Complete: один агент для комп’ютерів, серверів і хмарних навантажень — антивірус на AI, EDR, захист серверів і контейнерів, контроль пристроїв.",
+  "summary": "SentinelOne Singularity Complete: один агент для комп’ютерів, серверів і хмарних навантажень — антивірус на AI, EDR, захист серверів і контейнерів, контроль пристроїв і мережевий екран комп’ютера.",
   "value": [
     "Шкідливі програми й вимагачі зупиняються прямо на пристрої, навіть без зв’язку з хмарою.",
     "Те, що пройшло, видно й можна відкотити, розслідувати й прибрати.",
@@ -22,7 +23,7 @@
     "Полювання силами експертів SentinelOne і AI SOC-аналітик — за доплату."
   ],
   "classification": [
-    "Класи CWPP, «Контроль пристроїв», ITDR заведено під пакети SentinelOne; CWPP — не CNAPP (без CSPM/IaC).",
+    "Класи CWPP, «Контроль пристроїв», «Мережевий екран комп’ютера», ITDR заведено під пакети SentinelOne; CWPP — не CNAPP (без CSPM/IaC).",
     "Purple AI, Managed Threat Hunting, MDR — сервіси/AI, не класи."
   ],
   "url": "https://www.sentinelone.com/platform-packages/"

@@ -15,6 +15,7 @@
     "ndr",
     "edr",
     "epp",
-    "ids"
+    "ids",
+    "host-firewall"
   ]
 }

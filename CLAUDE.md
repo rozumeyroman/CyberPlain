@@ -411,7 +411,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Splunk Enterprise Security Essentials | SIEM, кіберрозвідка, CAASM |
 | Splunk Enterprise Security Premier | + SOAR, UEBA |
 | CrowdStrike Falcon Go | EPP, контроль пристроїв |
-| CrowdStrike Falcon Pro | те саме (+ мережевий екран комп’ютера, у тому ж класі) |
+| CrowdStrike Falcon Pro | + мережевий екран комп’ютера |
 | CrowdStrike Falcon Enterprise | + EDR |
 | Palo Alto PA-Series, VM-Series (+ Precision AI NS bundle і Prisma Access Agent) | NGFW/IPS, пісочниця, захист браузера, вебфільтрація, VPN |
 | Idira Privileged Access Manager SaaS / Self-Hosted | PAM, ITDR |
@@ -474,7 +474,7 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 | Trellix DLP Discover, DLP Network Prevent | DLP |
 | Trellix DLP Network Monitor | DLP (лише виявлення) |
 
-**EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026).**
+**EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026); контроль пристроїв ≠ мережевий екран комп’ютера (листопад 2026).**
 - `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
   запис подій, виявлення, розслідування й реагування. Продукт лише з антивірусом (у таблиці вендора EDR «—») — `epp` без `edr`; продукт з EDR —
   `epp` + `edr` (усі EDR-пакети мають і запобігання). `defenses[]` `epp` — лише техніки, де запобігання справді спрацьовує (виконання шкідливого
@@ -483,6 +483,9 @@ D3FEND-тактики: Model, Harden, Detect, Isolate, Deceive, Evict, Restore.
 - `web-filtering` — вебфільтрація, DNS-захист і блокування за репутацією IP/URL/доменів (URL Filtering, Web Reputation, SWG, DNS Security,
   Anti-Bot/C2) на шлюзі, у хмарі чи агентом. `ti` — лише кіберрозвідка як продукт: стрічки IoC, профілі угруповань, звіти, TIP/керування
   індикаторами. Антивірус і репутація IP на шлюзі NGFW — у межах `ngfw`.
+- `device-control` — лише зовнішні пристрої (флешки, диски, Bluetooth; D3-IOPR). `host-firewall` — мережевий екран на самому комп’ютері
+  чи сервері (D3-ITF, D3-OTF; T1021, T1210, T1570 — переміщення між комп’ютерами). Продукт без мережевого екрана (Falcon Go, Trellix) —
+  лише `device-control`.
 
 Threat Command (Digital Risk Protection, ex-IntSights) — таблиці пакетів немає, класи за сторінкою продукту
 й брифом Remediation Services. Модулі VRA і Third Party — окремі, не враховані.
@@ -492,7 +495,7 @@ InsightIDR (у всіх Incident Command) — готові виявлення з
 реагування на хості). Пастки з даташиту рахуємо лише з Advanced (так у таблиці пакетів). «Account Leak»
 (витік облікових даних у відкритий доступ) — не `dark-web`, лише в тексті.
 
-SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`, `device-control`, `itdr`
+SentinelOne (https://www.sentinelone.com/platform-packages/): класи `cwpp`, `device-control`, `host-firewall`, `itdr`
 заведено під ці пакети. CWPP — не CNAPP (без CSPM/IaC). ITDR у пакеті — виявлення й реагування;
 пастки Singularity Identity (Identity Deception) і ISPM у таблиці пакетів не названі — `deception` не
 ставимо. Network Discovery (Enterprise) — інвентаризація мережі агентами, не CAASM: лише в тексті.
@@ -501,7 +504,7 @@ Purple AI, AI SOC-аналітик, Managed Threat Hunting, MDR — сервіс
 Harmony Endpoint (https://sc1.checkpoint.com/uc/pdf/Har_EP_Pricing_Packages.pdf): лише чинні редакції Advanced,
 Complete, Elite; Data Protection і Basic (Prevent) не продаються — не додаємо (рішення автора). Класи `browser-protection`,
 `sandbox`, `encryption` заведено під Harmony. «Forensic collection» — `dfir` (як Forensic Data Collection у SentinelOne);
-«Threat Cloud» + «IOC Management» (розділ Threat Intelligence таблиці) — `ti`; Firewall + Port Protection — `device-control`;
+«Threat Cloud» + «IOC Management» (розділ Threat Intelligence таблиці) — `ti`; Port Protection — `device-control`, Firewall — `host-firewall`;
 Posture Management — `vm`; Endpoint XDR — `edr` уже є, Infinity Playblocks — `soar`. Application Control, Endpoint Compliance —
 лише в тексті. Posture Management, DLP і XDR в Advanced/Complete — add-on, класом не рахуємо.
 
@@ -586,7 +589,7 @@ D3FEND: `bas` — D3-SYSVA; `pentest` — D3-SYSVA, D3-NVA, D3-AM. EXV і DRV �
 
 Palo Alto Networks Cortex XDR (даташит https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/cortex-xdr,
 березень 2026, таблиця Licensing Options): 2 продукти — XDR Prevent і XDR Pro per Endpoint. Prevent — лише запобігання (NGAV: ML,
-поведінковий захист, захист від експлойтів) + Endpoint Controls (Device control, host firewall — `device-control`; BitLocker/FileVault —
+поведінковий захист, захист від експлойтів) + Endpoint Controls (Device control — `device-control`, host firewall — `host-firewall`; BitLocker/FileVault —
 `encryption`); виявлення й реагування в ньому «—», тому `epp`, без `edr`.
 Pro — `epp` + `edr` (детектори, кейси, 100+ плейбуків, Live Terminal — у тексті). «Extended Detection Analytics (network, cloud, identity)» — аналітика підключених даних, не `ndr`
 (Network Traffic Analysis за документацією 3.x — лише Pro per GB) і не `ueba` (поведінка користувачів — у add-on ITDR); плейбуки — не `soar`
@@ -598,7 +601,7 @@ Cortex XSIAM (таблиця тарифів https://cortex-docs.paloaltonetworks
 даташит березня 2026 — лише опис): 3 продукти за тарифами NG-SIEM / Enterprise / Premium. NG-SIEM: Core Analytics, Automation, UEBA —
 `siem`, `ueba`, `soar`; `ndr` — бо даташит називає NDR базовою можливістю платформи (аналітика журналів мережевих екранів і потоків,
 власних сенсорів немає; у XDR Pro per Endpoint такого збору немає, тому там без `ndr`). Enterprise: агент XDR (Enterprise Runtime Security:
-NGAV, Endpoint Controls) — `edr`, `device-control`, `encryption`; Host Insights (Vulnerability Management) — `vm`. Premium: Cloud Posture
+NGAV, Endpoint Controls) — `edr`, `device-control`, `host-firewall`, `encryption`; Host Insights (Vulnerability Management) — `vm`. Premium: Cloud Posture
 Security (CSPM, CIEM, DSPM, безагентне сканування, ASPM, CI/CD) — `cnapp` + `ciem`; Cloud Runtime Security (CWP, CDR, WAAS) — `cwpp` +
 `waf`; XTI і Threat Intel Management — `ti`; Attack Surface Management (інтернет-ресурси) — `easm`. Add-on у всіх тарифах (ITDR, Forensics,
 Advanced Email Security, Exposure Management, DLP, Code Security) класом не рахуємо. CDR (аналітика хмарних журналів) — лише в тексті.
@@ -612,7 +615,7 @@ Exposure Analytics (безперервне виявлення активів і 
 і AI-агенти — лише в тексті. Splunk Enterprise / Splunk Cloud Platform — платформа даних, на якій працює ES, окремим продуктом не додано.
 
 CrowdStrike (таблиця пакетів https://www.crowdstrike.com/en-us/pricing/, жовтень 2026; даташит Falcon Endpoint Protection Pro 2024 —
-опис можливостей Pro, його таблиця з Falcon Elite застаріла): 3 продукти — Falcon Go, Pro, Enterprise. NGAV (Falcon Prevent) — `epp` у всіх; Device Control і Firewall Management (з Pro) — `device-control`. Enterprise: EDR (Falcon Insight XDR) — `edr`;
+опис можливостей Pro, його таблиця з Falcon Elite застаріла): 3 продукти — Falcon Go, Pro, Enterprise. NGAV (Falcon Prevent) — `epp` у всіх; Device Control (у всіх) — `device-control`, Firewall Management (з Pro) — `host-firewall`. Enterprise: EDR (Falcon Insight XDR) — `edr`;
 «Threat Intelligence & Hunting» — це Falcon Adversary OverWatch (полювання силами експертів, сервіс) — не `ti`, лише в тексті. Mobile Device
 Protection, Express Support — лише в тексті. Identity Protection, IT Hygiene (Falcon Discover), Next-Gen SIEM — у всіх пакетах «✗», класом не
 рахуємо. Falcon Complete — сервіс MDR, не додано; Falcon Flex — модель ліцензування, не пакет.
@@ -682,8 +685,8 @@ Fortinet (продукти за ордеринг-гайдами https://www.fort
 Trend Micro: бізнес-напрям з 2026 — **TrendAI** (trendaisecurity.com), платформа — **TrendAI Vision One** (раніше Trend Vision One); вендор на
 сайті — «Trend Micro», назви продуктів — «TrendAI Vision One …». Ліцензування — кредити TrendAI Flex; пакети й функції — за таблицею
 https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services (жовтень 2026), продукт = пакет чи рішення
-з таблиці. Endpoint Security Core / Essentials / Pro: антивірус — `epp`, XDR for Endpoints (з Essentials) — `edr`, мережевий екран і контроль пристроїв —
-`device-control`, DLP — `dlp`, Web Reputation — `web-filtering`; Pro (контроль цілісності,
+з таблиці. Endpoint Security Core / Essentials / Pro: антивірус — `epp`, XDR for Endpoints (з Essentials) — `edr`, контроль пристроїв —
+`device-control`, мережевий екран — `host-firewall`, DLP — `dlp`, Web Reputation — `web-filtering`; Pro (контроль цілісності,
 аналіз журналів, серверний IPS, контейнери — колишній Deep Security) — `cwpp`; IPS для комп’ютерів, контроль застосунків — лише в тексті.
 Email and Collaboration Security Core / Essentials / Pro: `email`, DLP — `dlp`, File Sandboxing — `sandbox`, Account Takeover — `ueba` (як
 Harmony Email); URL Sandboxing, Continuity, шифрування, DMARC (Essentials), XDR for Email (Pro) — у тексті. CREM Core: Cyber Risk Overview

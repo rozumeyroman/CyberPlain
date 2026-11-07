@@ -10,7 +10,7 @@
     "No EDR (event recording and investigation): that is in Falcon Enterprise."
   ],
   "classification": [
-    "Firewall Management falls into the same class as Device Control: device control and host firewall.",
+    "Device Control is device control, Firewall Management is host firewall.",
     "Identity Protection, IT Hygiene and Next-Gen SIEM are “✗” in the packages and are not counted as classes."
   ]
 }

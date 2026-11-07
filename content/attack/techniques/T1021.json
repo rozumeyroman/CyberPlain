@@ -20,7 +20,7 @@
     "mfa",
     "deception",
     "itdr",
-    "device-control",
+    "host-firewall",
     "nhi",
     "jit",
     "pentest"

@@ -7,6 +7,7 @@
   "classes": [
     "epp",
     "device-control",
+    "host-firewall",
     "dlp",
     "web-filtering"
   ],
@@ -21,7 +22,7 @@
     "EDR (XDR for Endpoints) — з Essentials; захист серверів і контейнерів (CWPP) — у Pro."
   ],
   "classification": [
-    "Антивірус — EPP, мережевий екран і контроль пристроїв — «Контроль пристроїв», DLP — DLP, Web Reputation — вебфільтрація; IPS для комп’ютерів і контроль застосунків — лише в тексті."
+    "Антивірус — EPP, контроль пристроїв — «Контроль пристроїв», мережевий екран — «Мережевий екран комп’ютера», DLP — DLP, Web Reputation — вебфільтрація; IPS для комп’ютерів і контроль застосунків — лише в тексті."
   ],
   "url": "https://docs.trendmicro.com/en-us/documentation/article/trend-vision-one-credit-req-for-apps-services"
 }

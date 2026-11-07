@@ -10,6 +10,6 @@
     "Cloud protection, threat intelligence, ASM, ITDR, email protection, forensics and DLP are separate."
   ],
   "classification": [
-    "The XDR agent (Enterprise Runtime Security) is EPP + EDR, device control and encryption; Host Insights is vulnerability management."
+    "The XDR agent (Enterprise Runtime Security) is EPP + EDR, device control, host firewall and encryption; Host Insights is vulnerability management."
   ]
 }

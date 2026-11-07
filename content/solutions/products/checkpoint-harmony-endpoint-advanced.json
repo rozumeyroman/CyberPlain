@@ -8,6 +8,7 @@
     "epp",
     "edr",
     "device-control",
+    "host-firewall",
     "dfir",
     "ti",
     "browser-protection",
@@ -27,7 +28,7 @@
     "Управління вразливостями, DLP і SOAR — в Elite (в Advanced — лише як add-on)."
   ],
   "classification": [
-    "Forensic collection — DFIR; Threat Cloud + IOC Management — кіберрозвідка; Firewall + Port Protection — «Контроль пристроїв».",
+    "Forensic collection — DFIR; Threat Cloud + IOC Management — кіберрозвідка; Port Protection — «Контроль пристроїв», Firewall — «Мережевий екран комп’ютера».",
     "Application Control, Endpoint Compliance — лише в тексті; Posture Management, DLP і XDR як add-on класом не рахуємо."
   ],
   "url": "https://sc1.checkpoint.com/uc/pdf/Har_EP_Pricing_Packages.pdf"

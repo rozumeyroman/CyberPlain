@@ -1,0 +1,4 @@
+{
+  "simple": "A firewall on the computer or server itself: decides who the device may connect to over the network and who may connect to it — so an attacker can’t hop from one infected computer to its neighbours, and a program can’t open an unnecessary connection to the outside.",
+  "risk": "From one infected computer, an attacker freely connects to neighbouring machines through remote access and shared folders, and malware opens connections to anywhere."
+}

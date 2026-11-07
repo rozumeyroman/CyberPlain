@@ -8,6 +8,7 @@
     "epp",
     "edr",
     "device-control",
+    "host-firewall",
     "encryption"
   ],
   "summary": "Palo Alto Networks Cortex XDR Pro per Endpoint: запобігання атакам плюс виявлення, розслідування й реагування на комп’ютерах і серверах.",

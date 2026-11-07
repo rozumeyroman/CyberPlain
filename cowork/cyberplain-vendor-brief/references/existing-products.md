@@ -40,9 +40,9 @@
 | `checkpoint-harmony-email-complete` | Check Point Harmony Email Complete Protect | Harmony Email & Collaboration · Email Complete | email, sandbox, ueba, dlp |
 | `checkpoint-harmony-email-collaboration-advanced` | Check Point Harmony Email & Collaboration Advanced Protect | Harmony Email & Collaboration · E&C Advanced | email, sandbox, ueba |
 | `checkpoint-harmony-email-collaboration-complete` | Check Point Harmony Email & Collaboration Complete Protect | Harmony Email & Collaboration · E&C Complete | email, sandbox, ueba, dlp |
-| `checkpoint-harmony-endpoint-advanced` | Check Point Harmony Endpoint Advanced | Harmony Endpoint · Advanced | epp, edr, device-control, dfir, ti, browser-protection, sandbox, vpn, web-filtering |
-| `checkpoint-harmony-endpoint-complete` | Check Point Harmony Endpoint Complete | Harmony Endpoint · Complete | epp, edr, device-control, dfir, ti, browser-protection, sandbox, encryption, vpn, web-filtering |
-| `checkpoint-harmony-endpoint-elite` | Check Point Harmony Endpoint Elite | Harmony Endpoint · Elite | epp, edr, device-control, dfir, ti, browser-protection, sandbox, encryption, vm, dlp, soar, vpn, web-filtering |
+| `checkpoint-harmony-endpoint-advanced` | Check Point Harmony Endpoint Advanced | Harmony Endpoint · Advanced | epp, edr, device-control, host-firewall, dfir, ti, browser-protection, sandbox, vpn, web-filtering |
+| `checkpoint-harmony-endpoint-complete` | Check Point Harmony Endpoint Complete | Harmony Endpoint · Complete | epp, edr, device-control, host-firewall, dfir, ti, browser-protection, sandbox, encryption, vpn, web-filtering |
+| `checkpoint-harmony-endpoint-elite` | Check Point Harmony Endpoint Elite | Harmony Endpoint · Elite | epp, edr, device-control, host-firewall, dfir, ti, browser-protection, sandbox, encryption, vm, dlp, soar, vpn, web-filtering |
 | `checkpoint-quantum-spark-ngfw` | Check Point Quantum Spark NGFW | Quantum Spark · NGFW | ngfw, vpn |
 | `checkpoint-quantum-spark-ngtp` | Check Point Quantum Spark NGTP | Quantum Spark · NGTP | ngfw, web-filtering, vpn |
 | `checkpoint-quantum-spark-snbt` | Check Point Quantum Spark SNBT | Quantum Spark · SNBT | ngfw, web-filtering, sandbox, browser-protection, vpn |
@@ -58,8 +58,8 @@
 | ID | Назва | Лінійка · редакція | Класи |
 |---|---|---|---|
 | `crowdstrike-falcon-go` | CrowdStrike Falcon Go | Falcon · Go | epp, device-control |
-| `crowdstrike-falcon-pro` | CrowdStrike Falcon Pro | Falcon · Pro | epp, device-control |
-| `crowdstrike-falcon-enterprise` | CrowdStrike Falcon Enterprise | Falcon · Enterprise | epp, edr, device-control |
+| `crowdstrike-falcon-pro` | CrowdStrike Falcon Pro | Falcon · Pro | epp, device-control, host-firewall |
+| `crowdstrike-falcon-enterprise` | CrowdStrike Falcon Enterprise | Falcon · Enterprise | epp, edr, device-control, host-firewall |
 
 ## Dell Technologies (1)
 
@@ -133,11 +133,11 @@
 | `paloalto-idira-wpm` | Idira Workforce Password Management | — | password-manager |
 | `paloalto-ngts` | Palo Alto Networks Next-Gen Trust Security | Certificate Manager · Next-Gen Trust Security (SaaS) | clm |
 | `paloalto-certificate-manager-self-hosted` | Palo Alto Networks Certificate Manager, Self-Hosted | Certificate Manager · Self-Hosted | clm |
-| `paloalto-cortex-xdr-prevent` | Palo Alto Networks Cortex XDR Prevent | Cortex XDR · Prevent | epp, device-control, encryption |
-| `paloalto-cortex-xdr-pro` | Palo Alto Networks Cortex XDR Pro per Endpoint | Cortex XDR · Pro per Endpoint | epp, edr, device-control, encryption |
+| `paloalto-cortex-xdr-prevent` | Palo Alto Networks Cortex XDR Prevent | Cortex XDR · Prevent | epp, device-control, host-firewall, encryption |
+| `paloalto-cortex-xdr-pro` | Palo Alto Networks Cortex XDR Pro per Endpoint | Cortex XDR · Pro per Endpoint | epp, edr, device-control, host-firewall, encryption |
 | `paloalto-cortex-xsiam-ng-siem` | Palo Alto Networks Cortex XSIAM NG-SIEM | Cortex XSIAM · NG-SIEM | siem, ueba, soar, ndr |
-| `paloalto-cortex-xsiam-enterprise` | Palo Alto Networks Cortex XSIAM Enterprise | Cortex XSIAM · Enterprise | siem, ueba, soar, ndr, epp, edr, device-control, encryption, vm |
-| `paloalto-cortex-xsiam-premium` | Palo Alto Networks Cortex XSIAM Premium | Cortex XSIAM · Premium | siem, ueba, soar, ndr, epp, edr, device-control, encryption, vm, cnapp, cwpp, ciem, waf, ti, easm |
+| `paloalto-cortex-xsiam-enterprise` | Palo Alto Networks Cortex XSIAM Enterprise | Cortex XSIAM · Enterprise | siem, ueba, soar, ndr, epp, edr, device-control, host-firewall, encryption, vm |
+| `paloalto-cortex-xsiam-premium` | Palo Alto Networks Cortex XSIAM Premium | Cortex XSIAM · Premium | siem, ueba, soar, ndr, epp, edr, device-control, host-firewall, encryption, vm, cnapp, cwpp, ciem, waf, ti, easm |
 | `paloalto-idira-pam-saas` | Idira Privileged Access Manager SaaS | Idira Privileged Access Manager · SaaS | pam, itdr |
 | `paloalto-idira-pam-self-hosted` | Idira Privileged Access Manager Self-Hosted | Idira Privileged Access Manager · Self-Hosted | pam, itdr |
 | `paloalto-idira-secrets-manager-saas` | Idira Secrets Manager, SaaS | Idira Secrets Manager · SaaS | secrets |
@@ -184,9 +184,9 @@
 
 | ID | Назва | Лінійка · редакція | Класи |
 |---|---|---|---|
-| `sentinelone-singularity-complete` | SentinelOne Singularity Complete | Singularity · Complete | epp, edr, cwpp, device-control |
-| `sentinelone-singularity-commercial` | SentinelOne Singularity Commercial | Singularity · Commercial | epp, edr, cwpp, device-control, itdr |
-| `sentinelone-singularity-enterprise` | SentinelOne Singularity Enterprise | Singularity · Enterprise | epp, edr, cwpp, device-control, itdr, dfir |
+| `sentinelone-singularity-complete` | SentinelOne Singularity Complete | Singularity · Complete | epp, edr, cwpp, device-control, host-firewall |
+| `sentinelone-singularity-commercial` | SentinelOne Singularity Commercial | Singularity · Commercial | epp, edr, cwpp, device-control, host-firewall, itdr |
+| `sentinelone-singularity-enterprise` | SentinelOne Singularity Enterprise | Singularity · Enterprise | epp, edr, cwpp, device-control, host-firewall, itdr, dfir |
 
 ## Silverfort (4)
 
@@ -261,7 +261,7 @@
 | `trendmicro-email-core` | TrendAI Vision One Email and Collaboration Security Core | Email and Collaboration Security · Core | email, dlp, sandbox, ueba |
 | `trendmicro-email-essentials` | TrendAI Vision One Email and Collaboration Security Essentials | Email and Collaboration Security · Essentials | email, dlp, sandbox, ueba |
 | `trendmicro-email-pro` | TrendAI Vision One Email and Collaboration Security Pro | Email and Collaboration Security · Pro | email, dlp, sandbox, ueba |
-| `trendmicro-endpoint-security-core` | TrendAI Vision One Endpoint Security Core | Endpoint Security · Core | epp, device-control, dlp, web-filtering |
-| `trendmicro-endpoint-security-essentials` | TrendAI Vision One Endpoint Security Essentials | Endpoint Security · Essentials | epp, edr, device-control, dlp, web-filtering |
-| `trendmicro-endpoint-security-pro` | TrendAI Vision One Endpoint Security Pro | Endpoint Security · Pro | epp, edr, device-control, dlp, web-filtering, cwpp |
+| `trendmicro-endpoint-security-core` | TrendAI Vision One Endpoint Security Core | Endpoint Security · Core | epp, device-control, host-firewall, dlp, web-filtering |
+| `trendmicro-endpoint-security-essentials` | TrendAI Vision One Endpoint Security Essentials | Endpoint Security · Essentials | epp, edr, device-control, host-firewall, dlp, web-filtering |
+| `trendmicro-endpoint-security-pro` | TrendAI Vision One Endpoint Security Pro | Endpoint Security · Pro | epp, edr, device-control, host-firewall, dlp, web-filtering, cwpp |
 

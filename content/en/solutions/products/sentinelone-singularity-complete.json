@@ -1,5 +1,5 @@
 {
-  "summary": "SentinelOne Singularity Complete: one agent for computers, servers and cloud workloads, with AI antivirus, EDR, server and container protection, and device control.",
+  "summary": "SentinelOne Singularity Complete: one agent for computers, servers and cloud workloads, with AI antivirus, EDR, server and container protection, device control and a host firewall.",
   "value": [
     "Malware and ransomware are stopped right on the device, even without a cloud connection.",
     "Anything that gets through is visible and can be rolled back, investigated and removed.",
@@ -11,7 +11,7 @@
     "Expert threat hunting by SentinelOne and the AI SOC analyst cost extra."
   ],
   "classification": [
-    "The CWPP, device control and ITDR classes were created for the SentinelOne packages; CWPP is not CNAPP (no CSPM/IaC).",
+    "The CWPP, device control, host firewall and ITDR classes were created for the SentinelOne packages; CWPP is not CNAPP (no CSPM/IaC).",
     "Purple AI, Managed Threat Hunting and MDR are services/AI, not classes."
   ]
 }

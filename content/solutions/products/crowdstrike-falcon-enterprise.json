@@ -7,7 +7,8 @@
   "classes": [
     "epp",
     "edr",
-    "device-control"
+    "device-control",
+    "host-firewall"
   ],
   "summary": "Старший пакет CrowdStrike Falcon: антивірус нового покоління, EDR із розслідуванням і реагуванням, контроль пристроїв і мережевий екран комп’ютера.",
   "value": [

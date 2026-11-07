@@ -10,7 +10,7 @@
     "No email, browser or print control: that is DLP Endpoint Complete.",
     "No discovery of sensitive files on the computer’s disks: that is DLP Endpoint Complete.",
     "No USB drive encryption: that is Trellix File & Removable Media Protection.",
-    "No host firewall: the device control class here covers external devices only."
+    "No host firewall: external device control only."
   ],
   "classification": [
     "Blocking unauthorized devices and removable media is device control; the product has no host firewall.",

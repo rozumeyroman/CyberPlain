@@ -7,6 +7,7 @@
   "classes": [
     "epp",
     "device-control",
+    "host-firewall",
     "encryption"
   ],
   "summary": "Palo Alto Networks Cortex XDR Prevent: легкий агент для запобігання атакам на комп’ютерах і серверах — антивірус, захист від експлойтів, контроль пристроїв, мережевий екран і шифрування.",
@@ -20,7 +21,7 @@
     "Виявлення, розслідування й реагування (EDR) немає — вони в Pro per Endpoint."
   ],
   "classification": [
-    "Prevent — лише запобігання (NGAV) + Endpoint Controls: Device control і host firewall — «Контроль пристроїв», BitLocker/FileVault — шифрування; без EDR."
+    "Prevent — лише запобігання (NGAV) + Endpoint Controls: Device control — «Контроль пристроїв», host firewall — «Мережевий екран комп’ютера», BitLocker/FileVault — шифрування; без EDR."
   ],
   "url": "https://www.paloaltonetworks.com/apps/pan/public/downloadResource?pagePath=/content/pan/en_US/resources/datasheets/cortex-xdr"
 }

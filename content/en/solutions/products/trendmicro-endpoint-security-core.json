@@ -10,6 +10,6 @@
     "EDR (XDR for Endpoints) starts with Essentials; server and container protection (CWPP) is in Pro."
   ],
   "classification": [
-    "Antivirus is EPP, firewall and device control map to device control, DLP is DLP, Web Reputation is web filtering; endpoint IPS and application control stay in the text."
+    "Antivirus is EPP, device control is device control, firewall is host firewall, DLP is DLP, Web Reputation is web filtering; endpoint IPS and application control stay in the text."
   ]
 }
