@@ -1,0 +1,17 @@
+{
+  "summary": "An on-prem Forcepoint DLP module for finding sensitive data in repositories: scans file servers, mail servers, databases and collaboration systems and helps move data out of risky locations.",
+  "value": [
+    "The company knows on which servers, in which databases and folders personal and other sensitive data sits.",
+    "Sensitive files in open shared folders can be cleaned up with one click.",
+    "Discovered data becomes the basis for DLP policies for email, web and endpoints.",
+    "Easier preparation for regulatory audits."
+  ],
+  "simple": "The Discover module of on-prem Forcepoint DLP scans data at rest: file and mail servers, databases and collaboration systems (SharePoint and others) deployed in your own data center, plus supported cloud storage. It classifies findings with predefined and custom policies, supports structured and unstructured data and fingerprinting of up to 100 million files, according to the vendor. Findings can be fixed with one click (Single-click remediation). License type — IP Protection or Compliance.",
+  "notIncluded": [
+    "No control of data transfers (email, web, endpoints) — those are the Network and Endpoint modules.",
+    "No data access rights analysis or stale data cleanup (DSPM) — that is Forcepoint DSPM."
+  ],
+  "classification": [
+    "Finding and classifying sensitive data in repositories — part of DLP (the class covers “knows where sensitive data lives”)."
+  ]
+}

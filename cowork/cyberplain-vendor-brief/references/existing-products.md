@@ -75,6 +75,24 @@
 | `f5-distributed-cloud-essentials` | F5 Distributed Cloud Services Essentials | Distributed Cloud Services · Essentials | waf, ddos, dast, easm |
 | `f5-distributed-cloud-enterprise` | F5 Distributed Cloud Services Enterprise | Distributed Cloud Services · Enterprise | waf, ddos, dast, easm |
 
+## Forcepoint (13)
+
+| ID | Назва | Лінійка · редакція | Класи |
+|---|---|---|---|
+| `forcepoint-ai-agent-gateway` | Forcepoint AI Agent Gateway | — | nhi, jit, dlp |
+| `forcepoint-ddr` | Forcepoint DDR | — | dlp |
+| `forcepoint-dlp-discover` | Forcepoint DLP Discover | — | dlp |
+| `forcepoint-dlp-email` | Forcepoint DLP for Email | — | dlp |
+| `forcepoint-dlp-endpoint` | Forcepoint DLP Endpoint | — | dlp |
+| `forcepoint-dlp-network` | Forcepoint DLP Network | — | dlp |
+| `forcepoint-dlp-saas-cloud-apps-web` | Forcepoint DLP SaaS Cloud Apps & Web | — | dlp |
+| `forcepoint-dlp-saas-endpoint` | Forcepoint DLP SaaS Endpoint | — | dlp |
+| `forcepoint-dlp-suite` | Forcepoint DLP Suite | — | dlp |
+| `forcepoint-dspm` | Forcepoint DSPM | — | dlp |
+| `forcepoint-email-security` | Forcepoint Email Security | — | email, dlp |
+| `forcepoint-ngfw` | Forcepoint NGFW | — | ngfw, vpn |
+| `forcepoint-web-security` | Forcepoint Web Security | — | web-filtering |
+
 ## Fortinet (28)
 
 | ID | Назва | Лінійка · редакція | Класи |

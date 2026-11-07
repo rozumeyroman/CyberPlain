@@ -8,7 +8,7 @@
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
 модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM, NGFW, Idira (identity security) і Next-Gen Trust Security, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
-захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind, DLP Trellix (рішення автора, жовтень–листопад 2026).
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind, DLP Trellix, захист даних, вебшлюз, пошта, NGFW і шлюз AI-агентів Forcepoint (рішення автора, жовтень–листопад 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -127,6 +127,12 @@
 | Trellix Device Control | контроль пристроїв (без мережевого екрана) |
 | Trellix DLP Discover, DLP Network Prevent | DLP |
 | Trellix DLP Network Monitor | DLP (лише виявлення) |
+| Forcepoint DLP SaaS Endpoint, DLP SaaS Cloud Apps & Web, DLP for Email | DLP |
+| Forcepoint DLP Endpoint, Network, Discover, Suite (on-prem), DSPM, DDR | DLP |
+| Forcepoint Web Security | вебфільтрація |
+| Forcepoint Email Security | захист пошти, DLP |
+| Forcepoint NGFW | NGFW/IPS, VPN |
+| Forcepoint AI Agent Gateway | NHI, JIT, DLP |
 
 **EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026); контроль пристроїв ≠ мережевий екран комп’ютера (листопад 2026).**
 - `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
@@ -387,6 +393,25 @@ Data Loss Prevention Suite; Data Security Endpoint Protection Suite; Data Securi
 даних; межовий випадок). Шифрування файлу під час передачі — не `encryption`; Network Monitor — не `ndr`/`ids`, Network Prevent — не `email`/
 `web-filtering`. OCR Suite — add-on (у Data Security Suite включено); AI Data Risk Dashboard, Skyhigh Security — лише в тексті. Trellix Data
 Encryption і Database Security не додано (рішення автора).
+
+Forcepoint (таблиця пакетів DLP https://www.forcepoint.com/forcepoint-dlp-pricing, каталог https://www.forcepoint.com/product, документація
+help.forcepoint.com; листопад 2026): 13 продуктів. **Forcepoint DLP** — модулі з таблиці пакетів (вкладки DLP SaaS і On-Prem) окремими продуктами
+без лінійок, як Trellix (рішення автора): DLP SaaS Endpoint, Cloud Apps & Web, DLP for Email (модуль Email; за даташитом — і хмара, і on-prem);
+on-prem Endpoint, Network, Discover, Suite (пакет трьох модулів) — усі `dlp`. Risk-Adaptive Protection — «Add-On» у таблиці, не `ueba`; типи
+ліцензій on-prem IP Protection / Compliance — лише в тексті; DLP Cloud Applications on-prem — окрема ліцензія, не додано. Модель ліцензування
+(користувач/пристрій) у DLP не пишемо — її немає в джерелах. «Device control» у DLP Endpoint — контроль запису за вмістом, не `device-control`.
+**DSPM** (пошук, класифікація AI Mesh, права на файли, ROT) — `dlp` (як TrendAI Data Security); **DDR** (стеження за діями з файлами) — `dlp`,
+не `ueba`. **Web Security** (SWG: хмара / on-prem Content Gateway / гібрид; брошура 09.09.2026): URL-база, репутація й ACE — `web-filtering`;
+`browser-protection` не ставимо — окремої інлайн-перевірки фішингу чи захисту від введення пароля немає (рішення автора); Standard Compliance DLP —
+add-on в on-prem і гібриді, у хмарі обсяг не підтверджено — без `dlp` (рішення автора); AMDP (пісочниця), RBI (у хмарі включено лише для
+некатегоризованих сайтів), CASB — add-on. **Email Security** (апарат/VM, Azure, гібрид, хмара): `email`; DLP для пошти входить без окремої ліцензії
+(не всі опції повного DLP) — `dlp` (як FortiMail Base); AMD for Email, Hybrid Module (URL-пісочниця, phishing education), Encryption Module —
+add-on. **NGFW** (апарати 60–3500 Series, VM, керування SMC): IPS, Anti-Botnet, антивірус — `ngfw`; IPsec/TLS VPN — `vpn`; DoS на екрані —
+не `ddos`; URL Filtering і Zero-Day Sandboxing — окремі підписки; Secure SD-WAN — та сама платформа, окремим продуктом не додано.
+**AI Agent Gateway** (компонент Forcepoint AI Data Security): реєстр агентів — `nhi`, тимчасові облікові дані — `jit`, DLP-політики для агентів —
+`dlp`, аномалії агентів — не `ueba`. Не додано: Forcepoint Cloud App Security (CASB; класи дублюють DLP SaaS Cloud Apps & Web), Risk-Adaptive
+Protection, Data Classification, RBI і AMDP (add-on), AI Data Security (платформа), ZTNA і Forcepoint ONE / SSE-редакції (у каталозі немає,
+сторінка цін Forcepoint ONE — 404).
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

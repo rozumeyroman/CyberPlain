@@ -1,0 +1,20 @@
+{
+  "summary": "A gateway between a company’s AI agents and business applications: keeps a registry of agents, issues them temporary credentials, inspects the data they read and holds risky actions until a human approves them.",
+  "value": [
+    "You can see AI agents on sanctioned platforms and endpoints, and a specific person owns each one.",
+    "Agents working through the gateway get temporary, revocable credentials instead of standing passwords and tokens.",
+    "Data that agents exchange with applications is checked by the same DLP policies as for people.",
+    "Every agent action through the gateway is logged, and risky operations wait for human approval."
+  ],
+  "simple": "Forcepoint AI Agent Gateway is part of the Forcepoint AI Data Security platform. It sits between AI agents and the applications they call (as an MCP gateway; MCP is a standard protocol that AI agents use to call tools and applications): registers agents and ties them to owners, limits access to approved tools and operations only, and issues temporary, revocable credentials instead of standing ones. It inspects the data agents exchange with applications using the same data protection policies as for people, detects anomalous activity and holds flagged risky operations until approved. According to the vendor, it keeps an immutable log of every transaction (agent, the user who launched it, tool, time, policy decision) with export to CSV, JSON or PDF.",
+  "notIncluded": [
+    "Data protection for people’s interactions with AI applications is not in the gateway itself — that is Forcepoint AI Data Security / Forcepoint DLP.",
+    "Agents that call applications directly rather than through the gateway are not controlled."
+  ],
+  "classification": [
+    "Agent registry and restricting their routes — NHI (AI agents together with NHI, as with Idira Secure AI Agents).",
+    "Temporary revocable credentials instead of standing ones — JIT.",
+    "Inspecting data in agent exchanges against data protection policies — DLP.",
+    "Detecting anomalous agent activity — not UEBA, text only."
+  ]
+}

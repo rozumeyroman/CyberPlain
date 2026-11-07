@@ -1,0 +1,20 @@
+{
+  "summary": "On-prem Forcepoint DLP for workstations: an agent on the computer controls USB drives, browser, email and applications, while the management server and incidents stay in the customer’s own data center.",
+  "value": [
+    "Sensitive data does not leave computers unnoticed to USB drives, the browser, mail clients or messengers.",
+    "Sensitive files on laptops are found and moved out of risky locations.",
+    "Incidents and data copies stay in your own data center — for companies that cannot move them to the cloud."
+  ],
+  "simple": "The Endpoint module of on-prem Forcepoint DLP. The management server (Forcepoint Security Manager) and the incident database are deployed in your own data center, and an agent is installed on Windows and macOS computers. The agent controls removable media, mobile devices, browser uploads, mail clients and applications, and also finds and cleans up sensitive data on the computers themselves. According to the vendor, it includes 1,800+ predefined classifiers, templates and policies; no browser extension is needed. License type — IP Protection (with data fingerprinting, machine learning and risk-based incident ranking) or Compliance (regulatory policies only); the types cannot be mixed in one installation.",
+  "notIncluded": [
+    "No network-level control of email and web — that is Forcepoint DLP Network.",
+    "No scanning of file servers, SharePoint and databases — that is Forcepoint DLP Discover.",
+    "Cloud application control (DLP Cloud Applications) is a separate license.",
+    "The Compliance license has no data fingerprinting, machine learning classifiers or incident ranking — those are only in IP Protection."
+  ],
+  "classification": [
+    "DLP agent controlling endpoint channels with local data discovery — DLP.",
+    "“Device control” on the product page means content-based DLP control of writes to USB drives; there is no separate blocking of devices themselves in the package table — no device control.",
+    "IP Protection / Compliance license types are not separate products, text only."
+  ]
+}

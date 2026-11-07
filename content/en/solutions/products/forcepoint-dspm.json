@@ -1,0 +1,18 @@
+{
+  "summary": "Forcepoint DSPM finds and classifies sensitive data in the cloud, SaaS and your own servers, shows who has access to it and helps remove excess permissions and stale data.",
+  "value": [
+    "You can see where sensitive data lives, including forgotten copies — from file servers to Snowflake and Databricks.",
+    "Files exposed to too many people or to AI assistants are found, and access to them can be closed.",
+    "Stale and unnecessary data is deleted by rules, shrinking what can be stolen.",
+    "Audit reports for GDPR, PCI DSS and other requirements are generated automatically."
+  ],
+  "simple": "Forcepoint DSPM (Data Security Posture Management) scans structured and unstructured data in the cloud, SaaS and on-prem — from SQL and Oracle to Databricks and Snowflake — and classifies it with AI Mesh (the vendor’s own AI classification). It shows who has access to data, finds overshared files, changes permissions or moves files out of risky locations while leaving a link so workflows do not break. It finds redundant, obsolete and trivial (ROT) data and applies lifecycle rules; tracks regulatory compliance. Runs in the cloud (Forcepoint Data Security Cloud), with on-prem and air-gapped options. Together with Forcepoint DLP, it passes classification into DLP policies.",
+  "notIncluded": [
+    "No blocking of data transfers (email, web, USB) — that is Forcepoint DLP.",
+    "No continuous real-time monitoring of file activity — that is Forcepoint DDR."
+  ],
+  "classification": [
+    "Discovering, classifying and protecting sensitive data in repositories — DLP (like TrendAI Vision One Data Security with DSPM).",
+    "Data access rights analysis — not CIEM or IGA (file permissions, not cloud roles or an entitlement registry) — text only."
+  ]
+}

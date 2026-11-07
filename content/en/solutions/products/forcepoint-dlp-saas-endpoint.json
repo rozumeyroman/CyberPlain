@@ -1,0 +1,21 @@
+{
+  "summary": "Cloud Forcepoint DLP for workstations: an agent on the computer prevents sensitive data from being taken out unnoticed, with management and policies in a cloud console and no servers of your own.",
+  "value": [
+    "Sensitive files do not leave laptops unnoticed to USB drives, the browser or a mail client.",
+    "DLP starts without buying servers and without your own incident database.",
+    "Predefined policies for regulatory requirements of many countries — no need to write rules from scratch.",
+    "If other DLP SaaS modules are purchased, the same policies apply there."
+  ],
+  "simple": "The Endpoint module of the cloud version of Forcepoint DLP (on the Forcepoint Data Security Cloud platform). An agent installed on the computer inspects file content and user actions and, by policy, allows, warns, encrypts or blocks the transfer. Management, policies and incidents are in a cloud console that the vendor updates itself; no servers or hardware of your own are needed. According to the vendor, it includes 1,800+ predefined classifiers, templates and policies. The same policy applies to other DLP SaaS channels (cloud apps, web, email) if they are purchased. Risk-Adaptive Protection is a separate add-on.",
+  "notIncluded": [
+    "No control of cloud applications and web traffic — that is Forcepoint DLP SaaS Cloud Apps & Web.",
+    "No agentless outbound email inspection — that is Forcepoint DLP for Email.",
+    "No scanning of file servers and databases (data at rest) — that is Forcepoint DSPM or Discover in on-prem DLP.",
+    "Risk-Adaptive Protection (automatically tightening policies based on user risk) is a separate add-on."
+  ],
+  "classification": [
+    "DLP agent controlling endpoint channels — DLP.",
+    "USB control is content-based DLP; there is no separate blocking of devices themselves in the package table — no device control.",
+    "Risk-Adaptive Protection is an add-on (marked “Add-On” in the package table), not counted as a class."
+  ]
+}

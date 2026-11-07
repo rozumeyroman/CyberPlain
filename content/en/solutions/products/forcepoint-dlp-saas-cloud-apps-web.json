@@ -1,0 +1,20 @@
+{
+  "summary": "Cloud Forcepoint DLP for SaaS applications and web traffic: prevents uploading or sharing sensitive data in Microsoft 365, Google Workspace, unsanctioned cloud services and websites.",
+  "value": [
+    "Sensitive documents are not shared externally unnoticed in Microsoft 365, Google Workspace and other cloud services.",
+    "Data is not uploaded to unsanctioned (“shadow”) cloud services and AI applications.",
+    "Transfers of sensitive data through web forms and web uploads are blocked.",
+    "If other DLP SaaS modules are purchased, the same policies apply to email and endpoints — no separate rules per channel."
+  ],
+  "simple": "The Cloud Apps & Web module of cloud Forcepoint DLP extends the same DLP policies to cloud applications and the web channel. For sanctioned SaaS (Microsoft 365, Google Workspace and others) it works via API and proxy (CASB functionality); for unsanctioned cloud services it discovers them and prevents uploading sensitive data there (Shadow IT protection); for the web it blocks unauthorized data transfers in web traffic (Web Data Control). Management and incidents are in the same Forcepoint Data Security Cloud console as for other DLP SaaS modules.",
+  "notIncluded": [
+    "No web threat protection or category-based website filtering — that is Forcepoint Web Security.",
+    "No agent on the computer (USB, printing, clipboard) — that is Forcepoint DLP SaaS Endpoint.",
+    "No outbound email inspection — that is Forcepoint DLP for Email."
+  ],
+  "classification": [
+    "Web Data Control and Cloud SaaS app security — DLP on the web and in cloud applications — DLP.",
+    "Shadow IT discovery — text only, no separate class.",
+    "Web Data Control controls data, not websites — no web filtering."
+  ]
+}

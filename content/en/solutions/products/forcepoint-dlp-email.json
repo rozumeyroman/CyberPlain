@@ -1,0 +1,19 @@
+{
+  "summary": "Forcepoint DLP for outbound email, in the cloud or on-prem: inspects messages and attachments in Microsoft 365, Google Workspace and other mail systems and stops leaks without agents.",
+  "value": [
+    "Emails with sensitive data do not leave unnoticed — whether by accident or on purpose.",
+    "Risky emails can be encrypted, quarantined or sent to a manager for approval rather than simply blocked.",
+    "Works with Microsoft 365, Google Workspace and other mail systems without agents on devices or in mail clients.",
+    "If other DLP SaaS modules are purchased, the policies for web, cloud and endpoints are the same."
+  ],
+  "simple": "Forcepoint DLP for Email is the Email module of cloud Forcepoint DLP (DLP SaaS) in the package table; according to the datasheet it can be deployed both in the cloud and on-prem. It checks outbound emails and attachments for sensitive data and applies an action: allow, encrypt, quarantine, hold for manager approval or block. Integrates with Microsoft 365, Google Workspace and other mail platforms, works with any mail client, no agents required. According to the vendor, the cloud service runs on AWS with 99.99% availability. Policies and incidents are in a console shared with other DLP channels.",
+  "notIncluded": [
+    "No protection of inbound email against phishing, spam and malicious attachments — that is Forcepoint Email Security.",
+    "No control of web, cloud applications or endpoints — those are Forcepoint DLP SaaS Cloud Apps & Web and Endpoint (or on-prem DLP)."
+  ],
+  "classification": [
+    "DLP for outbound email with encryption, quarantine and approval — DLP.",
+    "No inbound email protection — no email security class.",
+    "“Native Device Control” from the DLP for Email datasheet (USB protection) is not listed for the Email module in the package table — no device control."
+  ]
+}

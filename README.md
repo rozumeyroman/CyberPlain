@@ -77,8 +77,8 @@
 - Список рішень — орієнтир для розмови, а не гарантія захисту. Атака може пропускати етапи
   чи йти в іншому порядку: це карта, а не маршрут.
 - Портфель рішень на сайті сформований з практичного досвіду команди, яка захищає реальні
-  інфраструктури, — це не огляд ринку. Зараз це 166 продуктів від 19 вендорів у 51 класі рішень
-  (Barracuda, Black Duck, Check Point, CrowdStrike, Dell Technologies, F5, Fortinet, Imperva,
+  інфраструктури, — це не огляд ринку. Зараз це 179 продуктів від 20 вендорів у 51 класі рішень
+  (Barracuda, Black Duck, Check Point, CrowdStrike, Dell Technologies, F5, Forcepoint, Fortinet, Imperva,
   Palo Alto Networks, Picus Security, Rapid7, Segura, SentinelOne, Silverfort, SOCRadar, Splunk,
   Teramind, Trellix, Trend Micro). Класи без продуктів теж показуються, щоб карта захисту була повною.
 - Під час першого візиту Cloudflare може показати коротку перевірку «чи ви людина» — це захист

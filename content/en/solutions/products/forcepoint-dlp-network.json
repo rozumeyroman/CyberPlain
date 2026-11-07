@@ -1,0 +1,19 @@
+{
+  "summary": "On-prem network DLP from Forcepoint: inspects email, web and FTP at the gateway and stops leaks of sensitive data over the network, including through Exchange Online.",
+  "value": [
+    "Sensitive data is inspected when it leaves by email, web or FTP.",
+    "Emails that violate policy are blocked or quarantined before they are sent.",
+    "Email from Exchange Online is inspected too, not only from the on-prem mail server.",
+    "You can see which sensitive data moves across the network."
+  ],
+  "simple": "The Network module of on-prem Forcepoint DLP controls data in motion on network channels: email (SMTP), web (HTTP/HTTPS), FTP, and content from third-party systems via ICAP. Traffic is intercepted by the Protector component (monitoring a traffic copy or acting as a blocking mail relay) and the Forcepoint Content Gateway web gateway; third-party proxies connect via ICAP. It includes Forcepoint DLP Cloud Email in Microsoft Azure for Exchange Online policies. The management server and incidents stay in your own data center. License type — IP Protection or Compliance.",
+  "notIncluded": [
+    "No agent on computers — that is Forcepoint DLP Endpoint.",
+    "No scanning of repositories and databases — that is Forcepoint DLP Discover.",
+    "No web threat protection or website filtering — that is Forcepoint Web Security."
+  ],
+  "classification": [
+    "DLP on the email, web and FTP network channels — DLP.",
+    "Content Gateway here is an inspection point for DLP, not a web filter — no web filtering."
+  ]
+}

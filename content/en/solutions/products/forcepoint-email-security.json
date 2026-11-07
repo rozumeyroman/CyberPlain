@@ -1,0 +1,21 @@
+{
+  "summary": "Forcepoint email gateway in the cloud, hybrid or on-prem: stops phishing, spam, spoofed senders and malicious attachments in inbound email and checks outbound email for data leaks.",
+  "value": [
+    "Phishing emails, “CEO” impersonation and malicious attachments are stopped at the gateway before reaching employee mailboxes.",
+    "Outbound emails with sensitive data are stopped or held by the DLP policy already included in the product.",
+    "Protection complements the built-in capabilities of Microsoft Exchange / Microsoft 365."
+  ],
+  "simple": "Forcepoint Email Security inspects inbound, outbound and internal email: phishing and business email compromise (BEC) detection, sender spoofing protection, link and attachment analysis, content filters, enforced TLS. Deployed on-prem (appliance or VMware virtual machine), in Microsoft Azure, hybrid with cloud pre-filtering or as a cloud service; integrates natively with Microsoft Exchange. DLP for the email channel is included in the product without a separate DLP license, agent or Protector; policies are in Forcepoint Security Manager. Licensed per mailbox (user).",
+  "notIncluded": [
+    "Attachment sandbox (Advanced Malware Detection for Email — Cloud / On-Premises) is an add-on.",
+    "URL sandbox, phishing education and cloud pre-filtering are in the Hybrid Module (add-on).",
+    "Advanced email encryption is the Encryption Module (add-on).",
+    "The built-in DLP does not have all options of full Forcepoint DLP — the full set is in Forcepoint DLP / DLP for Email.",
+    "DLP beyond email (web, endpoints) — that is Forcepoint DLP."
+  ],
+  "classification": [
+    "Inbound email protection against phishing, BEC and malicious attachments — email security.",
+    "Built-in DLP for the email channel — DLP (like FortiMail Base).",
+    "Sandbox is an add-on according to the documentation, not counted as a class; “phishing education” in the Hybrid Module is not security awareness training, text only."
+  ]
+}

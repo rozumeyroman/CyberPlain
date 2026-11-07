@@ -1,0 +1,19 @@
+{
+  "summary": "Forcepoint next-generation firewall with built-in IPS, VPN and SD-WAN for offices, branches and data centers; Forcepoint Secure SD-WAN is sold on the same platform.",
+  "value": [
+    "Known attacks and exploits are blocked at the network edge before reaching internal systems.",
+    "Remote workers and branches connect to the network through an encrypted tunnel.",
+    "Branches get multiple internet links with automatic failover without losing protection.",
+    "Branches and data centers are managed centrally, without configuring each firewall by hand."
+  ],
+  "simple": "Forcepoint NGFW is a firewall with deep packet inspection, TLS 1.2/1.3 decryption, built-in IPS with anti-evasion protection, Anti-Botnet, DoS protection and gateway antivirus. VPN: IPsec and TLS for site-to-site connections (hub-and-spoke, full or partial mesh) and for remote workers (Forcepoint VPN client for Windows, Android, macOS, standard IPsec clients, TLS portal). SD-WAN: multiple ISPs, application-based routing, link quality monitoring. Appliances (from 60 Series for retail stores to 3500 Series for data centers) and virtual. Management — Forcepoint Security Management Center (SMC). A ZTNA App Connector provides access to internal applications through Forcepoint’s cloud service.",
+  "notIncluded": [
+    "No URL filtering — separate URL Filtering subscription.",
+    "Sandbox (Zero-Day Sandboxing, Advanced Malware Detection) is a separate service in the cloud or on-prem."
+  ],
+  "classification": [
+    "Firewall, IPS, gateway antivirus — NGFW; Anti-Botnet on the firewall itself is also within NGFW, no web filtering (URL Filtering is a separate subscription).",
+    "IPsec/TLS VPN for remote workers and between offices — VPN.",
+    "DoS/DDoS Protection on the firewall itself is within NGFW, not DDoS protection (it does not absorb traffic before it reaches the network); URL Filtering and sandbox are separate subscriptions, not counted as classes; SD-WAN, ZTNA App Connector — text only."
+  ]
+}

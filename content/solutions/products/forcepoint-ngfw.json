@@ -1,0 +1,26 @@
+{
+  "name": "Forcepoint NGFW",
+  "vendor": "Forcepoint",
+  "classes": [
+    "ngfw",
+    "vpn"
+  ],
+  "summary": "Мережевий екран нового покоління Forcepoint з вбудованим IPS, VPN і SD-WAN для офісів, філій і ЦОД; на тій самій платформі продається Forcepoint Secure SD-WAN.",
+  "value": [
+    "Відомі атаки й експлойти блокуються на межі мережі ще до внутрішніх систем.",
+    "Віддалені працівники й філії під’єднуються до мережі зашифрованим тунелем.",
+    "Філії отримують кілька каналів інтернету з автоматичним перемиканням без втрати захисту.",
+    "Філії й ЦОД керуються централізовано, без налаштування кожного екрана вручну."
+  ],
+  "simple": "Forcepoint NGFW — мережевий екран із глибокою перевіркою пакетів, розшифруванням TLS 1.2/1.3, вбудованим IPS із захистом від обходу, Anti-Botnet, захистом від DoS і антивірусом на шлюзі. VPN: IPsec і TLS для зв’язку між офісами (зірка, повна чи часткова сітка) і для віддалених працівників (клієнт Forcepoint VPN для Windows, Android, macOS, стандартні IPsec-клієнти, TLS-портал). SD-WAN: кілька провайдерів, маршрутизація за застосунками, моніторинг якості каналів. Апарати (від 60 Series для магазинів до 3500 Series для ЦОД) і віртуальні. Керування — Forcepoint Security Management Center (SMC). Є ZTNA App Connector для доступу до внутрішніх застосунків через хмарний сервіс Forcepoint.",
+  "notIncluded": [
+    "URL-фільтрації немає — окрема підписка URL Filtering.",
+    "Пісочниця (Zero-Day Sandboxing, Advanced Malware Detection) — окремий сервіс у хмарі чи on-prem."
+  ],
+  "classification": [
+    "Мережевий екран, IPS, антивірус на шлюзі — NGFW; Anti-Botnet на самому екрані — теж у межах NGFW, вебфільтрацію не ставимо (URL Filtering — окрема підписка).",
+    "IPsec/TLS VPN для віддалених працівників і між офісами — VPN.",
+    "DoS/DDoS Protection на самому екрані — у межах NGFW, не захист від DDoS (не поглинає трафік до мережі); URL Filtering і пісочниця — окремі підписки, класом не рахуємо; SD-WAN, ZTNA App Connector — лише в тексті."
+  ],
+  "url": "https://www.forcepoint.com/resources/datasheets/forcepoint-next-generation-firewall-ngfw-datasheet"
+}

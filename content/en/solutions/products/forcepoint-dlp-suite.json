@@ -1,0 +1,19 @@
+{
+  "summary": "Complete on-prem Forcepoint DLP in one bundle: agents on computers, control of email, web and network, and discovery of sensitive data in repositories with one policy for all channels.",
+  "value": [
+    "Sensitive data is controlled at once on computers, in email, on the web and on the network.",
+    "The company sees where sensitive data lives and protects it in transit.",
+    "One policy and one incident console instead of separate tools for each channel.",
+    "Incidents and data stay in your own data center, with the option of hybrid deployment."
+  ],
+  "simple": "The Suite bundle of on-prem Forcepoint DLP combines the Endpoint (agent on computers), Network (email, web, FTP, ICAP) and Discover (repository scanning) modules to protect data at rest, in motion and in use. Policies, classifiers (1,800+ according to the vendor) and incidents are in one Forcepoint Security Manager console, the same for email, web, network, endpoints and data discovery. Supports fingerprinting of structured data up to 100 million files and hybrid deployment (some components in Azure or AWS). License type — IP Protection or Compliance.",
+  "notIncluded": [
+    "Cloud application control (DLP Cloud Applications) is a separate license and is not part of the bundle on the package page.",
+    "Risk-Adaptive Protection is a separate add-on.",
+    "No web threat or inbound phishing protection — those are Forcepoint Web Security and Email Security."
+  ],
+  "classification": [
+    "Full set of DLP channels — DLP.",
+    "Analytics Engine and Incident Risk Ranking (incident ranking in IP Protection) are part of DLP, not UEBA: text only."
+  ]
+}

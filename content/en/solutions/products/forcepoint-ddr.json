@@ -1,0 +1,18 @@
+{
+  "summary": "Forcepoint DDR continuously watches activity on sensitive files in the cloud and on endpoints and raises prioritized alerts as soon as signs of exfiltration appear.",
+  "value": [
+    "Attempts to take sensitive files out are noticed during the file activity itself, not from someone else’s breach notice.",
+    "Alerts explain what data, who and what they did with it — making false positives easier to weed out.",
+    "Each alert comes with recommended response steps.",
+    "File movement history (lineage) speeds up leak investigations."
+  ],
+  "simple": "Forcepoint DDR (Data Detection and Response) continuously tracks file activity — reads, shares, renames, moves — in cloud sources and on endpoints, classifies data with AI Mesh and detects signs of exfiltration. Alerts are prioritized by severity, with full context and recommended response steps; file movement history helps investigations. Works together with Forcepoint DSPM; on-prem, DDR is available only in some DSPM license options.",
+  "notIncluded": [
+    "No discovery or cleanup of data in repositories — that is Forcepoint DSPM.",
+    "No policy-based blocking of data transfers by email, web or USB — that is Forcepoint DLP."
+  ],
+  "classification": [
+    "Detecting attempts to exfiltrate sensitive data — DLP.",
+    "Analyzes actions on data, not the normal behavior of accounts — no UEBA, text only."
+  ]
+}

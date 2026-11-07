@@ -1,0 +1,22 @@
+{
+  "summary": "Forcepoint secure web gateway (SWG) in the cloud, hybrid or on-prem: filters sites by category and reputation, inspects web pages and files in real time and controls the use of cloud and AI services.",
+  "value": [
+    "Malicious, phishing and unwanted sites are blocked — both in the office and for remote workers.",
+    "New malicious pages not yet on any list are inspected when opened.",
+    "You can see which unsanctioned cloud and AI services employees use, and restrict them.",
+    "Access to sites and social networks is configured by group, time and quota."
+  ],
+  "simple": "Forcepoint Web Security is a secure web gateway (SWG) deployed in the cloud, on-prem (Content Gateway on an appliance or virtual machine) or hybrid (management in the office, inspection in the cloud for branches and remote workers; agent on the device). It filters sites using a URL category database and reputation, decrypts and inspects HTTPS, and the ACE (Advanced Classification Engine) analyzes page content, scripts, links and files in real time (antivirus, heuristics, reputation) — including for unknown sites. It shows and blocks unsanctioned cloud and AI applications and provides granular access rules (social networks, quotas, geo-restrictions). Licensed per user.",
+  "notIncluded": [
+    "No file sandbox — that is the Advanced Malware Detection and Protection (AMDP) add-on.",
+    "Remote browser isolation (RBI) is included only in cloud deployment and only for uncategorized sites; for the rest, separate Selective / Full Isolation licenses.",
+    "No full DLP — the Web DLP Module or Forcepoint DLP are added separately.",
+    "No full CASB for cloud applications — a separate product."
+  ],
+  "classification": [
+    "URL database, categories, reputation and ACE (real-time analysis of new pages) — web filtering; we did not find dedicated inline inspection of phishing pages or protection against password entry — no browser protection.",
+    "AMDP (sandbox), RBI with CDR, DLP module, CASB are add-ons according to the brochure, not counted as classes.",
+    "Gateway antivirus is part of web protection, not counted as a separate class.",
+    "Standard Compliance DLP is an add-on in on-prem and hybrid deployments, its scope in the cloud is not confirmed — no DLP."
+  ]
+}
