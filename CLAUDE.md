@@ -97,7 +97,8 @@ src/
   styles/tokens.css, base.css
 design/                   # референсні макети (не код сайту, див. нижче)
 cowork/                   # Claude Cowork: скіли cyberplain-analytics-brief (статті → MD-бриф) і cyberplain-vendor-brief (вендор → MD-бриф);
-                          #   згенеровані references/ обох скілів і zip у cowork/dist/ — npm run cowork:skill
+                          #   згенеровані references/ обох скілів і zip у cowork/dist/ — npm run cowork:skill; Cowork читає їх з GitHub (main),
+                          #   тож комітимо разом зі змінами; prebuild попереджає, якщо застаріли (--check)
 .claude/skills/publish-analytics/  # скіл Claude Code: MD-бриф → JSON + EN-оверлей + SVG, збірка, перевірка, коміт;
                           #   review.md — рецензія брифу 2 субагентами (sonnet), раунд 2 за потреби; формат брифу — npm run brief:check
 .claude/skills/publish-vendor/  # скіл Claude Code: бриф вендора → продукти + EN, CLAUDE.md, README; формат — npm run vendor:check
@@ -204,7 +205,7 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 - **Бриф з Cowork**: нові статті зазвичай приходять MD-брифом (формат — `cowork/cyberplain-analytics-brief/references/brief-format.md`);
   публікуємо скілом `publish-analytics`: формат — `npm run brief:check`, зміст — два рецензенти-субагенти на sonnet (протокол `publish-analytics/review.md`); фактів понад бриф
   не додаємо, зміну змісту вирішує автор. Змінилась схема аналітики, класи чи продукти — онови формат брифу
-  й шаблони, запусти `npm run cowork:skill` і нагадай автору перезавантажити zip у Cowork.
+  й шаблони й запусти `npm run cowork:skill -- --no-zip` у тому самому коміті (Cowork бере довідники з GitHub; zip перезавантажувати не треба).
 - Тон — як на решті сайту; звіти вендорів переказуємо своїми словами з посиланням на видавця, цифри — короткі й зі словами, що це
   дані вендора, а не незалежні вимірювання.
 
@@ -806,4 +807,5 @@ ABA (Attacker Behavior Analytics) — стара назва Detection Rule Libra
 - Лічильники на сайті (головна, `/vendors/`) рахуються під час збірки. Змінився список продуктів, вендорів чи класів —
   онови числа й перелік вендорів у `README.md` («Чесно про обмеження») у тому самому коміті й звір їх з `/vendors/`.
 - Нові вендори й продукти зазвичай приходять брифом з Cowork (`cowork/cyberplain-vendor-brief/references/brief-format.md`) — публікуємо
-  скілом `publish-vendor`. Змінились класи, правила портфеля чи продукти — `npm run cowork:skill` і нагадай автору перезавантажити обидва zip.
+  скілом `publish-vendor`. Змінились класи, правила портфеля чи продукти — `npm run cowork:skill -- --no-zip` і закоміть довідники разом зі змінами
+  (Cowork читає їх з GitHub; `npm run build` попереджає, якщо вони застаріли).

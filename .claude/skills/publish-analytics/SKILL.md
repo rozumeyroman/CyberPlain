@@ -112,7 +112,8 @@ description: Публікує статтю в розділі «Аналітик�
    й списки на місці. Скриншоти — лише для себе (deviceScaleFactor 1).
 3. Перевір, що стаття з'явилась у списку розділу й на `/analytics/`, а пов'язана вразливість (якщо є) показує її у
    зворотному зв'язку.
-4. `npm run cowork:skill -- --no-zip` — оновити `cowork/cyberplain-analytics-brief/references/existing.md` новою статтею.
+4. `npm run cowork:skill -- --no-zip` — оновити довідники Cowork (`existing.md` з новою статтею тощо) і закомітити їх разом зі статтею:
+   Cowork читає їх з GitHub, zip автору перезавантажувати не треба.
 
 ## 6. Коміт
 

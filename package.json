@@ -14,7 +14,8 @@
     "cowork:skill": "node scripts/cowork-skill.mjs",
     "brief:check": "node scripts/check-brief.mjs",
     "vendor:check": "node scripts/check-vendor-brief.mjs",
-    "og:analytics": "node scripts/og-analytics.mjs"
+    "og:analytics": "node scripts/og-analytics.mjs",
+    "prebuild": "(node scripts/cowork-skill.mjs --check || true)"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
