@@ -1,0 +1,20 @@
+{
+  "summary": "A deception platform for the internal network: fake servers, services, web applications, industrial controllers and lures on real computers. For companies with IT and OT networks, SOCs and MSSPs.",
+  "value": [
+    "An attacker who is already inside the network becomes visible early — as soon as they touch a decoy.",
+    "An alert from a decoy is a rare and strong signal: the vendor claims a very low false-positive rate, so the SOC does not drown in noise.",
+    "Stolen passwords and attempts to move across the network become a signal instead of a silent attack step.",
+    "Industrial (SCADA/OT) networks get detection: decoys imitate controllers and do not interfere with real equipment."
+  ],
+  "simple": "The platform places decoys (Points) in the network — virtual hosts with their own addresses that imitate servers, workstations, printers, databases, mail and web services, routers. For industrial networks there are decoys imitating controller web interfaces and the Siemens S7COMM, Modbus and SNMP protocols, and for IoT an MQTT server. Universal Web Point builds convincing copies of web applications already running in the network. The Seeder agent places fake files, links, SSH keys and credentials on real servers and computers (Windows, Linux) that lead the attacker to the decoys. Decoys run on Worker nodes in different segments (VLANs), while the management console (Admin VM) collects events, shows the attacker's actions and a map of attack sources, forwards data to a SIEM (syslog) and syncs the indicators of compromise it creates with security tools. Through integrations with other tools the platform can isolate a host or terminate a session. A multi-tenant mode with roles is available for MSSPs. Installed in your own infrastructure: VMware vSphere, Hyper-V, Microsoft Azure, and the management console also on KVM (Proxmox, OpenStack). Licensed by the number of network segments (VLANs) and decoys; host lures and the number of users are not licensed separately. The Seeker module, as the vendor describes it, simulates attacks to test security tools, policies and SOC response.",
+  "notIncluded": [
+    "No endpoint protection (EPP/EDR): the Seeder agent only places lures, it does not stop malware.",
+    "No standalone network blocking is described: host isolation and session termination only through integrations with other tools.",
+    "No analysis of all network traffic (NDR) — only activity against decoys and lures is visible."
+  ],
+  "classification": [
+    "Decoys, Seeder lures, Universal Web Point and OT decoys — the deception class, the main and only one.",
+    "Seeker (testing security tools with attacks) stays in the text: there is no package table and it is not confirmed whether it is part of the base license.",
+    "Automatic host isolation, IoC sync and SIEM forwarding are integrations, not EDR, SOAR or threat intelligence."
+  ]
+}

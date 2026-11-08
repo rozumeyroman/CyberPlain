@@ -8,7 +8,7 @@
 
 На сайті пакети Rapid7 Command Platform, SentinelOne Singularity, Check Point Harmony Endpoint, Silverfort,
 модулі SOCRadar XTI і продукти Segura, Dell PowerProtect Cyber Recovery, WAF Barracuda, F5, Imperva, Fortinet, платформа Picus, Palo Alto Networks Cortex XDR, XSIAM, NGFW, Idira (identity security) і Next-Gen Trust Security, Splunk Enterprise Security, CrowdStrike Falcon, а також мережеві екрани, пошта, SIEM, SOAR,
-захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind, DLP Trellix, захист даних, вебшлюз, пошта, NGFW і шлюз AI-агентів Forcepoint (рішення автора, жовтень–листопад 2026).
+захист кінцевих точок, пастки, CTEM і CNAPP Fortinet, платформа TrendAI Vision One і мережеві пристрої Trend Micro, безпека застосунків Black Duck, моніторинг дій і DLP Teramind, DLP Trellix, захист даних, вебшлюз, пошта, NGFW і шлюз AI-агентів Forcepoint, пастки Labyrinth (рішення автора, жовтень–листопад 2026).
 Класи продукту — за таблицями порівняння пакетів на сайті вендора (у `url` продукту), нічого понад них:
 
 | Продукт | Класи |
@@ -133,6 +133,7 @@
 | Forcepoint Email Security | захист пошти, DLP |
 | Forcepoint NGFW | NGFW/IPS, VPN |
 | Forcepoint AI Agent Gateway | NHI, JIT, DLP |
+| Labyrinth Deception Platform | пастки |
 
 **EPP ≠ EDR, вебфільтрація ≠ кіберрозвідка (рішення автора, жовтень 2026); контроль пристроїв ≠ мережевий екран комп’ютера (листопад 2026).**
 - `epp` — антивірус нового покоління (NGAV): блокує шкідливі файли, вимагачів, експлойти, безфайлові атаки до виконання. `edr` — постійний
@@ -412,6 +413,13 @@ add-on. **NGFW** (апарати 60–3500 Series, VM, керування SMC): 
 `dlp`, аномалії агентів — не `ueba`. Не додано: Forcepoint Cloud App Security (CASB; класи дублюють DLP SaaS Cloud Apps & Web), Risk-Adaptive
 Protection, Data Classification, RBI і AMDP (add-on), AI Data Security (платформа), ZTNA і Forcepoint ONE / SSE-редакції (у каталозі немає,
 сторінка цін Forcepoint ONE — 404).
+
+Labyrinth (https://www.labyrinth.tech/platform, даташит LDP і документ «Labyrinth Deception in a MSSP model» на it-sa 365, листопад 2026):
+редакцій і таблиці пакетів немає — один продукт Labyrinth Deception Platform, `deception` (пастки Points, приманки Seeder, Universal Web Points,
+OT/IoT-пастки S7COMM/Modbus/SNMP/MQTT). Admin VM, Worker, Points, Seeder — компоненти, не продукти. Seeker (Attack Vector Validation: перевірка
+засобів захисту, політик і SOC) — лише в тексті, доки не підтверджено, що входить у платформу без окремої ліцензії (тоді — `bas`). Ізоляція хоста /
+завершення сесії через інтеграції — не `edr` і не `soar`; власні IoC з пасток для засобів захисту — не `ti`; syslog у SIEM — лише в тексті.
+Dark Web Monitoring і Cyber Deception as a Service на сайті вендора не описані — не додано. Вендор на сайті — «Labyrinth» (як на labyrinth.tech).
 
 Silverfort (https://www.silverfort.com/pricing/): класи `ispm`, `nhi` заведено під нього. Authentication
 Firewall (сегментація доступу) — частина `itdr` (рішення автора); `itdr` доповнено D3-ST і D3-UAP. AI Agent Security — разом із NHI, лише в тексті; Identity Graph

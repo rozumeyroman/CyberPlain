@@ -133,6 +133,12 @@
 | `imperva-cloud-waf` | Imperva Cloud WAF | — | waf |
 | `imperva-waf-gateway` | Imperva WAF Gateway | — | waf |
 
+## Labyrinth (1)
+
+| ID | Назва | Лінійка · редакція | Класи |
+|---|---|---|---|
+| `labyrinth-deception-platform` | Labyrinth Deception Platform | — | deception |
+
 ## Palo Alto Networks (25)
 
 | ID | Назва | Лінійка · редакція | Класи |
