@@ -1,0 +1,221 @@
+{
+  "title": "Gartner Magic Quadrant for Hybrid Mesh Firewall: one console for the whole network",
+  "dateNote": "Vendor assessment as of June 2026; document published on 7 September 2026.",
+  "summary": "Gartner has assessed the hybrid mesh firewall (HMF) market for the second time — firewalls managed from a single cloud console across the office, the data center and the cloud. Of 12 vendors, three are named Leaders. For a customer, what matters is not the ranking but which capabilities Gartner treats as mandatory and where it sees the market's weak spots.",
+  "illustration": {
+    "alt": "Diagram: at the top, a cloud console manages four kinds of firewalls with the same rules — hardware in offices and branches, virtual in the data center, cloud in AWS, Azure or GCP and, optionally, container in Kubernetes. Below, an attacker's attempt to move from an infected laptop to the servers stops at the segment boundary. On the right, bars show how the 12 assessed vendors split: 3 Leaders, 1 Challenger, 1 Visionary and 7 Niche Players.",
+    "caption": "How a hybrid mesh firewall is built and where it stops an attack. Our diagram based on the definition and data of the Gartner Magic Quadrant for Hybrid Mesh Firewall (2026); the container firewall is dashed because Gartner does not treat it as mandatory; the quadrant graphic is not reproduced — under Gartner's rules it is distributed only by licensed vendors; the full report can be downloaded from the Check Point, Palo Alto Networks and Fortinet pages."
+  },
+  "body": [
+    "A Magic Quadrant is Gartner's annual review in which analysts place the vendors of one market on two axes: Ability to Execute (product, sales, customer experience) and Completeness of Vision (strategy, market understanding, innovation). This gives four groups: Leaders, Challengers, Visionaries and Niche Players. The 2026 edition is the second: the first came out in August 2025, and the line-up has not changed since. Under Gartner's rules the quadrant graphic is distributed only by vendors holding a reprint licence, so we do not reproduce it; the full report with the graphic can be downloaded from the Check Point, Palo Alto Networks and Fortinet pages (links in the sources), and the group membership is in the table below.",
+    "Gartner's main point: a company's network has long stopped being one network. Some systems sit in the office and the company's own data center, some in AWS, Azure or GCP, some in branches. Each environment has its own firewall, and when they are managed from different consoles, the rules drift apart. A hybrid mesh firewall is the answer: hardware, virtual and cloud firewalls from one vendor with one cloud console, a shared policy and automation. Picture a security firm guarding an office, a warehouse and an online shop: while every site has its own rulebook, some door will always be left open. HMF is one rulebook and one control desk for every post.",
+    "To be included, a vendor must have both a hardware and a cloud firewall line, a cloud manager that controls both, and earn more than 15% of the product's revenue outside its home region. Gartner also lists the market's mandatory capabilities: inspection of traffic in both directions, TLS decryption, application and URL control, built-in threat protection (IPS, sandbox, DNS protection, IoT), remote access (VPN, ZTNA), integration with CI/CD pipelines and with the network security tools of the major clouds.",
+    "What this means for defence: Gartner calls HMF one of the most important preventive controls in hybrid networks — it does not just see an attack, it stops it from going further. The main trends of the year are post-quantum encryption, mature cloud consoles, LLM assistants for administrators, AI-based threat protection, tighter integration with XDR, NDR and EDR, and security for AI use. At the same time Gartner also writes about the problems: customers make little use of AI automation, and some of them complain about firmware and support quality.",
+    "On the publisher's interest. Gartner sells research, and vendors buy rights to distribute copies (reprints) of the report for marketing. Our copy is distributed by Check Point; Palo Alto Networks and Fortinet also offer the same report for download. Gartner stresses the independence of its analysts and states that the report is the opinion of its research organisation, not statements of fact. A Magic Quadrant contains no comparative tests of performance or threat-detection quality."
+  ],
+  "method": [
+    "This is an assessment by Gartner analysts, not a measurement: vendors are weighed on 7 Ability to Execute criteria (5 are rated) and 8 Completeness of Vision criteria (7 are rated), each weighted high, medium or low.",
+    "The highest weights go to product, sales execution and pricing, customer experience, market understanding, offering (product) strategy and innovation (per Gartner's methodology).",
+    "The assessment draws on information from the vendors and on customer feedback that Gartner collects itself; the report does not state how many customers were interviewed or how they were selected.",
+    "The report contains no performance tests, threat-detection quality tests or price comparisons.",
+    "The authors are Gartner analysts Rajpreet Kaur, Adam Hils and Odie Adesina. We took our copy from the Check Point website; under Gartner's licence other Leader vendors distribute it too."
+  ],
+  "figures": [
+    {
+      "value": "12",
+      "label": "vendors assessed by Gartner in the 2026 edition; none added or dropped compared with the first edition in 2025 (per Gartner)."
+    },
+    {
+      "value": "3",
+      "label": "Leaders — Check Point, Fortinet and Palo Alto Networks; by Gartner's definition of the group, strong in both Ability to Execute and Completeness of Vision."
+    },
+    {
+      "value": "1",
+      "label": "Challenger — HPE; by Gartner's definition of the group, serve today's needs well, but their strategy does less to shape the market."
+    },
+    {
+      "value": "1",
+      "label": "Visionary — Cisco; by Gartner's definition of the group, strong vision and strategy with weaker execution."
+    },
+    {
+      "value": "7",
+      "label": "Niche Players — Forcepoint, H3C, Huawei, Sangfor Technologies, SonicWall, Sophos and WatchGuard; by Gartner's definition of the group, focused on particular use cases, regions or market segments."
+    },
+    {
+      "value": "8",
+      "label": "capabilities Gartner treats as mandatory for HMF — from TLS decryption to integration with AWS, Azure and GCP (per Gartner's definition)."
+    }
+  ],
+  "caveats": [
+    "A Magic Quadrant is the opinion of Gartner analysts, not a product test: the report contains no measurements of performance, threat-detection quality or prices.",
+    "Vendor positions are as of June 2026; vendor capabilities and plans mentioned in the report may have changed since.",
+    "The report does not disclose the number or profile of customers whose feedback was taken into account; customer complaints are presented qualitatively, without figures.",
+    "Some vendor claims about their placement («highest in Ability to Execute», «furthest in Completeness of Vision») are their own press-release wording; we do not repeat them in the article.",
+    "We do not reproduce the quadrant graphic: under Gartner's rules, a graphic that rates vendors is distributed only by vendors with a purchased licence (reprint) and without changes. We give the group membership as a table and do not carry over the positions of the dots. We relay customer feedback as Gartner presents it, in general terms and without our own assessments; we have not verified it independently.",
+    "All ATT&CK techniques in the findings are our mapping: this is a market report, not a report on a specific attack. Gartner names prompt injection without distinguishing direct (T1699) from indirect (T1698).",
+    "Gartner does not endorse any vendor, product or service depicted in its research and does not advise selecting only the vendors with the highest ratings; Gartner and Magic Quadrant are trademarks of Gartner, Inc.",
+    "Our site describes products from Check Point, Fortinet, Palo Alto Networks and Forcepoint, which appear in this review; we relay Gartner's assessments, we do not endorse them."
+  ],
+  "findings": [
+    {
+      "title": "01 · One console instead of a zoo of consoles",
+      "text": "Gartner defines HMF as a cloud service that manages hardware, virtual and cloud firewalls the same way. Customers, it observes, are moving to cloud consoles and expect them to do everything the on-premises ones did. In practice this means one security policy for the office, the data center and the cloud rather than three that drift apart over time. For example, for at least two vendors Gartner specifically notes confusion caused by several product lines with different managers — even within one vendor, «one console» does not always mean the same capabilities.",
+      "risk": "A rule closed in the office but forgotten in the cloud is an open door nobody knows about. The more consoles, the more such discrepancies, and the slower the team reacts to change.",
+      "solutions": [
+        {
+          "why": "A firewall with a single cloud console applies one policy to hardware, virtual and cloud instances. It works only if every environment has really been moved under that console rather than left with separate local managers."
+        },
+        {
+          "why": "Shows which cloud resources in AWS, Azure or GCP are not covered by a firewall at all and where network access settings are broader than needed. It sees only the cloud accounts it has been connected to."
+        },
+        {
+          "why": "Safely runs the same simulated attacks in different environments and shows where a policy that is identical on paper actually lets traffic through. It checks only the scenarios that have been run."
+        }
+      ]
+    },
+    {
+      "title": "02 · Traffic decryption is mandatory, but it has a cost",
+      "text": "Gartner includes TLS (HTTPS) decryption among the mandatory capabilities: without it, a firewall sees where a connection goes but not what is inside. At the same time, customers of at least one of the Leaders, according to Gartner, report that some security features on hardware firewalls — especially TLS decryption — consume more performance than usual. As a result they have to move to a larger model, which raises costs.",
+      "risk": "If decryption is off, a malicious file or a connection to a command server passes through the firewall encrypted and unnoticed. If it is turned on without spare capacity, the network slows down and it gets turned off again.",
+      "solutions": [
+        {
+          "why": "Decrypts HTTPS and applies IPS and application control to the content, so it sees and blocks malicious content in encrypted traffic. It works only if decryption is enabled for the relevant categories and the model has enough capacity."
+        },
+        {
+          "why": "Blocks connections to known malicious domains by DNS query and reputation before the encrypted channel is even established. It will not help against a new, not yet known domain."
+        },
+        {
+          "why": "Opens downloaded files in an isolated environment and watches their behaviour. It gets a file from HTTPS only when the firewall has decrypted it."
+        },
+        {
+          "why": "Spots suspicious encrypted connections by metadata — regular «calls» outward, unusual volumes, atypical certificates — without decryption. It needs a copy of traffic from key network segments."
+        }
+      ]
+    },
+    {
+      "title": "03 · Segmentation is the main barrier to moving through the network",
+      "text": "Gartner explicitly calls HMF the primary means of network segmentation — dividing the network into zones between which traffic is allowed only by rules. It is a preventive defence against an attacker moving between segments. Cloud and container firewalls bring the same logic to east-west traffic (between servers) inside the data center and the cloud. Gartner classes microsegmentation (rules between individual servers or workloads) as an advanced HMF use case.",
+      "risk": "In a flat network, one infected laptop is a path to the accounting servers, the customer database and the backups. Segmentation turns one successful attack into an incident in one zone instead of downtime for the whole company.",
+      "solutions": [
+        {
+          "why": "A firewall between zones lets through only permitted connections, so RDP or SMB from a workstation to the server segment is not established unless a rule allows it. It works if the rules between zones are narrow rather than «everything allowed inside»."
+        },
+        {
+          "why": "A firewall on the server or computer itself allows connections only to the hosts that need them — microsegmentation at the level of a single machine. It works where the agent is installed or the OS firewall is enabled and the rules are actually narrowed."
+        },
+        {
+          "why": "Sees scanning and connection attempts between segments, including those the firewall allowed, and raises an alert on an unusual route. It needs visibility of traffic inside the segments."
+        },
+        {
+          "why": "Fake servers in every segment catch someone who is already inside and looking for where to go next: ordinary employees do not touch them. Useful only if the decoys are placed in the zones the attack path leads through."
+        },
+        {
+          "why": "Regularly walks through the network as an attacker would and shows from which segment there is a path to which valuable systems. It blocks nothing itself — it shows where rules need narrowing."
+        }
+      ]
+    },
+    {
+      "title": "04 · AI security moves to the network level",
+      "text": "Gartner highlights three scenarios in which HMF vendors build security for AI: control of employees' use of AI services, protection of AI applications at runtime (including against prompt injection) and protection of the infrastructure those applications run on (containers, virtual machines, clusters). Among the market's optional capabilities are discovering and logging AI application use, blocking data transfer to them and analysing traffic between AI agents and services (MCP, A2A — protocols AI agents use to talk to tools and to each other). Vendors' maturity in these capabilities varies.",
+      "risk": "An employee pastes a contract or a customer database into a public chatbot — and the data has already left the company. An internal AI assistant that was fed a malicious instruction in a document may send data out on its own.",
+      "solutions": [
+        {
+          "why": "Recognises requests to AI services by category and allows only approved ones, blocking the rest. It sees specific actions within a service only with HTTPS decryption enabled."
+        },
+        {
+          "why": "Recognises confidential data in content going to an AI service and prevents it from being sent. It needs sensitive data types to be defined in advance and access to decrypted traffic."
+        },
+        {
+          "why": "Sits in front of the company's own AI application and filters out requests containing prompt injection attempts. It does not see a malicious instruction the agent reads by itself in a document or web page."
+        },
+        {
+          "why": "Application control distinguishes individual AI services and their functions (for example, file upload) and applies rules to them. It works only for services the vendor can already recognise."
+        },
+        {
+          "why": "An agent on the servers, virtual machines and containers that run AI applications watches processes at runtime and blocks suspicious actions. It does not see prompt content — only what happens on the machine itself."
+        }
+      ]
+    },
+    {
+      "title": "05 · Post-quantum encryption is already on roadmaps",
+      "text": "Gartner observes that HMF vendors are actively adding post-quantum cryptography (PQC) — encryption algorithms meant to withstand attacks by future quantum computers. The common approach is NIST-standardised algorithms (including ML-KEM) in VPN, IPsec and SD-WAN tunnels in «hybrid» mode: classical and post-quantum encryption together, so as not to break compatibility with older equipment. At least one vendor can already find systems in the network whose cryptography is weak against quantum attacks. Vendors' readiness varies.",
+      "risk": "Encrypted traffic intercepted today may be decrypted years from now, once sufficiently powerful quantum computers appear (this is our explanation of a well-known risk, not a point made in the report). For data that must stay secret for decades, it is worth planning the transition now.",
+      "solutions": [
+        {
+          "why": "Builds an inventory of certificates in the network and shows which algorithms are used where — the starting point for a PQC transition plan. It covers only the systems connected to the inventory."
+        },
+        {
+          "why": "VPN tunnels between offices and for remote workers are the first place vendors turn on hybrid post-quantum encryption. It protects only traffic inside the tunnel and only if both ends support PQC."
+        }
+      ]
+    },
+    {
+      "title": "06 · Everyone has AI assistants, but hardly anyone uses them",
+      "text": "An LLM assistant for administrators — a chat that understands requests in plain language — is offered by every one of the 12 vendors in the review, but their maturity varies widely. They can analyse policy, find rule conflicts and help with troubleshooting. However, according to Gartner, customers hardly use these features in day-to-day work — so the chance to use them to clean up unneeded rules goes unused.",
+      "risk": "Rules pile up over years — temporary access for contractors, duplicates, broad «just in case» permissions. Every forgotten rule is a potential passage that even the administrator does not know about.",
+      "solutions": [
+        {
+          "why": "Checks that the firewall really blocks typical attacks after every rule change and shows where the policy has drifted. It does not remove unnecessary rules itself — it only proves which of them are dangerous."
+        },
+        {
+          "why": "Finds real paths through the network opened by an overly broad rule and shows which rule to narrow first. The result is useful only if it reaches the firewall owner."
+        }
+      ]
+    },
+    {
+      "title": "07 · The firewall itself is a target",
+      "text": "Gartner cites customer feedback on the quality of several vendors, Leaders included. Customers complain about bugs and unstable firmware, frequent updates and dissatisfaction with technical support; some feel that publications about vulnerabilities already being exploited hurt the vendor's brand. For at least one vendor, customers name firmware bugs and slow support as the main reasons they leave it. This is customer feedback gathered by Gartner; we have not verified it independently.",
+      "risk": "A firewall chosen «to tick a box» or bundled with network equipment, without checking firmware quality, patch speed and support, becomes the weak link right at the network edge. Product quality and customer experience are among the criteria Gartner weights highest, and, according to its data, firmware and support problems can be a reason customers leave a vendor.",
+      "solutions": [
+        {
+          "why": "Finds firewalls and VPN gateways with vulnerable firmware versions and shows what to update first. It sees only the devices the scanner can reach."
+        },
+        {
+          "why": "Access to specific systems through a ZTNA gateway instead of a VPN portal exposed to the internet reduces the number of entry points that can be exploited or brute-forced. It helps only if the old VPN portal is actually switched off — the ZTNA gateway itself also sits at the network edge and needs updates."
+        },
+        {
+          "why": "Sees from the outside which of the company's management panels and VPN portals are exposed to the internet — the same view as an attacker looking for a target. It does not assess whether a device is already compromised."
+        },
+        {
+          "why": "A second factor on the VPN portal prevents logging in with a stolen password alone. It does not protect against vulnerabilities that bypass authentication."
+        },
+        {
+          "why": "Collects the firewall's own logs and spots unusual administrator logins, configuration changes and reboots. It works if the firewall's logs are shipped off the device rather than kept only on it."
+        }
+      ]
+    },
+    {
+      "title": "08 · The value is in pairing with XDR, NDR and EDR",
+      "text": "Gartner notes the market's move toward tighter integration of firewalls with detection and response systems — XDR, NDR and EDR, as well as SOAR for automatic containment. The firewall sees the network, the agent on the computer sees processes; together they give a fuller picture of an attack and allow it to be blocked in several places at once. For several vendors Gartner specifically praises such built-in pairing.",
+      "risk": "When the firewall and the agents on computers do not exchange data, an analyst pieces together the attack by hand, and while they do, the attacker moves on.",
+      "solutions": [
+        {
+          "why": "The agent on the computer sees which process opened the suspicious connection the firewall stopped, and can isolate the machine. It works only where the agent is installed."
+        },
+        {
+          "why": "Complements the firewall with behavioural analysis of traffic inside the network where there is no firewall. It needs a copy of traffic from the relevant segments."
+        },
+        {
+          "why": "Combines alerts from the firewall, EDR and NDR into a single incident story. It is only as useful as the log sources connected to it are complete."
+        },
+        {
+          "why": "On a signal from EDR or NDR, automatically adds a blocking rule to the firewall or isolates the machine. It needs response playbooks agreed in advance."
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "Microsegmentation: rules between individual servers and workloads in the data center and cloud. Gartner treats it as an advanced HMF use case; a host firewall covers part of it, but our portfolio has no dedicated class for microsegmentation platforms that map flows between workloads.",
+    "Regular firewall rule review: a process in which the owner of each rule periodically confirms it is still needed. This is a discipline, not a product.",
+    "A post-quantum cryptography migration plan: inventory, priorities, a hardware replacement schedule. This is a project and a process; a product only helps with the inventory.",
+    "Sizing for TLS decryption: the firewall model is chosen for the load with inspection turned on, not for raw throughput. This is a design and procurement question.",
+    "SD-WAN for branches: Gartner writes a lot about combining routing and security in branches, but there is no dedicated class in the portfolio."
+  ],
+  "questions": [
+    "How many different consoles do you use to manage firewalls in the office, the data center and the cloud — and when did you last check that their rules match?",
+    "Do you decrypt HTTPS on the firewall? If not, what stands in the way: performance, legal questions, complexity?",
+    "If an accountant's laptop were infected tomorrow, which servers could an attacker reach without any barrier?",
+    "Do you know which AI services your employees use and what exactly they upload to them?",
+    "How quickly after a vendor advisory do you update firewall and VPN gateway firmware — and are their management panels visible from the internet?"
+  ]
+}

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+<defs>
+<marker id="hmf-md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fd" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="hmf-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="b-def" x="152" y="24" width="264" height="56" rx="4"/>
+<text class="k td" x="284" y="48" font-size="12" text-anchor="middle">CLOUD CONSOLE</text>
+<text class="ts" x="284" y="68" font-size="12" text-anchor="middle">one policy for all</text>
+<line class="ld" x1="284" y1="80" x2="80" y2="142" marker-end="url(#hmf-md)"/>
+<rect class="b-def" x="16" y="144" width="128" height="72" rx="4"/>
+<text class="tm" x="80" y="170" font-size="13" text-anchor="middle">hardware</text>
+<text class="ts" x="80" y="190" font-size="11" text-anchor="middle">office & branches</text>
+<line class="ld" x1="284" y1="80" x2="216" y2="142" marker-end="url(#hmf-md)"/>
+<rect class="b-def" x="152" y="144" width="128" height="72" rx="4"/>
+<text class="tm" x="216" y="170" font-size="13" text-anchor="middle">virtual</text>
+<text class="ts" x="216" y="190" font-size="11" text-anchor="middle">own data center</text>
+<line class="ld" x1="284" y1="80" x2="352" y2="142" marker-end="url(#hmf-md)"/>
+<rect class="b-def" x="288" y="144" width="128" height="72" rx="4"/>
+<text class="tm" x="352" y="170" font-size="13" text-anchor="middle">cloud</text>
+<text class="ts" x="352" y="190" font-size="11" text-anchor="middle">AWS · Azure · GCP</text>
+<line class="ld dash" x1="284" y1="80" x2="488" y2="142" marker-end="url(#hmf-md)"/>
+<rect class="b-dash" x="424" y="144" width="128" height="72" rx="4"/>
+<text class="tm" x="488" y="170" font-size="13" text-anchor="middle">container</text>
+<text class="ts" x="488" y="190" font-size="11" text-anchor="middle">Kubernetes</text>
+<text class="ts" x="488" y="206" font-size="11" text-anchor="middle">optional</text>
+<text class="k td" x="16" y="104" font-size="11">SAME RULES</text>
+<line class="lg" x1="16" y1="240" x2="552" y2="240"/>
+<text class="k" x="16" y="264" font-size="11">SEGMENTATION</text>
+<rect class="b-att" x="16" y="296" width="168" height="48" rx="4"/>
+<text class="ta" x="100" y="325" font-size="13" text-anchor="middle">infected laptop</text>
+<rect class="b" x="400" y="296" width="152" height="48" rx="4"/>
+<text class="tm" x="476" y="325" font-size="13" text-anchor="middle">server segment</text>
+<line class="la dash" x1="184" y1="320" x2="352" y2="320" marker-end="url(#hmf-ma)"/>
+<text class="ta" x="192" y="308" font-size="11">lateral movement attempt</text>
+<line class="ld" x1="368" y1="280" x2="368" y2="360"/>
+<line class="ld" x1="358" y1="310" x2="378" y2="330"/>
+<line class="ld" x1="378" y1="310" x2="358" y2="330"/>
+<text class="k td" x="368" y="380" font-size="11" text-anchor="middle">segment boundary</text>
+<line class="lg" x1="576" y1="24" x2="576" y2="376"/>
+<text class="k" x="600" y="48" font-size="11">12 VENDORS · 2026</text>
+<text class="tm" x="600" y="88" font-size="13">Leaders</text>
+<text class="k" x="784" y="88" font-size="12" text-anchor="end">3</text>
+<rect class="b" x="600" y="98" width="184" height="12" rx="2"/>
+<rect class="fg" x="600" y="98" width="78" height="12" rx="2"/>
+<text class="tm" x="600" y="144" font-size="13">Challengers</text>
+<text class="k" x="784" y="144" font-size="12" text-anchor="end">1</text>
+<rect class="b" x="600" y="154" width="184" height="12" rx="2"/>
+<rect class="fg" x="600" y="154" width="26" height="12" rx="2"/>
+<text class="tm" x="600" y="200" font-size="13">Visionaries</text>
+<text class="k" x="784" y="200" font-size="12" text-anchor="end">1</text>
+<rect class="b" x="600" y="210" width="184" height="12" rx="2"/>
+<rect class="fg" x="600" y="210" width="26" height="12" rx="2"/>
+<text class="tm" x="600" y="256" font-size="13">Niche Players</text>
+<text class="k" x="784" y="256" font-size="12" text-anchor="end">7</text>
+<rect class="b" x="600" y="266" width="184" height="12" rx="2"/>
+<rect class="fg" x="600" y="266" width="182" height="12" rx="2"/>
+</svg>

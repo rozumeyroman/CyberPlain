@@ -18,6 +18,7 @@
 ## Звіти
 
 - `rapid7-q3-threat-landscape-2026` (2026-10-21) — Квартальний огляд загроз Rapid7 за III квартал 2026: три дні до атаки · Rapid7
+- `gartner-mq-hybrid-mesh-firewall-2026` (2026-09-07) — Magic Quadrant Gartner для гібридних mesh-фаєрволів: один пульт на всю мережу · Gartner
 - `picus-post-mythos` (2026-04) — Виживання в епоху після Mythos: практичний посібник · Picus Security
 - `picus-blue-report-2026` (2026) — Blue Report 2026: де захист справді працює, а де лише здається, що працює · Picus Security
 
