@@ -1,0 +1,187 @@
+{
+  "title": "ARTEX: an AI pentest tool turned weapon — what defenders need to know",
+  "summary": "SOCRadar has collected in one overview everything threat intelligence vendors have published about ARTEX, an open-source AI penetration testing framework used by several independent groups since late August 2026. ARTEX does not create new vulnerabilities: it exploits old ones at machine speed — excessive permissions, unrotated keys, exposed services, weak passwords. If you closed them in advance, to the agent you are a target where nothing worked.",
+  "illustration": {
+    "alt": "Diagram: one operator sets a goal, and a loop of AI agents (plan, act, result, new wave) attacks five basic weaknesses in parallel — third-party apps with permissions, old keys and unsigned SAML, web apps on the perimeter, weak passwords and the path to domain admin rights. Next to each weakness are the solution classes that close it. At the bottom are examples of attack tempo from primary sources.",
+    "caption": "How ARTEX scales old weaknesses and where to close them. Our diagram based on the SOCRadar overview and reports by CrowdStrike, Microsoft, Google/Mandiant and Wiz; the mapping to solution classes is editorial."
+  },
+  "body": [
+    "ARTEX appeared on GitHub in July 2026 as a tool for training and authorized penetration testing. The operator sets a goal, and a team of AI agents plans, scans, exploits what it finds, reads the results and decides what to do next on its own. What sets it apart from ordinary scanners is this feedback loop: the agent does not follow a fixed script, it tries another path when one fails. That is why a single operator can run parallel intrusions into hundreds of targets.",
+    "Within a few weeks the tool surfaces in four groups of events that SOCRadar brings together: customer data leaks at South Korean banks, the Vapor Panda espionage campaign against more than 200 organizations, the compromise of the vendor ConnectWise followed by attempts to sign in to more than 2,250 Microsoft 365 tenants (Storm-0940), and attacks on Japanese companies and a Korean criminal group with 8.2 million stolen records. An important caveat from SOCRadar itself: apart from the shared tool, no vendor has linked these groups to one another.",
+    "Victims known by name are few. The most prominent is WorkOS, a provider of sign-in (SSO) and user management services for technology companies. On 30 October 2026 the company detected unauthorized access to an internal sales application: the attacker obtained business contacts from the CRM, customer account histories and excerpts from sales and support conversations. According to the WorkOS founder, the attacker's requests carried signs of ARTEX; production services and customer application data, the company says, were not affected, and WorkOS does not name who was behind the attack. Data like this is ready-made material for targeted phishing against the company's customers.",
+    "In South Korea, from late September to early October, incidents were recorded at banks, savings banks, insurance and capital companies, electronic payment services and virtual asset providers; as of 14 October, according to AhnLab, financial regulators counted 16 such companies. SecurityAffairs separately reports leaks at seven financial institutions — roughly 66,000–67,000 people and about 2,200 companies whose employment, income and loan data were exposed. This is a different story from the group of seven people reported by the Seoul police: according to the police, the group used ARTEX to attack more than 90 organizations — schools, hospitals, large companies and golf courses — and stole about 8.2 million records.",
+    "In the large campaigns victims are not named; only industries are known. Vapor Panda, according to CrowdStrike, targeted telecom providers, ministries, pharmaceutical and semiconductor companies, defense contractors and financial institutions. UNC7228, according to Google and Mandiant, targeted enterprise software developers, industrial automation, semiconductor manufacturers and telecoms in the US and Europe. Microsoft stresses that a sign-in attempt, or even a successful application authentication, does not mean data was accessed — so 2,250+ ConnectWise tenants are not 2,250 victims.",
+    "The main thesis of the report is that “there is no patch for ARTEX”. It has no CVE because it is not a flaw but a dual-use tool. Defense means closing the same basic weaknesses the agents exploit: third-party apps with granted permissions, keys and certificates that have not been changed for years, SAML without signature validation, access to cloud metadata, XML parsers that read external entities, exposed management panels, weak passwords and Active Directory secrets.",
+    "The second thesis is to catch the tempo, not the addresses. Attacker infrastructure changes quickly, so individual indicators go stale fast. The agent, however, leaves a “machine signature”: sign-in attempts exactly once a second, waves of 20–60 minutes, dozens of cloud permission calls within seconds, sudden new application credentials and new roles.",
+    "To be fair about the publisher: SOCRadar sells threat intelligence and external attack surface management, and the overview promotes seven of its modules. The overview contains almost no measurements of its own — it is a compilation of reports by CrowdStrike, Microsoft, Google and Mandiant, Wiz, Recorded Future, GMO and others. We checked the key figures against primary sources and found several discrepancies — they are listed under “Caveats”."
+  ],
+  "method": [
+    "SOCRadar has practically no measurements of its own: the overview retells publications by CrowdStrike, Microsoft Threat Intelligence, Google Threat Intelligence Group and Mandiant, Wiz, Recorded Future, GMO Cybersecurity by Ierae, AhnLab, Theori, and the Seoul police (via the media).",
+    "The only figure of its own is SOCRadar telemetry: over 12 weeks ARTEX ranks fifth by share of hosts among the ten most common AI agent frameworks. The methodology is not disclosed.",
+    "The MITRE ATT&CK mapping is SOCRadar's own mapping based on vendor reports, not data from those vendors.",
+    "Figures in different primary sources are measured differently (targets ≠ victims, IPs ≠ instances), and SOCRadar mixes them in places — see “Caveats”.",
+    "The publisher sells threat intelligence, dark web monitoring and EASM — products of the same classes the overview recommends."
+  ],
+  "figures": [
+    { "value": "200+ organizations, 14+ countries, 11 days", "label": "attacked, according to CrowdStrike, by a single Vapor Panda ARTEX controller from 17 October 2026; confirmed intrusion at 9 of them" },
+    { "value": "2,250+ tenants", "label": "of Microsoft 365 that, according to Microsoft, Storm-0940 tried to sign in to using stolen credentials of the ConnectWise Cloud Backup application" },
+    { "value": "< 3 hours", "label": "the time in which, according to Microsoft, Storm-0940 in several cases went from choosing a target to privileged cloud access" },
+    { "value": "27 events in 23 seconds", "label": "a burst of AWS permission calls recorded by Google and Mandiant — an example of the agent's “machine tempo”" },
+    { "value": "8.2 million records", "label": "stolen, according to the Seoul police as retold by SOCRadar, by a group of seven people using ARTEX" },
+    { "value": "16 financial companies", "label": "counted as of 14 October 2026, according to AhnLab, by South Korean regulators among those hit by attacks using ARTEX" },
+    { "value": "5 minutes", "label": "the time in which, in one case according to Microsoft, an AI agent went from searching GitHub for secrets to stealing data from Azure Key Vault" }
+  ],
+  "caveats": [
+    "The overview is a compilation of other parties' reports; SOCRadar has almost no measurements of its own. The publisher sells products of the classes it recommends.",
+    "In SOCRadar the figure of 2,900 failed sign-ins per minute appears next to the 2,250+ tenants. According to Microsoft, it refers to a separate password spraying campaign on 10–14 October against 327 accounts in eight organizations, with no successful sign-ins.",
+    "Vapor Panda and Storm-0940 are different groups: CrowdStrike explicitly calls its campaign separate. Cybersecurity Dive mistakenly writes that Vapor Panda is also tracked as Storm-0940.",
+    "Korean criminal group: according to SOCRadar it attacked more than 90 organizations and breached about 60; Aviatrix writes of more than 90 breached, and its ransom figures do not add up. The attacks on Korean banks (unknown actor, TAG-217 according to Recorded Future) are a separate story; victim counts in SOCRadar (25,000 / 119 / 89 by bank) and in Zscaler (~67,000 people) do not reconcile.",
+    "The number of ARTEX instances is measured differently by different sources: Check Point — 1,608 live and 2,557 systems in total (“more than 1,800” in the summary), AhnLab — about 600 IPs, an individual researcher — more than 3,600.",
+    "Check Point gives the date the code was closed as both 8 September and 8 October; the other sources say 8 October.",
+    "The degree of autonomy is described differently: Check Point — almost full autonomy once the goal is set; CrowdStrike and the SOCRadar FAQ — a human steers at key points. The two descriptions refer to different campaigns.",
+    "Attributions are vendor assessments (CrowdStrike, Microsoft, Recorded Future), not findings of government agencies.",
+    "On WorkOS — per the company and its founder as reported by the media; WorkOS does not name the attack's operator and has promised a full investigation report later.",
+    "After the overview, Microsoft published two more reports: on 5 November about searching GitHub for secrets, and on 6 November about the financially motivated group Storm-3358. SOCRadar does not cover them.",
+    "We deliberately present the Active Directory section in general terms, without listing techniques; technique IDs appear only in the table.",
+    "Known victims: we list only those for which there is a primary source or a statement by the company itself. An industry in a campaign's target list does not mean a specific company was breached."
+  ],
+  "findings": [
+    {
+      "title": "01 · An attack at machine speed: hours instead of weeks",
+      "text": "Agents work around the clock, try several paths at once and move to the next step as soon as they get a result. According to Microsoft, Storm-0940 in several cases reached privileged cloud access in under three hours; Google and Mandiant saw the path from the first account to deep access take about four hours, and in one case 15 minutes. CrowdStrike describes how one person ran parallel operations against more than 200 organizations, stepping in only at key points. Analogy: a burglar used to go down the street house by house; now he has a swarm of drones trying every door handle at once.",
+      "risk": "If alerts are reviewed the next morning, the agent has time to get from entry to admin rights and dig in before the first response. Manual response simply cannot keep up with this tempo.",
+      "solutions": [
+        { "why": "Blocks an account, revokes a session or isolates a server from a prepared playbook seconds after an alert, not hours. Works only if the playbooks are written in advance and allowed to act without manual approval in obvious cases." },
+        { "why": "Correlates sign-in, cloud API and network events into one sequence and spots the burst itself — dozens of actions per second from one entity. Google and Mandiant recommend a baseline by identity, source and volume; without it a burst cannot be told from normal activity." },
+        { "why": "Sees privilege escalation and unusual sign-ins to the user directory in real time and can block the account immediately. Covers only the directories (AD, Entra, Okta) it is connected to." }
+      ]
+    },
+    {
+      "title": "02 · A third-party app with permissions — a door into hundreds of companies at once",
+      "text": "According to Microsoft, Storm-0940 obtained the credentials of ConnectWise Cloud Backup (formerly SkyKick) applications that customers had already granted access to their Microsoft 365 tenants. No interactive user sign-in was needed: the agents authenticated as the trusted application, and in some environments went on to explore the directory through Microsoft Graph, add new credentials to applications and change roles and groups. Microsoft warns that such changes can remain a backdoor even after the original application is disabled. On 17 October ConnectWise disabled seven application identities. Analogy: you gave a cleaning company a key to your office; someone stole the keys from their cabinet — and opens hundreds of offices with them, while security sees the familiar cleaner.",
+      "risk": "An application with permissions to mail and the directory gives access to correspondence and data without any employee password — bypassing MFA. New credentials added by the attacker will survive “disabling” the compromised vendor.",
+      "solutions": [
+        { "why": "Finds third-party and multi-tenant applications in the cloud directory with excessive or unused permissions — they can be trimmed before the vendor is breached. Requires access to the directory (for example, Entra ID) and an owner's decision on which permissions are really needed." },
+        { "why": "Shows which cloud permissions application identities hold and which of them go unused — they can be trimmed before the vendor is breached. Sees only connected cloud accounts and directories; the owner decides which permissions are needed." },
+        { "why": "Learns where a service identity usually signs in from and to, and spots or blocks its sign-in from unfamiliar infrastructure. Works if the solution covers cloud application identities, not just AD service accounts." },
+        { "why": "Spots new application secrets or certificates, owner changes and sudden role assignments in the directory — exactly the changes Microsoft calls persistence. Requires a connection to the cloud directory audit log." },
+        { "why": "Watches vendors from the outside and warns about their incidents — SOCRadar offers Supply Chain Intelligence for this. Buys time to react, but does not see what is happening in your tenant." }
+      ]
+    },
+    {
+      "title": "03 · Old keys and unsigned SAML: the past comes back",
+      "text": "In the Vapor Panda case the operator gave the agent a 2022 mail server directory export with keys that had probably not been changed since; the agent forged an administrator token, read the mail, found VPN settings in it and, with a VPN client key from an old leak, reached the internal network (per CrowdStrike). At another company the agent combined an unsigned SAML assertion with an XXE flaw to query the cloud metadata service and obtain a role with administrative rights. Microsoft separately describes how ARTEX searches public GitHub repositories for application secrets; in one case five minutes passed from the search to stealing data from Azure Key Vault. Analogy: you changed the locks but did not take the spare back-door key from the former tenant.",
+      "risk": "A key or certificate that “leaked” years ago still opens mail, VPN or the cloud if it has not been changed. Deleting a secret from a repository or page does not revoke it — Microsoft advises treating such a secret as compromised.",
+      "solutions": [
+        { "why": "Removes keys and passwords from code and configurations and changes them regularly — a secret found in a repository or an old export no longer opens anything. Microsoft and Google recommend short-lived credentials; the class helps only if applications have actually been moved to fetching secrets from the vault." },
+        { "why": "Keeps an inventory of certificates, including those that sign SAML, shows their age and owner, and automates replacement. It does not itself enable SAML signature validation — that is an application setting (see “Gaps”)." },
+        { "why": "Finds keys and passwords written directly into code before the code reaches the repository. Does not see secrets already sitting in old exports, backups or mail." },
+        { "why": "Warns when the company's keys, passwords or databases appear on forums and channels — in the CrowdStrike case the VPN key came from an old mail leak. Works only if the secret is actually changed after the alert." }
+      ]
+    },
+    {
+      "title": "04 · Web apps on the perimeter: XXE, web shells and cloud metadata",
+      "text": "Agents sweep internet-facing web applications en masse: Zscaler describes SQL injections and authentication bypass in auxiliary portals at Korean banks, and Check Point — admin passwords written into page code, APIs without authentication and a password file sitting in the site directory. Next, the agents install a web shell (a small script on the server that runs the attacker's commands), and through flaws like XXE (when an XML parser reads “external” files and addresses) reach for the cloud metadata service to get credentials. Analogy: the agent walks around all the ground-floor windows looking for the one held shut only by a latch.",
+      "risk": "A secondary portal nobody thinks about becomes the way into the customer database or into a cloud role with rights over thousands of servers, as in the pharmaceutical company case in CrowdStrike.",
+      "solutions": [
+        { "why": "Sits in front of the application and filters out typical web application attacks and automated scanning; the agent generates hundreds of similar requests that are visible at the WAF level. Protects only applications actually routed through the WAF and does not close logic flaws such as APIs without authentication." },
+        { "why": "Safely “attacks” your own applications and finds XXE, injections and authentication bypass before the agent does. Google recommends SAST and DAST before release; the result matters only if the findings are fixed." },
+        { "why": "Checks cloud configuration and shows where legacy metadata access without IMDSv2 is allowed. Sees only connected cloud accounts." },
+        { "why": "Finds cloud roles with excessive permissions, including the right to run commands on thousands of machines, and helps trim them — then a role stolen through metadata gives less. Works for connected cloud accounts." },
+        { "why": "Sees the web server process launching a shell or new utilities, and stops the process or isolates the server. CrowdStrike recommends the agent even on servers not reachable from the internet; without an agent on the web server this signal is lost." }
+      ]
+    },
+    {
+      "title": "05 · External surface: agents find everything you forgot to hide",
+      "text": "SOCRadar recommends prioritizing vulnerabilities from the CISA KEV catalog and removing management interfaces and container orchestration APIs from the internet. According to CrowdStrike, at one company the agent got root in a production container environment through an orchestration service without authentication; Google and Mandiant name closing consoles, admin APIs and CI/CD off from the internet as the first layer of defense. Check Point's only explicit recommendation is to check and harden everything on the perimeter. Analogy: if the door cannot be seen from the street at all, the drone swarm will not try its handle.",
+      "risk": "An agent scanning hundreds of targets will inevitably stumble upon a forgotten test server or an exposed panel — and that is where the intrusion will begin.",
+      "solutions": [
+        { "why": "Continuously searches the internet for everything that belongs to the company, including exposed panels and APIs, and shows it before the agent finds it. SOCRadar offers Attack Surface Management for this; it pays off only when the findings are taken off the internet." },
+        { "why": "Scans servers for known vulnerabilities and helps close those in CISA KEV first. Will not find assets the company does not know about — that takes EASM." },
+        { "why": "Hides internal applications and admin interfaces behind Zero Trust access, so they cannot be seen from outside for scanning. This is exactly what Zscaler recommends; works for applications that do not have to be public." },
+        { "why": "Regularly walks the attacker's path from a found entry point to the most valuable systems and shows where to break it. It is a check, not a defense: the results have to be fixed." }
+      ]
+    },
+    {
+      "title": "06 · Password guessing with a machine rhythm",
+      "text": "Wiz describes sign-in attempts against Entra and Okta with a median interval of exactly one second, in waves of 20–60 minutes, mostly against developer accounts; most attempts failed. Before the ConnectWise compromise, Microsoft recorded a password spraying campaign against 327 accounts in eight organizations: more than 151,000 failed sign-ins, peaking at 2,900 per minute, and not a single success. Analogy: a thief who tries a door handle exactly once a second for an hour is not a passer-by but a mechanism; it is the regularity that gives him away.",
+      "risk": "One weak password without strong MFA gives the agent a legitimate sign-in, after which its activity looks like an employee's work.",
+      "solutions": [
+        { "why": "Even a guessed password does not open a sign-in without a second factor; SOCRadar specifically recommends phishing-resistant MFA. Works only if legacy sign-in protocols that do not support MFA are blocked." },
+        { "why": "Spots series of failed sign-ins across many accounts from one source and can block the source or force a password change. The agent changes IPs within minutes, so the rhythm matters, not the address." },
+        { "why": "Raises an alert on a burst of failed sign-ins by ASN or address range, as SOCRadar recommends, and correlates it with a subsequent successful sign-in. Without IdP logs (Entra, Okta) in the SIEM this is invisible." }
+      ]
+    },
+    {
+      "title": "07 · After getting in — the path to domain admin rights",
+      "text": "Once the agent is inside, its goal is the same as a human attacker's: reach domain admin rights and the secrets that open the whole network. Google and Mandiant describe agents enumerating more than 110,000 Active Directory objects and stealing key domain secrets. At the same time, attempts to move to other machines were stopped by local token restrictions and endpoint protection, after which defenders cut off access. CrowdStrike saw a Vapor Panda operator instructing agents to look for domain admin passwords and computers without an EDR agent. SOCRadar recommends restricting who can read local admin passwords (LAPS), watching for changes to delegation settings and protecting privileged accounts. Analogy: a burglar who gets into the stairwell is not looking for one flat but for the box with the keys to every door.",
+      "risk": "Domain admin rights mean control over all of the company's computers, mail and data.",
+      "solutions": [
+        { "why": "Finds hidden paths to admin rights in AD in advance: excessive rights to read passwords, dangerous delegation, service accounts with weak passwords. Pays off only if the findings are fixed before the attack." },
+        { "why": "Keeps admin passwords in a vault and issues them for the duration of a task, so there are fewer permanent “keys” on the network to be found. Will not protect accounts that have not been brought under management." },
+        { "why": "Spots unusual requests to domain controllers and anomalous use of privileged accounts in real time, as SOCRadar recommends, and can block the account. Requires coverage of all domain controllers." },
+        { "why": "According to Google and Mandiant, it was endpoint protection that stopped the attempts to move to other machines; CrowdStrike saw agents deliberately looking for hosts without an agent. So full coverage matters, including servers." }
+      ]
+    },
+    {
+      "title": "08 · Data theft through ordinary web services",
+      "text": "According to Google and Mandiant, the agents sent command output to 491 constantly changing addresses on a public web request capture service. Such traffic looks like ordinary HTTPS to a legitimate site, so blocking by address does not help: the addresses change faster than they are added to a list. Google recommends alerts on new outbound destinations, including webhook services. Analogy: the stolen goods are not carried out through the fire exit but in boxes of an ordinary courier service.",
+      "risk": "Data leaves unnoticed, and a server that suddenly starts talking to such services is in itself a sign of compromise.",
+      "solutions": [
+        { "why": "Blocks whole categories of request capture and file sharing services for servers, rather than individual addresses, so address rotation does not help." },
+        { "why": "Restricts server outbound traffic to the destinations that are actually needed; everything else is dropped. Requires HTTPS decryption or domain-based filtering." },
+        { "why": "Spots a server starting new outbound connections to external services, even where there is no agent. Without a baseline of “normal” traffic the signal is lost in the noise." }
+      ]
+    },
+    {
+      "title": "09 · Catch behavior, not addresses",
+      "text": "All sources agree: ARTEX indicators (IPs, domains, User-Agent strings) change quickly, and some addresses are shared hosting, so blocking them without checking is risky. AhnLab shows that the User-Agent differs from function to function and is sometimes absent altogether. Behavior, on the other hand, is clearly visible: bursts of varied requests, rapid retries, an instant move to the next step. Microsoft and Zscaler recommend traps — fake servers and accounts that an autonomous agent will “bite” and so give itself away. According to SOCRadar, Theori has published free detection rules; the indicators themselves are in the primary sources, and we do not reproduce them. Analogy: a pickpocket is easier to recognize by his movements in the crowd than by the jacket he has already changed.",
+      "risk": "Defense built only on lists of malicious addresses will miss the next wave from new addresses.",
+      "solutions": [
+        { "why": "Real employees do not touch traps, so an agent reaching a fake server or account is almost certainly an attack. This is what Microsoft and Zscaler recommend; traps must be placed where the agent will find them during reconnaissance." },
+        { "why": "AhnLab recommends EDR on servers and PCs to see files and processes being launched regardless of network signs. Works where the agent is installed." },
+        { "why": "AhnLab and Google recommend correlating web logs, network, authentication and endpoints into one sequence of actions. Rules must be tuned to tempo and sequence, not to individual indicators." },
+        { "why": "Provides up-to-date group profiles and verified indicators for hunting, as SOCRadar offers with its threat intelligence. Indicators must be verified before blocking — the overview itself advises the same." }
+      ]
+    },
+    {
+      "title": "10 · Preserve the evidence first, clean up later",
+      "text": "SOCRadar, Microsoft and ConnectWise advise against deleting compromised applications and credentials as the first step. First you need to export sign-in and audit logs, SIEM events, the list of granted permissions (consent) and network traces. Otherwise it will no longer be possible to establish what the agent managed to do and whether it left additional credentials that will survive deletion. Analogy: first photograph the scene, then clean up.",
+      "risk": "Without evidence the company does not know whether the attack has really been stopped and cannot show regulators or customers which data was affected.",
+      "solutions": [
+        { "why": "Stores sign-in and audit logs outside the compromised system, so they survive the clean-up. Useful only if cloud directory logs were collected before the incident and the retention period covers the attack." },
+        { "why": "Collects traces from servers and workstations before they are wiped and helps reconstruct the timeline of the agent's actions. Must be deployed before or right after detection." }
+      ]
+    },
+    {
+      "title": "11 · Prepare in advance: what to do first",
+      "text": "The primary sources show something important: where basic defenses were in place, the agents mostly lost. According to Microsoft, most Storm-0940 attempts failed, and mass password spraying at eight organizations did not yield a single sign-in. According to Wiz, most attempts against IT vendors also failed. According to Google and Mandiant, endpoint protection and token restrictions kept the agents from getting past the first machine. In other words, ARTEX does not make an attack inevitable — it quickly finds those who have not prepared. From the recommendations of SOCRadar, Microsoft, Google and CrowdStrike we have put together an order of steps: (1) review third-party apps in the cloud directory and trim their permissions; (2) change old keys, certificates and secrets, remove secrets from code; (3) enable phishing-resistant MFA and disable legacy sign-in protocols; (4) take management panels off the internet and close vulnerabilities from the CISA KEV catalog; (5) put EDR on all servers; (6) set up automatic response to event bursts; (7) retain logs long enough to investigate an incident. Analogy: against a gang that tries every door in a row, the best defense is not a guard at one door but all of them locked.",
+      "risk": "Without preparation, hours pass between the first attempt and admin rights. Then come the customer data leak, mail being read, persistence in the cloud through a vendor, investigation and reporting to the regulator. With preparation, the agent wastes its time and moves on to the next target.",
+      "solutions": [
+        { "why": "Shows what the company has exposed to the internet — every agent campaign starts from this list. Useful only if the findings are removed or closed." },
+        { "why": "Shows in one report the excessive application permissions, hidden paths to admin and legacy sign-in protocols — a ready work list for the first weeks. The decision to trim permissions belongs to the system owner." },
+        { "why": "Closes the agent's cheapest path — a guessed password. Works only if sign-ins that bypass MFA are disabled." },
+        { "why": "Lets you respond at the same speed as the agent acts: block an account or isolate a server within minutes. Playbooks must be written and tested before an incident." },
+        { "why": "Moves applications to fetching keys from a vault and changes them regularly, so an old or discovered secret opens nothing. Works for applications that have actually been moved to the vault." },
+        { "why": "Stops attempts to move from the first machine onwards — according to Google and Mandiant, that is exactly what worked. Requires full coverage, including servers without internet access." },
+        { "why": "Collects and retains sign-in, cloud and endpoint logs long enough to investigate an incident. Sources must be connected before the attack." },
+        { "why": "Safely checks whether the existing tools really see and stop an attack at this tempo, and shows the gaps before the agent finds them. It does not protect by itself — it only proves that other tools do." }
+      ]
+    }
+  ],
+  "gaps": [
+    "SAML signature validation and disabling external entities in XML parsers are settings of the applications and libraries themselves, not a separate product.",
+    "Enabling IMDSv2 in AWS and restricting metadata access in other clouds are cloud settings; CNAPP only shows where they are missing.",
+    "Rotating old keys and certificates, including those sitting in old exports and backups, is a process with an owner and a schedule.",
+    "Reviewing third-party app permissions (consent) is a regular procedure for the tenant owner: tools show excessive permissions, but a person makes the decision.",
+    "Limiting the rate and number of recipients for “heavy” business APIs (mailings, user creation) is a Google recommendation; it is done in the application itself.",
+    "Zscaler advises treating in-house AI pentest tools (including ARTEX forks) as hostile: isolate them, give them no production credentials, limit their scope in code. This is a policy question, not a product one."
+  ],
+  "questions": [
+    "Who last reviewed, and when, which third-party apps have been granted access to your Microsoft 365 or another cloud directory, and with what permissions?",
+    "When were mail signing keys, SAML certificates and long-lived application secrets last changed? Could they be sitting in old exports or backups?",
+    "How much time passes from an alert about a series of failed sign-ins or new application permissions to a response — during working hours and at night?",
+    "Do you have an inventory of everything visible from the internet, including management panels and test servers, and who is responsible for keeping it current?",
+    "Is an EDR agent installed on all servers, including those without internet access?"
+  ]
+}

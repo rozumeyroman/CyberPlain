@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 488">
+<defs>
+<marker id="ax-mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fm" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="ax-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="ax-md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fd" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="tm" x="16" y="28" font-size="16" font-weight="600">Один оператор, рій агентів, старі слабкості</text>
+<rect class="b-att" x="16" y="112" width="128" height="64" rx="4"/>
+<text class="k ta" x="28" y="138" font-size="11">ОПЕРАТОР</text>
+<text class="tm" x="28" y="160" font-size="13">ставить мету</text>
+<line class="la" x1="144" y1="144" x2="174" y2="144" marker-end="url(#ax-ma)"/>
+<rect class="b-out" x="176" y="56" width="280" height="200" rx="6"/>
+<text class="k" x="188" y="78" font-size="11">ЦИКЛ АГЕНТІВ</text>
+<rect class="b-att" x="192" y="96" width="112" height="48" rx="4"/>
+<text class="k ta" x="248" y="125" font-size="11" text-anchor="middle">ПЛАН</text>
+<rect class="b-att" x="336" y="96" width="112" height="48" rx="4"/>
+<text class="k ta" x="392" y="125" font-size="11" text-anchor="middle">ДІЯ</text>
+<rect class="b-att" x="336" y="184" width="112" height="48" rx="4"/>
+<text class="k ta" x="392" y="213" font-size="11" text-anchor="middle">РЕЗУЛЬТАТ</text>
+<rect class="b-att" x="192" y="184" width="112" height="48" rx="4"/>
+<text class="k ta" x="248" y="213" font-size="11" text-anchor="middle">НОВА ХВИЛЯ</text>
+<line class="la" x1="304" y1="120" x2="334" y2="120" marker-end="url(#ax-ma)"/>
+<line class="la" x1="392" y1="144" x2="392" y2="182" marker-end="url(#ax-ma)"/>
+<line class="la" x1="336" y1="208" x2="306" y2="208" marker-end="url(#ax-ma)"/>
+<line class="la" x1="248" y1="184" x2="248" y2="146" marker-end="url(#ax-ma)"/>
+<text class="k ta" x="496" y="48" font-size="11">БАЗОВІ СЛАБКОСТІ</text>
+<text class="k td" x="660" y="48" font-size="11">РУБІЖ ЗАХИСТУ</text>
+<rect class="b-att" x="496" y="60" width="156" height="52" rx="4"/>
+<text class="tm" x="506" y="82" font-size="12">сторонні застосунки</text>
+<text class="ts" x="506" y="100" font-size="12">з правами</text>
+<rect class="b-def" x="660" y="68" width="132" height="36" rx="4"/>
+<text class="k td" x="726" y="90" font-size="11" text-anchor="middle">ISPM · NHI</text>
+<line class="la" x1="456" y1="156" x2="494" y2="86" marker-end="url(#ax-ma)"/>
+<rect class="b-att" x="496" y="124" width="156" height="52" rx="4"/>
+<text class="tm" x="506" y="146" font-size="12">старі ключі</text>
+<text class="ts" x="506" y="164" font-size="12">й SAML без підпису</text>
+<rect class="b-def" x="660" y="132" width="132" height="36" rx="4"/>
+<text class="k td" x="726" y="154" font-size="11" text-anchor="middle">Secrets · CLM</text>
+<line class="la" x1="456" y1="156" x2="494" y2="150" marker-end="url(#ax-ma)"/>
+<rect class="b-att" x="496" y="188" width="156" height="52" rx="4"/>
+<text class="tm" x="506" y="210" font-size="12">вебзастосунки</text>
+<text class="ts" x="506" y="228" font-size="12">на периметрі</text>
+<rect class="b-def" x="660" y="196" width="132" height="36" rx="4"/>
+<text class="k td" x="726" y="218" font-size="11" text-anchor="middle">WAF · DAST · EDR</text>
+<line class="la" x1="456" y1="156" x2="494" y2="214" marker-end="url(#ax-ma)"/>
+<rect class="b-att" x="496" y="252" width="156" height="52" rx="4"/>
+<text class="tm" x="506" y="274" font-size="12">слабкі паролі</text>
+<text class="ts" x="506" y="292" font-size="12">без стійкої MFA</text>
+<rect class="b-def" x="660" y="260" width="132" height="36" rx="4"/>
+<text class="k td" x="726" y="282" font-size="11" text-anchor="middle">MFA · ITDR</text>
+<line class="la" x1="456" y1="156" x2="494" y2="278" marker-end="url(#ax-ma)"/>
+<rect class="b-att" x="496" y="316" width="156" height="52" rx="4"/>
+<text class="tm" x="506" y="338" font-size="12">шлях до адміністратора</text>
+<text class="ts" x="506" y="356" font-size="12">домену</text>
+<rect class="b-def" x="660" y="324" width="132" height="36" rx="4"/>
+<text class="k td" x="726" y="346" font-size="11" text-anchor="middle">ISPM · PAM · ITDR</text>
+<line class="la" x1="456" y1="156" x2="494" y2="342" marker-end="url(#ax-ma)"/>
+<text class="ts" x="392" y="280" font-size="11">паралельно</text>
+<polyline class="lm dash" points="728,372 728,388 316,388 316,258" marker-end="url(#ax-mm)"/>
+<text class="ts" x="328" y="380" font-size="11">агент шукає інший шлях</text>
+<text class="k" x="16" y="420" font-size="11">ТЕМП АТАКИ · ПРИКЛАДИ З ПЕРШОДЖЕРЕЛ</text>
+<rect class="b" x="16" y="428" width="248" height="48" rx="4"/>
+<text class="tm" x="28" y="449" font-size="14" font-weight="600">27 подій / 23 с</text>
+<text class="ts" x="28" y="467" font-size="12">запити до прав AWS</text>
+<rect class="b" x="276" y="428" width="248" height="48" rx="4"/>
+<text class="tm" x="288" y="449" font-size="14" font-weight="600">< 3 год</text>
+<text class="ts" x="288" y="467" font-size="12">до привілеїв у хмарі</text>
+<rect class="b" x="536" y="428" width="248" height="48" rx="4"/>
+<text class="tm" x="548" y="449" font-size="14" font-weight="600">5 хв</text>
+<text class="ts" x="548" y="467" font-size="12">GitHub → Key Vault</text>
+</svg>
