@@ -3,6 +3,9 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 // Один запис — один JSON-файл; ID = ім'я файлу (TA0043, T1566.001, edr), регістр зберігаємо.
+// Посилання з контенту йдуть прямо в href: лише https://, щоб javascript:/data: із брифу зупиняли збірку.
+const httpsUrl = z.string().url().refine((u) => u.startsWith('https://'), { message: 'лише https://-адреса' });
+
 const fromDir = (base: string) =>
   glob({ pattern: '*.json', base, generateId: ({ entry }) => entry.replace(/\.json$/, '') });
 
@@ -66,7 +69,7 @@ const products = defineCollection({
     simple: z.string().optional(), // детальний опис можливостей редакції
     notIncluded: z.array(z.string()).default([]), // чого в цій редакції немає / що докуповується (add-on)
     classification: z.array(z.string()).default([]), // як ми класифікували: що рахуємо класом, що лише в тексті і чому
-    url: z.string().url().optional(), // першоджерело: сторінка продукту чи пакетів у вендора
+    url: httpsUrl.optional(), // першоджерело: сторінка продукту чи пакетів у вендора
   }).strict(),
 });
 
@@ -101,11 +104,11 @@ const techRef = z.union([
   techId,
   z.object({ id: techId, asInSource: z.string().optional(), editorial: z.boolean().optional() }).strict(),
 ]);
-const source = z.object({ label: z.string(), url: z.string().url().optional() }).strict();
+const source = z.object({ label: z.string(), url: httpsUrl.optional() }).strict();
 const solution = z.object({ class: reference('classes'), why: z.string(), editorial: z.boolean().default(false) }).strict();
 const phase = z.enum(['find', 'protect', 'verify', 'detect']);
 const figure = z.object({ value: z.string(), label: z.string() }).strict();
-const original = z.object({ title: z.string(), publisher: z.string(), pages: z.number().int().positive().optional(), url: z.string().url().optional() }).strict();
+const original = z.object({ title: z.string(), publisher: z.string(), pages: z.number().int().positive().optional(), url: httpsUrl.optional() }).strict();
 
 // Ілюстрація: наша SVG (src/assets/analytics/<file>.<uk|en>.svg, інлайниться під час збирання, 0 KB JS) — схема механіки,
 // коли вона має сенс, інакше образна ілюстрація в стилі сайту.
@@ -171,7 +174,7 @@ const vulnerabilities = defineCollection({
     // чи це ймовірний сценарій (false); обов'язкове, щоб на сторінці чесно розрізняти факт і припущення.
     chain: z.array(z.object({ ...stepShape, observed: z.boolean() }).strict()).default([]),
     remediation: z.array(z.string()),
-    advisories: z.array(z.object({ issuer: z.string(), label: z.string(), url: z.string().url().optional() }).strict()).default([]),
+    advisories: z.array(z.object({ issuer: z.string(), label: z.string(), url: httpsUrl.optional() }).strict()).default([]),
     timeline: z.array(z.object({ date: isoDate, text: z.string() }).strict()).default([]),
     caveats: z.array(z.string()).default([]),
     techniques: z.array(techRef).default([]),
