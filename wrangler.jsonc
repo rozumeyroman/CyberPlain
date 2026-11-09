@@ -10,6 +10,8 @@
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
+    // Неіснуюча адреса → dist/404.html зі статусом 404 (src/pages/404.astro).
+    "not_found_handling": "404-page",
     // Скрипт (і лог) лише для сторінок; CSS з /_astro/ віддається напряму і не з'їдає ліміт запитів.
     "run_worker_first": ["/*", "!/_astro/*"]
   },

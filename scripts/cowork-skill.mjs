@@ -5,8 +5,10 @@
 import { readFileSync, readdirSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('..', import.meta.url).pathname;
+// fileURLToPath, а не .pathname: інакше пробіл у шляху (My Drive) стає %20 і readFileSync падає.
+const root = fileURLToPath(new URL('..', import.meta.url));
 const skill = join(root, 'cowork/cyberplain-analytics-brief');
 const refs = join(skill, 'references');
 const read = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));

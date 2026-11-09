@@ -69,7 +69,7 @@ content/                  # наш контент (CC BY 4.0); 1 запис = 1 
                                                   #   illustration{file, alt, caption} — схема після 2-го абзацу «Простими словами»
 scripts/og-analytics.mjs  # прев'ю статті аналітики для соцмереж → public/og/analytics/<id>.<uk|en>.png
 scripts/sitemap-lastmod.mjs # lastmod у sitemap: дата останнього коміту JSON сторінки та пов'язаних
-                          #   (техніки етапу, класи продукту тощо); без git-історії lastmod не ставиться
+                          #   (техніки етапу, класи продукту тощо); без git-історії чи з неповною (shallow) lastmod не ставиться
 data/mitre/               # згенеровані імпортом сирі дані MITRE (не редагувати руками)
   attack.json             # npm run import:attack (scripts/import-attack.mjs ← STIX mitre-attack/attack-stix-data)
   d3fend.json             # npm run import:d3fend (scripts/import-d3fend.mjs ← d3fend.mitre.org/api: matrix.json
@@ -94,6 +94,7 @@ src/
   pages/analytics/{reports,vulnerabilities,attacks}/[id].astro   # розбір запису (components: AnalyticsSolutions, TechRefs,
                                      #   AttackChain, AnalyticsCard, SourceList)
   pages/licenses.astro
+  pages/404.astro                    # одна сторінка на обидві мови; wrangler.jsonc → not_found_handling: 404-page
   pages/favicon.svg.ts               # іконка з кольорів site.config; public/favicon.ico і
                                      #   apple-touch-icon.png — її растрові копії (перегенерувати при зміні)
   styles/tokens.css, base.css

@@ -1,0 +1,34 @@
+---
+// Одна сторінка на обидві мови: Cloudflare віддає dist/404.html для будь-якої неіснуючої адреси
+// (wrangler.jsonc → not_found_handling), зокрема під /en/, тому текст — українською й англійською.
+import Base from '../layouts/Base.astro';
+import { urlFor } from '../lib/data';
+import { ui } from '../lib/i18n';
+
+const blocks = (['uk', 'en'] as const).map((l) => ({ l, t: ui[l].notFound, url: urlFor(l) }));
+---
+<Base title={`404 · ${ui.uk.notFound.title}`}>
+  <section class="wrap nf">
+    <p class="mono code">404</p>
+    {blocks.map(({ l, t, url }) => (
+      <div class="block" lang={ui[l].htmlLang}>
+        <h1>{t.title}</h1>
+        <p>{t.text}</p>
+        <p class="links">
+          <a href={url.page('/')}>{t.home}</a>
+          <a href={url.page('/mitre/')}>{t.mitre}</a>
+        </p>
+      </div>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .nf { padding-top: 72px; padding-bottom: 96px; max-width: 880px; }
+  .code { color: var(--attack); font-size: 14px; letter-spacing: .08em; margin: 0 0 16px; }
+  .block + .block { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+  h1 { font-size: clamp(28px, 6vw, 40px); color: var(--text); margin: 0 0 12px; }
+  p { color: var(--text-2); font-size: 16px; line-height: 1.6; margin: 0 0 16px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+  .links a { display: inline-flex; align-items: center; min-height: 44px; }
+</style>

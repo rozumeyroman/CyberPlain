@@ -192,6 +192,8 @@ async function build(lang: Lang) {
         const a = o.data[k];
         if (Array.isArray(a) && a.length !== s.data[k].length) throw new Error(`${where}: ${k} — ${a.length} пунктів, в оригіналі ${s.data[k].length}`);
       }
+      const left = findCyrillic(o.data, 'content');
+      if (left) throw new Error(`${where}: в англійському перекладі лишився український текст — ${left}`);
     }
     const missing = src.filter((e) => keys.some((k) => hasText(e.data[k]) && !hasText(overById.get(e.id)?.data[k]))).length;
     if (missing) gaps.push(`${dir} ${missing}/${src.length}`);

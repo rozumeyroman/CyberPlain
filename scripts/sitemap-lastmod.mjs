@@ -1,5 +1,5 @@
 // lastmod для sitemap: дата останнього коміту файлів, з яких збирається сторінка
-// (власний JSON + пов'язані: техніки етапу, класи продукту тощо). Без git — без lastmod.
+// (власний JSON + пов'язані: техніки етапу, класи продукту тощо). Без git або з неповною історією — без lastmod (з попередженням).
 // Англійська сторінка /en/x/ має ті самі файли + їхні переклади з content/en/ (і NOTICE.en.md для /en/licenses/).
 import { execFileSync } from 'node:child_process';
 import { readdirSync, readFileSync } from 'node:fs';
@@ -9,11 +9,17 @@ function gitDates() {
   const dates = new Map(); // файл → найновіша дата коміту
   let out;
   try {
+    // Неповний клон (shallow) дав би всім файлам дату останнього коміту — це гірше, ніж без lastmod.
+    if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], { encoding: 'utf8' }).trim() === 'true') {
+      console.warn('lastmod: неповна git-історія (shallow clone) — lastmod у sitemap не ставимо');
+      return dates;
+    }
     out = execFileSync('git', ['log', '--format=@%cI', '--name-only', '--', 'content', 'content/en', 'data/mitre', 'NOTICE.md', 'NOTICE.en.md', ':(literal)src/pages/[...lang]/licenses.astro'], {
       encoding: 'utf8',
       maxBuffer: 64 * 1024 * 1024,
     });
   } catch {
+    console.warn('lastmod: git-історії немає — lastmod у sitemap не ставимо');
     return dates;
   }
   let date;

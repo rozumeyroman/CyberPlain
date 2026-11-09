@@ -307,6 +307,12 @@ const uk = {
       claims: 'Заяви угруповання',
     },
   },
+  notFound: {
+    title: 'Сторінку не знайдено',
+    text: 'Такої адреси на сайті немає. Можливо, посилання застаріло або в ньому помилка.',
+    home: 'На головну',
+    mitre: 'Етапи атаки MITRE ATT&CK',
+  },
   licenses: {
     title: 'Ліцензії та авторство',
     mit: 'Повний текст: MIT License (код)',
@@ -651,6 +657,12 @@ const en: typeof uk = {
       lessons: 'Takeaways',
       claims: 'Claims by the threat group',
     },
+  },
+  notFound: {
+    title: 'Page not found',
+    text: 'There is no such address on the site. The link may be outdated or mistyped.',
+    home: 'Go to home page',
+    mitre: 'MITRE ATT&CK attack stages',
   },
   licenses: {
     title: 'Licenses and credits',
