@@ -9,10 +9,17 @@ function gitDates() {
   const dates = new Map(); // файл → найновіша дата коміту
   let out;
   try {
-    // Неповний клон (shallow) дав би всім файлам дату останнього коміту — це гірше, ніж без lastmod.
-    if (execFileSync('git', ['rev-parse', '--is-shallow-repository'], { encoding: 'utf8' }).trim() === 'true') {
-      console.warn('lastmod: неповна git-історія (shallow clone) — lastmod у sitemap не ставимо');
-      return dates;
+    // Workers Builds клонує неповно (shallow): тоді всі файли мали б дату останнього коміту — це гірше, ніж без lastmod.
+    // Довантажуємо історію (репозиторій публічний; лише метадані комітів, без вмісту старих файлів); не вдалось — без lastmod.
+    const shallow = () => execFileSync('git', ['rev-parse', '--is-shallow-repository'], { encoding: 'utf8' }).trim() === 'true';
+    if (shallow()) {
+      try {
+        execFileSync('git', ['fetch', '--unshallow', '--filter=blob:none', '--quiet'], { stdio: 'ignore', timeout: 120_000 });
+      } catch {}
+      if (shallow()) {
+        console.warn('lastmod: неповна git-історія (shallow clone) і довантажити не вдалось — lastmod у sitemap не ставимо');
+        return dates;
+      }
     }
     out = execFileSync('git', ['log', '--format=@%cI', '--name-only', '--', 'content', 'content/en', 'data/mitre', 'NOTICE.md', 'NOTICE.en.md', ':(literal)src/pages/[...lang]/licenses.astro'], {
       encoding: 'utf8',
