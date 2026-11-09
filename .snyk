@@ -1,0 +1,19 @@
+# Snyk (https://snyk.io) policy file
+version: v1.25.0
+ignore:
+  SNYK-JS-HTTPCACHESEMANTICS-19964068:
+    - 'astro > http-cache-semantics':
+        reason: >-
+          Not exploitable: http-cache-semantics is used only by Astro build-time remote image cache
+          (astro/dist/assets/build/remote.js); the site has no astro:assets / remote images, static output,
+          no shared cache serving other users. No fixed version exists yet (4.3.0 is latest).
+        expires: 2027-02-09T00:00:00.000Z
+        created: 2026-11-09T00:00:00.000Z
+  SNYK-JS-HTTPCACHESEMANTICS-19964064:
+    - 'astro > http-cache-semantics':
+        reason: >-
+          Not exploitable: same as SNYK-JS-HTTPCACHESEMANTICS-19964068 (build-time only, no remote images,
+          no shared cache). No fixed version exists yet.
+        expires: 2027-02-09T00:00:00.000Z
+        created: 2026-11-09T00:00:00.000Z
+patch: {}
