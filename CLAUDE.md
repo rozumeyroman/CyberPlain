@@ -35,7 +35,7 @@ MITRE ATT&CK® (як діє зловмисник) і MITRE D3FEND™ (як за�
 - **Cloudflare Workers + Static Assets**: `wrangler.jsonc` з `assets.directory = ./dist`.
   `worker/index.js` прокидає запити сторінок у статику, щоб вони були в Workers
   Logs (Observability), і додає заголовки безпеки (CSP з nonce на кожен запит — Cloudflare ставить його своїм
-  вбудованим скриптам JS Detections; HSTS, nosniff, frame-ancestors) — `_headers` тут не діє; `/_astro/*` минає скрипт.
+  вбудованим скриптам JS Detections; HSTS, nosniff, frame-ancestors); `/_astro/*` минає скрипт.
   Посилання (`url`) у контенті — лише `https://` (схема в `src/content.config.ts`). Динаміку (пошук, AI у v1) додаємо туди ж.
 - **D1** — не потрібна для MVP (контент статичний). Вводимо у v1 для карток виявлення
   та AI. Міграції — `migrations/`, застосовуються в команді деплою.
