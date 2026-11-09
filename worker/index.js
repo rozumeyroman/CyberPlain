@@ -4,13 +4,13 @@
 // Заголовки безпеки для сторінок (/_astro/* минає скрипт — це лише CSS).
 // Власного JS на сайті немає, тому script-src дозволяє лише скрипти, які вбудовує сам Cloudflare
 // (JavaScript Detections / Precursor, /cdn-cgi/…, Web Analytics): він бере nonce із заголовка CSP і ставить
-// його своїм <script>. Nonce — новий на кожен запит. Шрифти — Google Fonts; style-src 'unsafe-inline' — бо
+// його своїм <script>. Nonce — новий на кожен запит. Шрифти — власні (/fonts/); style-src 'unsafe-inline' — бо
 // Astro вставляє <style> і атрибути style="".
 const csp = (nonce) => [
   "default-src 'self'",
   `script-src 'self' 'nonce-${nonce}' https://static.cloudflareinsights.com`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  'font-src https://fonts.gstatic.com',
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
   "img-src 'self'",
   "connect-src 'self' https://cloudflareinsights.com",
   "object-src 'none'",

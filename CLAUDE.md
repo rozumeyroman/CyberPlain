@@ -239,7 +239,8 @@ LICENSE  LICENSE-CONTENT  NOTICE.md
 | `--attack` | `#B99CF2` | атака, ID технік ATT&CK, «часта біль» |
 
 - Шрифти: **Onest** (текст, кирилиця) і **JetBrains Mono** (підписи UPPERCASE з
-  letter-spacing .08em, ID). Google Fonts, `display=swap`.
+  letter-spacing .08em, ID). Власні файли (не Google Fonts): variable woff2 з @fontsource-variable
+  у `public/fonts/` (latin, latin-ext, cyrillic; ліцензії OFL поруч), `@font-face` — `src/styles/fonts.css`, `display=swap`.
 - Радіуси 4–6px. Без тіней-карток, без градієнтних заливок кнопок.
 - Декор лише CSS: сітка з точок (`radial-gradient` 16px), м'які зелена й фіолетова
   плями на першому екрані, «+» на кутах блоків через `::before/::after`.
