@@ -1,0 +1,139 @@
+{
+  "title": "FSB hackers (Static Tundra, Berserk Bear): stealing router configs over SNMP",
+  "dateNote": "13 July 2026 — joint international advisory AA26-194A; the campaign has run for more than a decade, FBI warning — 20 August 2025",
+  "actor": {
+    "name": "FSB Center 16 (Static Tundra)",
+    "profile": [
+      "Center 16 is the signals intelligence unit of Russia's Federal Security Service (formally military unit 71330). Vendor reports know it under many names: Static Tundra (Cisco), Berserk Bear and Energetic Bear (CrowdStrike), Crouching Yeti, Dragonfly (Symantec), Ghost Blizzard (Microsoft). Cisco Talos considers Static Tundra a likely sub-cluster of Energetic Bear and assesses with high confidence that it is a Russian state-sponsored group specialising in exploiting network devices for long-term intelligence gathering. The link between Energetic Bear and Center 16 was established by a US Department of Justice indictment of FSB officers in March 2022. AA26-194A cautions that group names in different vendors' reports may not map one to one.",
+      "The signature is not noisy breaches but quiet longevity: collect configurations \"for later\" and use them when Russia's current interests call for it. Talos has observed the activity since 2015, and aggressive exploitation of CVE-2018-0171 since at least 2021, with a sharp increase after February 2022. Historically the group has moved from ICS/SCADA supply chain attacks (the Havex/Dragonfly campaign, 2012–2014, energy companies in ~135 countries) and custom firmware implants (SYNful Knock, 2015) to today's SNMP and Smart Install attacks.",
+      "Static Tundra's victims span North America, Europe, Asia and Africa; the priority is Ukraine and its allies, with escalation since the start of the full-scale war. When announcing sanctions, the EU specifically named Center 16 operations against Poland, France, Germany, Cyprus, the Netherlands, Austria, Slovakia, Romania and Finland, and noted that the Center runs several groups, including Turla."
+    ]
+  },
+  "victim": {
+    "name": "critical infrastructure (telecom operators, energy, defence, finance, government, healthcare)",
+    "sector": "critical infrastructure",
+    "country": "international"
+  },
+  "summary": "Center 16, a unit of Russia's FSB (in reports: Static Tundra, Berserk Bear, Dragonfly), has spent more than a decade collecting the configurations of edge routers in critical infrastructure. The main trick is not a break-in but abuse of poorly configured SNMP: the device itself sends its config to the attacker's server. On 13 July 2026, agencies from 13 countries issued joint advisory AA26-194A, and the EU and the UK imposed sanctions and officially attributed the December attack on Poland's power grid to Center 16.",
+  "illustration": {
+    "alt": "Diagram of Center 16's attack on routers. The attacker scans the internet for weak SNMP, tells the router to copy its configuration to a file and send it over TFTP to the attacker's server, obtaining passwords and a network map, and then establishes persistence. The fallback path is a Cisco Smart Install vulnerability. Below are the defence points: blocking SNMP, TFTP and Smart Install at the network edge (the earliest break), moving to SNMPv3, IDS rules for access to the config-copy OIDs, and finding outdated devices.",
+    "caption": "Attack path and break points. Our diagram based on joint advisory AA26-194A and Cisco Talos; dashed blocks (persistence, the CVE fallback) are a likely or not always present part of the chain."
+  },
+  "body": [
+    "Picture a building with a safe by the front door holding spare keys to every room, and the safe's code left at the factory default — \"0000\". The intruder doesn't need to break the door: they walk up, enter the default code and ask the safe to send them copies of all the keys and the floor plan. That is exactly how this attack works. The safe is SNMP (Simple Network Management Protocol), which administrators use to manage network equipment. If a router still runs old SNMP versions (v1/v2) with a default \"password\" (a community string such as \"public\" or \"private\"), anyone on the internet can tell the device to copy its configuration and send it out.",
+    "The attacker scans the internet, finds such devices, sends them the command \"copy your config to a file and hand it over\" — and gets the most valuable things: stored passwords (even if hashed), community strings, the network layout, addresses of internal systems. No malware, no exploit — the device simply carries out a \"legitimate\" management command. That is why the attack is so quiet and long-lived: in the logs it looks like routine administration.",
+    "When weak SNMP isn't available, the group sometimes turns to known Cisco vulnerabilities — most often CVE-2018-0171 in the Smart Install feature, which Cisco patched back in 2018 but which still lives on unpatched and end-of-life devices. The goal is the same: get the config and dig in.",
+    "Why this matters even to those who \"weren't touched\": the router is only the front door, and the prize sits behind it, in the internal network. A stolen config is a map and keys for the future. And December 2025 in Poland shows what this reconnaissance can grow into: according to CERT Polska, the same infrastructure is behind the group's first publicly described destructive operation — an attempt to wipe data at renewable energy sites. The attack diagram and break points are in the illustration below."
+  ],
+  "claims": [
+    { "value": "10+ years", "label": "duration of Center 16's campaign against network devices (per the FBI and Cisco Talos)" },
+    { "value": "\"thousands\" of configs", "label": "in the year to August 2025 the FBI saw configurations collected from thousands of devices linked to US critical infrastructure" },
+    { "value": "19 agencies / 13 countries", "label": "co-authors of advisory AA26-194A (some sources say 18 agencies from 12 countries plus the NCSC)" },
+    { "value": "CVE-2018-0171 — 9.8", "label": "critical Cisco Smart Install vulnerability (RCE/DoS), in CISA KEV since 3.11.2021" },
+    { "label": "old CSRF flaw in the Cisco IOS HTTP server, end-of-life devices only; scores differ (9.3 in the record's CVSS v2 base; 4.3 in some reviews)" },
+    { "value": "~6,000 devices", "label": "with Cisco Smart Install exposed to the internet (Shadowserver, 2024), down from ~14,000–18,000 in earlier years; exposed SNMP — millions" },
+    { "value": "30+ sites, ~500,000 customers", "label": "scale of the December 2025 attack on Poland's energy sector (wind and solar farms, a combined heat and power plant)" }
+  ],
+  "claimsNote": "Figures from joint advisory AA26-194A, FBI bulletins (PSA I-082025-PSA), Cisco Talos, the CERT Polska report and Shadowserver statistics. Sources give the number of co-authors differently (19/13 vs 18/12) — we show both. Attribution of the December attack is disputed: CERT Polska links the infrastructure to Static Tundra (FSB), while ESET and Dragos attribute the wiper to Sandworm (GRU) with medium confidence. The group has made no statements; the Kremlin denies involvement.",
+  "steps": [
+    {
+      "title": "Scanning the internet for exposed SNMP",
+      "what": "The attacker mass-scans internet ranges for devices with SNMP enabled that answer to default or common community strings. Scanning goes through proxies to hide the source. In parallel the group uses ready-made results from Shodan/Censys — that is how it also finds end-of-life devices and devices vulnerable to CVEs. The trace at this step is minimal: occasional inbound SNMP queries to many addresses, easily lost in the internet's background noise. Analogy: a burglar walks down the street trying door handles, looking for ones that aren't locked.",
+      "result": "A list of \"open doors\" — devices with weak SNMP or known flaws. Not yet access to data, but a ready target map for the next step, with no interaction with the target that would be easy to notice.",
+      "tools": ["mass scanning of IP ranges", "SNMP queries through proxies"],
+      "solutions": [
+        { "why": "Shows the same picture the attacker sees from outside — SNMP, Smart Install and management web interfaces exposed to the internet — and gives a list of what to remove from the perimeter. Works only for assets the service has been able to match to the company." },
+        { "why": "Pulls network equipment into a single inventory and highlights unprotected and unmonitored devices — the ones that \"fell off the list\". Quality depends on how complete the inventory sources are." },
+        { "why": "Regular scanning finds end-of-life and unpatched devices (including those with CVE-2018-0171) before the attacker does. Network equipment needs credentialed or specialised checks, not just an external scan." }
+      ],
+      "gaps": ["The main measure at this step — removing exposed SNMP/Smart Install from the perimeter — is a device and firewall setting, not a separate product (see step 2)."]
+    },
+    {
+      "title": "An SNMP command to the device: \"copy your config\"",
+      "what": "The attacker sends SNMP Set-Requests to the device from a spoofed IP address so that in the logs the action looks local and \"internal\". The request contains object identifiers (OIDs) that tell the device to copy its configuration to a file. All of this is a standard management function, so the device obediently runs a \"legitimate\" command authenticated by a weak community string. Trace: inbound SNMP Set-Requests from outside targeting the config-copy OIDs (AA26-194A recommends detecting exactly these with IDS rules; the specific OIDs are in the source). Analogy: a call to the front desk on behalf of the boss asking for all internal instructions to be sent over — and the secretary sends them, because \"the number looks familiar\".",
+      "result": "A controlled channel through which the device itself prepares and hands over its configuration. Spoofed sources and proxies make attribution and response harder. The next step is just to collect the prepared file.",
+      "tools": ["SNMP Set-Requests with a spoofed source address", "abuse of CISCO-CONFIG-COPY-MIB"],
+      "solutions": [
+        { "why": "Blocks inbound SNMP (UDP 161/162) and Smart Install (TCP 4786), as well as TFTP (UDP 69), at the network edge — the earliest and most reliable break in the chain. Works only if management does not need these ports from outside (it usually doesn't)." },
+        { "why": "Rules for inbound SNMP Set-Requests to the config-copy OIDs detect this step directly. Management traffic must pass through the sensor, and SNMP must not be encrypted out of view." },
+        { "why": "Notices anomalous inbound SNMP requests and unusual bursts of management traffic where there are no signatures. Needs a traffic mirror at the perimeter." },
+        { "why": "Brings together device and firewall logs to alert on external SNMP writes and configuration changes. Useful only if network equipment actually sends logs to the SIEM." }
+      ],
+      "gaps": ["Moving to SNMPv3 (authPriv), disabling SNMPv1/v2, changing default community strings and a MIB allow-list are settings on the device itself, not a portfolio product."]
+    },
+    {
+      "title": "Copying the configuration and extracting credentials",
+      "what": "On the command from the previous step, the device writes out a configuration file. Inside are stored local account passwords, community strings, keys and pieces of the network layout. Cisco stores passwords as hashes, but weak types (Type 0 — plain text, Type 7 — a trivially reversible \"cipher\") effectively give away working credentials. That is why AA26-194A advises storing passwords as Type 8 hashes and avoiding types 0, 4 and 7. Trace: access to the config-copy OIDs and MIB dumps in SNMP logs. Analogy: from the \"floor plan\" the attacker writes down where the keys are and which doors they open.",
+      "result": "Credentials and the network topology. Weak hashes become ready-to-use passwords; strong ones (Type 8) only a hard cracking job. This is raw material for getting into the network and moving deeper.",
+      "tools": ["CISCO-CONFIG-COPY-MIB", "MIB collection over SNMP"],
+      "solutions": [
+        { "why": "Detects the very fact of access to the config-copy OIDs — a step that otherwise looks exactly like routine work. Needs rules written for these OIDs and visibility into SNMP traffic." },
+        { "why": "The device log records the config-copy command or an external SNMP write, and the SIEM raises an alert on it. Works only if network equipment sends logs centrally." }
+      ],
+      "gaps": [
+        "Moving to strong hash types (Type 8, Type 6 for TACACS+ keys) and a MIB allow-list are device settings.",
+        "Central storage of \"golden\" configurations and integrity checks on them (so the source of truth is not the device itself) are process and architecture; there is no class for this in the portfolio."
+      ]
+    },
+    {
+      "title": "Exfiltrating the file over TFTP",
+      "what": "The device sends the prepared configuration file out — usually over TFTP — to a virtual private server (VPS) rented by the attacker or to someone else's compromised FTP server. TFTP neither encrypts nor authenticates the transfer, so it is fast and inconspicuous. Trace: an outbound TFTP/FTP connection from a network device to an external address — a rare and suspicious event for an edge router. Analogy: the copy of the keys goes into an ordinary envelope dropped into a mailbox on the other side of town.",
+      "result": "The configuration in the attacker's hands, outside the victim's network. From here it is analysed offline — without any \"noise\" in the target network. The VPS and proxies hide the final recipient.",
+      "tools": ["TFTP (UDP 69)", "less often FTP", "a rented VPS or a compromised FTP server"],
+      "solutions": [
+        { "why": "Blocking outbound TFTP (UDP 69) at the edge breaks the exfiltration even after the config has been copied. Works if TFTP to the outside isn't needed for operations (usually it isn't)." },
+        { "why": "Notices an unusual outbound TFTP/FTP connection from a router to an unfamiliar external server. Needs traffic visibility at the perimeter." },
+        { "why": "Correlation raises an alert on the sequence \"external SNMP request → outbound TFTP from the device\". Needs logs from network equipment and the firewall." },
+        { "why": "Feeds of known addresses and the group profile help recognise the exfiltration infrastructure (rented VPSs, compromised FTP servers) and the Center 16 campaign itself by its TTPs. Depends on how fresh the data is — IPs change quickly." }
+      ],
+      "gaps": ["Moving management to a separate (out-of-band) network and ACLs that allow management protocols only from admin workstations — architecture, not a product."]
+    },
+    {
+      "title": "Fallback path: exploiting Cisco Smart Install (CVE-2018-0171)",
+      "what": "When weak SNMP isn't available, the group sometimes turns to known vulnerabilities. The main one is CVE-2018-0171 in the Smart Install feature (SMI client) of Cisco IOS/IOS XE: an input-handling flaw (CWE-787) on TCP 4786 that lets an unauthenticated attacker remotely reload the device (DoS) or execute code. Cisco patched it back in March 2018, but it lives on in unpatched and end-of-life devices; Cisco re-warned of active exploitation on 20 August 2025. The same path leads to configuration theft. A secondary one is CVE-2008-4128 (CSRF in IOS web administration), which affects only outdated devices. Analogy: if the safe is modern, the intruder tries the old back door everyone forgot about, which in old buildings is still not boarded up.",
+      "result": "Access to the device without credentials — and then the same configuration and a chance to dig in. According to Talos, the same CVE-2018-0171 was also in the arsenal of another group (Salt Typhoon) in February 2025 — so outdated Smart Install is dangerous not only because of Center 16.",
+      "tools": ["Cisco Smart Install (TCP 4786)", "less often the old CSRF flaw CVE-2008-4128"],
+      "solutions": [
+        { "why": "Blocking TCP 4786 at the edge closes the network path to Smart Install even before patching. A temporary measure: the flaw remains if the port is ever opened again." },
+        { "why": "Finds devices with CVE-2018-0171, Smart Install enabled and end-of-life status — and helps track replacement deadlines. Network equipment needs the right checks, not just an external scan." },
+        { "why": "Signatures for access to Smart Install (TCP 4786) and attempts to exploit CVE-2018-0171 detect the attack. Traffic to the device must pass through the sensor." },
+        { "why": "Shows whether Smart Install (TCP 4786) is reachable from the internet before the attacker finds it. Works for assets the service has been able to match to the company." },
+        { "why": "Safely checks whether your perimeter really blocks access to Smart Install/SNMP and whether detection rules fire — proving protection hasn't \"drifted\". Does not stop the attack itself." }
+      ],
+      "gaps": ["The radical fix — disabling Smart Install (\"no vstack\") and replacing end-of-life equipment — is an operational action, not a product."]
+    },
+    {
+      "title": "What they do with access: persistence and preparation (per Cisco Talos)",
+      "what": "With the config and access in hand, the group, according to Talos observations, settles in for the long haul: it creates privileged local accounts and extra SNMP strings with write rights, sometimes deploys a firmware implant (the historical SYNful Knock, which survives reboots and is opened by a \"magic\" packet), builds GRE tunnels to redirect traffic of interest and collects NetFlow. To hide, it changes TACACS+ and ACL settings. Trace: new accounts outside naming conventions, unexpected GRE tunnels, gaps or missing entries in logs. Analogy: having copied the keys, the intruder also leaves a spare entrance and wipes the camera footage.",
+      "result": "A persistent, hidden presence for years and the ability to watch and, if needed, interfere. According to CERT Polska, Static Tundra infrastructure is also linked to the destructive December 2025 attack on Poland's energy sector (the DynoWiper wiper), although there the initial entry was a vulnerable FortiGate VPN without MFA rather than a router, and ESET and Dragos attribute the wiper to Sandworm. This step is described from the Cisco Talos report, not from AA26-194A.",
+      "tools": ["creating local accounts and extra RW SNMP strings", "GRE tunnels", "the SYNful Knock firmware implant"],
+      "solutions": [
+        { "why": "Keeps network equipment admin passwords in a vault and rotates them regularly, so passwords from a stolen config quickly become useless. Works if the devices are connected to the PAM." },
+        { "why": "Admin logins to equipment through central authentication (TACACS+ or RADIUS) with a second factor keep out an attacker who has only a stolen password. The device must support this setup." },
+        { "why": "Detects GRE tunnels and unusual traffic redirection from the device — the main trace of persistence. Needs traffic visibility in the right segments." },
+        { "why": "Catches new local accounts, ACL/TACACS changes and gaps in logs, if equipment sends logs centrally and separately from the device itself." },
+        { "why": "Fake credentials and decoys in configurations expose an attacker using stolen data, without relying on signatures. Traps must be placed correctly." },
+        { "why": "Makes it possible to collect traces, check firmware integrity and confirm or rule out an implant after suspicion arises. A reactive measure — needs a trigger and access to the device." }
+      ],
+      "gaps": ["Firmware integrity checks, central storage of golden configs, moving TACACS+ and admin access to an out-of-band network — mostly architecture and processes; the portfolio has no separate classes for them."]
+    }
+  ],
+  "lessons": [
+    "The root of the whole attack is perimeter hygiene, not sophisticated defence. The cheapest and most reliable break in the chain is at steps 2 and 4: block SNMP, Smart Install and TFTP at the network edge (NGFW), disable SNMPv1/v2 and move to SNMPv3, remove default community strings. This stops the attack before the device can hand over its config. The other measures (IDS, NDR, SIEM) are for cases where the ports can't be closed.",
+    "The scan doesn't ask about your industry — it asks your router. The attack is opportunistic: any organisation with weak SNMP exposed to the internet, Smart Install enabled or outdated Cisco gear is at risk. So the first priority is to see your own perimeter through the attacker's eyes (EASM, CAASM) and find outdated or vulnerable devices (vulnerability management), and then verify that protection actually works (BAS, automated penetration testing).",
+    "Who is most at risk of being next. Priority sectors per AA26-194A are telecom, defence, energy, finance, government (especially local) and healthcare. Talos separately expects attacks to continue on manufacturing and higher education, and politically on Ukraine and its allies. The EU named Center 16 operations against at least 9 European countries. For Ukraine this means telecom operators, energy companies and government bodies with edge Cisco devices are the most likely targets.",
+    "A config stolen today is pre-positioning for a strike tomorrow. For years this was quiet reconnaissance, but Poland 2025, in CERT Polska's version, marks a shift to destructive operations. Critical infrastructure organisations should treat configuration theft not as \"just a leak\" but as reconnaissance ahead of possible sabotage — and prepare detection and recovery (SIEM, NDR, DFIR, configuration backups) in advance.",
+    "What applies to everyone. Even if your perimeter is clean, outdated Smart Install is dangerous: the same CVE-2018-0171 was also used by another group (Salt Typhoon). Closing this surface protects against several actors at once.",
+    "Threat intelligence as context for the conversation. The Center 16 profile and its stable TTPs (threat intelligence) help recognise the attack faster and match traces — known exfiltration infrastructure addresses feed the rules at steps 4 and 6. It supports recognition and the conversation with the customer, not a separate protective barrier."
+  ],
+  "caveats": [
+    "Attribution of the December 2025 attack on Poland is disputed: CERT Polska links the infrastructure to Static Tundra (FSB Center 16), while ESET and Dragos attribute the wiper to Sandworm (GRU) with medium confidence. We show both versions without averaging them.",
+    "Steps 1–5 are confirmed by joint advisory AA26-194A (seen in real attacks). Step 6 (persistence: accounts, GRE, SYNful Knock) comes from the Cisco Talos report; the ATT&CK IDs there are our mapping (editorial), not IDs from the source.",
+    "Talos classes GRE tunnels and NetFlow collection as collection and TACACS+ changes as defence evasion; in step 6 we grouped them together as actions after gaining access.",
+    "Sources count the AA26-194A co-authors differently (19 agencies/13 countries vs 18/12 plus the NCSC) — a difference in counting method, not a contradiction in substance.",
+    "Scores for CVE-2008-4128 differ between sources (9.3 under CVSS v2 in the CVE record vs 4.3 in some reviews); the flaw affects only end-of-life devices, so for most networks it is secondary.",
+    "The solution classes here are mostly editorial: the portfolio is geared to enterprise and endpoint security, and for pure network equipment some key measures (SNMPv3, disabling Smart Install, a MIB allow-list, out-of-band management) are device settings, listed under \"Gaps\".",
+    "We do not reproduce specific OIDs, configuration file names or other indicators — they are in the sources (AA26-194A), which we point to for writing detection rules.",
+    "Exposure data (Shadowserver) is as of 2024; check the Shadowserver dashboard for current numbers."
+  ]
+}

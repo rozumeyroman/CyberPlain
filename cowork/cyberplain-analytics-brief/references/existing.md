@@ -14,6 +14,7 @@
 - `tradertraitor-binance` (2026-10-29) — TraderTraitor проти Binance: 8 кроків до крадіжки $6,34 млрд · TraderTraitor → Binance
 - `uac-0050-dtek-litemanager` (2026-10-29) — UAC-0050 від імені «ДТЕК Енерго»: «борг за світло», що встановлює LiteManager · UAC-0050 → державні установи
 - `datasuckers-atb` (2026-10-05) — DATASUCKERS проти мережі «АТБ»: 10 кроків атаки · DATASUCKERS → АТБ
+- `static-tundra-routers` (2026-07-13) — Хакери ФСБ (Static Tundra, Berserk Bear): крадіжка конфігів маршрутизаторів по SNMP · FSB Center 16 (Static Tundra) → критична інфраструктура (оператори зв'язку, енергетика, оборона, фінанси, держсектор, медицина)
 
 ## Звіти
 

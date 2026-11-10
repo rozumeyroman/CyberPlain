@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440">
+<defs>
+<marker id="stun-mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fm" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="stun-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="stun-md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fd" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="k ta" x="16" y="28" font-size="11">ШЛЯХ АТАКИ</text>
+<rect class="b" x="24" y="48" width="112" height="88" rx="4"/>
+<text class="tm" x="80.0" y="86" text-anchor="middle" font-size="13" font-weight="600">НАПАДНИК</text>
+<text class="ts" x="80.0" y="108" text-anchor="middle" font-size="11">сканує SNMP</text>
+<rect class="b-att" x="152" y="48" width="112" height="88" rx="4"/>
+<text class="ta" x="208.0" y="82" text-anchor="middle" font-size="13" font-weight="600">РОУТЕР</text>
+<text class="ts" x="208.0" y="102" text-anchor="middle" font-size="11">слабкий SNMP /</text>
+<text class="ts" x="208.0" y="120" text-anchor="middle" font-size="11">Smart Install</text>
+<rect class="b-att" x="280" y="48" width="112" height="88" rx="4"/>
+<text class="ta" x="336.0" y="86" text-anchor="middle" font-size="13" font-weight="600">КОНФІГ</text>
+<text class="ts" x="336.0" y="108" text-anchor="middle" font-size="11">копія у файл</text>
+<rect class="b-att" x="408" y="48" width="112" height="88" rx="4"/>
+<text class="ta" x="464.0" y="86" text-anchor="middle" font-size="13" font-weight="600">TFTP → VPS</text>
+<text class="ts" x="464.0" y="108" text-anchor="middle" font-size="11">нападника</text>
+<rect class="b" x="536" y="48" width="112" height="88" rx="4"/>
+<text class="tm" x="592.0" y="86" text-anchor="middle" font-size="13" font-weight="600">паролі +</text>
+<text class="ts" x="592.0" y="108" text-anchor="middle" font-size="11">карта мережі</text>
+<rect class="b-dash" x="664" y="48" width="112" height="88" rx="4"/>
+<text class="tm" x="720.0" y="82" text-anchor="middle" font-size="13" font-weight="600">закріплення</text>
+<text class="ts" x="720.0" y="102" text-anchor="middle" font-size="11">акаунти · GRE</text>
+<text class="ts" x="720.0" y="120" text-anchor="middle" font-size="11">імплант</text>
+<line class="la" x1="136" y1="92.0" x2="151" y2="92.0" marker-end="url(#stun-ma)"/>
+<line class="la" x1="264" y1="92.0" x2="279" y2="92.0" marker-end="url(#stun-ma)"/>
+<line class="la" x1="392" y1="92.0" x2="407" y2="92.0" marker-end="url(#stun-ma)"/>
+<line class="la" x1="520" y1="92.0" x2="535" y2="92.0" marker-end="url(#stun-ma)"/>
+<line class="la dash" x1="648" y1="92.0" x2="663" y2="92.0" marker-end="url(#stun-ma)"/>
+<text class="ts" x="144.0" y="40" text-anchor="middle" font-size="11">запит</text>
+<text class="ts" x="272.0" y="40" text-anchor="middle" font-size="11">копія</text>
+<text class="ts" x="400.0" y="40" text-anchor="middle" font-size="11">вивід</text>
+<rect class="b-dash" x="24" y="168" width="240" height="48" rx="4"/>
+<text class="ta" x="144.0" y="189" text-anchor="middle" font-size="13" font-weight="600">CVE-2018-0171</text>
+<text class="ts" x="144.0" y="206" text-anchor="middle" font-size="11">запасний хід</text>
+<line class="la dash" x1="208.0" y1="168" x2="208.0" y2="137" marker-end="url(#stun-ma)"/>
+<text class="ts" x="216.0" y="158" text-anchor="start" font-size="11">або</text>
+<text class="k td" x="16" y="256" font-size="11">ДЕ РОЗІРВАТИ</text>
+<rect class="b-def" x="24" y="304" width="112" height="72" rx="4"/>
+<text class="td" x="80.0" y="334" text-anchor="middle" font-size="13" font-weight="600">VM</text>
+<text class="ts" x="80.0" y="354" text-anchor="middle" font-size="11">EOL і CVE</text>
+<rect class="b-def" x="152" y="304" width="112" height="72" rx="4"/>
+<text class="td" x="208.0" y="334" text-anchor="middle" font-size="13" font-weight="600">SNMPv3</text>
+<text class="ts" x="208.0" y="354" text-anchor="middle" font-size="11">без v1/v2</text>
+<rect class="b-def" x="280" y="304" width="112" height="72" rx="4"/>
+<text class="td" x="336.0" y="334" text-anchor="middle" font-size="13" font-weight="600">IDS</text>
+<text class="ts" x="336.0" y="354" text-anchor="middle" font-size="11">OID копіювання</text>
+<rect class="b-def" x="408" y="304" width="368" height="72" rx="4" stroke-width="2"/>
+<text class="td" x="592.0" y="330" text-anchor="middle" font-size="13" font-weight="600">Фаєрвол на межі</text>
+<text class="ts" x="592.0" y="350" text-anchor="middle" font-size="11">блок SNMP / TFTP / 4786</text>
+<text class="k td" x="592.0" y="366" text-anchor="middle" font-size="10">НАЙРАНІША ТОЧКА</text>
+<line class="ld" x1="80.0" y1="304" x2="80.0" y2="217" marker-end="url(#stun-md)"/>
+<line class="ld" x1="232.0" y1="304" x2="232.0" y2="137" marker-end="url(#stun-md)"/>
+<line class="ld" x1="336.0" y1="304" x2="336.0" y2="137" marker-end="url(#stun-md)"/>
+<polygon class="fd" points="461.0,304 461.0,150 455.0,150 464.0,137 473.0,150 467.0,150 467.0,304"/>
+<text class="td" x="86.0" y="292" text-anchor="start" font-size="11">розрив</text>
+<text class="td" x="238.0" y="292" text-anchor="start" font-size="11">розрив</text>
+<text class="td" x="342.0" y="292" text-anchor="start" font-size="11">розрив</text>
+<text class="td" x="476.0" y="292" text-anchor="start" font-size="11">розрив</text>
+<text class="ts" x="784" y="428" text-anchor="end" font-size="11">пунктир — за Talos / не завжди присутнє</text>
+</svg>
