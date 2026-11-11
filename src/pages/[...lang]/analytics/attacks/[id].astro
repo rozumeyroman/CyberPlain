@@ -4,6 +4,7 @@ import Base from '../../../../layouts/Base.astro';
 import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
 import AttackChain from '../../../../components/AttackChain.astro';
 import Illustration from '../../../../components/Illustration.astro';
+import Prose from '../../../../components/Prose.astro';
 import SolutionLinks from '../../../../components/SolutionLinks.astro';
 import ShareLinks from '../../../../components/ShareLinks.astro';
 import SourceList from '../../../../components/SourceList.astro';
@@ -64,9 +65,9 @@ const editorial = a.steps.some((s) => s.techniques.some((y) => y.editorial) || s
     {a.body.length > 0 && (
       <section class="sec" aria-labelledby="plain">
         <h2 class="sec-title" id="plain">{x.plain}</h2>
-        <div class="prose">{a.body.slice(0, 2).map((p) => <p>{p}</p>)}</div>
+        <Prose blocks={a.body.slice(0, 2)} />
         {a.illustration && <Illustration owner={a.id} {...a.illustration} />}
-        <div class="prose">{a.body.slice(2).map((p) => <p>{p}</p>)}</div>
+        <Prose blocks={a.body.slice(2)} />
       </section>
     )}
 
@@ -140,7 +141,6 @@ const editorial = a.steps.some((s) => s.techniques.some((y) => y.editorial) || s
   .facts { display: flex; flex-wrap: wrap; gap: 12px 32px; margin: 0 0 8px; }
   .facts > div { display: flex; flex-direction: column; gap: 2px; }
   .facts dd { margin: 0; font-size: 15px; color: var(--text-2); }
-  .prose p { margin: 0 0 16px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--text-2); }
   .plain { margin: 0; padding-left: 20px; max-width: 760px; font-size: 16px; line-height: 1.6; color: var(--text-2); }
   .plain li + li { margin-top: 8px; }
   .jump { margin-bottom: 20px; }

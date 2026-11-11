@@ -112,6 +112,22 @@ const original = z.object({ title: z.string(), publisher: z.string(), pages: z.n
 
 // Ілюстрація: наша SVG (src/assets/analytics/<file>.<uk|en>.svg, інлайниться під час збирання, 0 KB JS) — схема механіки,
 // коли вона має сенс, інакше образна ілюстрація в стилі сайту.
+// Текст «Простими словами» / «Про що звіт»: абзац (рядок) або блок зі списком — підзаголовок, вступ, пункти з маркерами
+// (ordered — нумерований), у пункті жирна назва, текст і підписані примітки («Сліди: …», «Зупиняє: …»).
+const bodyBlock = z.union([
+  z.string(),
+  z.object({
+    heading: z.string(),
+    intro: z.string().optional(),
+    ordered: z.boolean().default(false),
+    items: z.array(z.object({
+      name: z.string().optional(),
+      text: z.string(),
+      notes: z.array(z.object({ label: z.string(), text: z.string() }).strict()).default([]),
+    }).strict()).min(1),
+  }).strict(),
+]);
+
 const illustration = z.object({ file: z.string().regex(/^[a-z0-9-]+$/), alt: z.string(), caption: z.string() }).strict().optional();
 
 const reports = defineCollection({
@@ -124,7 +140,7 @@ const reports = defineCollection({
     dateNote: z.string().optional(),
     summary: z.string(),
     illustration, // схема чи образна ілюстрація; показується в «Простими словами» після другого абзацу
-    body: z.array(z.string()).min(1),
+    body: z.array(bodyBlock).min(1),
     method: z.array(z.string()).default([]), // як отримано дані: вибірка, середовище, хто видав, що виміряно, а що — думка
     figures: z.array(figure).default([]),
     caveats: z.array(z.string()).default([]),
@@ -195,7 +211,7 @@ const attacks = defineCollection({
     victim: z.object({ name: z.string(), sector: z.string(), country: z.string() }).strict(),
     summary: z.string(),
     illustration, // показується в «Простими словами» після другого абзацу
-    body: z.array(z.string()),
+    body: z.array(bodyBlock),
     claims: z.array(figure).default([]),
     claimsNote: z.string().optional(),
     steps: z.array(z.object(stepShape).strict()).min(1),
@@ -226,8 +242,11 @@ const enD3fendTechniques = overlay('d3fend/techniques', { simple: str, analogy: 
 const part = (shape: z.ZodRawShape) => z.object(shape).partial().strict();
 const arr = (shape: z.ZodRawShape) => z.array(part(shape));
 const strs = z.array(str);
+const enBody = z.array(z.union([str, part({
+  heading: str, intro: str, items: arr({ name: str, text: str, notes: arr({ label: str, text: str }) }),
+})]));
 const enReports = overlay('analytics/reports', {
-  title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: strs, method: strs,
+  title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: enBody, method: strs,
   figures: arr({ value: str, label: str }), caveats: strs,
   findings: arr({ title: str, text: str, risk: str, solutions: arr({ why: str }) }), gaps: strs, questions: strs,
 });
@@ -237,7 +256,7 @@ const enVulnerabilities = overlay('analytics/vulnerabilities', {
   remediation: strs, timeline: arr({ text: str }), caveats: strs, solutions: arr({ why: str }), gaps: strs,
 });
 const enAttacks = overlay('analytics/attacks', {
-  title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: strs, claims: arr({ value: str, label: str }), claimsNote: str,
+  title: str, dateNote: str, summary: str, illustration: part({ alt: str, caption: str }), body: enBody, claims: arr({ value: str, label: str }), claimsNote: str,
   actor: part({ name: str, profile: strs }), victim: part({ name: str, sector: str, country: str }),
   steps: arr({ title: str, what: str, result: str, tools: strs, solutions: arr({ why: str }), gaps: strs }),
   lessons: strs, caveats: strs,

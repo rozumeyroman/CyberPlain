@@ -1,0 +1,51 @@
+---
+// Текст «Простими словами» / «Про що звіт»: абзаци й блоки зі списками (BodyBlock). 0 KB JS.
+import type { BodyBlock } from '../lib/data';
+
+interface Props { blocks: BodyBlock[] }
+const { blocks } = Astro.props;
+---
+<div class="prose">
+  {blocks.map((b) => typeof b === 'string' ? <p>{b}</p> : (
+    <div class="blk">
+      <h3>{b.heading}</h3>
+      {b.intro && <p>{b.intro}</p>}
+      {(() => {
+        const List = b.ordered ? 'ol' : 'ul';
+        return (
+          <List class:list={['items', { ordered: b.ordered }]}>
+            {b.items.map((i) => (
+              <li>
+                <p class="it">{i.name && <strong>{i.name}. </strong>}{i.text}</p>
+                {i.notes.length > 0 && (
+                  <dl class="notes">
+                    {i.notes.map((n) => <div><dt class="mono">{n.label}</dt><dd>{n.text}</dd></div>)}
+                  </dl>
+                )}
+              </li>
+            ))}
+          </List>
+        );
+      })()}
+    </div>
+  ))}
+</div>
+
+<style>
+  .prose { max-width: 760px; }
+  p { margin: 0 0 16px; font-size: 17px; line-height: 1.65; color: var(--text-2); }
+  .blk { margin: 28px 0 24px; }
+  h3 { margin: 0 0 10px; font-size: 19px; line-height: 1.35; font-weight: 600; color: var(--text); }
+  .items { margin: 0; padding: 0 0 0 22px; }
+  .items li { padding-left: 4px; }
+  .items li + li { margin-top: 14px; }
+  .items li::marker { color: var(--defense); }
+  .ordered li::marker { font-family: var(--font-mono); font-size: 14px; }
+  .it { margin: 0; }
+  strong { color: var(--text); font-weight: 600; }
+  .notes { margin: 8px 0 0; display: flex; flex-direction: column; gap: 4px; }
+  .notes > div { display: grid; grid-template-columns: 88px 1fr; gap: 12px; align-items: baseline; }
+  .notes dt { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .notes dd { margin: 0; font-size: 15px; line-height: 1.55; color: var(--text-2); }
+  @media (max-width: 480px) { .notes > div { grid-template-columns: 1fr; gap: 0; } }
+</style>

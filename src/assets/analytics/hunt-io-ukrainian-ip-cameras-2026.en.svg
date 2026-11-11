@@ -61,7 +61,7 @@
 <text class="tm" x="636" y="332" font-size="12">watch the network</text>
 <text class="k td" x="212" y="376" font-size="11">CHEAPEST PLACE TO STOP</text>
 <line class="la" x1="16" y1="408" x2="48" y2="408"/>
-<text class="ts" x="56" y="412" font-size="11">traces in the operator's folder</text>
+<text class="ts" x="56" y="412" font-size="11">traces on the operator's server</text>
 <line class="la dash" x1="352" y1="408" x2="384" y2="408"/>
 <text class="ts" x="392" y="412" font-size="11">prepared only, success not confirmed</text>
 </svg>

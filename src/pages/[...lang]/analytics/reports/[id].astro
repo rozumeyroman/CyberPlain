@@ -4,6 +4,7 @@ import Base from '../../../../layouts/Base.astro';
 import AnalyticsCard from '../../../../components/AnalyticsCard.astro';
 import AnalyticsSolutions from '../../../../components/AnalyticsSolutions.astro';
 import Illustration from '../../../../components/Illustration.astro';
+import Prose from '../../../../components/Prose.astro';
 import ShareLinks from '../../../../components/ShareLinks.astro';
 import SolutionLinks from '../../../../components/SolutionLinks.astro';
 import SourceList from '../../../../components/SourceList.astro';
@@ -59,9 +60,9 @@ const matrix = [...byClass.values()].sort((a, b) => b.n.length - a.n.length || a
 
     <section class="sec" aria-labelledby="plain">
       <h2 class="sec-title" id="plain">{x.plain}</h2>
-      <div class="prose">{r.body.slice(0, 2).map((p) => <p>{p}</p>)}</div>
+      <Prose blocks={r.body.slice(0, 2)} />
       {r.illustration && <Illustration owner={r.id} {...r.illustration} />}
-      <div class="prose">{r.body.slice(2).map((p) => <p>{p}</p>)}</div>
+      <Prose blocks={r.body.slice(2)} />
     </section>
 
     {r.figures.length > 0 && (
@@ -163,7 +164,6 @@ const matrix = [...byClass.values()].sort((a, b) => b.n.length - a.n.length || a
   .facts > div { display: flex; flex-direction: column; gap: 2px; }
   .facts dd { margin: 0; font-size: 15px; color: var(--text-2); }
   .dn { color: var(--muted); }
-  .prose p { margin: 0 0 16px; max-width: 760px; font-size: 17px; line-height: 1.65; color: var(--text-2); }
   .figs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
   .figs li { background: var(--bg); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
   .v { font: 500 clamp(26px, 5vw, 34px)/1.1 var(--font-mono); color: var(--defense); letter-spacing: -0.02em; }

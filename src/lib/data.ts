@@ -96,11 +96,16 @@ export interface AStep {
   observed?: boolean; // лише в ланцюжку вразливості: true — бачили в реальних атаках, false — ймовірний сценарій
 }
 type Src = { label: string; url?: string };
+// Абзац або блок зі списком (див. bodyBlock у content.config.ts).
+export type BodyBlock = string | {
+  heading: string; intro?: string; ordered: boolean;
+  items: { name?: string; text: string; notes: { label: string; text: string }[] }[];
+};
 type Fig = { value: string; label: string };
 type Orig = { title: string; publisher: string; pages?: number; url?: string };
 export interface AReport {
   id: string; title: string; kind: 'report' | 'brief' | 'note'; original: Orig; date: string; dateNote?: string;
-  summary: string; illustration?: { file: string; alt: string; caption: string }; body: string[]; method: string[];
+  summary: string; illustration?: { file: string; alt: string; caption: string }; body: BodyBlock[]; method: string[];
   figures: Fig[]; caveats: string[]; findings: AFinding[]; gaps: string[]; questions: string[];
   vulnerabilities: AVuln[]; sources: Src[];
 }
@@ -116,7 +121,7 @@ export interface AVuln {
 export interface AAttack {
   id: string; title: string; date: string; dateNote?: string; original?: Orig;
   actor: { name: string; profile: string[] }; victim: { name: string; sector: string; country: string };
-  summary: string; illustration?: { file: string; alt: string; caption: string }; body: string[]; claims: Fig[]; claimsNote?: string; steps: AStep[]; lessons: string[];
+  summary: string; illustration?: { file: string; alt: string; caption: string }; body: BodyBlock[]; claims: Fig[]; claimsNote?: string; steps: AStep[]; lessons: string[];
   caveats: string[]; vulnerabilities: AVuln[]; sources: Src[];
 }
 

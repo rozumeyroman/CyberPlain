@@ -6,38 +6,188 @@
     "caption": "Three doors into a camera and four lines of defence. Our diagram based on the Hunt.io investigation (10.08.2026); dashed lines show what the operators prepared but the report does not confirm succeeded. The placement of the defences is editorial."
   },
   "body": [
-    "On 10 August 2026 Hunt.io, a company that tracks attacker infrastructure on the internet, published an investigation. Its starting point is a rare stroke of luck for defenders: the operators themselves left their working folders open to everyone. It is like a workshop where someone forgot to lock the door: you can see the tools, the notes and what they were working on. According to Hunt.io, the search was prompted by a 10 July 2026 warning from the Dutch intelligence services AIVD and MIVD that Russian state actors are systematically spying through IP cameras to obtain militarily relevant information — in the Netherlands, other EU and NATO countries, and Ukraine.",
-    "The report's main point is simple. Watching other people's cameras takes neither secret vulnerabilities nor big money. A publicly available scanner, a dictionary of common passwords and a list of old vulnerabilities that vendors patched long ago are enough. A camera facing the internet with a default password is like a ground-floor window without curtains and a key under the doormat: who looks in is a question of time, not skill. The operator called the main tool in the first folder camview: his own wrapper around the public Ingram scanner — a program that automatically looks for cameras and checks them for weak passwords and known vulnerabilities. Traces of the same Ingram are in the second folder too; that is the only thing linking the two servers.",
-    "In the first folder the researchers saw traces of real access: a list of 58 compromised cameras in Ukrainian address space and a log of the operator opening their streams. Target lists were organized by city — Sloviansk, Kramatorsk, Dobropillia. Alongside them were a compromised Ukrainian online shop, through which the operator routed his traffic, and records of attempts against the websites of settlement and village councils. Whether those attempts succeeded cannot be seen from the files.",
-    "The second folder is larger, but it holds preparation, not proven break-ins. Its tools were meant to turn cameras and home or office routers into a \"pass-through\": devices that can relay other people's traffic and hide the real source of an attack. The cameras on its lists are from Odesa, Burshtyn and Kherson, and the operator searched for routers in 15 European countries. Hunt.io found no traces of successful break-ins in the saved files.",
-    "How it works: seven stages. This is an overall picture from both folders, not one proven chain; each stage notes whether there are traces and what stops it.",
-    "1. Discovery. An automated scanner sweeps the addresses of whole cities and records everything that answers from the internet as a camera or router. Status: confirmed by traces (target lists are in both folders). Stopped by: the device not being visible from the internet — finding 01.",
-    "2. Identification. The tool works out what the device is and who made it, to know which \"keys\" to try. Status: confirmed for the first folder (this is how camview works, as Hunt.io describes it). Stopped by: closed external access and disabled unneeded service protocols — findings 01 and 04.",
-    "3. Common passwords. Default and the most common passwords from the dictionary are tried against the device. Status: confirmed by the presence of the dictionary and the tool; the report does not say on which cameras a password worked. Stopped by: a long password of your own on every device — finding 02.",
-    "4. Old vulnerabilities. Alongside passwords, long-known vulnerabilities for which the vendor has already released updates are tried. Status: the tools are in both folders; the report does not disclose how exactly the 58 cameras were opened. Stopped by: updated firmware — finding 02.",
-    "5. Watching video. The operator adds opened cameras to a list and watches their streams. Status: confirmed by traces (the list of 58 cameras and the viewing log in the first folder). Stopped by: the four previous lines and monitoring who connects to the cameras — findings 03 and 04.",
-    "6. Proxy from the device. The plan was to make a compromised camera or router relay other people's traffic. Status: preparation only — this is the second folder, where Hunt.io found no traces of successful break-ins. Stopped by: not letting cameras connect to the internet on their own — finding 03.",
-    "7. Cover behind someone else's website. The first-folder operator routed his traffic through a compromised online shop to hide his own address. Status: the shop compromise and its role as a relay are confirmed; the success of further attempts against other websites is not. Stopped by: protecting the website and its admin panel — finding 05.",
-    "Who was affected and who was targeted — according to Hunt.io. The report does not name the shop, the camera owners or specific websites (or we generalize the names) — and neither do we.",
-    "Affected, with traces: one Ukrainian online shop on OpenCart (compromised; no traces of data exfiltration found) and 58 cameras in Ukrainian address space whose streams the operator opened.",
-    "Targeted, compromise not confirmed: cameras on city lists — Sloviansk, Kramatorsk and Dobropillia in the first operation, Odesa, Burshtyn and Kherson in the second. Being on a target list does not mean being compromised.",
-    "Attempts, success not confirmed: settlement and village council websites and the domain of one branch of the armed forces (for it — reconnaissance only).",
-    "Searching without evidence of break-ins: routers in 15 European countries, including Ukraine.",
-    "Why this matters to a defender: the lists hold not \"high-value targets\" but ordinary cameras, routers and websites of small businesses and communities. There is only one selection criterion: the device answered from the internet.",
-    "For defence, this brings good news: everything the operators relied on is closed by ordinary hygiene. Take cameras and routers off the open internet, update firmware, change passwords, turn off what is not needed and watch the network. That is what the findings below are about.",
-    "Honestly about the publisher's interest. Hunt.io sells a platform for finding attacker infrastructure, and the investigation also showcases its capabilities. The sample is two folders the operators were unlucky enough to leave open; it is not a review of all attacks on cameras in Ukraine. Hunt.io reported its findings to CERT-UA on 30 July 2026 and waited seven days before publishing."
+    "On 10 August 2026 Hunt.io, a company that tracks attacker infrastructure on the internet, published an investigation. Its starting point is a rare stroke of luck for defenders: the operators themselves left their working files open to everyone. It is like a workshop where someone forgot to lock the door: you can see the tools, the notes and what they were working on. According to Hunt.io, the search was prompted by a 10 July 2026 warning from the Dutch intelligence services AIVD and MIVD that Russian state actors are systematically spying through IP cameras to obtain militarily relevant information — in the Netherlands, other EU and NATO countries, and Ukraine.",
+    "The report's main point is simple. Watching other people's cameras takes neither secret vulnerabilities nor big money. A publicly available scanner, a dictionary of common passwords and a list of old vulnerabilities that vendors patched long ago are enough. A camera facing the internet with a default password is like a ground-floor window without curtains and a key under the doormat: who looks in is a question of time, not skill. The operator called the main tool on the first server camview: his own wrapper around the public Ingram scanner — a program that automatically looks for cameras and checks them for weak passwords and known vulnerabilities. Traces of the same Ingram are on the second server too; that is the only thing linking them.",
+    "Where the data comes from. The attackers kept their tools and notes on two rented servers — computers in data centres reachable from the internet. The file folders on both turned out to be open: anyone could go in and browse them, like a shared cloud folder. Hunt.io found these folders (\"open directories\" in the report), saved copies and went through the contents. Below, the \"first server\" is the one Hunt.io spotted at the end of May 2026 and the \"second\" the one spotted in July; they were probably run by different people.",
+    {
+      "heading": "First server: camera access already existed",
+      "items": [
+        {
+          "name": "58 compromised cameras",
+          "text": "A list of cameras in Ukrainian address space and a log of the operator opening their streams."
+        },
+        {
+          "name": "Targets by city",
+          "text": "Address lists to scan — Sloviansk, Kramatorsk, Dobropillia."
+        },
+        {
+          "name": "A compromised online shop",
+          "text": "The operator routed his traffic through it to hide his own address."
+        },
+        {
+          "name": "Settlement and village council websites",
+          "text": "Records of break-in attempts; whether they succeeded cannot be seen from the files."
+        }
+      ]
+    },
+    {
+      "heading": "Second server: preparation only",
+      "intro": "It is larger, but there are no proven break-ins on it — Hunt.io found no traces of successful attempts.",
+      "items": [
+        {
+          "name": "Goal",
+          "text": "To turn cameras and home or office routers into a \"pass-through\": devices that can relay other people's traffic and hide the real source of an attack."
+        },
+        {
+          "name": "Cameras on the lists",
+          "text": "Odesa, Burshtyn, Kherson."
+        },
+        {
+          "name": "Routers",
+          "text": "The operator searched for them in 15 European countries, including Ukraine."
+        }
+      ]
+    },
+    {
+      "heading": "How it works: seven stages",
+      "intro": "An overall picture from both servers, not one proven chain. Each stage notes whether there are traces and what stops it.",
+      "items": [
+        {
+          "name": "Discovery",
+          "text": "A scanner automatically sweeps the addresses of whole cities and records everything that answers from the internet as a camera or router.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "Yes — target lists on both servers"
+            },
+            {
+              "label": "Stopped by",
+              "text": "The device not being visible from the internet (finding 01)"
+            }
+          ]
+        },
+        {
+          "name": "Identification",
+          "text": "The tool works out what the device is and who made it, to know which \"keys\" to try.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "Yes, on the first server — this is how camview works, as Hunt.io describes it"
+            },
+            {
+              "label": "Stopped by",
+              "text": "Closed external access, disabled unneeded service protocols (findings 01 and 04)"
+            }
+          ]
+        },
+        {
+          "name": "Common passwords",
+          "text": "Default and the most common passwords from the dictionary are tried against the device.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "The dictionary and the tool exist; the report does not say on which cameras a password worked"
+            },
+            {
+              "label": "Stopped by",
+              "text": "A long password of your own on every device (finding 02)"
+            }
+          ]
+        },
+        {
+          "name": "Old vulnerabilities",
+          "text": "Alongside passwords, long-known vulnerabilities for which the vendor has already released updates are tried.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "The tools are on both servers; the report does not disclose how the 58 cameras were opened"
+            },
+            {
+              "label": "Stopped by",
+              "text": "Updated firmware (finding 02)"
+            }
+          ]
+        },
+        {
+          "name": "Watching video",
+          "text": "The operator adds opened cameras to a list and watches the streams.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "Yes — the list of 58 cameras and the viewing log on the first server"
+            },
+            {
+              "label": "Stopped by",
+              "text": "The four previous lines and monitoring who connects to the cameras (findings 03 and 04)"
+            }
+          ]
+        },
+        {
+          "name": "Proxy from the device",
+          "text": "The plan was to make a compromised camera or router relay other people's traffic.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "Preparation only on the second server, no successful break-ins found"
+            },
+            {
+              "label": "Stopped by",
+              "text": "Not letting cameras connect to the internet on their own (finding 03)"
+            }
+          ]
+        },
+        {
+          "name": "Cover behind someone else's website",
+          "text": "The operator routed his traffic through a compromised online shop to hide his own address.",
+          "notes": [
+            {
+              "label": "Traces",
+              "text": "The shop compromise and its role as a relay are confirmed; success against other websites is not"
+            },
+            {
+              "label": "Stopped by",
+              "text": "Protecting the website and its admin panel (finding 05)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Who was affected and who was targeted",
+      "intro": "According to Hunt.io. The report names no one — not the shop, not the camera owners, not specific websites — so neither do we.",
+      "items": [
+        {
+          "name": "Affected, with traces",
+          "text": "An online shop on OpenCart (compromised, but no traces of data exfiltration) and 58 cameras in Ukrainian address space whose streams the operator opened."
+        },
+        {
+          "name": "Targeted, compromise not confirmed",
+          "text": "Cameras on the city lists. Being on a list does not mean being compromised."
+        },
+        {
+          "name": "Attempts, success not confirmed",
+          "text": "Settlement and village council websites; for the domain of one branch of the armed forces — reconnaissance only."
+        },
+        {
+          "name": "Searching without evidence of compromise",
+          "text": "Routers in 15 European countries."
+        }
+      ]
+    },
+    "Why this matters to a defender. The lists hold not \"high-value targets\" but ordinary cameras, routers and websites of small businesses and communities: a device got there only because it answered from the internet. The good news is that everything the operators relied on is closed by ordinary hygiene: take cameras and routers off the open internet, update firmware, change passwords, turn off what is not needed and watch the network. That is what the findings below are about.",
+    "Honestly about the publisher's interest. Hunt.io sells a platform for finding attacker infrastructure, and the investigation also showcases its capabilities. The sample is two servers the operators were unlucky enough to leave open; it is not a review of all attacks on cameras in Ukraine. Hunt.io reported its findings to CERT-UA on 30 July 2026 and waited seven days before publishing."
   ],
   "method": [
-    "Data source: two \"open directories\" — folders on the operators' servers visible to anyone on the internet. Hunt.io's system spotted the first on 30 May 2026 (120 files in 31 subfolders) and the second on 21 July 2026 (1,704 files in 505 subfolders, 761 MB).",
+    "Data source: two \"open directories\" — file folders on the two operators' servers visible to anyone on the internet. Hunt.io's system spotted the first on 30 May 2026 (120 files in 31 subfolders) and the second on 21 July 2026 (1,704 files in 505 subfolders, 761 MB).",
     "The first server was hosted by Aeza Group, under US OFAC sanctions since July 2025; the second by the Latvian provider sistemaltd. Hunt.io believes the servers were run separately.",
     "The conclusions are drawn only from saved copies of the folders. It is a snapshot of someone else's desk: you can see what the operator had and what he tried, but not always whether it worked. Hunt.io itself says the success of attempts against websites, data exfiltration and the purpose of the operations cannot be confirmed from these files.",
-    "The report has no measurements of its own of \"how many cameras in Ukraine are vulnerable\". All figures are Hunt.io's counts of the contents of the two folders; no one has checked them independently.",
+    "The report has no measurements of its own of \"how many cameras in Ukraine are vulnerable\". All figures are Hunt.io's counts of the contents of the two servers; no one has checked them independently.",
     "Hunt.io is a commercial threat data vendor; the publication names no authors. The compromised shop was notified through CERT-UA."
   ],
   "figures": [
     {
       "value": "58",
-      "label": "compromised cameras in Ukrainian address space on the first-folder operator's list (according to Hunt.io), alongside a log of stream views"
+      "label": "compromised cameras in Ukrainian address space on the first-server operator's list (according to Hunt.io), alongside a log of stream views"
     },
     {
       "value": "3,811",
@@ -45,20 +195,20 @@
     },
     {
       "value": "15",
-      "label": "European countries, including Ukraine, where the second-folder operator searched for routers to turn into proxies (according to Hunt.io)"
+      "label": "European countries, including Ukraine, where the second-server operator searched for routers to turn into proxies (according to Hunt.io)"
     },
     {
       "value": "1,704 files, 761 MB",
-      "label": "size of the second folder (according to Hunt.io); despite its size, no traces of successful break-ins were found in it"
+      "label": "size of the second server's folder (according to Hunt.io); despite its size, no traces of successful break-ins were found in it"
     },
     {
       "value": "0",
-      "label": "links to a state actor or a named group that Hunt.io established for either folder"
+      "label": "links to a state actor or a named group that Hunt.io established for either server"
     }
   ],
   "caveats": [
-    "The investigation rests only on saved copies of two folders. Hunt.io does not confirm the success of attempts against council websites, exfiltration of shop data, successful break-ins in the second folder or the purpose of either operation.",
-    "There is no attribution: Hunt.io links the folders neither to a state, nor to a named group, nor to each other. The AIVD and MIVD warning (July 2026) is given as context: the services write about systematic espionage through cameras by at least one Russian intelligence service to obtain militarily relevant information (the document title says \"for military purposes\"), but it says nothing about the operators in the Hunt.io report, and no link between them is proven. The services' advice is set out in finding 07 as AIVD/MIVD material, not Hunt.io's; we have not verified the services' assessments in the PDF.",
+    "The investigation rests only on saved copies of folders from two servers. Hunt.io does not confirm the success of attempts against council websites, exfiltration of shop data, successful break-ins on the second server or the purpose of either operation.",
+    "There is no attribution: Hunt.io links the servers neither to a state, nor to a named group, nor to each other. The AIVD and MIVD warning (July 2026) is given as context: the services write about systematic espionage through cameras by at least one Russian intelligence service to obtain militarily relevant information (the document title says \"for military purposes\"), but it says nothing about the operators in the Hunt.io report, and no link between them is proven. The services' advice is set out in finding 07 as AIVD/MIVD material, not Hunt.io's; we have not verified the services' assessments in the PDF.",
     "Hunt.io could not verify the authenticity of the saved camera frame; we rely on the camera list and the viewing log.",
     "The figures are counts by Hunt.io, a commercial threat data vendor; they are not statistics on vulnerable cameras in Ukraine.",
     "Hunt.io lists CVE-2024-57049 (TP-Link Archer) among those used, but the CNA rejected the record on 30 June 2026 as \"not a security issue\". We give the number only for completeness of Hunt.io's list and do not rely on it in any finding.",
@@ -90,7 +240,7 @@
     },
     {
       "title": "02 · Default passwords and updates left uninstalled for years are the main doors",
-      "text": "The tools in both folders first tried common passwords from the dictionary and, if those failed, old known vulnerabilities that have long had updates. Hunt.io names vulnerabilities in Hikvision, Dahua, D-Link and Reolink cameras from 2017–2021 and in TP-Link Archer routers from 2024; MikroTik routers were among the targets too. About the Hikvision and Dahua camera vulnerabilities Hunt.io says plainly: they are years old and long fixed. All named in the report: Hikvision — CVE-2017-7921 and CVE-2021-36260; Dahua — CVE-2021-33044 and CVE-2021-33045; D-Link — CVE-2020-25078; Reolink — CVE-2020-25169; TP-Link Archer — CVE-2024-53375 and CVE-2024-57049 (Hunt.io mentions the latter, but its record was rejected; see \"Caveats\"). Five of the named vulnerabilities are in the CISA KEV catalogue — the list of vulnerabilities known to be used in real attacks. Analogy: a lock the manufacturer recalled five years ago and replaces for free, but the owner never got round to the workshop. So the two most effective steps are free: update the firmware and give every device a long password of its own.",
+      "text": "The tools on both servers first tried common passwords from the dictionary and, if those failed, old known vulnerabilities that have long had updates. Hunt.io names vulnerabilities in Hikvision, Dahua, D-Link and Reolink cameras from 2017–2021 and in TP-Link Archer routers from 2024; MikroTik routers were among the targets too. About the Hikvision and Dahua camera vulnerabilities Hunt.io says plainly: they are years old and long fixed. All named in the report: Hikvision — CVE-2017-7921 and CVE-2021-36260; Dahua — CVE-2021-33044 and CVE-2021-33045; D-Link — CVE-2020-25078; Reolink — CVE-2020-25169; TP-Link Archer — CVE-2024-53375 and CVE-2024-57049 (Hunt.io mentions the latter, but its record was rejected; see \"Caveats\"). Five of the named vulnerabilities are in the CISA KEV catalogue — the list of vulnerabilities known to be used in real attacks. Analogy: a lock the manufacturer recalled five years ago and replaces for free, but the owner never got round to the workshop. So the two most effective steps are free: update the firmware and give every device a long password of its own.",
       "risk": "a stranger watches and controls your cameras without you knowing. If the same password is on every camera, not one opens but all of them at once.",
       "solutions": [
         {
@@ -109,7 +259,7 @@
     },
     {
       "title": "03 · A compromised camera is not just spied-on video but a pass-through",
-      "text": "The first folder shows the obvious harm: the operator kept a list of cameras and watched the streams. The second shows a less obvious one: compromised cameras and routers were to be turned into proxies, relaying other people's traffic through them. Analogy: someone has picked the key to your building not to steal anything but to use it as a shortcut — and your address shows up on the neighbours' recordings. For the owner this means the next attack on someone else will look as if it comes from their network. The protection here is a simple principle: a camera should talk only to its recorder or video service and to no one else.",
+      "text": "The first server shows the obvious harm: the operator kept a list of cameras and watched the streams. The second shows a less obvious one: compromised cameras and routers were to be turned into proxies, relaying other people's traffic through them. Analogy: someone has picked the key to your building not to steal anything but to use it as a shortcut — and your address shows up on the neighbours' recordings. For the owner this means the next attack on someone else will look as if it comes from their network. The protection here is a simple principle: a camera should talk only to its recorder or video service and to no one else.",
       "risk": "an outsider sees who brings what and when, who opens up and who guards. And the company's address can end up in other people's attack logs and blocklists although the company itself did nothing.",
       "solutions": [
         {
@@ -144,7 +294,7 @@
     },
     {
       "title": "05 · A poorly protected small-business or community website becomes cover for attacks on others",
-      "text": "The first folder started not with a camera but with a Ukrainian online shop on OpenCart. The operator got access to its admin panel and routed his traffic through the shop, so other people's logs showed the shop's address rather than his own. Hunt.io found no traces of the shop's data being exfiltrated. The same folder held records of attempts against settlement and village council websites and of reconnaissance on the domain of one branch of the armed forces; Hunt.io cannot confirm whether any attempt succeeded. Analogy: someone takes another person's car not to sell it but to go on a job with someone else's number plates. A small website is interesting not for its data but for its \"clean\" address.",
+      "text": "The work on the first server started not with a camera but with a Ukrainian online shop on OpenCart. The operator got access to its admin panel and routed his traffic through the shop, so other people's logs showed the shop's address rather than his own. Hunt.io found no traces of the shop's data being exfiltrated. The same server held records of attempts against settlement and village council websites and of reconnaissance on the domain of one branch of the armed forces; Hunt.io cannot confirm whether any attempt succeeded. Analogy: someone takes another person's car not to sell it but to go on a job with someone else's number plates. A small website is interesting not for its data but for its \"clean\" address.",
       "risk": "a company or community website becomes a participant in other people's attacks: its address gets blocked, questions come from law enforcement and partners, and access to the admin panel can at any moment be turned against the owner too.",
       "solutions": [
         {
@@ -166,7 +316,7 @@
     },
     {
       "title": "06 · Honestly about attribution: what is proven and what is not",
-      "text": "Proven: almost all files and notes are in Russian, so the operators are most likely native speakers; the first folder contains a list of 58 compromised Ukrainian cameras and a viewing log; the Ukrainian shop really was compromised. Not proven: that a state or a known group is behind it. Hunt.io says plainly that neither folder is linked to a state actor or a named group, and that the two operations overlap in tooling and approach, not authorship. The AIVD and MIVD warning is important context, but not evidence of a link. Why the cameras were watched cannot be seen from the files either. For defence this changes little: whether it is intelligence or a small-time \"entrepreneur\" collecting proxies for sale, the doors are the same and so are the locks.",
+      "text": "Proven: almost all files and notes are in Russian, so the operators are most likely native speakers; the first server contains a list of 58 compromised Ukrainian cameras and a viewing log; the Ukrainian shop really was compromised. Not proven: that a state or a known group is behind it. Hunt.io says plainly that neither server is linked to a state actor or a named group, and that the two operations overlap in tooling and approach, not authorship. The AIVD and MIVD warning is important context, but not evidence of a link. Why the cameras were watched cannot be seen from the files either. For defence this changes little: whether it is intelligence or a small-time \"entrepreneur\" collecting proxies for sale, the doors are the same and so are the locks.",
       "risk": "if you tell a customer \"it's the GRU\" without evidence, the first check of the source will undermine trust in the whole conversation. And if you wait for someone to name the culprit, the cameras will stay open.",
       "solutions": [
         {
