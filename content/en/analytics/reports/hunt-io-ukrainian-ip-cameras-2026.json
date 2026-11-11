@@ -1,0 +1,212 @@
+{
+  "title": "Hunt.io investigation: how Ukrainian IP cameras are compromised and how to defend them",
+  "summary": "Hunt.io researchers found two servers where Russian-speaking operators had left their working files exposed: tools for breaking into cameras and routers, and a list of 58 Ukrainian cameras already compromised. There is nothing sophisticated here: the operators counted on default passwords, updates left uninstalled for years and devices visible from the internet. Below is what exactly to defend against and with what.",
+  "illustration": {
+    "alt": "Diagram: an automated scanner (in the report, the camview tool built on the public Ingram scanner) sweeps city address ranges and finds a camera or router. Three doors lead into the device: it is visible from the internet, it has a default password, or it runs old firmware. Inside, the attacker watches the video or turns the device into a pass-through for other people's traffic. Opposite each door is a line of defence: take it off the internet and view it via VPN, set your own password, update the firmware; the last line is to block the camera from connecting outbound and to watch the network. Video viewing is backed by traces for 58 cameras; the proxy use is drawn dashed because it was only prepared.",
+    "caption": "Three doors into a camera and four lines of defence. Our diagram based on the Hunt.io investigation (10.08.2026); dashed lines show what the operators prepared but the report does not confirm succeeded. The placement of the defences is editorial."
+  },
+  "body": [
+    "On 10 August 2026 Hunt.io, a company that tracks attacker infrastructure on the internet, published an investigation. Its starting point is a rare stroke of luck for defenders: the operators themselves left their working folders open to everyone. It is like a workshop where someone forgot to lock the door: you can see the tools, the notes and what they were working on. According to Hunt.io, the search was prompted by a 10 July 2026 warning from the Dutch intelligence services AIVD and MIVD that Russian state actors are systematically spying through IP cameras to obtain militarily relevant information — in the Netherlands, other EU and NATO countries, and Ukraine.",
+    "The report's main point is simple. Watching other people's cameras takes neither secret vulnerabilities nor big money. A publicly available scanner, a dictionary of common passwords and a list of old vulnerabilities that vendors patched long ago are enough. A camera facing the internet with a default password is like a ground-floor window without curtains and a key under the doormat: who looks in is a question of time, not skill. The operator called the main tool in the first folder camview: his own wrapper around the public Ingram scanner — a program that automatically looks for cameras and checks them for weak passwords and known vulnerabilities. Traces of the same Ingram are in the second folder too; that is the only thing linking the two servers.",
+    "In the first folder the researchers saw traces of real access: a list of 58 compromised cameras in Ukrainian address space and a log of the operator opening their streams. Target lists were organized by city — Sloviansk, Kramatorsk, Dobropillia. Alongside them were a compromised Ukrainian online shop, through which the operator routed his traffic, and records of attempts against the websites of settlement and village councils. Whether those attempts succeeded cannot be seen from the files.",
+    "The second folder is larger, but it holds preparation, not proven break-ins. Its tools were meant to turn cameras and home or office routers into a \"pass-through\": devices that can relay other people's traffic and hide the real source of an attack. The cameras on its lists are from Odesa, Burshtyn and Kherson, and the operator searched for routers in 15 European countries. Hunt.io found no traces of successful break-ins in the saved files.",
+    "How it works: seven stages. This is an overall picture from both folders, not one proven chain; each stage notes whether there are traces and what stops it.",
+    "1. Discovery. An automated scanner sweeps the addresses of whole cities and records everything that answers from the internet as a camera or router. Status: confirmed by traces (target lists are in both folders). Stopped by: the device not being visible from the internet — finding 01.",
+    "2. Identification. The tool works out what the device is and who made it, to know which \"keys\" to try. Status: confirmed for the first folder (this is how camview works, as Hunt.io describes it). Stopped by: closed external access and disabled unneeded service protocols — findings 01 and 04.",
+    "3. Common passwords. Default and the most common passwords from the dictionary are tried against the device. Status: confirmed by the presence of the dictionary and the tool; the report does not say on which cameras a password worked. Stopped by: a long password of your own on every device — finding 02.",
+    "4. Old vulnerabilities. Alongside passwords, long-known vulnerabilities for which the vendor has already released updates are tried. Status: the tools are in both folders; the report does not disclose how exactly the 58 cameras were opened. Stopped by: updated firmware — finding 02.",
+    "5. Watching video. The operator adds opened cameras to a list and watches their streams. Status: confirmed by traces (the list of 58 cameras and the viewing log in the first folder). Stopped by: the four previous lines and monitoring who connects to the cameras — findings 03 and 04.",
+    "6. Proxy from the device. The plan was to make a compromised camera or router relay other people's traffic. Status: preparation only — this is the second folder, where Hunt.io found no traces of successful break-ins. Stopped by: not letting cameras connect to the internet on their own — finding 03.",
+    "7. Cover behind someone else's website. The first-folder operator routed his traffic through a compromised online shop to hide his own address. Status: the shop compromise and its role as a relay are confirmed; the success of further attempts against other websites is not. Stopped by: protecting the website and its admin panel — finding 05.",
+    "Who was affected and who was targeted — according to Hunt.io. The report does not name the shop, the camera owners or specific websites (or we generalize the names) — and neither do we.",
+    "Affected, with traces: one Ukrainian online shop on OpenCart (compromised; no traces of data exfiltration found) and 58 cameras in Ukrainian address space whose streams the operator opened.",
+    "Targeted, compromise not confirmed: cameras on city lists — Sloviansk, Kramatorsk and Dobropillia in the first operation, Odesa, Burshtyn and Kherson in the second. Being on a target list does not mean being compromised.",
+    "Attempts, success not confirmed: settlement and village council websites and the domain of one branch of the armed forces (for it — reconnaissance only).",
+    "Searching without evidence of break-ins: routers in 15 European countries, including Ukraine.",
+    "Why this matters to a defender: the lists hold not \"high-value targets\" but ordinary cameras, routers and websites of small businesses and communities. There is only one selection criterion: the device answered from the internet.",
+    "For defence, this brings good news: everything the operators relied on is closed by ordinary hygiene. Take cameras and routers off the open internet, update firmware, change passwords, turn off what is not needed and watch the network. That is what the findings below are about.",
+    "Honestly about the publisher's interest. Hunt.io sells a platform for finding attacker infrastructure, and the investigation also showcases its capabilities. The sample is two folders the operators were unlucky enough to leave open; it is not a review of all attacks on cameras in Ukraine. Hunt.io reported its findings to CERT-UA on 30 July 2026 and waited seven days before publishing."
+  ],
+  "method": [
+    "Data source: two \"open directories\" — folders on the operators' servers visible to anyone on the internet. Hunt.io's system spotted the first on 30 May 2026 (120 files in 31 subfolders) and the second on 21 July 2026 (1,704 files in 505 subfolders, 761 MB).",
+    "The first server was hosted by Aeza Group, under US OFAC sanctions since July 2025; the second by the Latvian provider sistemaltd. Hunt.io believes the servers were run separately.",
+    "The conclusions are drawn only from saved copies of the folders. It is a snapshot of someone else's desk: you can see what the operator had and what he tried, but not always whether it worked. Hunt.io itself says the success of attempts against websites, data exfiltration and the purpose of the operations cannot be confirmed from these files.",
+    "The report has no measurements of its own of \"how many cameras in Ukraine are vulnerable\". All figures are Hunt.io's counts of the contents of the two folders; no one has checked them independently.",
+    "Hunt.io is a commercial threat data vendor; the publication names no authors. The compromised shop was notified through CERT-UA."
+  ],
+  "figures": [
+    {
+      "value": "58",
+      "label": "compromised cameras in Ukrainian address space on the first-folder operator's list (according to Hunt.io), alongside a log of stream views"
+    },
+    {
+      "value": "3,811",
+      "label": "login–password pairs in the dictionary the operator's tool used to test cameras (according to Hunt.io): default and the most common passwords are tried first"
+    },
+    {
+      "value": "15",
+      "label": "European countries, including Ukraine, where the second-folder operator searched for routers to turn into proxies (according to Hunt.io)"
+    },
+    {
+      "value": "1,704 files, 761 MB",
+      "label": "size of the second folder (according to Hunt.io); despite its size, no traces of successful break-ins were found in it"
+    },
+    {
+      "value": "0",
+      "label": "links to a state actor or a named group that Hunt.io established for either folder"
+    }
+  ],
+  "caveats": [
+    "The investigation rests only on saved copies of two folders. Hunt.io does not confirm the success of attempts against council websites, exfiltration of shop data, successful break-ins in the second folder or the purpose of either operation.",
+    "There is no attribution: Hunt.io links the folders neither to a state, nor to a named group, nor to each other. The AIVD and MIVD warning (July 2026) is given as context: the services write about systematic espionage through cameras by at least one Russian intelligence service to obtain militarily relevant information (the document title says \"for military purposes\"), but it says nothing about the operators in the Hunt.io report, and no link between them is proven. The services' advice is set out in finding 07 as AIVD/MIVD material, not Hunt.io's; we have not verified the services' assessments in the PDF.",
+    "Hunt.io could not verify the authenticity of the saved camera frame; we rely on the camera list and the viewing log.",
+    "The figures are counts by Hunt.io, a commercial threat data vendor; they are not statistics on vulnerable cameras in Ukraine.",
+    "Hunt.io lists CVE-2024-57049 (TP-Link Archer) among those used, but the CNA rejected the record on 30 June 2026 as \"not a security issue\". We give the number only for completeness of Hunt.io's list and do not rely on it in any finding.",
+    "Hunt.io describes CVE-2020-25169 (Reolink) as unauthenticated information disclosure; according to the CVE record it is cleartext transmission (CWE-319). We do not go into the difference — the article is not about vulnerability mechanics.",
+    "We found no fix for CVE-2024-53375 (TP-Link Archer). The NVD record contains only CISA-ADP data (affected Archer AXE75 firmware 1.2.2 build 20240827) and does not reference a vendor advisory or fixed version; the CVE is not in TP-Link's security advisory index, and the firmware notes on the Archer AXE75 download page are generic (\"improved security\") without mentioning the vulnerability. That is why we say \"long fixed\" only about Hikvision and Dahua cameras, as Hunt.io does; for TP-Link we recommend installing the latest firmware but cannot guarantee a fix.",
+    "The report has further findings we do not cover: preparations for looking up vehicle information in already leaked databases and mentions of a separate application with user roles. Hunt.io cannot confirm they were used.",
+    "The camview and Ingram tools are named only as a class (\"automated camera discovery and testing\"), without links or a description of how to use them; the name camview coincides with an unrelated legitimate third-party software product. We do not carry over server addresses, file names or other indicators: they are in the Hunt.io report. We do not describe compromise mechanics — the article is about defence.",
+    "The \"seven stages\" in \"About the report\" are our generalization of two separate operations, not a proven sequence of actions by one group. The report itself gives the order \"passwords or vulnerabilities first\" differently, so we say \"alongside\". Hunt.io does not disclose how exactly each of the 58 cameras was opened.",
+    "The viewing log is the operator's own file; Hunt.io did not verify it independently. Cities are given as in Hunt.io — they are target lists, not a list of places where cameras were compromised; the report does not specify where the 58 cameras are located. The report does not claim a \"shop → cameras\" link, and neither do we.",
+    "The mapping to solution classes is editorial, except for VPN, which Hunt.io itself recommends. No class replaces firmware updates and password changes.",
+    "CISA KEV addition dates were checked against the catalogue version of 10 November 2026."
+  ],
+  "findings": [
+    {
+      "title": "01 · A camera or router visible from the internet is already on someone's list",
+      "text": "The operators did not pick victims by name. They automatically swept the addresses of whole cities and recorded everything that answered as a camera or router. Analogy: a postman who is not looking for a particular flat but tries the handle of every door in the building. So the question \"who would want our warehouse camera?\" is the wrong one: it is found not because it is interesting but because it answers the knock. The most reliable protection is to leave nothing to knock on: cameras and routers should not be reachable from the open internet, and remote viewing should go through a secure tunnel.",
+      "risk": "a device visible from outside lands on target lists automatically and for good. From then on its fate depends only on the password and how fresh the firmware is — an unreliable last line.",
+      "solutions": [
+        {
+          "why": "Hunt.io explicitly recommends VPN instead of port forwarding: the video and admin panel are visible only to someone inside the encrypted tunnel, and an outside scanner sees nothing. It works if the old direct access is really closed at the same time and the VPN gateway itself is updated and has strong sign-in."
+        },
+        {
+          "why": "A perimeter firewall blocks inbound connections from the internet to cameras, recorders and the router admin panel, leaving only allowed addresses. It works when the cameras sit behind it rather than being connected to the internet directly or through a separate \"forgotten\" modem."
+        },
+        {
+          "why": "Looks at the company through the eyes of the same scanner and shows which cameras, recorders and admin panels are visible from the internet — including ones IT does not know about. It sees only the addresses and domains it could link to the company: a camera at a branch on a home ISP can be missed."
+        }
+      ]
+    },
+    {
+      "title": "02 · Default passwords and updates left uninstalled for years are the main doors",
+      "text": "The tools in both folders first tried common passwords from the dictionary and, if those failed, old known vulnerabilities that have long had updates. Hunt.io names vulnerabilities in Hikvision, Dahua, D-Link and Reolink cameras from 2017–2021 and in TP-Link Archer routers from 2024; MikroTik routers were among the targets too. About the Hikvision and Dahua camera vulnerabilities Hunt.io says plainly: they are years old and long fixed. All named in the report: Hikvision — CVE-2017-7921 and CVE-2021-36260; Dahua — CVE-2021-33044 and CVE-2021-33045; D-Link — CVE-2020-25078; Reolink — CVE-2020-25169; TP-Link Archer — CVE-2024-53375 and CVE-2024-57049 (Hunt.io mentions the latter, but its record was rejected; see \"Caveats\"). Five of the named vulnerabilities are in the CISA KEV catalogue — the list of vulnerabilities known to be used in real attacks. Analogy: a lock the manufacturer recalled five years ago and replaces for free, but the owner never got round to the workshop. So the two most effective steps are free: update the firmware and give every device a long password of its own.",
+      "risk": "a stranger watches and controls your cameras without you knowing. If the same password is on every camera, not one opens but all of them at once.",
+      "solutions": [
+        {
+          "why": "A vulnerability scanner checks network devices for known vulnerabilities and default passwords and shows which cameras and routers to update first. It works if the scanner can reach the camera network and knows these vendors; it does not update firmware itself — that is people's job."
+        },
+        {
+          "why": "Generates and stores a separate long password for every camera, recorder and router, so there is no need to use one for all or keep them in a spreadsheet. It helps only if the passwords on the devices themselves were actually changed — the manager does not change them, it makes changing them feasible."
+        },
+        {
+          "why": "Builds a single device inventory from different systems and shows which devices lack updates or keep default settings, so cameras and routers do not end up belonging to no one. Cameras installed by a contractor often miss asset inventories, so the class works only if such devices are added manually or discovered automatically."
+        },
+        {
+          "why": "The IPS module recognizes attempts to exploit long-known camera and router vulnerabilities and password guessing in traffic and blocks them until the device is updated. It works only for traffic that passes through the firewall and with current signature updates; it is temporary cover, not a substitute for updating."
+        }
+      ]
+    },
+    {
+      "title": "03 · A compromised camera is not just spied-on video but a pass-through",
+      "text": "The first folder shows the obvious harm: the operator kept a list of cameras and watched the streams. The second shows a less obvious one: compromised cameras and routers were to be turned into proxies, relaying other people's traffic through them. Analogy: someone has picked the key to your building not to steal anything but to use it as a shortcut — and your address shows up on the neighbours' recordings. For the owner this means the next attack on someone else will look as if it comes from their network. The protection here is a simple principle: a camera should talk only to its recorder or video service and to no one else.",
+      "risk": "an outsider sees who brings what and when, who opens up and who guards. And the company's address can end up in other people's attack logs and blocklists although the company itself did nothing.",
+      "solutions": [
+        {
+          "why": "A rule of \"cameras may not reach the internet except where allowed\" stops a compromised device from connecting to the operator's server on its own, and without that it cannot become a proxy. It works if the cameras sit in a separate network with default deny, not \"all outbound allowed\"."
+        },
+        {
+          "why": "Knows how a camera normally behaves (sends video to the recorder) and notices when it suddenly starts opening outbound connections or relaying someone else's traffic; no agent on the camera is needed. It works if the sensor sees traffic from the very network where the cameras are."
+        },
+        {
+          "why": "Brings together firewall, router and recorder logs and raises an alert on new outbound connections from cameras and video viewing from unusual addresses. It needs those logs to be collected at all and someone to respond to alerts; many cameras keep almost no logs of their own."
+        }
+      ]
+    },
+    {
+      "title": "04 · A camera will not complain on its own — watch the network around it",
+      "text": "You cannot install antivirus on a camera, and its own logs are usually poor. So Hunt.io advises watching not the device itself but the network edge: whether someone is massively trying addresses and passwords on cameras and routers, and whether these devices have started \"calling\" somewhere on their own. Analogy: an intercom will not report that it has been hacked, but a concierge will notice strangers using it at three in the morning. Two more pieces of advice from the report in the same vein: turn off everything unused on cameras and routers — remote administration and camera service protocols (ONVIF, RTSP) if they run without a password.",
+      "risk": "without monitoring, a camera compromise can last for months — until the ISP or CERT-UA calls, or someone comes asking about an attack \"from your address\".",
+      "solutions": [
+        {
+          "why": "Spots password guessing against cameras and unusual connections from them in traffic, without installing anything on the devices themselves. It is effective when it sees both the network edge and the camera segment; in a small office without such a sensor the firewall partly takes on this role."
+        },
+        {
+          "why": "Recognizes known camera scanners and attempts to exploit old vulnerabilities by signature and alerts on them. It only warns, does not block, and sees only the traffic fed to it."
+        },
+        {
+          "why": "Collects alerts from network tools in one place and correlates them: password guessing today plus a new outbound connection from the same camera tomorrow is an incident, not noise. It works if there are rules specifically for cameras and routers and a person who triages the alerts."
+        },
+        {
+          "why": "Gives security tools lists of attacker server addresses; Hunt.io published indicators for this operation in its report. Indicators age quickly, so this complements behaviour monitoring rather than replacing it."
+        }
+      ]
+    },
+    {
+      "title": "05 · A poorly protected small-business or community website becomes cover for attacks on others",
+      "text": "The first folder started not with a camera but with a Ukrainian online shop on OpenCart. The operator got access to its admin panel and routed his traffic through the shop, so other people's logs showed the shop's address rather than his own. Hunt.io found no traces of the shop's data being exfiltrated. The same folder held records of attempts against settlement and village council websites and of reconnaissance on the domain of one branch of the armed forces; Hunt.io cannot confirm whether any attempt succeeded. Analogy: someone takes another person's car not to sell it but to go on a job with someone else's number plates. A small website is interesting not for its data but for its \"clean\" address.",
+      "risk": "a company or community website becomes a participant in other people's attacks: its address gets blocked, questions come from law enforcement and partners, and access to the admin panel can at any moment be turned against the owner too.",
+      "solutions": [
+        {
+          "why": "Sits in front of the website and filters out typical web application attacks, automated scanning and password guessing on the admin panel. It works if all traffic to the site goes through it and it cannot be bypassed by reaching the server directly; it does not replace updating the site engine."
+        },
+        {
+          "why": "A second factor at the admin panel sign-in stops a guessed or stolen administrator password from being used. Possible only where the site engine or hosting supports it; it does not protect against entry through a vulnerability in the site itself."
+        },
+        {
+          "why": "Safely tests the running website for vulnerabilities before someone else finds them and shows what to fix. It pays off when testing is repeated after every site update and findings are actually fixed."
+        },
+        {
+          "why": "Finds an outdated site engine and plugins with known vulnerabilities before someone else uses them. It works if the scanner knows this engine and its plugins and what it finds is actually updated."
+        },
+        {
+          "why": "Spots administrator sign-ins from unusual places in the site logs and the site starting to contact third-party addresses on its own. It needs web server and admin panel logs to be collected outside the site itself — on a compromised server they can be wiped."
+        }
+      ]
+    },
+    {
+      "title": "06 · Honestly about attribution: what is proven and what is not",
+      "text": "Proven: almost all files and notes are in Russian, so the operators are most likely native speakers; the first folder contains a list of 58 compromised Ukrainian cameras and a viewing log; the Ukrainian shop really was compromised. Not proven: that a state or a known group is behind it. Hunt.io says plainly that neither folder is linked to a state actor or a named group, and that the two operations overlap in tooling and approach, not authorship. The AIVD and MIVD warning is important context, but not evidence of a link. Why the cameras were watched cannot be seen from the files either. For defence this changes little: whether it is intelligence or a small-time \"entrepreneur\" collecting proxies for sale, the doors are the same and so are the locks.",
+      "risk": "if you tell a customer \"it's the GRU\" without evidence, the first check of the source will undermine trust in the whole conversation. And if you wait for someone to name the culprit, the cameras will stay open.",
+      "solutions": [
+        {
+          "why": "Campaign profiles and verified threat reports help separate what is established from assumptions and learn in time that cameras and routers are being targeted. It pays off only when someone reads this information and turns it into action: close access, update, add rules."
+        }
+      ]
+    },
+    {
+      "title": "07 · What the Dutch services (AIVD/MIVD) advise",
+      "text": "This is advice not from Hunt.io but from the Dutch intelligence services AIVD and MIVD in their warning (July 2026, an 8-page PDF); we give it in our own words. According to the services' assessment, Russian state actors use access to cameras to see military routes, arms deliveries and, in Ukraine, the locations of soldiers; that is why so much of the advice is about where a camera points. The services say the most important things are the camera's field of view and its reachability from the internet. 1) Do not expose streams to the public internet without urgent need; do not forward ports on the router, turn off UPnP, and use VPN for remote access. 2) Turn off protocols the camera does not need, and choose secure ones where needed (HTTPS, RTSPS). 3) Limit the field of view: the camera looks only at what it is there for, not at logistics routes, ports, loading areas or public infrastructure; mask sensitive areas in the frame and remove unnecessary data from the image, such as GPS coordinates. 4) Immediately change the default password to a unique one not found in leaked-password databases, and put cameras in a separate virtual network (VLAN). 5) Use the administrator account only for configuration and watch the stream under a restricted account; enable multi-factor authentication for stream access. 6) Choose cameras whose vendor supports security for several years, and regularly look for and install updates; keep the camera's country of origin in mind. 7) Beware of unknown cameras that have appeared on your premises or point at them: outsiders may have installed them.",
+      "risk": "a camera pointing at a warehouse, an access road or a loading area can give outsiders information about your deliveries and routes, even if the company has nothing to do with defence.",
+      "solutions": [
+        {
+          "why": "AIVD and MIVD explicitly advise remote access via VPN: the stream is visible only to someone who has entered the tunnel, so a scanner on the internet does not find the camera. It works if direct access and port forwarding are really turned off."
+        },
+        {
+          "why": "Rules between a separate camera network, the rest of the network and the internet put the VLAN advice into practice: cameras see only the recorder, and a compromised camera does not become a door to the rest of the network. It works if a \"deny everything except what is needed\" rule is set; the segmentation itself is network configuration."
+        },
+        {
+          "why": "A second factor at sign-in to the stream stops a stolen or guessed password from being used. Possible only where the camera or video system supports it; the camera itself often has no MFA."
+        },
+        {
+          "why": "An asset inventory helps find unknown and forgotten cameras in your own network. It works if devices are discovered automatically; it will not show someone else's camera pointing at your yard from outside."
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "A separate network for cameras (isolated VLAN, segmentation). This is network architecture and configuration, not a product: a firewall only enforces rules someone has thought through and written down.",
+    "An inventory of all cameras, recorders and routers with model, firmware and an owner, and replacement of devices the vendor no longer updates. This is process and budget: the CAASM class (finding 02) helps only partly, because cameras installed by a contractor \"around IT\" often miss automated inventories, and replacing unsupported devices is a human decision.",
+    "Turning off UPnP and port forwarding on the router, remote administration and unneeded camera service protocols (ONVIF, RTSP without a password). This is configuration of the devices themselves — free, but by hand on each one.",
+    "Changing default passwords and installing firmware on the cameras themselves. No solution class will do this for the owner; it needs a schedule and an owner, and a clause on updates and passwords in the contract with the CCTV contractor.",
+    "Limiting cameras' field of view: where it points, masking sensitive areas, removing GPS from the image (finding 07). This is camera installation and configuration; there is no class for it in the portfolio.",
+    "Home cameras and small businesses without an IT specialist. Enterprise solution classes are mostly out of reach here; the same five hygiene steps work: take off the internet, update, change passwords, turn off what is unneeded, check from time to time."
+  ],
+  "questions": [
+    "Do you know how many cameras, recorders and routers you have and who is responsible for them — IT, security or a contractor?",
+    "How do you view cameras remotely: through a secure tunnel, or are they visible directly from the internet? Who last checked this from outside, and when?",
+    "When were camera and router firmware last updated, and are there still default passwords, or the same password on all devices, anywhere?",
+    "Can cameras reach the internet on their own, and would anyone notice if a camera started connecting to an unknown address?",
+    "Who keeps track of updates and sign-ins to the admin panel of your website or online shop?"
+  ]
+}

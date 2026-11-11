@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 432">
+<defs>
+<marker id="ipc-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="ipc-md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fd" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="tm" x="16" y="28" font-size="16" font-weight="600">Троє дверей до камери й чотири рубежі захисту</text>
+<rect class="b-att" x="16" y="80" width="144" height="96" rx="4"/>
+<text class="k ta" x="28" y="104" font-size="11">СКАНЕР</text>
+<text class="tm" x="28" y="126" font-size="12">перебирає адреси</text>
+<text class="tm" x="28" y="142" font-size="12">цілих міст</text>
+<text class="ts" x="28" y="164" font-size="11">camview (Ingram)</text>
+<line class="la" x1="160" y1="128" x2="198" y2="128" marker-end="url(#ipc-ma)"/>
+<text class="ts" x="179" y="148" font-size="11" text-anchor="middle">шукає</text>
+<rect class="b-out" x="200" y="48" width="376" height="136" rx="6"/>
+<text class="k" x="212" y="70" font-size="11">КАМЕРА / РОУТЕР</text>
+<text class="ts" x="564" y="70" font-size="11" text-anchor="end">пробує троє дверей</text>
+<rect class="b-att" x="212" y="88" width="112" height="80" rx="4"/>
+<text class="k ta" x="222" y="110" font-size="11">ДВЕРІ 1</text>
+<text class="tm" x="222" y="134" font-size="12">видно з</text>
+<text class="tm" x="222" y="152" font-size="12">інтернету</text>
+<rect class="b-att" x="332" y="88" width="112" height="80" rx="4"/>
+<text class="k ta" x="342" y="110" font-size="11">ДВЕРІ 2</text>
+<text class="tm" x="342" y="134" font-size="12">заводський</text>
+<text class="tm" x="342" y="152" font-size="12">пароль</text>
+<rect class="b-att" x="452" y="88" width="112" height="80" rx="4"/>
+<text class="k ta" x="462" y="110" font-size="11">ДВЕРІ 3</text>
+<text class="tm" x="462" y="134" font-size="12">стара</text>
+<text class="tm" x="462" y="152" font-size="12">прошивка</text>
+<line class="la" x1="576" y1="104" x2="622" y2="96" marker-end="url(#ipc-ma)"/>
+<line class="la dash" x1="576" y1="152" x2="622" y2="192" marker-end="url(#ipc-ma)"/>
+<rect class="b-att" x="624" y="56" width="160" height="80" rx="4"/>
+<text class="k ta" x="636" y="78" font-size="11">ПЕРЕГЛЯДАЄ</text>
+<text class="tm" x="636" y="100" font-size="12">відео з камер</text>
+<text class="ts" x="636" y="122" font-size="11">58 камер у переліку</text>
+<rect class="b-dash" x="624" y="152" width="160" height="96" rx="4"/>
+<text class="k ta" x="636" y="174" font-size="11">ПРОХІДНИЙ ДВІР</text>
+<text class="tm" x="636" y="196" font-size="12">проксі для</text>
+<text class="tm" x="636" y="212" font-size="12">чужого трафіку</text>
+<text class="ts" x="636" y="234" font-size="11">лише заготовки</text>
+<text class="k td" x="16" y="288" font-size="11">РУБЕЖІ ЗАХИСТУ</text>
+<text class="ts" x="16" y="308" font-size="11">навпроти кожних</text>
+<text class="ts" x="16" y="324" font-size="11">дверей</text>
+<line class="ld" x1="268" y1="270" x2="268" y2="172" marker-end="url(#ipc-md)"/>
+<rect class="b-def" x="212" y="272" width="112" height="80" rx="4"/>
+<text class="tm" x="222" y="296" font-size="12">прибрати з</text>
+<text class="tm" x="222" y="314" font-size="12">інтернету,</text>
+<text class="tm" x="222" y="332" font-size="12">доступ — VPN</text>
+<line class="ld" x1="388" y1="270" x2="388" y2="172" marker-end="url(#ipc-md)"/>
+<rect class="b-def" x="332" y="272" width="112" height="80" rx="4"/>
+<text class="tm" x="342" y="296" font-size="12">свій пароль</text>
+<text class="tm" x="342" y="314" font-size="12">на кожен</text>
+<text class="tm" x="342" y="332" font-size="12">пристрій</text>
+<line class="ld" x1="508" y1="270" x2="508" y2="172" marker-end="url(#ipc-md)"/>
+<rect class="b-def" x="452" y="272" width="112" height="80" rx="4"/>
+<text class="tm" x="462" y="296" font-size="12">оновити</text>
+<text class="tm" x="462" y="314" font-size="12">прошивку</text>
+<line class="ld" x1="704" y1="270" x2="704" y2="252" marker-end="url(#ipc-md)"/>
+<rect class="b-def" x="624" y="272" width="160" height="80" rx="4"/>
+<text class="tm" x="636" y="296" font-size="12">заборонити камері</text>
+<text class="tm" x="636" y="314" font-size="12">виходити назовні,</text>
+<text class="tm" x="636" y="332" font-size="12">стежити за мережею</text>
+<text class="k td" x="212" y="376" font-size="11">ТУТ ЗУПИНИТИ НАЙДЕШЕВШЕ</text>
+<line class="la" x1="16" y1="408" x2="48" y2="408"/>
+<text class="ts" x="56" y="412" font-size="11">є сліди в теці оператора</text>
+<line class="la dash" x1="352" y1="408" x2="384" y2="408"/>
+<text class="ts" x="392" y="412" font-size="11">лише заготовки, успіх не підтверджено</text>
+</svg>
