@@ -69,7 +69,7 @@ const matrix = [...byClass.values()].sort((a, b) => b.n.length - a.n.length || a
       <section class="sec" aria-labelledby="fig">
         <h2 class="sec-title" id="fig">{x.figures}</h2>
         <ul class="figs">
-          {r.figures.map((f) => <li><span class="v">{f.value}</span><span class="l">{f.label}</span></li>)}
+          {r.figures.map((f) => <li><span class="v">{f.value.replace(/(\d) (?=\d)/g, "$1\u00A0")}</span><span class="l">{f.label}</span></li>)}
         </ul>
       </section>
     )}
