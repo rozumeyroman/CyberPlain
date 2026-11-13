@@ -19,6 +19,7 @@
 ## Звіти
 
 - `socradar-artex-ai-2026` (2026-11-05) — ARTEX: AI-пентест, що став зброєю — що треба знати захисникам · SOCRadar
+- `gtig-artex-and-friends-2026` (2026-10-30) — «ARTEX і компанія» від Google: AI-агенти ламають за години, а не тижні · Google Threat Intelligence Group (GTIG) і Mandiant
 - `rapid7-q3-threat-landscape-2026` (2026-10-21) — Квартальний огляд загроз Rapid7 за III квартал 2026: три дні до атаки · Rapid7
 - `gartner-mq-hybrid-mesh-firewall-2026` (2026-09-07) — Magic Quadrant Gartner для гібридних mesh-фаєрволів: один пульт на всю мережу · Gartner
 - `hunt-io-ukrainian-ip-cameras-2026` (2026-08-10) — Розслідування Hunt.io: як зламують українські IP-камери і чим захиститися · Hunt.io

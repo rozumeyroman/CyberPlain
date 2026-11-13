@@ -1,0 +1,289 @@
+{
+  "title": "“ARTEX and friends” from Google: AI agents break in within hours, not weeks",
+  "summary": "Google Threat Intelligence Group and Mandiant describe how, since late August 2026, attackers in real intrusions have been handing whole stages of an attack to AI agents. The agents invent no new techniques — they chain old ones together in hours, sometimes minutes. Below: what this changes for defense and the five lines of defense Mandiant recommends.",
+  "illustration": {
+    "alt": "Diagram: an AI agent is given a target and within a few hours passes through cloud management panels, keys and secrets, application functions, Active Directory and the cloud to the data. Under each stage sits one of Mandiant's five lines of defense, and the line of detecting behavior and volume spans the whole path.",
+    "caption": "The path of an agentic attack and the five lines of defense. Our diagram based on the GTIG and Mandiant report; the distribution of the lines across stages is our simplification."
+  },
+  "body": [
+    "The report looks beyond ARTEX at a whole family of “agentic” frameworks (agentic offensive frameworks — programs in which several AI agents plan and carry out an attack on their own). GTIG and Mandiant saw them during incident response: ARTEX, PentAGI, Hexstrike and CAIRN. They are used both by financially motivated extortionists and by clusters that GTIG suspects of ties to China.",
+    "The main thesis of the report: agents do not make an attack invisible or unbeatable, they make it cheap and fast. Reconnaissance, permission checks, privilege escalation and data access that took an operator hours now run as series of 2–25 seconds. According to GTIG, in the UNC7228 campaign about four hours passed from the first compromised account to deep access, and in one case 15 minutes.",
+    "An analogy: a burglar used to walk around the house and try the doors and windows one by one. Now he has a robot that tries every lock in a minute and, if the door does not give, goes straight for the window. The picks are the same; only the speed has changed. And each time the robot arrives in a different car, so a description of the car (IP address, tool name) helps little.",
+    {
+      "heading": "Who the “friends” of ARTEX are",
+      "items": [
+        {
+          "name": "ARTEX",
+          "text": "An open penetration testing and attack orchestration platform written in Go, with a web console; six specialized sub-agents split up the target. The author deleted the repository in October 2026 because of mass abuse, but the code lives on in forks, including ScopeWeaver and the commercial ARTEX PRO."
+        },
+        {
+          "name": "PentAGI",
+          "text": "A framework from VXControl: agents work in Kali Linux sandboxes with open tools (Metasploit, nmap, SQLmap). It was mostly used to map and scan targets, but in places it went as far as intrusion and persistence. A separate platform built on PentAGI was probably used from late August to early October 2026 against system integrators and large telecom operators in Asia."
+        },
+        {
+          "name": "CAIRN",
+          "text": "An open AI penetration testing framework in which agents share findings through a common “board” and decide for themselves what to do next. The campaign using it was described in detail by Palo Alto Networks Unit 42."
+        },
+        {
+          "name": "Hexstrike and others",
+          "text": "GTIG mentions them among those seen in incidents, without a detailed analysis."
+        }
+      ]
+    },
+    "What this means for defense: most of the agent's actions look legitimate — a service account signs in, an ordinary management API is called, a file is read from storage. That is why GTIG advises reducing what a single identity can do and noticing not individual events but their speed, volume and sequence. Mandiant boils its advice down to five lines of defense: protect the control planes, limit identities and keys, harden configurations, protect application functions from abuse, and detect sharp changes in behavior and volume.",
+    "Separately, on ARTEX itself according to SOCRadar, we wrote in the article “ARTEX: an AI pentest tool turned weapon — what defenders need to know” — it can be read as a companion piece.",
+    "To be fair about the publisher's interest: Google sells the Google SecOps platform and Mandiant services, and the report includes ready-made detection rules for Google SecOps specifically. But the report's data comes from real investigations, and the recommendations are mostly not tied to Google products."
+  ],
+  "method": [
+    "The basis of the report is Mandiant incident investigations and GTIG observations from late August to late October 2026; the number of incidents and customers is not stated.",
+    "Wiz also tracks the campaign GTIG calls UNC7228; per GTIG, it overlaps with Storm-0940, a cluster Microsoft describes as China-linked.",
+    "The seven-stage model and the forecast for 1–3 and 3–6 months are GTIG's assessment, not a measurement.",
+    "The figures on CAIRN come from a separate Palo Alto Networks Unit 42 report (12 November 2026), those on Storm-0940 from the Wiz blog; we checked them against these primary sources.",
+    "The publisher sells detection and response products and services; the report gives no ATT&CK technique IDs — all IDs in the findings are ours."
+  ],
+  "figures": [
+    {
+      "value": "2–25 seconds",
+      "label": "the duration of a typical series of ARTEX agent actions; in 23 seconds of active time it performed 27 events, checking permissions in AWS (per GTIG)"
+    },
+    {
+      "value": "≈4 hours",
+      "label": "from the first compromised account to deep access in the UNC7228 campaign, in one case 15 minutes (per GTIG)"
+    },
+    {
+      "value": "over 110,000",
+      "label": "Active Directory objects that the agent enumerated in one network, including the Domain Admins group (per GTIG)"
+    },
+    {
+      "value": "over 2,250",
+      "label": "Microsoft 365 cloud tenants that attackers tried to sign in to in the Storm-0940 campaign (Wiz, citing Microsoft)"
+    },
+    {
+      "value": "25 and 19",
+      "label": "operations and at least organizations in the campaign with CAIRN; access or data theft was confirmed in 10 of them (per Unit 42)"
+    },
+    {
+      "value": "5 of 7",
+      "label": "the stage at which, in GTIG's assessment, the “AI offensive” stands: agents already carry out several attack stages on their own, but so far noisily and crudely"
+    }
+  ],
+  "caveats": [
+    "The number of incidents and customers behind GTIG's findings is not stated; the figures come from individual cases.",
+    "The seven-stage model and the “1–3” and “3–6 months” time frames are GTIG's forecast, not a measured fact.",
+    "The attribution of UNC7228 / Storm-0940 and CL-STA-1238 to China is an assessment by researchers (GTIG, Microsoft via Wiz, Unit 42), not an official statement.",
+    "Attacks on sign-in and SSO systems are described from a defensive angle, without mechanics; we do not reproduce IoCs (addresses, file names, characteristic account names) — they are in the primary sources.",
+    "The report gives no ATT&CK technique IDs; all IDs, except directly named techniques (web shell, Kerberoasting, DCSync, Pass-the-Ticket, Pass-the-Hash, WinRM, password spraying), are our mapping. We deliberately do not map Kerberos relay: ATT&CK v20 has no exact equivalent.",
+    "The publisher sells Google SecOps and Mandiant services; Unit 42 is part of Palo Alto Networks, Wiz is a cloud security vendor.",
+    "Data as of 13 November 2026."
+  ],
+  "findings": [
+    {
+      "title": "01 · AI agents are already in real attacks, not in the lab",
+      "text": "GTIG describes seven stages: from using chatbots for phishing (late 2025 — early 2026) to sophisticated fully autonomous attacks. Now, in GTIG's assessment, we are at stage five: AI tools carry out several stages of an intrusion in real networks on their own, and the human only sets the target. GTIG expects the next stages within 1–3 and 3–6 months: first almost human-free but noisy attacks, later quieter ones, on custom models and with hidden infrastructure. ARTEX, PentAGI and CAIRN are open programs, so the entry barrier is low: anyone can take and run them.",
+      "risk": "Open agentic frameworks lower the entry barrier: speed that once required a strong team becomes available to small extortionists too, so companies that considered themselves “uninteresting” may feel it as well.",
+      "solutions": [
+        {
+          "why": "Automated penetration testing walks the network by the same paths as the agent and shows where the chain comes together within hours. Useful only if the results are turned into fixes rather than filed in a report."
+        },
+        {
+          "why": "Simulates the actions from this report and checks whether EDR and SIEM notice them at a seconds-level tempo. Shows gaps, but does not protect against attacks by itself."
+        },
+        {
+          "why": "Provides profiles of UNC7228, Storm-0940 and other clusters and new data on agentic frameworks. Useful if it is read by those who tune detection, not merely archived."
+        }
+      ]
+    },
+    {
+      "title": "02 · The attack tempo is minutes: a human can no longer keep up",
+      "text": "The agent works in short, dense series: 2–25 seconds, and in 23 seconds it performed 27 actions checking permissions across different AWS security groups. When something breaks, it corrects itself: on getting a “script too large” error, it shortened the script and within ~10 seconds deployed a server with 17 disk snapshots. From the first account to deep access takes about four hours, and once 15 minutes. By the time the on-duty analyst opens the alert, the agent may already be several steps ahead.",
+      "risk": "If responding to an alert takes hours, the attack has time to reach administrator rights and data before anyone intervenes.",
+      "solutions": [
+        {
+          "why": "Correlates cloud, Active Directory and server events in one place so that a series of dozens of actions per minute becomes a single alert. Needs rules for sequence and speed, not for an individual event."
+        },
+        {
+          "why": "Spots, and can immediately stop, an attack on accounts in Active Directory and cloud directories. Works only where all the directories the company uses are connected."
+        },
+        {
+          "why": "Blocks an account or isolates a server from a ready playbook seconds after an alert, without waiting for a human. Works only if the playbook has been agreed in advance and automatic execution is enabled."
+        }
+      ]
+    },
+    {
+      "title": "03 · The first line of defense — management panels exposed to the internet",
+      "text": "The first thing the agent does is look for exposed cloud “control panels”: the Kudu/SCM service (the built-in admin panel of Azure web apps), storage access tokens, service accounts, storage keys. It made over 500 requests, guessing file names, and through Kudu it ran commands and uploaded its own Python, C# and PowerShell scripts. Mandiant advises allowing access to cloud administration, network equipment management, application publishing interfaces, hypervisors, backup systems and CI/CD only from trusted networks, private connections or separate administrative paths, and disabling basic authentication for publishing.",
+      "risk": "An exposed admin panel plus a stolen key is not entry into one system but the remote control for the company's entire cloud.",
+      "solutions": [
+        {
+          "why": "Lets only verified users on managed devices reach the management panels, so the panel disappears from the internet. Works if direct public access is removed, not merely a new path added."
+        },
+        {
+          "why": "Finds the company's admin panels and consoles visible from the internet before the agent does. Of use only if what is found is immediately closed to external access."
+        },
+        {
+          "why": "Checks cloud configuration and shows exposed management services, enabled storage keys and basic authentication. Sees the risk in the settings, but does not block a key that has already been stolen."
+        },
+        {
+          "why": "Spots and cuts off hundreds of path-guessing requests from a single client. Stands only in front of the applications whose traffic has been routed through it."
+        }
+      ]
+    },
+    {
+      "title": "04 · Long-lived keys and secrets — fuel for the agent",
+      "text": "The agent collects Azure storage keys, service account secrets and static AWS keys, because with them it signs in as a “native” application. Mandiant advises getting rid of such secrets: in AWS, temporary credentials through IAM roles; in Azure, Managed Identities instead of secrets and sign-in through Entra ID instead of a shared storage key; in Google Cloud, Workload Identity Federation. The right to pass roles to other services (iam:PassRole) should be given only for specific roles and services. For administrators — FIDO2 keys or passkeys and work only from managed devices.",
+      "risk": "A single key that has sat in a configuration for years gives the agent the same rights as the application — with no password, no MFA and no visible “foreign” sign-in.",
+      "solutions": [
+        {
+          "why": "Takes keys out of configurations and scripts and rotates them regularly, so the agent finds nothing and what is stolen quickly goes stale. Works once applications have been moved to fetching secrets from the vault."
+        },
+        {
+          "why": "Knows where and from where each service account usually signs in, and blocks sign-in from a new place. Needs a learning period for normal behavior."
+        },
+        {
+          "why": "Finds excessive cloud permissions, including the broad right to pass roles, and helps trim them. Reduces what a stolen key can do, but does not notice the theft itself."
+        },
+        {
+          "why": "Grants cloud and admin rights only for the duration of a task, so a key or account holds no standing broad rights the agent could use at once. Works if standing privileged roles are actually removed."
+        },
+        {
+          "why": "FIDO2 keys or passkeys for administrators will not let anyone sign in with a stolen password alone. Does not protect service keys, which sign in without a human."
+        }
+      ]
+    },
+    {
+      "title": "05 · The agent abuses ordinary application functions",
+      "text": "In one incident ARTEX abused a service function of an application for working with a database and eventually obtained a web shell on the server (a web shell is a “back door” for commands through a website); after failed attempts the agent corrected itself and tried again. In another case the attackers used an application's notification system to send emails to more than 1,300 employees. GTIG also saw an SQL injection through which the agent obtained database credentials. Mostly, though, there is no new vulnerability here: these are legitimate functions that were left unrestricted. Mandiant singles out protecting application functions as a separate line of defense.",
+      "risk": "A website or internal application becomes a foothold on the network, and its own mailing a channel for phishing in the company's name.",
+      "solutions": [
+        {
+          "why": "Safely “attacks” the application and its API, showing which service functions are reachable without the required permissions. Finds only what falls within the scope of testing."
+        },
+        {
+          "why": "Sees on the server that a database or Java server process is writing executable pages or launching a shell, and stops it. Needs an agent on the application server."
+        },
+        {
+          "why": "Can cut off external calls to service interfaces and suspicious requests to them. Will not help if the function is abused through a legitimate authenticated session."
+        }
+      ]
+    },
+    {
+      "title": "06 · Inside the network the agent goes straight for Active Directory",
+      "text": "Once inside, the agent enumerates Active Directory en masse (in one network, over 110,000 objects, including the Domain Admins group), the domain controller and the federation server, thousands of accounts from other AD forests, Exchange, service accounts, AD CS certificate templates and the administrator password vault. GTIG saw Kerberoasting (stealing service account tickets to guess their passwords) and DCSync (impersonating a domain controller to obtain password hashes), as well as the creation of its own administrator accounts. Next, the agent tried to reach domain controllers with stolen Kerberos tickets and password hashes (Pass-the-Ticket, Pass-the-Hash), through Windows Remote Management (WinRM) and Kerberos relay — in this case the attempts were blocked. For persistence it reset the passwords of discovered users and took over their accounts. This is only a retelling of the report, without execution details; the details for the SOC are in the primary source.",
+      "risk": "Domain credentials are the keys to all of the company's computers and servers, and the attacker's own admin accounts let them return even after a “clean-up”.",
+      "solutions": [
+        {
+          "why": "Finds in advance service accounts with weak passwords, dangerous certificate templates and hidden administrator rights — exactly what the agent goes after. Useful only after what is found is fixed."
+        },
+        {
+          "why": "Spots a password replication request not from a domain controller, a burst of Kerberos ticket requests, new admin accounts and a sign-in to a domain controller with someone else's ticket or hash. Needs telemetry from all domain controllers."
+        },
+        {
+          "why": "A firewall on every computer and server allows WinRM and other admin connections only from designated admin machines, so a stolen ticket or hash does not open a path to the domain controller from any computer. Works if the rules are deployed centrally on all machines."
+        },
+        {
+          "why": "The agent enumerates everything in sight, so a fake service account or a decoy server will quickly get a hit — a strong alarm signal. Decoys must look plausible among real objects."
+        },
+        {
+          "why": "Keeps administrator passwords in a vault and issues them for the duration of a task, so there are fewer long-lived privileged credentials on the network. Does not protect if the vault itself is accessible to ordinary accounts."
+        }
+      ]
+    },
+    {
+      "title": "07 · The company's cloud becomes the attacker's tool",
+      "text": "In AWS the agent checked what the stolen credentials allowed, created its own small servers with a new SSH key pair and a separate public address as a “bridgehead”, and launched temporary servers to read the company's disk snapshots (EBS snapshots). At the final stage it queried internal SQL databases and read objects en masse from cloud storage. All of this is ordinary administrator activity, only at an unusual time, in an unusual volume and from an unusual identity.",
+      "risk": "Copies of server disks contain databases and credentials; the cloud bill and the data leak arrive at the same time.",
+      "solutions": [
+        {
+          "why": "Trims permissions so that an application identity cannot create servers or read disk snapshots. Reduces the consequences of theft, but does not notice it."
+        },
+        {
+          "why": "Sees new servers with public addresses, access to snapshots and security group changes. Works if all cloud accounts are connected, not just the main one."
+        },
+        {
+          "why": "Knows what each service identity usually does and raises an alert or blocks it when it suddenly creates servers, reads disk snapshots or signs in from a new place. Needs a period of learning the usual behavior."
+        }
+      ]
+    },
+    {
+      "title": "08 · Communication with “home” — through legitimate web services",
+      "text": "For control the agent used an ordinary system utility and hundreds of addresses on a public temporary webhook service, so the traffic looked like calls to a legitimate site. Mandiant advises watching specifically for servers calling such services, as well as vulnerability testing services and tunnels.",
+      "risk": "A server that goes freely onto the internet gives the attacker both a command channel and a data exfiltration channel.",
+      "solutions": [
+        {
+          "why": "Lets servers go out to the internet only where they need to for their work, so new command addresses do not open up. Requires a list of allowed destinations."
+        },
+        {
+          "why": "Blocks for servers the categories of webhook and tunnel services that have no business there. Works only if server traffic goes through the filter."
+        },
+        {
+          "why": "Sees a command line on a server launching a web request utility in an unusual process chain. Needs an agent on the server."
+        }
+      ]
+    },
+    {
+      "title": "09 · Detect behavior and volume, not indicators",
+      "text": "Addresses and tool names in such campaigns change within minutes, so GTIG advises building detection on sequences and speed: how many actions an identity performs per minute, bursts of calls to management APIs, mass access denials, unusual bulk queries or exports from secret stores, bursts of password resets, account creation, credential additions and permission changes. Separately, Mandiant advises hardening the password reset and account creation processes themselves.",
+      "risk": "Rules based on a known address will stay silent while the agent works from a new one.",
+      "solutions": [
+        {
+          "why": "Compares the tempo and volume of each identity's actions with its usual behavior, so a series of dozens of actions within seconds becomes an alert. Needs a behavior history and tuned thresholds."
+        },
+        {
+          "why": "Provides rules on the sequence of events from different systems instead of searching for individual indicators. Works if cloud, directory and server logs are collected."
+        },
+        {
+          "why": "Turns an alert about a burst into automatic blocking of an account or key. Playbooks must be agreed in advance."
+        }
+      ]
+    },
+    {
+      "title": "10 · The agent takes old flaws, not new ones",
+      "text": "A separate Unit 42 report on CAIRN shows the same picture: 25 operations against at least 19 organizations (semiconductors and manufacturing, defense, human rights organizations), with access or data theft confirmed in 10. The agent used authentication bypass, access to other people's records through predictable identifiers, weak or default passwords, exposed cloud APIs and long-known CVEs. Unit 42 links the CL-STA-1238 campaign to China with moderate confidence.",
+      "risk": "The agent finds and uses what has sat for years in the “later” pile — much faster than a human.",
+      "solutions": [
+        {
+          "why": "Finds long-known CVEs and misconfigurations on the company's systems and helps close them by priority. Useful only if the remediation deadlines are kept."
+        },
+        {
+          "why": "Shows everything visible from the internet, including forgotten applications and APIs, where the agent starts. Does not check the access logic inside the application."
+        },
+        {
+          "why": "Checks whether the application returns other people's records and whether it lets people in without the required permissions. Finds only what falls within the scope of testing."
+        }
+      ]
+    },
+    {
+      "title": "11 · Sign-in systems and SSO — under mass guessing",
+      "text": "According to Wiz, in the Storm-0940 campaign ARTEX agents mass-guessed passwords for accounts in cloud user directories (Okta, Entra ID) and probed the account recovery functions and single sign-on (SSO) settings for weakness. When they were throttled or blocked, they switched to another entry point of the same service, and after an address was blocked they came back from a new one within minutes; Wiz saw more than 15 different user-agent strings and sessions lasting 24–30 hours. Most attempts, according to Wiz, were unsuccessful — wherever sign-in is protected. There are three things to defend against: sign-in with a guessed password, bypass through “forgot password” and weakly configured SSO.",
+      "risk": "One guessed employee password without strong MFA is a sign-in to mail, documents and all SSO applications at once.",
+      "solutions": [
+        {
+          "why": "Phishing-resistant MFA (FIDO2, passkeys) makes a guessed password useless for signing in. Protects only the accounts and applications where it is really enabled for everyone, without exceptions."
+        },
+        {
+          "why": "Finds in cloud directories accounts without MFA, stale accounts and risky sign-in settings — what guessing counts on. Useful only after what is found is fixed."
+        },
+        {
+          "why": "Spots guessing as a series of failed sign-ins across many accounts and can block the source or the account. Must count attempts per account, not only per IP, because addresses change within minutes."
+        },
+        {
+          "why": "Checks your own applications and portals for weak spots in account recovery and SSO before the agent does. Finds only what falls within the scope of testing."
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    "Separation of duties in the cloud (temporary credentials instead of static keys, managed identities, disabling the shared storage key) is a rebuild of cloud architecture and settings, not a separate product.",
+    "Hardening the password reset and account creation processes in applications is a matter of application and process design.",
+    "Having administrators work only from dedicated secure workstations (PAW) or jump hosts is an organizational measure.",
+    "Response playbooks “at agent speed” (who has the right to automatically block a service key) are a process that has to be agreed before an incident."
+  ],
+  "questions": [
+    "Which cloud management panels, CI/CD or backup consoles are reachable from the internet right now — and who last checked? (finding 03)",
+    "How many static cloud keys and secrets do you have in configurations, and how quickly would you learn that one of them was used to sign in from a new place? (findings 04, 07)",
+    "How many minutes from an alert can you block an account or a key — and can that happen without a human at night? (findings 02, 09)",
+    "How many accounts in your cloud directories still sign in without phishing-resistant MFA — and would you notice password guessing coming from a new address every few minutes? (finding 11)",
+    "Do you see mass enumeration of Active Directory and new administrator accounts the moment they appear, rather than in the morning review? (finding 06)",
+    "Where can your servers reach on the internet — and is there an allow list of destinations? (finding 08)"
+  ]
+}

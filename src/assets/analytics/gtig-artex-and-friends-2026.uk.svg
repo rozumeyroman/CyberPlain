@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 404">
+<defs>
+<marker id="gaf-mm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fm" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="gaf-ma" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fa" d="M0,0 L10,5 L0,10 z"/></marker>
+<marker id="gaf-md" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fd" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<text class="tm" x="16" y="28" font-size="16" font-weight="600">Агентна атака за години і п’ять рубежів, де її розривають</text>
+<text class="ts" x="468" y="60" font-size="11" text-anchor="middle">серії по 2–25 с</text>
+<line class="lg" x1="148" y1="68" x2="788" y2="68"/>
+<rect class="b-att" x="16" y="80" width="112" height="56" rx="4"/>
+<text class="k ta" x="72" y="104" font-size="11" text-anchor="middle">AI-АГЕНТ</text>
+<text class="ts" x="72" y="122" font-size="11" text-anchor="middle">ціль одним рядком</text>
+<rect class="b-att" x="148" y="80" width="112" height="56" rx="4"/>
+<text class="k ta" x="204" y="104" font-size="11" text-anchor="middle">ПАНЕЛІ</text>
+<text class="k ta" x="204" y="122" font-size="11" text-anchor="middle">КЕРУВАННЯ</text>
+<rect class="b-att" x="280" y="80" width="112" height="56" rx="4"/>
+<text class="k ta" x="336" y="104" font-size="11" text-anchor="middle">КЛЮЧІ Й</text>
+<text class="k ta" x="336" y="122" font-size="11" text-anchor="middle">СЕКРЕТИ</text>
+<rect class="b-att" x="412" y="80" width="112" height="56" rx="4"/>
+<text class="k ta" x="468" y="104" font-size="11" text-anchor="middle">ФУНКЦІЇ</text>
+<text class="k ta" x="468" y="122" font-size="11" text-anchor="middle">ЗАСТОСУНКУ</text>
+<rect class="b-att" x="544" y="80" width="112" height="56" rx="4"/>
+<text class="k ta" x="600" y="104" font-size="11" text-anchor="middle">AD І</text>
+<text class="k ta" x="600" y="122" font-size="11" text-anchor="middle">ХМАРА</text>
+<rect class="b-att" x="676" y="80" width="112" height="56" rx="4"/>
+<text class="k ta" x="732" y="113" font-size="11" text-anchor="middle">ДАНІ</text>
+<line class="la" x1="128" y1="108" x2="146" y2="108" marker-end="url(#gaf-ma)"/>
+<line class="la" x1="260" y1="108" x2="278" y2="108" marker-end="url(#gaf-ma)"/>
+<line class="la" x1="392" y1="108" x2="410" y2="108" marker-end="url(#gaf-ma)"/>
+<line class="la" x1="524" y1="108" x2="542" y2="108" marker-end="url(#gaf-ma)"/>
+<line class="la" x1="656" y1="108" x2="674" y2="108" marker-end="url(#gaf-ma)"/>
+<rect class="b-def" x="148" y="208" width="112" height="48" rx="4"/>
+<text class="td" x="204" y="229" font-size="12" text-anchor="middle">1 · закрити</text>
+<text class="td" x="204" y="246" font-size="12" text-anchor="middle">пульти</text>
+<line class="ld" x1="204" y1="208" x2="204" y2="138" marker-end="url(#gaf-md)"/>
+<text class="td" x="212" y="176" font-size="11">розрив</text>
+<rect class="b-def" x="280" y="208" width="112" height="48" rx="4"/>
+<text class="td" x="336" y="229" font-size="12" text-anchor="middle">2 · без довгих</text>
+<text class="td" x="336" y="246" font-size="12" text-anchor="middle">ключів</text>
+<line class="ld" x1="336" y1="208" x2="336" y2="138" marker-end="url(#gaf-md)"/>
+<text class="td" x="344" y="176" font-size="11">розрив</text>
+<rect class="b-def" x="412" y="208" width="112" height="48" rx="4"/>
+<text class="td" x="468" y="229" font-size="12" text-anchor="middle">4 · захист</text>
+<text class="td" x="468" y="246" font-size="12" text-anchor="middle">функцій</text>
+<line class="ld" x1="468" y1="208" x2="468" y2="138" marker-end="url(#gaf-md)"/>
+<text class="td" x="476" y="176" font-size="11">розрив</text>
+<rect class="b-def" x="544" y="208" width="112" height="48" rx="4"/>
+<text class="td" x="600" y="237" font-size="12" text-anchor="middle">3 · налаштування</text>
+<line class="ld" x1="600" y1="208" x2="600" y2="138" marker-end="url(#gaf-md)"/>
+<text class="td" x="608" y="176" font-size="11">розрив</text>
+<rect class="b-def" x="16" y="280" width="772" height="40" rx="4"/>
+<text class="td" x="402" y="305" font-size="12" text-anchor="middle">5 · поведінка й обсяг</text>
+<line class="ld dash" x1="732" y1="280" x2="732" y2="138" marker-end="url(#gaf-md)"/>
+<text class="td" x="740" y="176" font-size="11">розрив</text>
+<text class="k" x="16" y="352" font-size="11">ЧАС ВІД ЦІЛІ ДО ДАНИХ</text>
+<text class="tm" x="402" y="374" font-size="14" font-weight="600" text-anchor="middle">≈4 год · мінімум 15 хв</text>
+<line class="lm" x1="16" y1="386" x2="788" y2="386" marker-end="url(#gaf-mm)"/>
+</svg>
